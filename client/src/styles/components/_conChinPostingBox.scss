@@ -1,0 +1,73 @@
+/****** conChinPostingBox ******/
+
+#conChinPostingBox{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  width:100%;
+  height:45%;
+  border:1px solid #C4C4C4;
+  border-radius:10px;
+}
+
+.conChinPosting {
+  position: relative;
+  display:flex;
+  align-items:center;
+  width:85%;
+  height:13%;
+  // border: 1px solid blue;
+  border-radius:5px;
+  font-size:1.5rem;
+}
+
+.conChinPosting:hover {
+  background-color:#FFCE63;
+  cursor: pointer;
+}
+
+.conChinPostingTitle {
+  position: absolute;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  width:68%;
+  height:100%;
+  left:0;
+  // border: 1px solid red;
+  font-size:3rem;
+}
+.conChinPostingDate {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height:100%;
+  right: 15%;
+  // border: 1px solid red;
+  font-size:1.5rem;
+}
+
+.conChinPostingView {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height:49%;
+  right:1%;
+  transform:translate(0%,-50%);
+  // border: 1px solid red;
+  font-size:1.0rem;
+}
+
+.conChinConcertPlace {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height:49%;
+  right:1%;
+  transform:translate(0%,50%);
+  // border: 1px solid red;
+  font-size:1.0rem;
+}
+
+/****** conChinPostingBox ******/

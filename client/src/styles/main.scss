@@ -1,1 +1,10 @@
-@import './pages/conChinPage';
+/****** 재혁 ******/
+@import './pages/conChinPage.scss';
+@import './components/conChinPostingBox.scss';
+@import './components/conChinConChinBox.scss';
+/****** 재혁 ******/
+
+@import './base/normalize.scss';
+@import './layouts/grids.scss';
+@import './constants/breakpoints.scss';
+@import './mixins/reponsive.scss'

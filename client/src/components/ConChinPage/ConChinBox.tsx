@@ -1,9 +1,8 @@
-
+import react from 'react';
 
 function ConChinBox(){
   return (
-    <div className='conChinBox'>
-
+    <div id='conChinConChinBox'>
     </div>
   )
 }
