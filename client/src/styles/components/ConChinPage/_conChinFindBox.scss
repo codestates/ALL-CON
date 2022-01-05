@@ -9,14 +9,15 @@
   .title{
     position:relative;
     display:inline-block;
-    left:7%;
     height:100%;
     // border:1px solid red;
     @include mobile-only(){
       width:70.5%;
+      left:5%;
     }
     @include lg(){
       width:30%;
+      left:7%;
     };
     .textWrapper{
       display:flex;
@@ -31,10 +32,10 @@
         // border:1px solid red;
         font-weight:bolder;
         @include mobile-only(){
-          font-size:2.0rem;
+          font-size:2.5rem;
         }
         @include lg(){
-          font-size:3.5rem;
+          font-size:4rem;
         };
       }
     }

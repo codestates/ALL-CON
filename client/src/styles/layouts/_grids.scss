@@ -83,7 +83,12 @@
       width:30%;
       padding-bottom:30%;
       // border:1px solid green;
-      border-radius:5px;
+      @include mobile-only(){
+        border-radius:5px;
+      }
+      @include lg(){
+        border-radius:10px;
+      };
       &:hover{
         box-shadow: 3px 3px 14px 1px #606060;
         cursor: pointer;
@@ -94,8 +99,13 @@
         width:100%;
         left:50%;
         top:50%;
-        border-radius:5px;
         transform: translate(-50%,-50%);
+        @include mobile-only(){
+          border-radius:5px;
+        }
+        @include lg(){
+          border-radius:10px;
+        };
       }
       .memberBox{
         position: absolute;
@@ -120,8 +130,8 @@
           display: flex;
           @include mobile-only(){
             margin-right:50%;
-            width:9px;
-            height:9px;
+            width:11px;
+            height:11px;
           }
           @include lg(){
             margin-right:45%;
@@ -142,7 +152,7 @@
           @include lg(){
             padding-top:3%;
             padding-left:20%;
-            font-size:1.6rem;
+            font-size:2rem;
           };
         }
       }
@@ -191,8 +201,8 @@
           position: absolute;
 
           @include mobile-only(){
-            width:9px;
-            height:9px;
+            width:11px;
+            height:11px;
             left:3%;
           }
           @include lg(){
@@ -211,7 +221,7 @@
           }
           @include lg(){
             top:1.5%;
-            left:12%;
+            left:13%;
             font-size:2rem;
           };
         }
@@ -228,25 +238,32 @@
   align-items: center;
   justify-content:center;
   width:30%;
-  height:8%;
   left:50%;
+  @include mobile-only(){
+    height:10%;
+  }
+  @include lg(){
+    height:12%;
+  };
   // border:1px solid purple;
   transform: translate(-50%, 0%);
   .page{
     position: relative;
     display: flex;
     justify-content:center;
-    margin:1%;
+
     background-color:black;
     @include mobile-only(){
-      width:11%;
-      height:11%;
-      padding-bottom:11%;
+      width:19%;
+      height:19%;
+      padding-bottom:19%;
+      margin:2%;
       border-radius:2px;
     }
     @include lg(){
       width:10%;
       height:10%;
+      margin:2%;
       padding-bottom:10%;
       border-radius:5px;
     };
@@ -261,7 +278,7 @@
     top:50%;
     transform: translate(0%,-50%);
     @include mobile-only(){
-      font-size:1.0rem;
+      font-size:1.3rem;
     }
     @include lg(){
       font-size:2rem;
