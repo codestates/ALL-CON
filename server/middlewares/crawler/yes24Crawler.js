@@ -38,7 +38,7 @@ const yes24Crawler = async () => {
         let cnt = 1;
 
         //  ----------------- 현재 페이지 게시물 조회... ----------------- 
-        for(let i = 10; i < 12; i++) {      
+        for(let i = 10; i < 17; i++) {      
 
           let num = Number(extractId) - i;
           let str = num.toString();

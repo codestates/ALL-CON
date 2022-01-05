@@ -12,7 +12,7 @@ const port = 8080;
 
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 17 * * * *',
+  '00 31 * * * *',
   async () => {
     
     let interData = await interparkCrawler();
@@ -43,7 +43,7 @@ const autoCrawling = schedule.scheduleJob(
     }
 
     // DB에 쌓아준다
-    for(let i = 0; i < interData.length; i++) {
+    for(let i = 0; i < concerts.length; i++) {
       await Concerts.create({ 
         exclusive: concerts[i].exclusive,
         open_date: concerts[i].open_date,
