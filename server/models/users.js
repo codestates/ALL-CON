@@ -54,11 +54,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     image: DataTypes.STRING,
     introduction: DataTypes.STRING,
-    phone_number: {
-      type: DataTypes.INTEGER,
-      unique: true
-    },
-    birth: DataTypes.INTEGER,
+    phone_number: DataTypes.STRING,
+    birth: DataTypes.STRING,
     gender: DataTypes.STRING,
     role: {
       type: DataTypes.INTEGER,

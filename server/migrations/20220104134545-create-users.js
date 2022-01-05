@@ -29,11 +29,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       phone_number: {
-        unique: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       birth: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       gender: {
         type: Sequelize.STRING
