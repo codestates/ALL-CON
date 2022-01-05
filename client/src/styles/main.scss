@@ -1,3 +1,5 @@
+/* main.css -> style.css*/
+
 * {
   margin: 0;
   padding: 0;
@@ -17,10 +19,9 @@
 @import './components/ConChinPage/conChinPostingBox.scss';
 /***** 재혁 *****/
 
-/* main.css -> style.css*/
-
 /*---------------선영--------------------*/
 @import '../styles/pages/mainPage.scss';
 @import '../styles/layouts/jumbotronBackground';
 @import '../styles/components/posterSlide';
+@import '../styles/components/MainPage/mainConcertInfo';
 /*------------선영----------*/
