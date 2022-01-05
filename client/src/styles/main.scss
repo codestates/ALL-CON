@@ -1,0 +1,23 @@
+@import '../styles/mixins/responsive';
+@import './layouts/grids.scss';
+@import '../styles/base/normalize';
+@import '../styles/constants/color';
+
+/***** 재혁 *****/
+@import './pages/conChinPage.scss';
+@import './components/conChinPostingBox.scss';
+@import './components/conChinConChinBox.scss';
+/***** 재혁 *****/
+
+/* main.css -> style.css*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*---------------선영--------------------*/
+@import '../styles/pages/mainPage.scss';
+@import '../styles/layouts/jumbotronBackground';
+@import '../styles/components/posterSlide';
+/*------------선영----------*/
