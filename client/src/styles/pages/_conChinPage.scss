@@ -1,0 +1,49 @@
+#conChinContainer {
+  position:absolute;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  // border: 1px solid red;
+  @include mobile-only(){
+    width:100%;
+    height:100%;
+  }
+  @include lg(){
+    width:100%;
+    height:200%;
+  };
+  #jumbotron{
+    position: relative;
+    display:flex;
+    @include mobile-only(){
+      width:100%;
+      height:14%;
+    }
+    @include lg(){
+      width:100%;
+      height:25%;
+    };
+    // border:1px solid red;
+  }
+  #mainBox{
+    position:relative;
+    display:flex;
+    flex-wrap:wrap;
+    width:80%;
+    height:73%;
+    margin-top:1%;
+    @include mobile-only(){
+      width:95%;
+      height:83%;
+    }
+    @include lg(){
+      width:80%;
+      height:73%;
+    };
+    // border:1px solid red;
+  }
+  
+}
+
+
+

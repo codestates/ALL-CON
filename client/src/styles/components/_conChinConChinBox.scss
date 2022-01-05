@@ -1,0 +1,85 @@
+#conChinBox{
+  position: relative;
+  display: flex;
+  margin-top:1%;
+  border:3px solid green;
+  @include mobile-only(){
+    width:100%;
+    height:63%;
+  }
+  @include lg(){
+    width:100%;
+    height:52%;
+  };
+  #findBox{
+    position:relative;
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction: row;
+    align-items:center;
+    border-bottom:1.5px solid black;
+    width: 100%;
+    height: 10%;
+    // border:1px solid red;
+    .title{
+      position:relative;
+      flex-direction: row;
+      width:26%;
+      height:100%;
+      border:1px solid red;
+      .text{
+        position:absolute;
+        height:50%;
+        width:100%;
+        bottom:7%;
+        border:1px solid red;
+        font-size:2.5rem;
+        font-weight:bolder;
+      }
+    }
+    .explainTitle{
+      position:absolute;
+      height:100%;
+      width:35%;
+      left:27%;
+      border:1px solid blue;
+      .text{
+        position:absolute;
+        display:flex;
+        height:20%;
+        width:100%;
+        left:0%;
+        bottom:7%;
+        border:1px solid blue;
+      }
+    }
+    .btnWrapper{
+      position:absolute;
+      width:30%;
+      height:100%;
+      right:0%;
+      .btn{
+        position:absolute;
+        width:65%;
+        height:60%;
+        right:0%;
+        bottom:7%;
+        padding-left:19%;
+        outline:0;
+        background-color:#FFCE63;
+        border:0;
+        border-radius:5px;
+        color:white;
+        font-weight:bold;
+        .img{
+          position:absolute;
+          width:15px;
+          height:15px;
+          left:6%;
+        }
+      }
+    }
+  }
+}
+
+
