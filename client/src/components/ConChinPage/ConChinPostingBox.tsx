@@ -1,10 +1,10 @@
 import react from 'react';
 
-function PostingBox(){
+function ConChinPostingBox(){
   return (
     <li id='conChinPostingBox'>
-      <div id='orderBox'>
-        <h1 id='curOrder'>조회수 순</h1>
+      <h1 id='curOrder'>조회수 순</h1>
+      <div id='bottomLineOrderBox'>
         <p className='order'>조회수</p>
         <p className='order'>임박예정</p>
         <p className='order'>등록일</p>
@@ -30,4 +30,4 @@ function PostingBox(){
   </li>
   )
 }
-export default PostingBox;
+export default ConChinPostingBox;
