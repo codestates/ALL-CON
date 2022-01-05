@@ -1,5 +1,5 @@
 import react from 'react';
-import PostingBox from '../components/ConChinPage/PostingBox';
+import ConChinPostingBox from '../components/ConChinPage/ConChinPostingBox';
 import ConChinBox from '../components/ConChinPage/ConChinBox';
 import banner from '../images/banner.png';
 
@@ -8,7 +8,7 @@ function ConChinPage() {
     <div id='conChinContainer'>
       <img id='jumbotron' src= { banner }/>
       <div id='mainBox'>
-        <PostingBox/>
+        <ConChinPostingBox/>
         <ConChinBox/>
       </div>
     </div>
