@@ -1,14 +1,3 @@
-@import '../styles/mixins/responsive';
-@import './layouts/grids.scss';
-@import '../styles/base/normalize';
-@import '../styles/constants/color';
-
-/***** 재혁 *****/
-@import './pages/conChinPage.scss';
-@import './components/conChinPostingBox.scss';
-@import './components/conChinConChinBox.scss';
-/***** 재혁 *****/
-
 /* main.css -> style.css*/
 
 * {
@@ -16,8 +5,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@import '../styles/mixins/responsive';
+@import '../styles/constants/color';
+@import '../styles/base/normalize';
+@import './layouts/grids.scss';
+
+/***** 재혁 *****/
+@import './pages/conChinPage.scss';
+@import './components/conChinPage/conChinPostingBox.scss';
+@import './components/conChinPage/conChinConChinBox.scss';
+/***** 재혁 *****/
+
 /*---------------선영--------------------*/
 @import '../styles/pages/mainPage.scss';
 @import '../styles/layouts/jumbotronBackground';
 @import '../styles/components/posterSlide';
+@import '../styles/components/MainPage/mainConcertInfo';
 /*------------선영----------*/

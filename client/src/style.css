@@ -1,4 +1,13 @@
 @charset "UTF-8";
+/* main.css -> style.css*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 10px; }
+
 /****** grids ******/
 /****** orderBox ******/
 #orderBox {
@@ -265,18 +274,30 @@
           left: 6%; }
 
 /***** 재혁 *****/
-/* main.css -> style.css*/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box; }
-
 /*---------------선영--------------------*/
+@media (max-width: 767px) {
+  #mainContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+  #mainJumboWrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 75%; }
+  #mainConcertInfoWrapper {
+    position: absolute;
+    top: 41.2%;
+    width: 100%;
+    height: 45%;
+    border: 1px solid red; } }
+
 @media (max-width: 767px) {
   #jumboContainer {
     position: absolute;
     width: 100%;
-    height: 42%; }
+    height: 55%;
+    padding-bottom: 30%; }
   #jumboMiniContainer {
     position: absolute;
     display: flex;
@@ -310,32 +331,79 @@
     font-size: 30px;
     color: #ffcd63; }
   #jumboChosen {
-    width: 204px;
-    height: 301px;
-    opacity: 40%; }
+    width: 40%;
+    height: 78%;
+    opacity: 30%; }
   #jumboPosterSlideWrapper {
     position: relative;
     bottom: -10%;
     width: 80%;
     height: 77%; } }
 
+@media (min-width: 1200px) {
+  #jumboContainer {
+    position: absolute;
+    width: 100%;
+    height: 85%;
+    padding-bottom: 20%; }
+  #jumboMiniContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); }
+  .jumboTopBox {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%; }
+  .jumboTextBox {
+    position: relative;
+    top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 770px;
+    height: 12%; }
+  #jumboWhat {
+    font-size: 120px;
+    color: #fff; }
+  #jumboClassify {
+    font-size: 120px;
+    color: #ffcd63; }
+  #jumboChosen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -37.5%);
+    width: 450px;
+    height: 550px;
+    opacity: 40%; }
+  #jumboPosterSlideWrapper {
+    position: relative;
+    bottom: -8%;
+    width: 80%;
+    height: 77%; } }
+
 @media (max-width: 767px) {
   .posterContainer {
     width: 100%;
-    height: 100%;
-    border: 1px solid blue; }
+    height: 100%; }
   #crownWrapper {
     z-index: 11;
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 12%;
+    height: 30%;
     top: 25%;
     left: 38%;
     transform: translate(-50%, -50%);
-    padding-bottom: 30%; }
+    padding-bottom: 10%; }
     #crownWrapper #posterCrown {
-      width: 50px;
-      height: 50px; }
+      width: 100%;
+      height: 100%; }
   .posterImg {
     position: absolute;
     width: 100%;
@@ -343,56 +411,196 @@
   /*가운데*/
   #posterWrapper1 {
     position: absolute;
-    width: 29%;
-    height: 0;
+    width: 25%;
+    height: 60%;
+    /*왜 70이하로 앉줄지*/
     overflow: hidden;
-    padding-bottom: 50%;
+    padding-bottom: 30%;
     z-index: 10;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); }
   #posterWrapper2 {
     position: absolute;
-    width: 29%;
-    height: 0;
+    width: 25%;
+    height: 60%;
     overflow: hidden;
-    padding-bottom: 50%;
+    padding-bottom: 30%;
     z-index: 9;
     top: 60%;
     left: 30%;
     transform: translate(-50%, -50%); }
   #posterWrapper3 {
     position: absolute;
-    width: 29%;
-    height: 0;
+    width: 25%;
+    height: 60%;
     overflow: hidden;
-    padding-bottom: 50%;
+    padding-bottom: 30%;
     z-index: 9;
     top: 60%;
     left: 70%;
     transform: translate(-50%, -50%); }
   #posterWrapper4 {
     position: absolute;
-    width: 29%;
-    height: 0;
+    width: 25%;
+    height: 60%;
     overflow: hidden;
-    padding-bottom: 50%;
+    padding-bottom: 30%;
     z-index: 8;
     top: 70%;
     left: 15%;
     transform: translate(-50%, -50%); }
   #posterWrapper5 {
     position: absolute;
-    width: 29%;
-    height: 0;
+    width: 25%;
+    height: 60%;
     overflow: hidden;
-    padding-bottom: 50%;
+    padding-bottom: 30%;
     z-index: 8;
     top: 70%;
     left: 85%;
     transform: translate(-50%, -50%); } }
 
-html {
-  font-size: 10px; }
+@media (min-width: 1200px) {
+  .posterContainer {
+    width: 100%;
+    height: 100%; }
+  #crownWrapper {
+    z-index: 11;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 13%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 8%; }
+    #crownWrapper #posterCrown {
+      width: 70px;
+      height: 70px; }
+  .posterImg {
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+  /*가운데*/
+  #posterWrapper1 {
+    position: absolute;
+    width: 20%;
+    height: 65%;
+    /*왜 70이하로 앉줄지*/
+    overflow: hidden;
+    padding-bottom: 20%;
+    z-index: 10;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  #posterWrapper2 {
+    position: absolute;
+    width: 20%;
+    height: 65%;
+    overflow: hidden;
+    padding-bottom: 20%;
+    z-index: 9;
+    top: 55%;
+    left: 35%;
+    transform: translate(-50%, -50%); }
+  #posterWrapper3 {
+    position: absolute;
+    width: 20%;
+    height: 65%;
+    overflow: hidden;
+    padding-bottom: 20%;
+    z-index: 9;
+    top: 55%;
+    left: 65%;
+    transform: translate(-50%, -50%); }
+  #posterWrapper4 {
+    position: absolute;
+    width: 20%;
+    height: 65%;
+    overflow: hidden;
+    padding-bottom: 20%;
+    z-index: 8;
+    top: 65%;
+    left: 20%;
+    transform: translate(-50%, -50%); }
+  #posterWrapper5 {
+    position: absolute;
+    width: 20%;
+    height: 65%;
+    overflow: hidden;
+    padding-bottom: 20%;
+    z-index: 8;
+    top: 65%;
+    left: 80%;
+    transform: translate(-50%, -50%); } }
+
+@media (max-width: 767px) {
+  #mainConcertInfoBox {
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+    #mainConcertInfoBox #topBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 100%;
+      height: 30%;
+      border: 1px solid blue; }
+      #mainConcertInfoBox #topBox #roofArea {
+        position: relative;
+        width: 100%;
+        height: 40%;
+        border: 1px solid orange; }
+        #mainConcertInfoBox #topBox #roofArea #backBtn {
+          position: absolute;
+          top: 10%;
+          right: 2%;
+          width: 30%;
+          height: 80%;
+          background-color: #ffcd63;
+          border: 0;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 1rem;
+          font-weight: bold; }
+      #mainConcertInfoBox #topBox #fromWhereBox {
+        display: flex;
+        justify-content: space-between;
+        width: 35%;
+        height: 19%;
+        border: 1px solid red; }
+        #mainConcertInfoBox #topBox #fromWhereBox .where {
+          width: 45%;
+          height: 100%;
+          background-color: #ffcd63;
+          text-align: center;
+          color: #fff;
+          font-weight: bold;
+          font-size: 1.3rem;
+          vertical-align: center; }
+      #mainConcertInfoBox #topBox #titleBell {
+        position: relative;
+        width: 100%;
+        height: 40%; }
+        #mainConcertInfoBox #topBox #titleBell #h2AlignBox {
+          display: flex;
+          border: 1px solid purple;
+          align-items: center;
+          width: 100%;
+          height: 100%; }
+          #mainConcertInfoBox #topBox #titleBell #h2AlignBox h2 {
+            font-size: 1.6rem; }
+        #mainConcertInfoBox #topBox #titleBell #bell {
+          position: absolute;
+          top: 0;
+          right: 8%;
+          width: 5%;
+          height: 90%; }
+      #mainConcertInfoBox #topBox #date {
+        font: 1.3rem;
+        color: #a0a0a0; }
+    #mainConcertInfoBox #selectedPoster {
+      width: 170px;
+      height: 240px; } }
 
 /*------------선영----------*/
