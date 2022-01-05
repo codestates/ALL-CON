@@ -1,0 +1,16 @@
+#conChinArticleBox{
+  position: absolute;
+  display:flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  width:100%;
+  height:90%;
+  top:10%;
+  @include mobile-only(){
+    border-top:5px solid $yellow;
+  }
+  @include lg(){
+    border-top:10px solid $yellow;
+  };
+
+}

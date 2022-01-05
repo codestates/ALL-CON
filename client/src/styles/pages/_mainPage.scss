@@ -1,0 +1,20 @@
+@include mobile-only {
+  #mainContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  #mainJumboWrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 75%;
+  }
+  #mainConcertInfoWrapper {
+    position: absolute;
+    top: 41.2%;
+    width: 100%;
+    height: 45%;
+    border: 1px solid red;
+  }
+}

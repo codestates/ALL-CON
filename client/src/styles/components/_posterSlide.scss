@@ -1,0 +1,173 @@
+@include mobile-only {
+  .posterContainer {
+    width: 100%;
+    height: 100%;
+  }
+  #crownWrapper {
+    z-index: 11;
+    position: absolute;
+    width: 12%;
+    height: 30%;
+    top: 25%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 10%;
+    #posterCrown {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .posterImg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  /*가운데*/
+  #posterWrapper1 {
+    position: absolute;
+    width: 25%;
+    height: 60%; /*왜 70이하로 앉줄지*/
+    overflow: hidden;
+    padding-bottom: 30%;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper2 {
+    position: absolute;
+    width: 25%;
+    height: 60%;
+    overflow: hidden;
+    padding-bottom: 30%;
+    z-index: 9;
+    top: 60%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper3 {
+    position: absolute;
+    width: 25%;
+    height: 60%;
+    overflow: hidden;
+    padding-bottom: 30%;
+    z-index: 9;
+    top: 60%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper4 {
+    position: absolute;
+    width: 25%;
+    height: 60%;
+    overflow: hidden;
+    padding-bottom: 30%;
+    z-index: 8;
+    top: 70%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper5 {
+    position: absolute;
+    width: 25%;
+    height: 60%;
+    overflow: hidden;
+    padding-bottom: 30%;
+    z-index: 8;
+    top: 70%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@include lg {
+  .posterContainer {
+    width: 100%;
+    height: 100%;
+  }
+  #crownWrapper {
+    z-index: 11;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 13%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 8%;
+    #posterCrown {
+      width: 70px;
+      height: 70px;
+    }
+  }
+
+  .posterImg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  /*가운데*/
+  #posterWrapper1 {
+    position: absolute;
+    width: 20%;
+    height: 65%; /*왜 70이하로 앉줄지*/
+    overflow: hidden;
+    padding-bottom: 20%;
+    z-index: 10;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper2 {
+    position: absolute;
+    width: 20%;
+    height: 65%;
+    overflow: hidden;
+    padding-bottom: 20%;
+    z-index: 9;
+    top: 55%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper3 {
+    position: absolute;
+    width: 20%;
+    height: 65%;
+    overflow: hidden;
+    padding-bottom: 20%;
+    z-index: 9;
+    top: 55%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper4 {
+    position: absolute;
+    width: 20%;
+    height: 65%;
+    overflow: hidden;
+    padding-bottom: 20%;
+    z-index: 8;
+    top: 65%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper5 {
+    position: absolute;
+    width: 20%;
+    height: 65%;
+    overflow: hidden;
+    padding-bottom: 20%;
+    z-index: 8;
+    top: 65%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+  }
+}
