@@ -10,7 +10,7 @@
   }
   @include lg(){
     width:100%;
-    height:200%;
+    height:250%;
   };
   #jumbotron{
     position: relative;
@@ -21,7 +21,7 @@
     }
     @include lg(){
       width:100%;
-      height:25%;
+      height:21%;
     };
     // border:1px solid red;
   }

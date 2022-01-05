@@ -1,21 +1,24 @@
-@import '../styles/mixins/responsive';
-@import './layouts/grids.scss';
-@import '../styles/base/normalize';
-@import '../styles/constants/color';
-
-/***** 재혁 *****/
-@import './pages/conChinPage.scss';
-@import './components/conChinPostingBox.scss';
-@import './components/conChinConChinBox.scss';
-/***** 재혁 *****/
-
-/* main.css -> style.css*/
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+@import '../styles/mixins/responsive';
+@import '../styles/constants/color';
+@import '../styles/base/normalize';
+@import './layouts/grids.scss';
+
+/***** 재혁 *****/
+@import './pages/conChinPage.scss';
+@import './components/ConChinPage/conChinArticleBox.scss';
+@import './components/ConChinPage/conChinConChinBox.scss';
+@import './components/ConChinPage/conChinFindBox.scss';
+@import './components/ConChinPage/conChinPostingBox.scss';
+/***** 재혁 *****/
+
+/* main.css -> style.css*/
+
 /*---------------선영--------------------*/
 @import '../styles/pages/mainPage.scss';
 @import '../styles/layouts/jumbotronBackground';
