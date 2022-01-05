@@ -1,0 +1,87 @@
+@include mobile-only {
+  .posterContainer {
+    width: 100%;
+    height: 100%;
+    border: 1px solid blue;
+  }
+  #crownWrapper {
+    z-index: 11;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 25%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 30%;
+    #posterCrown {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .posterImg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  /*가운데*/
+  #posterWrapper1 {
+    position: absolute;
+    width: 29%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 50%;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper2 {
+    position: absolute;
+    width: 29%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 50%;
+    z-index: 9;
+    top: 60%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper3 {
+    position: absolute;
+    width: 29%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 50%;
+    z-index: 9;
+    top: 60%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper4 {
+    position: absolute;
+    width: 29%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 50%;
+    z-index: 8;
+    top: 70%;
+    left: 15%;
+    transform: translate(-50%, -50%);
+  }
+
+  #posterWrapper5 {
+    position: absolute;
+    width: 29%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 50%;
+    z-index: 8;
+    top: 70%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+  }
+}

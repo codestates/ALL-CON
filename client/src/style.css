@@ -1,18 +1,4 @@
 @charset "UTF-8";
-/****** normalize ******/
-html {
-  font-size: 10px; }
-
-body {
-  margin: 0; }
-
-main {
-  display: block; }
-
-h1 {
-  font-size: 3.5rem; }
-
-/****** normalize ******/
 /****** grids ******/
 /****** orderBox ******/
 #orderBox {
@@ -279,3 +265,134 @@ h1 {
           left: 6%; }
 
 /***** 재혁 *****/
+/* main.css -> style.css*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+/*---------------선영--------------------*/
+@media (max-width: 767px) {
+  #jumboContainer {
+    position: absolute;
+    width: 100%;
+    height: 42%; }
+  #jumboMiniContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); }
+  .jumboTopBox {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%; }
+  .jumboTextBox {
+    position: relative;
+    top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    height: 8%; }
+  #jumboWhat {
+    font-size: 30px;
+    color: #fff; }
+  #jumboClassify {
+    font-size: 30px;
+    color: #ffcd63; }
+  #jumboChosen {
+    width: 204px;
+    height: 301px;
+    opacity: 40%; }
+  #jumboPosterSlideWrapper {
+    position: relative;
+    bottom: -10%;
+    width: 80%;
+    height: 77%; } }
+
+@media (max-width: 767px) {
+  .posterContainer {
+    width: 100%;
+    height: 100%;
+    border: 1px solid blue; }
+  #crownWrapper {
+    z-index: 11;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 25%;
+    left: 38%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 30%; }
+    #crownWrapper #posterCrown {
+      width: 50px;
+      height: 50px; }
+  .posterImg {
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+  /*가운데*/
+  #posterWrapper1 {
+    position: absolute;
+    width: 29%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 50%;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  #posterWrapper2 {
+    position: absolute;
+    width: 29%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 50%;
+    z-index: 9;
+    top: 60%;
+    left: 30%;
+    transform: translate(-50%, -50%); }
+  #posterWrapper3 {
+    position: absolute;
+    width: 29%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 50%;
+    z-index: 9;
+    top: 60%;
+    left: 70%;
+    transform: translate(-50%, -50%); }
+  #posterWrapper4 {
+    position: absolute;
+    width: 29%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 50%;
+    z-index: 8;
+    top: 70%;
+    left: 15%;
+    transform: translate(-50%, -50%); }
+  #posterWrapper5 {
+    position: absolute;
+    width: 29%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 50%;
+    z-index: 8;
+    top: 70%;
+    left: 85%;
+    transform: translate(-50%, -50%); } }
+
+html {
+  font-size: 10px; }
+
+/*------------선영----------*/

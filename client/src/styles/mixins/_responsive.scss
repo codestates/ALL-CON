@@ -1,22 +1,21 @@
 // Break Point
 $md: 768px;
 $lg: 1200px;
-  
+
 // Mixins
 @mixin md {
   @media (min-width: #{$md}) {
     @content;
   }
 }
- 
+
 @mixin lg {
   @media (min-width: #{$lg}) {
     @content;
   }
 }
- 
 @mixin mobile-only() {
-  @media (max-width: #{$md - 1px}){
+  @media (max-width: #{$md - 1px}) {
     @content;
   }
 }

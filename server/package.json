@@ -2,10 +2,29 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/app.js"
   },
+  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "iconv-lite": "^0.6.3",
+    "mysql2": "^2.3.3",
+    "node-schedule": "^2.1.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "routers": "^0.1.4",
+    "sequelize": "^6.12.5",
+    "sequelize-cli": "^6.3.0",
+    "voca": "^1.4.0"
+  }
 }
