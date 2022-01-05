@@ -1,97 +1,4 @@
 @charset "UTF-8";
-/****** 재혁 ******/
-#conChinContainer {
-  position: absolute;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  height: 200%; }
-
-#conChinJumbotron {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 25%; }
-
-#conChinMainBox {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-  height: 73%;
-  margin-top: 1%; }
-
-/****** conChinPostingBox ******/
-#conChinPostingBox {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 45%;
-  border: 1px solid #C4C4C4;
-  border-radius: 10px; }
-
-.conChinPosting {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 85%;
-  height: 13%;
-  border-radius: 5px;
-  font-size: 1.5rem; }
-
-.conChinPosting:hover {
-  background-color: #FFCE63;
-  cursor: pointer; }
-
-.conChinPostingTitle {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 68%;
-  height: 100%;
-  left: 0;
-  font-size: 3rem; }
-
-.conChinPostingDate {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  right: 15%;
-  font-size: 1.5rem; }
-
-.conChinPostingView {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  height: 49%;
-  right: 1%;
-  transform: translate(0%, -50%);
-  font-size: 1.0rem; }
-
-.conChinConcertPlace {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  height: 49%;
-  right: 1%;
-  transform: translate(0%, 50%);
-  font-size: 1.0rem; }
-
-/****** conChinPostingBox ******/
-#conChinConChinBox {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 52%;
-  margin-top: 1%;
-  border: 3px solid green; }
-
-/****** 재혁 ******/
 /****** normalize ******/
 html {
   font-size: 10px; }
@@ -113,36 +20,262 @@ h1 {
   display: flex;
   justify-content: right;
   align-items: center;
-  width: 93%;
-  height: 20%;
   border-bottom: 1px solid black; }
-
-#orderBoxCurOrder {
-  position: absolute;
-  display: flex;
-  font-size: 4rem;
-  left: 5%;
-  bottom: 15%;
-  transform: translate(0%, 50%); }
-
-.orderBoxOrder {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 10%;
-  height: 50%;
-  bottom: 15%;
-  transform: translate(0%, 50%);
-  border-radius: 5px;
-  font-size: 2rem;
-  font-weight: bold;
-  margin-right: 0.5%; }
-
-.orderBoxOrder:hover {
-  background-color: #FFCE63;
-  color: white;
-  cursor: pointer; }
+  @media (max-width: 767px) {
+    #orderBox {
+      width: 93%;
+      height: 20%; } }
+  @media (min-width: 1200px) {
+    #orderBox {
+      width: 93%;
+      height: 20%; } }
+  #orderBox #curOrder {
+    position: absolute;
+    display: flex;
+    transform: translate(0%, 50%);
+    font-size: 4rem; }
+    @media (max-width: 767px) {
+      #orderBox #curOrder {
+        font-size: 2.5rem;
+        left: 3%;
+        bottom: 0%; } }
+    @media (min-width: 1200px) {
+      #orderBox #curOrder {
+        font-size: 4rem;
+        left: 5%;
+        bottom: 15%; } }
+  #orderBox .order {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 15%;
+    transform: translate(0%, 50%);
+    border-radius: 5px;
+    font-weight: bold;
+    margin-right: 0.5%; }
+    @media (max-width: 767px) {
+      #orderBox .order {
+        width: 19%;
+        height: 50%;
+        font-size: 1.6rem; } }
+    @media (min-width: 1200px) {
+      #orderBox .order {
+        width: 10%;
+        height: 50%;
+        font-size: 2rem; } }
+    #orderBox .order:hover {
+      background-color: #FFCE63;
+      color: white;
+      cursor: pointer; }
 
 /****** orderBox ******/
 /****** grids ******/
+/***** 재혁 *****/
+#conChinContainer {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  @media (max-width: 767px) {
+    #conChinContainer {
+      width: 100%;
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    #conChinContainer {
+      width: 100%;
+      height: 200%; } }
+  #conChinContainer #jumbotron {
+    position: relative;
+    display: flex; }
+    @media (max-width: 767px) {
+      #conChinContainer #jumbotron {
+        width: 100%;
+        height: 14%; } }
+    @media (min-width: 1200px) {
+      #conChinContainer #jumbotron {
+        width: 100%;
+        height: 25%; } }
+  #conChinContainer #mainBox {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    height: 73%;
+    margin-top: 1%; }
+    @media (max-width: 767px) {
+      #conChinContainer #mainBox {
+        width: 95%;
+        height: 83%; } }
+    @media (min-width: 1200px) {
+      #conChinContainer #mainBox {
+        width: 80%;
+        height: 73%; } }
+
+/****** conChinPostingBox ******/
+#conChinPostingBox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid #C4C4C4;
+  border-radius: 10px; }
+  @media (max-width: 767px) {
+    #conChinPostingBox {
+      width: 100%;
+      height: 35%; } }
+  @media (min-width: 1200px) {
+    #conChinPostingBox {
+      width: 100%;
+      height: 45%; } }
+  #conChinPostingBox .posting {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 15%;
+    border-radius: 5px; }
+    @media (max-width: 767px) {
+      #conChinPostingBox .posting {
+        width: 85%; } }
+    @media (min-width: 1200px) {
+      #conChinPostingBox .posting {
+        width: 85%; } }
+    #conChinPostingBox .posting:hover {
+      background-color: #FFCE63;
+      cursor: pointer; }
+    #conChinPostingBox .posting .title {
+      position: absolute;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      left: 1%; }
+      @media (max-width: 767px) {
+        #conChinPostingBox .posting .title {
+          width: 65%;
+          height: 100%;
+          font-size: 1.3rem; } }
+      @media (min-width: 1200px) {
+        #conChinPostingBox .posting .title {
+          width: 68%;
+          height: 100%;
+          font-size: 3.0rem; } }
+    #conChinPostingBox .posting .date {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 100%; }
+      @media (max-width: 767px) {
+        #conChinPostingBox .posting .date {
+          right: 17%;
+          font-size: 0.5rem;
+          width: 15%; } }
+      @media (min-width: 1200px) {
+        #conChinPostingBox .posting .date {
+          font-size: 2.0rem;
+          width: 15%;
+          right: 15%; } }
+    #conChinPostingBox .posting .view {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 49%;
+      right: 1%;
+      transform: translate(0%, -50%); }
+      @media (max-width: 767px) {
+        #conChinPostingBox .posting .view {
+          font-size: 0.5rem; } }
+      @media (min-width: 1200px) {
+        #conChinPostingBox .posting .view {
+          font-size: 1.5rem; } }
+    #conChinPostingBox .posting .place {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 49%;
+      right: 1%;
+      text-align: right;
+      transform: translate(0%, 50%); }
+      @media (max-width: 767px) {
+        #conChinPostingBox .posting .place {
+          font-size: 0.5rem;
+          width: 16%; } }
+      @media (min-width: 1200px) {
+        #conChinPostingBox .posting .place {
+          font-size: 1.5rem; } }
+
+/****** conChinPostingBox ******/
+#conChinBox {
+  position: relative;
+  display: flex;
+  margin-top: 1%;
+  border: 3px solid green; }
+  @media (max-width: 767px) {
+    #conChinBox {
+      width: 100%;
+      height: 63%; } }
+  @media (min-width: 1200px) {
+    #conChinBox {
+      width: 100%;
+      height: 52%; } }
+  #conChinBox #findBox {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1.5px solid black;
+    width: 100%;
+    height: 10%; }
+    #conChinBox #findBox .title {
+      position: relative;
+      flex-direction: row;
+      width: 26%;
+      height: 100%;
+      border: 1px solid red; }
+      #conChinBox #findBox .title .text {
+        position: absolute;
+        height: 50%;
+        width: 100%;
+        bottom: 7%;
+        border: 1px solid red;
+        font-size: 2.5rem;
+        font-weight: bolder; }
+    #conChinBox #findBox .explainTitle {
+      position: absolute;
+      height: 100%;
+      width: 35%;
+      left: 27%;
+      border: 1px solid blue; }
+      #conChinBox #findBox .explainTitle .text {
+        position: absolute;
+        display: flex;
+        height: 20%;
+        width: 100%;
+        left: 0%;
+        bottom: 7%;
+        border: 1px solid blue; }
+    #conChinBox #findBox .btnWrapper {
+      position: absolute;
+      width: 30%;
+      height: 100%;
+      right: 0%; }
+      #conChinBox #findBox .btnWrapper .btn {
+        position: absolute;
+        width: 65%;
+        height: 60%;
+        right: 0%;
+        bottom: 7%;
+        padding-left: 19%;
+        outline: 0;
+        background-color: #FFCE63;
+        border: 0;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold; }
+        #conChinBox #findBox .btnWrapper .btn .img {
+          position: absolute;
+          width: 15px;
+          height: 15px;
+          left: 6%; }
+
+/***** 재혁 *****/

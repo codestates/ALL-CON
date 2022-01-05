@@ -6,8 +6,8 @@ import banner from '../images/banner.png';
 function ConChinPage() {
   return(
     <div id='conChinContainer'>
-      <img id='conChinJumbotron' src= { banner }/>
-      <div id='conChinMainBox'>
+      <img id='jumbotron' src= { banner }/>
+      <div id='mainBox'>
         <PostingBox/>
         <ConChinBox/>
       </div>

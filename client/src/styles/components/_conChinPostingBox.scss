@@ -5,69 +5,110 @@
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
-  width:100%;
-  height:45%;
   border:1px solid #C4C4C4;
   border-radius:10px;
+  @include mobile-only(){
+    width:100%;
+    height:35%;
+  }
+  @include lg(){
+    width:100%;
+    height:45%;
+  };
+  .posting {
+    position: relative;
+    display:flex;
+    align-items:center;
+    height:15%;
+    border-radius:5px;
+    @include mobile-only(){
+      width:85%;
+    }
+    @include lg(){
+      width:85%;
+    };
+    &:hover{
+      background-color:#FFCE63;
+      cursor: pointer;
+    }
+    .title {
+      position: absolute;
+      display:flex;
+      justify-content:left;
+      align-items:center;
+      left:1%;
+      @include mobile-only(){
+        width:65%;
+        height:100%;
+        font-size:1.3rem;
+      }
+      @include lg(){
+        width:68%;
+        height:100%;
+        font-size:3.0rem;
+      };
+    }
+    .date {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height:100%;
+      // border: 1px solid red;
+      @include mobile-only(){
+        right: 17%;
+        font-size:0.5rem;
+        width:15%;
+      }
+      @include lg(){
+        font-size:2.0rem;
+        width:15%;
+        right: 15%;
+      };
+    }
+    .view {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height:49%;
+      right:1%;
+      transform:translate(0%,-50%);
+      // border: 1px solid red;
+      @include mobile-only(){
+        font-size:0.5rem;
+      }
+      @include lg(){
+        font-size:1.5rem;
+      };
+    }
+    .place {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height:49%;
+      right:1%;
+      text-align: right;
+      transform:translate(0%,50%);
+      // border: 1px solid red;
+      @include mobile-only(){
+        font-size:0.5rem;
+        width: 16%;
+      }
+      @include lg(){
+        font-size:1.5rem;
+      };
+    }
+  }
 }
 
-.conChinPosting {
-  position: relative;
-  display:flex;
-  align-items:center;
-  width:85%;
-  height:13%;
-  // border: 1px solid blue;
-  border-radius:5px;
-  font-size:1.5rem;
-}
 
-.conChinPosting:hover {
-  background-color:#FFCE63;
-  cursor: pointer;
-}
 
-.conChinPostingTitle {
-  position: absolute;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:68%;
-  height:100%;
-  left:0;
-  // border: 1px solid red;
-  font-size:3rem;
-}
-.conChinPostingDate {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  height:100%;
-  right: 15%;
-  // border: 1px solid red;
-  font-size:1.5rem;
-}
 
-.conChinPostingView {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  height:49%;
-  right:1%;
-  transform:translate(0%,-50%);
-  // border: 1px solid red;
-  font-size:1.0rem;
-}
 
-.conChinConcertPlace {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  height:49%;
-  right:1%;
-  transform:translate(0%,50%);
-  // border: 1px solid red;
-  font-size:1.0rem;
-}
+
+
+
+
+
+
 
 /****** conChinPostingBox ******/
