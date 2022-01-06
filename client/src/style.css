@@ -3,12 +3,10 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 html {
-  font-size: 10px;
-}
+  font-size: 10px; }
 
 /****** grids ******/
 /****** orderBox ******/
@@ -18,20 +16,15 @@ html {
   justify-content: right;
   align-items: center;
   padding-top: 1%;
-  border-bottom: 2px solid black;
-}
-@media (max-width: 767px) {
-  #bottomLineOrderBox {
-    width: 93%;
-    height: 21%;
-  }
-}
-@media (min-width: 1200px) {
-  #bottomLineOrderBox {
-    width: 93%;
-    height: 15%;
-  }
-}
+  border-bottom: 2px solid black; }
+  @media (max-width: 767px) {
+    #bottomLineOrderBox {
+      width: 93%;
+      height: 21%; } }
+  @media (min-width: 1200px) {
+    #bottomLineOrderBox {
+      width: 93%;
+      height: 15%; } }
 
 #noLineOrderBox {
   position: relative;
@@ -39,18 +32,13 @@ html {
   align-items: center;
   justify-content: right;
   width: 100%;
-  top: 0.1%;
-}
-@media (max-width: 767px) {
-  #noLineOrderBox {
-    height: 12%;
-  }
-}
-@media (min-width: 1200px) {
-  #noLineOrderBox {
-    height: 10%;
-  }
-}
+  top: 0.1%; }
+  @media (max-width: 767px) {
+    #noLineOrderBox {
+      height: 12%; } }
+  @media (min-width: 1200px) {
+    #noLineOrderBox {
+      height: 10%; } }
 
 .order {
   position: relative;
@@ -59,27 +47,21 @@ html {
   justify-content: center;
   border-radius: 5px;
   font-weight: bold;
-  margin-right: 0.5%;
-}
-@media (max-width: 767px) {
-  .order {
-    width: 19%;
-    height: 50%;
-    font-size: 1.6rem;
-  }
-}
-@media (min-width: 1200px) {
-  .order {
-    width: 10%;
-    height: 50%;
-    font-size: 2rem;
-  }
-}
-.order:hover {
-  background-color: #ffce63;
-  color: white;
-  cursor: pointer;
-}
+  margin-right: 0.5%; }
+  @media (max-width: 767px) {
+    .order {
+      width: 19%;
+      height: 50%;
+      font-size: 1.6rem; } }
+  @media (min-width: 1200px) {
+    .order {
+      width: 10%;
+      height: 50%;
+      font-size: 2rem; } }
+  .order:hover {
+    background-color: #FFCE63;
+    color: white;
+    cursor: pointer; }
 
 /****** orderBox ******/
 /****** articleBox ******/
@@ -90,137 +72,103 @@ html {
   width: 80%;
   height: 75%;
   left: 50%;
-  transform: translate(-50%, 0%);
-}
-#articleBox #box {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 50%;
-  padding: 1%;
-}
-#articleBox #box .article {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 30%;
-  padding-bottom: 30%;
-}
-@media (max-width: 767px) {
-  #articleBox #box .article {
-    border-radius: 5px;
-  }
-}
-@media (min-width: 1200px) {
-  #articleBox #box .article {
-    border-radius: 10px;
-  }
-}
-#articleBox #box .article:hover {
-  box-shadow: 3px 3px 14px 1px #606060;
-  cursor: pointer;
-}
-#articleBox #box .article .thumbNail {
-  position: absolute;
-  display: flex;
-  width: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-}
-@media (max-width: 767px) {
-  #articleBox #box .article .thumbNail {
-    border-radius: 5px;
-  }
-}
-@media (min-width: 1200px) {
-  #articleBox #box .article .thumbNail {
-    border-radius: 10px;
-  }
-}
-#articleBox #box .article .title {
-  position: absolute;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  height: 40%;
-  top: 40%;
-  transform: translate(0, 50%);
-  background-color: white;
-  border-radius: 0px 0px 5px 5px;
-  opacity: 50%;
-}
-#articleBox #box .article .title .date {
-  position: relative;
-  display: flex;
-  height: 30%;
-  justify-content: right;
-  width: 100%;
-}
-@media (max-width: 767px) {
-  #articleBox #box .article .title .date {
-    font-size: 1rem;
-  }
-}
-@media (min-width: 1200px) {
-  #articleBox #box .article .title .date {
-    font-size: 2rem;
-  }
-}
-#articleBox #box .article .title .text {
-  position: absolute;
-  display: flex;
-  bottom: 0%;
-  height: 70%;
-  width: 100%;
-  text-align: left;
-}
-@media (max-width: 767px) {
-  #articleBox #box .article .title .text {
-    font-size: 1rem;
-  }
-}
-@media (min-width: 1200px) {
-  #articleBox #box .article .title .text {
-    font-size: 2rem;
-  }
-}
-#articleBox #box .article .title .icon {
-  position: absolute;
-}
-@media (max-width: 767px) {
-  #articleBox #box .article .title .icon {
-    width: 11px;
-    height: 11px;
-    left: 3%;
-  }
-}
-@media (min-width: 1200px) {
-  #articleBox #box .article .title .icon {
-    width: 25px;
-    height: 25px;
-    left: 3%;
-  }
-}
-#articleBox #box .article .title .count {
-  position: absolute;
-  font-weight: bold;
-}
-@media (max-width: 767px) {
-  #articleBox #box .article .title .count {
-    left: 15%;
-    font-size: 1rem;
-  }
-}
-@media (min-width: 1200px) {
-  #articleBox #box .article .title .count {
-    top: 1.5%;
-    left: 13%;
-    font-size: 2rem;
-  }
-}
+  transform: translate(-50%, 0%); }
+  #articleBox #box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 50%;
+    padding: 1%; }
+    #articleBox #box .article {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 30%;
+      padding-bottom: 30%; }
+      @media (max-width: 767px) {
+        #articleBox #box .article {
+          border-radius: 5px; } }
+      @media (min-width: 1200px) {
+        #articleBox #box .article {
+          border-radius: 10px; } }
+      #articleBox #box .article:hover {
+        box-shadow: 3px 3px 14px 1px #606060;
+        cursor: pointer; }
+      #articleBox #box .article .thumbNail {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); }
+        @media (max-width: 767px) {
+          #articleBox #box .article .thumbNail {
+            border-radius: 5px; } }
+        @media (min-width: 1200px) {
+          #articleBox #box .article .thumbNail {
+            border-radius: 10px; } }
+      #articleBox #box .article .title {
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: 40%;
+        top: 40%;
+        transform: translate(0, 50%);
+        background-color: white;
+        border-radius: 0px 0px 5px 5px;
+        opacity: 50%; }
+        #articleBox #box .article .title .date {
+          position: relative;
+          display: flex;
+          height: 30%;
+          justify-content: right;
+          width: 100%; }
+          @media (max-width: 767px) {
+            #articleBox #box .article .title .date {
+              font-size: 1.0rem; } }
+          @media (min-width: 1200px) {
+            #articleBox #box .article .title .date {
+              font-size: 2rem; } }
+        #articleBox #box .article .title .text {
+          position: absolute;
+          display: flex;
+          bottom: 0%;
+          height: 70%;
+          width: 100%;
+          text-align: left; }
+          @media (max-width: 767px) {
+            #articleBox #box .article .title .text {
+              font-size: 1.0rem; } }
+          @media (min-width: 1200px) {
+            #articleBox #box .article .title .text {
+              font-size: 2rem; } }
+        #articleBox #box .article .title .icon {
+          position: absolute; }
+          @media (max-width: 767px) {
+            #articleBox #box .article .title .icon {
+              width: 11px;
+              height: 11px;
+              left: 3%; } }
+          @media (min-width: 1200px) {
+            #articleBox #box .article .title .icon {
+              width: 25px;
+              height: 25px;
+              left: 3%; } }
+        #articleBox #box .article .title .count {
+          position: absolute;
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #articleBox #box .article .title .count {
+              left: 15%;
+              font-size: 1.0rem; } }
+          @media (min-width: 1200px) {
+            #articleBox #box .article .title .count {
+              top: 1.5%;
+              left: 13%;
+              font-size: 2rem; } }
 
 /****** articleBox ******/
 /****** memberBox ******/
@@ -231,58 +179,43 @@ html {
   align-items: center;
   background-color: white;
   border: 1px solid #c4c4c4;
-  border-radius: 5px;
-}
-@media (max-width: 767px) {
-  .memberBox {
-    width: 3.5rem;
-    height: 1.8rem;
-  }
-}
-@media (min-width: 1200px) {
-  .memberBox {
-    width: 8.9rem;
-    height: 3.6rem;
-  }
-}
-.memberBox .icon {
-  position: relative;
-  display: flex;
-}
-@media (max-width: 767px) {
+  border-radius: 5px; }
+  @media (max-width: 767px) {
+    .memberBox {
+      width: 3.5rem;
+      height: 1.8rem; } }
+  @media (min-width: 1200px) {
+    .memberBox {
+      width: 8.9rem;
+      height: 3.6rem; } }
   .memberBox .icon {
-    margin-right: 50%;
-    width: 11px;
-    height: 11px;
-  }
-}
-@media (min-width: 1200px) {
-  .memberBox .icon {
-    margin-right: 45%;
-    width: 16px;
-    height: 16px;
-  }
-}
-.memberBox .count {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  font-weight: bold;
-}
-@media (max-width: 767px) {
+    position: relative;
+    display: flex; }
+    @media (max-width: 767px) {
+      .memberBox .icon {
+        margin-right: 50%;
+        width: 11px;
+        height: 11px; } }
+    @media (min-width: 1200px) {
+      .memberBox .icon {
+        margin-right: 45%;
+        width: 16px;
+        height: 16px; } }
   .memberBox .count {
-    padding-top: 3%;
-    padding-left: 30%;
-    font-size: 1rem;
-  }
-}
-@media (min-width: 1200px) {
-  .memberBox .count {
-    padding-top: 3%;
-    padding-left: 20%;
-    font-size: 2rem;
-  }
-}
+    position: absolute;
+    display: flex;
+    align-items: center;
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      .memberBox .count {
+        padding-top: 3%;
+        padding-left: 30%;
+        font-size: 1.0rem; } }
+    @media (min-width: 1200px) {
+      .memberBox .count {
+        padding-top: 3%;
+        padding-left: 20%;
+        font-size: 2rem; } }
 
 /****** memberBox ******/
 /***** pagination *****/
@@ -293,62 +226,46 @@ html {
   justify-content: center;
   width: 30%;
   left: 50%;
-  transform: translate(-50%, 0%);
-}
-@media (max-width: 767px) {
-  #pagination {
-    height: 10%;
-  }
-}
-@media (min-width: 1200px) {
-  #pagination {
-    height: 12%;
-  }
-}
-#pagination .page {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  background-color: black;
-}
-@media (max-width: 767px) {
+  transform: translate(-50%, 0%); }
+  @media (max-width: 767px) {
+    #pagination {
+      height: 10%; } }
+  @media (min-width: 1200px) {
+    #pagination {
+      height: 12%; } }
   #pagination .page {
-    width: 19%;
-    height: 19%;
-    padding-bottom: 19%;
-    margin: 2%;
-    border-radius: 2px;
-  }
-}
-@media (min-width: 1200px) {
-  #pagination .page {
-    width: 10%;
-    height: 10%;
-    margin: 2%;
-    padding-bottom: 10%;
-    border-radius: 5px;
-  }
-}
-#pagination .page:hover {
-  background-color: #ffce63;
-  cursor: pointer;
-}
-#pagination .text {
-  position: absolute;
-  color: white;
-  top: 50%;
-  transform: translate(0%, -50%);
-}
-@media (max-width: 767px) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    background-color: black; }
+    @media (max-width: 767px) {
+      #pagination .page {
+        width: 19%;
+        height: 19%;
+        padding-bottom: 19%;
+        margin: 2%;
+        border-radius: 2px; } }
+    @media (min-width: 1200px) {
+      #pagination .page {
+        width: 10%;
+        height: 10%;
+        margin: 2%;
+        padding-bottom: 10%;
+        border-radius: 5px; } }
+    #pagination .page:hover {
+      background-color: #ffce63;
+      cursor: pointer; }
   #pagination .text {
-    font-size: 1.3rem;
-  }
-}
-@media (min-width: 1200px) {
-  #pagination .text {
-    font-size: 2rem;
-  }
-}
+    position: absolute;
+    color: white;
+    top: 50%;
+    transform: translate(0%, -50%); }
+    @media (max-width: 767px) {
+      #pagination .text {
+        font-size: 1.3rem; } }
+    @media (min-width: 1200px) {
+      #pagination .text {
+        font-size: 2rem; } }
 
 /***** pagination *****/
 /***** commentBox *****/
@@ -358,184 +275,143 @@ html {
   flex-wrap: wrap;
   width: 95%;
   height: 85%;
-  top: 5%;
-}
-#commentBox #countWrapper {
-  position: absolute;
-  display: flex;
-  width: 90%;
-  height: 10%;
-  top: -12%;
-}
-#commentBox #countWrapper .count {
-  position: absolute;
-  display: flex;
-  bottom: 10%;
-  left: 1%;
-}
-@media (max-width: 767px) {
-  #commentBox #countWrapper .count {
-    font-size: 1.5rem;
-  }
-}
-@media (min-width: 1200px) {
-  #commentBox #countWrapper .count {
-    font-size: 2.5rem;
-  }
-}
-#commentBox .box {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 20%;
-  top: 0%;
-  border: 1px solid #c4c4c4;
-  border-radius: 5px;
-}
-#commentBox .box .dateBox {
-  position: absolute;
-  display: flex;
-  width: 40%;
-  height: 30%;
-  top: 1.5%;
-  left: 1.5%;
-}
-#commentBox .box .dateBox .nickNameAndDate {
-  color: #a0a0a0;
-}
-@media (max-width: 767px) {
-  #commentBox .box .dateBox .nickNameAndDate {
-    font-size: 1rem;
-  }
-}
-@media (min-width: 1200px) {
-  #commentBox .box .dateBox .nickNameAndDate {
-    font-size: 2rem;
-  }
-}
-#commentBox .box .imgWrapper {
-  position: absolute;
-  display: flex;
-}
-@media (max-width: 767px) {
-  #commentBox .box .imgWrapper {
-    height: 9%;
-    width: 9%;
-    padding-bottom: 9%;
-    bottom: 13%;
-    left: 1%;
-  }
-}
-@media (min-width: 1200px) {
-  #commentBox .box .imgWrapper {
-    height: 6%;
-    width: 6%;
-    padding-bottom: 6%;
-    bottom: 10%;
-    left: 1%;
-  }
-}
-#commentBox .box .imgWrapper .img {
-  position: absolute;
-  display: flex;
-  width: 100%;
-  height: 100%;
-  object-fit: 100%;
-  border-radius: 100%;
-}
-#commentBox .box .imgWrapper .shield {
-  position: absolute;
-  display: flex;
-  object-fit: 100%;
-  bottom: 0%;
-  right: 0%;
-}
-@media (max-width: 767px) {
-  #commentBox .box .imgWrapper .shield {
-    width: 13px;
-    height: 13px;
-  }
-}
-@media (min-width: 1200px) {
-  #commentBox .box .imgWrapper .shield {
-    width: 30px;
-    height: 30px;
-  }
-}
-#commentBox .box .dotWrapper {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 4%;
-  width: 4%;
-  padding-bottom: 4%;
-  top: 0%;
-  right: 0%;
-}
-#commentBox .box .dotWrapper .dot {
-  position: absolute;
-  display: flex;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  object-fit: 100%;
-}
-@media (max-width: 767px) {
-  #commentBox .box .dotWrapper .dot {
-    width: 1.1rem;
-    height: 1.1rem;
-  }
-}
-@media (min-width: 1200px) {
-  #commentBox .box .dotWrapper .dot {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-#commentBox .box #input {
-  position: absolute;
-  display: flex;
-  width: 80%;
-  height: 50%;
-  bottom: 0%;
-  left: 10%;
-  border: none;
-  outline: none;
-  resize: none;
-  border-radius: 5px;
-}
-@media (max-width: 767px) {
-  #commentBox .box #input {
-    left: 11%;
-    font-size: 1.3rem;
-  }
-}
-@media (min-width: 1200px) {
-  #commentBox .box #input {
-    left: 8%;
-    font-size: 2.5rem;
-  }
-}
-#commentBox .box #text {
-  position: absolute;
-  display: flex;
-  width: 80%;
-  height: 50%;
-  bottom: 0%;
-}
-@media (max-width: 767px) {
-  #commentBox .box #text {
-    left: 11%;
-    font-size: 1.3rem;
-  }
-}
-@media (min-width: 1200px) {
-  #commentBox .box #text {
-    left: 8%;
-    font-size: 2.5rem;
-  }
-}
+  top: 5%; }
+  #commentBox #countWrapper {
+    position: absolute;
+    display: flex;
+    width: 90%;
+    height: 10%;
+    top: -12%; }
+    #commentBox #countWrapper .count {
+      position: absolute;
+      display: flex;
+      bottom: 10%;
+      left: 1%; }
+      @media (max-width: 767px) {
+        #commentBox #countWrapper .count {
+          font-size: 1.5rem; } }
+      @media (min-width: 1200px) {
+        #commentBox #countWrapper .count {
+          font-size: 2.5rem; } }
+  #commentBox .box {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 20%;
+    top: 0%;
+    border: 1px solid #C4C4C4;
+    border-radius: 5px; }
+    #commentBox .box .dateBox {
+      position: absolute;
+      display: flex;
+      width: 40%;
+      height: 30%;
+      top: 1.5%;
+      left: 1.5%; }
+      #commentBox .box .dateBox .nickNameAndDate {
+        color: #a0a0a0; }
+        @media (max-width: 767px) {
+          #commentBox .box .dateBox .nickNameAndDate {
+            font-size: 1.0rem; } }
+        @media (min-width: 1200px) {
+          #commentBox .box .dateBox .nickNameAndDate {
+            font-size: 2rem; } }
+    #commentBox .box .imgWrapper {
+      position: absolute;
+      display: flex; }
+      @media (max-width: 767px) {
+        #commentBox .box .imgWrapper {
+          height: 9%;
+          width: 9%;
+          padding-bottom: 9%;
+          bottom: 13%;
+          left: 1%; } }
+      @media (min-width: 1200px) {
+        #commentBox .box .imgWrapper {
+          height: 6%;
+          width: 6%;
+          padding-bottom: 6%;
+          bottom: 10%;
+          left: 1%; } }
+      #commentBox .box .imgWrapper .img {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        object-fit: 100%;
+        border-radius: 100%; }
+      #commentBox .box .imgWrapper .shield {
+        position: absolute;
+        display: flex;
+        object-fit: 100%;
+        bottom: 0%;
+        right: 0%; }
+        @media (max-width: 767px) {
+          #commentBox .box .imgWrapper .shield {
+            width: 13px;
+            height: 13px; } }
+        @media (min-width: 1200px) {
+          #commentBox .box .imgWrapper .shield {
+            width: 30px;
+            height: 30px; } }
+    #commentBox .box .dotWrapper {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 4%;
+      width: 4%;
+      padding-bottom: 4%;
+      top: 0%;
+      right: 0%; }
+      #commentBox .box .dotWrapper .dot {
+        position: absolute;
+        display: flex;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: 100%; }
+        @media (max-width: 767px) {
+          #commentBox .box .dotWrapper .dot {
+            width: 1.1rem;
+            height: 1.1rem; } }
+        @media (min-width: 1200px) {
+          #commentBox .box .dotWrapper .dot {
+            width: 2.5rem;
+            height: 2.5rem; } }
+    #commentBox .box #input {
+      position: absolute;
+      display: flex;
+      width: 80%;
+      height: 50%;
+      bottom: 0%;
+      left: 10%;
+      border: none;
+      outline: none;
+      resize: none;
+      border-radius: 5px; }
+      @media (max-width: 767px) {
+        #commentBox .box #input {
+          left: 11%;
+          font-size: 1.3rem; } }
+      @media (min-width: 1200px) {
+        #commentBox .box #input {
+          left: 8%;
+          font-size: 2.5rem; } }
+    #commentBox .box #text {
+      position: absolute;
+      display: flex;
+      width: 80%;
+      height: 50%;
+      bottom: 0%; }
+      @media (max-width: 767px) {
+        #commentBox .box #text {
+          left: 11%;
+          font-size: 1.3rem; } }
+      @media (min-width: 1200px) {
+        #commentBox .box #text {
+          left: 8%;
+          font-size: 2.5rem; } }
 
 /***** commentBox *****/
 /****** grids ******/
@@ -544,56 +420,133 @@ html {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-}
-@media (max-width: 767px) {
-  #conChinContainer {
-    width: 100%;
-    height: 100%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinContainer {
-    width: 100%;
-    height: 250%;
-  }
-}
-#conChinContainer #jumbotron {
-  position: relative;
-  display: flex;
-}
-@media (max-width: 767px) {
+  justify-content: center; }
+  @media (max-width: 767px) {
+    #conChinContainer {
+      width: 100%;
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    #conChinContainer {
+      width: 100%;
+      height: 250%; } }
   #conChinContainer #jumbotron {
-    width: 100%;
-    height: 14%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinContainer #jumbotron {
-    width: 100%;
-    height: 21%;
-  }
-}
-#conChinContainer #mainBox {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  width: 80%;
-  height: 73%;
-  margin-top: 1%;
-}
-@media (max-width: 767px) {
+    position: relative;
+    display: flex; }
+    @media (max-width: 767px) {
+      #conChinContainer #jumbotron {
+        width: 100%;
+        height: 14%; } }
+    @media (min-width: 1200px) {
+      #conChinContainer #jumbotron {
+        width: 100%;
+        height: 21%; } }
   #conChinContainer #mainBox {
-    width: 95%;
-    height: 83%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinContainer #mainBox {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
     width: 80%;
     height: 73%;
-  }
-}
+    margin-top: 1%; }
+    @media (max-width: 767px) {
+      #conChinContainer #mainBox {
+        width: 95%;
+        height: 83%; } }
+    @media (min-width: 1200px) {
+      #conChinContainer #mainBox {
+        width: 80%;
+        height: 73%; } }
+
+#conChinFindBox {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1.5px solid black;
+  width: 100%;
+  height: 10%; }
+  #conChinFindBox .title {
+    position: relative;
+    display: inline-block;
+    height: 100%; }
+    @media (max-width: 767px) {
+      #conChinFindBox .title {
+        width: 70.5%;
+        left: 5%; } }
+    @media (min-width: 1200px) {
+      #conChinFindBox .title {
+        width: 30%;
+        left: 7%; } }
+    #conChinFindBox .title .textWrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+      float: left;
+      width: 80%;
+      height: 100%; }
+      #conChinFindBox .title .textWrapper .text {
+        position: absolute;
+        font-weight: bolder; }
+        @media (max-width: 767px) {
+          #conChinFindBox .title .textWrapper .text {
+            font-size: 2.5rem; } }
+        @media (min-width: 1200px) {
+          #conChinFindBox .title .textWrapper .text {
+            font-size: 4rem; } }
+  #conChinFindBox .btnWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 25%;
+    height: 100%;
+    right: 1%; }
+    #conChinFindBox .btnWrapper .btn {
+      position: absolute;
+      height: 60%;
+      right: 0%;
+      outline: 0;
+      background-color: #FFCE63;
+      border: 0;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold; }
+      @media (max-width: 767px) {
+        #conChinFindBox .btnWrapper .btn {
+          width: 65%;
+          padding-left: 17%;
+          font-size: 1.0rem;
+          height: 60%; } }
+      @media (min-width: 1200px) {
+        #conChinFindBox .btnWrapper .btn {
+          width: 40%;
+          padding-left: 5.5%;
+          font-size: 2.0rem;
+          height: 45%; } }
+      #conChinFindBox .btnWrapper .btn:hover {
+        cursor: pointer; }
+      #conChinFindBox .btnWrapper .btn .img {
+        position: absolute; }
+        @media (max-width: 767px) {
+          #conChinFindBox .btnWrapper .btn .img {
+            width: 13px;
+            height: 13px;
+            left: 9%; } }
+        @media (min-width: 1200px) {
+          #conChinFindBox .btnWrapper .btn .img {
+            width: 20px;
+            height: 20px;
+            left: 11%; } }
+
+#conChinBox {
+  position: relative;
+  display: flex;
+  margin-top: 1%; }
+  @media (max-width: 767px) {
+    #conChinBox {
+      width: 100%;
+      height: 63%; } }
+  @media (min-width: 1200px) {
+    #conChinBox {
+      width: 100%;
+      height: 68%; } }
 
 #conChinArticleBox {
   position: absolute;
@@ -601,222 +554,261 @@ html {
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  top: 10%;
-}
-@media (max-width: 767px) {
-  #conChinArticleBox {
-    border-top: 5px solid #ffce63;
-    height: 90%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinArticleBox {
-    border-top: 10px solid #ffce63;
-    height: 110%;
-  }
-}
+  top: 10%; }
+  @media (max-width: 767px) {
+    #conChinArticleBox {
+      border-top: 5px solid #ffce63;
+      height: 90%; } }
+  @media (min-width: 1200px) {
+    #conChinArticleBox {
+      border-top: 10px solid #ffce63;
+      height: 110%; } }
 
 #conChinmemberBoxWrapper {
-  position: absolute;
-}
-@media (max-width: 767px) {
-  #conChinmemberBoxWrapper {
-    top: 40%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinmemberBoxWrapper {
-    top: 50%;
-  }
-}
+  position: absolute; }
+  @media (max-width: 767px) {
+    #conChinmemberBoxWrapper {
+      top: 40%; } }
+  @media (min-width: 1200px) {
+    #conChinmemberBoxWrapper {
+      top: 50%; } }
 
-#conChinBox {
-  position: relative;
+#conChinArticleContentBox {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 1%;
-}
-@media (max-width: 767px) {
-  #conChinBox {
-    width: 100%;
-    height: 63%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinBox {
-    width: 100%;
-    height: 63%;
-  }
-}
-#conChinBox #findBox {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: center;
-  border-bottom: 1.5px solid black;
-  width: 100%;
-  height: 10%;
-}
-#conChinBox #findBox .title {
-  position: relative;
-  flex-direction: row;
-  width: 26%;
-  height: 100%;
-}
-#conChinBox #findBox .title .text {
-  position: absolute;
-  height: 50%;
-  width: 100%;
-  bottom: 7%;
-  font-size: 2.5rem;
-  font-weight: bolder;
-}
-#conChinBox #findBox .explainTitle {
-  position: absolute;
-  height: 100%;
-  width: 35%;
-  left: 27%;
-  border: 1px solid blue;
-}
-#conChinBox #findBox .explainTitle .text {
-  position: absolute;
-  display: flex;
-  height: 20%;
-  width: 100%;
-  left: 0%;
-  bottom: 7%;
-  border: 1px solid blue;
-}
-#conChinBox #findBox .btnWrapper {
-  position: absolute;
-  width: 30%;
-  height: 100%;
-  right: 0%;
-}
-#conChinBox #findBox .btnWrapper .btn {
-  position: absolute;
-  width: 65%;
-  height: 60%;
-  right: 0%;
-  bottom: 7%;
-  padding-left: 19%;
-  outline: 0;
-  background-color: #ffce63;
-  border: 0;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-}
-#conChinBox #findBox .btnWrapper .btn .img {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  left: 6%;
-}
+  width: 100%; }
+  @media (max-width: 767px) {
+    #conChinArticleContentBox {
+      top: 102%;
+      height: 125%; } }
+  @media (min-width: 1200px) {
+    #conChinArticleContentBox {
+      top: 118%;
+      height: 165%; } }
 
-#conChinFindBox {
+#titleBox {
   position: relative;
   display: flex;
-  flex-direction: row;
-  border-bottom: 1.5px solid black;
   width: 100%;
-  height: 10%;
-}
-#conChinFindBox .title {
-  position: relative;
-  display: inline-block;
-  height: 100%;
-}
-@media (max-width: 767px) {
-  #conChinFindBox .title {
-    width: 70.5%;
-    left: 5%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinFindBox .title {
-    width: 30%;
-    left: 7%;
-  }
-}
-#conChinFindBox .title .textWrapper {
+  border-bottom: 2px solid black; }
+  @media (max-width: 767px) {
+    #titleBox {
+      height: 8%; } }
+  @media (min-width: 1200px) {
+    #titleBox {
+      height: 5%; } }
+  #titleBox .title {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    bottom: 10%; }
+    @media (max-width: 767px) {
+      #titleBox .title {
+        height: 80%;
+        width: 70%; } }
+    @media (min-width: 1200px) {
+      #titleBox .title {
+        height: 50%;
+        width: 80%; } }
+    @media (max-width: 767px) {
+      #titleBox .title .text {
+        font-size: 2.0rem; } }
+    @media (min-width: 1200px) {
+      #titleBox .title .text {
+        font-size: 4.0rem; } }
+  #titleBox #profileBox {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 35%;
+    right: 2%;
+    bottom: 10%; }
+    @media (max-width: 767px) {
+      #titleBox #profileBox {
+        height: 80%; } }
+    @media (min-width: 1200px) {
+      #titleBox #profileBox {
+        height: 50%; } }
+    #titleBox #profileBox .img {
+      position: relative;
+      border-radius: 100%;
+      bottom: 5%; }
+      @media (max-width: 767px) {
+        #titleBox #profileBox .img {
+          right: 3%;
+          width: 25px;
+          height: 25px; } }
+      @media (min-width: 1200px) {
+        #titleBox #profileBox .img {
+          right: 2%;
+          width: 50px;
+          height: 50px; } }
+  @media (max-width: 767px) {
+    #titleBox .nickName {
+      font-size: 1.3rem; } }
+  @media (min-width: 1200px) {
+    #titleBox .nickName {
+      font-size: 2.5rem; } }
+
+#contentBox {
+  position: absolute;
   display: flex;
-  align-items: center;
-  position: relative;
-  float: left;
-  width: 80%;
-  height: 100%;
-}
-#conChinFindBox .title .textWrapper .text {
-  position: absolute;
-  font-weight: bolder;
-}
-@media (max-width: 767px) {
-  #conChinFindBox .title .textWrapper .text {
-    font-size: 2.5rem;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinFindBox .title .textWrapper .text {
-    font-size: 4rem;
-  }
-}
-#conChinFindBox .btnWrapper {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  width: 25%;
-  height: 100%;
-  right: 1%;
-}
-#conChinFindBox .btnWrapper .btn {
-  position: absolute;
-  height: 60%;
-  right: 0%;
-  outline: 0;
-  background-color: #ffce63;
-  border: 0;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-}
-@media (max-width: 767px) {
-  #conChinFindBox .btnWrapper .btn {
-    width: 65%;
-    padding-left: 17%;
-    font-size: 1rem;
-    height: 60%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinFindBox .btnWrapper .btn {
-    width: 40%;
-    padding-left: 5.5%;
-    font-size: 2rem;
-    height: 45%;
-  }
-}
-#conChinFindBox .btnWrapper .btn:hover {
-  cursor: pointer;
-}
-#conChinFindBox .btnWrapper .btn .img {
-  position: absolute;
-}
-@media (max-width: 767px) {
-  #conChinFindBox .btnWrapper .btn .img {
-    width: 13px;
-    height: 13px;
-    left: 9%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinFindBox .btnWrapper .btn .img {
-    width: 20px;
-    height: 20px;
-    left: 11%;
-  }
-}
+  width: 100%; }
+  @media (max-width: 767px) {
+    #contentBox {
+      height: 100%;
+      top: 7.8%; } }
+  @media (min-width: 1200px) {
+    #contentBox {
+      height: 85%;
+      top: 5%; } }
+  #contentBox #viewBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 5%; }
+    #contentBox #viewBox .view {
+      position: relative;
+      display: flex;
+      width: 80%;
+      color: #A0A0A0; }
+      @media (max-width: 767px) {
+        #contentBox #viewBox .view {
+          font-size: 1.0rem; } }
+      @media (min-width: 1200px) {
+        #contentBox #viewBox .view {
+          font-size: 2.0rem; } }
+  #contentBox #modifyBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 5%; }
+    #contentBox #modifyBox .modifyBtn {
+      position: absolute;
+      display: flex;
+      color: #A0A0A0; }
+      @media (max-width: 767px) {
+        #contentBox #modifyBox .modifyBtn {
+          right: 40%;
+          font-size: 1.3rem; } }
+      @media (min-width: 1200px) {
+        #contentBox #modifyBox .modifyBtn {
+          right: 27%;
+          font-size: 2.5rem; } }
+    #contentBox #modifyBox .deleteBtn {
+      position: absolute;
+      display: flex;
+      color: #A0A0A0; }
+      @media (max-width: 767px) {
+        #contentBox #modifyBox .deleteBtn {
+          right: 23%;
+          font-size: 1.3rem; } }
+      @media (min-width: 1200px) {
+        #contentBox #modifyBox .deleteBtn {
+          right: 18%;
+          font-size: 2.5rem; } }
+    #contentBox #modifyBox #memberBoxWrapper {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      width: 20%;
+      height: 100%;
+      bottom: 0%; }
+      @media (max-width: 767px) {
+        #contentBox #modifyBox #memberBoxWrapper {
+          right: 0%; } }
+      @media (min-width: 1200px) {
+        #contentBox #modifyBox #memberBoxWrapper {
+          justify-content: right;
+          right: 0%; } }
+  #contentBox #content {
+    position: absolute;
+    display: flex;
+    width: 85%;
+    top: 5%; }
+    @media (max-width: 767px) {
+      #contentBox #content {
+        height: 35%;
+        padding-bottom: 35%; } }
+    @media (min-width: 1200px) {
+      #contentBox #content {
+        height: 45%;
+        padding-bottom: 45%; } }
+    #contentBox #content #imgWrapper {
+      position: absolute;
+      top: 5%;
+      border: 3px solid #ffce63;
+      border-radius: 5px; }
+      @media (max-width: 767px) {
+        #contentBox #content #imgWrapper {
+          width: 40%;
+          height: 40%;
+          padding-bottom: 40%;
+          left: 8%; } }
+      @media (min-width: 1200px) {
+        #contentBox #content #imgWrapper {
+          width: 35%;
+          height: 35%;
+          padding-bottom: 35%;
+          left: 12%; } }
+      #contentBox #content #imgWrapper .img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: 100%; }
+    #contentBox #content .text {
+      position: absolute;
+      display: flex;
+      top: 5%;
+      text-align: left; }
+      @media (max-width: 767px) {
+        #contentBox #content .text {
+          font-size: 1.3rem;
+          right: -3%;
+          width: 45%;
+          height: 45%;
+          padding-bottom: 45%; } }
+      @media (min-width: 1200px) {
+        #contentBox #content .text {
+          font-size: 2.5rem;
+          right: -10%;
+          width: 55%;
+          height: 35%; } }
+  #contentBox #commentWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%; }
+    @media (max-width: 767px) {
+      #contentBox #commentWrapper {
+        top: 41%;
+        height: 60%; } }
+    @media (min-width: 1200px) {
+      #contentBox #commentWrapper {
+        top: 40%;
+        height: 50%; } }
+  #contentBox #paginationWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 20%;
+    bottom: -5%; }
+    @media (max-width: 767px) {
+      #contentBox #paginationWrapper {
+        top: 85%;
+        height: 20%; } }
+    @media (min-width: 1200px) {
+      #contentBox #paginationWrapper {
+        top: 95%;
+        height: 25%; } }
 
 /****** conChinPostingBox ******/
 #conChinPostingBox {
@@ -824,474 +816,142 @@ html {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  border: 1px solid #c4c4c4;
-  border-radius: 10px;
-}
-@media (max-width: 767px) {
-  #conChinPostingBox {
-    width: 100%;
-    height: 35%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinPostingBox {
-    width: 100%;
-    height: 45%;
-  }
-}
-#conChinPostingBox #curOrder {
-  position: absolute;
-  display: flex;
-  font-size: 4rem;
-}
-@media (max-width: 767px) {
+  border: 1px solid #C4C4C4;
+  border-radius: 10px; }
+  @media (max-width: 767px) {
+    #conChinPostingBox {
+      width: 100%;
+      height: 35%; } }
+  @media (min-width: 1200px) {
+    #conChinPostingBox {
+      width: 100%;
+      height: 45%; } }
   #conChinPostingBox #curOrder {
-    font-size: 2.5rem;
-    left: 4%;
-    top: 4%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinPostingBox #curOrder {
-    font-size: 4rem;
-    left: 8%;
-    top: 5%;
-  }
-}
-#conChinPostingBox .posting {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 15%;
-  border-radius: 5px;
-}
-@media (max-width: 767px) {
+    position: absolute;
+    display: flex;
+    font-size: 4rem; }
+    @media (max-width: 767px) {
+      #conChinPostingBox #curOrder {
+        font-size: 2.5rem;
+        left: 4%;
+        top: 4%; } }
+    @media (min-width: 1200px) {
+      #conChinPostingBox #curOrder {
+        font-size: 4rem;
+        left: 8%;
+        top: 5%; } }
   #conChinPostingBox .posting {
-    width: 95%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinPostingBox .posting {
-    width: 85%;
-  }
-}
-#conChinPostingBox .posting:hover {
-  background-color: #ffce63;
-  cursor: pointer;
-}
-#conChinPostingBox .posting .title {
-  position: absolute;
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  left: 1%;
-}
-@media (max-width: 767px) {
-  #conChinPostingBox .posting .title {
-    width: 65%;
-    height: 100%;
-    font-size: 1.3rem;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinPostingBox .posting .title {
-    width: 68%;
-    height: 100%;
-    font-size: 3rem;
-  }
-}
-#conChinPostingBox .posting .date {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  height: 100%;
-}
-@media (max-width: 767px) {
-  #conChinPostingBox .posting .date {
-    right: 17%;
-    font-size: 0.5rem;
-    width: 15%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinPostingBox .posting .date {
-    font-size: 2rem;
-    width: 15%;
-    right: 15%;
-  }
-}
-#conChinPostingBox .posting .view {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  height: 49%;
-  right: 1%;
-  transform: translate(0%, -50%);
-}
-@media (max-width: 767px) {
-  #conChinPostingBox .posting .view {
-    font-size: 0.5rem;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinPostingBox .posting .view {
-    font-size: 1.5rem;
-  }
-}
-#conChinPostingBox .posting .place {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  height: 49%;
-  right: 1%;
-  text-align: right;
-  transform: translate(0%, 50%);
-}
-@media (max-width: 767px) {
-  #conChinPostingBox .posting .place {
-    font-size: 0.5rem;
-    width: 16%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinPostingBox .posting .place {
-    font-size: 1.5rem;
-  }
-}
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 15%;
+    border-radius: 5px; }
+    @media (max-width: 767px) {
+      #conChinPostingBox .posting {
+        width: 95%; } }
+    @media (min-width: 1200px) {
+      #conChinPostingBox .posting {
+        width: 85%; } }
+    #conChinPostingBox .posting:hover {
+      background-color: #FFCE63;
+      cursor: pointer; }
+    #conChinPostingBox .posting .title {
+      position: absolute;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      left: 1%; }
+      @media (max-width: 767px) {
+        #conChinPostingBox .posting .title {
+          width: 65%;
+          height: 100%;
+          font-size: 1.3rem; } }
+      @media (min-width: 1200px) {
+        #conChinPostingBox .posting .title {
+          width: 68%;
+          height: 100%;
+          font-size: 3.0rem; } }
+    #conChinPostingBox .posting .date {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 100%; }
+      @media (max-width: 767px) {
+        #conChinPostingBox .posting .date {
+          right: 17%;
+          font-size: 0.5rem;
+          width: 15%; } }
+      @media (min-width: 1200px) {
+        #conChinPostingBox .posting .date {
+          font-size: 2.0rem;
+          width: 15%;
+          right: 15%; } }
+    #conChinPostingBox .posting .view {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 49%;
+      right: 1%;
+      transform: translate(0%, -50%); }
+      @media (max-width: 767px) {
+        #conChinPostingBox .posting .view {
+          font-size: 0.5rem; } }
+      @media (min-width: 1200px) {
+        #conChinPostingBox .posting .view {
+          font-size: 1.5rem; } }
+    #conChinPostingBox .posting .place {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 49%;
+      right: 1%;
+      text-align: right;
+      transform: translate(0%, 50%); }
+      @media (max-width: 767px) {
+        #conChinPostingBox .posting .place {
+          font-size: 0.5rem;
+          width: 16%; } }
+      @media (min-width: 1200px) {
+        #conChinPostingBox .posting .place {
+          font-size: 1.5rem; } }
 
 /****** conChinPostingBox ******/
-#conChinArticleContentBox {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-}
-@media (max-width: 767px) {
-  #conChinArticleContentBox {
-    top: 92%;
-    height: 125%;
-  }
-}
-@media (min-width: 1200px) {
-  #conChinArticleContentBox {
-    top: 110%;
-    height: 165%;
-  }
-}
-
-#titleBox {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 8%;
-  border-bottom: 2px solid black;
-}
-#titleBox .title {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  width: 55%;
-  bottom: 0%;
-}
-@media (max-width: 767px) {
-  #titleBox .title {
-    height: 80%;
-  }
-}
-@media (min-width: 1200px) {
-  #titleBox .title {
-    height: 50%;
-  }
-}
-@media (max-width: 767px) {
-  #titleBox .title .text {
-    font-size: 2rem;
-  }
-}
-@media (min-width: 1200px) {
-  #titleBox .title .text {
-    font-size: 4rem;
-  }
-}
-#titleBox #profileBox {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: right;
-  width: 35%;
-  right: 2%;
-  bottom: 0%;
-}
-@media (max-width: 767px) {
-  #titleBox #profileBox {
-    height: 80%;
-  }
-}
-@media (min-width: 1200px) {
-  #titleBox #profileBox {
-    height: 50%;
-  }
-}
-#titleBox #profileBox .img {
-  position: relative;
-  border-radius: 100%;
-}
-@media (max-width: 767px) {
-  #titleBox #profileBox .img {
-    right: 3%;
-    width: 25px;
-    height: 25px;
-  }
-}
-@media (min-width: 1200px) {
-  #titleBox #profileBox .img {
-    right: 2%;
-    width: 50px;
-    height: 50px;
-  }
-}
-@media (max-width: 767px) {
-  #titleBox .nickName {
-    font-size: 1.3rem;
-  }
-}
-@media (min-width: 1200px) {
-  #titleBox .nickName {
-    font-size: 2.5rem;
-  }
-}
-
-#contentBox {
-  position: relative;
-  display: flex;
-  width: 100%;
-  height: 92%;
-}
-#contentBox #viewBox {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 50%;
-  height: 5%;
-}
-#contentBox #viewBox .view {
-  position: relative;
-  display: flex;
-  width: 80%;
-  color: #a0a0a0;
-}
-@media (max-width: 767px) {
-  #contentBox #viewBox .view {
-    font-size: 1rem;
-  }
-}
-@media (min-width: 1200px) {
-  #contentBox #viewBox .view {
-    font-size: 2rem;
-  }
-}
-#contentBox #modifyBox {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 50%;
-  height: 5%;
-}
-#contentBox #modifyBox .modifyBtn {
-  position: absolute;
-  display: flex;
-  color: #a0a0a0;
-}
-@media (max-width: 767px) {
-  #contentBox #modifyBox .modifyBtn {
-    right: 40%;
-    font-size: 1.3rem;
-  }
-}
-@media (min-width: 1200px) {
-  #contentBox #modifyBox .modifyBtn {
-    right: 27%;
-    font-size: 2.5rem;
-  }
-}
-#contentBox #modifyBox .deleteBtn {
-  position: absolute;
-  display: flex;
-  color: #a0a0a0;
-}
-@media (max-width: 767px) {
-  #contentBox #modifyBox .deleteBtn {
-    right: 23%;
-    font-size: 1.3rem;
-  }
-}
-@media (min-width: 1200px) {
-  #contentBox #modifyBox .deleteBtn {
-    right: 18%;
-    font-size: 2.5rem;
-  }
-}
-#contentBox #modifyBox #memberBoxWrapper {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  width: 20%;
-  height: 100%;
-  bottom: 0%;
-}
-@media (max-width: 767px) {
-  #contentBox #modifyBox #memberBoxWrapper {
-    right: 0%;
-  }
-}
-@media (min-width: 1200px) {
-  #contentBox #modifyBox #memberBoxWrapper {
-    justify-content: right;
-    right: 0%;
-  }
-}
-#contentBox #content {
-  position: absolute;
-  display: flex;
-  width: 100%;
-  top: 5%;
-}
-@media (max-width: 767px) {
-  #contentBox #content {
-    height: 36%;
-    padding-bottom: 36%;
-  }
-}
-@media (min-width: 1200px) {
-  #contentBox #content {
-    height: 45%;
-    padding-bottom: 45%;
-  }
-}
-#contentBox #content #imgWrapper {
-  position: absolute;
-  top: 5%;
-  border: 3px solid #ffce63;
-  border-radius: 5px;
-}
-@media (max-width: 767px) {
-  #contentBox #content #imgWrapper {
-    width: 40%;
-    height: 40%;
-    padding-bottom: 40%;
-    left: 2%;
-  }
-}
-@media (min-width: 1200px) {
-  #contentBox #content #imgWrapper {
-    width: 35%;
-    height: 35%;
-    padding-bottom: 35%;
-    left: 3%;
-  }
-}
-#contentBox #content #imgWrapper .img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: 100%;
-}
-#contentBox #content .text {
-  position: absolute;
-  display: flex;
-  top: 5%;
-  text-align: left;
-}
-@media (max-width: 767px) {
-  #contentBox #content .text {
-    font-size: 1.3rem;
-    right: 6%;
-    width: 45%;
-    height: 45%;
-    padding-bottom: 45%;
-  }
-}
-@media (min-width: 1200px) {
-  #contentBox #content .text {
-    font-size: 2.5rem;
-    right: 3%;
-    width: 55%;
-    height: 35%;
-  }
-}
-#contentBox #commentWrapper {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  width: 100%;
-}
-@media (max-width: 767px) {
-  #contentBox #commentWrapper {
-    top: 45%;
-    height: 70%;
-  }
-}
-@media (min-width: 1200px) {
-  #contentBox #commentWrapper {
-    top: 53%;
-    height: 47%;
-  }
-}
-#contentBox #paginationWrapper {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  width: 90%;
-  height: 20%;
-  bottom: -5%;
-}
-
 /***** 재혁 *****/
 /*---------------선영--------------------*/
 @media (max-width: 767px) {
   #mainContainer {
     position: absolute;
     width: 100%;
-    height: 100%;
-  }
+    height: 100%; }
   #mainJumboWrapper {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 75%;
-  }
+    height: 75%; }
   #mainConcertInfoWrapper {
     position: absolute;
     top: 41.2%;
     width: 100%;
-    height: 70%;
-  }
+    height: 70%; }
   #mainCommentWrapper {
     position: absolute;
     top: 111%;
     width: 100%;
     height: 40%;
-    border: 1px solid green;
-  }
+    border: 1px solid green; }
   #mainFindConchinWrapper {
     position: absolute;
     top: 151%;
     width: 100%;
     height: 40%;
-    border: 1px solid purple;
-  }
-}
+    border: 1px solid purple; } }
 
 @media (max-width: 767px) {
   #jumboContainer {
     position: absolute;
     width: 100%;
     height: 55%;
-    padding-bottom: 30%;
-  }
+    padding-bottom: 30%; }
   #jumboMiniContainer {
     position: absolute;
     display: flex;
@@ -1300,8 +960,7 @@ html {
     align-items: center;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-  }
+    background-color: rgba(0, 0, 0, 0.9); }
   .jumboTopBox {
     position: absolute;
     top: 0;
@@ -1309,8 +968,7 @@ html {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 100%;
-  }
+    height: 100%; }
   .jumboTextBox {
     position: relative;
     top: 5%;
@@ -1319,42 +977,34 @@ html {
     align-items: center;
     justify-content: space-between;
     width: 200px;
-    height: 8%;
-  }
+    height: 8%; }
   #jumboWhat {
     font-size: 30px;
-    color: #fff;
-  }
+    color: #fff; }
   #jumboClassify {
     font-size: 30px;
-    color: #ffce63;
-  }
+    color: #ffce63; }
   #jumboChosen {
     width: 40%;
     height: 85%;
-    opacity: 30%;
-  }
+    opacity: 30%; }
   #jumboPosterSlideWrapper {
     position: relative;
     bottom: -10%;
     width: 80%;
-    height: 77%;
-  }
-}
+    height: 77%; } }
 
 @media (min-width: 1200px) {
   #jumboContainer {
     position: absolute;
     width: 100%;
     height: 85%;
-    padding-bottom: 20%;
-  }
+    padding-bottom: 20%; }
   #jumboMiniContainer {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-  }
+    background-color: rgba(0, 0, 0, 0.9); }
   .jumboTopBox {
     position: absolute;
     top: 0;
@@ -1362,8 +1012,7 @@ html {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 100%;
-  }
+    height: 100%; }
   .jumboTextBox {
     position: relative;
     top: 5%;
@@ -1372,16 +1021,13 @@ html {
     align-items: center;
     justify-content: space-between;
     width: 770px;
-    height: 12%;
-  }
+    height: 12%; }
   #jumboWhat {
     font-size: 120px;
-    color: #fff;
-  }
+    color: #fff; }
   #jumboClassify {
     font-size: 120px;
-    color: #ffce63;
-  }
+    color: #ffce63; }
   #jumboChosen {
     position: absolute;
     top: 40%;
@@ -1389,21 +1035,17 @@ html {
     transform: translate(-50%, -37.5%);
     width: 500px;
     height: 700px;
-    opacity: 40%;
-  }
+    opacity: 40%; }
   #jumboPosterSlideWrapper {
     position: relative;
     bottom: -8%;
     width: 80%;
-    height: 77%;
-  }
-}
+    height: 77%; } }
 
 @media (max-width: 767px) {
   .posterContainer {
     width: 100%;
-    height: 100%;
-  }
+    height: 100%; }
   #crownWrapper {
     z-index: 11;
     position: absolute;
@@ -1412,17 +1054,14 @@ html {
     top: 25%;
     left: 38%;
     transform: translate(-50%, -50%);
-    padding-bottom: 10%;
-  }
-  #crownWrapper #posterCrown {
-    width: 100%;
-    height: 100%;
-  }
+    padding-bottom: 10%; }
+    #crownWrapper #posterCrown {
+      width: 100%;
+      height: 100%; }
   .posterImg {
     position: absolute;
     width: 100%;
-    height: 100%;
-  }
+    height: 100%; }
   /*가운데*/
   #posterWrapper1 {
     position: absolute;
@@ -1434,8 +1073,7 @@ html {
     z-index: 10;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    transform: translate(-50%, -50%); }
   #posterWrapper2 {
     position: absolute;
     width: 25%;
@@ -1445,8 +1083,7 @@ html {
     z-index: 9;
     top: 60%;
     left: 30%;
-    transform: translate(-50%, -50%);
-  }
+    transform: translate(-50%, -50%); }
   #posterWrapper3 {
     position: absolute;
     width: 25%;
@@ -1456,8 +1093,7 @@ html {
     z-index: 9;
     top: 60%;
     left: 70%;
-    transform: translate(-50%, -50%);
-  }
+    transform: translate(-50%, -50%); }
   #posterWrapper4 {
     position: absolute;
     width: 25%;
@@ -1467,8 +1103,7 @@ html {
     z-index: 8;
     top: 70%;
     left: 15%;
-    transform: translate(-50%, -50%);
-  }
+    transform: translate(-50%, -50%); }
   #posterWrapper5 {
     position: absolute;
     width: 25%;
@@ -1478,15 +1113,12 @@ html {
     z-index: 8;
     top: 70%;
     left: 85%;
-    transform: translate(-50%, -50%);
-  }
-}
+    transform: translate(-50%, -50%); } }
 
 @media (min-width: 1200px) {
   .posterContainer {
     width: 100%;
-    height: 100%;
-  }
+    height: 100%; }
   #crownWrapper {
     z-index: 11;
     position: absolute;
@@ -1495,17 +1127,14 @@ html {
     top: 15%;
     left: 41%;
     transform: translate(-50%, -50%);
-    padding-bottom: 8%;
-  }
-  #crownWrapper #posterCrown {
-    width: 70px;
-    height: 70px;
-  }
+    padding-bottom: 8%; }
+    #crownWrapper #posterCrown {
+      width: 70px;
+      height: 70px; }
   .posterImg {
     position: absolute;
     width: 100%;
-    height: 100%;
-  }
+    height: 100%; }
   /*가운데*/
   #posterWrapper1 {
     position: absolute;
@@ -1517,8 +1146,7 @@ html {
     z-index: 10;
     top: 45%;
     left: 50%;
-    transform: translate(-50%, -50%);
-  }
+    transform: translate(-50%, -50%); }
   #posterWrapper2 {
     position: absolute;
     width: 20%;
@@ -1528,8 +1156,7 @@ html {
     z-index: 9;
     top: 55%;
     left: 35%;
-    transform: translate(-50%, -50%);
-  }
+    transform: translate(-50%, -50%); }
   #posterWrapper3 {
     position: absolute;
     width: 20%;
@@ -1539,8 +1166,7 @@ html {
     z-index: 9;
     top: 55%;
     left: 65%;
-    transform: translate(-50%, -50%);
-  }
+    transform: translate(-50%, -50%); }
   #posterWrapper4 {
     position: absolute;
     width: 20%;
@@ -1550,8 +1176,7 @@ html {
     z-index: 8;
     top: 65%;
     left: 20%;
-    transform: translate(-50%, -50%);
-  }
+    transform: translate(-50%, -50%); }
   #posterWrapper5 {
     position: absolute;
     width: 20%;
@@ -1561,341 +1186,207 @@ html {
     z-index: 8;
     top: 65%;
     left: 80%;
-    transform: translate(-50%, -50%);
-  }
-}
+    transform: translate(-50%, -50%); } }
 
 @media (max-width: 767px) {
   #mainConcertInfoBox {
     position: absolute;
     width: 100%;
     height: 100%;
-    /*중간 박스*/
-  }
-  #mainConcertInfoBox #topBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 35%;
-  }
-  #mainConcertInfoBox #topBox #roofArea {
-    position: relative;
-    width: 100%;
-    height: 20%;
-  }
-  #mainConcertInfoBox #topBox #roofArea #backBtn {
-    position: absolute;
-    top: 20%;
-    right: 5%;
-    width: 30%;
-    height: 60%;
-    background-color: #ffce63;
-    border: 0;
-    border-radius: 5px;
-    color: #fff;
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  #mainConcertInfoBox #topBox #fromWhereBox {
-    display: flex;
-    justify-content: space-between;
-    width: 35%;
-    height: 12%;
-    padding-left: 5%;
-  }
-  #mainConcertInfoBox #topBox #fromWhereBox .where {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45%;
-    height: 100%;
-    background-color: #ffce63;
-    text-align: center;
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-  #mainConcertInfoBox #topBox #bell {
-    position: absolute;
-    top: 9%;
-    left: 38%;
-    width: 6%;
-    height: 5%;
-  }
-  #mainConcertInfoBox #topBox #mailIcon {
-    position: absolute;
-    top: 9%;
-    left: 47%;
-    width: 7%;
-  }
-  #mainConcertInfoBox #topBox #kakaoIcon {
-    position: absolute;
-    top: 9%;
-    left: 57%;
-    width: 7%;
-  }
-  #mainConcertInfoBox #topBox #titleBox {
-    position: relative;
-    width: 100%;
-    height: 40%;
-  }
-  #mainConcertInfoBox #topBox #titleBox #h2AlignBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-  #mainConcertInfoBox #topBox #titleBox #h2AlignBox h2 {
-    font-size: 2rem;
-  }
-  #mainConcertInfoBox #topBox #date {
-    font: 1.3rem;
-    color: #a0a0a0;
-  }
-  #mainConcertInfoBox #middleBox {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 65%;
-  }
-  #mainConcertInfoBox #middleBox #concertInfoBox {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%;
-    height: 100%;
-  }
-  #mainConcertInfoBox #middleBox #concertInfoBox #selectedPoster {
-    width: 38%;
-    height: 80%;
-  }
-  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo {
-    position: relative;
-    width: 60%;
-    height: 80%;
-  }
-  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 80%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .left-side {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30%;
-    height: 100%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .left-side
-    .left {
-    font-weight: bold;
-    text-align: center;
-    font-size: 1.2rem;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .left-side
-    #place {
-    height: 15%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .left-side
-    #date {
-    height: 30%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .left-side
-    #time {
-    height: 15%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .left-side
-    #rating {
-    height: 15%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .left-side
-    #price {
-    height: 25%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .right-side {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 70%;
-    height: 100%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .right-side
-    .right {
-    font-size: 1rem;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .right-side
-    #place_r {
-    height: 15%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .right-side
-    #date_r {
-    height: 30%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .right-side
-    #time_r {
-    height: 15%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .right-side
-    #rating_r {
-    height: 15%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    .table
-    .right-side
-    #price_r {
-    height: 25%;
-  }
-  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo #buttonsWrapper {
-    position: absolute;
-    bottom: 0%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
-    height: 20%;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    #buttonsWrapper
-    #black-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 40%;
-    background: #000;
-    color: #fff;
-    border: 5px;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  #mainConcertInfoBox
-    #middleBox
-    #concertInfoBox
-    #concertInfo
-    #buttonsWrapper
-    #yellow-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 40%;
-    background: #ffce63;
-    color: #fff;
-    border: 5px;
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-}
+    /*중간 박스*/ }
+    #mainConcertInfoBox #topBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      height: 35%; }
+      #mainConcertInfoBox #topBox #roofArea {
+        position: relative;
+        width: 100%;
+        height: 20%; }
+        #mainConcertInfoBox #topBox #roofArea #backBtn {
+          position: absolute;
+          top: 20%;
+          right: 5%;
+          width: 30%;
+          height: 60%;
+          background-color: #ffce63;
+          border: 0;
+          border-radius: 5px;
+          color: #fff;
+          font-size: 1rem;
+          font-weight: bold; }
+      #mainConcertInfoBox #topBox #fromWhereBox {
+        display: flex;
+        justify-content: space-between;
+        width: 35%;
+        height: 12%;
+        padding-left: 5%; }
+        #mainConcertInfoBox #topBox #fromWhereBox .where {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 45%;
+          height: 100%;
+          background-color: #ffce63;
+          text-align: center;
+          color: #fff;
+          font-weight: bold;
+          font-size: 1.2rem; }
+      #mainConcertInfoBox #topBox #bell {
+        position: absolute;
+        top: 9%;
+        left: 38%;
+        width: 6%;
+        height: 5%; }
+      #mainConcertInfoBox #topBox #mailIcon {
+        position: absolute;
+        top: 9%;
+        left: 47%;
+        width: 7%; }
+      #mainConcertInfoBox #topBox #kakaoIcon {
+        position: absolute;
+        top: 9%;
+        left: 57%;
+        width: 7%; }
+      #mainConcertInfoBox #topBox #titleBox {
+        position: relative;
+        width: 100%;
+        height: 40%; }
+        #mainConcertInfoBox #topBox #titleBox #h2AlignBox {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%; }
+          #mainConcertInfoBox #topBox #titleBox #h2AlignBox h2 {
+            font-size: 2rem; }
+      #mainConcertInfoBox #topBox #date {
+        font: 1.3rem;
+        color: #a0a0a0; }
+    #mainConcertInfoBox #middleBox {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 65%; }
+      #mainConcertInfoBox #middleBox #concertInfoBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        height: 100%; }
+        #mainConcertInfoBox #middleBox #concertInfoBox #selectedPoster {
+          width: 38%;
+          height: 80%; }
+        #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo {
+          position: relative;
+          width: 60%;
+          height: 80%; }
+          #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 80%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 30%;
+              height: 100%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side .left {
+                font-weight: bold;
+                text-align: center;
+                font-size: 1.2rem; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #date {
+                height: 30%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #rating {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #price {
+                height: 25%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side {
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 70%;
+              height: 100%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side .right {
+                font-size: 1rem; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
+                height: 30%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #rating_r {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #price_r {
+                height: 25%; }
+          #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo #buttonsWrapper {
+            position: absolute;
+            bottom: 0%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+            height: 20%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo #buttonsWrapper #black-btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 40%;
+              background: #000;
+              color: #fff;
+              border: 5px;
+              font-size: 1.2rem;
+              font-weight: bold; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo #buttonsWrapper #yellow-btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 40%;
+              background: #ffce63;
+              color: #fff;
+              border: 5px;
+              font-size: 1.2rem;
+              font-weight: bold; } }
 
 #mainGoConchin {
   position: relative;
   width: 100%;
-  height: 100%;
-}
-#mainGoConchin b {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 58%;
-  font-size: 1.3rem;
-}
-#mainGoConchin #goConchin {
-  position: absolute;
-  width: 70%;
-  height: 60%;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-#mainGoConchin button {
-  position: absolute;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 25%;
-  background-color: #ffce63;
-  color: #fff;
-  font-weight: bold;
-  border: 5px;
-}
+  height: 100%; }
+  #mainGoConchin b {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 58%;
+    font-size: 1.3rem; }
+  #mainGoConchin #goConchin {
+    position: absolute;
+    width: 70%;
+    height: 60%;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+  #mainGoConchin button {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    background-color: #ffce63;
+    color: #fff;
+    font-weight: bold;
+    border: 5px; }
 
 /*------------선영----------*/
