@@ -12,7 +12,7 @@ function ConChinArticleContentBox(){
           <h1 className='text'>콘친님께 슬로건 dream</h1>
         </div>
         <div id='profileBox'>
-          <img className='img' src={ profileImage }/>
+          <img className='img' src={profileImage} />
           <p className='nickName'>유태양발닦개</p>
         </div>
       </div>
@@ -25,19 +25,21 @@ function ConChinArticleContentBox(){
           <p className='deleteBtn'>삭제</p>
           <div id='memberBoxWrapper'>
             <div className='memberBox'>
-              <img className='icon' src={ groupImage }/>
+              <img className='icon' src={groupImage} />
               <div className='count'>1/3</div>
             </div>
           </div>
         </div>
         <div id='content'>
           <div id='imgWrapper'>
-            <img className='img' src={ articleImage }/>
+            <img className='img' src={articleImage} />
           </div>
-          <p className='text'>올림픽 공원을 뒤집을 에너자이저 콘친 찾습니다..!
-            21~23 올콘 뛰시는 분으로 구해요
-            인성이 슬로건 드립니다ㅎㅎ<br/>
-            판타지 모여라<br/>
+          <p className='text'>
+            올림픽 공원을 뒤집을 에너자이저 콘친 찾습니다..! 21~23 올콘 뛰시는
+            분으로 구해요 인성이 슬로건 드립니다ㅎㅎ
+            <br />
+            판타지 모여라
+            <br />
             많관부~
           </p>
         </div>
@@ -49,7 +51,7 @@ function ConChinArticleContentBox(){
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default ConChinArticleContentBox;

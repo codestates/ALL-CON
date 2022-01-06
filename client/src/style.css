@@ -506,7 +506,7 @@ html {
       height: 60%;
       right: 0%;
       outline: 0;
-      background-color: #FFCE63;
+      background-color: #ffce63;
       border: 0;
       border-radius: 5px;
       color: white;
@@ -515,7 +515,7 @@ html {
         #conChinFindBox .btnWrapper .btn {
           width: 65%;
           padding-left: 17%;
-          font-size: 1.0rem;
+          font-size: 1rem;
           height: 60%; } }
       @media (min-width: 1200px) {
         #conChinFindBox .btnWrapper .btn {
@@ -940,16 +940,52 @@ html {
     height: 70%; }
   #mainCommentWrapper {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
     top: 111%;
     width: 100%;
-    height: 40%;
-    border: 1px solid green; }
+    height: 40%; }
   #mainFindConchinWrapper {
     position: absolute;
     top: 151%;
     width: 100%;
-    height: 40%;
-    border: 1px solid purple; } }
+    height: 40%; } }
+
+@media (min-width: 1200px) {
+  #mainContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%; }
+  #mainJumboWrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 65%; }
+  #mainConcertInfoWrapper {
+    position: absolute;
+    top: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 95%; }
+  #mainCommentWrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 160%;
+    width: 100%;
+    height: 70%;
+    border: 2px solid green; }
+  #mainFindConchinWrapper {
+    position: absolute;
+    top: 151%;
+    width: 100%;
+    height: 40%; } }
 
 @media (max-width: 767px) {
   #jumboContainer {
@@ -1041,6 +1077,103 @@ html {
     width: 500px;
     height: 700px;
     opacity: 40%; }
+  #jumboPosterSlideWrapper {
+    position: relative;
+    bottom: -8%;
+    width: 80%;
+    height: 77%; } }
+
+@media (max-width: 767px) {
+  #jumboContainer {
+    position: absolute;
+    width: 100%;
+    height: 55%;
+    padding-bottom: 30%; }
+  #jumboMiniContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); }
+  .jumboTopBox {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%; }
+  .jumboTextBox {
+    position: relative;
+    top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    height: 8%; }
+  #jumboWhat {
+    font-size: 30px;
+    color: #fff; }
+  #jumboClassify {
+    font-size: 30px;
+    color: #ffce63; }
+  #jumboChosen {
+    width: 40%;
+    height: 85%;
+    opacity: 30%; }
+  #jumboPosterSlideWrapper {
+    position: relative;
+    bottom: -10%;
+    width: 80%;
+    height: 77%; } }
+
+@media (min-width: 1200px) {
+  #jumboContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20%; }
+  #jumboMiniContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); }
+  .jumboTopBox {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%; }
+  .jumboTextBox {
+    position: relative;
+    top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 770px;
+    height: 12%; }
+  #jumboWhat {
+    font-size: 120px;
+    color: #fff; }
+  #jumboClassify {
+    font-size: 120px;
+    color: #ffce63; }
+  #jumboChosen {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -37.5%);
+    width: 25%;
+    height: 95%;
+    opacity: 40%;
+    padding-bottom: 2%; }
   #jumboPosterSlideWrapper {
     position: relative;
     bottom: -8%;
@@ -1143,7 +1276,7 @@ html {
   /*가운데*/
   #posterWrapper1 {
     position: absolute;
-    width: 20%;
+    width: 18%;
     height: 65%;
     /*왜 70이하로 앉줄지*/
     overflow: hidden;
@@ -1154,7 +1287,7 @@ html {
     transform: translate(-50%, -50%); }
   #posterWrapper2 {
     position: absolute;
-    width: 20%;
+    width: 18%;
     height: 65%;
     overflow: hidden;
     padding-bottom: 20%;
@@ -1164,7 +1297,7 @@ html {
     transform: translate(-50%, -50%); }
   #posterWrapper3 {
     position: absolute;
-    width: 20%;
+    width: 18%;
     height: 65%;
     overflow: hidden;
     padding-bottom: 20%;
@@ -1174,7 +1307,7 @@ html {
     transform: translate(-50%, -50%); }
   #posterWrapper4 {
     position: absolute;
-    width: 20%;
+    width: 18%;
     height: 65%;
     overflow: hidden;
     padding-bottom: 20%;
@@ -1184,7 +1317,7 @@ html {
     transform: translate(-50%, -50%); }
   #posterWrapper5 {
     position: absolute;
-    width: 20%;
+    width: 18%;
     height: 65%;
     overflow: hidden;
     padding-bottom: 20%;
@@ -1198,7 +1331,7 @@ html {
     position: absolute;
     width: 100%;
     height: 100%;
-    /*중간 박스*/ }
+    /*mobile 중간 박스*/ }
     #mainConcertInfoBox #topBox {
       display: flex;
       flex-direction: column;
@@ -1243,21 +1376,22 @@ html {
         top: 9%;
         left: 38%;
         width: 6%;
-        height: 5%; }
+        height: 4%; }
       #mainConcertInfoBox #topBox #mailIcon {
         position: absolute;
-        top: 9%;
+        top: 8%;
         left: 47%;
         width: 7%; }
       #mainConcertInfoBox #topBox #kakaoIcon {
         position: absolute;
-        top: 9%;
+        top: 8%;
         left: 57%;
         width: 7%; }
       #mainConcertInfoBox #topBox #titleBox {
         position: relative;
         width: 100%;
-        height: 40%; }
+        height: 40%;
+        border: 0; }
         #mainConcertInfoBox #topBox #titleBox #h2AlignBox {
           display: flex;
           align-items: center;
@@ -1270,9 +1404,10 @@ html {
         font: 1.3rem;
         color: #a0a0a0; }
     #mainConcertInfoBox #middleBox {
-      position: absolute;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
       width: 100%;
       height: 65%; }
       #mainConcertInfoBox #middleBox #concertInfoBox {
@@ -1280,19 +1415,19 @@ html {
         align-items: center;
         justify-content: space-between;
         width: 90%;
-        height: 100%; }
+        height: 75%; }
         #mainConcertInfoBox #middleBox #concertInfoBox #selectedPoster {
           width: 38%;
-          height: 80%; }
+          height: 100%; }
         #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo {
           position: relative;
           width: 60%;
-          height: 80%; }
+          height: 100%; }
           #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table {
             position: absolute;
             top: 0;
             width: 100%;
-            height: 80%; }
+            height: 100%; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side {
               position: absolute;
               top: 0;
@@ -1331,36 +1466,251 @@ html {
                 height: 15%; }
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #price_r {
                 height: 25%; }
-          #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo #buttonsWrapper {
-            position: absolute;
-            bottom: 0%;
+      #mainConcertInfoBox #middleBox #buttonsWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 90%;
+        height: 15%; }
+        #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 40%;
+          background: #000;
+          color: #fff;
+          border: 0;
+          border-radius: 5px;
+          font-weight: bold; }
+          #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn div {
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: space-between;
+            width: 65%;
+            height: 100%; }
+            #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn div #imgAndOpen {
+              display: flex;
+              justify-content: space-around;
+              width: 50%; }
+              #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn div #imgAndOpen img {
+                width: 20%;
+                height: 90%; }
+              #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn div #imgAndOpen #open {
+                font-size: 1.3rem; }
+            #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn div #time {
+              font-size: 1.2rem; }
+        #mainConcertInfoBox #middleBox #buttonsWrapper #yellow-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 40%;
+          background: #ffce63;
+          color: #fff;
+          border: 5px;
+          font-size: 1.2rem;
+          font-weight: bold;
+          border-radius: 5px; } }
+
+@media (min-width: 1200px) {
+  #mainConcertInfoBox {
+    position: absolute;
+    width: 63%;
+    height: 100%;
+    /*lg 중간 박스*/ }
+    #mainConcertInfoBox #topBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+      height: 28%; }
+      #mainConcertInfoBox #topBox #roofArea {
+        position: relative;
+        width: 100%;
+        height: 20%; }
+        #mainConcertInfoBox #topBox #roofArea #backBtn {
+          position: absolute;
+          top: 20%;
+          right: 5%;
+          width: 30%;
+          height: 60%;
+          background-color: #ffce63;
+          border: 0;
+          border-radius: 5px;
+          color: #ffffff;
+          font-size: 1.8rem;
+          font-weight: bold; }
+      #mainConcertInfoBox #topBox #fromWhereBox {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 35%;
+        height: 20%;
+        padding-left: 5%; }
+        #mainConcertInfoBox #topBox #fromWhereBox .where {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 45%;
+          height: 75%;
+          background-color: #ffce63;
+          text-align: center;
+          color: #fff;
+          font-weight: bold;
+          font-size: 1.6rem;
+          border-radius: 5px; }
+      #mainConcertInfoBox #topBox #bell {
+        position: absolute;
+        top: 5%;
+        left: 38%;
+        width: 5%;
+        height: 4%; }
+      #mainConcertInfoBox #topBox #mailIcon {
+        position: absolute;
+        top: 5%;
+        left: 45%;
+        width: 5%; }
+      #mainConcertInfoBox #topBox #kakaoIcon {
+        position: absolute;
+        top: 5%;
+        left: 52%;
+        width: 5%; }
+      #mainConcertInfoBox #topBox #titleBox {
+        position: relative;
+        width: 100%;
+        height: 50%;
+        border: 0; }
+        #mainConcertInfoBox #topBox #titleBox #h2AlignBox {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%; }
+          #mainConcertInfoBox #topBox #titleBox #h2AlignBox h2 {
+            font-size: 3rem; }
+      #mainConcertInfoBox #topBox #date {
+        width: 100%;
+        height: 20%;
+        font-size: 1.9rem;
+        color: #a0a0a0;
+        padding-left: 5%; }
+    #mainConcertInfoBox #middleBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      height: 72%;
+      border: 3px solid green; }
+      #mainConcertInfoBox #middleBox #concertInfoBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 95%;
+        height: 85%;
+        border: 2px solid blue; }
+        #mainConcertInfoBox #middleBox #concertInfoBox #selectedPoster {
+          width: 38%;
+          height: 100%; }
+        #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo {
+          position: relative;
+          width: 60%;
+          height: 100%;
+          border: 2px solid pink; }
+          #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table {
+            position: absolute;
+            top: 0;
             width: 100%;
-            height: 20%; }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo #buttonsWrapper #black-btn {
+            height: 100%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 30%;
+              height: 100%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side .left {
+                font-weight: bold;
+                text-align: center;
+                font-size: 2rem; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #date {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #rating {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #price {
+                height: 20%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side {
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 70%;
+              height: 100%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side .right {
+                font-size: 2rem; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #rating_r {
+                height: 15%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #price_r {
+                height: 20%; }
+      #mainConcertInfoBox #middleBox #buttonsWrapper {
+        position: absolute;
+        bottom: 9.5%;
+        left: 41%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 56%;
+        height: 11%;
+        border: 1px solid red; }
+        #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 40%;
+          background: #000;
+          color: #fff;
+          border: 0;
+          border-radius: 5px;
+          font-weight: bold; }
+          #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 85%;
+            height: 100%; }
+            #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn div #imgAndOpen {
               display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 100%;
-              height: 40%;
-              background: #000;
-              color: #fff;
-              border: 5px;
-              font-size: 1.2rem;
-              font-weight: bold; }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo #buttonsWrapper #yellow-btn {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 100%;
-              height: 40%;
-              background: #ffce63;
-              color: #fff;
-              border: 5px;
-              font-size: 1.2rem;
-              font-weight: bold; } }
+              justify-content: space-around;
+              width: 50%; }
+              #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn div #imgAndOpen img {
+                width: 20%;
+                height: 90%; }
+              #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn div #imgAndOpen #open {
+                font-size: 2rem; }
+            #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn div #time {
+              font-size: 1.9rem; }
+        #mainConcertInfoBox #middleBox #buttonsWrapper #yellow-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 40%;
+          background: #ffce63;
+          color: #fff;
+          border: 5px;
+          font-size: 2rem;
+          font-weight: bold;
+          border-radius: 5px; } }
 
 #mainGoConchin {
   position: relative;
