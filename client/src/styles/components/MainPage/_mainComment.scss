@@ -1,0 +1,164 @@
+#commentBox {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  height: 85%;
+  top: 5%;
+  // border:2px solid red;
+  #countWrapper {
+    position: absolute;
+    display: flex;
+    width: 90%;
+    height: 10%;
+    top: -12%;
+    // border:1px solid purple;
+    .count {
+      position: absolute;
+      display: flex;
+      // border:1px solid red;
+      bottom: 10%;
+      left: 1%;
+      @include mobile-only() {
+        font-size: 1.5rem;
+      }
+      @include lg() {
+        font-size: 2.5rem;
+      }
+    }
+  }
+  .box {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 20%;
+    top: 0%;
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    .dateBox {
+      position: absolute;
+      display: flex;
+      width: 40%;
+      height: 30%;
+      top: 1.5%;
+      left: 1.5%;
+      // border:1px solid red;
+      .nickNameAndDate {
+        color: $gray;
+        @include mobile-only() {
+          font-size: 1rem;
+        }
+        @include lg() {
+          font-size: 2rem;
+        }
+        // border:1px solid blue;
+      }
+    }
+    .imgWrapper {
+      position: absolute;
+      display: flex;
+
+      @include mobile-only() {
+        height: 9%;
+        width: 9%;
+        padding-bottom: 9%;
+        bottom: 13%;
+        left: 1%;
+      }
+      @include lg() {
+        height: 6%;
+        width: 6%;
+        padding-bottom: 6%;
+        bottom: 10%;
+        left: 1%;
+      }
+      // border:1px solid orange;
+      .img {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        object-fit: 100%;
+        border-radius: 100%;
+      }
+      .shield {
+        position: absolute;
+        display: flex;
+        object-fit: 100%;
+        bottom: 0%;
+        right: 0%;
+        @include mobile-only() {
+          width: 13px;
+          height: 13px;
+        }
+        @include lg() {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+    .dotWrapper {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 4%;
+      width: 4%;
+      padding-bottom: 4%;
+      top: 0%;
+      right: 0%;
+      // border:1px solid orange;
+      .dot {
+        position: absolute;
+        display: flex;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: 100%;
+        @include mobile-only() {
+          width: 1.1rem;
+          height: 1.1rem;
+        }
+        @include lg() {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+      }
+    }
+    #input {
+      position: absolute;
+      display: flex;
+      width: 80%;
+      height: 50%;
+      bottom: 0%;
+      left: 10%;
+      border: none;
+      outline: none;
+      resize: none;
+      border-radius: 5px;
+      @include mobile-only() {
+        left: 11%;
+        font-size: 1.3rem;
+      }
+      @include lg() {
+        left: 8%;
+        font-size: 2.5rem;
+      }
+    }
+    #text {
+      position: absolute;
+      display: flex;
+      width: 80%;
+      height: 50%;
+      bottom: 0%;
+      @include mobile-only() {
+        left: 11%;
+        font-size: 1.3rem;
+      }
+      @include lg() {
+        left: 8%;
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
