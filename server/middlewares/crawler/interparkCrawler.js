@@ -69,7 +69,6 @@ const interparkCrawler = async () => {
       'post_date': post_date,
       'image_concert': image_concert,
       'title': title.substring(18, title.length-11).trim(),
-      'show_schedule': show_schedule,
       'place': place,
       'price': price,
       'runnig_time': runnig_time,
