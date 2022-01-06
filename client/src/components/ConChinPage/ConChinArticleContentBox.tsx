@@ -1,9 +1,10 @@
 import profileImage from '../../images/taeyang.png';
 import groupImage from '../../images/group.png';
-import articleImage from '../../images/inseong.png';
-import shield from '../../images/shield.png';
-import tripleDot from '../../images/tripleDot.png';
-function ConChinArticleContentBox() {
+import articleImage from '../../images/inseong.png'
+
+import ConChinArticleCommentBox from './ConChinArticleCommentBox';
+import ConChinCommentPagination from './ConChinCommentPagination';
+function ConChinArticleContentBox(){
   return (
     <div id='conChinArticleContentBox'>
       <div id='titleBox'>
@@ -28,13 +29,6 @@ function ConChinArticleContentBox() {
               <div className='count'>1/3</div>
             </div>
           </div>
-          {/* <div id='memberMiniModal'>
-            <div id='box'>
-              <button className='minusBtn'>-</button>
-              <p className='count'>1</p>
-              <button className='plusBtn'>+</button>
-            </div>
-          </div> */}
         </div>
         <div id='content'>
           <div id='imgWrapper'>
@@ -50,81 +44,9 @@ function ConChinArticleContentBox() {
           </p>
         </div>
         <div id='commentWrapper'>
-          <div id='commentBox'>
-            <div id='countWrapper'>
-              <h1 className='count'>10개의 댓글</h1>
-            </div>
-            <div className='box'>
-              <div className='dateBox'>
-                <p className='nickNameAndDate'>유태양발닦개님 | 2021.01.06</p>
-              </div>
-              <div className='imgWrapper'>
-                <img className='img' src={profileImage} />
-                <img className='shield' src={shield} />
-              </div>
-              <textarea
-                id='input'
-                placeholder='댓글을 입력해주세요.'
-              ></textarea>
-            </div>
-
-            <div className='box'>
-              <div className='dateBox'>
-                <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
-              </div>
-              <div className='imgWrapper'>
-                <img className='img' src={articleImage} />
-                <img className='shield' src={shield} />
-              </div>
-              <div className='dotWrapper'>
-                <img className='dot' src={tripleDot} />
-              </div>
-              <p id='text'>올콘 뛰세요..? 부럽다...</p>
-            </div>
-
-            <div className='box'>
-              <div className='dateBox'>
-                <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
-              </div>
-              <div className='imgWrapper'>
-                <img className='img' src={articleImage} />
-                <img className='shield' src={shield} />
-              </div>
-              <div className='dotWrapper'>
-                <img className='dot' src={tripleDot} />
-              </div>
-              <p id='text'>올콘 뛰세요..? 부럽다...</p>
-            </div>
-
-            <div className='box'>
-              <div className='dateBox'>
-                <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
-              </div>
-              <div className='imgWrapper'>
-                <img className='img' src={articleImage} />
-                <img className='shield' src={shield} />
-              </div>
-              <div className='dotWrapper'>
-                <img className='dot' src={tripleDot} />
-              </div>
-              <p id='text'>올콘 뛰세요..? 부럽다...</p>
-            </div>
-          </div>
+          <ConChinArticleCommentBox/>
           <div id='paginationWrapper'>
-            <div id='pagination'>
-              <ul className='page'>
-                <p className='text'>1</p>
-              </ul>
-              <ul className='page'>
-                <p className='text'>2</p>
-              </ul>
-              <ul className='page'>
-                <p className='text'>3</p>
-              </ul>
-              <ul className='page'>
-                <p className='text'>4</p>
-              </ul>
-            </div>
+            <ConChinCommentPagination/>
           </div>
         </div>
       </div>

@@ -1,15 +1,13 @@
 import defaultImage from '../../images/default_image.jpg';
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
-
+import ConChinArticleOrderBox from './ConChinArticleOrderBox';
+import ConChinArticlePagination from './ConChinArticlePagination';
 
 function ConChinArticleBox(){
   return(
     <div id='conChinArticleBox'>
-      <div id='noLineOrderBox'>
-        <p className='order'>조회수순</p>
-        <p className='order'>최신순</p>
-      </div>
+      <ConChinArticleOrderBox/>
       <div id='articleBox'>
         <div id='box'>
           <ul className='article'>
@@ -106,23 +104,8 @@ function ConChinArticleBox(){
           </ul>
         </div>  
       </div>
-      <div id='pagination'>
-        <ul className='page'>
-          <p className='text'>1</p>
-        </ul>
-        <ul className='page'>
-          <p className='text'>2</p>
-        </ul>
-        <ul className='page'>
-          <p className='text'>3</p>
-        </ul>
-        <ul className='page'>
-          <p className='text'>4</p>
-        </ul>
-        <ul className='page'>
-          <p className='text'>5</p>
-        </ul>
-      </div>
+      <ConChinArticlePagination/>
+
     </div>
   )
 }
