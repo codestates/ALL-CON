@@ -28,7 +28,7 @@ module.exports = {
 
         // 총 페이지 수
         const totalPage = Math.ceil(concertCommentInfo.count / limit);
-        res.status(200).json({ data: { concertCommentInfo: concertCommentInfo, totalPage: totalPage }, message: '콘서트 게시글 댓글!' })
+        res.status(200).json({ data: { concertCommentInfo: concertCommentInfo.rows, totalPage: totalPage }, message: '콘서트 게시글 댓글!' })
       }
       // 댓글이 없을 경우, 다음을 실행한다
       else res.status(200).json({ message: '콘서트 게시물에 댓글이 없습니다!' })

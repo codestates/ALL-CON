@@ -62,7 +62,9 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: 3,
       allowNull: false
     },
-    sign_method: DataTypes.STRING
+    sign_method: DataTypes.STRING,
+    email_key: DataTypes.STRING,
+    message_key: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Users',
