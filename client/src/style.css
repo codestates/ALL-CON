@@ -321,18 +321,19 @@ html {
       display: flex; }
       @media (max-width: 767px) {
         #commentBox .box .imgWrapper {
-          height: 9%;
-          width: 9%;
-          padding-bottom: 9%;
-          bottom: 13%;
-          left: 1%; } }
+          position: absolute;
+          display: flex;
+          height: 27px;
+          width: 27px;
+          left: 3%;
+          top: 55%;
+          transform: translate(0, -50%); } }
       @media (min-width: 1200px) {
         #commentBox .box .imgWrapper {
-          height: 6%;
-          width: 6%;
-          padding-bottom: 6%;
-          bottom: 10%;
-          left: 1%; } }
+          height: 47px;
+          width: 47px;
+          bottom: 16%;
+          left: 2%; } }
       #commentBox .box .imgWrapper .img {
         position: absolute;
         display: flex;
@@ -352,8 +353,8 @@ html {
             height: 13px; } }
         @media (min-width: 1200px) {
           #commentBox .box .imgWrapper .shield {
-            width: 30px;
-            height: 30px; } }
+            width: 20px;
+            height: 20px; } }
     #commentBox .box .dotWrapper {
       position: absolute;
       display: flex;
@@ -384,33 +385,35 @@ html {
       display: flex;
       width: 80%;
       height: 50%;
-      bottom: 0%;
-      left: 10%;
+      top: 70%;
+      transform: translate(0, -50%);
       border: none;
       outline: none;
+      overflow: hidden;
       resize: none;
       border-radius: 5px; }
       @media (max-width: 767px) {
         #commentBox .box #input {
-          left: 11%;
+          left: 12.5%;
           font-size: 1.3rem; } }
       @media (min-width: 1200px) {
         #commentBox .box #input {
-          left: 8%;
+          left: 7.5%;
           font-size: 2.5rem; } }
     #commentBox .box #text {
       position: absolute;
       display: flex;
       width: 80%;
       height: 50%;
-      bottom: 0%; }
+      top: 68%;
+      transform: translate(0, -50%); }
       @media (max-width: 767px) {
         #commentBox .box #text {
-          left: 11%;
+          left: 12.5%;
           font-size: 1.3rem; } }
       @media (min-width: 1200px) {
         #commentBox .box #text {
-          left: 8%;
+          left: 7.5%;
           font-size: 2.5rem; } }
 
 /***** commentBox *****/
@@ -517,7 +520,7 @@ html {
       @media (min-width: 1200px) {
         #conChinFindBox .btnWrapper .btn {
           width: 40%;
-          padding-left: 5.5%;
+          padding-left: 6.5%;
           font-size: 2.0rem;
           height: 45%; } }
       #conChinFindBox .btnWrapper .btn:hover {
@@ -528,12 +531,12 @@ html {
           #conChinFindBox .btnWrapper .btn .img {
             width: 13px;
             height: 13px;
-            left: 9%; } }
+            right: 67.5%; } }
         @media (min-width: 1200px) {
           #conChinFindBox .btnWrapper .btn .img {
-            width: 20px;
-            height: 20px;
-            left: 11%; } }
+            width: 23px;
+            height: 23px;
+            right: 70.5%; } }
 
 #conChinBox {
   position: relative;
@@ -585,7 +588,7 @@ html {
   @media (min-width: 1200px) {
     #conChinArticleContentBox {
       top: 118%;
-      height: 165%; } }
+      height: 125%; } }
 
 #titleBox {
   position: relative;
@@ -634,18 +637,19 @@ html {
         height: 50%; } }
     #titleBox #profileBox .img {
       position: relative;
-      border-radius: 100%;
-      bottom: 5%; }
+      border-radius: 100%; }
       @media (max-width: 767px) {
         #titleBox #profileBox .img {
+          bottom: 5%;
           right: 3%;
           width: 25px;
           height: 25px; } }
       @media (min-width: 1200px) {
         #titleBox #profileBox .img {
+          bottom: 10%;
           right: 2%;
-          width: 50px;
-          height: 50px; } }
+          width: 40px;
+          height: 40px; } }
   @media (max-width: 767px) {
     #titleBox .nickName {
       font-size: 1.3rem; } }
@@ -663,7 +667,7 @@ html {
       top: 7.8%; } }
   @media (min-width: 1200px) {
     #contentBox {
-      height: 85%;
+      height: 100%;
       top: 5%; } }
   #contentBox #viewBox {
     position: relative;
@@ -741,7 +745,7 @@ html {
         padding-bottom: 45%; } }
     #contentBox #content #imgWrapper {
       position: absolute;
-      top: 5%;
+      top: 10%;
       border: 3px solid #ffce63;
       border-radius: 5px; }
       @media (max-width: 767px) {
@@ -749,7 +753,8 @@ html {
           width: 40%;
           height: 40%;
           padding-bottom: 40%;
-          left: 8%; } }
+          left: 8%;
+          max-height: 70px; } }
       @media (min-width: 1200px) {
         #contentBox #content #imgWrapper {
           width: 35%;
@@ -764,7 +769,7 @@ html {
     #contentBox #content .text {
       position: absolute;
       display: flex;
-      top: 5%;
+      top: 10%;
       text-align: left; }
       @media (max-width: 767px) {
         #contentBox #content .text {
@@ -792,8 +797,8 @@ html {
         height: 60%; } }
     @media (min-width: 1200px) {
       #contentBox #commentWrapper {
-        top: 40%;
-        height: 50%; } }
+        top: 48%;
+        height: 45%; } }
   #contentBox #paginationWrapper {
     position: absolute;
     display: flex;
@@ -807,7 +812,7 @@ html {
         height: 20%; } }
     @media (min-width: 1200px) {
       #contentBox #paginationWrapper {
-        top: 95%;
+        top: 87%;
         height: 25%; } }
 
 /****** conChinPostingBox ******/

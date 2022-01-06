@@ -4,12 +4,13 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import Header from '../src/components/Header';
 import './style.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      {/* <Header/> */}
       <App />
     </Provider>
   </React.StrictMode>,
