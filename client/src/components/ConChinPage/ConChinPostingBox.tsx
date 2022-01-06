@@ -1,14 +1,12 @@
 import react from 'react';
+import ConChinPostingOrderBox from './ConChinPositngOrderBox';
+
 
 function ConChinPostingBox(){
   return (
     <li id='conChinPostingBox'>
       <h1 id='curOrder'>조회수 순</h1>
-      <div id='bottomLineOrderBox'>
-        <p className='order'>조회수</p>
-        <p className='order'>임박예정</p>
-        <p className='order'>등록일</p>
-      </div>
+      <ConChinPostingOrderBox/>
     <ul className='posting'>
       <h1 className='title'>[진주] 2021-22 YB 전국투어 콘서트〈LIGHTS〉</h1>
       <p className='date'>2022.02.26 ~ 2022.02.27</p>
