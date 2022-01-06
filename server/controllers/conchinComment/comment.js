@@ -1,5 +1,5 @@
 const { userAuth } = require('../../middlewares/authorized/userAuth')
-const { ArticleComments } = require('../../models');
+const { Articles, ArticleComments } = require('../../models');
 
 module.exports = {
   get: async (req, res) => {
@@ -25,14 +25,24 @@ module.exports = {
           limit: limit
         });
 
+        // const aritlceInfo = await Articles.findOne({ where: { id: articleid }})
+
+        // await aritlceInfo.update({ total_comment: articleCommentInfo.count })
+
+        await Articles.update(
+          { total_comment: articleCommentInfo.count },
+          { where: { id: articleid }}
+        )
+
         // 총 페이지 수
         const totalPage = Math.ceil(articleCommentInfo.count / limit);
-        res.status(200).json({ data: { articleCommentInfo: articleCommentInfo, totalPage: totalPage }, message: '콘친 게시글 댓글!' })
+        res.status(200).json({ data: { articleCommentInfo: articleCommentInfo.rows, totalPage: totalPage }, message: '콘친 게시글 댓글!' })
       }
       // 댓글이 없을 경우, 다음을 실행한다
       else res.status(200).json({ message: '콘친 게시물에 댓글이 없습니다!' })
    
     } catch (err) {
+      console.log(err)
       return res.status(500).json({ message: 'Server Error!' });
     }
   },

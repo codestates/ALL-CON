@@ -45,6 +45,14 @@ module.exports = {
       sign_method: {
         type: Sequelize.STRING
       },
+      email_key: {
+        type: Sequelize.STRING,
+        defaultValue: 'expired'
+      },
+      message_key: {
+        type: Sequelize.STRING,
+        defaultValue: 'expired'
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
