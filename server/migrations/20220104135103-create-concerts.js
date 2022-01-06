@@ -26,9 +26,6 @@ module.exports = {
       period: {
         type: Sequelize.STRING
       },
-      show_schedule: {
-        type: Sequelize.STRING
-      },
       place: {
         type: Sequelize.STRING
       },

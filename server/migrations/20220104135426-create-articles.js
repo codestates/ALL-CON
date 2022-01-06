@@ -25,6 +25,11 @@ module.exports = {
       member_count: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        defaultValue: 1
+      },
+      total_member: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
         defaultValue: 2
       },
       view: {

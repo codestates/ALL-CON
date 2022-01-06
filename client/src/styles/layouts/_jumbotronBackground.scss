@@ -50,7 +50,7 @@
 
   #jumboChosen {
     width: 40%;
-    height: 78%;
+    height: 85%;
     opacity: 30%;
   }
 
@@ -110,12 +110,141 @@
 
   #jumboChosen {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -37.5%);
-    width: 450px;
-    height: 550px;
+    width: 500px;
+    height: 700px;
     opacity: 40%;
+  }
+
+  #jumboPosterSlideWrapper {
+    position: relative;
+    bottom: -8%;
+    width: 80%;
+    height: 77%;
+  }
+}
+
+@include mobile-only {
+  #jumboContainer {
+    position: absolute;
+    width: 100%;
+    height: 55%;
+    padding-bottom: 30%;
+  }
+
+  #jumboMiniContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .jumboTopBox {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .jumboTextBox {
+    position: relative;
+    top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 200px;
+    height: 8%;
+  }
+
+  #jumboWhat {
+    font-size: 30px;
+    color: #fff;
+  }
+
+  #jumboClassify {
+    font-size: 30px;
+    color: $yellow;
+  }
+
+  #jumboChosen {
+    width: 40%;
+    height: 85%;
+    opacity: 30%;
+  }
+
+  #jumboPosterSlideWrapper {
+    position: relative;
+    bottom: -10%;
+    width: 80%;
+    height: 77%;
+  }
+}
+
+@include lg {
+  #jumboContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 20%;
+  }
+
+  #jumboMiniContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .jumboTopBox {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .jumboTextBox {
+    position: relative;
+    top: 5%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 770px;
+    height: 12%;
+  }
+
+  #jumboWhat {
+    font-size: 120px;
+    color: #fff;
+  }
+
+  #jumboClassify {
+    font-size: 120px;
+    color: $yellow;
+  }
+
+  #jumboChosen {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -37.5%);
+    width: 25%;
+    height: 95%;
+    opacity: 40%;
+    padding-bottom: 2%;
   }
 
   #jumboPosterSlideWrapper {

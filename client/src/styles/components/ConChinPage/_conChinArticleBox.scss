@@ -4,13 +4,23 @@
   flex-direction: column;
   flex-wrap:wrap;
   width:100%;
-  height:90%;
   top:10%;
+  // border:1px solid red;
   @include mobile-only(){
     border-top:5px solid $yellow;
+    height:90%;
   }
   @include lg(){
     border-top:10px solid $yellow;
+    height:110%;
   };
-
+}
+#conChinmemberBoxWrapper{
+  position: absolute;
+  @include mobile-only(){
+    top:40%;
+  }
+  @include lg(){
+    top:50%;
+  };
 }
