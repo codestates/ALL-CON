@@ -6,21 +6,19 @@
     #topBox {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: space-between;
       width: 100%;
-      height: 30%;
-      border: 1px solid blue;
+      height: 35%;
       #roofArea {
         position: relative;
         width: 100%;
-        height: 40%;
-        border: 1px solid orange;
+        height: 20%;
         #backBtn {
           position: absolute;
-          top: 10%;
-          right: 2%;
+          top: 20%;
+          right: 5%;
           width: 30%;
-          height: 80%;
+          height: 60%;
           background-color: $yellow;
           border: 0;
           border-radius: 5px;
@@ -33,39 +31,56 @@
         display: flex;
         justify-content: space-between;
         width: 35%;
-        height: 19%;
-        border: 1px solid red;
+        height: 12%;
+        padding-left: 5%;
+        // border: 1px solid purple;
         .where {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           width: 45%;
           height: 100%;
           background-color: $yellow;
           text-align: center;
           color: #fff;
           font-weight: bold;
-          font-size: 1.3rem;
-          vertical-align: center;
+          font-size: 1.2rem;
         }
       }
-      #titleBell {
+      #bell {
+        position: absolute;
+        top: 9%;
+        left: 38%;
+        width: 6%;
+        height: 5%;
+      }
+      #mailIcon {
+        position: absolute;
+        top: 9%;
+        left: 47%;
+        width: 7%;
+      }
+      #kakaoIcon {
+        position: absolute;
+        top: 9%;
+        left: 57%;
+        width: 7%;
+      }
+      #titleBox {
         position: relative;
         width: 100%;
         height: 40%;
+        // background: #ccc;
         #h2AlignBox {
           display: flex;
-          border: 1px solid purple;
           align-items: center;
+          justify-content: center;
           width: 100%;
           height: 100%;
           h2 {
-            font-size: 1.6rem;
+            font-size: 2rem;
+            // border: 1px solid blue;
           }
-        }
-        #bell {
-          position: absolute;
-          top: 0;
-          right: 8%;
-          width: 5%;
-          height: 90%;
         }
       }
       #date {
@@ -73,9 +88,123 @@
         color: $gray;
       }
     }
-    #selectedPoster {
-      width: 170px;
-      height: 240px;
+    /*중간 박스*/
+    #middleBox {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 65%;
+      #concertInfoBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        height: 100%;
+        // border: 2px solid blue;
+        #selectedPoster {
+          width: 38%;
+          height: 80%;
+        }
+        #concertInfo {
+          position: relative;
+          width: 60%;
+          height: 80%;
+          // border: 2px solid pink;
+          .table {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 80%;
+            .left-side {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 30%;
+              height: 100%;
+              .left {
+                font-weight: bold;
+                text-align: center;
+                font-size: 1.2rem;
+              }
+              #place {
+                height: 15%;
+              }
+              #date {
+                height: 30%;
+              }
+              #time {
+                height: 15%;
+              }
+              #rating {
+                height: 15%;
+              }
+              #price {
+                height: 25%;
+              }
+            }
+            .right-side {
+              position: absolute;
+              top: 0;
+              right: 0;
+              width: 70%;
+              height: 100%;
+              .right {
+                // border: 1px solid green;
+                font-size: 1rem;
+              }
+              #place_r {
+                height: 15%;
+              }
+              #date_r {
+                height: 30%;
+              }
+              #time_r {
+                height: 15%;
+              }
+              #rating_r {
+                height: 15%;
+              }
+              #price_r {
+                height: 25%;
+              }
+            }
+          }
+          #buttonsWrapper {
+            position: absolute;
+            bottom: 0%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 100%;
+            height: 20%;
+            #black-btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 40%;
+              background: $black;
+              color: #fff;
+              border: 5px;
+              font-size: 1.2rem;
+              font-weight: bold;
+            }
+            #yellow-btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 40%;
+              background: $yellow;
+              color: #fff;
+              border: 5px;
+              font-size: 1.2rem;
+              font-weight: bold;
+            }
+          }
+        }
+      }
     }
   }
 }
