@@ -1,0 +1,257 @@
+#conChinArticleContentBox{
+  position: relative;
+  display: flex;
+  flex-wrap:wrap;
+  width:100%;
+  // border:1px solid red;
+  @include mobile-only(){
+    top:92%;
+    height:125%;
+  }
+  @include lg(){
+    top:110%;
+    height:165%;
+  };
+
+}
+
+#titleBox{
+  position: relative;
+  display: flex;
+  width:100%;
+  height:8%;
+  // border:1px solid blue;
+  border-bottom: 2px solid black;
+  .title{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    width:55%;
+    bottom:0%;
+    @include mobile-only(){
+      height:80%;
+    }
+    @include lg(){
+      height:50%;;
+    };
+    // border:1px solid blue;
+    
+    .text{
+      @include mobile-only(){
+        font-size: 2.0rem;
+      }
+      @include lg(){
+        font-size: 4.0rem;
+      };
+      // border:1px solid blue;
+    }
+  }
+  #profileBox{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width:35%;
+    right:2%;
+    bottom:0%;
+    @include mobile-only(){
+      height:80%;
+    }
+    @include lg(){
+      height:50%;
+    };
+    // border:1px solid blue;
+    .img{
+      position: relative;
+
+      border-radius: 100%;
+      @include mobile-only(){
+        right:3%;
+        width:25px;
+        height:25px;
+      }
+      @include lg(){
+        right:2%;
+        width:50px;
+        height:50px;
+      };
+    }
+    }
+    .nickName{
+      @include mobile-only(){
+        font-size:1.3rem;
+      }
+      @include lg(){
+        font-size: 2.5rem;
+      };
+    }
+  }
+
+#contentBox{
+  position:relative;
+  display: flex;
+  width:100%;
+  height:92%;
+  // border:1px solid red;
+  #viewBox{
+    position: relative;
+    display: flex;
+    align-items:center;
+    width:50%;
+    height:5%;
+    // border:1px solid red;
+    .view{
+      position: relative;
+      display: flex;
+      width:80%;
+      // border:1px solid red;
+      color:#A0A0A0;
+      @include mobile-only(){
+        font-size:1.0rem;
+      }
+      @include lg(){
+        font-size: 2.0rem;
+      };
+    }
+  }
+  #modifyBox{
+    position: relative;
+    display: flex;
+    align-items:center;
+    width:50%;
+    height:5%;
+    // border:1px solid red;
+    .modifyBtn{
+      position: absolute;
+      display:flex;
+      // border:1px solid red;
+      color:#A0A0A0;
+      @include mobile-only(){
+        right:40%;
+        font-size:1.3rem;
+      }
+      @include lg(){
+        right:27%;
+        font-size: 2.5rem;
+      };
+    }
+    .deleteBtn{
+      position: absolute;
+      display:flex;
+      // border:1px solid red;
+      color:#A0A0A0;
+      @include mobile-only(){
+        right:23%;
+        font-size:1.3rem;
+      }
+      @include lg(){
+        right:18%;
+        font-size: 2.5rem;
+      };
+    }
+    #memberBoxWrapper{
+      position:absolute;
+      display:flex;
+      align-items: center;
+      width:20%;
+      height:100%;
+      bottom:0%;
+      @include mobile-only(){
+        right:0%;
+      }
+      @include lg(){
+        justify-content:right;
+        right:0%;
+      };
+      // border:1px solid red;
+    }
+  }
+  #content{
+    position:absolute;
+    display:flex;
+    width:100%;
+    top:5%;
+    @include mobile-only(){
+      height:36%;
+      padding-bottom:36%;
+    }
+    @include lg(){
+      height:45%;
+      padding-bottom:45%;
+    };
+    // border:1px solid blue;
+    #imgWrapper{
+      position:absolute;
+      top:5%;
+  
+      @include mobile-only(){
+        width:40%;
+        height:40%;
+        padding-bottom:40%;
+        left:2%;
+      }
+      @include lg(){
+        width:35%;
+        height:35%;
+        padding-bottom:35%;
+        left:3%;
+      };
+      border: 3px solid $yellow;
+      border-radius: 5px;
+      .img{
+        position: absolute;
+        width:100%;
+        height:100%;
+        object-fit:100%;
+        // object-position: center;
+      }
+    }
+    .text{
+      position:absolute;
+      display:flex;
+      top:5%;
+      text-align:left;
+      // border:1px solid blue;
+      @include mobile-only(){
+        font-size:1.3rem;
+        right:6%;
+        width:45%;
+        height:45%;
+        padding-bottom:45%;
+      }
+      @include lg(){
+        font-size: 2.5rem;
+        right:3%;
+        width:55%;
+        height:35%;
+      };
+    }
+  }
+  #commentWrapper{
+    position: absolute;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    width:100%;
+    @include mobile-only(){
+      top:45%;
+      height:70%;
+    }
+    @include lg(){
+      top:53%;
+      height:47%;
+    };
+    // border:3px solid green;
+  }
+  #paginationWrapper{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width:90%;
+    height:20%;
+    bottom:-5%;
+    // border:1px solid red;
+  }
+}
