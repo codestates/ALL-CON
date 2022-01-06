@@ -38,7 +38,6 @@ module.exports = (sequelize, DataTypes) => {
     image_concert: DataTypes.STRING,
     title: DataTypes.STRING,
     period: DataTypes.STRING,
-    show_schedule: DataTypes.STRING,
     place: DataTypes.STRING,
     price: DataTypes.STRING,
     running_time: DataTypes.STRING,

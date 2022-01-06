@@ -135,12 +135,6 @@ const yes24Crawler = async () => {
                   inputPeriod = inputPeriod.filter((el) => el !== undefined && el !== '')
                 }
               }
-              // 공연 시간 (show_schedule) - 1
-              else if(concertInfoModi[i].indexOf('시간') !== -1 && concertInfoModi[i].indexOf('분') === -1) {
-                if(concertInfoModi[i].indexOf('시간:') !== -1) inputShow_schedule = concertInfoModi[i].split('시간:')[1];
-                else if(concertInfoModi[i].indexOf('시간: ') !== -1) inputShow_schedule = concertInfoModi[i].split('시간: ')[1];
-                else if(concertInfoModi[i].indexOf('시간 : ') !== -1) inputShow_schedule = concertInfoModi[i].split('시간 : ')[1];
-              }
               // 공연 장소 (place)
               else if(concertInfoModi[i].indexOf('장소') !== -1 || concertInfoModi[i].indexOf('장 소') !== -1 || concertInfoModi[i].indexOf('공연장') !== -1
               || concertInfoModi[i].indexOf('노들섬') !== -1) {
@@ -155,7 +149,6 @@ const yes24Crawler = async () => {
                   else if(concertInfoModi[i].indexOf('공연장: ') !== -1)  inputPlace = concertInfoModi[i].split('공연장: ')[1];
                   else if(concertInfoModi[i].indexOf('공연장:') !== -1)  inputPlace = concertInfoModi[i].split('공연장:')[1];
                   else inputPlace = concertInfoModi[i]
-
                 }
               }
               // 티켓가격 (price)
@@ -203,14 +196,11 @@ const yes24Crawler = async () => {
               image_concert: inputImage,
               title: inputTitle || title,
               period: inputPeriod,
-              show_schedule: inputShow_schedule,
               place: inputPlace,
               price: inputPrice,
               running_time: inputRunningTime,
               rating: inputRating,
               link: '',
-              view: Number(inputView),
-              total_comment: '',
             });
 
             console.log('*************************************************************************************');
