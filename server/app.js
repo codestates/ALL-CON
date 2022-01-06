@@ -12,7 +12,7 @@ const port = 8080;
 
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 31 * * * *',
+  '00 15 1 * * *',
   async () => {
     
     let interData = await interparkCrawler();
@@ -142,8 +142,6 @@ app.use('/', router.authRouter);
 app.use('/oauth', router.oauthRouter);
 app.use('/user', router.userRouter);
 app.use('/concert', router.concertRouter);
-app.use('/concert/:concertid/comment', router.concertCommentRouter);
-app.use('/concert/:concertid/article/:articleid/comment', router.conchinCommentRouter);
 
 /* Running */ 
 const server = app.listen(port, () => console.log(`${port} port http server runnning`));
