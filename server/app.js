@@ -12,7 +12,7 @@ const port = 8080;
 
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 45 * * * *',
+  '00 15 1 * * *',
   async () => {
     
     let interData = await interparkCrawler();

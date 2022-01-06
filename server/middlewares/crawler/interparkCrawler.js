@@ -24,7 +24,7 @@ const interparkCrawler = async () => {
     let post_date = '';
     let image_concert = '';
     let title = '';
-    let show_schedule = '';
+    let period = '';
     let place = '';
     let price = '';
     let runnig_time = '';
