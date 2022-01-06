@@ -3,6 +3,7 @@ import groupImage from '../../images/group.png';
 import articleImage from '../../images/inseong.png'
 import shield from '../../images/shield.png';
 import tripleDot from '../../images/tripleDot.png';
+
 function ConChinArticleContentBox(){
   return (
     <div id='conChinArticleContentBox'>
@@ -28,13 +29,6 @@ function ConChinArticleContentBox(){
               <div className='count'>1/3</div>
             </div>
           </div>
-          {/* <div id='memberMiniModal'>
-            <div id='box'>
-              <button className='minusBtn'>-</button>
-              <p className='count'>1</p>
-              <button className='plusBtn'>+</button>
-            </div>
-          </div> */}
         </div>
         <div id='content'>
           <div id='imgWrapper'>
@@ -48,7 +42,6 @@ function ConChinArticleContentBox(){
           </p>
         </div>
         <div id='commentWrapper'>
-
            <div id='commentBox'>
              <div id='countWrapper'>
                <h1 className='count'>10개의 댓글</h1>
@@ -77,7 +70,6 @@ function ConChinArticleContentBox(){
               </div>
               <p id='text'>올콘 뛰세요..? 부럽다...</p>
             </div>
-
             <div className='box'>
               <div className='dateBox'>
                 <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
@@ -91,7 +83,6 @@ function ConChinArticleContentBox(){
               </div>
               <p id='text'>올콘 뛰세요..? 부럽다...</p>
             </div>
-
             <div className='box'>
               <div className='dateBox'>
                 <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
