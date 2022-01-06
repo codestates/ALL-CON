@@ -357,18 +357,19 @@
       display: flex;
 
       @include mobile-only(){
-        height:9%;
-        width:9%;
-        padding-bottom:9%;
-        bottom:13%;
-        left:1%;
+        position: absolute;
+        display: flex;
+        height:27px;
+        width:27px;
+        left: 3%;
+        top:55%;
+        transform: translate(0,-50%);
       }
       @include lg(){
-        height:6%;
-        width:6%;
-        padding-bottom:6%;
-        bottom:10%;
-        left:1%;
+        height:47px;
+        width:47px;
+        bottom:16%;
+        left:2%;
       };
       // border:1px solid orange;
       .img{
@@ -390,8 +391,8 @@
           height:13px;
         }
         @include lg(){
-          width:30px;
-          height:30px;
+          width: 20px;
+          height:20px;
         };
       }
     }
@@ -428,18 +429,19 @@
       display: flex;
       width:80%;
       height:50%;
-      bottom:0%;
-      left:10%;
+      top:70%;
+      transform: translate(0,-50%);
       border:none;
       outline:none;
+      overflow:hidden;
       resize:none;
       border-radius: 5px;
       @include mobile-only(){
-        left:11%;
+        left:12.5%;
         font-size:1.3rem;
       }
       @include lg(){
-        left:8%;
+        left:7.5%;
         font-size:2.5rem;
       };
     }
@@ -448,13 +450,14 @@
       display: flex;
       width:80%;
       height:50%;
-      bottom:0%;
+      top:68%;
+      transform: translate(0,-50%);
       @include mobile-only(){
-        left:11%;
+        left:12.5%;
         font-size:1.3rem;
       }
       @include lg(){
-        left:8%;
+        left:7.5%;
         font-size:2.5rem;
       };
     }
