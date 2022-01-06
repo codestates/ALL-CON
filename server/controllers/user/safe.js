@@ -1,9 +1,32 @@
+require('dotenv').config();
 const { userAuth } = require('../../middlewares/authorized/userAuth')
 const { Users } = require('../../models');
+const twilio = require("twilio")(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
 
 module.exports = {
   post: async (req, res) => {
     try {
+      // 로그인 인증 검사
+      // const userInfo = await userAuth(req, res);
+
+      /* 임시 TEST CODE (삭제예정) */
+      // POSTMAN 테스트시 => req.body = { id, email }
+      const userInfo = req.body; 
+      /* 임시 TEST CODE (삭제예정) */
+
+      const { phone_number } = req.body;
+
+      if(!phone_number) return res.status(404).json({ message: 'Bad Request!' });
+      
+      // const authCode = await twilioHelper.auth(phone_number);
+      // console.log(authCode);
+      
+      twilio.messages.create({
+        from: process.env.TWILIO_PHONE,
+        to: `+82${Number(phone_number)}`,
+        body: `ALL-CON 문자메시지 테스트`,
+      });
+
       res.status(200).json({ message: 'POST : 휴대폰 인증 요청!' });
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
@@ -41,6 +64,7 @@ module.exports = {
       // 업데이트된 회원정보 반환
       res.status(200).json({ data: { userInfo: newUserInfo }, message: 'Updated Success!' });
     } catch (err) {
+      console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
     }
   }

@@ -10,6 +10,7 @@ router.get('/myarticle', user.myarticle.get);
 router.get('/mycomment', user.mycomment.get);
 router.patch('/safe', user.safe.patch);
 router.post('/safe', user.safe.post);
+router.post('/safe/confirm', user.confirm.post);
 router.get('/other/:userid', user.other.get);
 
 module.exports = router;
