@@ -1,4 +1,5 @@
 const { concertAlarm } = require('./middlewares/concertAlarm/concertAlarm.js');
+const { concertCleaner } = require('./middlewares/concertCleaner/concertCleaner.js');
 const { crawler } = require('./middlewares/crawler/crawler.js');
 const router = require('./routers');
 const cookieParser = require('cookie-parser');
@@ -11,15 +12,25 @@ const port = 8080;
 
 // 콘서트 티켓 오픈일 알라머 실행
 const autoAlarm = schedule.scheduleJob(
-  '00 58 * * * *',
+  '00 20 1 * * *',
   async () => {
     concertAlarm()
+    console.log('24시간마다 콘서트 알람중..')
+  }
+)
+
+// 콘서트 클리너 실행
+const autoConcertCleaner = schedule.scheduleJob(
+  '00 44 * * * *',
+  async () => {
+    concertCleaner()
+    console.log('24시간마다 티켓 오픈일이 지난 콘서트 삭제중(non-activation)..')
   }
 )
 
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 52 * * * *',
+  '00 40 * * * *',
   async () => {
     await crawler()
     console.log('1시간마다 크롤링중..')

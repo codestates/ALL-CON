@@ -4,7 +4,9 @@ require('dotenv').config();
 
 const emailAlarm = async (alarmInfo) => {
 
-  console.log("********************* emailAlarm 확인!!! ********************", alarmInfo)
+  console.log("********************* emailAlarm 확인!!! ********************")
+  console.log(alarmInfo)
+
   // 송신 이메일 설정
   const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -25,6 +27,7 @@ const emailAlarm = async (alarmInfo) => {
     text: `${alarmInfo.title}의 티켓오픈일은 ${alarmInfo.open_date} 입니다!`
   })
 
+  // 이메일은 보낸 알람은 테이블에서 삭제
   await Alarms.destroy({
     where: { 
       user_id: alarmInfo.user_id, 

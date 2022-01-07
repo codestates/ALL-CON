@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN,
       defaultValue: false
     },
-    kakao_alarm: {
+    phone_alarm: {
       allowNull: false,
       type: DataTypes.BOOLEAN,
       defaultValue: false

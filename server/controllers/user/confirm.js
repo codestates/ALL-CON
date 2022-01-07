@@ -17,6 +17,8 @@ module.exports = {
       
       const { message_key } = req.body;
 
+      console.log("message_key -----------------", message_key)
+
       if(!message_key) return res.status(400).json({ message: 'Bad Reqeust!' });
       if(message_key !== userInfo.message_key) return res.status(401).json({ message: 'Message_Key Is Not Authorized!' });
 
