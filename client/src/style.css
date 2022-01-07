@@ -5,10 +5,6 @@
   padding: 0;
   box-sizing: border-box; }
 
-html,
-body {
-  height: 100%; }
-
 html {
   font-size: 10px; }
 
@@ -649,6 +645,58 @@ html {
       #FooterContainer #copyright {
         font-size: 1.6rem; } }
 
+#headerContainer {
+  z-index: 15;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 5%;
+  background-color: white; }
+  #headerContainer #logoBar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 100%; }
+    #headerContainer #logoBar .logo {
+      z-index: 16;
+      position: absolute;
+      display: flex;
+      top: 200%;
+      transform: translate(0, -50%); }
+      @media (max-width: 767px) {
+        #headerContainer #logoBar .logo {
+          width: 95px;
+          height: 60px; } }
+      @media (min-width: 1200px) {
+        #headerContainer #logoBar .logo {
+          width: 115px;
+          height: 75px; } }
+      #headerContainer #logoBar .logo:hover {
+        cursor: pointer; }
+  #headerContainer #absoluteBar {
+    z-index: 15;
+    opacity: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 150%;
+    height: 5%;
+    width: 100%;
+    background-color: white; }
+  #headerContainer #fixedBar {
+    z-index: 15;
+    opacity: 90%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 0%;
+    height: 5%;
+    width: 100%;
+    background-color: white; }
+
 /***** 재혁 *****/
 #conChinContainer {
   position: absolute;
@@ -1166,7 +1214,8 @@ html {
   #mainContainer {
     position: absolute;
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    top: 10%; }
   #mainJumboWrapper {
     position: absolute;
     top: 0;
@@ -1203,7 +1252,8 @@ html {
     justify-content: center;
     position: absolute;
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    top: 10%; }
   #mainJumboWrapper {
     position: absolute;
     top: 0;
@@ -2045,9 +2095,153 @@ html {
 
 #concertContainer {
   position: absolute;
-  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 10%;
   width: 100%;
-  height: 100%;
-  border: 4px solid green; }
+  height: 100%; }
+  #concertContainer #lineOrderWrapper {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%; }
+    @media (max-width: 767px) {
+      #concertContainer #lineOrderWrapper {
+        height: 8%; } }
+    #concertContainer #lineOrderWrapper #bottomLineOrderBox {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%; }
+      #concertContainer #lineOrderWrapper #bottomLineOrderBox h1 {
+        position: absolute;
+        left: 3%;
+        font-size: 2.2rem; }
+  #concertContainer #concertsBoard {
+    position: absolute;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 130%; }
+    #concertContainer #concertsBoard #concertBoxWrapper {
+      width: 90%;
+      height: 10%;
+      border: 1px solid pink; }
+    #concertContainer #concertsBoard #concertBoxWrapper2 {
+      top: 8%;
+      width: 90%;
+      height: 10%; }
+    #concertContainer #concertsBoard #concertBoxWrapper3 {
+      width: 90%;
+      height: 10%; }
+    #concertContainer #concertsBoard #concertBoxWrapper4 {
+      width: 90%;
+      height: 10%; }
+    #concertContainer #concertsBoard #concertBoxWrapper5 {
+      width: 90%;
+      height: 10%; }
+    #concertContainer #concertsBoard #concertBoxWrapper6 {
+      width: 90%;
+      height: 10%; }
+    #concertContainer #concertsBoard #concertBoxWrapper7 {
+      width: 90%;
+      height: 10%; }
+
+#concertBoxContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%; }
+  #concertBoxContainer #poster {
+    width: 20%; }
+  #concertBoxContainer .infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 75%;
+    height: 90%; }
+    #concertBoxContainer .infos h2 {
+      font-size: 1.4rem; }
+    #concertBoxContainer .infos .miniBox {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 70%;
+      font-size: 1.2rem; }
+      #concertBoxContainer .infos .miniBox #left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 50%;
+        height: 100%; }
+        #concertBoxContainer .infos .miniBox #left #whereTag {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30%;
+          height: 25%;
+          background: #ffce63;
+          color: #fff;
+          font-weight: bold;
+          border-radius: 5px; }
+      #concertBoxContainer .infos .miniBox #right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 30%;
+        height: 100%; }
+
+#concertChosenBoxContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%; }
+  #concertChosenBoxContainer #poster {
+    width: 20%; }
+  #concertChosenBoxContainer .infos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 75%;
+    height: 90%; }
+    #concertChosenBoxContainer .infos h2 {
+      font-size: 1.4rem; }
+    #concertChosenBoxContainer .infos .miniBox {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 70%;
+      font-size: 1.2rem; }
+      #concertChosenBoxContainer .infos .miniBox #left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 50%;
+        height: 100%; }
+        #concertChosenBoxContainer .infos .miniBox #left #whereTag {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30%;
+          height: 25%;
+          background: #ffce63;
+          color: #fff;
+          font-weight: bold;
+          border-radius: 5px; }
+      #concertChosenBoxContainer .infos .miniBox #right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 30%;
+        height: 100%; }
 
 /*------------선영----------*/
