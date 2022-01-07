@@ -6,7 +6,15 @@ module.exports = {
   get: async (req, res) => {
     try {
       // 로그인 인증 검사
-      const userInfo = await userAuth(req, res);
+      // const userInfo = await userAuth(req, res);
+
+      /* 임시 TEST CODE (삭제예정) */
+      // POSTMAN 테스트시 => req.body = { id }
+      const userInfo = await Users.findOne({
+        where: { id: req.body.id }
+      });
+      /* 임시 TEST CODE (삭제예정) */
+
       // 회원의 민감정보(비밀번호) 삭제
       delete userInfo.dataValues.password;
 
@@ -22,8 +30,10 @@ module.exports = {
       // const userInfo = await userAuth(req, res);
 
       /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id, email }
-      const userInfo = req.body; 
+      // POSTMAN 테스트시 => req.body = { id }
+      const userInfo = await Users.findOne({
+        where: { id: req.body.id }
+      });
       /* 임시 TEST CODE (삭제예정) */
 
       const { username, introduction, password } = req.body;
@@ -68,26 +78,21 @@ module.exports = {
       // const userInfo = await userAuth(req, res);
 
       /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id, email }
-      const userInfo = req.body; 
+      // POSTMAN 테스트시 => req.body = { id }
+      const userInfo = await Users.findOne({
+        where: { id: req.body.id }
+      });
       /* 임시 TEST CODE (삭제예정) */
 
-      // 유효하지 않는 유저정보인 경우 에러메시지 반환
-      if(!userInfo) {
-        return res.status(403).json({ message: 'Invalid User!' });
-      } 
-      // 유효한 유저인 경우, 해당 유저 관련된 DB 삭제 후 탈퇴처리
-      else {
-        // 종속된 하위 테이블 역순으로 삭제
-        Alarms.destroy({ where: { user_id: userInfo.id } });  // 알람 삭제
-        ArticleComments.destroy({ where: { user_id: userInfo.id } });  // 콘친찾기 댓글 삭제
-        Articles.destroy({ where: { user_id: userInfo.id } });  // 콘친찾기 게시물 삭제
-        ConcertComments.destroy({ where: { user_id: userInfo.id } });  // 콘서트 댓글 삭제
-        Users.destroy({ where: { email: userInfo.email } });  // 유저 삭제예정
+      // 종속된 하위 테이블 역순으로 삭제
+      Alarms.destroy({ where: { user_id: userInfo.id } });  // 알람 삭제
+      ArticleComments.destroy({ where: { user_id: userInfo.id } });  // 콘친찾기 댓글 삭제
+      Articles.destroy({ where: { user_id: userInfo.id } });  // 콘친찾기 게시물 삭제
+      ConcertComments.destroy({ where: { user_id: userInfo.id } });  // 콘서트 댓글 삭제
+      Users.destroy({ where: { email: userInfo.email } });  // 유저 삭제
 
-        res.cookie('accessToken', null, { maxAge: 0 });  // 쿠키 삭제
-        res.status(200).json({ message: 'Goodbye!' });
-      }
+      res.cookie('accessToken', null, { maxAge: 0 });  // 쿠키 삭제
+      res.status(200).json({ message: 'Goodbye!' });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ message: 'Server Error!' });

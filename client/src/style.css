@@ -63,7 +63,7 @@ html {
       height: 50%;
       font-size: 2rem; } }
   .order:hover {
-    background-color: #FFCE63;
+    background-color: #ffce63;
     color: white;
     cursor: pointer; }
 
@@ -132,7 +132,7 @@ html {
           width: 100%; }
           @media (max-width: 767px) {
             #articleBox #box .article .title .date {
-              font-size: 1.0rem; } }
+              font-size: 1rem; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .date {
               font-size: 2rem; } }
@@ -145,7 +145,7 @@ html {
           text-align: left; }
           @media (max-width: 767px) {
             #articleBox #box .article .title .text {
-              font-size: 1.0rem; } }
+              font-size: 1rem; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .text {
               font-size: 2rem; } }
@@ -167,7 +167,7 @@ html {
           @media (max-width: 767px) {
             #articleBox #box .article .title .count {
               left: 15%;
-              font-size: 1.0rem; } }
+              font-size: 1rem; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .count {
               top: 1.5%;
@@ -214,7 +214,7 @@ html {
       .memberBox .count {
         padding-top: 3%;
         padding-left: 30%;
-        font-size: 1.0rem; } }
+        font-size: 1rem; } }
     @media (min-width: 1200px) {
       .memberBox .count {
         padding-top: 3%;
@@ -285,11 +285,11 @@ html {
     display: flex;
     width: 90%;
     height: 10%;
-    top: -12%; }
+    top: -10%; }
     #commentBox #countWrapper .count {
       position: absolute;
       display: flex;
-      bottom: 10%;
+      bottom: 5%;
       left: 1%; }
       @media (max-width: 767px) {
         #commentBox #countWrapper .count {
@@ -303,7 +303,7 @@ html {
     width: 100%;
     height: 20%;
     top: 0%;
-    border: 1px solid #C4C4C4;
+    border: 1px solid #c4c4c4;
     border-radius: 5px; }
     #commentBox .box .dateBox {
       position: absolute;
@@ -316,7 +316,7 @@ html {
         color: #a0a0a0; }
         @media (max-width: 767px) {
           #commentBox .box .dateBox .nickNameAndDate {
-            font-size: 1.0rem; } }
+            font-size: 1rem; } }
         @media (min-width: 1200px) {
           #commentBox .box .dateBox .nickNameAndDate {
             font-size: 2rem; } }
@@ -336,7 +336,7 @@ html {
         #commentBox .box .imgWrapper {
           height: 47px;
           width: 47px;
-          bottom: 16%;
+          bottom: 14.5%;
           left: 2%; } }
       #commentBox .box .imgWrapper .img {
         position: absolute;
@@ -369,6 +369,8 @@ html {
       padding-bottom: 4%;
       top: 0%;
       right: 0%; }
+      #commentBox .box .dotWrapper:hover {
+        cursor: pointer; }
       #commentBox .box .dotWrapper .dot {
         position: absolute;
         display: flex;
@@ -388,8 +390,7 @@ html {
       position: absolute;
       display: flex;
       width: 80%;
-      height: 50%;
-      top: 70%;
+      height: 25%;
       transform: translate(0, -50%);
       border: none;
       outline: none;
@@ -399,28 +400,160 @@ html {
       @media (max-width: 767px) {
         #commentBox .box #input {
           left: 12.5%;
-          font-size: 1.3rem; } }
+          font-size: 1.3rem;
+          top: 70%; } }
       @media (min-width: 1200px) {
         #commentBox .box #input {
-          left: 7.5%;
-          font-size: 2.5rem; } }
+          left: 9%;
+          font-size: 2.3rem;
+          top: 65%; } }
     #commentBox .box #text {
       position: absolute;
       display: flex;
       width: 80%;
       height: 50%;
-      top: 68%;
       transform: translate(0, -50%); }
       @media (max-width: 767px) {
         #commentBox .box #text {
           left: 12.5%;
-          font-size: 1.3rem; } }
+          font-size: 1.3rem;
+          top: 68%; } }
       @media (min-width: 1200px) {
         #commentBox .box #text {
-          left: 7.5%;
-          font-size: 2.5rem; } }
+          left: 9%;
+          font-size: 2.3rem;
+          top: 75%; } }
 
 /***** commentBox *****/
+/***** headerMenu *****/
+#menuWrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 15%;
+  left: 2%; }
+  @media (max-width: 767px) {
+    #menuWrapper {
+      display: flex; } }
+  @media (min-width: 1200px) {
+    #menuWrapper {
+      display: none; } }
+  #menuWrapper .menu {
+    position: relative;
+    width: 30px;
+    height: 30px; }
+    #menuWrapper .menu:hover {
+      cursor: pointer; }
+
+#searchWrapper {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 15%;
+  right: 15%; }
+  @media (max-width: 767px) {
+    #searchWrapper {
+      display: flex; } }
+  @media (min-width: 1200px) {
+    #searchWrapper {
+      display: none; } }
+  #searchWrapper .search {
+    position: relative;
+    width: 25px;
+    height: 25px; }
+    #searchWrapper .search:hover {
+      cursor: pointer; }
+
+#loginWrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  right: 0%; }
+  @media (max-width: 767px) {
+    #loginWrapper {
+      width: 15%; } }
+  @media (min-width: 1200px) {
+    #loginWrapper {
+      width: 5%; } }
+  #loginWrapper .login {
+    position: relative;
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #loginWrapper .login {
+        font-size: 2rem; } }
+    @media (min-width: 1200px) {
+      #loginWrapper .login {
+        font-size: 2.5rem; } }
+    #loginWrapper .login:hover {
+      cursor: pointer; }
+
+#hiddenMenuBox {
+  position: absolute;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 15%;
+  left: 1%; }
+  @media (max-width: 767px) {
+    #hiddenMenuBox {
+      display: none; } }
+  @media (min-width: 1200px) {
+    #hiddenMenuBox {
+      display: flex; } }
+  #hiddenMenuBox .menu {
+    font-size: 2.5rem;
+    font-weight: bold; }
+
+#hiddenSearchBox {
+  position: absolute;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 20%;
+  right: 6%; }
+  #hiddenSearchBox #searchWrapper {
+    position: absolute;
+    height: 25px;
+    width: 70%;
+    right: 0%;
+    background-color: #eaeaea;
+    border-radius: 50px; }
+    @media (max-width: 767px) {
+      #hiddenSearchBox #searchWrapper {
+        display: none; } }
+    @media (min-width: 1200px) {
+      #hiddenSearchBox #searchWrapper {
+        display: flex;
+        justify-content: left; } }
+    #hiddenSearchBox #searchWrapper .searchBar {
+      position: relative;
+      outline: none;
+      resize: none;
+      border: none;
+      left: 5%;
+      background-color: #eaeaea;
+      border-radius: 50px; }
+  #hiddenSearchBox #imgWrapper {
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    right: 3%; }
+    @media (max-width: 767px) {
+      #hiddenSearchBox #imgWrapper {
+        display: none; } }
+    @media (min-width: 1200px) {
+      #hiddenSearchBox #imgWrapper {
+        display: flex; } }
+    #hiddenSearchBox #imgWrapper .img {
+      width: 100%;
+      height: 100%; }
+
+/***** headerMenu *****/
 /****** grids ******/
 #FooterContainer {
   display: flex;
@@ -521,15 +654,18 @@ html {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; }
+  justify-content: center;
+  top: 10%; }
   @media (max-width: 767px) {
     #conChinContainer {
       width: 100%;
       height: 100%; } }
   @media (min-width: 1200px) {
     #conChinContainer {
-      width: 100%;
-      height: 250%; } }
+      width: 75%;
+      height: 250%;
+      left: 50%;
+      transform: translate(-50%, 0%); } }
   #conChinContainer #jumbotron {
     position: relative;
     display: flex; }
@@ -540,7 +676,7 @@ html {
     @media (min-width: 1200px) {
       #conChinContainer #jumbotron {
         width: 100%;
-        height: 21%; } }
+        height: 15.5%; } }
   #conChinContainer #mainBox {
     position: relative;
     display: flex;
@@ -619,7 +755,7 @@ html {
         #conChinFindBox .btnWrapper .btn {
           width: 40%;
           padding-left: 6.5%;
-          font-size: 2.0rem;
+          font-size: 2rem;
           height: 45%; } }
       #conChinFindBox .btnWrapper .btn:hover {
         cursor: pointer; }
@@ -663,7 +799,7 @@ html {
   @media (min-width: 1200px) {
     #conChinArticleBox {
       border-top: 10px solid #ffce63;
-      height: 110%; } }
+      height: 90%; } }
 
 #conChinmemberBoxWrapper {
   position: absolute; }
@@ -685,7 +821,7 @@ html {
       height: 125%; } }
   @media (min-width: 1200px) {
     #conChinArticleContentBox {
-      top: 118%;
+      top: 107%;
       height: 125%; } }
 
 #titleBox {
@@ -715,10 +851,10 @@ html {
         width: 80%; } }
     @media (max-width: 767px) {
       #titleBox .title .text {
-        font-size: 2.0rem; } }
+        font-size: 2rem; } }
     @media (min-width: 1200px) {
       #titleBox .title .text {
-        font-size: 4.0rem; } }
+        font-size: 4rem; } }
   #titleBox #profileBox {
     position: absolute;
     display: flex;
@@ -777,13 +913,13 @@ html {
       position: relative;
       display: flex;
       width: 80%;
-      color: #A0A0A0; }
+      color: #a0a0a0; }
       @media (max-width: 767px) {
         #contentBox #viewBox .view {
-          font-size: 1.0rem; } }
+          font-size: 1rem; } }
       @media (min-width: 1200px) {
         #contentBox #viewBox .view {
-          font-size: 2.0rem; } }
+          font-size: 2rem; } }
   #contentBox #modifyBox {
     position: relative;
     display: flex;
@@ -793,26 +929,30 @@ html {
     #contentBox #modifyBox .modifyBtn {
       position: absolute;
       display: flex;
-      color: #A0A0A0; }
+      color: #a0a0a0; }
+      #contentBox #modifyBox .modifyBtn:hover {
+        cursor: pointer; }
       @media (max-width: 767px) {
         #contentBox #modifyBox .modifyBtn {
           right: 40%;
           font-size: 1.3rem; } }
       @media (min-width: 1200px) {
         #contentBox #modifyBox .modifyBtn {
-          right: 27%;
+          right: 35%;
           font-size: 2.5rem; } }
     #contentBox #modifyBox .deleteBtn {
       position: absolute;
       display: flex;
-      color: #A0A0A0; }
+      color: #a0a0a0; }
+      #contentBox #modifyBox .deleteBtn:hover {
+        cursor: pointer; }
       @media (max-width: 767px) {
         #contentBox #modifyBox .deleteBtn {
           right: 23%;
           font-size: 1.3rem; } }
       @media (min-width: 1200px) {
         #contentBox #modifyBox .deleteBtn {
-          right: 18%;
+          right: 23%;
           font-size: 2.5rem; } }
     #contentBox #modifyBox #memberBoxWrapper {
       position: absolute;
@@ -919,7 +1059,7 @@ html {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  border: 1px solid #C4C4C4;
+  border: 1px solid #c4c4c4;
   border-radius: 10px; }
   @media (max-width: 767px) {
     #conChinPostingBox {
@@ -928,7 +1068,8 @@ html {
   @media (min-width: 1200px) {
     #conChinPostingBox {
       width: 100%;
-      height: 45%; } }
+      height: 45%;
+      top: -3%; } }
   #conChinPostingBox #curOrder {
     position: absolute;
     display: flex;
@@ -954,9 +1095,9 @@ html {
         width: 95%; } }
     @media (min-width: 1200px) {
       #conChinPostingBox .posting {
-        width: 85%; } }
+        width: 90%; } }
     #conChinPostingBox .posting:hover {
-      background-color: #FFCE63;
+      background-color: #ffce63;
       cursor: pointer; }
     #conChinPostingBox .posting .title {
       position: absolute;
@@ -973,7 +1114,7 @@ html {
         #conChinPostingBox .posting .title {
           width: 68%;
           height: 100%;
-          font-size: 3.0rem; } }
+          font-size: 3rem; } }
     #conChinPostingBox .posting .date {
       position: absolute;
       display: flex;
@@ -981,19 +1122,19 @@ html {
       height: 100%; }
       @media (max-width: 767px) {
         #conChinPostingBox .posting .date {
-          right: 17%;
+          right: 21%;
           font-size: 0.5rem;
           width: 15%; } }
       @media (min-width: 1200px) {
         #conChinPostingBox .posting .date {
-          font-size: 2.0rem;
-          width: 15%;
+          font-size: 1.5rem;
+          width: 19%;
           right: 15%; } }
     #conChinPostingBox .posting .view {
       position: absolute;
       display: flex;
       align-items: center;
-      height: 49%;
+      height: 30%;
       right: 1%;
       transform: translate(0%, -50%); }
       @media (max-width: 767px) {
@@ -1006,7 +1147,7 @@ html {
       position: absolute;
       display: flex;
       align-items: center;
-      height: 49%;
+      height: 30%;
       right: 1%;
       text-align: right;
       transform: translate(0%, 50%); }

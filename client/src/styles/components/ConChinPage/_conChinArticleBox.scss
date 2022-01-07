@@ -1,26 +1,26 @@
-#conChinArticleBox{
+#conChinArticleBox {
   position: absolute;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  flex-wrap:wrap;
-  width:100%;
-  top:10%;
+  flex-wrap: wrap;
+  width: 100%;
+  top: 10%;
   // border:1px solid red;
-  @include mobile-only(){
-    border-top:5px solid $yellow;
-    height:90%;
+  @include mobile-only() {
+    border-top: 5px solid $yellow;
+    height: 90%;
   }
-  @include lg(){
-    border-top:10px solid $yellow;
-    height:110%;
-  };
+  @include lg() {
+    border-top: 10px solid $yellow;
+    height: 90%;
+  }
 }
-#conChinmemberBoxWrapper{
+#conChinmemberBoxWrapper {
   position: absolute;
-  @include mobile-only(){
-    top:40%;
+  @include mobile-only() {
+    top: 40%;
   }
-  @include lg(){
-    top:50%;
-  };
+  @include lg() {
+    top: 50%;
+  }
 }
