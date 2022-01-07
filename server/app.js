@@ -19,7 +19,7 @@ const autoAlarm = schedule.scheduleJob(
 
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 26 * * * *',
+  '00 52 * * * *',
   async () => {
     await crawler()
     console.log('1시간마다 크롤링중..')

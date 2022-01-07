@@ -12,14 +12,14 @@ const emailAlarm = async (alarmInfo) => {
     port: 587,
     secure: false,
     auth: {
-      user: `${process.env.GOOGLE_EMAIL}`,
-      pass: `${process.env.GOOGLE_PASSWORD}`
+      user: `${process.env.EMAIL_ID}`,
+      pass: `${process.env.EMAIL_PASS}`
     }
   })
 
   // 송신 이메일 포맷 및 내용 설정
   const info = await transporter.sendMail({
-    from: `<${process.env.GOOGLE_EMAIL}>`,
+    from: `<${process.env.EMAIL_ID}>`,
     to: `${alarmInfo.email}`,
     subject: `[All-Con] 콘서트 티켓오픈일 알림 - ${alarmInfo.title}`,
     text: `${alarmInfo.title}의 티켓오픈일은 ${alarmInfo.open_date} 입니다!`
