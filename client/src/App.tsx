@@ -7,7 +7,7 @@ import ConcertModal from './components/Modals/ConcertPage/ConcertModal';
 function App() {
   return (
     <div className='App'>
-      <ConChinPage />
+      <ConcertPage />
     </div>
   );
 }
