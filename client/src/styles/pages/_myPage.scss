@@ -1,0 +1,67 @@
+#myPageContainer {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 100%;
+  top: 10%;
+  // border: 3px solid red;
+  @include mobile-only() {
+    height: 180%;
+  }
+  @include md() {
+    height: 300%;
+  }
+  @include lg() {
+    height: 300%;
+  }
+  #myProfileBoxWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    // border: 2px solid green;
+    @include mobile-only() {
+      height: 33.33%;
+    }
+    @include md() {
+      height: 25%;
+    }
+    @include lg() {
+      height: 25%;
+    }
+  }
+  #myArticleBoxWrapper {
+    position: relative;
+    display: flex;
+    width: 100%;
+    // border: 2px solid blue;
+    @include mobile-only() {
+      height: 33.33%;
+    }
+    @include md() {
+      height: 50%;
+    }
+    @include lg() {
+      height: 50%;
+    }
+  }
+  #myCommentWrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    // border: 2px solid yellow;
+    @include mobile-only() {
+      height: 33.33%;
+    }
+    @include md() {
+      height: 25%;
+    }
+    @include lg() {
+      height: 25%;
+    }
+  }
+}
