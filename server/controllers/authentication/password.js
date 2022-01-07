@@ -1,6 +1,5 @@
 const { Users } = require('../../models');
 const nodemailer = require('nodemailer');
-
 require('dotenv').config();
 
 module.exports = {
@@ -24,26 +23,22 @@ module.exports = {
           port: 587,
           secure: false,
           auth: {
-            user: 'joykim9311@gmail.com',
-            pass: 'WHDLskfk11!'
+            user: `${process.env.GOOGLE_EMAIL}`,
+            pass: `${process.env.GOOGLE_PASSWORD}`
           }
         })
         
         // 송신 이메일 포맷 및 내용 설정
         const info = await transporter.sendMail({
-          from: '<joykim9311@gmail.com>',
+          from: `<${process.env.GOOGLE_EMAIL}>`,
           to: `${email}`,
           subject: '[All-Con] 인증번호를 입력해주세요',
           text: `인증번호를 입력해주세요! ${confirmNumber}`
         })
 
-        // const email_key = confirmNumber.toString() + process.env.ACCESS_SECRET
-
-        console.log("****************************:", email_key)
-
         // 유저 테이블에 email_key 필드를 업데이트
         await Users.update(
-          { email_key: confirmNumber + process.env.ACCESS_SECRET },
+          { email_key: confirmNumber.toString() },
           { where: { email: email }}
         )
         
@@ -53,7 +48,7 @@ module.exports = {
             { email_key: 'expired' },
             { where: { email: email }}
           )
-        }, 60000)
+        }, 60000*2)
 
         res.status(200).json({ message: 'POST : 인증번호 받기 버튼 클릭!' });
       }
