@@ -25,6 +25,11 @@ module.exports = {
       member_count: {
         allowNull: false,
         type: Sequelize.INTEGER,
+        defaultValue: 1
+      },
+      total_member: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
         defaultValue: 2
       },
       view: {
@@ -34,10 +39,12 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
+        onDelete : 'cascade',
         references: { model: 'Users', key: 'id' }
       },
       concert_id: {
         type: Sequelize.INTEGER,
+        onDelete : 'cascade',
         references: { model: 'Concerts', key: 'id' }
       },
       createdAt: {

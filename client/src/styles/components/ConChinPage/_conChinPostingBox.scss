@@ -1,0 +1,120 @@
+/****** conChinPostingBox ******/
+
+#conChinPostingBox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  @include mobile-only() {
+    width: 100%;
+    height: 35%;
+  }
+  @include lg() {
+    width: 100%;
+    height: 45%;
+    top: -3%;
+  }
+  #curOrder {
+    position: absolute;
+    display: flex;
+    font-size: 4rem;
+
+    @include mobile-only() {
+      font-size: 2.5rem;
+      left: 4%;
+      top: 4%;
+    }
+    @include lg() {
+      font-size: 4rem;
+      left: 8%;
+      top: 5%;
+    }
+  }
+  .posting {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 15%;
+    border-radius: 5px;
+    @include mobile-only() {
+      width: 95%;
+    }
+    @include lg() {
+      width: 90%;
+    }
+    &:hover {
+      background-color: #ffce63;
+      cursor: pointer;
+    }
+    .title {
+      position: absolute;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      left: 1%;
+      @include mobile-only() {
+        width: 65%;
+        height: 100%;
+        font-size: 1.3rem;
+      }
+      @include lg() {
+        width: 68%;
+        height: 100%;
+        font-size: 3rem;
+      }
+    }
+    .date {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      // border: 1px solid red;
+      @include mobile-only() {
+        right: 21%;
+        font-size: 0.5rem;
+        width: 15%;
+      }
+      @include lg() {
+        font-size: 1.5rem;
+        width: 19%;
+        right: 15%;
+      }
+    }
+    .view {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 30%;
+      right: 1%;
+      transform: translate(0%, -50%);
+      // border: 1px solid red;
+      @include mobile-only() {
+        font-size: 0.5rem;
+      }
+      @include lg() {
+        font-size: 1.5rem;
+      }
+    }
+    .place {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 30%;
+      right: 1%;
+      text-align: right;
+      transform: translate(0%, 50%);
+      // border: 1px solid red;
+      @include mobile-only() {
+        font-size: 0.5rem;
+        width: 16%;
+      }
+      @include lg() {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+/****** conChinPostingBox ******/

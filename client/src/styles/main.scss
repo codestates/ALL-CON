@@ -1,0 +1,35 @@
+/* main.css -> style.css*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+@import '../styles/mixins/responsive';
+@import '../styles/constants/color';
+@import '../styles/base/normalize';
+@import './layouts/grids.scss';
+@import './components/footer';
+@import './components/header.scss';
+
+/***** 재혁 *****/
+@import './pages/conChinPage.scss';
+@import './components/ConChinPage/conChinFindBox.scss';
+@import './components/ConChinPage/conChinConChinBox.scss';
+@import './components/ConChinPage/conChinArticleBox.scss';
+@import './components/ConChinPage/conChinArticleContentBox.scss';
+@import './components/ConChinPage/conChinPostingBox.scss';
+/***** 재혁 *****/
+
+/*---------------선영--------------------*/
+@import '../styles/pages/mainPage.scss';
+@import '../styles/layouts/jumbotronBackground';
+@import '../styles/components/posterSlide';
+@import '../styles/components/MainPage/mainConcertInfo';
+@import '../styles/components/MainPage/mainFindConchin';
+@import '../styles/pages/concertPage';
+/*------------선영----------*/

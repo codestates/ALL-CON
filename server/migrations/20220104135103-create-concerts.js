@@ -8,6 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      activation: { 
+        allowNull: false,
+        type: Sequelize.BOOLEAN,
+        defaultValue: true
+      },
       exclusive: {
         type: Sequelize.STRING
       },
@@ -24,9 +29,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       period: {
-        type: Sequelize.STRING
-      },
-      show_schedule: {
         type: Sequelize.STRING
       },
       place: {

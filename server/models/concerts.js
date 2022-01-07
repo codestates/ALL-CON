@@ -32,13 +32,17 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Concerts.init({
+    activation: { 
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
     exclusive: DataTypes.STRING,
     open_date: DataTypes.DATE,
     post_date: DataTypes.STRING,
     image_concert: DataTypes.STRING,
     title: DataTypes.STRING,
     period: DataTypes.STRING,
-    show_schedule: DataTypes.STRING,
     place: DataTypes.STRING,
     price: DataTypes.STRING,
     running_time: DataTypes.STRING,

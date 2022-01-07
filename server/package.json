@@ -16,15 +16,21 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
     "express": "^4.17.2",
     "iconv-lite": "^0.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "libphonenumber-js": "^1.9.44",
     "mysql2": "^2.3.3",
     "node-schedule": "^2.1.0",
+    "nodemailer": "^6.7.2",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
     "routers": "^0.1.4",
+    "selenium-webdriver": "^4.1.0",
     "sequelize": "^6.12.5",
     "sequelize-cli": "^6.3.0",
+    "twilio": "^3.72.0",
     "voca": "^1.4.0"
   }
 }

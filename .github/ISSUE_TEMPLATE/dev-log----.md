@@ -1,6 +1,6 @@
 ---
 name: Dev Log 템플릿
-about: "[✍️ Dev Log] 이름 / 2021-00-00"
+about: "[✍️ Dev Log] BE/FE 이름 / 2022-01-00"
 title: ''
 labels: ''
 assignees: ''

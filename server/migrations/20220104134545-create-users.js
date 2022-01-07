@@ -29,11 +29,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       phone_number: {
-        unique: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       birth: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       gender: {
         type: Sequelize.STRING
@@ -45,6 +44,14 @@ module.exports = {
       },
       sign_method: {
         type: Sequelize.STRING
+      },
+      email_key: {
+        type: Sequelize.STRING,
+        defaultValue: 'expired'
+      },
+      message_key: {
+        type: Sequelize.STRING,
+        defaultValue: 'expired'
       },
       createdAt: {
         allowNull: false,
