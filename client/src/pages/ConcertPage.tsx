@@ -1,10 +1,11 @@
-import Header from '../components/Header';
 import ConcertBox from '../components/ConcertPage/ConcertBox';
 import ConcertChosenBox from '../components/ConcertPage/ConcertChosenBox';
+import ConcertModal from '../components/Modals/ConcertPage/ConcertModal';
+
 function ConcertPage() {
   return (
     <>
-      <Header />
+      {/* <ConcertModal /> */}
       <div id='concertContainer'>
         <div id='lineOrderWrapper'>
           <div id='bottomLineOrderBox'>
