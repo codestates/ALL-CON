@@ -8,6 +8,10 @@
     top: 102%;
     height: 125%;
   }
+  @include md() {
+    top: 107%;
+    height: 125%;
+  }
   @include lg() {
     top: 107%;
     height: 125%;
@@ -20,6 +24,9 @@
 
   @include mobile-only() {
     height: 8%;
+  }
+  @include md() {
+    height: 5%;
   }
   @include lg() {
     height: 5%;
@@ -37,6 +44,10 @@
       height: 80%;
       width: 70%;
     }
+    @include md() {
+      height: 50%;
+      width: 80%;
+    }
     @include lg() {
       height: 50%;
       width: 80%;
@@ -46,6 +57,9 @@
     .text {
       @include mobile-only() {
         font-size: 2rem;
+      }
+      @include md() {
+        font-size: 4rem;
       }
       @include lg() {
         font-size: 4rem;
@@ -64,6 +78,9 @@
     @include mobile-only() {
       height: 80%;
     }
+    @include md() {
+      height: 50%;
+    }
     @include lg() {
       height: 50%;
     }
@@ -78,6 +95,12 @@
         width: 25px;
         height: 25px;
       }
+      @include md() {
+        bottom: 10%;
+        right: 2%;
+        width: 40px;
+        height: 40px;
+      }
       @include lg() {
         bottom: 10%;
         right: 2%;
@@ -89,6 +112,9 @@
   .nickName {
     @include mobile-only() {
       font-size: 1.3rem;
+    }
+    @include md() {
+      font-size: 2.5rem;
     }
     @include lg() {
       font-size: 2.5rem;
@@ -104,6 +130,10 @@
   @include mobile-only() {
     height: 100%;
     top: 7.8%;
+  }
+  @include md() {
+    height: 100%;
+    top: 5%;
   }
   @include lg() {
     height: 100%;
@@ -124,6 +154,9 @@
       color: #a0a0a0;
       @include mobile-only() {
         font-size: 1rem;
+      }
+      @include md() {
+        font-size: 2rem;
       }
       @include lg() {
         font-size: 2rem;
@@ -149,6 +182,10 @@
         right: 40%;
         font-size: 1.3rem;
       }
+      @include md() {
+        right: 35%;
+        font-size: 2.5rem;
+      }
       @include lg() {
         right: 35%;
         font-size: 2.5rem;
@@ -166,6 +203,10 @@
         right: 23%;
         font-size: 1.3rem;
       }
+      @include md() {
+        right: 23%;
+        font-size: 2.5rem;
+      }
       @include lg() {
         right: 23%;
         font-size: 2.5rem;
@@ -179,6 +220,10 @@
       height: 100%;
       bottom: 0%;
       @include mobile-only() {
+        right: 0%;
+      }
+      @include md() {
+        justify-content: right;
         right: 0%;
       }
       @include lg() {
@@ -197,6 +242,10 @@
       height: 35%;
       padding-bottom: 35%;
     }
+    @include md() {
+      height: 45%;
+      padding-bottom: 45%;
+    }
     @include lg() {
       height: 45%;
       padding-bottom: 45%;
@@ -211,6 +260,12 @@
         padding-bottom: 40%;
         left: 8%;
         max-height: 70px;
+      }
+      @include md() {
+        width: 35%;
+        height: 35%;
+        padding-bottom: 35%;
+        left: 12%;
       }
       @include lg() {
         width: 35%;
@@ -241,6 +296,12 @@
         height: 45%;
         padding-bottom: 45%;
       }
+      @include md() {
+        font-size: 2.5rem;
+        right: -10%;
+        width: 55%;
+        height: 35%;
+      }
       @include lg() {
         font-size: 2.5rem;
         right: -10%;
@@ -257,8 +318,12 @@
     flex-wrap: wrap;
     width: 100%;
     @include mobile-only() {
-      top: 41%;
+      top: 48%;
       height: 60%;
+    }
+    @include md() {
+      top: 48%;
+      height: 45%;
     }
     @include lg() {
       top: 48%;
@@ -277,6 +342,10 @@
     @include mobile-only() {
       top: 85%;
       height: 20%;
+    }
+    @include md() {
+      top: 87%;
+      height: 25%;
     }
     @include lg() {
       top: 87%;

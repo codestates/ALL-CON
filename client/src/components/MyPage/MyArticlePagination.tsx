@@ -1,4 +1,4 @@
-function ConChinArticlePagination() {
+function MyArticlePagination() {
   return (
     <div id='pagination'>
       <ul className='page'>
@@ -13,11 +13,8 @@ function ConChinArticlePagination() {
       <ul className='page'>
         <p className='text'>4</p>
       </ul>
-      <ul className='page'>
-        <p className='text'>5</p>
-      </ul>
     </div>
   );
 }
 
-export default ConChinArticlePagination;
+export default MyArticlePagination;

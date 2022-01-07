@@ -1,15 +1,72 @@
 #concertContainer {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 10%;
   width: 100%;
   height: 100%;
-  border: 2px solid green;
   #lineOrderWrapper {
     position: absolute;
     top: 0;
+    display: flex;
+    justify-content: center;
     width: 100%;
     @include mobile-only() {
-      height: 50vh;
-      border: 1px solid red;
+      height: 8%;
+      // border: 2px solid red;
+    }
+    #bottomLineOrderBox {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      h1 {
+        position: absolute;
+        left: 3%;
+        font-size: 2.2rem;
+      }
+    }
+  }
+  #concertsBoard {
+    position: absolute;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 130%;
+    // border: 3px solid blue;
+    #concertBoxWrapper {
+      width: 90%;
+      height: 12%;
+      // border: 1px solid pink;
+    }
+    #concertBoxWrapper2 {
+      top: 8%;
+      width: 90%;
+      height: 12%;
+    }
+    #concertBoxWrapper3 {
+      width: 90%;
+      height: 12%;
+    }
+    #concertBoxWrapper4 {
+      width: 90%;
+      height: 12%;
+    }
+    #concertBoxWrapper5 {
+      width: 90%;
+      height: 12%;
+    }
+    #concertBoxWrapper6 {
+      width: 90%;
+      height: 12%;
+    }
+    #concertBoxWrapper7 {
+      width: 90%;
+      height: 12%;
     }
   }
 }
