@@ -5,10 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-html,
-body {
-  height: 100%;
-}
+
 @import '../styles/mixins/responsive';
 @import '../styles/constants/color';
 @import '../styles/base/normalize';
@@ -23,6 +20,12 @@ body {
 @import './components/ConChinPage/conChinArticleBox.scss';
 @import './components/ConChinPage/conChinArticleContentBox.scss';
 @import './components/ConChinPage/conChinPostingBox.scss';
+@import './components/MyPage/myProfileBox.scss';
+@import './components/MyPage/myArticleBox.scss';
+@import './components/MyPage/myCommentBox.scss';
+@import './components/Modals/MyPage/myProfileImageModal';
+@import './pages/myPage.scss';
+
 /***** 재혁 *****/
 
 /*---------------선영--------------------*/
@@ -32,4 +35,6 @@ body {
 @import '../styles/components/MainPage/mainConcertInfo';
 @import '../styles/components/MainPage/mainFindConchin';
 @import '../styles/pages/concertPage';
+@import '../styles/components/ConcertPage/concertBox';
+@import '../styles/components/ConcertPage/concertModal';
 /*------------선영----------*/
