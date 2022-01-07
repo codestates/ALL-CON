@@ -1,6 +1,5 @@
-
-function ConChinArticlePagination(){
-  return(
+function ConChinArticlePagination() {
+  return (
     <div id='pagination'>
       <ul className='page'>
         <p className='text'>1</p>
@@ -18,7 +17,7 @@ function ConChinArticlePagination(){
         <p className='text'>5</p>
       </ul>
     </div>
-  )
+  );
 }
 
 export default ConChinArticlePagination;

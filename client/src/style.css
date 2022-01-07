@@ -25,6 +25,10 @@ html {
     #bottomLineOrderBox {
       width: 93%;
       height: 21%; } }
+  @media (min-width: 768px) {
+    #bottomLineOrderBox {
+      width: 93%;
+      height: 15%; } }
   @media (min-width: 1200px) {
     #bottomLineOrderBox {
       width: 93%;
@@ -40,6 +44,9 @@ html {
   @media (max-width: 767px) {
     #noLineOrderBox {
       height: 12%; } }
+  @media (min-width: 768px) {
+    #noLineOrderBox {
+      height: 10%; } }
   @media (min-width: 1200px) {
     #noLineOrderBox {
       height: 10%; } }
@@ -57,6 +64,11 @@ html {
       width: 19%;
       height: 50%;
       font-size: 1.6rem; } }
+  @media (min-width: 768px) {
+    .order {
+      width: 10%;
+      height: 50%;
+      font-size: 2rem; } }
   @media (min-width: 1200px) {
     .order {
       width: 10%;
@@ -94,6 +106,9 @@ html {
       @media (max-width: 767px) {
         #articleBox #box .article {
           border-radius: 5px; } }
+      @media (min-width: 768px) {
+        #articleBox #box .article {
+          border-radius: 10px; } }
       @media (min-width: 1200px) {
         #articleBox #box .article {
           border-radius: 10px; } }
@@ -110,6 +125,9 @@ html {
         @media (max-width: 767px) {
           #articleBox #box .article .thumbNail {
             border-radius: 5px; } }
+        @media (min-width: 768px) {
+          #articleBox #box .article .thumbNail {
+            border-radius: 10px; } }
         @media (min-width: 1200px) {
           #articleBox #box .article .thumbNail {
             border-radius: 10px; } }
@@ -133,6 +151,9 @@ html {
           @media (max-width: 767px) {
             #articleBox #box .article .title .date {
               font-size: 1rem; } }
+          @media (min-width: 768px) {
+            #articleBox #box .article .title .date {
+              font-size: 2rem; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .date {
               font-size: 2rem; } }
@@ -146,6 +167,9 @@ html {
           @media (max-width: 767px) {
             #articleBox #box .article .title .text {
               font-size: 1rem; } }
+          @media (min-width: 768px) {
+            #articleBox #box .article .title .text {
+              font-size: 2rem; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .text {
               font-size: 2rem; } }
@@ -155,6 +179,11 @@ html {
             #articleBox #box .article .title .icon {
               width: 11px;
               height: 11px;
+              left: 3%; } }
+          @media (min-width: 768px) {
+            #articleBox #box .article .title .icon {
+              width: 25px;
+              height: 25px;
               left: 3%; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .icon {
@@ -168,6 +197,11 @@ html {
             #articleBox #box .article .title .count {
               left: 15%;
               font-size: 1rem; } }
+          @media (min-width: 768px) {
+            #articleBox #box .article .title .count {
+              top: 1.5%;
+              left: 13%;
+              font-size: 2rem; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .count {
               top: 1.5%;
@@ -188,6 +222,10 @@ html {
     .memberBox {
       width: 3.5rem;
       height: 1.8rem; } }
+  @media (min-width: 768px) {
+    .memberBox {
+      width: 8.9rem;
+      height: 3.6rem; } }
   @media (min-width: 1200px) {
     .memberBox {
       width: 8.9rem;
@@ -200,6 +238,11 @@ html {
         margin-right: 50%;
         width: 11px;
         height: 11px; } }
+    @media (min-width: 768px) {
+      .memberBox .icon {
+        margin-right: 45%;
+        width: 16px;
+        height: 16px; } }
     @media (min-width: 1200px) {
       .memberBox .icon {
         margin-right: 45%;
@@ -215,6 +258,11 @@ html {
         padding-top: 3%;
         padding-left: 30%;
         font-size: 1rem; } }
+    @media (min-width: 768px) {
+      .memberBox .count {
+        padding-top: 3%;
+        padding-left: 20%;
+        font-size: 2rem; } }
     @media (min-width: 1200px) {
       .memberBox .count {
         padding-top: 3%;
@@ -234,6 +282,9 @@ html {
   @media (max-width: 767px) {
     #pagination {
       height: 10%; } }
+  @media (min-width: 768px) {
+    #pagination {
+      height: 12%; } }
   @media (min-width: 1200px) {
     #pagination {
       height: 12%; } }
@@ -249,6 +300,13 @@ html {
         padding-bottom: 19%;
         margin: 2%;
         border-radius: 2px; } }
+    @media (min-width: 768px) {
+      #pagination .page {
+        width: 10%;
+        height: 10%;
+        margin: 2%;
+        padding-bottom: 10%;
+        border-radius: 5px; } }
     @media (min-width: 1200px) {
       #pagination .page {
         width: 10%;
@@ -267,6 +325,9 @@ html {
     @media (max-width: 767px) {
       #pagination .text {
         font-size: 1.3rem; } }
+    @media (min-width: 768px) {
+      #pagination .text {
+        font-size: 2rem; } }
     @media (min-width: 1200px) {
       #pagination .text {
         font-size: 2rem; } }
@@ -294,6 +355,9 @@ html {
       @media (max-width: 767px) {
         #commentBox #countWrapper .count {
           font-size: 1.5rem; } }
+      @media (min-width: 768px) {
+        #commentBox #countWrapper .count {
+          font-size: 2.5rem; } }
       @media (min-width: 1200px) {
         #commentBox #countWrapper .count {
           font-size: 2.5rem; } }
@@ -308,7 +372,7 @@ html {
     #commentBox .box .dateBox {
       position: absolute;
       display: flex;
-      width: 40%;
+      width: 100%;
       height: 30%;
       top: 1.5%;
       left: 1.5%; }
@@ -317,112 +381,133 @@ html {
         @media (max-width: 767px) {
           #commentBox .box .dateBox .nickNameAndDate {
             font-size: 1rem; } }
+        @media (min-width: 768px) {
+          #commentBox .box .dateBox .nickNameAndDate {
+            font-size: 2rem; } }
         @media (min-width: 1200px) {
           #commentBox .box .dateBox .nickNameAndDate {
             font-size: 2rem; } }
-    #commentBox .box .imgWrapper {
-      position: absolute;
-      display: flex; }
-      @media (max-width: 767px) {
-        #commentBox .box .imgWrapper {
+      #commentBox .box .dateBox .dotWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 4%;
+        width: 4%;
+        padding-bottom: 4%;
+        top: 0%;
+        right: 2%; }
+        #commentBox .box .dateBox .dotWrapper:hover {
+          cursor: pointer; }
+        #commentBox .box .dateBox .dotWrapper .dot {
           position: absolute;
           display: flex;
-          height: 27px;
-          width: 27px;
-          left: 3%;
-          top: 55%;
-          transform: translate(0, -50%); } }
-      @media (min-width: 1200px) {
-        #commentBox .box .imgWrapper {
-          height: 47px;
-          width: 47px;
-          bottom: 14.5%;
-          left: 2%; } }
-      #commentBox .box .imgWrapper .img {
-        position: absolute;
-        display: flex;
-        width: 100%;
-        height: 100%;
-        object-fit: 100%;
-        border-radius: 100%; }
-      #commentBox .box .imgWrapper .shield {
-        position: absolute;
-        display: flex;
-        object-fit: 100%;
-        bottom: 0%;
-        right: 0%; }
-        @media (max-width: 767px) {
-          #commentBox .box .imgWrapper .shield {
-            width: 13px;
-            height: 13px; } }
-        @media (min-width: 1200px) {
-          #commentBox .box .imgWrapper .shield {
-            width: 20px;
-            height: 20px; } }
-    #commentBox .box .dotWrapper {
-      position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          object-fit: 100%; }
+          @media (max-width: 767px) {
+            #commentBox .box .dateBox .dotWrapper .dot {
+              width: 1.1rem;
+              height: 1.1rem; } }
+          @media (min-width: 768px) {
+            #commentBox .box .dateBox .dotWrapper .dot {
+              width: 2.5rem;
+              height: 2.5rem; } }
+          @media (min-width: 1200px) {
+            #commentBox .box .dateBox .dotWrapper .dot {
+              width: 2.5rem;
+              height: 2.5rem; } }
+    #commentBox .box #imgAndText {
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: center;
-      height: 4%;
-      width: 4%;
-      padding-bottom: 4%;
-      top: 0%;
-      right: 0%; }
-      #commentBox .box .dotWrapper:hover {
-        cursor: pointer; }
-      #commentBox .box .dotWrapper .dot {
+      width: 100%;
+      height: 70%;
+      top: 30%; }
+      #commentBox .box #imgAndText .imgWrapper {
+        position: absolute;
+        display: flex; }
+        @media (max-width: 767px) {
+          #commentBox .box #imgAndText .imgWrapper {
+            position: absolute;
+            display: flex;
+            height: 27px;
+            width: 27px;
+            left: 3%; } }
+        @media (min-width: 768px) {
+          #commentBox .box #imgAndText .imgWrapper {
+            height: 47px;
+            width: 47px;
+            left: 2%; } }
+        @media (min-width: 1200px) {
+          #commentBox .box #imgAndText .imgWrapper {
+            height: 47px;
+            width: 47px;
+            left: 2%; } }
+        #commentBox .box #imgAndText .imgWrapper .img {
+          position: absolute;
+          display: flex;
+          width: 100%;
+          height: 100%;
+          object-fit: 100%;
+          border-radius: 100%; }
+        #commentBox .box #imgAndText .imgWrapper .shield {
+          position: absolute;
+          display: flex;
+          object-fit: 100%;
+          bottom: 0%;
+          right: 0%; }
+          @media (max-width: 767px) {
+            #commentBox .box #imgAndText .imgWrapper .shield {
+              width: 13px;
+              height: 13px; } }
+          @media (min-width: 768px) {
+            #commentBox .box #imgAndText .imgWrapper .shield {
+              width: 20px;
+              height: 20px; } }
+          @media (min-width: 1200px) {
+            #commentBox .box #imgAndText .imgWrapper .shield {
+              width: 20px;
+              height: 20px; } }
+      #commentBox .box #imgAndText #input {
         position: absolute;
         display: flex;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        object-fit: 100%; }
+        width: 80%;
+        height: 50%;
+        border: none;
+        outline: none;
+        overflow: hidden;
+        resize: none;
+        border-radius: 5px; }
         @media (max-width: 767px) {
-          #commentBox .box .dotWrapper .dot {
-            width: 1.1rem;
-            height: 1.1rem; } }
+          #commentBox .box #imgAndText #input {
+            left: 12.5%;
+            font-size: 1.3rem; } }
+        @media (min-width: 768px) {
+          #commentBox .box #imgAndText #input {
+            left: 9%;
+            font-size: 2.3rem; } }
         @media (min-width: 1200px) {
-          #commentBox .box .dotWrapper .dot {
-            width: 2.5rem;
-            height: 2.5rem; } }
-    #commentBox .box #input {
-      position: absolute;
-      display: flex;
-      width: 80%;
-      height: 25%;
-      transform: translate(0, -50%);
-      border: none;
-      outline: none;
-      overflow: hidden;
-      resize: none;
-      border-radius: 5px; }
-      @media (max-width: 767px) {
-        #commentBox .box #input {
-          left: 12.5%;
-          font-size: 1.3rem;
-          top: 70%; } }
-      @media (min-width: 1200px) {
-        #commentBox .box #input {
-          left: 9%;
-          font-size: 2.3rem;
-          top: 65%; } }
-    #commentBox .box #text {
-      position: absolute;
-      display: flex;
-      width: 80%;
-      height: 50%;
-      transform: translate(0, -50%); }
-      @media (max-width: 767px) {
-        #commentBox .box #text {
-          left: 12.5%;
-          font-size: 1.3rem;
-          top: 68%; } }
-      @media (min-width: 1200px) {
-        #commentBox .box #text {
-          left: 9%;
-          font-size: 2.3rem;
-          top: 75%; } }
+          #commentBox .box #imgAndText #input {
+            left: 9%;
+            font-size: 2.3rem; } }
+      #commentBox .box #imgAndText #text {
+        position: absolute;
+        display: flex;
+        width: 80%; }
+        @media (max-width: 767px) {
+          #commentBox .box #imgAndText #text {
+            left: 12.5%;
+            font-size: 1.3rem; } }
+        @media (min-width: 768px) {
+          #commentBox .box #imgAndText #text {
+            left: 9%;
+            font-size: 2.3rem; } }
+        @media (min-width: 1200px) {
+          #commentBox .box #imgAndText #text {
+            left: 9%;
+            font-size: 2.3rem; } }
 
 /***** commentBox *****/
 /***** headerMenu *****/
@@ -437,6 +522,9 @@ html {
   @media (max-width: 767px) {
     #menuWrapper {
       display: flex; } }
+  @media (min-width: 768px) {
+    #menuWrapper {
+      display: none; } }
   @media (min-width: 1200px) {
     #menuWrapper {
       display: none; } }
@@ -457,6 +545,9 @@ html {
   @media (max-width: 767px) {
     #searchWrapper {
       display: flex; } }
+  @media (min-width: 768px) {
+    #searchWrapper {
+      display: none; } }
   @media (min-width: 1200px) {
     #searchWrapper {
       display: none; } }
@@ -477,6 +568,9 @@ html {
   @media (max-width: 767px) {
     #loginWrapper {
       width: 15%; } }
+  @media (min-width: 768px) {
+    #loginWrapper {
+      width: 5%; } }
   @media (min-width: 1200px) {
     #loginWrapper {
       width: 5%; } }
@@ -486,6 +580,9 @@ html {
     @media (max-width: 767px) {
       #loginWrapper .login {
         font-size: 2rem; } }
+    @media (min-width: 768px) {
+      #loginWrapper .login {
+        font-size: 2.5rem; } }
     @media (min-width: 1200px) {
       #loginWrapper .login {
         font-size: 2.5rem; } }
@@ -502,6 +599,9 @@ html {
   @media (max-width: 767px) {
     #hiddenMenuBox {
       display: none; } }
+  @media (min-width: 768px) {
+    #hiddenMenuBox {
+      display: flex; } }
   @media (min-width: 1200px) {
     #hiddenMenuBox {
       display: flex; } }
@@ -526,6 +626,10 @@ html {
     @media (max-width: 767px) {
       #hiddenSearchBox #searchWrapper {
         display: none; } }
+    @media (min-width: 768px) {
+      #hiddenSearchBox #searchWrapper {
+        display: flex;
+        justify-content: left; } }
     @media (min-width: 1200px) {
       #hiddenSearchBox #searchWrapper {
         display: flex;
@@ -546,6 +650,9 @@ html {
     @media (max-width: 767px) {
       #hiddenSearchBox #imgWrapper {
         display: none; } }
+    @media (min-width: 768px) {
+      #hiddenSearchBox #imgWrapper {
+        display: flex; } }
     @media (min-width: 1200px) {
       #hiddenSearchBox #imgWrapper {
         display: flex; } }
@@ -566,6 +673,9 @@ html {
   @media (max-width: 767px) {
     #FooterContainer {
       height: 100%; } }
+  @media (min-width: 768px) {
+    #FooterContainer {
+      height: 130%; } }
   @media (min-width: 1200px) {
     #FooterContainer {
       height: 130%; } }
@@ -576,6 +686,10 @@ html {
     @media (max-width: 767px) {
       #FooterContainer .team_members {
         width: 95%;
+        height: 60%; } }
+    @media (min-width: 768px) {
+      #FooterContainer .team_members {
+        width: 57%;
         height: 60%; } }
     @media (min-width: 1200px) {
       #FooterContainer .team_members {
@@ -594,6 +708,9 @@ html {
         @media (max-width: 767px) {
           #FooterContainer .team_members .profiles .profile {
             width: 25%; } }
+        @media (min-width: 768px) {
+          #FooterContainer .team_members .profiles .profile {
+            width: 25%; } }
         @media (min-width: 1200px) {
           #FooterContainer .team_members .profiles .profile {
             width: 25%; } }
@@ -604,6 +721,10 @@ html {
             #FooterContainer .team_members .profiles .profile #github {
               width: 30%;
               height: 30%; } }
+          @media (min-width: 768px) {
+            #FooterContainer .team_members .profiles .profile #github {
+              width: 23%;
+              height: 40%; } }
           @media (min-width: 1200px) {
             #FooterContainer .team_members .profiles .profile #github {
               width: 23%;
@@ -620,6 +741,9 @@ html {
           @media (max-width: 767px) {
             #FooterContainer .team_members .profiles .profile .text {
               font-size: 1.1rem; } }
+          @media (min-width: 768px) {
+            #FooterContainer .team_members .profiles .profile .text {
+              font-size: 1.8rem; } }
           @media (min-width: 1200px) {
             #FooterContainer .team_members .profiles .profile .text {
               font-size: 1.8rem; } }
@@ -629,6 +753,10 @@ html {
     @media (max-width: 767px) {
       #FooterContainer .badges {
         width: 20%;
+        height: 15%; } }
+    @media (min-width: 768px) {
+      #FooterContainer .badges {
+        width: 9%;
         height: 15%; } }
     @media (min-width: 1200px) {
       #FooterContainer .badges {
@@ -645,53 +773,181 @@ html {
     text-align: center;
     width: 40%;
     height: 10%; }
+    @media (min-width: 768px) {
+      #FooterContainer #copyright {
+        font-size: 1.6rem; } }
     @media (min-width: 1200px) {
       #FooterContainer #copyright {
         font-size: 1.6rem; } }
+
+#headerContainer {
+  z-index: 15;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 5%;
+  background-color: white; }
+  #headerContainer #logoBar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    width: 100%; }
+    #headerContainer #logoBar .logo {
+      z-index: 16;
+      position: absolute;
+      display: flex;
+      top: 200%;
+      transform: translate(0, -50%); }
+      @media (max-width: 767px) {
+        #headerContainer #logoBar .logo {
+          width: 95px;
+          height: 60px; } }
+      @media (min-width: 768px) {
+        #headerContainer #logoBar .logo {
+          width: 115px;
+          height: 75px; } }
+      @media (min-width: 1200px) {
+        #headerContainer #logoBar .logo {
+          width: 115px;
+          height: 75px; } }
+      #headerContainer #logoBar .logo:hover {
+        cursor: pointer; }
+  #headerContainer #absoluteBar {
+    z-index: 15;
+    opacity: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 150%;
+    height: 5%;
+    width: 100%;
+    background-color: white; }
+  #headerContainer #fixedBar {
+    z-index: 15;
+    opacity: 90%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 0%;
+    height: 5%;
+    width: 100%;
+    background-color: white; }
 
 /***** 재혁 *****/
 #conChinContainer {
   position: absolute;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  top: 10%; }
+  width: 100%; }
   @media (max-width: 767px) {
     #conChinContainer {
-      width: 100%;
       height: 100%; } }
-  @media (min-width: 1200px) {
+  @media (min-width: 768px) {
     #conChinContainer {
-      width: 75%;
       height: 250%;
       left: 50%;
       transform: translate(-50%, 0%); } }
-  #conChinContainer #jumbotron {
-    position: relative;
-    display: flex; }
-    @media (max-width: 767px) {
-      #conChinContainer #jumbotron {
-        width: 100%;
-        height: 14%; } }
-    @media (min-width: 1200px) {
-      #conChinContainer #jumbotron {
-        width: 100%;
-        height: 15.5%; } }
-  #conChinContainer #mainBox {
-    position: relative;
+  @media (min-width: 1200px) {
+    #conChinContainer {
+      height: 250%;
+      left: 50%;
+      transform: translate(-50%, 0%); } }
+  #conChinContainer #conChinExceptFooter {
+    position: absolute;
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
-    height: 73%;
-    margin-top: 1%; }
+    justify-content: center; }
     @media (max-width: 767px) {
-      #conChinContainer #mainBox {
-        width: 95%;
-        height: 83%; } }
+      #conChinContainer #conChinExceptFooter {
+        width: 100%;
+        height: 100%;
+        top: 10%; } }
+    @media (min-width: 768px) {
+      #conChinContainer #conChinExceptFooter {
+        width: 75%;
+        height: 100%;
+        left: 50%;
+        top: 4%;
+        transform: translate(-50%, 0%); } }
     @media (min-width: 1200px) {
-      #conChinContainer #mainBox {
-        width: 80%;
-        height: 73%; } }
+      #conChinContainer #conChinExceptFooter {
+        width: 75%;
+        height: 100%;
+        left: 50%;
+        top: 4%;
+        transform: translate(-50%, 0%); } }
+    #conChinContainer #conChinExceptFooter #jumbotron {
+      position: relative;
+      display: flex; }
+      @media (max-width: 767px) {
+        #conChinContainer #conChinExceptFooter #jumbotron {
+          width: 100%;
+          height: 14%; } }
+      @media (min-width: 768px) {
+        #conChinContainer #conChinExceptFooter #jumbotron {
+          width: 100%;
+          height: 16%; } }
+      @media (min-width: 1200px) {
+        #conChinContainer #conChinExceptFooter #jumbotron {
+          width: 100%;
+          height: 16%; } }
+    #conChinContainer #conChinExceptFooter #mainBox {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      width: 80%;
+      height: 73%;
+      margin-top: 1%; }
+      @media (max-width: 767px) {
+        #conChinContainer #conChinExceptFooter #mainBox {
+          width: 95%;
+          height: 83%; } }
+      @media (min-width: 768px) {
+        #conChinContainer #conChinExceptFooter #mainBox {
+          width: 80%;
+          height: 73%; } }
+      @media (min-width: 1200px) {
+        #conChinContainer #conChinExceptFooter #mainBox {
+          width: 80%;
+          height: 73%; } }
+  #conChinContainer #fullFooter {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    background-color: black; }
+    @media (max-width: 767px) {
+      #conChinContainer #fullFooter {
+        width: 100%;
+        height: 25%;
+        top: 190%; } }
+    @media (min-width: 768px) {
+      #conChinContainer #fullFooter {
+        width: 100%;
+        height: 15.3%;
+        top: 180%; } }
+    @media (min-width: 1200px) {
+      #conChinContainer #fullFooter {
+        width: 100%;
+        height: 15.3%;
+        top: 180%; } }
+    #conChinContainer #fullFooter #footerWrapper {
+      position: absolute;
+      display: flex;
+      background-color: black; }
+      @media (max-width: 767px) {
+        #conChinContainer #fullFooter #footerWrapper {
+          height: 100%;
+          width: 75%; } }
+      @media (min-width: 768px) {
+        #conChinContainer #fullFooter #footerWrapper {
+          height: 70%;
+          width: 79%; } }
+      @media (min-width: 1200px) {
+        #conChinContainer #fullFooter #footerWrapper {
+          height: 70%;
+          width: 79%; } }
 
 #conChinFindBox {
   position: absolute;
@@ -708,6 +964,10 @@ html {
       #conChinFindBox .title {
         width: 70.5%;
         left: 5%; } }
+    @media (min-width: 768px) {
+      #conChinFindBox .title {
+        width: 30%;
+        left: 7%; } }
     @media (min-width: 1200px) {
       #conChinFindBox .title {
         width: 30%;
@@ -725,6 +985,9 @@ html {
         @media (max-width: 767px) {
           #conChinFindBox .title .textWrapper .text {
             font-size: 2.5rem; } }
+        @media (min-width: 768px) {
+          #conChinFindBox .title .textWrapper .text {
+            font-size: 4rem; } }
         @media (min-width: 1200px) {
           #conChinFindBox .title .textWrapper .text {
             font-size: 4rem; } }
@@ -751,6 +1014,12 @@ html {
           padding-left: 17%;
           font-size: 1rem;
           height: 60%; } }
+      @media (min-width: 768px) {
+        #conChinFindBox .btnWrapper .btn {
+          width: 40%;
+          padding-left: 6.5%;
+          font-size: 2rem;
+          height: 45%; } }
       @media (min-width: 1200px) {
         #conChinFindBox .btnWrapper .btn {
           width: 40%;
@@ -766,6 +1035,11 @@ html {
             width: 13px;
             height: 13px;
             right: 67.5%; } }
+        @media (min-width: 768px) {
+          #conChinFindBox .btnWrapper .btn .img {
+            width: 23px;
+            height: 23px;
+            right: 70.5%; } }
         @media (min-width: 1200px) {
           #conChinFindBox .btnWrapper .btn .img {
             width: 23px;
@@ -780,6 +1054,10 @@ html {
     #conChinBox {
       width: 100%;
       height: 63%; } }
+  @media (min-width: 768px) {
+    #conChinBox {
+      width: 100%;
+      height: 68%; } }
   @media (min-width: 1200px) {
     #conChinBox {
       width: 100%;
@@ -796,6 +1074,10 @@ html {
     #conChinArticleBox {
       border-top: 5px solid #ffce63;
       height: 90%; } }
+  @media (min-width: 768px) {
+    #conChinArticleBox {
+      border-top: 10px solid #ffce63;
+      height: 90%; } }
   @media (min-width: 1200px) {
     #conChinArticleBox {
       border-top: 10px solid #ffce63;
@@ -806,9 +1088,12 @@ html {
   @media (max-width: 767px) {
     #conChinmemberBoxWrapper {
       top: 40%; } }
+  @media (min-width: 768px) {
+    #conChinmemberBoxWrapper {
+      top: 46%; } }
   @media (min-width: 1200px) {
     #conChinmemberBoxWrapper {
-      top: 50%; } }
+      top: 46%; } }
 
 #conChinArticleContentBox {
   position: absolute;
@@ -818,6 +1103,10 @@ html {
   @media (max-width: 767px) {
     #conChinArticleContentBox {
       top: 102%;
+      height: 125%; } }
+  @media (min-width: 768px) {
+    #conChinArticleContentBox {
+      top: 107%;
       height: 125%; } }
   @media (min-width: 1200px) {
     #conChinArticleContentBox {
@@ -832,6 +1121,9 @@ html {
   @media (max-width: 767px) {
     #titleBox {
       height: 8%; } }
+  @media (min-width: 768px) {
+    #titleBox {
+      height: 5%; } }
   @media (min-width: 1200px) {
     #titleBox {
       height: 5%; } }
@@ -845,6 +1137,10 @@ html {
       #titleBox .title {
         height: 80%;
         width: 70%; } }
+    @media (min-width: 768px) {
+      #titleBox .title {
+        height: 50%;
+        width: 80%; } }
     @media (min-width: 1200px) {
       #titleBox .title {
         height: 50%;
@@ -852,6 +1148,9 @@ html {
     @media (max-width: 767px) {
       #titleBox .title .text {
         font-size: 2rem; } }
+    @media (min-width: 768px) {
+      #titleBox .title .text {
+        font-size: 4rem; } }
     @media (min-width: 1200px) {
       #titleBox .title .text {
         font-size: 4rem; } }
@@ -866,6 +1165,9 @@ html {
     @media (max-width: 767px) {
       #titleBox #profileBox {
         height: 80%; } }
+    @media (min-width: 768px) {
+      #titleBox #profileBox {
+        height: 50%; } }
     @media (min-width: 1200px) {
       #titleBox #profileBox {
         height: 50%; } }
@@ -878,6 +1180,12 @@ html {
           right: 3%;
           width: 25px;
           height: 25px; } }
+      @media (min-width: 768px) {
+        #titleBox #profileBox .img {
+          bottom: 10%;
+          right: 2%;
+          width: 40px;
+          height: 40px; } }
       @media (min-width: 1200px) {
         #titleBox #profileBox .img {
           bottom: 10%;
@@ -887,6 +1195,9 @@ html {
   @media (max-width: 767px) {
     #titleBox .nickName {
       font-size: 1.3rem; } }
+  @media (min-width: 768px) {
+    #titleBox .nickName {
+      font-size: 2.5rem; } }
   @media (min-width: 1200px) {
     #titleBox .nickName {
       font-size: 2.5rem; } }
@@ -899,6 +1210,10 @@ html {
     #contentBox {
       height: 100%;
       top: 7.8%; } }
+  @media (min-width: 768px) {
+    #contentBox {
+      height: 100%;
+      top: 5%; } }
   @media (min-width: 1200px) {
     #contentBox {
       height: 100%;
@@ -917,6 +1232,9 @@ html {
       @media (max-width: 767px) {
         #contentBox #viewBox .view {
           font-size: 1rem; } }
+      @media (min-width: 768px) {
+        #contentBox #viewBox .view {
+          font-size: 2rem; } }
       @media (min-width: 1200px) {
         #contentBox #viewBox .view {
           font-size: 2rem; } }
@@ -936,6 +1254,10 @@ html {
         #contentBox #modifyBox .modifyBtn {
           right: 40%;
           font-size: 1.3rem; } }
+      @media (min-width: 768px) {
+        #contentBox #modifyBox .modifyBtn {
+          right: 35%;
+          font-size: 2.5rem; } }
       @media (min-width: 1200px) {
         #contentBox #modifyBox .modifyBtn {
           right: 35%;
@@ -950,6 +1272,10 @@ html {
         #contentBox #modifyBox .deleteBtn {
           right: 23%;
           font-size: 1.3rem; } }
+      @media (min-width: 768px) {
+        #contentBox #modifyBox .deleteBtn {
+          right: 23%;
+          font-size: 2.5rem; } }
       @media (min-width: 1200px) {
         #contentBox #modifyBox .deleteBtn {
           right: 23%;
@@ -964,6 +1290,10 @@ html {
       @media (max-width: 767px) {
         #contentBox #modifyBox #memberBoxWrapper {
           right: 0%; } }
+      @media (min-width: 768px) {
+        #contentBox #modifyBox #memberBoxWrapper {
+          justify-content: right;
+          right: 0%; } }
       @media (min-width: 1200px) {
         #contentBox #modifyBox #memberBoxWrapper {
           justify-content: right;
@@ -977,6 +1307,10 @@ html {
       #contentBox #content {
         height: 35%;
         padding-bottom: 35%; } }
+    @media (min-width: 768px) {
+      #contentBox #content {
+        height: 45%;
+        padding-bottom: 45%; } }
     @media (min-width: 1200px) {
       #contentBox #content {
         height: 45%;
@@ -993,6 +1327,12 @@ html {
           padding-bottom: 40%;
           left: 8%;
           max-height: 70px; } }
+      @media (min-width: 768px) {
+        #contentBox #content #imgWrapper {
+          width: 35%;
+          height: 35%;
+          padding-bottom: 35%;
+          left: 12%; } }
       @media (min-width: 1200px) {
         #contentBox #content #imgWrapper {
           width: 35%;
@@ -1016,6 +1356,12 @@ html {
           width: 45%;
           height: 45%;
           padding-bottom: 45%; } }
+      @media (min-width: 768px) {
+        #contentBox #content .text {
+          font-size: 2.5rem;
+          right: -10%;
+          width: 55%;
+          height: 35%; } }
       @media (min-width: 1200px) {
         #contentBox #content .text {
           font-size: 2.5rem;
@@ -1031,8 +1377,12 @@ html {
     width: 100%; }
     @media (max-width: 767px) {
       #contentBox #commentWrapper {
-        top: 41%;
+        top: 48%;
         height: 60%; } }
+    @media (min-width: 768px) {
+      #contentBox #commentWrapper {
+        top: 48%;
+        height: 45%; } }
     @media (min-width: 1200px) {
       #contentBox #commentWrapper {
         top: 48%;
@@ -1048,6 +1398,10 @@ html {
       #contentBox #paginationWrapper {
         top: 85%;
         height: 20%; } }
+    @media (min-width: 768px) {
+      #contentBox #paginationWrapper {
+        top: 87%;
+        height: 25%; } }
     @media (min-width: 1200px) {
       #contentBox #paginationWrapper {
         top: 87%;
@@ -1065,6 +1419,11 @@ html {
     #conChinPostingBox {
       width: 100%;
       height: 35%; } }
+  @media (min-width: 768px) {
+    #conChinPostingBox {
+      width: 100%;
+      height: 45%;
+      top: -3%; } }
   @media (min-width: 1200px) {
     #conChinPostingBox {
       width: 100%;
@@ -1079,6 +1438,11 @@ html {
         font-size: 2.5rem;
         left: 4%;
         top: 4%; } }
+    @media (min-width: 768px) {
+      #conChinPostingBox #curOrder {
+        font-size: 4rem;
+        left: 8%;
+        top: 5%; } }
     @media (min-width: 1200px) {
       #conChinPostingBox #curOrder {
         font-size: 4rem;
@@ -1093,6 +1457,9 @@ html {
     @media (max-width: 767px) {
       #conChinPostingBox .posting {
         width: 95%; } }
+    @media (min-width: 768px) {
+      #conChinPostingBox .posting {
+        width: 90%; } }
     @media (min-width: 1200px) {
       #conChinPostingBox .posting {
         width: 90%; } }
@@ -1110,6 +1477,11 @@ html {
           width: 65%;
           height: 100%;
           font-size: 1.3rem; } }
+      @media (min-width: 768px) {
+        #conChinPostingBox .posting .title {
+          width: 68%;
+          height: 100%;
+          font-size: 3rem; } }
       @media (min-width: 1200px) {
         #conChinPostingBox .posting .title {
           width: 68%;
@@ -1125,6 +1497,11 @@ html {
           right: 21%;
           font-size: 0.5rem;
           width: 15%; } }
+      @media (min-width: 768px) {
+        #conChinPostingBox .posting .date {
+          font-size: 1.5rem;
+          width: 19%;
+          right: 15%; } }
       @media (min-width: 1200px) {
         #conChinPostingBox .posting .date {
           font-size: 1.5rem;
@@ -1134,12 +1511,15 @@ html {
       position: absolute;
       display: flex;
       align-items: center;
-      height: 30%;
+      height: 50%;
       right: 1%;
       transform: translate(0%, -50%); }
       @media (max-width: 767px) {
         #conChinPostingBox .posting .view {
-          font-size: 0.5rem; } }
+          font-size: 1rem; } }
+      @media (min-width: 768px) {
+        #conChinPostingBox .posting .view {
+          font-size: 1.5rem; } }
       @media (min-width: 1200px) {
         #conChinPostingBox .posting .view {
           font-size: 1.5rem; } }
@@ -1147,14 +1527,17 @@ html {
       position: absolute;
       display: flex;
       align-items: center;
-      height: 30%;
+      height: 50%;
       right: 1%;
       text-align: right;
       transform: translate(0%, 50%); }
       @media (max-width: 767px) {
         #conChinPostingBox .posting .place {
-          font-size: 0.5rem;
+          font-size: 1rem;
           width: 16%; } }
+      @media (min-width: 768px) {
+        #conChinPostingBox .posting .place {
+          font-size: 1.5rem; } }
       @media (min-width: 1200px) {
         #conChinPostingBox .posting .place {
           font-size: 1.5rem; } }
@@ -2045,9 +2428,16 @@ html {
 
 #concertContainer {
   position: absolute;
-  top: 0;
   width: 100%;
   height: 100%;
-  border: 4px solid green; }
+  border: 2px solid green; }
+  #concertContainer #lineOrderWrapper {
+    position: absolute;
+    top: 0;
+    width: 100%; }
+    @media (max-width: 767px) {
+      #concertContainer #lineOrderWrapper {
+        height: 50vh;
+        border: 1px solid red; } }
 
 /*------------선영----------*/
