@@ -25,12 +25,12 @@ module.exports = {
         offset: offset,
         limit: limit
       });
-
+      
+      if(commentInfo.count===0) return res.status(200).json({ message: 'Empty My Comments!' });
       // 총 페이지 수
       const totalPage = Math.ceil(commentInfo.count / limit);
-      res.status(200).json({ data: { commentInfo: commentInfo.rows, totalPage: totalPage }, message: '내가 쓴 댓글!' });
+      res.status(200).json({ data: { commentInfo: commentInfo.rows, totalPage: totalPage }, message: 'My Articles!' });
     } catch (err) {
-      console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
     }
   }

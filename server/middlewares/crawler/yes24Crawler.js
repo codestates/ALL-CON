@@ -22,7 +22,7 @@ const yes24Crawler = async () => {
       
       await driver.get(address); 
 
-      await driver.sleep(10000);
+      await driver.sleep(20000);
       
       let result = await driver.findElements(By.xpath(path));
 
@@ -50,7 +50,7 @@ const yes24Crawler = async () => {
 
           await driver.switchTo().window(windows[windows.length-1]);
 
-          await driver.sleep(5000);
+          await driver.sleep(10000);
 
           let subPath = '//*[@id="NoticeRead"]/div[3]/div/div[2]/p';
           // <p class="noti-vt-tit"><span>단독판매</span>2022 영주세계풍기인삼엑스포</p>
