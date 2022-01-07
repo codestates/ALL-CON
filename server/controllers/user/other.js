@@ -35,6 +35,7 @@ module.exports = {
         'username': otherInfo.username,
         'image': otherInfo.image,
         'introduction': otherInfo.introduction,
+        'gender': otherInfo.gender,
         'birth': today.getFullYear() - Number(otherInfo.birth.substring(0,4)) + 1 + '살',
         'createdAt': otherInfo.createdAt.getFullYear() + '년 ' + Number(otherInfo.createdAt.getMonth()+1) + '월 ' + otherInfo.createdAt.getDate() + '일'
       };

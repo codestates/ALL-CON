@@ -32,6 +32,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Concerts.init({
+    activation: { 
+      allowNull: false,
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
     exclusive: DataTypes.STRING,
     open_date: DataTypes.DATE,
     post_date: DataTypes.STRING,

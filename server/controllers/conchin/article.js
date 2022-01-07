@@ -1,5 +1,5 @@
 const { userAuth } = require('../../middlewares/authorized/userAuth')
-const { Users, Articles } = require('../../models');
+const { Users, Articles, Concerts } = require('../../models');
 
 module.exports = {
   get: async (req, res) => {
@@ -17,6 +17,10 @@ module.exports = {
       // 만약 최신순 정렬이라면, 다음을 실행한다
       if(order === 'new') {
         const articleInfo = await Articles.findAndCountAll({ 
+          include: [{
+            model: Concerts,
+            attributes: ['activation']
+          }],
           where: { concert_id: concertid },
           order: [['createdAt','DESC'], ['view', 'DESC']],
           offset: offset,
@@ -31,6 +35,10 @@ module.exports = {
       // 만약 그외의 경우엔 조회수 순 정렬 (Default)
       else {
         const articleInfo = await Articles.findAndCountAll({ 
+          include: [{
+            model: Concerts,
+            attributes: ['activation']
+          }],
           where: { concert_id: concertid },
           order: [['view','DESC'], ['createdAt', 'DESC']],
           offset: offset,

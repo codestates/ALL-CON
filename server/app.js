@@ -11,7 +11,7 @@ const port = 8080;
 
 // 콘서트 티켓 오픈일 알라머 실행
 const autoAlarm = schedule.scheduleJob(
-  '00 58 * * * *',
+  '00 55 * * * *',
   async () => {
     concertAlarm()
   }
@@ -19,7 +19,7 @@ const autoAlarm = schedule.scheduleJob(
 
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 52 * * * *',
+  '00 24 * * * *',
   async () => {
     await crawler()
     console.log('1시간마다 크롤링중..')

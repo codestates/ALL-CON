@@ -1,4 +1,4 @@
-const { Articles } = require('../../models');
+const { Articles, Concerts } = require('../../models');
 
 module.exports = {
   get: async (req, res) => {
@@ -15,6 +15,10 @@ module.exports = {
       // 만약 최신순 정렬이라면, 다음을 실행한다
       if(order === 'new') {
         const articleInfo = await Articles.findAndCountAll({ 
+          include: [{
+            model: Concerts,
+            attributes: ['activation']
+          }],
           order: [['createdAt','DESC'], ['view', 'DESC']],
           offset: offset,
           limit: limit
@@ -28,6 +32,10 @@ module.exports = {
       // 만약 그외의 경우엔 조회수 순 정렬 (Default)
       else {
         const articleInfo = await Articles.findAndCountAll({ 
+          include: [{
+            model: Concerts,
+            attributes: ['activation']
+          }],
           order: [['view','DESC'], ['createdAt', 'DESC']],
           offset: offset,
           limit: limit
@@ -39,6 +47,7 @@ module.exports = {
         res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage }, message: 'Article Order By View!' });
       }
     } catch (err) {
+      console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
     }
   }

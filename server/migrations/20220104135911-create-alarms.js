@@ -13,17 +13,19 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
-      kakao_alarm: {
+      phone_alarm: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
       user_id: {
         type: Sequelize.INTEGER,
+        onDelete : 'cascade',
         references: { model: 'Users', key: 'id' }
       },
       concert_id: {
         type: Sequelize.INTEGER,
+        onDelete : 'cascade',
         references: { model: 'Concerts', key: 'id' }
       },
       createdAt: {

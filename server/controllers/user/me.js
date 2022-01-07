@@ -84,12 +84,7 @@ module.exports = {
       });
       /* 임시 TEST CODE (삭제예정) */
 
-      // 종속된 하위 테이블 역순으로 삭제
-      Alarms.destroy({ where: { user_id: userInfo.id } });  // 알람 삭제
-      ArticleComments.destroy({ where: { user_id: userInfo.id } });  // 콘친찾기 댓글 삭제
-      Articles.destroy({ where: { user_id: userInfo.id } });  // 콘친찾기 게시물 삭제
-      ConcertComments.destroy({ where: { user_id: userInfo.id } });  // 콘서트 댓글 삭제
-      Users.destroy({ where: { email: userInfo.email } });  // 유저 삭제
+      Users.destroy({ where: { id: userInfo.id } });  // 유저 삭제
 
       res.cookie('accessToken', null, { maxAge: 0 });  // 쿠키 삭제
       res.status(200).json({ message: 'Goodbye!' });

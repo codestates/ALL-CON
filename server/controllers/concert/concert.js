@@ -11,7 +11,7 @@ module.exports = {
       if(order === 'new') {
         const concertInfo = await Concerts.findAll({ 
           attributes: ['exclusive', 'open_date', 'post_date', 'image_concert', 'title', 'place', 'view'],
-          order: [['createdAt','DESC'], ['view', 'DESC']] 
+          order: [['createdAt','DESC'], ['view', 'DESC']]
         })
         res.status(200).json({ data: { concertInfo: concertInfo }, message: 'Concerts Order By New!' });
       } 
