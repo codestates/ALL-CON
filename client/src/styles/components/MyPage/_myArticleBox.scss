@@ -1,0 +1,76 @@
+#myArticleBox {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  // border: 4px solid green;
+  #titleWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 10%;
+    // border: 2px solid red;
+    @include mobile-only() {
+      width: 80%;
+    }
+    @include md() {
+      width: 66%;
+    }
+    @include lg() {
+      width: 66%;
+    }
+    .title {
+      font-weight: bold;
+      @include mobile-only() {
+        width: 90%;
+        font-size: 2rem;
+      }
+      @include md() {
+        width: 85%;
+        font-size: 4rem;
+      }
+      @include lg() {
+        width: 85%;
+        font-size: 4rem;
+      }
+    }
+  }
+  #articleWrapper {
+    position: absolute;
+    display: flex;
+    height: 90%;
+    top: 10%;
+    // border: 2px solid red;
+    @include mobile-only() {
+      width: 100%;
+    }
+    @include md() {
+      width: 85%;
+    }
+    @include lg() {
+      width: 85%;
+    }
+  }
+  #paginationWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    @include mobile-only() {
+      top: 75%;
+      height: 25%;
+    }
+    @include md() {
+      top: 65%;
+      height: 45%;
+    }
+    @include lg() {
+      top: 65%;
+      height: 45%;
+    }
+    // border: 3px solid green;
+  }
+}

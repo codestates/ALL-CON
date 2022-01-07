@@ -31,6 +31,7 @@ module.exports = {
       } 
       // 만약 그외의 경우엔 조회수 순 정렬 (Default)
       else {
+        console.log('--- 여기가 맞나? ---')
         const articleInfo = await Articles.findAndCountAll({ 
           include: [{
             model: Concerts,
@@ -40,6 +41,9 @@ module.exports = {
           offset: offset,
           limit: limit
         });
+
+        console.log(articleInfo)
+
         // 게시글이 없다면 다음 메시지를 반환한다.
         if(articleInfo.count===0) return res.status(200).json({ message: 'Article Is Empty!' });
         // 총 페이지 수

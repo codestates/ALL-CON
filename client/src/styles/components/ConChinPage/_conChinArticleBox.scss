@@ -10,6 +10,10 @@
     border-top: 5px solid $yellow;
     height: 90%;
   }
+  @include md() {
+    border-top: 10px solid $yellow;
+    height: 90%;
+  }
   @include lg() {
     border-top: 10px solid $yellow;
     height: 90%;
@@ -20,7 +24,10 @@
   @include mobile-only() {
     top: 40%;
   }
+  @include md() {
+    top: 46%;
+  }
   @include lg() {
-    top: 50%;
+    top: 46%;
   }
 }
