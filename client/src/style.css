@@ -217,15 +217,18 @@ html {
   @media (max-width: 767px) {
     .memberBox {
       width: 3.5rem;
-      height: 1.8rem; } }
+      height: 1.8rem;
+      top: 40%; } }
   @media (min-width: 768px) {
     .memberBox {
       width: 8.9rem;
-      height: 3.6rem; } }
+      height: 3.6rem;
+      top: 50%; } }
   @media (min-width: 1200px) {
     .memberBox {
       width: 8.9rem;
-      height: 3.6rem; } }
+      height: 3.6rem;
+      top: 50%; } }
   .memberBox .icon {
     position: relative;
     display: flex; }
@@ -819,13 +822,13 @@ html {
     position: absolute;
     display: flex;
     align-items: center;
-    top: 150%;
-    height: 5%;
+    top: 100%;
+    height: 100%;
     width: 100%;
     background-color: white; }
   #headerContainer #fixedBar {
     z-index: 15;
-    opacity: 90%;
+    opacity: 95%;
     position: fixed;
     display: flex;
     align-items: center;
@@ -1627,11 +1630,13 @@ html {
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #nickNameWrapper #oauthWrapper .oauth {
             width: 100%;
-            height: 100%; } }
+            height: 100%;
+            margin-right: 15%; } }
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #nickNameWrapper #oauthWrapper .oauth {
             width: 100%;
-            height: 100%; } }
+            height: 100%;
+            margin-right: 15%; } }
       #myProfileBox #introductionBox #nickNameWrapper .nickName {
         position: relative;
         display: flex;
@@ -1660,11 +1665,13 @@ html {
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #nickNameWrapper #shieldWrapper .shield {
             width: 80%;
-            height: 80%; } }
+            height: 80%;
+            margin-left: 15%; } }
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #nickNameWrapper #shieldWrapper .shield {
             width: 80%;
-            height: 80%; } }
+            height: 80%;
+            margin-left: 15%; } }
     #myProfileBox #introductionBox #textWrapper {
       position: absolute;
       display: flex;
@@ -1897,12 +1904,37 @@ html {
         height: 25%; } }
     @media (min-width: 768px) {
       #myCommentBox #paginationWrapper {
-        top: 68%;
+        top: 77%;
         height: 45%; } }
     @media (min-width: 1200px) {
       #myCommentBox #paginationWrapper {
-        top: 68%;
+        top: 77%;
         height: 45%; } }
+
+#myProfileImageModal {
+  position: 999;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; }
+  #myProfileImageModal #bg {
+    z-index: 998;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #404040;
+    opacity: 50%; }
+  #myProfileImageModal #modalBox {
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    background-color: white;
+    width: 30%;
+    height: 80%;
+    top: 10%; }
 
 #myPageContainer {
   position: absolute;
@@ -1962,6 +1994,42 @@ html {
     @media (min-width: 1200px) {
       #myPageContainer #myCommentWrapper {
         height: 25%; } }
+  #myPageContainer #fullFooter {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    background-color: black; }
+    @media (max-width: 767px) {
+      #myPageContainer #fullFooter {
+        width: 100%;
+        height: 14%;
+        top: 103%; } }
+    @media (min-width: 768px) {
+      #myPageContainer #fullFooter {
+        width: 100%;
+        height: 15.3%;
+        top: 180%; } }
+    @media (min-width: 1200px) {
+      #myPageContainer #fullFooter {
+        width: 100%;
+        height: 12.5%;
+        top: 105%; } }
+    #myPageContainer #fullFooter #footerWrapper {
+      position: absolute;
+      display: flex;
+      background-color: black; }
+      @media (max-width: 767px) {
+        #myPageContainer #fullFooter #footerWrapper {
+          height: 100%;
+          width: 75%; } }
+      @media (min-width: 768px) {
+        #myPageContainer #fullFooter #footerWrapper {
+          height: 70%;
+          width: 79%; } }
+      @media (min-width: 1200px) {
+        #myPageContainer #fullFooter #footerWrapper {
+          height: 70%;
+          width: 79%; } }
 
 /***** 재혁 *****/
 /*---------------선영--------------------*/

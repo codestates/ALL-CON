@@ -1,6 +1,7 @@
 import MyProfileBox from '../components/MyPage/MyProfileBox';
 import MyArticleBox from '../components/MyPage/MyArticleBox';
 import MyCommentBox from '../components/MyPage/MyCommentBox';
+import Footer from '../components/Footer';
 
 function MyPage() {
   return (
@@ -14,8 +15,10 @@ function MyPage() {
       <div id='myCommentWrapper'>
         <MyCommentBox />
       </div>
-      <div id='myFooterWrapper'>
-        <>Footer</>
+      <div id='fullFooter'>
+        <div id='footerWrapper'>
+          <Footer />
+        </div>
       </div>
     </div>
   );

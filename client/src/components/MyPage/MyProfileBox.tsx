@@ -27,7 +27,7 @@ function MyProfileBox() {
         </div>
         <div id='textWrapper'>
           <textarea id='introduction'>
-            김인성 찐팬 경기/30/ 누구든 콘친 ㄱㄱ
+            유태양 찐팬 경기/30/누구든 콘친 ㄱㄱ
           </textarea>
         </div>
         <div id='modifyBtnWrapper'>
