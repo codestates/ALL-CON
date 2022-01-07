@@ -20,10 +20,12 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
+        onDelete : 'cascade',
         references: { model: 'Users', key: 'id' }
       },
       concert_id: {
         type: Sequelize.INTEGER,
+        onDelete : 'cascade',
         references: { model: 'Concerts', key: 'id' }
       },
       createdAt: {

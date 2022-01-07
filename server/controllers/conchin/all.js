@@ -51,6 +51,7 @@ module.exports = {
         res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage }, message: 'Article Order By View!' });
       }
     } catch (err) {
+      console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
     }
   }
