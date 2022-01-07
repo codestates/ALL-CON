@@ -1,0 +1,15 @@
+#concertContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid green;
+  #lineOrderWrapper {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    @include mobile-only() {
+      height: 50vh;
+      border: 1px solid red;
+    }
+  }
+}

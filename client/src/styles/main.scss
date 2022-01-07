@@ -5,11 +5,15 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html,
+body {
+  height: 100%;
+}
 @import '../styles/mixins/responsive';
 @import '../styles/constants/color';
 @import '../styles/base/normalize';
 @import './layouts/grids.scss';
+@import './components/footer';
 @import './components/header.scss';
 
 /***** 재혁 *****/
@@ -27,4 +31,5 @@
 @import '../styles/components/posterSlide';
 @import '../styles/components/MainPage/mainConcertInfo';
 @import '../styles/components/MainPage/mainFindConchin';
+@import '../styles/pages/concertPage';
 /*------------선영----------*/
