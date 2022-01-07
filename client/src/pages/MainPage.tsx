@@ -3,11 +3,10 @@ import MainConcertInfo from '../components/MainPage/MainConcertInfo';
 import MainFindConchin from '../components/MainPage/MainFindConchin';
 import MainComment from '../components/MainPage/MainComment';
 import Footer from '../components/Footer';
-import Header from '../components/Header';
+
 function MainPage() {
   return (
     <>
-      <Header />
       <div id='mainContainer'>
         <div id='mainJumboWrapper'>
           <Jumbotron />
