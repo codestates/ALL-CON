@@ -1,5 +1,5 @@
 const { userAuth } = require('../../middlewares/authorized/userAuth')
-const { Articles } = require('../../models');
+const { Users, Articles } = require('../../models');
 
 module.exports = {
   get: async (req, res) => {
@@ -22,9 +22,11 @@ module.exports = {
           offset: offset,
           limit: limit
         });
+        // 게시글이 없다면 다음 메시지를 반환한다.
+        if(articleInfo.count===0) return res.status(200).json({ message: 'Article Is Empty!' });
         // 총 페이지 수
         const totalPage = Math.ceil(articleInfo.count / limit);
-        res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage }, message: '게시물 최신순!' });
+        res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage }, message: 'Article Order By New!' });
       } 
       // 만약 그외의 경우엔 조회수 순 정렬 (Default)
       else {
@@ -34,9 +36,11 @@ module.exports = {
           offset: offset,
           limit: limit
         });
+        // 게시글이 없다면 다음 메시지를 반환한다.
+        if(articleInfo.count===0) return res.status(200).json({ message: 'Article Is Empty!' });
         // 총 페이지 수
         const totalPage = Math.ceil(articleInfo.count / limit);
-        res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage }, message: '게시물 조회수순!' });
+        res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage }, message: 'Article Order By View!' });
       }
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
@@ -48,15 +52,17 @@ module.exports = {
       // const userInfo = await userAuth(req, res);
 
       /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id, email, role }
-      const userInfo = req.body; 
+      // POSTMAN 테스트시 => req.body = { id }
+      const userInfo = await Users.findOne({
+        where: { id: req.body.id }
+      });
       /* 임시 TEST CODE (삭제예정) */
       
       const { concertid } = req.params;
       const { title, content, image } = req.body;
 
       // 일반회원은 게시글 작성 불가
-      if(userInfo.role === 3) return res.status(401).json({ message: 'Not Authroized!' });
+      if(userInfo.role === 3) return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
       // concertid, title 중 하나라도 전달되지 않았다면, 다음을 응답한다
       if(!concertid || !title ) return res.status(400).json({ message: 'Bad Request!' });
 
@@ -69,7 +75,7 @@ module.exports = {
         concert_id: Number(concertid) 
       });
 
-      res.status(201).json({ data: { articleInfo: articleInfo }, message: 'Create Article!' });
+      res.status(201).json({ data: { articleInfo: articleInfo }, message: 'Success Create Article!' });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
