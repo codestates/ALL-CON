@@ -6,7 +6,7 @@ import ConcertPage from './pages/ConcertPage';
 function App() {
   return (
     <div className='App'>
-      <ConcertPage />
+      <MainPage />
     </div>
   );
 }
