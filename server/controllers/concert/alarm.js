@@ -8,7 +8,11 @@ module.exports = {
       // 유저확인 및 알람종류 확인
       const { user_id, alarm_type } = req.body;
 
+      const userInfo = await Users.findOne({ where: { id: user_id }})
       const concertInfo = await Concerts.findOne({ where: { id: concertid } });
+
+      console.log('-------------- userInfo -------------------', userInfo)
+
       // 존재하지 않는다면, 다음을 실행한다
       if(!concertInfo) res.status(400).json({ message: '콘서트가 존재하지 않습니다!' })
       // 존재한다면, 다음을 실행한다
@@ -24,16 +28,21 @@ module.exports = {
 
           return res.status(201).json({ data: { alarmInfo: alarmInfo }, message: '이메일 알람이 설정되었습니다!'})
         }
-        // 카카오톡 알람이면, 다음을 실행한다
-        else if(alarm_type === 'kakao') {
-          
-          const alarmInfo = await Alarms.create({
-            kakao_alarm: true,
-            user_id: user_id,
-            concert_id: concertid
-          })
+        // 핸드폰 알람이면, 다음을 실행한다
+        else if(alarm_type === 'phone') {
 
-          return res.status(201).json({ data: { alarmInfo: alarmInfo }, message: '카카오톡 알람이 설정되었습니다!'})
+          // 유저 핸드폰 번호 필드값에 번호가 존재하지 않는다면, 다음을 실행한다
+          if(!userInfo.dataValues.phone_number) return res.status(401).json({ data: { userInfo: userInfo }, message: 'Not Authorized!' })
+          // 만약 존재한다면, 다음을 실행한다
+          else {
+            const alarmInfo = await Alarms.create({
+              phone_alarm: true,
+              user_id: user_id,
+              concert_id: concertid
+            })
+  
+            return res.status(201).json({ data: { alarmInfo: alarmInfo }, message: '핸드폰 알람이 설정되었습니다!'})
+          }
         }
       }
     } catch (err) {

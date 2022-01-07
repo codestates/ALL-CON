@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false
       },
-      kakao_alarm: {
+      phone_alarm: {
         allowNull: false,
         type: Sequelize.BOOLEAN,
         defaultValue: false
