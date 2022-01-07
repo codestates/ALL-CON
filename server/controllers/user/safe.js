@@ -10,24 +10,47 @@ module.exports = {
       // const userInfo = await userAuth(req, res);
 
       /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id, email }
-      const userInfo = req.body; 
+      // POSTMAN 테스트시 => req.body = { id }
+      const userInfo = await Users.findOne({
+        where: { id: req.body.id }
+      });
       /* 임시 TEST CODE (삭제예정) */
 
       const { phone_number } = req.body;
 
-      if(!phone_number) return res.status(404).json({ message: 'Bad Request!' });
+      // 요청 바디로 받은 번호가 유효하지 않을때
+      if(!phone_number) return res.status(400).json({ message: 'Bad Request!' });
       
-      // const authCode = await twilioHelper.auth(phone_number);
-      // console.log(authCode);
+      // 6자리 난수 생성
+      const max = 999999;
+      const min = 100000;
+      const confirmNumber = Math.floor(Math.random() * (max - min)) + min;
       
+      // 인증번호 발송
       twilio.messages.create({
         from: process.env.TWILIO_PHONE,
         to: `+82${Number(phone_number)}`,
-        body: `ALL-CON 문자메시지 테스트`,
+        body: `ALL-CON 인증번호는 [${confirmNumber}] 입니다.`,
       });
 
-      res.status(200).json({ message: 'POST : 휴대폰 인증 요청!' });
+      // Users 테이블 message_key 필드 업데이트
+      await Users.update(
+        { message_key: confirmNumber },
+        { where: { id: userInfo.id }}
+      )
+      
+      // 인증번호 입력 시간이 지나면, message_key 값이 expired로 변경한다
+      setTimeout(async function() {
+        const messageKeyChecker = await Users.findOne({ where: { id: userInfo.id } })
+        if(messageKeyChecker.message_key !== 'success'){
+          await Users.update(
+            { message_key: 'expired' },
+            { where: { id: userInfo.id }}
+          )
+        }
+      }, 60000)
+
+      res.status(200).json({ message: 'Success Send Message!' });
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
     }
@@ -38,8 +61,10 @@ module.exports = {
       // const userInfo = await userAuth(req, res);
 
       /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id, email }
-      const userInfo = req.body; 
+      // POSTMAN 테스트시 => req.body = { id }
+      const userInfo = await Users.findOne({
+        where: { id: req.body.id }
+      });
       /* 임시 TEST CODE (삭제예정) */
 
       // 요청 바디 (생년월일, 성별, 전화번호)
@@ -47,6 +72,8 @@ module.exports = {
 
       // birth, gender, phone_number 중 하나라도 전달이 되지 않은 경우, 다음을 응답한다
       if(!birth || !gender || !phone_number) return res.status(400).json({ message: 'Bad Request!' });
+      // 휴대폰 인증이 완료되지 않은 경우, 다음을 응답한다
+      if(userInfo.message_key !== 'success') return res.status(401).json({ message: 'Message_Key Is Not Authorized!' });
 
       // 유효한 요청 바디가 전달되는 경우 Users 정보 업데이트
       await Users.update(
@@ -54,7 +81,8 @@ module.exports = {
           birth: birth,
           gender: gender,
           phone_number: phone_number,
-          role: 2
+          role: 2,
+          message_key: 'expired'
         },
         { where : { id: userInfo.id } }
       );

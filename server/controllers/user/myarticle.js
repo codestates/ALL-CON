@@ -1,5 +1,5 @@
 const { userAuth } = require('../../middlewares/authorized/userAuth')
-const { Articles } = require('../../models');
+const { Users, Articles } = require('../../models');
 
 module.exports = {
   get: async (req, res) => {
@@ -8,9 +8,12 @@ module.exports = {
       // const userInfo = await userAuth(req, res);
 
       /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id, email }
-      const userInfo = req.body; 
+      // POSTMAN 테스트시 => req.body = { id }
+      const userInfo = await Users.findOne({
+        where: { id: req.body.id }
+      });
       /* 임시 TEST CODE (삭제예정) */
+
       const { pageNum } = req.body;
 
       /* 페이지 네이션 한 페이지당 6개의 게시글 */ 
@@ -25,9 +28,11 @@ module.exports = {
         offset: offset,
         limit: limit
       });
+      
+      if(articleInfo.count===0) return res.status(200).json({ message: 'Empty My Articles!' });
       // 총 페이지 수
       const totalPage = Math.ceil(articleInfo.count / limit);
-      res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage }, message: '내가 쓴 게시물!' });
+      res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage }, message: 'My Articles!' });
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
     }
