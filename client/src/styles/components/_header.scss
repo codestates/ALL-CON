@@ -25,6 +25,10 @@
         width: 95px;
         height: 60px;
       }
+      @include md() {
+        width: 115px;
+        height: 75px;
+      }
       @include lg() {
         width: 115px;
         height: 75px;
