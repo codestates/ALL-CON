@@ -1,117 +1,147 @@
 /****** conChinPostingBox ******/
 
-#conChinPostingBox{
-  position:relative;
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  border:1px solid #C4C4C4;
-  border-radius:10px;
-  @include mobile-only(){
-    width:100%;
-    height:35%;
+#conChinPostingBox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  @include mobile-only() {
+    width: 100%;
+    height: 35%;
   }
-  @include lg(){
-    width:100%;
-    height:45%;
-  };
-  #curOrder{
+  @include md() {
+    width: 100%;
+    height: 45%;
+    top: -3%;
+  }
+  @include lg() {
+    width: 100%;
+    height: 45%;
+    top: -3%;
+  }
+  #curOrder {
     position: absolute;
     display: flex;
-    font-size:4rem;
-  
-    @include mobile-only(){
-      font-size:2.5rem;
-      left:4%;
-      top:4%; 
+    font-size: 4rem;
+
+    @include mobile-only() {
+      font-size: 2.5rem;
+      left: 4%;
+      top: 4%;
     }
-    @include lg(){
-      font-size:4rem;
-      left:8%;
-      top:5%; 
-    };
-  } 
+    @include md() {
+      font-size: 4rem;
+      left: 8%;
+      top: 5%;
+    }
+    @include lg() {
+      font-size: 4rem;
+      left: 8%;
+      top: 5%;
+    }
+  }
   .posting {
     position: relative;
-    display:flex;
-    align-items:center;
-    height:15%;
-    border-radius:5px;
-    @include mobile-only(){
-      width:95%;
+    display: flex;
+    align-items: center;
+    height: 15%;
+    border-radius: 5px;
+    @include mobile-only() {
+      width: 95%;
     }
-    @include lg(){
-      width:85%;
-    };
-    &:hover{
-      background-color:#FFCE63;
+    @include md() {
+      width: 90%;
+    }
+    @include lg() {
+      width: 90%;
+    }
+    &:hover {
+      background-color: #ffce63;
       cursor: pointer;
     }
     .title {
       position: absolute;
-      display:flex;
-      justify-content:left;
-      align-items:center;
-      left:1%;
-      @include mobile-only(){
-        width:65%;
-        height:100%;
-        font-size:1.3rem;
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      left: 1%;
+      @include mobile-only() {
+        width: 65%;
+        height: 100%;
+        font-size: 1.3rem;
       }
-      @include lg(){
-        width:68%;
-        height:100%;
-        font-size:3.0rem;
-      };
+      @include md() {
+        width: 68%;
+        height: 100%;
+        font-size: 3rem;
+      }
+      @include lg() {
+        width: 68%;
+        height: 100%;
+        font-size: 3rem;
+      }
     }
     .date {
       position: absolute;
       display: flex;
       align-items: center;
-      height:100%;
+      height: 100%;
       // border: 1px solid red;
-      @include mobile-only(){
-        right: 17%;
-        font-size:0.5rem;
-        width:15%;
+      @include mobile-only() {
+        right: 21%;
+        font-size: 0.5rem;
+        width: 15%;
       }
-      @include lg(){
-        font-size:2.0rem;
-        width:15%;
+      @include md() {
+        font-size: 1.5rem;
+        width: 19%;
         right: 15%;
-      };
+      }
+      @include lg() {
+        font-size: 1.5rem;
+        width: 19%;
+        right: 15%;
+      }
     }
     .view {
       position: absolute;
       display: flex;
       align-items: center;
-      height:49%;
-      right:1%;
-      transform:translate(0%,-50%);
+      height: 50%;
+      right: 1%;
+      transform: translate(0%, -50%);
       // border: 1px solid red;
-      @include mobile-only(){
-        font-size:0.5rem;
+      @include mobile-only() {
+        font-size: 1rem;
       }
-      @include lg(){
-        font-size:1.5rem;
-      };
+      @include md() {
+        font-size: 1.5rem;
+      }
+      @include lg() {
+        font-size: 1.5rem;
+      }
     }
     .place {
       position: absolute;
       display: flex;
       align-items: center;
-      height:49%;
-      right:1%;
+      height: 50%;
+      right: 1%;
       text-align: right;
-      transform:translate(0%,50%);
+      transform: translate(0%, 50%);
       // border: 1px solid red;
-      @include mobile-only(){
-        font-size:0.5rem;
+      @include mobile-only() {
+        font-size: 1rem;
         width: 16%;
       }
-      @include lg(){
-        font-size:1.5rem;
-      };
+      @include md() {
+        font-size: 1.5rem;
+      }
+      @include lg() {
+        font-size: 1.5rem;
+      }
     }
   }
 }

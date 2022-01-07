@@ -1,6 +1,6 @@
-#conChinFindBox{
-  position:absolute;
-  display:flex;
+#conChinFindBox {
+  position: absolute;
+  display: flex;
   flex-direction: row;
   border-bottom: 1.5px solid black;
   width: 100%;
@@ -14,6 +14,10 @@
     @include mobile-only() {
       width: 70.5%;
       left: 5%;
+    }
+    @include md() {
+      width: 30%;
+      left: 7%;
     }
     @include lg() {
       width: 30%;
@@ -33,6 +37,9 @@
         font-weight: bolder;
         @include mobile-only() {
           font-size: 2.5rem;
+        }
+        @include md() {
+          font-size: 4rem;
         }
         @include lg() {
           font-size: 4rem;
@@ -65,27 +72,38 @@
         font-size: 1rem;
         height: 60%;
       }
-      @include lg(){
-        width:40%;
-        padding-left:6.5%;
-        font-size:2.0rem;
+      @include md() {
+        width: 40%;
+        padding-left: 6.5%;
+        font-size: 2rem;
+        height: 45%;
+      }
+      @include lg() {
+        width: 40%;
+        padding-left: 6.5%;
+        font-size: 2rem;
         height: 45%;
       }
       &:hover {
         cursor: pointer;
       }
-      .img{
-        position:absolute;
-        @include mobile-only(){
-          width:13px;
-          height:13px;
-          right:67.5%;
+      .img {
+        position: absolute;
+        @include mobile-only() {
+          width: 13px;
+          height: 13px;
+          right: 67.5%;
         }
-        @include lg(){
-          width:23px;
-          height:23px;
-          right:70.5%;
-        };
+        @include md() {
+          width: 23px;
+          height: 23px;
+          right: 70.5%;
+        }
+        @include lg() {
+          width: 23px;
+          height: 23px;
+          right: 70.5%;
+        }
       }
     }
   }

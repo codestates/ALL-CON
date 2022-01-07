@@ -13,10 +13,12 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
+        onDelete : 'cascade',
         references: { model: 'Users', key: 'id' }
       },
       article_id: {
         type: Sequelize.INTEGER,
+        onDelete : 'cascade',
         references: { model: 'Articles', key: 'id' }
       },
       createdAt: {

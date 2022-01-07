@@ -1,0 +1,134 @@
+#FooterContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  background-color: black;
+  @include mobile-only() {
+    height: 100%;
+  }
+  @include md() {
+    height: 130%;
+  }
+  @include lg() {
+    height: 130%;
+  }
+  .team_members {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include mobile-only() {
+      width: 95%;
+      height: 60%;
+    }
+    @include md() {
+      width: 57%;
+      height: 60%;
+    }
+    @include lg() {
+      width: 57%;
+      height: 60%;
+    }
+    .profiles {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      // border: 2px solid green;
+      .profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        height: 100%;
+        // border: 1px solid purple;
+        @include mobile-only() {
+          width: 25%;
+        }
+        @include md() {
+          width: 25%;
+        }
+        @include lg() {
+          width: 25%;
+        }
+        #github {
+          // border: 1px solid orange;
+          padding-top: 6%;
+          padding-bottom: 6%;
+          @include mobile-only() {
+            width: 30%;
+            height: 30%;
+          }
+          @include md() {
+            width: 23%;
+            height: 40%;
+          }
+          @include lg() {
+            width: 23%;
+            height: 40%;
+          }
+        }
+        .text {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 55%;
+          // border: 1px solid yellow;
+          color: #fff;
+          text-align: center;
+          @include mobile-only() {
+            font-size: 1.1rem;
+          }
+          @include md {
+            font-size: 1.8rem;
+          }
+          @include lg {
+            font-size: 1.8rem;
+          }
+        }
+      }
+    }
+  }
+  .badges {
+    display: flex;
+    justify-content: space-between;
+    // border: 1px solid #fff;
+    @include mobile-only() {
+      width: 20%;
+      height: 15%;
+    }
+    @include md() {
+      width: 9%;
+      height: 15%;
+    }
+    @include lg() {
+      width: 9%;
+      height: 15%;
+    }
+    #youtube {
+      width: 35%;
+      height: 90%;
+    }
+    #insta {
+      width: 35%;
+      height: 90%;
+    }
+  }
+  #copyright {
+    color: #fff;
+    text-align: center;
+    width: 40%;
+    height: 10%;
+    @include md {
+      font-size: 1.6rem;
+    }
+    @include lg {
+      font-size: 1.6rem;
+    }
+    // border: 1px solid #fff;
+  }
+}

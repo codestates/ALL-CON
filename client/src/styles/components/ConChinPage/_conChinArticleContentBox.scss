@@ -1,280 +1,355 @@
-#conChinArticleContentBox{
+#conChinArticleContentBox {
   position: absolute;
   display: flex;
-  flex-wrap:wrap;
-  width:100%;
+  flex-wrap: wrap;
+  width: 100%;
   // border:1px solid red;
-  @include mobile-only(){
-    top:102%;
-    height:125%;
+  @include mobile-only() {
+    top: 102%;
+    height: 125%;
   }
-  @include lg(){
-    top:118%;
-    height:125%;
-  };
+  @include md() {
+    top: 107%;
+    height: 125%;
+  }
+  @include lg() {
+    top: 107%;
+    height: 125%;
+  }
 }
-#titleBox{
+#titleBox {
   position: relative;
   display: flex;
-  width:100%;
+  width: 100%;
 
-  @include mobile-only(){
-    height:8%;
+  @include mobile-only() {
+    height: 8%;
   }
-  @include lg(){
-    height:5%;
-  };
+  @include md() {
+    height: 5%;
+  }
+  @include lg() {
+    height: 5%;
+  }
   // border:1px solid blue;
   border-bottom: 2px solid black;
-  .title{
+  .title {
     position: absolute;
     display: flex;
     align-items: center;
-    justify-content:left;
+    justify-content: left;
 
-    bottom:10%;
-    @include mobile-only(){
-      height:80%;
-      width:70%;
+    bottom: 10%;
+    @include mobile-only() {
+      height: 80%;
+      width: 70%;
     }
-    @include lg(){
-      height:50%;;
-      width:80%;
-    };
+    @include md() {
+      height: 50%;
+      width: 80%;
+    }
+    @include lg() {
+      height: 50%;
+      width: 80%;
+    }
     // border:1px solid blue;
-    
-    .text{
-      @include mobile-only(){
-        font-size: 2.0rem;
+
+    .text {
+      @include mobile-only() {
+        font-size: 2rem;
       }
-      @include lg(){
-        font-size: 4.0rem;
-      };
+      @include md() {
+        font-size: 4rem;
+      }
+      @include lg() {
+        font-size: 4rem;
+      }
       // border:1px solid blue;
     }
   }
-  #profileBox{
+  #profileBox {
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: right;
-    width:35%;
-    right:2%;
-    bottom:10%;
-    @include mobile-only(){
-      height:80%;
+    width: 35%;
+    right: 2%;
+    bottom: 10%;
+    @include mobile-only() {
+      height: 80%;
     }
-    @include lg(){
-      height:50%;
-    };
+    @include md() {
+      height: 50%;
+    }
+    @include lg() {
+      height: 50%;
+    }
     // border:1px solid blue;
-    .img{
+    .img {
       position: relative;
       border-radius: 100%;
 
-      @include mobile-only(){
-        bottom:5%;
-        right:3%;
-        width:25px;
-        height:25px;
+      @include mobile-only() {
+        bottom: 5%;
+        right: 3%;
+        width: 25px;
+        height: 25px;
       }
-      @include lg(){
-        bottom:10%;
-        right:2%;
-        width:40px;
-        height:40px;
-      };
-    }
-    }
-    .nickName{
-      @include mobile-only(){
-        font-size:1.3rem;
+      @include md() {
+        bottom: 10%;
+        right: 2%;
+        width: 40px;
+        height: 40px;
       }
-      @include lg(){
-        font-size: 2.5rem;
-      };
+      @include lg() {
+        bottom: 10%;
+        right: 2%;
+        width: 40px;
+        height: 40px;
+      }
     }
   }
-#contentBox{
-  position:absolute;
+  .nickName {
+    @include mobile-only() {
+      font-size: 1.3rem;
+    }
+    @include md() {
+      font-size: 2.5rem;
+    }
+    @include lg() {
+      font-size: 2.5rem;
+    }
+  }
+}
+#contentBox {
+  position: absolute;
   display: flex;
-  width:100%;
+  width: 100%;
 
   // border:1px solid red;
-  @include mobile-only(){
-    height:100%;
-    top:7.8%;
+  @include mobile-only() {
+    height: 100%;
+    top: 7.8%;
   }
-  @include lg(){
-    height:100%;
-    top:5%;
-  };
-  #viewBox{
+  @include md() {
+    height: 100%;
+    top: 5%;
+  }
+  @include lg() {
+    height: 100%;
+    top: 5%;
+  }
+  #viewBox {
     position: relative;
     display: flex;
-    align-items:center;
-    width:50%;
-    height:5%;
+    align-items: center;
+    width: 50%;
+    height: 5%;
     // border:1px solid red;
-    .view{
+    .view {
       position: relative;
       display: flex;
-      width:80%;
+      width: 80%;
       // border:1px solid red;
-      color:#A0A0A0;
-      @include mobile-only(){
-        font-size:1.0rem;
+      color: #a0a0a0;
+      @include mobile-only() {
+        font-size: 1rem;
       }
-      @include lg(){
-        font-size: 2.0rem;
-      };
+      @include md() {
+        font-size: 2rem;
+      }
+      @include lg() {
+        font-size: 2rem;
+      }
     }
   }
-  #modifyBox{
+  #modifyBox {
     position: relative;
     display: flex;
-    align-items:center;
-    width:50%;
-    height:5%;
+    align-items: center;
+    width: 50%;
+    height: 5%;
     // border:1px solid red;
-    .modifyBtn{
+    .modifyBtn {
       position: absolute;
-      display:flex;
+      display: flex;
       // border:1px solid red;
-      color:#A0A0A0;
-      @include mobile-only(){
-        right:40%;
-        font-size:1.3rem;
+      color: #a0a0a0;
+      &:hover {
+        cursor: pointer;
       }
-      @include lg(){
-        right:27%;
+      @include mobile-only() {
+        right: 40%;
+        font-size: 1.3rem;
+      }
+      @include md() {
+        right: 35%;
         font-size: 2.5rem;
-      };
+      }
+      @include lg() {
+        right: 35%;
+        font-size: 2.5rem;
+      }
     }
-    .deleteBtn{
+    .deleteBtn {
       position: absolute;
-      display:flex;
+      display: flex;
       // border:1px solid red;
-      color:#A0A0A0;
-      @include mobile-only(){
-        right:23%;
-        font-size:1.3rem;
+      color: #a0a0a0;
+      &:hover {
+        cursor: pointer;
       }
-      @include lg(){
-        right:18%;
+      @include mobile-only() {
+        right: 23%;
+        font-size: 1.3rem;
+      }
+      @include md() {
+        right: 23%;
         font-size: 2.5rem;
-      };
+      }
+      @include lg() {
+        right: 23%;
+        font-size: 2.5rem;
+      }
     }
-    #memberBoxWrapper{
-      position:absolute;
-      display:flex;
+    #memberBoxWrapper {
+      position: absolute;
+      display: flex;
       align-items: center;
-      width:20%;
-      height:100%;
-      bottom:0%;
-      @include mobile-only(){
-        right:0%;
+      width: 20%;
+      height: 100%;
+      bottom: 0%;
+      @include mobile-only() {
+        right: 0%;
       }
-      @include lg(){
-        justify-content:right;
-        right:0%;
-      };
+      @include md() {
+        justify-content: right;
+        right: 0%;
+      }
+      @include lg() {
+        justify-content: right;
+        right: 0%;
+      }
       // border:1px solid red;
     }
   }
-  #content{
-    position:absolute;
-    display:flex;
-    width:85%;
-    top:5%;
-    @include mobile-only(){
-      height:35%;
-      padding-bottom:35%;
+  #content {
+    position: absolute;
+    display: flex;
+    width: 85%;
+    top: 5%;
+    @include mobile-only() {
+      height: 35%;
+      padding-bottom: 35%;
     }
-    @include lg(){
-      height:45%;
-      padding-bottom:45%;
-    };
+    @include md() {
+      height: 45%;
+      padding-bottom: 45%;
+    }
+    @include lg() {
+      height: 45%;
+      padding-bottom: 45%;
+    }
     // border:1px solid blue;
-    #imgWrapper{
-      position:absolute;
-      top:10%;
-      @include mobile-only(){
-        width:40%;
-        height:40%;
-        padding-bottom:40%;
-        left:8%;
-        max-height:70px;
+    #imgWrapper {
+      position: absolute;
+      top: 10%;
+      @include mobile-only() {
+        width: 40%;
+        height: 40%;
+        padding-bottom: 40%;
+        left: 8%;
+        max-height: 70px;
       }
-      @include lg(){
-        width:35%;
-        height:35%;
-        padding-bottom:35%;
-        left:12%;
-      };
+      @include md() {
+        width: 35%;
+        height: 35%;
+        padding-bottom: 35%;
+        left: 12%;
+      }
+      @include lg() {
+        width: 35%;
+        height: 35%;
+        padding-bottom: 35%;
+        left: 12%;
+      }
       border: 3px solid $yellow;
       border-radius: 5px;
-      .img{
+      .img {
         position: absolute;
-        width:100%;
-        height:100%;
-        object-fit:100%;
+        width: 100%;
+        height: 100%;
+        object-fit: 100%;
         // object-position: center;
       }
     }
-    .text{
-      position:absolute;
-      display:flex;
-      top:10%;
-      text-align:left;
+    .text {
+      position: absolute;
+      display: flex;
+      top: 10%;
+      text-align: left;
       // border:1px solid blue;
-      @include mobile-only(){
-        font-size:1.3rem;
-        right:-3%;
-        width:45%;
-        height:45%;
-        padding-bottom:45%;
+      @include mobile-only() {
+        font-size: 1.3rem;
+        right: -3%;
+        width: 45%;
+        height: 45%;
+        padding-bottom: 45%;
       }
-      @include lg(){
+      @include md() {
         font-size: 2.5rem;
-        right:-10%;
-        width:55%;
-        height:35%;
-      };
+        right: -10%;
+        width: 55%;
+        height: 35%;
+      }
+      @include lg() {
+        font-size: 2.5rem;
+        right: -10%;
+        width: 55%;
+        height: 35%;
+      }
     }
   }
-  #commentWrapper{
-    position: absolute;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-wrap:wrap;
-    width:100%;
-    @include mobile-only(){
-      top:41%;
-      height:60%;
-    }
-    @include lg(){
-      top:48%;
-      height: 45%;
-    };
-    // border:3px solid green;
-  }
-  #paginationWrapper{
+  #commentWrapper {
     position: absolute;
     display: flex;
     align-items: center;
-    width:90%;
-    height:20%;
-    bottom:-5%;
-    // border:1px solid red;
-    @include mobile-only(){
-      top:85%;
-      height:20%;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    @include mobile-only() {
+      top: 48%;
+      height: 60%;
     }
-    @include lg(){
+    @include md() {
+      top: 48%;
+      height: 45%;
+    }
+    @include lg() {
+      top: 48%;
+      height: 45%;
+    }
+    // border:3px solid green;
+  }
+  #paginationWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 20%;
+    bottom: -5%;
+    // border:1px solid red;
+    @include mobile-only() {
+      top: 85%;
+      height: 20%;
+    }
+    @include md() {
       top: 87%;
-      height:25%;
-    };
+      height: 25%;
+    }
+    @include lg() {
+      top: 87%;
+      height: 25%;
+    }
   }
 }
