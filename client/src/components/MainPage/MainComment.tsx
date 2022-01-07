@@ -13,53 +13,59 @@ function MainComment() {
           <div className='dateBox'>
             <p className='nickNameAndDate'>유태양발닦개님 | 2021.01.06</p>
           </div>
-          <div className='imgWrapper'>
-            <img className='img' src={profileImage} />
-            <img className='shield' src={shield} />
+          <div id='imgAndText'>
+            <div className='imgWrapper'>
+              <img className='img' src={profileImage} />
+              <img className='shield' src={shield} />
+            </div>
+            <textarea id='input' placeholder='댓글을 입력해주세요.'></textarea>
           </div>
-          <textarea id='input' placeholder='댓글을 입력해주세요.'></textarea>
         </div>
 
         <div className='box'>
           <div className='dateBox'>
             <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
+            <div className='dotWrapper'>
+              <img className='dot' src={tripleDot} />
+            </div>
           </div>
-          <div className='imgWrapper'>
-            <img className='img' src={articleImage} />
-            <img className='shield' src={shield} />
+          <div id='imgAndText'>
+            <div className='imgWrapper'>
+              <img className='img' src={articleImage} />
+              <img className='shield' src={shield} />
+            </div>
+            <p id='text'>올콘 뛰세요..? 부럽다...</p>
           </div>
-          <div className='dotWrapper'>
-            <img className='dot' src={tripleDot} />
-          </div>
-          <p id='text'>올콘 뛰세요..? 부럽다...</p>
         </div>
-
         <div className='box'>
           <div className='dateBox'>
             <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
+            <div className='dotWrapper'>
+              <img className='dot' src={tripleDot} />
+            </div>
           </div>
-          <div className='imgWrapper'>
-            <img className='img' src={articleImage} />
-            <img className='shield' src={shield} />
+          <div id='imgAndText'>
+            <div className='imgWrapper'>
+              <img className='img' src={articleImage} />
+              <img className='shield' src={shield} />
+            </div>
+            <p id='text'>올콘 뛰세요..? 부럽다...</p>
           </div>
-          <div className='dotWrapper'>
-            <img className='dot' src={tripleDot} />
-          </div>
-          <p id='text'>올콘 뛰세요..? 부럽다...</p>
         </div>
-
         <div className='box'>
           <div className='dateBox'>
             <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
+            <div className='dotWrapper'>
+              <img className='dot' src={tripleDot} />
+            </div>
           </div>
-          <div className='imgWrapper'>
-            <img className='img' src={articleImage} />
-            <img className='shield' src={shield} />
+          <div id='imgAndText'>
+            <div className='imgWrapper'>
+              <img className='img' src={articleImage} />
+              <img className='shield' src={shield} />
+            </div>
+            <p id='text'>올콘 뛰세요..? 부럽다...</p>
           </div>
-          <div className='dotWrapper'>
-            <img className='dot' src={tripleDot} />
-          </div>
-          <p id='text'>올콘 뛰세요..? 부럽다...</p>
         </div>
       </div>
     </>
