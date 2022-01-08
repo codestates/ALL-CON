@@ -16,9 +16,7 @@ function App() {
       {/* <ConChinPage /> */}
       {/* <ConChinCertificationPage /> */}
       <MyPage />
-      <div id='modalWrapper'>
-        <MyProfileImageModal />
-      </div>
+      <div id='modalWrapper'>{/* <MyProfileImageModal /> */}</div>
     </div>
   );
 }
