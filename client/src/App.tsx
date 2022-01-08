@@ -13,11 +13,11 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <ConcertPage />
-      <ConcertModal />
+      {/* <ConcertPage />
+      <ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
       {/* <MainPage /> */}
-      {/* <ConChinPage /> */}
+      <ConChinPage />
       {/* <ConChinCertificationPage /> */}
       {/* <MyPage /> */}
       {/* <div id='modalWrapper'>
