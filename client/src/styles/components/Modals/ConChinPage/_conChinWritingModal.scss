@@ -1,0 +1,120 @@
+#conChinWritingContainer {
+  z-index: 999;
+  position: fixed;
+  width: 100%;
+  @include mobile-only() {
+    top: 10%;
+    height: 90%;
+  }
+  @include md() {
+    height: 100%;
+  }
+  @include lg() {
+    height: 100%;
+  }
+
+  #backGround {
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  #writingModal {
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    @include mobile-only() {
+      width: 100%;
+      height: 100%;
+    }
+    @include md() {
+      width: 30%;
+      height: 85%;
+    }
+    @include lg() {
+      width: 30%;
+      height: 85%;
+    }
+    #image {
+      width: 50%;
+      border-radius: 5px;
+    }
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 75%;
+      height: 5%;
+      background-color: $gray;
+      border-radius: 5px;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    #write {
+      text-align: center;
+      border: 0;
+      background-color: #ccc;
+      font-weight: bold;
+    }
+    #concert {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    #peopleNum {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      // border: 1px solid blue;
+      .want {
+        width: 45%;
+        height: 100%;
+        text-align: center;
+        border: 0;
+        border-radius: 5px;
+        background-color: #ccc;
+        font-weight: bold;
+      }
+    }
+    #board {
+      width: 75%;
+      height: 30%;
+      text-align: center;
+      border: 0;
+      border-radius: 5px;
+      background-color: #ccc;
+      font-weight: bold;
+    }
+    #btnBox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      #no1 {
+        color: #fff;
+        background-color: $yellow;
+        width: 45%;
+        height: 100%;
+        border: 0;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      #no2 {
+        color: #fff;
+        background-color: #000;
+        width: 45%;
+        height: 100%;
+        border: 0;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+    }
+  }
+}

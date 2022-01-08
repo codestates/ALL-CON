@@ -14,11 +14,11 @@ function ConcertChosenBox() {
           <div className='miniBox'>
             <div id='left'>
               <p id='whereTag'>YES24</p>
-              <p>202x.xx.xx~202x.xx.xx</p>
+              <p id='date'>202x.xx.xx~202x.xx.xx</p>
             </div>
             <div id='right'>
-              <p>조회수 1,715</p>
-              <p>KBS 아레나</p>
+              <p id='view'>조회수 1,715</p>
+              <p id='place'>KBS 아레나</p>
             </div>
           </div>
         </div>

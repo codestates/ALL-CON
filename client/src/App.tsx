@@ -4,10 +4,14 @@ import MainPage from './pages/MainPage';
 import ConcertPage from './pages/ConcertPage';
 import Header from './components/Header';
 import ConcertModal from './components/Modals/ConcertPage/ConcertModal';
+import ConChinWritingModal from './components/Modals/ConChinPage/ConChinWritingModal';
+
 function App() {
   return (
     <div className='App'>
+      <Header />
       <ConChinPage />
+
     </div>
   );
 }
