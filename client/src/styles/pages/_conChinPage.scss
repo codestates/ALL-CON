@@ -90,17 +90,17 @@
     @include mobile-only() {
       width: 100%;
       height: 25%;
-      top: 190%;
+      top: 195%;
     }
     @include md() {
       width: 100%;
       height: 15.3%;
-      top: 180%;
+      top: 185%;
     }
     @include lg() {
       width: 100%;
       height: 15.3%;
-      top: 180%;
+      top: 185%;
     }
     // border: 1px solid red;
     #footerWrapper {

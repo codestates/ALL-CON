@@ -18,9 +18,29 @@
     border-top: 10px solid $yellow;
     height: 90%;
   }
+  #paginationWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    // border: 1px solid red;
+    @include mobile-only() {
+      top: 83%;
+      height: 20%;
+    }
+    @include md() {
+      top: 82%;
+      height: 25%;
+    }
+    @include lg() {
+      top: 82%;
+      height: 25%;
+    }
+  }
 }
 #conChinmemberBoxWrapper {
   position: absolute;
+  display: flex;
   @include mobile-only() {
     top: 40%;
   }
