@@ -231,21 +231,18 @@
     height: 1.8rem;
     // width:40%;
     // height:20%;
-    top: 40%;
   }
   @include md() {
     width: 8.9rem;
     height: 3.6rem;
     // width:25%;
     // height:10%;
-    top: 50%;
   }
   @include lg() {
     width: 8.9rem;
     height: 3.6rem;
     // width:25%;
     // height:10%;
-    top: 50%;
   }
   .icon {
     position: relative;
@@ -307,7 +304,7 @@
   @include lg() {
     height: 12%;
   }
-  // border:1px solid purple;
+  // border: 1px solid purple;
   transform: translate(-50%, 0%);
   .page {
     position: relative;
@@ -735,5 +732,14 @@
 }
 
 /***** headerMenu *****/
+
+/***** modalWrapper *****/
+#modalWrapper {
+  position: absolute;
+  z-index: 990;
+  height: 100%;
+  width: 100%;
+}
+/***** modalWrapper *****/
 
 /****** grids ******/
