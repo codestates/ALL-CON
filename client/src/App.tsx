@@ -16,8 +16,8 @@ function App() {
       {/* <ConcertPage />
       <ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
-      <MainPage />
-      {/* <ConChinPage /> */}
+      {/* <MainPage /> */}
+      <ConChinPage />
       {/* <ConChinCertificationPage /> */}
       {/* <MyPage /> */}
       {/* <div id='modalWrapper'>
