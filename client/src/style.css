@@ -786,13 +786,21 @@ html {
         font-size: 1.6rem; } }
 
 #headerContainer {
-  z-index: 15;
   position: absolute;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   height: 5%;
   background-color: white; }
+  @media (max-width: 767px) {
+    #headerContainer {
+      z-index: 999; } }
+  @media (min-width: 768px) {
+    #headerContainer {
+      z-index: 15; } }
+  @media (min-width: 1200px) {
+    #headerContainer {
+      z-index: 15; } }
   #headerContainer #logoBar {
     position: relative;
     display: flex;
@@ -1925,12 +1933,20 @@ html {
 
 #myProfileImageModal {
   position: 999;
-  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%; }
+  @media (max-width: 767px) {
+    #myProfileImageModal {
+      position: fixed; } }
+  @media (min-width: 768px) {
+    #myProfileImageModal {
+      position: fixed; } }
+  @media (min-width: 1200px) {
+    #myProfileImageModal {
+      position: fixed; } }
   #myProfileImageModal #bg {
     z-index: 998;
     position: fixed;
@@ -1949,9 +1965,9 @@ html {
     @media (max-width: 767px) {
       #myProfileImageModal #modalBox {
         width: 100%;
-        height: 100%;
+        height: 90%;
         border-radius: 0px;
-        top: 0%; } }
+        top: 10%; } }
     @media (min-width: 768px) {
       #myProfileImageModal #modalBox {
         width: 100%;
@@ -1960,8 +1976,8 @@ html {
         top: 0%; } }
     @media (min-width: 1200px) {
       #myProfileImageModal #modalBox {
-        width: 25%;
-        height: 60%;
+        width: 35%;
+        height: 70%;
         padding-bottom: 30%;
         top: 50%;
         transform: translate(0%, -50%);
@@ -2009,7 +2025,7 @@ html {
         justify-content: center; }
         @media (max-width: 767px) {
           #myProfileImageModal #modalBox #modal #imgBox {
-            top: 25%;
+            top: 22%;
             width: 70%;
             padding-bottom: 70%; } }
         @media (min-width: 768px) {
@@ -2054,7 +2070,7 @@ html {
         @media (max-width: 767px) {
           #myProfileImageModal #modalBox #modal #modifyBtnWrapper {
             height: 6%;
-            bottom: 22%; } }
+            bottom: 20%; } }
         @media (min-width: 768px) {
           #myProfileImageModal #modalBox #modal #modifyBtnWrapper {
             height: 8%;
@@ -2291,6 +2307,221 @@ html {
         #conChinCertificationPage #fullFooter #footerWrapper {
           height: 70%;
           width: 79%; } }
+
+#findPasswordModal {
+  z-index: 990;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; }
+  @media (max-width: 767px) {
+    #findPasswordModal {
+      position: absolute; } }
+  @media (min-width: 768px) {
+    #findPasswordModal {
+      position: fixed; } }
+  @media (min-width: 1200px) {
+    #findPasswordModal {
+      position: fixed; } }
+  #findPasswordModal #bg {
+    z-index: 998;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #404040;
+    opacity: 50%; }
+  #findPasswordModal #modalBox {
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; }
+    @media (max-width: 767px) {
+      #findPasswordModal #modalBox {
+        width: 100%;
+        height: 90%;
+        border-radius: 0px;
+        top: 10%; } }
+    @media (min-width: 768px) {
+      #findPasswordModal #modalBox {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        top: 0%; } }
+    @media (min-width: 1200px) {
+      #findPasswordModal #modalBox {
+        width: 35%;
+        height: 70%;
+        padding-bottom: 30%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 20px; } }
+    #findPasswordModal #modalBox #modal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      border-radius: 20px; }
+      @media (max-width: 767px) {
+        #findPasswordModal #modalBox #modal {
+          width: 90%;
+          height: 80%;
+          top: 40%;
+          transform: translate(0%, -50%); } }
+      @media (min-width: 768px) {
+        #findPasswordModal #modalBox #modal {
+          width: 90%;
+          height: 100%;
+          top: 45%;
+          transform: translate(0%, -50%); } }
+      @media (min-width: 1200px) {
+        #findPasswordModal #modalBox #modal {
+          width: 90%;
+          height: 100%;
+          top: 45%;
+          transform: translate(0%, -50%); } }
+      #findPasswordModal #modalBox #modal #titlesBox {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 50%; }
+        #findPasswordModal #modalBox #modal #titlesBox #titleWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 30%;
+          top: 30%; }
+          #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+            position: absolute;
+            color: #ffce63;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+                font-size: 3.5rem; } }
+            @media (min-width: 768px) {
+              #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+                font-size: 4.5rem; } }
+            @media (min-width: 1200px) {
+              #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+                font-size: 4.5rem; } }
+        #findPasswordModal #modalBox #modal #titlesBox #explainWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 50%;
+          top: 50%; }
+          #findPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
+            position: relative;
+            color: #a0a0a0; }
+            @media (max-width: 767px) {
+              #findPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #findPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #findPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
+                font-size: 1.8rem; } }
+      #findPasswordModal #modalBox #modal #emailBox {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 25%;
+        top: 50%; }
+        #findPasswordModal #modalBox #modal #emailBox #titleWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 30%;
+          top: 0%; }
+          #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title {
+            position: absolute;
+            padding-left: 2%;
+            color: #000;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title {
+                font-size: 2.5rem; } }
+            @media (min-width: 768px) {
+              #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title {
+                font-size: 3rem; } }
+            @media (min-width: 1200px) {
+              #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title {
+                font-size: 3rem; } }
+        #findPasswordModal #modalBox #modal #emailBox #inputWrapper {
+          position: absolute;
+          display: flex;
+          width: 100%;
+          height: 30%;
+          top: 50%; }
+          #findPasswordModal #modalBox #modal #emailBox #inputWrapper .input {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            border: 1px solid #c4c4c4;
+            border-radius: 5px;
+            padding-left: 2%; }
+            @media (max-width: 767px) {
+              #findPasswordModal #modalBox #modal #emailBox #inputWrapper .input {
+                font-size: 1.3rem; } }
+            @media (min-width: 768px) {
+              #findPasswordModal #modalBox #modal #emailBox #inputWrapper .input {
+                font-size: 1.5rem; } }
+            @media (min-width: 1200px) {
+              #findPasswordModal #modalBox #modal #emailBox #inputWrapper .input {
+                font-size: 1.5rem; } }
+          #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper {
+            position: absolute;
+            display: flex;
+            justify-content: right;
+            height: 60%;
+            right: 2%;
+            top: 50%;
+            transform: translate(0, -50%); }
+            #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper .btn {
+              background-color: #ffce63;
+              border: none;
+              border-radius: 5px;
+              color: white;
+              font-weight: bold;
+              font-size: 1.5rem; }
+      #findPasswordModal #modalBox #modal #btnBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 25%;
+        top: 75%; }
+        #findPasswordModal #modalBox #modal #btnBox .btn {
+          position: relative;
+          width: 100%;
+          height: 30%;
+          background-color: #000;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #findPasswordModal #modalBox #modal #btnBox .btn {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #findPasswordModal #modalBox #modal #btnBox .btn {
+              font-size: 2rem; } }
+          @media (min-width: 1200px) {
+            #findPasswordModal #modalBox #modal #btnBox .btn {
+              font-size: 2rem; } }
 
 /***** 재혁 *****/
 /*---------------선영--------------------*/
