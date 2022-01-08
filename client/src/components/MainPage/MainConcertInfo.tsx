@@ -73,12 +73,9 @@ function MainConcertInfo() {
         </div>
         <div id='buttonsWrapper'>
           <button id='black-btn'>
-            <div>
-              <div id='imgAndOpen'>
-                <img src={sandwatch} />
-                <p id='open'>티켓 오픈일</p>
-              </div>
-              <p id='time'>11.29(월) 오후 2:00</p>
+            <div id='imgAndOpen'>
+              <img src={sandwatch} />
+              <p id='open'>티켓 오픈일 &nbsp; 11.29(월) 오후 2:00</p>
             </div>
           </button>
           <button id='yellow-btn'>예매하기</button>

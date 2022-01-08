@@ -20,10 +20,20 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 90%;
-    height: 70%;
     background-color: #fff;
     border-radius: 5px;
+    @include mobile-only() {
+      width: 90%;
+      height: 70%;
+    }
+    @include md() {
+      width: 40%;
+      height: 90%;
+    }
+    @include lg() {
+      width: 40%;
+      height: 90%;
+    }
     #ToAlignModal {
       display: flex;
       flex-direction: column;
@@ -47,12 +57,30 @@
             align-items: center;
             width: 85%;
             height: 100%;
-            font-size: 1.6rem;
+            @include mobile-only() {
+              font-size: 1.6rem;
+            }
+            @include md() {
+              font-size: 2.5rem;
+            }
+            @include lg() {
+              font-size: 2.5rem;
+            }
           }
           p {
-            font-size: 2rem;
+            display: flex;
+            align-items: center;
             font-weight: bold;
             color: $gray;
+            @include mobile-only() {
+              font-size: 2rem;
+            }
+            @include md() {
+              font-size: 3rem;
+            }
+            @include lg() {
+              font-size: 3rem;
+            }
           }
         }
         #whereAndDate {
@@ -67,12 +95,31 @@
             width: 15%;
             height: 70%;
             background-color: $yellow;
-            border-radius: 3px;
+            border-radius: 5px;
             color: #fff;
             font-weight: bold;
+            @include mobile-only() {
+              font-size: 1.1rem;
+            }
+            @include md() {
+              font-size: 1.8rem;
+            }
+            @include lg() {
+              font-size: 1.8rem;
+            }
           }
           #date {
+            // border: 1px solid red;
             padding-left: 1%;
+            @include mobile-only() {
+              font-size: 1.2rem;
+            }
+            @include md() {
+              font-size: 1.8rem;
+            }
+            @include lg() {
+              font-size: 1.8rem;
+            }
           }
         }
       }
@@ -108,6 +155,15 @@
               font-size: 1.4rem;
               font-weight: bold;
               // border: 1px solid blue;
+              @include mobile-only() {
+                font-size: 1.4rem;
+              }
+              @include md() {
+                font-size: 1.4rem;
+              }
+              @include lg() {
+                font-size: 1.8rem;
+              }
               #place {
               }
               #time {
@@ -120,7 +176,17 @@
               flex-direction: column;
               width: 60%;
               height: 100%;
-              font-size: 1.2rem;
+
+              // border: 1px solid red;
+              @include mobile-only() {
+                font-size: 1.2rem;
+              }
+              @include md() {
+                font-size: 1.6rem;
+              }
+              @include lg() {
+                font-size: 1.6rem;
+              }
               #place_r {
               }
               #time_r {
@@ -136,6 +202,16 @@
             border-radius: 5px;
             color: #fff;
             font-weight: bold;
+            @include mobile-only() {
+              height: 13%;
+            }
+            @include md() {
+              height: 14%;
+            }
+            @include lg() {
+              font-size: 1.8rem;
+              height: 14%;
+            }
           }
         }
       }
@@ -147,8 +223,18 @@
         height: 45%;
         // border: 1px solid black;
         #map {
-          width: 55%;
-          height: 85%;
+          @include mobile-only() {
+            width: 55%;
+            height: 85%;
+          }
+          @include md() {
+            width: 50%;
+            height: 85%;
+          }
+          @include lg() {
+            width: 50%;
+            height: 85%;
+          }
         }
       }
     }
