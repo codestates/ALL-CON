@@ -14,7 +14,8 @@ function App() {
     <div className='App'>
       <Header />
       <ConcertPage />
-      <ConChinWritingModal />
+      <ConcertModal />
+      {/* <ConChinWritingModal /> */}
       {/* <MainPage /> */}
       {/* <ConChinPage /> */}
       {/* <ConChinCertificationPage /> */}
