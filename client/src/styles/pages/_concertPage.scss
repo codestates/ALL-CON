@@ -9,12 +9,16 @@
   #lineOrderWrapper {
     position: absolute;
     top: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    // border: 2px solid red;
     @include mobile-only() {
+      display: flex;
+      justify-content: center;
+      width: 100%;
       height: 8%;
-      // border: 2px solid red;
+    }
+    @include lg() {
+      width: 50%;
+      left: 0;
     }
     #bottomLineOrderBox {
       display: flex;
@@ -31,10 +35,12 @@
   #concertsBoard {
     position: absolute;
     top: 10%;
+    left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    // border: 1px solid blue;
     @include mobile-only() {
       width: 100%;
       height: 130%;
@@ -44,10 +50,9 @@
       height: 200%;
     }
     @include lg() {
-      width: 55%;
+      width: 50%;
       height: 200%;
     }
-    // border: 3px solid blue;
     #concertBoxWrapper {
       width: 90%;
       height: 12%;

@@ -1,26 +1,37 @@
 #conChinWritingContainer {
   z-index: 999;
-  position: fixed;
   width: 100%;
   @include mobile-only() {
+    position: absolute;
     top: 10%;
     height: 90%;
   }
   @include md() {
+    position: fixed;
     height: 100%;
   }
   @include lg() {
+    position: fixed;
     height: 100%;
   }
 
   #backGround {
     z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
+    @include mobile-only() {
+    }
+    @include md() {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @include lg() {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   #writingModal {
     z-index: 999;
@@ -29,18 +40,20 @@
     justify-content: space-around;
     align-items: center;
     background-color: #fff;
-    border-radius: 5px;
     @include mobile-only() {
+      position: absolute;
       width: 100%;
       height: 100%;
     }
     @include md() {
       width: 30%;
       height: 85%;
+      border-radius: 5px;
     }
     @include lg() {
       width: 30%;
       height: 85%;
+      border-radius: 5px;
     }
     #image {
       width: 50%;

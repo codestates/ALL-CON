@@ -8,6 +8,9 @@ import Header from './components/Header';
 import ConcertModal from './components/Modals/ConcertPage/ConcertModal';
 import MyProfileImageModal from './components/Modals/MyPage/MyProfileImageModal';
 import ConChinWritingModal from './components/Modals/ConChinPage/ConChinWritingModal';
+import LoginModal from './components/Modals/LoginModal';
+import SignUpModal from './components/Modals/SignUpModal';
+import TosModal from './components/Modals/TosModal';
 import FindPasswordModal from './components/Modals/FindPasswordModal';
 import ConfirmNumberModal from './components/Modals/ConfirmNumberModal';
 import ResetPasswordModal from './components/Modals/ResetPasswordModal';
@@ -21,11 +24,13 @@ function App() {
       {/* <ConChinPage /> */}
       {/* <ConChinCertificationPage /> */}
       {/* <MyPage /> */}
+      {/* <TosModal /> */}
+      <SignUpModal />
       <div id='modalWrapper'>
         {/* <MyProfileImageModal /> */}
-        {/* <ConfirmNumberModal /> */}
-        {/* <FindPasswordModal /> */}
-        <ResetPasswordModal />
+        {/* <ConfirmNumberModal />
+        <FindPasswordModal /> */}
+        {/* <ResetPasswordModal /> */}
       </div>
       {/* <ConChinPage /> */}
     </div>
