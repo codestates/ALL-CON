@@ -23,10 +23,12 @@
 @import './components/MyPage/myProfileBox.scss';
 @import './components/MyPage/myArticleBox.scss';
 @import './components/MyPage/myCommentBox.scss';
-@import './components/Modals/MyPage/myProfileImageModal';
+@import './components/Modals/MyPage/myProfileImageModal.scss';
 @import './pages/myPage.scss';
-@import './pages/conChinCertificationPage';
-
+@import './pages/conChinCertificationPage.scss';
+@import './components/Modals/findPasswordModal.scss';
+@import './components/Modals/confirmNumberModal.scss';
+@import './components/Modals/resetPasswordModoal.scss';
 /***** 재혁 *****/
 
 /*---------------선영--------------------*/

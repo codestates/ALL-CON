@@ -1,0 +1,271 @@
+#confirmNumberModal {
+  z-index: 993;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  // border: 3px solid red;
+  @include mobile-only() {
+    position: absolute;
+  }
+  @include md() {
+    position: fixed;
+  }
+  @include lg() {
+    position: fixed;
+  }
+  #bg {
+    z-index: 994;
+    position: fixed;
+    display: flex;
+
+    // background-color: white;
+    background-color: #404040;
+    opacity: 50%;
+    @include mobile-only() {
+      width: 100%;
+      height: 100%;
+    }
+    @include md() {
+      width: 100%;
+      height: 100%;
+    }
+    @include lg() {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  #modalBox {
+    z-index: 995;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+
+    @include mobile-only() {
+      width: 100%;
+      height: 30%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      border-radius: 5px;
+    }
+    @include md() {
+      width: 100%;
+      height: 30%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      border-radius: 5px;
+    }
+    @include lg() {
+      width: 35%;
+      height: 35%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      border-radius: 10px;
+    }
+    #modal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      // border: 1px solid red;
+      border-radius: 5px;
+      #titlesBox {
+        position: absolute;
+        display: flex;
+        width: 100%;
+
+        @include mobile-only() {
+          height: 15%;
+          border-radius: 5px 5px 0px 0px;
+        }
+        @include md() {
+          height: 15%;
+          border-radius: 5px 5px 0px 0px;
+        }
+        @include lg() {
+          height: 9%;
+          border-radius: 10px 10px 0px 0px;
+        }
+        #titleWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 100%;
+          padding-left: 2%;
+          background-color: $yellow;
+          // border: 1px solid red;
+
+          @include mobile-only() {
+            border-radius: 5px 5px 0px 0px;
+          }
+          @include md() {
+            border-radius: 5px 5px 0px 0px;
+          }
+          @include lg() {
+            border-radius: 10px 10px 0px 0px;
+          }
+          .title {
+            position: absolute;
+            color: white;
+
+            font-weight: bold;
+            @include mobile-only() {
+              font-size: 1.5rem;
+            }
+            @include md() {
+              font-size: 1.5rem;
+            }
+            @include lg() {
+              font-size: 1.8rem;
+            }
+          }
+        }
+        #xButtonWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-self: right;
+          height: 100%;
+          width: 100%;
+          // border: 1px solid red;
+          .xButton {
+            position: absolute;
+
+            right: 2%;
+            color: white;
+            cursor: pointer;
+            @include mobile-only() {
+              font-size: 2rem;
+            }
+            @include md() {
+              font-size: 2rem;
+            }
+            @include lg() {
+              font-size: 2.5rem;
+            }
+          }
+        }
+      }
+      #exceptTitleBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        // border: 2px solid blue;
+        @include mobile-only() {
+          height: 85%;
+          top: 15%;
+        }
+        @include md() {
+          height: 85%;
+          top: 15%;
+        }
+        @include lg() {
+          height: 91%;
+          top: 9%;
+        }
+        #subTitleWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 33.33%;
+          top: 0%;
+          text-align: center;
+          // border: 1px solid green;
+          .subTitle {
+            position: absolute;
+            bottom: 0%;
+
+            font-weight: bold;
+            @include mobile-only() {
+              font-size: 1.5rem;
+            }
+            @include md() {
+              font-size: 1.5rem;
+            }
+            @include lg() {
+              font-size: 2rem;
+            }
+          }
+        }
+        #inputWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 33.33%;
+          top: 35.33%;
+          // border: 1px solid green;
+          .input {
+            width: 80%;
+            height: 50%;
+            padding-left: 2%;
+            border: 1px solid $gray;
+            border-radius: 5px;
+          }
+          .timer {
+            position: absolute;
+            display: flex;
+            font-weight: bold;
+            color: red;
+            right: 13%;
+            @include mobile-only() {
+              font-size: 1.3rem;
+            }
+            @include md() {
+              font-size: 1.3rem;
+            }
+            @include lg() {
+              font-size: 1.5rem;
+            }
+          }
+        }
+        #btnWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 80%;
+          height: 33.33%;
+          top: 66.66%;
+          // border: 1px solid green;
+          .okBtn {
+            width: 45%;
+            height: 50%;
+            background-color: $yellow;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            @include mobile-only() {
+              font-size: 1.5rem;
+            }
+            @include md() {
+              font-size: 1.5rem;
+            }
+            @include lg() {
+              font-size: 2rem;
+            }
+          }
+          .resendBtn {
+            @extend .okBtn;
+            background-color: $black;
+          }
+        }
+      }
+    }
+  }
+}
