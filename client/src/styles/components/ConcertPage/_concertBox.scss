@@ -24,7 +24,15 @@
       width: 75%;
       height: 90%;
       h2 {
-        font-size: 1.4rem;
+        @include mobile-only() {
+          font-size: 1.4rem;
+        }
+        @include md() {
+          font-size: 2rem;
+        }
+        @include lg() {
+          font-size: 2rem;
+        }
       }
       .miniBox {
         display: flex;
@@ -48,6 +56,26 @@
             color: #fff;
             font-weight: bold;
             border-radius: 5px;
+            @include mobile-only() {
+              font-size: 1.2rem;
+            }
+            @include md {
+              font-size: 1.8rem;
+            }
+            @include lg {
+              font-size: 1.8rem;
+            }
+          }
+          #date {
+            @include mobile-only() {
+              font-size: 1.3rem;
+            }
+            @include md {
+              font-size: 1.8rem;
+            }
+            @include lg {
+              font-size: 1.8rem;
+            }
           }
         }
         #right {
@@ -57,6 +85,28 @@
           align-items: flex-end;
           width: 30%;
           height: 100%;
+          #view {
+            @include mobile-only() {
+              font-size: 1.2rem;
+            }
+            @include md() {
+              font-size: 1.6rem;
+            }
+            @include lg() {
+              font-size: 1.6rem;
+            }
+          }
+          #place {
+            @include mobile-only() {
+              font-size: 1.2rem;
+            }
+            @include md() {
+              font-size: 1.6rem;
+            }
+            @include lg() {
+              font-size: 1.6rem;
+            }
+          }
         }
       }
     }
@@ -100,9 +150,17 @@
         border-radius: 50%;
         border: 4px solid $yellow;
         text-align: center;
-        font-size: 2rem;
         font-weight: bold;
         color: #fff;
+        @include mobile-only() {
+          font-size: 2rem;
+        }
+        @include md() {
+          font-size: 4rem;
+        }
+        @include lg() {
+          font-size: 4rem;
+        }
       }
     }
     .infos {
@@ -113,7 +171,15 @@
       height: 90%;
       color: #fff;
       h2 {
-        font-size: 1.4rem;
+        @include mobile-only() {
+          font-size: 1.4rem;
+        }
+        @include md() {
+          font-size: 2rem;
+        }
+        @include lg() {
+          font-size: 2rem;
+        }
       }
       .miniBox {
         display: flex;
@@ -137,6 +203,26 @@
             color: $yellow;
             font-weight: bold;
             border-radius: 5px;
+            @include mobile-only() {
+              font-size: 1.2rem;
+            }
+            @include md {
+              font-size: 1.8rem;
+            }
+            @include lg {
+              font-size: 1.8rem;
+            }
+          }
+          #date {
+            @include mobile-only() {
+              font-size: 1.3rem;
+            }
+            @include md {
+              font-size: 1.8rem;
+            }
+            @include lg {
+              font-size: 1.8rem;
+            }
           }
         }
         #right {
@@ -146,6 +232,28 @@
           align-items: flex-end;
           width: 30%;
           height: 100%;
+          #view {
+            @include mobile-only() {
+              font-size: 1.2rem;
+            }
+            @include md() {
+              font-size: 1.6rem;
+            }
+            @include lg() {
+              font-size: 1.6rem;
+            }
+          }
+          #place {
+            @include mobile-only() {
+              font-size: 1.2rem;
+            }
+            @include md() {
+              font-size: 1.6rem;
+            }
+            @include lg() {
+              font-size: 1.6rem;
+            }
+          }
         }
       }
     }
