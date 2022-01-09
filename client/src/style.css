@@ -2336,7 +2336,7 @@ html {
     #findPasswordModal {
       position: fixed; } }
   #findPasswordModal #bg {
-    z-index: 998;
+    z-index: 991;
     position: fixed;
     display: flex;
     background-color: #404040;
@@ -2354,7 +2354,7 @@ html {
         width: 100%;
         height: 100%; } }
   #findPasswordModal #modalBox {
-    z-index: 999;
+    z-index: 992;
     position: fixed;
     display: flex;
     align-items: center;
@@ -2371,7 +2371,7 @@ html {
         width: 100%;
         height: 100%;
         border-radius: 0px;
-        top: 0%; } }
+        top: 10%; } }
     @media (min-width: 1200px) {
       #findPasswordModal #modalBox {
         width: 35%;
@@ -2394,8 +2394,8 @@ html {
       @media (min-width: 768px) {
         #findPasswordModal #modalBox #modal {
           width: 90%;
-          height: 100%;
-          top: 45%;
+          height: 80%;
+          top: 40%;
           transform: translate(0%, -50%); } }
       @media (min-width: 1200px) {
         #findPasswordModal #modalBox #modal {
@@ -2574,6 +2574,452 @@ html {
           @media (min-width: 1200px) {
             #findPasswordModal #modalBox #modal #btnBox .btn {
               font-size: 2rem; } }
+
+#confirmNumberModal {
+  z-index: 993;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; }
+  @media (max-width: 767px) {
+    #confirmNumberModal {
+      position: absolute; } }
+  @media (min-width: 768px) {
+    #confirmNumberModal {
+      position: fixed; } }
+  @media (min-width: 1200px) {
+    #confirmNumberModal {
+      position: fixed; } }
+  #confirmNumberModal #bg {
+    z-index: 994;
+    position: fixed;
+    display: flex;
+    background-color: #404040;
+    opacity: 50%; }
+    @media (max-width: 767px) {
+      #confirmNumberModal #bg {
+        width: 100%;
+        height: 100%; } }
+    @media (min-width: 768px) {
+      #confirmNumberModal #bg {
+        width: 100%;
+        height: 100%; } }
+    @media (min-width: 1200px) {
+      #confirmNumberModal #bg {
+        width: 100%;
+        height: 100%; } }
+  #confirmNumberModal #modalBox {
+    z-index: 995;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; }
+    @media (max-width: 767px) {
+      #confirmNumberModal #modalBox {
+        width: 100%;
+        height: 30%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 5px; } }
+    @media (min-width: 768px) {
+      #confirmNumberModal #modalBox {
+        width: 100%;
+        height: 30%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 5px; } }
+    @media (min-width: 1200px) {
+      #confirmNumberModal #modalBox {
+        width: 35%;
+        height: 35%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 10px; } }
+    #confirmNumberModal #modalBox #modal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      border-radius: 5px; }
+      #confirmNumberModal #modalBox #modal #titlesBox {
+        position: absolute;
+        display: flex;
+        width: 100%; }
+        @media (max-width: 767px) {
+          #confirmNumberModal #modalBox #modal #titlesBox {
+            height: 15%;
+            border-radius: 5px 5px 0px 0px; } }
+        @media (min-width: 768px) {
+          #confirmNumberModal #modalBox #modal #titlesBox {
+            height: 15%;
+            border-radius: 5px 5px 0px 0px; } }
+        @media (min-width: 1200px) {
+          #confirmNumberModal #modalBox #modal #titlesBox {
+            height: 9%;
+            border-radius: 10px 10px 0px 0px; } }
+        #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 100%;
+          padding-left: 2%;
+          background-color: #ffce63; }
+          @media (max-width: 767px) {
+            #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper {
+              border-radius: 5px 5px 0px 0px; } }
+          @media (min-width: 768px) {
+            #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper {
+              border-radius: 5px 5px 0px 0px; } }
+          @media (min-width: 1200px) {
+            #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper {
+              border-radius: 10px 10px 0px 0px; } }
+          #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title {
+            position: absolute;
+            color: white;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title {
+                font-size: 1.5rem; } }
+            @media (min-width: 1200px) {
+              #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title {
+                font-size: 1.8rem; } }
+        #confirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-self: right;
+          height: 100%;
+          width: 100%; }
+          #confirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
+            position: absolute;
+            right: 2%;
+            color: white;
+            cursor: pointer; }
+            @media (max-width: 767px) {
+              #confirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
+                font-size: 2rem; } }
+            @media (min-width: 768px) {
+              #confirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
+                font-size: 2rem; } }
+            @media (min-width: 1200px) {
+              #confirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
+                font-size: 2.5rem; } }
+      #confirmNumberModal #modalBox #modal #exceptTitleBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%; }
+        @media (max-width: 767px) {
+          #confirmNumberModal #modalBox #modal #exceptTitleBox {
+            height: 85%;
+            top: 15%; } }
+        @media (min-width: 768px) {
+          #confirmNumberModal #modalBox #modal #exceptTitleBox {
+            height: 85%;
+            top: 15%; } }
+        @media (min-width: 1200px) {
+          #confirmNumberModal #modalBox #modal #exceptTitleBox {
+            height: 91%;
+            top: 9%; } }
+        #confirmNumberModal #modalBox #modal #exceptTitleBox #subTitleWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 33.33%;
+          top: 0%;
+          text-align: center; }
+          #confirmNumberModal #modalBox #modal #exceptTitleBox #subTitleWrapper .subTitle {
+            position: absolute;
+            bottom: 0%;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #confirmNumberModal #modalBox #modal #exceptTitleBox #subTitleWrapper .subTitle {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #confirmNumberModal #modalBox #modal #exceptTitleBox #subTitleWrapper .subTitle {
+                font-size: 1.5rem; } }
+            @media (min-width: 1200px) {
+              #confirmNumberModal #modalBox #modal #exceptTitleBox #subTitleWrapper .subTitle {
+                font-size: 2rem; } }
+        #confirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 33.33%;
+          top: 35.33%; }
+          #confirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .input {
+            width: 80%;
+            height: 50%;
+            padding-left: 2%;
+            border: 1px solid #a0a0a0;
+            border-radius: 5px; }
+          #confirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .timer {
+            position: absolute;
+            display: flex;
+            font-weight: bold;
+            color: red;
+            right: 13%; }
+            @media (max-width: 767px) {
+              #confirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .timer {
+                font-size: 1.3rem; } }
+            @media (min-width: 768px) {
+              #confirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .timer {
+                font-size: 1.3rem; } }
+            @media (min-width: 1200px) {
+              #confirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .timer {
+                font-size: 1.5rem; } }
+        #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 80%;
+          height: 33.33%;
+          top: 66.66%; }
+          #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn, #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
+            width: 45%;
+            height: 50%;
+            background-color: #ffce63;
+            border: none;
+            border-radius: 5px;
+            color: white; }
+            @media (max-width: 767px) {
+              #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn, #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn, #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
+                font-size: 1.5rem; } }
+            @media (min-width: 1200px) {
+              #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn, #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
+                font-size: 2rem; } }
+          #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
+            background-color: #000; }
+
+#resetPasswordModal {
+  z-index: 990;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; }
+  @media (max-width: 767px) {
+    #resetPasswordModal {
+      position: absolute; } }
+  @media (min-width: 768px) {
+    #resetPasswordModal {
+      position: fixed; } }
+  @media (min-width: 1200px) {
+    #resetPasswordModal {
+      position: fixed; } }
+  #resetPasswordModal #bg {
+    z-index: 991;
+    position: fixed;
+    display: flex;
+    background-color: #404040;
+    opacity: 50%; }
+    @media (max-width: 767px) {
+      #resetPasswordModal #bg {
+        width: 0%;
+        height: 0%; } }
+    @media (min-width: 768px) {
+      #resetPasswordModal #bg {
+        width: 0%;
+        height: 0%; } }
+    @media (min-width: 1200px) {
+      #resetPasswordModal #bg {
+        width: 100%;
+        height: 100%; } }
+  #resetPasswordModal #modalBox {
+    z-index: 992;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; }
+    @media (max-width: 767px) {
+      #resetPasswordModal #modalBox {
+        width: 100%;
+        height: 90%;
+        border-radius: 0px;
+        top: 10%; } }
+    @media (min-width: 768px) {
+      #resetPasswordModal #modalBox {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        top: 10%; } }
+    @media (min-width: 1200px) {
+      #resetPasswordModal #modalBox {
+        width: 35%;
+        height: 60%;
+        padding-bottom: 30%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 20px; } }
+    #resetPasswordModal #modalBox #modal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      border-radius: 20px; }
+      @media (max-width: 767px) {
+        #resetPasswordModal #modalBox #modal {
+          width: 90%;
+          height: 80%;
+          top: 40%;
+          transform: translate(0%, -50%); } }
+      @media (min-width: 768px) {
+        #resetPasswordModal #modalBox #modal {
+          width: 90%;
+          height: 80%;
+          top: 40%;
+          transform: translate(0%, -50%); } }
+      @media (min-width: 1200px) {
+        #resetPasswordModal #modalBox #modal {
+          width: 100%;
+          height: 100%;
+          top: 50%;
+          transform: translate(0%, -50%); } }
+      #resetPasswordModal #modalBox #modal #titlesBox {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        border: 2px solid blue; }
+        @media (max-width: 767px) {
+          #resetPasswordModal #modalBox #modal #titlesBox {
+            height: 30%; } }
+        @media (min-width: 768px) {
+          #resetPasswordModal #modalBox #modal #titlesBox {
+            height: 30%; } }
+        @media (min-width: 1200px) {
+          #resetPasswordModal #modalBox #modal #titlesBox {
+            height: 30%; } }
+        #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 50%;
+          top: 0%;
+          border: 1px solid red; }
+          #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+            position: absolute;
+            top: 40%;
+            color: #ffce63;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+                font-size: 3.5rem; } }
+            @media (min-width: 768px) {
+              #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+                font-size: 4.5rem; } }
+            @media (min-width: 1200px) {
+              #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+                font-size: 4.5rem; } }
+        #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 50%;
+          top: 50%;
+          border: 1px solid red; }
+          #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
+            position: relative;
+            color: #a0a0a0; }
+            @media (max-width: 767px) {
+              #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
+                font-size: 1.8rem; } }
+      #resetPasswordModal #modalBox #modal #exceptTitlesBox {
+        position: absolute;
+        width: 80%;
+        height: 70%;
+        border: 2px solid blue;
+        top: 30%; }
+        #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper {
+          position: absolute;
+          display: flex;
+          width: 100%;
+          height: 25%;
+          top: 0%;
+          border: 1px solid orange; }
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 30%;
+            top: 0%;
+            border: 1px solid red; }
+            #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper .title {
+              font-size: 2rem; }
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper .email {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 50%;
+            top: 40%;
+            border: 1px solid red;
+            font-size: 1.5rem;
+            padding-left: 2%; }
+        #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper {
+          position: absolute;
+          display: flex;
+          width: 100%;
+          height: 25%;
+          top: 25%;
+          border: 1px solid orange; }
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 30%;
+            top: 0%;
+            border: 1px solid red; }
+            #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper .title {
+              font-size: 2rem; }
+        #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper {
+          position: absolute;
+          display: flex;
+          width: 100%;
+          height: 25%;
+          top: 50%;
+          border: 1px solid orange; }
+        #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: 25%;
+          top: 75%;
+          border: 1px solid orange; }
 
 /***** 재혁 *****/
 /*---------------선영--------------------*/

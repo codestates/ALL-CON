@@ -9,6 +9,8 @@ import ConcertModal from './components/Modals/ConcertPage/ConcertModal';
 import MyProfileImageModal from './components/Modals/MyPage/MyProfileImageModal';
 import ConChinWritingModal from './components/Modals/ConChinPage/ConChinWritingModal';
 import FindPasswordModal from './components/Modals/FindPasswordModal';
+import ConfirmNumberModal from './components/Modals/ConfirmNumberModal';
+import ResetPasswordModal from './components/Modals/ResetPasswordModal';
 function App() {
   return (
     <div className='App'>
@@ -18,10 +20,12 @@ function App() {
       {/* <MainPage /> */}
       {/* <ConChinPage /> */}
       {/* <ConChinCertificationPage /> */}
-      <MyPage />
+      {/* <MyPage /> */}
       <div id='modalWrapper'>
         {/* <MyProfileImageModal /> */}
-        <FindPasswordModal />
+        {/* <ConfirmNumberModal /> */}
+        {/* <FindPasswordModal /> */}
+        <ResetPasswordModal />
       </div>
       {/* <ConChinPage /> */}
     </div>
