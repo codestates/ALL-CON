@@ -25,15 +25,19 @@ function ResetPasswordModal() {
               <div id='titleWrapper'>
                 <p className='title'>새 비밀번호</p>
               </div>
-              <input className='input'></input>
-              <img className='padlock' src={padlock} />
+              <div id='inputWrapper'>
+                <input className='input'></input>
+                <img className='padlock' src={padlock} />
+              </div>
             </div>
             <div id='confirmPasswordWrapper'>
               <div id='titleWrapper'>
                 <p className='title'>새 비밀번호 확인</p>
               </div>
-              <input className='input'></input>
-              <img className='padlock' src={padlock} />
+              <div id='inputWrapper'>
+                <input className='input'></input>
+                <img className='padlock' src={padlock} />
+              </div>
             </div>
             <div id='btnWrapper'>
               <button className='resetButton'>비밀번호 재설정</button>

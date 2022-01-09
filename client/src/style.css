@@ -2858,7 +2858,7 @@ html {
         width: 100%;
         height: 90%;
         border-radius: 0px;
-        top: 10%; } }
+        top: 15%; } }
     @media (min-width: 768px) {
       #resetPasswordModal #modalBox {
         width: 100%;
@@ -2899,8 +2899,7 @@ html {
       #resetPasswordModal #modalBox #modal #titlesBox {
         position: absolute;
         display: flex;
-        width: 100%;
-        border: 2px solid blue; }
+        width: 100%; }
         @media (max-width: 767px) {
           #resetPasswordModal #modalBox #modal #titlesBox {
             height: 30%; } }
@@ -2917,8 +2916,7 @@ html {
           justify-content: center;
           width: 100%;
           height: 50%;
-          top: 0%;
-          border: 1px solid red; }
+          top: 0%; }
           #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
             position: absolute;
             top: 40%;
@@ -2926,13 +2924,13 @@ html {
             font-weight: bold; }
             @media (max-width: 767px) {
               #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
-                font-size: 3.5rem; } }
+                font-size: 3rem; } }
             @media (min-width: 768px) {
               #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
-                font-size: 4.5rem; } }
+                font-size: 3.5rem; } }
             @media (min-width: 1200px) {
               #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
-                font-size: 4.5rem; } }
+                font-size: 3.5rem; } }
         #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper {
           position: absolute;
           display: flex;
@@ -2940,8 +2938,7 @@ html {
           justify-content: center;
           width: 100%;
           height: 50%;
-          top: 50%;
-          border: 1px solid red; }
+          top: 47.5%; }
           #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
             position: relative;
             color: #a0a0a0; }
@@ -2958,25 +2955,30 @@ html {
         position: absolute;
         width: 80%;
         height: 70%;
-        border: 2px solid blue;
         top: 30%; }
         #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper {
           position: absolute;
           display: flex;
           width: 100%;
           height: 25%;
-          top: 0%;
-          border: 1px solid orange; }
+          top: 0%; }
           #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper {
             position: absolute;
             display: flex;
             align-items: center;
             width: 100%;
             height: 30%;
-            top: 0%;
-            border: 1px solid red; }
-            #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper .title {
-              font-size: 2rem; }
+            top: 5%;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper .title {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper .title {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper .title {
+                font-size: 1.8rem; } }
           #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper .email {
             position: absolute;
             display: flex;
@@ -2984,7 +2986,9 @@ html {
             width: 100%;
             height: 50%;
             top: 40%;
-            border: 1px solid red;
+            background-color: #c4c4c4;
+            border: 1px solid #a0a0a0;
+            border-radius: 5px;
             font-size: 1.5rem;
             padding-left: 2%; }
         #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper {
@@ -2992,25 +2996,87 @@ html {
           display: flex;
           width: 100%;
           height: 25%;
-          top: 25%;
-          border: 1px solid orange; }
+          top: 25%; }
           #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper {
             position: absolute;
             display: flex;
             align-items: center;
             width: 100%;
             height: 30%;
-            top: 0%;
-            border: 1px solid red; }
-            #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper .title {
-              font-size: 2rem; }
+            top: 5%;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper .title {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper .title {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper .title {
+                font-size: 1.8rem; } }
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #inputWrapper {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 70%;
+            top: 30%; }
+            #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #inputWrapper .input {
+              position: absolute;
+              width: 100%;
+              height: 71.43%;
+              border: 1px solid #a0a0a0;
+              border-radius: 5px;
+              font-size: 1.5rem;
+              padding-left: 2%; }
+            #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #inputWrapper .padlock {
+              position: absolute;
+              width: 1.5rem;
+              height: 1.5rem;
+              right: 2%; }
         #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper {
           position: absolute;
           display: flex;
           width: 100%;
           height: 25%;
-          top: 50%;
-          border: 1px solid orange; }
+          top: 50%; }
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #titleWrapper {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 30%;
+            top: 5%;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #titleWrapper .title {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #titleWrapper .title {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #titleWrapper .title {
+                font-size: 1.8rem; } }
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #inputWrapper {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 70%;
+            top: 30%; }
+            #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #inputWrapper .input {
+              position: absolute;
+              width: 100%;
+              height: 71.43%;
+              border: 1px solid #a0a0a0;
+              border-radius: 5px;
+              font-size: 1.5rem;
+              padding-left: 2%; }
+            #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #inputWrapper .padlock {
+              position: absolute;
+              width: 1.5rem;
+              height: 1.5rem;
+              right: 2%; }
         #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper {
           position: absolute;
           display: flex;
@@ -3018,8 +3084,27 @@ html {
           justify-content: space-between;
           width: 100%;
           height: 25%;
-          top: 75%;
-          border: 1px solid orange; }
+          top: 75%; }
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .cancelButton {
+            position: relative;
+            height: 50%;
+            width: 45%;
+            background-color: #000;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .cancelButton {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .cancelButton {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .cancelButton {
+                font-size: 1.8rem; } }
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .cancelButton {
+            background-color: #ffce63; }
 
 /***** 재혁 *****/
 /*---------------선영--------------------*/
