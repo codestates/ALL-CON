@@ -1,11 +1,20 @@
 import poster from '../../../images/hiphop2.gif';
 import map from '../../../images/bigMap.png';
+import { useState, useEffect } from 'react';
+
 function ConcertModal() {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', updateScroll);
+  });
   return (
     <div id='concertModalContainer'>
       <div id='background'></div>
-      <div id='concertModal'>
-        <div id='ToAlignModal'>
+      <div id={scrollPosition > 70 ? 'stretchedConcertModal' : 'concertModal'}>
+        <div id='AlignBox'>
           <div id='top_box'>
             <div id='titleAndDay'>
               <h2>앙코르 핸즈포히어로 힙합페스티발</h2>

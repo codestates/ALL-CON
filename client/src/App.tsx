@@ -8,21 +8,16 @@ import Header from './components/Header';
 import ConcertModal from './components/Modals/ConcertPage/ConcertModal';
 import MyProfileImageModal from './components/Modals/MyPage/MyProfileImageModal';
 import ConChinWritingModal from './components/Modals/ConChinPage/ConChinWritingModal';
+import LoginModal from './components/Modals/LoginModal';
+import SignUpModal from './components/Modals/SignUpModal';
+import TosModal from './components/Modals/TosModal';
 
 function App() {
   return (
     <div className='App'>
       <Header />
-      <ConcertPage />
-      <ConChinWritingModal />
-      {/* <MainPage /> */}
-      {/* <ConChinPage /> */}
-      {/* <ConChinCertificationPage /> */}
-      {/* <MyPage /> */}
-      {/* <div id='modalWrapper'>
-        <MyProfileImageModal />
-      </div> */}
-      {/* <ConChinPage /> */}
+      {/* <LoginModal /> */}
+      <TosModal />
     </div>
   );
 }
