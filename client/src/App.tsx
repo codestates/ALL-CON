@@ -26,7 +26,7 @@ function App() {
       {/* <ConChinCertificationPage /> */}
       {/* <MyPage /> */}
       {/* <TosModal /> */}
-      <SignUpModal />
+      {/* <SignUpModal /> */}
       <div id='modalWrapper'>
         {/* <MyProfileImageModal /> */}
         {/* <ConfirmNumberModal />
