@@ -32,7 +32,7 @@
       top: 4%;
     }
     @include md() {
-      font-size: 4rem;
+      font-size: 3rem;
       left: 8%;
       top: 5%;
     }
@@ -75,7 +75,7 @@
       @include md() {
         width: 68%;
         height: 100%;
-        font-size: 3rem;
+        font-size: 2rem;
       }
       @include lg() {
         width: 68%;
@@ -95,7 +95,7 @@
         width: 15%;
       }
       @include md() {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         width: 19%;
         right: 15%;
       }
@@ -117,7 +117,7 @@
         font-size: 1rem;
       }
       @include md() {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
       @include lg() {
         font-size: 1.5rem;
@@ -127,6 +127,7 @@
       position: absolute;
       display: flex;
       align-items: center;
+      justify-content: right;
       height: 50%;
       right: 1%;
       text-align: right;
@@ -137,7 +138,8 @@
         width: 16%;
       }
       @include md() {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
+        width: 18%;
       }
       @include lg() {
         font-size: 1.5rem;

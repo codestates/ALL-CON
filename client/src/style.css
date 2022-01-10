@@ -62,9 +62,9 @@ html {
       font-size: 1.6rem; } }
   @media (min-width: 768px) {
     .order {
-      width: 10%;
+      width: 11%;
       height: 50%;
-      font-size: 2rem; } }
+      font-size: 1.8rem; } }
   @media (min-width: 1200px) {
     .order {
       width: 10%;
@@ -80,6 +80,7 @@ html {
 #articleBox {
   position: relative;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 80%;
   height: 75%;
@@ -90,9 +91,22 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    height: 50%;
     padding: 1%; }
+    @media (max-width: 767px) {
+      #articleBox #box {
+        border-radius: 5px;
+        width: 100%;
+        height: 30%; } }
+    @media (min-width: 768px) {
+      #articleBox #box {
+        border-radius: 10px;
+        width: 100%;
+        height: 40%; } }
+    @media (min-width: 1200px) {
+      #articleBox #box {
+        border-radius: 10px;
+        width: 100%;
+        height: 50%; } }
     #articleBox #box .article {
       position: relative;
       display: flex;
@@ -149,7 +163,7 @@ html {
               font-size: 1rem; } }
           @media (min-width: 768px) {
             #articleBox #box .article .title .date, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .date, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .date {
-              font-size: 2rem; } }
+              font-size: 1.5rem; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .date, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .date, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .date {
               font-size: 2rem; } }
@@ -165,7 +179,7 @@ html {
               font-size: 1rem; } }
           @media (min-width: 768px) {
             #articleBox #box .article .title .text, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .text {
-              font-size: 2rem; } }
+              font-size: 1.5rem; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .text, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .text {
               font-size: 2rem; } }
@@ -175,17 +189,17 @@ html {
             #articleBox #box .article .title .icon, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .icon, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .icon {
               width: 11px;
               height: 11px;
-              left: 3%; } }
+              left: 1%; } }
           @media (min-width: 768px) {
             #articleBox #box .article .title .icon, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .icon, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .icon {
-              width: 25px;
-              height: 25px;
-              left: 3%; } }
+              width: 20px;
+              height: 20px;
+              left: 2%; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .icon, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .icon, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .icon {
               width: 25px;
               height: 25px;
-              left: 3%; } }
+              left: 2%; } }
         #articleBox #box .article .title .count, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .count, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .count {
           position: absolute;
           font-weight: bold; }
@@ -196,8 +210,8 @@ html {
           @media (min-width: 768px) {
             #articleBox #box .article .title .count, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .count, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .count {
               top: 1.5%;
-              left: 13%;
-              font-size: 2rem; } }
+              left: 15%;
+              font-size: 1.5rem; } }
           @media (min-width: 1200px) {
             #articleBox #box .article .title .count, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .count, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .count {
               top: 1.5%;
@@ -220,8 +234,8 @@ html {
       height: 1.8rem; } }
   @media (min-width: 768px) {
     .memberBox {
-      width: 8.9rem;
-      height: 3.6rem; } }
+      width: 5.5rem;
+      height: 2.5rem; } }
   @media (min-width: 1200px) {
     .memberBox {
       width: 8.9rem;
@@ -237,8 +251,8 @@ html {
     @media (min-width: 768px) {
       .memberBox .icon {
         margin-right: 45%;
-        width: 16px;
-        height: 16px; } }
+        width: 13px;
+        height: 13px; } }
     @media (min-width: 1200px) {
       .memberBox .icon {
         margin-right: 45%;
@@ -258,7 +272,7 @@ html {
       .memberBox .count {
         padding-top: 3%;
         padding-left: 20%;
-        font-size: 2rem; } }
+        font-size: 1.5rem; } }
     @media (min-width: 1200px) {
       .memberBox .count {
         padding-top: 3%;
@@ -280,7 +294,7 @@ html {
       height: 10%; } }
   @media (min-width: 768px) {
     #pagination {
-      height: 12%; } }
+      height: 11%; } }
   @media (min-width: 1200px) {
     #pagination {
       height: 12%; } }
@@ -298,9 +312,9 @@ html {
         border-radius: 2px; } }
     @media (min-width: 768px) {
       #pagination .page {
-        width: 55px;
-        height: 55px;
-        padding-bottom: 55px;
+        width: 30px;
+        height: 30px;
+        padding-bottom: 30px;
         margin: 3%;
         border-radius: 5px; } }
     @media (min-width: 1200px) {
@@ -335,8 +349,16 @@ html {
   display: flex;
   flex-direction: column;
   width: 95%;
-  height: 85%;
   top: 5%; }
+  @media (max-width: 767px) {
+    #commentBox {
+      height: 80%; } }
+  @media (min-width: 768px) {
+    #commentBox {
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    #commentBox {
+      height: 70%; } }
   #commentBox #countWrapper {
     position: absolute;
     display: flex;
@@ -353,7 +375,7 @@ html {
           font-size: 1.5rem; } }
       @media (min-width: 768px) {
         #commentBox #countWrapper .count {
-          font-size: 2.5rem; } }
+          font-size: 2rem; } }
       @media (min-width: 1200px) {
         #commentBox #countWrapper .count {
           font-size: 2.5rem; } }
@@ -380,7 +402,7 @@ html {
             font-size: 1rem; } }
         @media (min-width: 768px) {
           #commentBox .box .dateBox .nickNameAndDate {
-            font-size: 2rem; } }
+            font-size: 1.5rem; } }
         @media (min-width: 1200px) {
           #commentBox .box .dateBox .nickNameAndDate {
             font-size: 2rem; } }
@@ -409,8 +431,8 @@ html {
               height: 1.1rem; } }
           @media (min-width: 768px) {
             #commentBox .box .dateBox .dotWrapper .dot {
-              width: 2.5rem;
-              height: 2.5rem; } }
+              width: 1.5rem;
+              height: 1.5rem; } }
           @media (min-width: 1200px) {
             #commentBox .box .dateBox .dotWrapper .dot {
               width: 2.5rem;
@@ -434,13 +456,13 @@ html {
             left: 3%; } }
         @media (min-width: 768px) {
           #commentBox .box #imgAndText .imgWrapper {
-            height: 47px;
-            width: 47px;
+            height: 35px;
+            width: 35px;
             left: 2%; } }
         @media (min-width: 1200px) {
           #commentBox .box #imgAndText .imgWrapper {
-            height: 47px;
-            width: 47px;
+            height: 55px;
+            width: 55px;
             left: 2%; } }
         #commentBox .box #imgAndText .imgWrapper .img {
           position: absolute;
@@ -461,8 +483,8 @@ html {
               height: 13px; } }
           @media (min-width: 768px) {
             #commentBox .box #imgAndText .imgWrapper .shield {
-              width: 20px;
-              height: 20px; } }
+              width: 15px;
+              height: 15px; } }
           @media (min-width: 1200px) {
             #commentBox .box #imgAndText .imgWrapper .shield {
               width: 20px;
@@ -471,7 +493,6 @@ html {
         position: absolute;
         display: flex;
         width: 80%;
-        height: 50%;
         border: none;
         outline: none;
         overflow: hidden;
@@ -479,15 +500,18 @@ html {
         border-radius: 5px; }
         @media (max-width: 767px) {
           #commentBox .box #imgAndText #input {
-            left: 12.5%;
-            font-size: 1.3rem; } }
+            left: 11.5%;
+            font-size: 1.3rem;
+            height: 50%; } }
         @media (min-width: 768px) {
           #commentBox .box #imgAndText #input {
-            left: 9%;
-            font-size: 2.3rem; } }
+            left: 10%;
+            font-size: 1.87rem;
+            height: 70%; } }
         @media (min-width: 1200px) {
           #commentBox .box #imgAndText #input {
             left: 9%;
+            height: 50%;
             font-size: 2.3rem; } }
       #commentBox .box #imgAndText #text {
         position: absolute;
@@ -495,12 +519,12 @@ html {
         width: 80%; }
         @media (max-width: 767px) {
           #commentBox .box #imgAndText #text {
-            left: 12.5%;
+            left: 11.5%;
             font-size: 1.3rem; } }
         @media (min-width: 768px) {
           #commentBox .box #imgAndText #text {
-            left: 9%;
-            font-size: 2.3rem; } }
+            left: 10%;
+            font-size: 1.8rem; } }
         @media (min-width: 1200px) {
           #commentBox .box #imgAndText #text {
             left: 9%;
@@ -513,18 +537,22 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 15%;
-  left: 2%; }
+  height: 100%; }
   @media (max-width: 767px) {
     #menuWrapper {
-      display: flex; } }
+      display: flex;
+      width: 15%;
+      left: 2%; } }
   @media (min-width: 768px) {
     #menuWrapper {
-      display: none; } }
+      display: flex;
+      width: 5%;
+      left: 2%; } }
   @media (min-width: 1200px) {
     #menuWrapper {
-      display: none; } }
+      display: none;
+      width: 15%;
+      left: 2%; } }
   #menuWrapper .menu {
     position: relative;
     width: 30px;
@@ -536,18 +564,22 @@ html {
   position: absolute;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 15%;
-  right: 15%; }
+  height: 100%; }
   @media (max-width: 767px) {
     #searchWrapper {
-      display: flex; } }
+      display: flex;
+      width: 15%;
+      right: 15%; } }
   @media (min-width: 768px) {
     #searchWrapper {
-      display: none; } }
+      display: flex;
+      width: 5%;
+      right: 11%; } }
   @media (min-width: 1200px) {
     #searchWrapper {
-      display: none; } }
+      display: none;
+      width: 15%;
+      right: 15%; } }
   #searchWrapper .search {
     position: relative;
     width: 25px;
@@ -567,7 +599,7 @@ html {
       width: 15%; } }
   @media (min-width: 768px) {
     #loginWrapper {
-      width: 5%; } }
+      width: 15%; } }
   @media (min-width: 1200px) {
     #loginWrapper {
       width: 5%; } }
@@ -579,7 +611,7 @@ html {
         font-size: 2rem; } }
     @media (min-width: 768px) {
       #loginWrapper .login {
-        font-size: 2.5rem; } }
+        font-size: 2rem; } }
     @media (min-width: 1200px) {
       #loginWrapper .login {
         font-size: 2.5rem; } }
@@ -598,7 +630,7 @@ html {
       display: none; } }
   @media (min-width: 768px) {
     #hiddenMenuBox {
-      display: flex; } }
+      display: none; } }
   @media (min-width: 1200px) {
     #hiddenMenuBox {
       display: flex; } }
@@ -625,8 +657,7 @@ html {
         display: none; } }
     @media (min-width: 768px) {
       #hiddenSearchBox #searchWrapper {
-        display: flex;
-        justify-content: left; } }
+        display: none; } }
     @media (min-width: 1200px) {
       #hiddenSearchBox #searchWrapper {
         display: flex;
@@ -649,7 +680,7 @@ html {
         display: none; } }
     @media (min-width: 768px) {
       #hiddenSearchBox #imgWrapper {
-        display: flex; } }
+        display: none; } }
     @media (min-width: 1200px) {
       #hiddenSearchBox #imgWrapper {
         display: flex; } }
@@ -797,7 +828,7 @@ html {
       z-index: 999; } }
   @media (min-width: 768px) {
     #headerContainer {
-      z-index: 15; } }
+      z-index: 999; } }
   @media (min-width: 1200px) {
     #headerContainer {
       z-index: 15; } }
@@ -820,8 +851,8 @@ html {
           height: 60px; } }
       @media (min-width: 768px) {
         #headerContainer #logoBar .logo {
-          width: 115px;
-          height: 75px; } }
+          width: 95px;
+          height: 60px; } }
       @media (min-width: 1200px) {
         #headerContainer #logoBar .logo {
           width: 115px;
@@ -859,7 +890,7 @@ html {
       height: 100%; } }
   @media (min-width: 768px) {
     #conChinContainer {
-      height: 250%;
+      height: 150%;
       left: 50%;
       transform: translate(-50%, 0%); } }
   @media (min-width: 1200px) {
@@ -879,10 +910,10 @@ html {
         top: 10%; } }
     @media (min-width: 768px) {
       #conChinContainer #conChinExceptFooter {
-        width: 75%;
+        width: 100%;
         height: 100%;
         left: 50%;
-        top: 4%;
+        top: 6.7%;
         transform: translate(-50%, 0%); } }
     @media (min-width: 1200px) {
       #conChinContainer #conChinExceptFooter {
@@ -901,7 +932,7 @@ html {
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
-          height: 16%; } }
+          height: 15%; } }
       @media (min-width: 1200px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
@@ -919,7 +950,7 @@ html {
           height: 83%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #mainBox {
-          width: 80%;
+          width: 88%;
           height: 73%; } }
       @media (min-width: 1200px) {
         #conChinContainer #conChinExceptFooter #mainBox {
@@ -938,7 +969,7 @@ html {
     @media (min-width: 768px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 15.3%;
+        height: 18.5%;
         top: 185%; } }
     @media (min-width: 1200px) {
       #conChinContainer #fullFooter {
@@ -955,8 +986,8 @@ html {
           width: 75%; } }
       @media (min-width: 768px) {
         #conChinContainer #fullFooter #footerWrapper {
-          height: 70%;
-          width: 79%; } }
+          height: 100%;
+          width: 100%; } }
       @media (min-width: 1200px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 70%;
@@ -979,7 +1010,7 @@ html {
         left: 5%; } }
     @media (min-width: 768px) {
       #conChinFindBox .title, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 {
-        width: 30%;
+        width: 50%;
         left: 7%; } }
     @media (min-width: 1200px) {
       #conChinFindBox .title, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 {
@@ -1000,7 +1031,7 @@ html {
             font-size: 2.5rem; } }
         @media (min-width: 768px) {
           #conChinFindBox .title .textWrapper .text, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .textWrapper .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 .textWrapper .text {
-            font-size: 4rem; } }
+            font-size: 3rem; } }
         @media (min-width: 1200px) {
           #conChinFindBox .title .textWrapper .text, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .textWrapper .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 .textWrapper .text {
             font-size: 4rem; } }
@@ -1025,14 +1056,14 @@ html {
         #conChinFindBox .btnWrapper .btn {
           width: 65%;
           padding-left: 17%;
-          font-size: 1rem;
+          font-size: 1.3rem;
           height: 60%; } }
       @media (min-width: 768px) {
         #conChinFindBox .btnWrapper .btn {
-          width: 40%;
-          padding-left: 6.5%;
-          font-size: 2rem;
-          height: 45%; } }
+          width: 48%;
+          padding-left: 12%;
+          font-size: 1.5rem;
+          height: 50%; } }
       @media (min-width: 1200px) {
         #conChinFindBox .btnWrapper .btn {
           width: 40%;
@@ -1050,9 +1081,9 @@ html {
             right: 67.5%; } }
         @media (min-width: 768px) {
           #conChinFindBox .btnWrapper .btn .img {
-            width: 23px;
-            height: 23px;
-            right: 70.5%; } }
+            width: 18px;
+            height: 18px;
+            right: 72.5%; } }
         @media (min-width: 1200px) {
           #conChinFindBox .btnWrapper .btn .img {
             width: 23px;
@@ -1070,7 +1101,7 @@ html {
   @media (min-width: 768px) {
     #conChinBox {
       width: 100%;
-      height: 68%; } }
+      height: 65%; } }
   @media (min-width: 1200px) {
     #conChinBox {
       width: 100%;
@@ -1121,7 +1152,7 @@ html {
       top: 40%; } }
   @media (min-width: 768px) {
     #conChinmemberBoxWrapper {
-      top: 46%; } }
+      top: 43.6%; } }
   @media (min-width: 1200px) {
     #conChinmemberBoxWrapper {
       top: 46%; } }
@@ -1151,7 +1182,7 @@ html {
   border-bottom: 2px solid black; }
   @media (max-width: 767px) {
     #titleBox {
-      height: 8%; } }
+      height: 6%; } }
   @media (min-width: 768px) {
     #titleBox {
       height: 5%; } }
@@ -1162,8 +1193,7 @@ html {
     position: absolute;
     display: flex;
     align-items: center;
-    justify-content: left;
-    bottom: 10%; }
+    justify-content: left; }
     @media (max-width: 767px) {
       #titleBox .title, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 {
         height: 80%;
@@ -1175,13 +1205,14 @@ html {
     @media (min-width: 1200px) {
       #titleBox .title, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 {
         height: 50%;
-        width: 80%; } }
+        width: 80%;
+        bottom: 10%; } }
     @media (max-width: 767px) {
       #titleBox .title .text, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 .text {
         font-size: 2rem; } }
     @media (min-width: 768px) {
       #titleBox .title .text, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 .text {
-        font-size: 4rem; } }
+        font-size: 3rem; } }
     @media (min-width: 1200px) {
       #titleBox .title .text, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 .text {
         font-size: 4rem; } }
@@ -1191,17 +1222,18 @@ html {
     align-items: center;
     justify-content: right;
     width: 35%;
-    right: 2%;
-    bottom: 10%; }
+    right: 2%; }
     @media (max-width: 767px) {
       #titleBox #profileBox {
         height: 80%; } }
     @media (min-width: 768px) {
       #titleBox #profileBox {
-        height: 50%; } }
+        height: 50%;
+        bottom: 35%; } }
     @media (min-width: 1200px) {
       #titleBox #profileBox {
-        height: 50%; } }
+        height: 50%;
+        bottom: 10%; } }
     #titleBox #profileBox .img {
       position: relative;
       border-radius: 100%; }
@@ -1213,10 +1245,10 @@ html {
           height: 25px; } }
       @media (min-width: 768px) {
         #titleBox #profileBox .img {
-          bottom: 10%;
+          bottom: 15%;
           right: 2%;
-          width: 40px;
-          height: 40px; } }
+          width: 33px;
+          height: 33px; } }
       @media (min-width: 1200px) {
         #titleBox #profileBox .img {
           bottom: 10%;
@@ -1228,7 +1260,9 @@ html {
       font-size: 1.3rem; } }
   @media (min-width: 768px) {
     #titleBox .nickName {
-      font-size: 2.5rem; } }
+      position: relative;
+      font-size: 2rem;
+      bottom: 5%; } }
   @media (min-width: 1200px) {
     #titleBox .nickName {
       font-size: 2.5rem; } }
@@ -1240,7 +1274,7 @@ html {
   @media (max-width: 767px) {
     #contentBox {
       height: 100%;
-      top: 7.8%; } }
+      top: 5%; } }
   @media (min-width: 768px) {
     #contentBox {
       height: 100%;
@@ -1254,7 +1288,7 @@ html {
     display: flex;
     align-items: center;
     width: 50%;
-    height: 5%; }
+    height: 7%; }
     #contentBox #viewBox .view {
       position: relative;
       display: flex;
@@ -1265,7 +1299,7 @@ html {
           font-size: 1rem; } }
       @media (min-width: 768px) {
         #contentBox #viewBox .view {
-          font-size: 2rem; } }
+          font-size: 1.5rem; } }
       @media (min-width: 1200px) {
         #contentBox #viewBox .view {
           font-size: 2rem; } }
@@ -1274,7 +1308,7 @@ html {
     display: flex;
     align-items: center;
     width: 50%;
-    height: 5%; }
+    height: 7%; }
     #contentBox #modifyBox .modifyBtn {
       position: absolute;
       display: flex;
@@ -1288,7 +1322,7 @@ html {
       @media (min-width: 768px) {
         #contentBox #modifyBox .modifyBtn {
           right: 35%;
-          font-size: 2.5rem; } }
+          font-size: 1.8rem; } }
       @media (min-width: 1200px) {
         #contentBox #modifyBox .modifyBtn {
           right: 35%;
@@ -1306,7 +1340,7 @@ html {
       @media (min-width: 768px) {
         #contentBox #modifyBox .deleteBtn {
           right: 23%;
-          font-size: 2.5rem; } }
+          font-size: 1.8rem; } }
       @media (min-width: 1200px) {
         #contentBox #modifyBox .deleteBtn {
           right: 23%;
@@ -1331,8 +1365,8 @@ html {
         padding-bottom: 35%; } }
     @media (min-width: 768px) {
       #contentBox #content {
-        height: 45%;
-        padding-bottom: 45%; } }
+        height: 37%;
+        padding-bottom: 37%; } }
     @media (min-width: 1200px) {
       #contentBox #content {
         height: 45%;
@@ -1351,9 +1385,9 @@ html {
           max-height: 70px; } }
       @media (min-width: 768px) {
         #contentBox #content #imgWrapper {
-          width: 35%;
-          height: 35%;
-          padding-bottom: 35%;
+          width: 37%;
+          height: 37%;
+          padding-bottom: 37%;
           left: 12%; } }
       @media (min-width: 1200px) {
         #contentBox #content #imgWrapper {
@@ -1380,7 +1414,7 @@ html {
           padding-bottom: 45%; } }
       @media (min-width: 768px) {
         #contentBox #content .text {
-          font-size: 2.5rem;
+          font-size: 1.8rem;
           right: -10%;
           width: 55%;
           height: 35%; } }
@@ -1417,15 +1451,15 @@ html {
     height: 20%; }
     @media (max-width: 767px) {
       #contentBox #paginationWrapper {
-        top: 92%;
+        top: 88%;
         height: 20%; } }
     @media (min-width: 768px) {
       #contentBox #paginationWrapper {
-        top: 96%;
-        height: 25%; } }
+        top: 110%;
+        height: 22.5%; } }
     @media (min-width: 1200px) {
       #contentBox #paginationWrapper {
-        top: 96%;
+        top: 92%;
         height: 25%; } }
 
 /****** conChinPostingBox ******/
@@ -1461,7 +1495,7 @@ html {
         top: 4%; } }
     @media (min-width: 768px) {
       #conChinPostingBox #curOrder {
-        font-size: 4rem;
+        font-size: 3rem;
         left: 8%;
         top: 5%; } }
     @media (min-width: 1200px) {
@@ -1502,7 +1536,7 @@ html {
         #conChinPostingBox .posting .title, #conChinPostingBox .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox .posting .title2 {
           width: 68%;
           height: 100%;
-          font-size: 3rem; } }
+          font-size: 2rem; } }
       @media (min-width: 1200px) {
         #conChinPostingBox .posting .title, #conChinPostingBox .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox .posting .title2 {
           width: 68%;
@@ -1520,7 +1554,7 @@ html {
           width: 15%; } }
       @media (min-width: 768px) {
         #conChinPostingBox .posting .date {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           width: 19%;
           right: 15%; } }
       @media (min-width: 1200px) {
@@ -1540,7 +1574,7 @@ html {
           font-size: 1rem; } }
       @media (min-width: 768px) {
         #conChinPostingBox .posting .view {
-          font-size: 1.5rem; } }
+          font-size: 1.2rem; } }
       @media (min-width: 1200px) {
         #conChinPostingBox .posting .view {
           font-size: 1.5rem; } }
@@ -1548,6 +1582,7 @@ html {
       position: absolute;
       display: flex;
       align-items: center;
+      justify-content: right;
       height: 50%;
       right: 1%;
       text-align: right;
@@ -1558,7 +1593,8 @@ html {
           width: 16%; } }
       @media (min-width: 768px) {
         #conChinPostingBox .posting .place {
-          font-size: 1.5rem; } }
+          font-size: 1.2rem;
+          width: 18%; } }
       @media (min-width: 1200px) {
         #conChinPostingBox .posting .place {
           font-size: 1.5rem; } }
@@ -3184,7 +3220,7 @@ html {
         top: 10%; } }
     @media (min-width: 1200px) {
       #findPasswordModal #modalBox {
-        width: 35%;
+        width: 28%;
         height: 60%;
         padding-bottom: 30%;
         top: 50%;
@@ -3443,7 +3479,7 @@ html {
         border-radius: 5px; } }
     @media (min-width: 1200px) {
       #confirmNumberModal #modalBox {
-        width: 35%;
+        width: 25%;
         height: 35%;
         top: 50%;
         transform: translate(0%, -50%);

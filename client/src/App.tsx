@@ -24,7 +24,7 @@ function App() {
       {/* <ConcertPage /> */}
       {/* <ConChinWritingModal /> */}
       {/* <MainPage /> */}
-      {/* <ConChinPage /> */}
+      <ConChinPage />
       {/* <ConChinCertificationPage /> */}
       {/* <MyPage /> */}
       {/* <MyEditPage /> */}
@@ -34,8 +34,8 @@ function App() {
       {/* <div id='modalWrapper'> */}
       {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
-      {/* <ConfirmNumberModal /> */}
-      {/* <FindPasswordModal /> */}
+      {/* <ConfirmNumberModal />
+      <FindPasswordModal /> */}
       {/* <ResetPasswordModal /> */}
       {/* <ConChinProfileModal /> */}
       {/* </div> */}
