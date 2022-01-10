@@ -30,7 +30,7 @@ const autoConcertCleaner = schedule.scheduleJob(
 
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 40 * * * *',
+  '00 14 * * * *',
   async () => {
     await crawler()
     console.log('1시간마다 크롤링중..')

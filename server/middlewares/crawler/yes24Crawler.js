@@ -8,6 +8,13 @@ const chrome = require("selenium-webdriver/chrome");
 const opts = new chrome.Options();
 // 크롬창이 켜지지 않는 옵션
 opts.addArguments('headless');
+opts.addArguments('window-size=1400, 1500')
+opts.addArguments('--disable-gpu');
+opts.addArguments('--no-sandbox')
+opts.addArguments("start-maximized")
+opts.addArguments("enable-automation")
+opts.addArguments("--disable-infobars")
+opts.addArguments("--disable-dev-shm-usage")
 /* 크롬 옵션 테스트 */
 
 /* 티켓 오픈 공지 게시물 URL 크롤러 함수 */
