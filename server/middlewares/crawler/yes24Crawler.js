@@ -3,6 +3,13 @@ const { openDateFormatterYes } = require('./openDateFormatterYes');
 const caps = new Capabilities();
 caps.setPageLoadStrategy("eager");
 
+/* 크롬 옵션 테스트 */
+const chrome = require("selenium-webdriver/chrome");
+const opts = new chrome.Options();
+// 크롬창이 켜지지 않는 옵션
+opts.addArguments('headless');
+/* 크롬 옵션 테스트 */
+
 /* 티켓 오픈 공지 게시물 URL 크롤러 함수 */
 const yes24Crawler = async () => {
 
@@ -12,6 +19,7 @@ const yes24Crawler = async () => {
   let driver = await new Builder().
   withCapabilities(caps).
   forBrowser('chrome').
+  setChromeOptions(opts).
   build();
 
     try {
@@ -38,7 +46,7 @@ const yes24Crawler = async () => {
         let cnt = 1;
 
         //  ----------------- 현재 페이지 게시물 조회... ----------------- 
-        for(let i = 10; i < 17; i++) {      
+        for(let i = 17; i < 20; i++) {      
 
           let num = Number(extractId) - i;
           let str = num.toString();
@@ -204,7 +212,6 @@ const yes24Crawler = async () => {
             });
 
             console.log('*************************************************************************************');
-            console.log('concertList:', concertList);
 
           } 
           // else {
@@ -223,6 +230,7 @@ const yes24Crawler = async () => {
     console.log('-------------- 에러를 확인해주세요! ----------------- ', error);
   }
 
+  console.log('-------------- YES24 -----------------', concertList);
   return concertList
 }
 
