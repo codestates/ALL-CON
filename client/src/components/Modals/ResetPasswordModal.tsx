@@ -41,7 +41,7 @@ function ResetPasswordModal() {
             </div>
             <div id='btnWrapper'>
               <button className='resetButton'>비밀번호 재설정</button>
-              <button className='cancelButton'>비밀번호 재설정</button>
+              <button className='cancelButton'>취소</button>
             </div>
           </div>
         </div>
