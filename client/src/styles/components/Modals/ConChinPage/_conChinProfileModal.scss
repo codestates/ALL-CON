@@ -15,6 +15,29 @@
   @include lg() {
     position: fixed;
   }
+
+  /***** 공통 *****/
+  .title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 100%;
+    width: 15%;
+    // border: 1px solid orange;
+    font-weight: bold;
+    @include mobile-only() {
+      font-size: 1.5rem;
+    }
+    @include md() {
+      font-size: 1.5rem;
+    }
+    @include lg() {
+      font-size: 2rem;
+    }
+  }
+  /***** 공통 *****/
+
   #bg {
     z-index: 998;
     position: fixed;
@@ -157,26 +180,7 @@
           height: 13%;
           top: 0%;
           // border: 1px solid blue;
-          .title {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            height: 100%;
-            width: 15%;
-            // border: 1px solid orange;
 
-            font-weight: bold;
-            @include mobile-only() {
-              font-size: 1.5rem;
-            }
-            @include md() {
-              font-size: 1.5rem;
-            }
-            @include lg() {
-              font-size: 2rem;
-            }
-          }
           .email {
             position: absolute;
             display: flex;
@@ -208,27 +212,8 @@
           height: 13%;
           top: 13%;
           // border: 1px solid blue;
-          .title1 {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: left;
-            height: 100%;
-            width: 15%;
-            // border: 1px solid orange;
-            font-weight: bold;
-            @include mobile-only() {
-              font-size: 1.5rem;
-            }
-            @include md() {
-              font-size: 1.5rem;
-            }
-            @include lg() {
-              font-size: 2rem;
-            }
-          }
           .title2 {
-            @extend .title1;
+            @extend .title;
             justify-content: center;
           }
           .gender {

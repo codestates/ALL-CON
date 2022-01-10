@@ -24,7 +24,7 @@ function ConChinProfileModal() {
               <span className='email'>catcatcat@cat.com</span>
             </div>
             <div id='genderAndAgeWrapper'>
-              <p className='title1'>성별</p>
+              <p className='title'>성별</p>
               <span className='gender'>여</span>
               <p className='title2'>나이</p>
               <span className='age'>27</span>

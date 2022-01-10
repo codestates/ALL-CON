@@ -1,4 +1,6 @@
 import MyProfileBox from '../components/MyPage/MyProfileBox';
+import Footer from '../components/Footer';
+
 function ConChinCertificationPage() {
   return (
     <div id='conChinCertificationPage'>
@@ -35,12 +37,12 @@ function ConChinCertificationPage() {
               <p className='title'>휴대전화</p>
             </div>
             <div id='region'>대한민국 +82</div>
-            <div id='certificationWrapper'>
-              <div id='recieveWrapper'>
+            <div className='certificationWrapper'>
+              <div className='recieveWrapper'>
                 <input className='number' placeholder='전화번호 입력' />
                 <button className='receiveBtn'>인증번호 받기</button>
               </div>
-              <div id='confirmWrapper'>
+              <div className='confirmWrapper'>
                 <input
                   className='number'
                   placeholder='인증번호를 입력하세요.'
@@ -55,6 +57,11 @@ function ConChinCertificationPage() {
               <button className='cancelBtn'>취소</button>
             </div>
           </div>
+        </div>
+      </div>
+      <div id='fullFooter'>
+        <div id='footerWrapper'>
+          <Footer />
         </div>
       </div>
     </div>

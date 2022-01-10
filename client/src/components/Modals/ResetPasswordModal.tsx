@@ -21,7 +21,7 @@ function ResetPasswordModal() {
               </div>
               <span className='email'>azussi@gmail.com</span>
             </div>
-            <div id='newPasswordWrapper'>
+            <div className='newPasswordWrapper'>
               <div id='titleWrapper'>
                 <p className='title'>새 비밀번호</p>
               </div>
@@ -30,7 +30,7 @@ function ResetPasswordModal() {
                 <img className='padlock' src={padlock} />
               </div>
             </div>
-            <div id='confirmPasswordWrapper'>
+            <div className='confirmPasswordWrapper'>
               <div id='titleWrapper'>
                 <p className='title'>새 비밀번호 확인</p>
               </div>
@@ -39,7 +39,7 @@ function ResetPasswordModal() {
                 <img className='padlock' src={padlock} />
               </div>
             </div>
-            <div id='btnWrapper'>
+            <div className='btnWrapper'>
               <button className='resetButton'>비밀번호 재설정</button>
               <button className='cancelButton'>취소</button>
             </div>

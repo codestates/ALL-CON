@@ -14,6 +14,37 @@
   @include lg() {
     height: 227%;
   }
+  /***** 공통 *****/
+  #titleWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 50%;
+    top: 0%;
+
+    // border: 1px solid red;
+    .title {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
+
+      font-weight: bold;
+      @include mobile-only() {
+        font-size: 1.8rem;
+      }
+      @include md() {
+        font-size: 1.8rem;
+      }
+      @include lg() {
+        font-size: 2.5rem;
+      }
+    }
+  }
+  /***** 공통 *****/
+
   #profileBoxWrapper {
     position: absolute;
     display: flex;
@@ -81,34 +112,7 @@
         height: 16.66%;
         top: 0%;
         // border: 1px solid red;
-        #titleWrapper {
-          position: absolute;
-          display: flex;
-          align-items: center;
-          justify-content: left;
-          width: 100%;
-          height: 50%;
-          top: 0%;
 
-          // border: 1px solid red;
-          .title {
-            position: relative;
-            display: flex;
-            align-items: center;
-            height: 100%;
-
-            font-weight: bold;
-            @include mobile-only() {
-              font-size: 1.8rem;
-            }
-            @include md() {
-              font-size: 1.8rem;
-            }
-            @include lg() {
-              font-size: 2.5rem;
-            }
-          }
-        }
         #email {
           position: absolute;
           display: flex;
@@ -141,33 +145,6 @@
         height: 16.66%;
         top: 16.66%;
         // border: 1px solid red;
-        #titleWrapper {
-          position: absolute;
-          display: flex;
-          align-items: center;
-          justify-content: left;
-          width: 100%;
-          height: 50%;
-          top: 0%;
-
-          // border: 1px solid red;
-          .title {
-            position: relative;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            font-weight: bold;
-            @include mobile-only() {
-              font-size: 1.8rem;
-            }
-            @include md() {
-              font-size: 1.8rem;
-            }
-            @include lg() {
-              font-size: 2.5rem;
-            }
-          }
-        }
         #birthdayBox {
           position: absolute;
           display: flex;
@@ -204,33 +181,6 @@
         height: 16.66%;
         top: 33.32%;
         // border: 1px solid red;
-        #titleWrapper {
-          position: absolute;
-          display: flex;
-          align-items: center;
-          justify-content: left;
-          width: 100%;
-          height: 50%;
-          top: 0%;
-
-          // border: 1px solid red;
-          .title {
-            position: relative;
-            display: flex;
-            align-items: center;
-            height: 100%;
-            font-weight: bold;
-            @include mobile-only() {
-              font-size: 1.8rem;
-            }
-            @include md() {
-              font-size: 1.8rem;
-            }
-            @include lg() {
-              font-size: 2.5rem;
-            }
-          }
-        }
         .gender {
           position: absolute;
           display: flex;
@@ -310,7 +260,7 @@
             font-size: 2rem;
           }
         }
-        #certificationWrapper {
+        .certificationWrapper {
           position: absolute;
           display: flex;
           align-items: center;
@@ -319,7 +269,7 @@
           height: 50%;
           top: 50%;
           // border: 1px solid red;
-          #recieveWrapper {
+          .recieveWrapper {
             position: absolute;
             display: flex;
             align-items: center;
@@ -382,8 +332,8 @@
               }
             }
           }
-          #confirmWrapper {
-            @extend #recieveWrapper;
+          .confirmWrapper {
+            @extend .recieveWrapper;
             top: 50%;
             // border: 1px solid blue;
           }
@@ -445,7 +395,7 @@
     background-color: black;
     @include mobile-only() {
       width: 100%;
-      height: 14%;
+      height: 18%;
       top: 103%;
     }
     @include md() {
@@ -455,8 +405,8 @@
     }
     @include lg() {
       width: 100%;
-      height: 12.5%;
-      top: 105%;
+      height: 16%;
+      top: 100%;
     }
     // border: 1px solid red;
     #footerWrapper {

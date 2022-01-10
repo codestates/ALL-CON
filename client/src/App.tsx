@@ -21,21 +21,21 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      {/* <MyEditPage /> */}
-      {/* <ConcertPage />
-      <ConChinWritingModal /> */}
+      {/* <ConcertPage /> */}
+      {/* <ConChinWritingModal /> */}
       {/* <MainPage /> */}
       {/* <ConChinPage /> */}
-      <ConChinCertificationPage />
+      {/* <ConChinCertificationPage /> */}
       {/* <MyPage /> */}
+      {/* <MyEditPage /> */}
       {/* <TosModal /> */}
       {/* <LoginModal /> */}
       {/* <SignUpModal /> */}
       {/* <div id='modalWrapper'> */}
       {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
-      {/* <ConfirmNumberModal />
-        <FindPasswordModal /> */}
+      {/* <ConfirmNumberModal /> */}
+      {/* <FindPasswordModal /> */}
       {/* <ResetPasswordModal /> */}
       {/* <ConChinProfileModal /> */}
       {/* </div> */}
