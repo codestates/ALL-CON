@@ -24,6 +24,9 @@ function LoginModal() {
               <input className='textBoxMatch2'></input>
               <p className='fontMatch'>비밀번호</p>
               <input className='textBoxMatch2'></input>
+              <div id='warningMsg'>
+                아이디 또는 비밀번호가 잘못 입력되었습니다.
+              </div>
             </div>
             <div id='bottomBox'>
               <button className='fontMatch textBoxMatch3' id='loginBtn'>

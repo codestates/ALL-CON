@@ -14,25 +14,18 @@ import TosModal from './components/Modals/TosModal';
 import FindPasswordModal from './components/Modals/FindPasswordModal';
 import ConfirmNumberModal from './components/Modals/ConfirmNumberModal';
 import ResetPasswordModal from './components/Modals/ResetPasswordModal';
+import LandingPage from './pages/LandingPage';
 function App() {
   return (
     <div className='App'>
       <Header />
-      {/* <ConcertPage />
-      <ConChinWritingModal /> */}
-      {/* <MainPage /> */}
-      {/* <ConChinPage /> */}
-      {/* <ConChinCertificationPage /> */}
-      {/* <MyPage /> */}
-      {/* <TosModal /> */}
-      <SignUpModal />
-      <div id='modalWrapper'>
-        {/* <MyProfileImageModal /> */}
-        {/* <ConfirmNumberModal />
-        <FindPasswordModal /> */}
-        {/* <ResetPasswordModal /> */}
-      </div>
-      {/* <ConChinPage /> */}
+      <MainPage />
+      {/* <div id='modalWrapper'> */}
+      {/* <MyProfileImageModal /> */}
+      {/* <ConfirmNumberModal /> */}
+      {/* <FindPasswordModal /> */}
+      {/* <ResetPasswordModal /> */}
+      {/* </div> */}
     </div>
   );
 }
