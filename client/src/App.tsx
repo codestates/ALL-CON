@@ -37,7 +37,7 @@ function App() {
       {/* <ConfirmNumberModal />
       <FindPasswordModal /> */}
       {/* <LoginModal /> */}
-      {/* <MyProfileImageModal /> */}
+      <MyProfileImageModal />
       {/* <MyProfileResignMembershipModal /> */}
       {/* <ResetPasswordModal /> */}
 
@@ -45,7 +45,8 @@ function App() {
       {/* <MainPage /> */}
       {/* <ConcertPage /> */}
       {/* <ConChinPage /> */}
-      {/* <MyPage /> */}
+      <MyPage />
+      {/* <MyEditPage /> */}
       {/* <ConChinCertificationPage /> */}
 
       <Routes>
