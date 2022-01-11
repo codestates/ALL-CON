@@ -1659,7 +1659,8 @@ html {
 
 /****** conChinPostingBox ******/
 #conChinProfileModal {
-  position: 999;
+  z-index: 999;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1705,8 +1706,8 @@ html {
         height: 0%; } }
     @media (min-width: 768px) {
       #conChinProfileModal #bg {
-        width: 0%;
-        height: 0%; } }
+        width: 100%;
+        height: 100%; } }
     @media (min-width: 1200px) {
       #conChinProfileModal #bg {
         width: 100%;
@@ -1726,32 +1727,37 @@ html {
         top: 10%; } }
     @media (min-width: 768px) {
       #conChinProfileModal #modalBox {
-        width: 100%;
-        height: 90%;
-        border-radius: 0px;
-        top: 10%; } }
+        width: 63%;
+        height: 70%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 20px; } }
     @media (min-width: 1200px) {
       #conChinProfileModal #modalBox {
-        width: 28%;
-        height: 60%;
+        width: 33%;
+        height: 72%;
         top: 50%;
         transform: translate(0%, -50%);
         border-radius: 20px; } }
     #conChinProfileModal #modalBox #modal {
       position: absolute;
       display: flex;
-      justify-content: center;
-      width: 75%;
-      height: 100%; }
+      justify-content: center; }
       @media (max-width: 767px) {
         #conChinProfileModal #modalBox #modal {
-          top: 2%; } }
+          top: 2%;
+          width: 75%;
+          height: 75%; } }
       @media (min-width: 768px) {
         #conChinProfileModal #modalBox #modal {
-          top: 2%; } }
+          top: 2%;
+          width: 75%;
+          height: 100%; } }
       @media (min-width: 1200px) {
         #conChinProfileModal #modalBox #modal {
-          top: 0%; } }
+          top: 0%;
+          width: 75%;
+          height: 100%; } }
       #conChinProfileModal #modalBox #modal #profileBox {
         position: absolute;
         display: flex;
@@ -1793,8 +1799,16 @@ html {
           #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper .nickName {
             position: relative;
             margin-left: 5%;
-            font-size: 2rem;
             font-weight: bold; }
+            @media (max-width: 767px) {
+              #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper .nickName {
+                font-size: 2rem; } }
+            @media (min-width: 768px) {
+              #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper .nickName {
+                font-size: 2.3rem; } }
+            @media (min-width: 1200px) {
+              #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper .nickName {
+                font-size: 2.5rem; } }
           #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper #shieldWrapper {
             position: relative;
             display: flex;
@@ -1955,17 +1969,17 @@ html {
           @media (max-width: 767px) {
             #conChinProfileModal #modalBox #modal #btnBox .closeBtn {
               font-size: 1.5rem;
-              height: 50%;
+              height: 40%;
               margin-bottom: 5%; } }
           @media (min-width: 768px) {
             #conChinProfileModal #modalBox #modal #btnBox .closeBtn {
               font-size: 1.5rem;
-              height: 50%;
+              height: 45%;
               margin-bottom: 5%; } }
           @media (min-width: 1200px) {
             #conChinProfileModal #modalBox #modal #btnBox .closeBtn {
               font-size: 2rem;
-              height: 60%;
+              height: 50%;
               margin-top: 5%; } }
 
 #myPageContainer {
