@@ -24,9 +24,9 @@ function App() {
       {/* <ConcertPage /> */}
       {/* <ConChinWritingModal /> */}
       {/* <MainPage /> */}
-      <ConChinPage />
+      {/* <ConChinPage /> */}
       {/* <ConChinCertificationPage /> */}
-      {/* <MyPage /> */}
+      <MyPage />
       {/* <MyEditPage /> */}
       {/* <TosModal /> */}
       {/* <LoginModal /> */}

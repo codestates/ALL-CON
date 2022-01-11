@@ -461,8 +461,8 @@ html {
             left: 2%; } }
         @media (min-width: 1200px) {
           #commentBox .box #imgAndText .imgWrapper {
-            height: 55px;
-            width: 55px;
+            height: 45px;
+            width: 45px;
             left: 2%; } }
         #commentBox .box #imgAndText .imgWrapper .img {
           position: absolute;
@@ -1920,8 +1920,8 @@ html {
       padding-bottom: 90%; } }
   @media (min-width: 768px) {
     #myProfileBox {
-      width: 35%;
-      padding-bottom: 35%;
+      width: 60%;
+      padding-bottom: 60%;
       top: 6%; } }
   @media (min-width: 1200px) {
     #myProfileBox {
@@ -2708,7 +2708,7 @@ html {
       height: 180%; } }
   @media (min-width: 768px) {
     #myPageContainer {
-      height: 300%; } }
+      height: 200%; } }
   @media (min-width: 1200px) {
     #myPageContainer {
       height: 300%; } }
@@ -2723,7 +2723,7 @@ html {
         height: 33.33%; } }
     @media (min-width: 768px) {
       #myPageContainer #myProfileBoxWrapper {
-        height: 25%; } }
+        height: 33.33%; } }
     @media (min-width: 1200px) {
       #myPageContainer #myProfileBoxWrapper {
         height: 25%; } }
