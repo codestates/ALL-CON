@@ -1,479 +1,456 @@
-@include mobile-only {
-  #mainConcertInfoBox {
-    position: absolute;
+#mainConcertInfoBox {
+  position: absolute;
+  height: 100%;
+  // border: 1px solid blue;
+  @include mobile-only() {
     width: 100%;
-    height: 100%;
-    #topBox {
-      display: flex;
-      flex-direction: column;
+  }
+  @include md() {
+    width: 80%;
+  }
+  @include lg() {
+    width: 63%;
+  }
+  #topBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid blue;
+    @include mobile-only() {
       justify-content: space-between;
-      width: 100%;
       height: 35%;
-      // border: 1px solid blue;
-      #roofArea {
-        position: relative;
-        width: 100%;
-        height: 20%;
-        #backBtn {
-          position: absolute;
-          top: 20%;
+    }
+    @include md() {
+      justify-content: flex-start;
+      height: 30%;
+    }
+    @include lg() {
+      justify-content: flex-start;
+      height: 28%;
+    }
+    #roofArea {
+      position: relative;
+      width: 100%;
+      height: 20%;
+      #backBtn {
+        position: absolute;
+        top: 20%;
+        width: 30%;
+        background-color: $yellow;
+        border: 0;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: bold;
+        @include mobile-only() {
           right: 5%;
-          width: 30%;
           height: 60%;
-          background-color: $yellow;
-          border: 0;
-          border-radius: 5px;
-          color: #fff;
           font-size: 1rem;
-          font-weight: bold;
+        }
+        @include md() {
+          right: 0%;
+          height: 65%;
+          font-size: 1.5rem;
+        }
+        @include lg() {
+          right: 0%;
+          height: 65%;
+          font-size: 1.8rem;
         }
       }
-      #fromWhereBox {
-        display: flex;
-        justify-content: space-between;
-        width: 35%;
+    }
+    #fromWhereBox {
+      display: flex;
+      justify-content: space-between;
+      width: 35%;
+      // border: 1px solid purple;
+      @include mobile-only() {
         height: 12%;
         padding-left: 5%;
-        // border: 1px solid purple;
-        .where {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 45%;
+      }
+      @include md() {
+        height: 15%;
+      }
+      @include lg() {
+        height: 20%;
+      }
+      .where {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45%;
+        background-color: $yellow;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 5px;
+        @include mobile-only() {
           height: 100%;
-          background-color: $yellow;
-          text-align: center;
-          color: #fff;
-          font-weight: bold;
           font-size: 1.2rem;
         }
+        @include md() {
+          height: 100%;
+          font-size: 1.5rem;
+        }
+        @include lg() {
+          height: 75%;
+          font-size: 1.6rem;
+        }
       }
-      #bell {
-        position: absolute;
+    }
+    #bell {
+      position: absolute;
+      left: 38%;
+      height: 4%;
+      @include mobile-only() {
         top: 9%;
-        left: 38%;
         width: 6%;
-        height: 4%;
       }
-      #mailIcon {
-        position: absolute;
+      @include md() {
+        top: 5%;
+        width: 4.5%;
+      }
+      @include lg() {
+        top: 5%;
+        width: 4%;
+      }
+    }
+    #mailIcon {
+      position: absolute;
+      @include mobile-only() {
         top: 8%;
         left: 47%;
         width: 7%;
       }
-      #kakaoIcon {
-        position: absolute;
-        top: 8%;
-        left: 57%;
-        width: 7%;
-      }
-      #titleBox {
-        position: relative;
-        width: 100%;
-        height: 40%;
-        border: 0;
-        // background: #ccc;
-        #h2AlignBox {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 100%;
-          h2 {
-            font-size: 2rem;
-            // border: 1px solid blue;
-          }
-        }
-      }
-      #date {
-        font: 1.3rem;
-        color: $gray;
-      }
-    }
-    /*mobile 중간 박스*/
-    #middleBox {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      width: 100%;
-      height: 65%;
-      // border: 3px solid green;
-      #concertInfoBox {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 90%;
-        height: 75%;
-        // border: 2px solid blue;
-        #selectedPoster {
-          width: 38%;
-          height: 100%;
-        }
-        #concertInfo {
-          position: relative;
-          width: 60%;
-          height: 100%;
-          // border: 2px solid pink;
-          .table {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            .left-side {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 30%;
-              height: 100%;
-              .left {
-                font-weight: bold;
-                text-align: center;
-                font-size: 1.2rem;
-              }
-              #place {
-                height: 15%;
-              }
-              #date {
-                height: 30%;
-              }
-              #time {
-                height: 15%;
-              }
-              #rating {
-                height: 15%;
-              }
-              #price {
-                height: 25%;
-              }
-            }
-            .right-side {
-              position: absolute;
-              top: 0;
-              right: 0;
-              width: 70%;
-              height: 100%;
-              .right {
-                // border: 1px solid green;
-                font-size: 1rem;
-              }
-              #place_r {
-                height: 15%;
-              }
-              #date_r {
-                height: 30%;
-              }
-              #time_r {
-                height: 15%;
-              }
-              #rating_r {
-                height: 15%;
-              }
-              #price_r {
-                height: 25%;
-              }
-            }
-          }
-        }
-      }
-      #buttonsWrapper {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 90%;
-        height: 15%;
-        // border: 1px solid red;
-
-        #black-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 40%;
-          background: $black;
-          color: #fff;
-          border: 0;
-          border-radius: 5px;
-          font-weight: bold;
-          div {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 65%;
-            height: 100%;
-            // border: 1px solid #fff;
-            #imgAndOpen {
-              display: flex;
-              justify-content: space-around;
-              width: 45%;
-              img {
-                width: 20%;
-                height: 90%;
-              }
-              #open {
-                font-size: 1.3rem;
-              }
-            }
-            #time {
-              font-size: 1.2rem;
-            }
-          }
-        }
-        #yellow-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 40%;
-          background: $yellow;
-          color: #fff;
-          border: 5px;
-          font-size: 1.2rem;
-          font-weight: bold;
-          border-radius: 5px;
-        }
-      }
-    }
-  }
-}
-
-@include lg {
-  #mainConcertInfoBox {
-    position: absolute;
-    width: 63%;
-    height: 100%;
-    // border: 4px solid purple;
-    #topBox {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      width: 100%;
-      height: 28%;
-      // border: 3px solid red;
-      #roofArea {
-        position: relative;
-        width: 100%;
-        height: 20%;
-
-        #backBtn {
-          position: absolute;
-          top: 20%;
-          right: 0%;
-          width: 30%;
-          height: 65%;
-          background-color: $yellow;
-          border: 0;
-          border-radius: 5px;
-          color: #ffffff;
-          font-size: 1.8rem;
-          font-weight: bold;
-        }
-      }
-      #fromWhereBox {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 35%;
-        height: 20%;
-        // border: 1px solid purple;
-        .where {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 45%;
-          height: 75%;
-          background-color: $yellow;
-          text-align: center;
-          color: #fff;
-          font-weight: bold;
-          font-size: 1.6rem;
-          border-radius: 5px;
-        }
-      }
-      #bell {
-        position: absolute;
+      @include md() {
         top: 5%;
-        left: 38%;
-        width: 4%;
-        height: 4%;
+        left: 46%;
+        width: 5%;
       }
-      #mailIcon {
-        position: absolute;
+      @include lg() {
         top: 4.8%;
         left: 45%;
         width: 4%;
       }
-      #kakaoIcon {
-        position: absolute;
+    }
+    #kakaoIcon {
+      position: absolute;
+      @include mobile-only() {
+        top: 8%;
+        left: 57%;
+        width: 7%;
+      }
+      @include md() {
+        top: 5%;
+        left: 54.5%;
+        width: 5%;
+      }
+      @include lg() {
         top: 4.8%;
         left: 52%;
         width: 4%;
       }
-      #titleBox {
-        position: relative;
-        width: 100%;
+    }
+    #titleBox {
+      position: relative;
+      width: 100%;
+      border: 0;
+      background: #ccc;
+      @include mobile-only() {
+        height: 40%;
+      }
+      @include md() {
+        height: 45%;
+      }
+      @include lg() {
         height: 50%;
-        border: 0;
-        // background: #ccc;
-        #h2AlignBox {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 100%;
-          h2 {
+      }
+      #h2AlignBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        h2 {
+          // border: 1px solid blue;
+          @include mobile-only() {
+            font-size: 2rem;
+          }
+          @include md() {
+            font-size: 2.5rem;
+          }
+          @include lg() {
             font-size: 3rem;
-            // border: 1px solid blue;
           }
         }
       }
-      #date {
+    }
+    #date {
+      color: $gray;
+      @include mobile-only() {
+        font: 1.3rem;
+      }
+      @include md() {
+        width: 100%;
+        height: 20%;
+        font-size: 1.6rem;
+      }
+      @include lg() {
         width: 100%;
         height: 20%;
         font-size: 1.9rem;
-        color: $gray;
       }
     }
-    /*lg 중간 박스*/
-    #middleBox {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      width: 100%;
+  }
+  /*중간 박스*/
+  #middleBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    // border: 3px solid green;
+    @include mobile-only() {
+      height: 65%;
+    }
+    @include md() {
+      height: 68%;
+    }
+    @include lg() {
       height: 72%;
-      // border: 3px solid green;
-      #concertInfoBox {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    }
+
+    #concertInfoBox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 2px solid blue;
+      @include mobile-only() {
+        width: 90%;
+        height: 75%;
+      }
+      @include md() {
+        width: 93%;
+        height: 80%;
+      }
+      @include lg() {
         width: 95%;
         height: 85%;
-        // border: 2px solid blue;
-        #selectedPoster {
-          width: 35%;
-          height: 100%;
+      }
+      #selectedPoster {
+        height: 100%;
+        @include mobile-only() {
+          width: 38%;
         }
-        #concertInfo {
-          position: relative;
-          width: 60%;
+        @include md() {
+        }
+        width: 37%;
+        @include lg() {
+          width: 35%;
+        }
+      }
+      #concertInfo {
+        position: relative;
+        width: 60%;
+        height: 100%;
+        border: 2px solid pink;
+        .table {
+          position: absolute;
+          top: 0;
+          width: 100%;
           height: 100%;
-          // border: 2px solid pink;
-          .table {
+          .left-side {
             position: absolute;
             top: 0;
-            width: 100%;
+            left: 0;
+            width: 30%;
             height: 100%;
-            .left-side {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 30%;
-              height: 100%;
-              .left {
-                font-weight: bold;
-                text-align: center;
+            .left {
+              font-weight: bold;
+              text-align: center;
+              @include mobile-only() {
+                font-size: 1.2rem;
+              }
+              @include md() {
+                font-size: 1.5rem;
+              }
+              @include lg() {
                 font-size: 2rem;
-                // border: 1px solid blue;
               }
-              #place {
+            }
+            #place {
+              height: 15%;
+            }
+            #date {
+              @include mobile-only() {
+                height: 30%;
+              }
+              @include md() {
                 height: 15%;
               }
-              #date {
+              @include lg() {
                 height: 15%;
               }
-              #time {
-                height: 15%;
+            }
+            #time {
+              height: 15%;
+            }
+            #rating {
+              height: 15%;
+            }
+            #price {
+              @include mobile-only() {
+                height: 25%;
               }
-              #rating {
-                height: 15%;
+              @include md() {
+                height: 20%;
               }
-              #price {
+              @include lg() {
                 height: 20%;
               }
             }
-            .right-side {
-              position: absolute;
-              top: 0;
-              right: 0;
-              width: 70%;
-              height: 100%;
-              .right {
-                // border: 1px solid green;
+          }
+          .right-side {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 70%;
+            height: 100%;
+            .right {
+              // border: 1px solid green;
+              @include mobile-only() {
+                font-size: 1rem;
+              }
+              @include md() {
+                font-size: 1.5rem;
+              }
+              @include lg() {
                 font-size: 2rem;
               }
-              #place_r {
+            }
+            #place_r {
+              height: 15%;
+            }
+            #date_r {
+              @include mobile-only() {
+                height: 30%;
+              }
+              @include md() {
                 height: 15%;
               }
-              #date_r {
+              @include lg() {
                 height: 15%;
               }
-              #time_r {
-                height: 15%;
+            }
+            #time_r {
+              height: 15%;
+            }
+            #rating_r {
+              height: 15%;
+            }
+            #price_r {
+              @include mobile-only() {
+                height: 25%;
               }
-              #rating_r {
-                height: 15%;
+              @include md() {
+                height: 20%;
               }
-              #price_r {
+              @include lg() {
                 height: 20%;
               }
             }
           }
         }
       }
-      #buttonsWrapper {
+    }
+    #buttonsWrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      // border: 1px solid red;
+      @include mobile-only() {
+        width: 90%;
+        height: 15%;
+      }
+      @include md() {
         position: absolute;
         bottom: 6%;
         left: 40.5%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         width: 57%;
         height: 12%;
-        // border: 1px solid red;
+      }
+      @include lg() {
+        position: absolute;
+        bottom: 6%;
+        left: 40.5%;
+        width: 57%;
+        height: 12%;
+      }
 
-        #black-btn {
+      #black-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 40%;
+        background: $black;
+        color: #fff;
+        border: 0;
+        border-radius: 5px;
+        font-weight: bold;
+        #imgAndOpen {
           display: flex;
           align-items: center;
           justify-content: center;
           width: 100%;
-          height: 40%;
-          background: $black;
-          color: #fff;
-          border: 0;
-          border-radius: 5px;
-          font-weight: bold;
-
-          #imgAndOpen {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            img {
+          height: 100%;
+          img {
+            @include mobile-only() {
+              width: 9%;
+              height: 90%;
+            }
+            @include md() {
               width: 10%;
               height: 80%;
               padding-right: 2%;
-              // border: 1px solid orange;
             }
-            #open {
+            @include lg() {
+              width: 10%;
+              height: 80%;
+              padding-right: 2%;
+            }
+          }
+          #open {
+            @include mobile-only() {
+              font-size: 1.3rem;
+            }
+            @include md() {
               font-size: 2.2rem;
-              // border: 1px solid orange;
+            }
+            @include lg() {
+              font-size: 2.2rem;
             }
           }
         }
-        #yellow-btn {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 100%;
-          height: 40%;
-          background: $yellow;
-          color: #fff;
-          border: 5px;
+      }
+      #yellow-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 40%;
+        background: $yellow;
+        color: #fff;
+        border: 5px;
+        font-weight: bold;
+        border-radius: 5px;
+        @include mobile-only() {
+          font-size: 1.2rem;
+        }
+        @include md() {
           font-size: 2rem;
-          font-weight: bold;
-          border-radius: 5px;
+        }
+        @include lg() {
+          font-size: 2rem;
         }
       }
     }
