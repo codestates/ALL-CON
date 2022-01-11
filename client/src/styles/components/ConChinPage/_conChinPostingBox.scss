@@ -27,7 +27,7 @@
     font-size: 4rem;
 
     @include mobile-only() {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       left: 4%;
       top: 4%;
     }
@@ -111,16 +111,19 @@
       align-items: center;
       height: 50%;
       right: 1%;
-      transform: translate(0%, -50%);
+
       // border: 1px solid red;
       @include mobile-only() {
         font-size: 1rem;
+        transform: translate(0%, -90%);
       }
       @include md() {
         font-size: 1.2rem;
+        transform: translate(0%, -50%);
       }
       @include lg() {
         font-size: 1.5rem;
+        transform: translate(0%, -50%);
       }
     }
     .place {
@@ -136,13 +139,16 @@
       @include mobile-only() {
         font-size: 1rem;
         width: 16%;
+        transform: translate(0%, 60%);
       }
       @include md() {
         font-size: 1.2rem;
         width: 18%;
+        transform: translate(0%, 50%);
       }
       @include lg() {
         font-size: 1.5rem;
+        transform: translate(0%, 50%);
       }
     }
   }

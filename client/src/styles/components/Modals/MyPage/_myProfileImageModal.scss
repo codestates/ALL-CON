@@ -1,5 +1,6 @@
 #myProfileImageModal {
-  position: 999;
+  z-index: 999;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;

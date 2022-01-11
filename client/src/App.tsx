@@ -29,27 +29,29 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      {/* <LandingPage /> */}
+
       {/* <SignUpModal /> */}
       {/* <TosModal /> */}
-      {/*<ConcertModal /> */}
+      {/* <ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
-      <LoginModal />
+      {/* <ConfirmNumberModal />
+      <FindPasswordModal /> */}
+      {/* <LoginModal /> */}
+      {/* <MyProfileImageModal /> */}
+      {/* <MyProfileResignMembershipModal /> */}
+      {/* <ResetPasswordModal /> */}
+
+      {/* <MainPage /> */}
+      {/* <ConcertPage /> */}
+      <ConChinPage />
+      {/* <LandingPage /> */}
+      {/* <ConChinCertificationPage /> */}
+      {/* <MyPage /> */}
       <Routes>
         <Route path='/main/*' element={<MainPage />} />
-        {/* <ConcertPage />*/}
-        {/* <ConChinPage /> */}
-        {/* <ConChinCertificationPage /> */}
-        {/* <MyPage /> */}
         <Route path='/callbackGoogle/*' element={<CallbackGoogle />} />
         <Route path='/callbackKakao/*' element={<CallbackKaKao />} />
       </Routes>
-      <div id='modalWrapper'>
-        {/* <MyProfileImageModal /> */}
-        {/* <ConfirmNumberModal />
-        <FindPasswordModal /> */}
-        {/* <ResetPasswordModal /> */}
-      </div>
     </div>
   );
 }
