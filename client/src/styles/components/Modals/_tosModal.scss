@@ -46,12 +46,12 @@
       @include md() {
         width: 30%;
         height: 78%;
-        border-radius: 5px;
+        border-radius: 20px;
       }
       @include lg() {
         width: 30%;
         height: 78%;
-        border-radius: 5px;
+        border-radius: 20px;
       }
       #alignContainer {
         display: flex;

@@ -1,4 +1,4 @@
-import React from 'react';
+/* Component import */
 import ConChinPage from './pages/ConChinPage';
 import MainPage from './pages/MainPage';
 import ConcertPage from './pages/ConcertPage';
@@ -17,28 +17,39 @@ import TosModal from './components/Modals/TosModal';
 import FindPasswordModal from './components/Modals/FindPasswordModal';
 import ConfirmNumberModal from './components/Modals/ConfirmNumberModal';
 import ResetPasswordModal from './components/Modals/ResetPasswordModal';
+import LandingPage from './pages/LandingPage';
+import CallbackGoogle from './components/CallBackPage/CallBackGoogle';
+import CallbackKaKao from './components/CallBackPage/CallBackKakao';
+/* Component import */
+/* Library import */
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+
 function App() {
   return (
     <div className='App'>
       <Header />
-      {/* <ConcertPage /> */}
-      {/* <ConChinWritingModal /> */}
-      {/* <MainPage /> */}
-      {/* <ConChinPage /> */}
-      {/* <ConChinCertificationPage /> */}
-      <MyPage />
-      {/* <MyEditPage /> */}
-      {/* <TosModal /> */}
-      {/* <LoginModal /> */}
+      {/* <LandingPage /> */}
       {/* <SignUpModal /> */}
-      {/* <div id='modalWrapper'> */}
-      {/* <MyProfileImageModal /> */}
-      {/* <MyProfileResignMembershipModal /> */}
-      {/* <ConfirmNumberModal />
-      <FindPasswordModal /> */}
-      {/* <ResetPasswordModal /> */}
-      {/* <ConChinProfileModal /> */}
-      {/* </div> */}
+      {/* <TosModal /> */}
+      {/*<ConcertModal /> */}
+      {/* <ConChinWritingModal /> */}
+      <LoginModal />
+      <Routes>
+        <Route path='/main/*' element={<MainPage />} />
+        {/* <ConcertPage />*/}
+        {/* <ConChinPage /> */}
+        {/* <ConChinCertificationPage /> */}
+        {/* <MyPage /> */}
+        <Route path='/callbackGoogle/*' element={<CallbackGoogle />} />
+        <Route path='/callbackKakao/*' element={<CallbackKaKao />} />
+      </Routes>
+      <div id='modalWrapper'>
+        {/* <MyProfileImageModal /> */}
+        {/* <ConfirmNumberModal />
+        <FindPasswordModal /> */}
+        {/* <ResetPasswordModal /> */}
+      </div>
     </div>
   );
 }
