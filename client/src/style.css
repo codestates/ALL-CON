@@ -887,7 +887,9 @@ html {
   width: 100%; }
   @media (max-width: 767px) {
     #conChinContainer {
-      height: 100%; } }
+      height: 130%;
+      left: 50%;
+      transform: translate(-50%, 0%); } }
   @media (min-width: 768px) {
     #conChinContainer {
       height: 150%;
@@ -907,14 +909,12 @@ html {
       #conChinContainer #conChinExceptFooter {
         width: 100%;
         height: 100%;
-        top: 10%; } }
+        top: 7.65%; } }
     @media (min-width: 768px) {
       #conChinContainer #conChinExceptFooter {
         width: 100%;
         height: 100%;
-        left: 50%;
-        top: 6.7%;
-        transform: translate(-50%, 0%); } }
+        top: 6.65%; } }
     @media (min-width: 1200px) {
       #conChinContainer #conChinExceptFooter {
         width: 75%;
@@ -928,34 +928,78 @@ html {
       @media (max-width: 767px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
-          height: 14%; } }
+          height: 10%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
-          height: 15%; } }
+          height: 17%; } }
       @media (min-width: 1200px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
           height: 16%; } }
-    #conChinContainer #conChinExceptFooter #mainBox {
-      position: relative;
+    #conChinContainer #conChinExceptFooter #postingWrapper {
+      position: absolute;
       display: flex;
       flex-wrap: wrap;
       width: 80%;
-      height: 73%;
-      margin-top: 1%; }
+      height: 73%; }
       @media (max-width: 767px) {
-        #conChinContainer #conChinExceptFooter #mainBox {
+        #conChinContainer #conChinExceptFooter #postingWrapper {
           width: 95%;
-          height: 83%; } }
+          height: 80%;
+          top: 10%;
+          padding-top: 6%; } }
       @media (min-width: 768px) {
-        #conChinContainer #conChinExceptFooter #mainBox {
-          width: 88%;
-          height: 73%; } }
+        #conChinContainer #conChinExceptFooter #postingWrapper {
+          width: 85%;
+          height: 35%;
+          top: 17%;
+          padding-top: 4%; } }
       @media (min-width: 1200px) {
-        #conChinContainer #conChinExceptFooter #mainBox {
-          width: 80%;
-          height: 73%; } }
+        #conChinContainer #conChinExceptFooter #postingWrapper {
+          width: 85%;
+          height: 34%;
+          top: 16%;
+          padding-top: 3%; } }
+    #conChinContainer #conChinExceptFooter #articleWrapper {
+      position: absolute;
+      display: flex;
+      flex-wrap: wrap; }
+      @media (max-width: 767px) {
+        #conChinContainer #conChinExceptFooter #articleWrapper {
+          width: 95%;
+          height: 40.5%;
+          top: 43.5%; } }
+      @media (min-width: 768px) {
+        #conChinContainer #conChinExceptFooter #articleWrapper {
+          width: 85%;
+          height: 50%;
+          top: 57%; } }
+      @media (min-width: 1200px) {
+        #conChinContainer #conChinExceptFooter #articleWrapper {
+          width: 85%;
+          height: 50%;
+          top: 50%; } }
+  #conChinContainer #contentsWrapper {
+    position: absolute;
+    display: flex;
+    left: 50%;
+    transform: translate(-50%, 0%); }
+    @media (max-width: 767px) {
+      #conChinContainer #contentsWrapper {
+        width: 93.5%;
+        height: 60%;
+        top: 95%; } }
+    @media (min-width: 768px) {
+      #conChinContainer #contentsWrapper {
+        width: 85%;
+        height: 65%;
+        top: 118%; } }
+    @media (min-width: 1200px) {
+      #conChinContainer #contentsWrapper {
+        width: 75%;
+        height: 70%;
+        top: 106%; } }
   #conChinContainer #fullFooter {
     position: absolute;
     display: flex;
@@ -964,18 +1008,18 @@ html {
     @media (max-width: 767px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 25%;
-        top: 195%; } }
+        height: 17%;
+        top: 162%; } }
     @media (min-width: 768px) {
       #conChinContainer #fullFooter {
         width: 100%;
         height: 18.5%;
-        top: 185%; } }
+        top: 190%; } }
     @media (min-width: 1200px) {
       #conChinContainer #fullFooter {
         width: 100%;
         height: 15.3%;
-        top: 185%; } }
+        top: 179%; } }
     #conChinContainer #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -998,8 +1042,16 @@ html {
   display: flex;
   flex-direction: row;
   border-bottom: 1.5px solid black;
-  width: 100%;
-  height: 10%; }
+  width: 100%; }
+  @media (max-width: 767px) {
+    #conChinFindBox {
+      height: 15%; } }
+  @media (min-width: 768px) {
+    #conChinFindBox {
+      height: 14%; } }
+  @media (min-width: 1200px) {
+    #conChinFindBox {
+      height: 10%; } }
   #conChinFindBox .title, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 {
     position: relative;
     display: inline-block;
@@ -1054,7 +1106,7 @@ html {
       font-weight: bold; }
       @media (max-width: 767px) {
         #conChinFindBox .btnWrapper .btn {
-          width: 65%;
+          width: 85%;
           padding-left: 17%;
           font-size: 1.3rem;
           height: 60%; } }
@@ -1105,27 +1157,29 @@ html {
   @media (min-width: 1200px) {
     #conChinBox {
       width: 100%;
-      height: 68%; } }
+      height: 100%; } }
 
 #conChinArticleBox {
   position: absolute;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 100%;
-  top: 10%; }
+  width: 100%; }
   @media (max-width: 767px) {
     #conChinArticleBox {
       border-top: 5px solid #ffce63;
-      height: 90%; } }
+      height: 143%;
+      top: 15%; } }
   @media (min-width: 768px) {
     #conChinArticleBox {
       border-top: 10px solid #ffce63;
-      height: 90%; } }
+      height: 139%;
+      top: 14%; } }
   @media (min-width: 1200px) {
     #conChinArticleBox {
       border-top: 10px solid #ffce63;
-      height: 90%; } }
+      height: 89.1%;
+      top: 10%; } }
   #conChinArticleBox #paginationWrapper {
     position: absolute;
     display: flex;
@@ -1133,15 +1187,15 @@ html {
     width: 100%; }
     @media (max-width: 767px) {
       #conChinArticleBox #paginationWrapper {
-        top: 83%;
+        top: 78%;
         height: 20%; } }
     @media (min-width: 768px) {
       #conChinArticleBox #paginationWrapper {
-        top: 82%;
+        top: 79%;
         height: 25%; } }
     @media (min-width: 1200px) {
       #conChinArticleBox #paginationWrapper {
-        top: 82%;
+        top: 75%;
         height: 25%; } }
 
 #conChinmemberBoxWrapper {
@@ -1152,28 +1206,29 @@ html {
       top: 40%; } }
   @media (min-width: 768px) {
     #conChinmemberBoxWrapper {
-      top: 43.6%; } }
+      top: 45%; } }
   @media (min-width: 1200px) {
     #conChinmemberBoxWrapper {
-      top: 46%; } }
+      top: 43%; } }
 
 #conChinArticleContentBox {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
-  width: 100%; }
+  height: 100%; }
   @media (max-width: 767px) {
     #conChinArticleContentBox {
-      top: 102%;
-      height: 125%; } }
+      width: 100%; } }
   @media (min-width: 768px) {
     #conChinArticleContentBox {
-      top: 107%;
-      height: 125%; } }
+      width: 95%;
+      left: 50%;
+      transform: translate(-50%, 0%); } }
   @media (min-width: 1200px) {
     #conChinArticleContentBox {
-      top: 107%;
-      height: 125%; } }
+      width: 85%;
+      left: 50%;
+      transform: translate(-50%, 0%); } }
 
 #titleBox {
   position: relative;
@@ -1196,12 +1251,13 @@ html {
     justify-content: left; }
     @media (max-width: 767px) {
       #titleBox .title, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 {
-        height: 80%;
+        height: 90%;
         width: 70%; } }
     @media (min-width: 768px) {
       #titleBox .title, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 {
         height: 50%;
-        width: 80%; } }
+        width: 80%;
+        bottom: 18%; } }
     @media (min-width: 1200px) {
       #titleBox .title, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 {
         height: 50%;
@@ -1229,11 +1285,11 @@ html {
     @media (min-width: 768px) {
       #titleBox #profileBox {
         height: 50%;
-        bottom: 35%; } }
+        bottom: 18%; } }
     @media (min-width: 1200px) {
       #titleBox #profileBox {
         height: 50%;
-        bottom: 10%; } }
+        bottom: 8%; } }
     #titleBox #profileBox .img {
       position: relative;
       border-radius: 100%; }
@@ -1261,8 +1317,7 @@ html {
   @media (min-width: 768px) {
     #titleBox .nickName {
       position: relative;
-      font-size: 2rem;
-      bottom: 5%; } }
+      font-size: 2rem; } }
   @media (min-width: 1200px) {
     #titleBox .nickName {
       font-size: 2.5rem; } }
@@ -1273,15 +1328,15 @@ html {
   width: 100%; }
   @media (max-width: 767px) {
     #contentBox {
-      height: 100%;
+      height: 95%;
       top: 5%; } }
   @media (min-width: 768px) {
     #contentBox {
-      height: 100%;
+      height: 95%;
       top: 5%; } }
   @media (min-width: 1200px) {
     #contentBox {
-      height: 100%;
+      height: 95%;
       top: 5%; } }
   #contentBox #viewBox {
     position: relative;
@@ -1358,7 +1413,7 @@ html {
     position: absolute;
     display: flex;
     width: 85%;
-    top: 5%; }
+    top: 6%; }
     @media (max-width: 767px) {
       #contentBox #content {
         height: 35%;
@@ -1388,13 +1443,13 @@ html {
           width: 37%;
           height: 37%;
           padding-bottom: 37%;
-          left: 12%; } }
+          left: 10%; } }
       @media (min-width: 1200px) {
         #contentBox #content #imgWrapper {
           width: 35%;
           height: 35%;
           padding-bottom: 35%;
-          left: 12%; } }
+          left: 10%; } }
       #contentBox #content #imgWrapper .img {
         position: absolute;
         width: 100%;
@@ -1410,8 +1465,8 @@ html {
           font-size: 1.3rem;
           right: -3%;
           width: 45%;
-          height: 45%;
-          padding-bottom: 45%; } }
+          height: 35%;
+          padding-bottom: 35%; } }
       @media (min-width: 768px) {
         #contentBox #content .text {
           font-size: 1.8rem;
@@ -1433,11 +1488,11 @@ html {
     width: 100%; }
     @media (max-width: 767px) {
       #contentBox #commentWrapper {
-        top: 48%;
+        top: 40%;
         height: 65%; } }
     @media (min-width: 768px) {
       #contentBox #commentWrapper {
-        top: 48%;
+        top: 42%;
         height: 45%; } }
     @media (min-width: 1200px) {
       #contentBox #commentWrapper {
@@ -1451,15 +1506,15 @@ html {
     height: 20%; }
     @media (max-width: 767px) {
       #contentBox #paginationWrapper {
-        top: 88%;
+        top: 82.5%;
         height: 20%; } }
     @media (min-width: 768px) {
       #contentBox #paginationWrapper {
-        top: 110%;
+        top: 115%;
         height: 22.5%; } }
     @media (min-width: 1200px) {
       #contentBox #paginationWrapper {
-        top: 92%;
+        top: 80%;
         height: 25%; } }
 
 /****** conChinPostingBox ******/
@@ -1477,13 +1532,11 @@ html {
   @media (min-width: 768px) {
     #conChinPostingBox {
       width: 100%;
-      height: 45%;
-      top: -3%; } }
+      height: 100%; } }
   @media (min-width: 1200px) {
     #conChinPostingBox {
       width: 100%;
-      height: 45%;
-      top: -3%; } }
+      height: 100%; } }
   #conChinPostingBox #curOrder {
     position: absolute;
     display: flex;
@@ -1924,10 +1977,10 @@ html {
   top: 10%; }
   @media (max-width: 767px) {
     #myPageContainer {
-      height: 180%; } }
+      height: 150%; } }
   @media (min-width: 768px) {
     #myPageContainer {
-      height: 200%; } }
+      height: 220%; } }
   @media (min-width: 1200px) {
     #myPageContainer {
       height: 300%; } }
@@ -1955,7 +2008,7 @@ html {
         height: 33.33%; } }
     @media (min-width: 768px) {
       #myPageContainer #myArticleBoxWrapper {
-        height: 50%; } }
+        height: 33.33%; } }
     @media (min-width: 1200px) {
       #myPageContainer #myArticleBoxWrapper {
         height: 50%; } }
@@ -1969,7 +2022,7 @@ html {
         height: 33.33%; } }
     @media (min-width: 768px) {
       #myPageContainer #myCommentWrapper {
-        height: 25%; } }
+        height: 33.33%; } }
     @media (min-width: 1200px) {
       #myPageContainer #myCommentWrapper {
         height: 25%; } }
@@ -1987,12 +2040,12 @@ html {
       #myPageContainer #fullFooter {
         width: 100%;
         height: 15.3%;
-        top: 180%; } }
+        top: 104%; } }
     @media (min-width: 1200px) {
       #myPageContainer #fullFooter {
         width: 100%;
         height: 12.5%;
-        top: 105%; } }
+        top: 112%; } }
     #myPageContainer #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -3564,13 +3617,13 @@ html {
         padding-bottom: 35%; } }
     @media (min-width: 1200px) {
       #myProfileBox #imgBox {
-        width: 35.5%;
-        padding-bottom: 35.5%; } }
+        width: 33%;
+        padding-bottom: 33%; } }
     #myProfileBox #imgBox #imgWrapper {
       position: absolute;
       display: flex;
-      width: 90%;
-      padding-bottom: 90%; }
+      width: 80%;
+      padding-bottom: 80%; }
       #myProfileBox #imgBox #imgWrapper .img {
         position: absolute;
         width: 100%;
@@ -3582,7 +3635,7 @@ html {
       position: absolute;
       display: flex;
       justify-content: center;
-      bottom: 0%;
+      bottom: 10%;
       right: 0%;
       width: 20%;
       padding-bottom: 20%; }
@@ -3617,8 +3670,8 @@ html {
             height: 80%; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #nickNameWrapper #oauthWrapper .oauth {
-            width: 100%;
-            height: 100%;
+            width: 90%;
+            height: 90%;
             margin-right: 15%; } }
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #nickNameWrapper #oauthWrapper .oauth {
@@ -3635,7 +3688,7 @@ html {
             font-size: 1.5rem; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #nickNameWrapper .nickName {
-            font-size: 2rem; } }
+            font-size: 1.8rem; } }
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #nickNameWrapper .nickName {
             font-size: 2rem; } }
@@ -3652,8 +3705,8 @@ html {
             height: 60%; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #nickNameWrapper #shieldWrapper .shield {
-            width: 80%;
-            height: 80%;
+            width: 70%;
+            height: 70%;
             margin-left: 15%; } }
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #nickNameWrapper #shieldWrapper .shield {
@@ -3681,7 +3734,7 @@ html {
             font-size: 1.5rem; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #textWrapper #introduction {
-            font-size: 2rem; } }
+            font-size: 1.8rem; } }
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #textWrapper #introduction {
             font-size: 2rem; } }
@@ -3696,7 +3749,7 @@ html {
           height: 13%; } }
       @media (min-width: 768px) {
         #myProfileBox #introductionBox #modifyBtnWrapper {
-          height: 10%; } }
+          height: 11.5%; } }
       @media (min-width: 1200px) {
         #myProfileBox #introductionBox #modifyBtnWrapper {
           height: 10%; } }
@@ -3716,7 +3769,7 @@ html {
             font-size: 1.5rem; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #modifyBtnWrapper .btn {
-            font-size: 2rem; } }
+            font-size: 1.8rem; } }
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #modifyBtnWrapper .btn {
             font-size: 2rem; } }
@@ -3731,7 +3784,7 @@ html {
           height: 13%; } }
       @media (min-width: 768px) {
         #myProfileBox #introductionBox #resignBtnWrapper {
-          height: 10%; } }
+          height: 11.5%; } }
       @media (min-width: 1200px) {
         #myProfileBox #introductionBox #resignBtnWrapper {
           height: 10%; } }
@@ -3751,7 +3804,7 @@ html {
             font-size: 1.5rem; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #resignBtnWrapper .btn {
-            font-size: 2rem; } }
+            font-size: 1.8rem; } }
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #resignBtnWrapper .btn {
             font-size: 2rem; } }
@@ -3762,6 +3815,15 @@ html {
   justify-content: center;
   width: 100%;
   height: 100%; }
+  @media (max-width: 767px) {
+    #myArticleBox {
+      top: 2%; } }
+  @media (min-width: 768px) {
+    #myArticleBox {
+      top: 5%; } }
+  @media (min-width: 1200px) {
+    #myArticleBox {
+      top: 5%; } }
   #myArticleBox #titleWrapper {
     position: absolute;
     display: flex;
@@ -3772,7 +3834,7 @@ html {
         width: 80%; } }
     @media (min-width: 768px) {
       #myArticleBox #titleWrapper {
-        width: 66%; } }
+        width: 71%; } }
     @media (min-width: 1200px) {
       #myArticleBox #titleWrapper {
         width: 66%; } }
@@ -3785,7 +3847,7 @@ html {
       @media (min-width: 768px) {
         #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myArticleBox #titleWrapper .title2 {
           width: 85%;
-          font-size: 4rem; } }
+          font-size: 3rem; } }
       @media (min-width: 1200px) {
         #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myArticleBox #titleWrapper .title2 {
           width: 85%;
@@ -3793,17 +3855,30 @@ html {
   #myArticleBox #articleWrapper {
     position: absolute;
     display: flex;
-    height: 90%;
-    top: 10%; }
+    height: 90%; }
     @media (max-width: 767px) {
       #myArticleBox #articleWrapper {
-        width: 100%; } }
+        width: 100%;
+        top: 15%; } }
     @media (min-width: 768px) {
       #myArticleBox #articleWrapper {
-        width: 85%; } }
+        width: 90%;
+        top: 15%; } }
     @media (min-width: 1200px) {
       #myArticleBox #articleWrapper {
-        width: 85%; } }
+        width: 85%;
+        top: 11%; } }
+    #myArticleBox #articleWrapper #myMemberBoxWrapper {
+      position: absolute; }
+      @media (max-width: 767px) {
+        #myArticleBox #articleWrapper #myMemberBoxWrapper {
+          top: 40%; } }
+      @media (min-width: 768px) {
+        #myArticleBox #articleWrapper #myMemberBoxWrapper {
+          top: 45%; } }
+      @media (min-width: 1200px) {
+        #myArticleBox #articleWrapper #myMemberBoxWrapper {
+          top: 48%; } }
   #myArticleBox #paginationWrapper {
     position: absolute;
     display: flex;
@@ -3817,7 +3892,7 @@ html {
         height: 25%; } }
     @media (min-width: 768px) {
       #myArticleBox #paginationWrapper {
-        top: 65%;
+        top: 63%;
         height: 45%; } }
     @media (min-width: 1200px) {
       #myArticleBox #paginationWrapper {
@@ -3831,13 +3906,16 @@ html {
   height: 100%; }
   @media (max-width: 767px) {
     #myCommentBox {
-      width: 100%; } }
+      width: 100%;
+      top: 0%; } }
   @media (min-width: 768px) {
     #myCommentBox {
-      width: 78%; } }
+      width: 85%;
+      top: 0%; } }
   @media (min-width: 1200px) {
     #myCommentBox {
-      width: 78%; } }
+      width: 78%;
+      top: 10%; } }
   #myCommentBox #titleWrapper {
     position: absolute;
     display: flex;
@@ -3845,13 +3923,13 @@ html {
     height: 20%; }
     @media (max-width: 767px) {
       #myCommentBox #titleWrapper {
-        width: 80%; } }
+        width: 90%; } }
     @media (min-width: 768px) {
       #myCommentBox #titleWrapper {
-        width: 85%; } }
+        width: 90%; } }
     @media (min-width: 1200px) {
       #myCommentBox #titleWrapper {
-        width: 85%; } }
+        width: 88%; } }
     #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myCommentBox #titleWrapper .title2 {
       font-weight: bold; }
       @media (max-width: 767px) {
@@ -3859,7 +3937,7 @@ html {
           font-size: 2rem; } }
       @media (min-width: 768px) {
         #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myCommentBox #titleWrapper .title2 {
-          font-size: 4rem; } }
+          font-size: 3rem; } }
       @media (min-width: 1200px) {
         #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myCommentBox #titleWrapper .title2 {
           font-size: 4rem; } }
@@ -3868,17 +3946,19 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80%;
     top: 20%; }
     @media (max-width: 767px) {
       #myCommentBox #commentWrapper {
-        width: 85%; } }
+        width: 95%;
+        height: 80%; } }
     @media (min-width: 768px) {
       #myCommentBox #commentWrapper {
-        width: 90%; } }
+        width: 90%;
+        height: 70%; } }
     @media (min-width: 1200px) {
       #myCommentBox #commentWrapper {
-        width: 90%; } }
+        width: 90%;
+        height: 110%; } }
   #myCommentBox #paginationWrapper {
     position: absolute;
     display: flex;
@@ -3892,11 +3972,11 @@ html {
         height: 25%; } }
     @media (min-width: 768px) {
       #myCommentBox #paginationWrapper {
-        top: 77%;
+        top: 67%;
         height: 45%; } }
     @media (min-width: 1200px) {
       #myCommentBox #paginationWrapper {
-        top: 77%;
+        top: 86%;
         height: 45%; } }
 
 #myEditPage {

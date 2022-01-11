@@ -4,8 +4,16 @@
   flex-direction: row;
   border-bottom: 1.5px solid black;
   width: 100%;
-  height: 10%;
-  // border:1px solid red;
+  @include mobile-only() {
+    height: 15%;
+  }
+  @include md() {
+    height: 14%;
+  }
+  @include lg() {
+    height: 10%;
+  }
+  // border: 1px solid red;
   .title {
     position: relative;
     display: inline-block;
@@ -67,7 +75,7 @@
       color: white;
       font-weight: bold;
       @include mobile-only() {
-        width: 65%;
+        width: 85%;
         padding-left: 17%;
         font-size: 1.3rem;
         height: 60%;

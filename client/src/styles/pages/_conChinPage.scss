@@ -4,7 +4,9 @@
   width: 100%;
   // border: 1px solid red;
   @include mobile-only() {
-    height: 100%;
+    height: 130%;
+    left: 50%;
+    transform: translate(-50%, 0%);
   }
   @include md() {
     height: 150%;
@@ -22,18 +24,16 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    // border: 1px solid red;
+    // border: 2px solid green;
     @include mobile-only() {
       width: 100%;
       height: 100%;
-      top: 10%;
+      top: 7.65%;
     }
     @include md() {
       width: 100%;
       height: 100%;
-      left: 50%;
-      top: 6.7%;
-      transform: translate(-50%, 0%);
+      top: 6.65%;
     }
     @include lg() {
       width: 75%;
@@ -47,11 +47,11 @@
       display: flex;
       @include mobile-only() {
         width: 100%;
-        height: 14%;
+        height: 10%;
       }
       @include md() {
         width: 100%;
-        height: 15%;
+        height: 17%;
       }
       @include lg() {
         width: 100%;
@@ -59,28 +59,78 @@
       }
       // border:1px solid red;
     }
-    #mainBox {
-      position: relative;
+    #postingWrapper {
+      position: absolute;
       display: flex;
       flex-wrap: wrap;
       width: 80%;
       height: 73%;
-      margin-top: 1%;
+
       @include mobile-only() {
         width: 95%;
-        height: 83%;
+        height: 80%;
+        top: 10%;
+        padding-top: 6%;
       }
       @include md() {
-        width: 88%;
-        height: 73%;
+        width: 85%;
+        height: 35%;
+        top: 17%;
+        padding-top: 4%;
       }
       @include lg() {
-        width: 80%;
-        height: 73%;
+        width: 85%;
+        height: 34%;
+        top: 16%;
+        padding-top: 3%;
       }
-      // border:1px solid red;
+      // border: 1px solid red;
+    }
+    #articleWrapper {
+      position: absolute;
+      display: flex;
+      flex-wrap: wrap;
+      @include mobile-only() {
+        width: 95%;
+        height: 40.5%;
+        top: 43.5%;
+      }
+      @include md() {
+        width: 85%;
+        height: 50%;
+        top: 57%;
+      }
+      @include lg() {
+        width: 85%;
+        height: 50%;
+        top: 50%;
+      }
+      // border: 1px solid blue;
     }
   }
+  #contentsWrapper {
+    position: absolute;
+    display: flex;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    // border: 2px solid purple;
+    @include mobile-only() {
+      width: 93.5%;
+      height: 60%;
+      top: 95%;
+    }
+    @include md() {
+      width: 85%;
+      height: 65%;
+      top: 118%;
+    }
+    @include lg() {
+      width: 75%;
+      height: 70%;
+      top: 106%;
+    }
+  }
+
   #fullFooter {
     position: absolute;
     display: flex;
@@ -89,18 +139,18 @@
     background-color: black;
     @include mobile-only() {
       width: 100%;
-      height: 25%;
-      top: 195%;
+      height: 17%;
+      top: 162%;
     }
     @include md() {
       width: 100%;
       height: 18.5%;
-      top: 185%;
+      top: 190%;
     }
     @include lg() {
       width: 100%;
       height: 15.3%;
-      top: 185%;
+      top: 179%;
     }
     // border: 1px solid red;
     #footerWrapper {

@@ -14,7 +14,7 @@ function MyArticleBox() {
           <div id='box'>
             <ul className='article'>
               <img className='thumbNail' src={defaultImage}></img>
-              <div id='conChinmemberBoxWrapper'>
+              <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
                   <img className='icon' src={groupImage} />
                   <div className='count'>1/3</div>
@@ -29,7 +29,7 @@ function MyArticleBox() {
             </ul>
             <ul className='article'>
               <img className='thumbNail' src={defaultImage}></img>
-              <div id='conChinmemberBoxWrapper'>
+              <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
                   <img className='icon' src={groupImage} />
                   <div className='count'>1/3</div>
@@ -44,7 +44,7 @@ function MyArticleBox() {
             </ul>
             <ul className='article'>
               <img className='thumbNail' src={defaultImage}></img>
-              <div id='conChinmemberBoxWrapper'>
+              <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
                   <img className='icon' src={groupImage} />
                   <div className='count'>1/3</div>
@@ -61,7 +61,7 @@ function MyArticleBox() {
           <div id='box'>
             <ul className='article'>
               <img className='thumbNail' src={defaultImage}></img>
-              <div id='conChinmemberBoxWrapper'>
+              <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
                   <img className='icon' src={groupImage} />
                   <div className='count'>1/3</div>
@@ -76,7 +76,7 @@ function MyArticleBox() {
             </ul>
             <ul className='article'>
               <img className='thumbNail' src={defaultImage}></img>
-              <div id='conChinmemberBoxWrapper'>
+              <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
                   <img className='icon' src={groupImage} />
                   <div className='count'>1/3</div>
@@ -91,7 +91,7 @@ function MyArticleBox() {
             </ul>
             <ul className='article'>
               <img className='thumbNail' src={defaultImage}></img>
-              <div id='conChinmemberBoxWrapper'>
+              <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
                   <img className='icon' src={groupImage} />
                   <div className='count'>1/3</div>

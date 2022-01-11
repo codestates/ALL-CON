@@ -41,12 +41,13 @@ function App() {
       {/* <MyProfileResignMembershipModal /> */}
       {/* <ResetPasswordModal /> */}
 
+      {/* <LandingPage /> */}
       {/* <MainPage /> */}
       {/* <ConcertPage /> */}
-      <ConChinPage />
-      {/* <LandingPage /> */}
-      {/* <ConChinCertificationPage /> */}
+      {/* <ConChinPage /> */}
       {/* <MyPage /> */}
+      {/* <ConChinCertificationPage /> */}
+
       <Routes>
         <Route path='/main/*' element={<MainPage />} />
         <Route path='/callbackGoogle/*' element={<CallbackGoogle />} />

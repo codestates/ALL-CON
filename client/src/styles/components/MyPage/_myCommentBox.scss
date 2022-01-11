@@ -6,12 +6,15 @@
   // border: 4px solid green;
   @include mobile-only() {
     width: 100%;
+    top: 0%;
   }
   @include md() {
-    width: 78%;
+    width: 85%;
+    top: 0%;
   }
   @include lg() {
     width: 78%;
+    top: 10%;
   }
   #titleWrapper {
     position: absolute;
@@ -19,13 +22,13 @@
     align-items: center;
     height: 20%;
     @include mobile-only() {
-      width: 80%;
+      width: 90%;
     }
     @include md() {
-      width: 85%;
+      width: 90%;
     }
     @include lg() {
-      width: 85%;
+      width: 88%;
     }
     // border: 2px solid red;
     .title {
@@ -34,7 +37,7 @@
         font-size: 2rem;
       }
       @include md() {
-        font-size: 4rem;
+        font-size: 3rem;
       }
       @include lg() {
         font-size: 4rem;
@@ -46,17 +49,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 80%;
-
     top: 20%;
     @include mobile-only() {
-      width: 85%;
+      width: 95%;
+      height: 80%;
     }
     @include md() {
       width: 90%;
+      height: 70%;
     }
     @include lg() {
       width: 90%;
+      height: 110%;
     }
     // border: 2px solid red;
   }
@@ -72,11 +76,11 @@
       height: 25%;
     }
     @include md() {
-      top: 77%;
+      top: 67%;
       height: 45%;
     }
     @include lg() {
-      top: 77%;
+      top: 86%;
       height: 45%;
     }
     // border: 3px solid green;
