@@ -28,8 +28,8 @@
       height: 0%;
     }
     @include md() {
-      width: 0%;
-      height: 0%;
+      width: 100%;
+      height: 100%;
     }
     @include lg() {
       width: 100%;
@@ -51,14 +51,15 @@
       top: 10%;
     }
     @include md() {
-      width: 100%;
-      height: 100%;
-      border-radius: 0px;
-      top: 0%;
+      width: 50%;
+      height: 60%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      border-radius: 20px;
     }
     @include lg() {
-      width: 28%;
-      height: 65%;
+      width: 30%;
+      height: 70%;
       top: 50%;
       transform: translate(0%, -50%);
       border-radius: 20px;
@@ -82,15 +83,15 @@
 
         @include mobile-only() {
           height: 10%;
-          top: 10%;
+          top: 9%;
         }
         @include md() {
           height: 10%;
-          top: 5%;
+          top: 10%;
         }
         @include lg() {
           height: 10%;
-          top: 5%;
+          top: 10%;
         }
         // border: 1px solid red;
         #title {
@@ -100,7 +101,7 @@
           color: $yellow;
           // border: 1px solid red;
           @include mobile-only() {
-            font-size: 3.5rem;
+            font-size: 4rem;
           }
           @include md() {
             font-size: 4.5rem;
@@ -116,19 +117,19 @@
         justify-content: center;
         // border: 1px solid red;
         @include mobile-only() {
-          top: 21%;
+          top: 18.5%;
           width: 20rem;
           height: 20rem;
         }
         @include md() {
-          top: 21%;
-          width: 20rem;
-          height: 20rem;
+          top: 19%;
+          width: 23rem;
+          height: 23rem;
         }
         @include lg() {
-          top: 15%;
-          width: 30rem;
-          height: 30rem;
+          top: 20%;
+          width: 25rem;
+          height: 25rem;
         }
         #imgWrapper {
           position: absolute;
@@ -152,13 +153,13 @@
         width: 100%;
         height: 20%;
         @include mobile-only() {
-          top: 53.5%;
+          bottom: 41.5%;
         }
         @include md() {
-          top: 53.5%;
+          bottom: 22%;
         }
         @include lg() {
-          top: 57.5%;
+          bottom: 25%;
         }
         // border: 1px solid red;
         .explain {
@@ -173,13 +174,13 @@
           font-weight: bold;
           // border: 1px solid red;
           @include mobile-only() {
-            font-size: 3rem;
+            font-size: 2.5rem;
           }
           @include md() {
-            font-size: 3rem;
+            font-size: 2.8rem;
           }
           @include lg() {
-            font-size: 3.5rem;
+            font-size: 3rem;
           }
         }
       }
@@ -191,15 +192,15 @@
         // border: 1px solid red;
         @include mobile-only() {
           height: 6%;
-          bottom: 15%;
+          bottom: 33%;
         }
         @include md() {
           height: 8%;
-          bottom: 10%;
+          bottom: 8%;
         }
         @include lg() {
           height: 8%;
-          bottom: 7.5%;
+          bottom: 8%;
         }
         .resignBtn {
           position: relative;
@@ -216,7 +217,7 @@
             font-size: 2rem;
           }
           @include md() {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
           }
           @include lg() {
             font-size: 2.5rem;
@@ -237,7 +238,7 @@
             font-size: 2rem;
           }
           @include md() {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
           }
           @include lg() {
             font-size: 2.5rem;

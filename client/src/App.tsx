@@ -34,12 +34,13 @@ function App() {
       {/* <TosModal /> */}
       {/* <ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
-      {/* <ConfirmNumberModal />
-      <FindPasswordModal /> */}
+
       {/* <LoginModal /> */}
-      <MyProfileImageModal />
+      {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
       {/* <ResetPasswordModal /> */}
+      <ConfirmNumberModal />
+      <FindPasswordModal />
 
       {/* <LandingPage /> */}
       {/* <MainPage /> */}

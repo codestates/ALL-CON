@@ -2305,8 +2305,8 @@ html {
         height: 0%; } }
     @media (min-width: 768px) {
       #myProfileResignMembershipModal #bg {
-        width: 0%;
-        height: 0%; } }
+        width: 100%;
+        height: 100%; } }
     @media (min-width: 1200px) {
       #myProfileResignMembershipModal #bg {
         width: 100%;
@@ -2326,14 +2326,15 @@ html {
         top: 10%; } }
     @media (min-width: 768px) {
       #myProfileResignMembershipModal #modalBox {
-        width: 100%;
-        height: 100%;
-        border-radius: 0px;
-        top: 0%; } }
+        width: 50%;
+        height: 60%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 20px; } }
     @media (min-width: 1200px) {
       #myProfileResignMembershipModal #modalBox {
-        width: 28%;
-        height: 65%;
+        width: 30%;
+        height: 70%;
         top: 50%;
         transform: translate(0%, -50%);
         border-radius: 20px; } }
@@ -2354,22 +2355,22 @@ html {
         @media (max-width: 767px) {
           #myProfileResignMembershipModal #modalBox #modal #titleWrapper {
             height: 10%;
-            top: 10%; } }
+            top: 9%; } }
         @media (min-width: 768px) {
           #myProfileResignMembershipModal #modalBox #modal #titleWrapper {
             height: 10%;
-            top: 5%; } }
+            top: 10%; } }
         @media (min-width: 1200px) {
           #myProfileResignMembershipModal #modalBox #modal #titleWrapper {
             height: 10%;
-            top: 5%; } }
+            top: 10%; } }
         #myProfileResignMembershipModal #modalBox #modal #titleWrapper #title {
           position: relative;
           font-weight: bold;
           color: #ffce63; }
           @media (max-width: 767px) {
             #myProfileResignMembershipModal #modalBox #modal #titleWrapper #title {
-              font-size: 3.5rem; } }
+              font-size: 4rem; } }
           @media (min-width: 768px) {
             #myProfileResignMembershipModal #modalBox #modal #titleWrapper #title {
               font-size: 4.5rem; } }
@@ -2382,19 +2383,19 @@ html {
         justify-content: center; }
         @media (max-width: 767px) {
           #myProfileResignMembershipModal #modalBox #modal #imgBox {
-            top: 21%;
+            top: 18.5%;
             width: 20rem;
             height: 20rem; } }
         @media (min-width: 768px) {
           #myProfileResignMembershipModal #modalBox #modal #imgBox {
-            top: 21%;
-            width: 20rem;
-            height: 20rem; } }
+            top: 19%;
+            width: 23rem;
+            height: 23rem; } }
         @media (min-width: 1200px) {
           #myProfileResignMembershipModal #modalBox #modal #imgBox {
-            top: 15%;
-            width: 30rem;
-            height: 30rem; } }
+            top: 20%;
+            width: 25rem;
+            height: 25rem; } }
         #myProfileResignMembershipModal #modalBox #modal #imgBox #imgWrapper {
           position: absolute;
           display: flex;
@@ -2414,13 +2415,13 @@ html {
         height: 20%; }
         @media (max-width: 767px) {
           #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
-            top: 53.5%; } }
+            bottom: 41.5%; } }
         @media (min-width: 768px) {
           #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
-            top: 53.5%; } }
+            bottom: 22%; } }
         @media (min-width: 1200px) {
           #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
-            top: 57.5%; } }
+            bottom: 25%; } }
         #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
           position: absolute;
           display: flex;
@@ -2432,13 +2433,13 @@ html {
           font-weight: bold; }
           @media (max-width: 767px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 3rem; } }
+              font-size: 2.5rem; } }
           @media (min-width: 768px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 3rem; } }
+              font-size: 2.8rem; } }
           @media (min-width: 1200px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 3.5rem; } }
+              font-size: 3rem; } }
       #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
         position: absolute;
         display: flex;
@@ -2447,15 +2448,15 @@ html {
         @media (max-width: 767px) {
           #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
             height: 6%;
-            bottom: 15%; } }
+            bottom: 33%; } }
         @media (min-width: 768px) {
           #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
             height: 8%;
-            bottom: 10%; } }
+            bottom: 8%; } }
         @media (min-width: 1200px) {
           #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
             height: 8%;
-            bottom: 7.5%; } }
+            bottom: 8%; } }
         #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn {
           position: relative;
           display: flex;
@@ -2472,7 +2473,7 @@ html {
               font-size: 2rem; } }
           @media (min-width: 768px) {
             #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn {
-              font-size: 2.5rem; } }
+              font-size: 2.3rem; } }
           @media (min-width: 1200px) {
             #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn {
               font-size: 2.5rem; } }
@@ -2492,7 +2493,7 @@ html {
               font-size: 2rem; } }
           @media (min-width: 768px) {
             #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .cancleBtn {
-              font-size: 2.5rem; } }
+              font-size: 2.3rem; } }
           @media (min-width: 1200px) {
             #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .cancleBtn {
               font-size: 2.5rem; } }
@@ -2899,8 +2900,8 @@ html {
         height: 0%; } }
     @media (min-width: 768px) {
       #findPasswordModal #bg {
-        width: 0%;
-        height: 0%; } }
+        width: 100%;
+        height: 100%; } }
     @media (min-width: 1200px) {
       #findPasswordModal #bg {
         width: 100%;
@@ -2920,14 +2921,16 @@ html {
         top: 10%; } }
     @media (min-width: 768px) {
       #findPasswordModal #modalBox {
-        width: 100%;
-        height: 100%;
-        border-radius: 0px;
-        top: 10%; } }
+        width: 60%;
+        height: 50%;
+        padding-bottom: 50%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 20px; } }
     @media (min-width: 1200px) {
       #findPasswordModal #modalBox {
-        width: 28%;
-        height: 60%;
+        width: 33%;
+        height: 55%;
         padding-bottom: 30%;
         top: 50%;
         transform: translate(0%, -50%);
@@ -2941,19 +2944,19 @@ html {
         #findPasswordModal #modalBox #modal {
           width: 90%;
           height: 80%;
-          top: 40%;
+          top: 35%;
           transform: translate(0%, -50%); } }
       @media (min-width: 768px) {
         #findPasswordModal #modalBox #modal {
           width: 90%;
-          height: 80%;
-          top: 40%;
+          height: 100%;
+          top: 47%;
           transform: translate(0%, -50%); } }
       @media (min-width: 1200px) {
         #findPasswordModal #modalBox #modal {
           width: 90%;
           height: 100%;
-          top: 45%;
+          top: 42%;
           transform: translate(0%, -50%); } }
       #findPasswordModal #modalBox #modal #titlesBox {
         position: absolute;
@@ -2985,7 +2988,7 @@ html {
                 font-size: 3.5rem; } }
             @media (min-width: 768px) {
               #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
-                font-size: 4.5rem; } }
+                font-size: 4rem; } }
             @media (min-width: 1200px) {
               #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
                 font-size: 4.5rem; } }
@@ -2995,8 +2998,16 @@ html {
           align-items: center;
           justify-content: center;
           width: 100%;
-          height: 50%;
-          top: 50%; }
+          height: 50%; }
+          @media (max-width: 767px) {
+            #findPasswordModal #modalBox #modal #titlesBox #explainWrapper {
+              top: 45%; } }
+          @media (min-width: 768px) {
+            #findPasswordModal #modalBox #modal #titlesBox #explainWrapper {
+              top: 56%; } }
+          @media (min-width: 1200px) {
+            #findPasswordModal #modalBox #modal #titlesBox #explainWrapper {
+              top: 51%; } }
           #findPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
             position: relative;
             color: #a0a0a0; }
@@ -3008,7 +3019,7 @@ html {
                 font-size: 1.8rem; } }
             @media (min-width: 1200px) {
               #findPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
-                font-size: 1.8rem; } }
+                font-size: 2rem; } }
       #findPasswordModal #modalBox #modal #emailBox {
         position: absolute;
         display: flex;
@@ -3016,23 +3027,22 @@ html {
         @media (max-width: 767px) {
           #findPasswordModal #modalBox #modal #emailBox {
             height: 25%;
-            top: 50%; } }
+            top: 44%; } }
         @media (min-width: 768px) {
           #findPasswordModal #modalBox #modal #emailBox {
             height: 25%;
-            top: 50%; } }
+            top: 54%; } }
         @media (min-width: 1200px) {
           #findPasswordModal #modalBox #modal #emailBox {
             height: 25%;
-            top: 58%; } }
+            top: 60%; } }
         #findPasswordModal #modalBox #modal #emailBox #titleWrapper {
           position: absolute;
           display: flex;
           align-items: center;
           justify-content: left;
           width: 100%;
-          height: 30%;
-          top: 0%; }
+          height: 30%; }
           #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
             position: absolute;
             padding-left: 2%;
@@ -3040,19 +3050,30 @@ html {
             font-weight: bold; }
             @media (max-width: 767px) {
               #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
-                font-size: 2rem; } }
+                font-size: 2rem;
+                top: 50%; } }
             @media (min-width: 768px) {
               #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
-                font-size: 2.5rem; } }
+                font-size: 2.3rem;
+                top: 0%; } }
             @media (min-width: 1200px) {
               #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
-                font-size: 2.5rem; } }
+                font-size: 2.5rem;
+                top: 0%; } }
         #findPasswordModal #modalBox #modal #emailBox #inputWrapper {
           position: absolute;
           display: flex;
           width: 100%;
-          height: 30%;
-          top: 50%; }
+          top: 48%; }
+          @media (max-width: 767px) {
+            #findPasswordModal #modalBox #modal #emailBox #inputWrapper {
+              height: 30%; } }
+          @media (min-width: 768px) {
+            #findPasswordModal #modalBox #modal #emailBox #inputWrapper {
+              height: 40%; } }
+          @media (min-width: 1200px) {
+            #findPasswordModal #modalBox #modal #emailBox #inputWrapper {
+              height: 40%; } }
           #findPasswordModal #modalBox #modal #emailBox #inputWrapper .input {
             position: absolute;
             display: flex;
@@ -3070,7 +3091,7 @@ html {
                 font-size: 1.5rem; } }
             @media (min-width: 1200px) {
               #findPasswordModal #modalBox #modal #emailBox #inputWrapper .input {
-                font-size: 1.5rem; } }
+                font-size: 1.8rem; } }
           #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper {
             position: absolute;
             display: flex;
@@ -3088,8 +3109,16 @@ html {
               border: none;
               border-radius: 5px;
               color: white;
-              font-weight: bold;
-              font-size: 1.5rem; }
+              font-weight: bold; }
+              @media (max-width: 767px) {
+                #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper .btn {
+                  font-size: 1.3rem; } }
+              @media (min-width: 768px) {
+                #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper .btn {
+                  font-size: 1.5rem; } }
+              @media (min-width: 1200px) {
+                #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper .btn {
+                  font-size: 1.8rem; } }
       #findPasswordModal #modalBox #modal #btnBox {
         position: absolute;
         display: flex;
@@ -3098,20 +3127,20 @@ html {
         width: 100%; }
         @media (max-width: 767px) {
           #findPasswordModal #modalBox #modal #btnBox {
-            height: 25%;
-            top: 75%; } }
+            height: 23%;
+            top: 65%; } }
         @media (min-width: 768px) {
           #findPasswordModal #modalBox #modal #btnBox {
-            height: 25%;
-            top: 75%; } }
+            height: 30%;
+            top: 77%; } }
         @media (min-width: 1200px) {
           #findPasswordModal #modalBox #modal #btnBox {
-            height: 25%;
-            top: 80%; } }
+            height: 30%;
+            top: 83%; } }
         #findPasswordModal #modalBox #modal #btnBox .btn {
           position: relative;
           width: 100%;
-          height: 30%;
+          height: 33%;
           background-color: #000;
           border: none;
           border-radius: 5px;
@@ -3122,7 +3151,7 @@ html {
               font-size: 1.5rem; } }
           @media (min-width: 768px) {
             #findPasswordModal #modalBox #modal #btnBox .btn {
-              font-size: 2rem; } }
+              font-size: 1.8rem; } }
           @media (min-width: 1200px) {
             #findPasswordModal #modalBox #modal #btnBox .btn {
               font-size: 2rem; } }

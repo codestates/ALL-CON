@@ -12,10 +12,10 @@ function MyProfileImageModal() {
           </div>
           <div id='imgBox'>
             <div id='imgWrapper'>
-              <img className='img' src={profileImage} />
+              <img className='img' src={profileImage} alt='profileImage' />
             </div>
             <div id='cameraWrapper'>
-              <img className='camera' src={camera} />
+              <img className='camera' src={camera} alt='camera' />
             </div>
           </div>
           <div id='modifyBtnWrapper'>
