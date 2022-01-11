@@ -1980,7 +1980,7 @@ html {
       height: 150%; } }
   @media (min-width: 768px) {
     #myPageContainer {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 1200px) {
     #myPageContainer {
       height: 300%; } }
@@ -3393,7 +3393,7 @@ html {
             background-color: #000; }
 
 #resetPasswordModal {
-  z-index: 990;
+  z-index: 997;
   position: fixed;
   display: flex;
   align-items: center;
@@ -3427,7 +3427,7 @@ html {
         font-size: 1.8rem; } }
     @media (min-width: 1200px) {
       #resetPasswordModal #titleWrapper .title, #resetPasswordModal #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #resetPasswordModal #titleWrapper .title2 {
-        font-size: 1.8rem; } }
+        font-size: 2rem; } }
   #resetPasswordModal #inputWrapper {
     position: absolute;
     display: flex;
@@ -3438,18 +3438,26 @@ html {
     #resetPasswordModal #inputWrapper .input {
       position: absolute;
       width: 100%;
-      height: 71.43%;
       border: 1px solid #a0a0a0;
       border-radius: 5px;
       font-size: 1.5rem;
       padding-left: 2%; }
+      @media (max-width: 767px) {
+        #resetPasswordModal #inputWrapper .input {
+          height: 57.15%; } }
+      @media (min-width: 768px) {
+        #resetPasswordModal #inputWrapper .input {
+          height: 71.43%; } }
+      @media (min-width: 1200px) {
+        #resetPasswordModal #inputWrapper .input {
+          height: 71.43%; } }
     #resetPasswordModal #inputWrapper .padlock {
       position: absolute;
       width: 1.5rem;
       height: 1.5rem;
       right: 2%; }
   #resetPasswordModal #bg {
-    z-index: 991;
+    z-index: 998;
     position: fixed;
     display: flex;
     background-color: #404040;
@@ -3460,14 +3468,14 @@ html {
         height: 0%; } }
     @media (min-width: 768px) {
       #resetPasswordModal #bg {
-        width: 0%;
-        height: 0%; } }
+        width: 100%;
+        height: 100%; } }
     @media (min-width: 1200px) {
       #resetPasswordModal #bg {
         width: 100%;
         height: 100%; } }
   #resetPasswordModal #modalBox {
-    z-index: 992;
+    z-index: 999;
     position: fixed;
     display: flex;
     align-items: center;
@@ -3478,17 +3486,19 @@ html {
         width: 100%;
         height: 90%;
         border-radius: 0px;
-        top: 15%; } }
+        top: 9.96%; } }
     @media (min-width: 768px) {
       #resetPasswordModal #modalBox {
-        width: 100%;
-        height: 100%;
-        border-radius: 0px;
-        top: 10%; } }
+        width: 55%;
+        height: 55%;
+        padding-bottom: 30%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 20px; } }
     @media (min-width: 1200px) {
       #resetPasswordModal #modalBox {
         width: 35%;
-        height: 60%;
+        height: 70%;
         padding-bottom: 30%;
         top: 50%;
         transform: translate(0%, -50%);
@@ -3501,19 +3511,19 @@ html {
       @media (max-width: 767px) {
         #resetPasswordModal #modalBox #modal {
           width: 90%;
-          height: 80%;
-          top: 40%;
+          height: 70%;
+          top: 28%;
           transform: translate(0%, -50%); } }
       @media (min-width: 768px) {
         #resetPasswordModal #modalBox #modal {
           width: 90%;
-          height: 80%;
-          top: 40%;
+          height: 100%;
+          top: 48%;
           transform: translate(0%, -50%); } }
       @media (min-width: 1200px) {
         #resetPasswordModal #modalBox #modal {
           width: 100%;
-          height: 100%;
+          height: 95%;
           top: 50%;
           transform: translate(0%, -50%); } }
       #resetPasswordModal #modalBox #modal #titlesBox {
@@ -3535,11 +3545,19 @@ html {
           align-items: center;
           justify-content: center;
           width: 100%;
-          height: 50%;
-          top: 0%; }
+          height: 50%; }
+          @media (max-width: 767px) {
+            #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper {
+              top: 10%; } }
+          @media (min-width: 768px) {
+            #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper {
+              top: 0%; } }
+          @media (min-width: 1200px) {
+            #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper {
+              top: 0%; } }
           #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #resetPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #resetPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
             position: absolute;
-            top: 40%;
+            top: 55%;
             color: #ffce63;
             font-weight: bold; }
             @media (max-width: 767px) {
@@ -3550,15 +3568,23 @@ html {
                 font-size: 3.5rem; } }
             @media (min-width: 1200px) {
               #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #resetPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #resetPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
-                font-size: 3.5rem; } }
+                font-size: 4.5rem; } }
         #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper {
           position: absolute;
           display: flex;
           align-items: center;
           justify-content: center;
           width: 100%;
-          height: 50%;
-          top: 47.5%; }
+          height: 50%; }
+          @media (max-width: 767px) {
+            #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper {
+              top: 52%; } }
+          @media (min-width: 768px) {
+            #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper {
+              top: 47.5%; } }
+          @media (min-width: 1200px) {
+            #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper {
+              top: 47.5%; } }
           #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
             position: relative;
             color: #a0a0a0; }
@@ -3587,13 +3613,23 @@ html {
             display: flex;
             align-items: center;
             width: 100%;
-            height: 50%;
-            top: 40%;
             background-color: #c4c4c4;
             border: 1px solid #a0a0a0;
             border-radius: 5px;
             font-size: 1.5rem;
             padding-left: 2%; }
+            @media (max-width: 767px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper .email {
+                top: 45%;
+                height: 40%; } }
+            @media (min-width: 768px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper .email {
+                top: 40%;
+                height: 50%; } }
+            @media (min-width: 1200px) {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper .email {
+                top: 40%;
+                height: 50%; } }
         #resetPasswordModal #modalBox #modal #exceptTitlesBox .newPasswordWrapper, #resetPasswordModal #modalBox #modal #exceptTitlesBox .confirmPasswordWrapper, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper {
           position: absolute;
           display: flex;

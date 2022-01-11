@@ -38,9 +38,9 @@ function App() {
       {/* <LoginModal /> */}
       {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
-      {/* <ResetPasswordModal /> */}
-      <ConfirmNumberModal />
-      <FindPasswordModal />
+      <ResetPasswordModal />
+      {/* <ConfirmNumberModal />
+      <FindPasswordModal /> */}
 
       {/* <LandingPage /> */}
       {/* <MainPage /> */}
