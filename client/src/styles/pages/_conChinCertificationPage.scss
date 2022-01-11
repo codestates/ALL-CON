@@ -95,8 +95,8 @@
         height: 90%;
       }
       @include md() {
-        width: 60%;
-        height: 90%;
+        width: 80%;
+        height: 90.1%;
       }
       @include lg() {
         width: 50%;
@@ -417,14 +417,14 @@
       // border: 1px solid red;
       @include mobile-only() {
         height: 100%;
-        width: 75%;
+        width: 100%;
       }
       @include md() {
         height: 70%;
-        width: 79%;
+        width: 100%;
       }
       @include lg() {
-        height: 70%;
+        height: 73%;
         width: 79%;
       }
     }

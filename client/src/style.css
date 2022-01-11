@@ -2390,7 +2390,7 @@ html {
               font-size: 4.5rem; } }
           @media (min-width: 1200px) {
             #myProfileResignMembershipModal #modalBox #modal #titleWrapper #title {
-              font-size: 4.5rem; } }
+              font-size: 5rem; } }
       #myProfileResignMembershipModal #modalBox #modal #imgBox {
         position: absolute;
         display: flex;
@@ -2450,10 +2450,10 @@ html {
               font-size: 2.5rem; } }
           @media (min-width: 768px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 2.8rem; } }
+              font-size: 2.5rem; } }
           @media (min-width: 1200px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 3rem; } }
+              font-size: 3.5rem; } }
       #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
         position: absolute;
         display: flex;
@@ -2596,8 +2596,8 @@ html {
           height: 90%; } }
       @media (min-width: 768px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
-          width: 60%;
-          height: 90%; } }
+          width: 80%;
+          height: 90.1%; } }
       @media (min-width: 1200px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
           width: 50%;
@@ -2875,14 +2875,14 @@ html {
       @media (max-width: 767px) {
         #conChinCertificationPage #fullFooter #footerWrapper {
           height: 100%;
-          width: 75%; } }
+          width: 100%; } }
       @media (min-width: 768px) {
         #conChinCertificationPage #fullFooter #footerWrapper {
           height: 70%;
-          width: 79%; } }
+          width: 100%; } }
       @media (min-width: 1200px) {
         #conChinCertificationPage #fullFooter #footerWrapper {
-          height: 70%;
+          height: 73%;
           width: 79%; } }
 
 #findPasswordModal {
@@ -3526,7 +3526,7 @@ html {
         #resetPasswordModal #modalBox #modal {
           width: 90%;
           height: 70%;
-          top: 28%;
+          top: 35%;
           transform: translate(0%, -50%); } }
       @media (min-width: 768px) {
         #resetPasswordModal #modalBox #modal {
@@ -3592,7 +3592,7 @@ html {
           height: 50%; }
           @media (max-width: 767px) {
             #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper {
-              top: 52%; } }
+              top: 55%; } }
           @media (min-width: 768px) {
             #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper {
               top: 47.5%; } }
@@ -3614,8 +3614,16 @@ html {
       #resetPasswordModal #modalBox #modal #exceptTitlesBox {
         position: absolute;
         width: 80%;
-        height: 70%;
-        top: 30%; }
+        height: 70%; }
+        @media (max-width: 767px) {
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox {
+            top: 31%; } }
+        @media (min-width: 768px) {
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox {
+            top: 30%; } }
+        @media (min-width: 1200px) {
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox {
+            top: 30%; } }
         #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper {
           position: absolute;
           display: flex;
@@ -3673,7 +3681,7 @@ html {
                 font-size: 1.8rem; } }
             @media (min-width: 1200px) {
               #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
-                font-size: 1.8rem; } }
+                font-size: 2rem; } }
           #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
             background-color: #000; }
 
@@ -3912,7 +3920,7 @@ html {
       top: 2%; } }
   @media (min-width: 768px) {
     #myArticleBox {
-      top: 5%; } }
+      top: 15%; } }
   @media (min-width: 1200px) {
     #myArticleBox {
       top: 5%; } }
@@ -4003,7 +4011,7 @@ html {
   @media (min-width: 768px) {
     #myCommentBox {
       width: 85%;
-      top: 0%; } }
+      top: 10%; } }
   @media (min-width: 1200px) {
     #myCommentBox {
       width: 78%;
@@ -4159,8 +4167,8 @@ html {
           height: 90%; } }
       @media (min-width: 1200px) {
         #myEditPage #userInfoWrapper #userInfoBox {
-          width: 40%;
-          height: 80%; } }
+          width: 50%;
+          height: 87.2%; } }
       #myEditPage #userInfoWrapper #userInfoBox #emailWrapper {
         position: absolute;
         display: flex;
@@ -4335,7 +4343,7 @@ html {
       #myEditPage #fullFooter {
         width: 100%;
         height: 16%;
-        top: 96%; } }
+        top: 100%; } }
     #myEditPage #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -4343,14 +4351,14 @@ html {
       @media (max-width: 767px) {
         #myEditPage #fullFooter #footerWrapper {
           height: 100%;
-          width: 75%; } }
+          width: 100%; } }
       @media (min-width: 768px) {
         #myEditPage #fullFooter #footerWrapper {
           height: 70%;
-          width: 79%; } }
+          width: 100%; } }
       @media (min-width: 1200px) {
         #myEditPage #fullFooter #footerWrapper {
-          height: 70%;
+          height: 73%;
           width: 79%; } }
 
 /***** 재혁 *****/
