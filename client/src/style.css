@@ -62,9 +62,9 @@ html {
       font-size: 1.6rem; } }
   @media (min-width: 768px) {
     .order {
-      width: 10%;
+      width: 11%;
       height: 50%;
-      font-size: 2rem; } }
+      font-size: 1.8rem; } }
   @media (min-width: 1200px) {
     .order {
       width: 10%;
@@ -80,6 +80,7 @@ html {
 #articleBox {
   position: relative;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 80%;
   height: 75%;
@@ -90,9 +91,22 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    height: 50%;
     padding: 1%; }
+    @media (max-width: 767px) {
+      #articleBox #box {
+        border-radius: 5px;
+        width: 100%;
+        height: 30%; } }
+    @media (min-width: 768px) {
+      #articleBox #box {
+        border-radius: 10px;
+        width: 100%;
+        height: 40%; } }
+    @media (min-width: 1200px) {
+      #articleBox #box {
+        border-radius: 10px;
+        width: 100%;
+        height: 50%; } }
     #articleBox #box .article {
       position: relative;
       display: flex;
@@ -127,7 +141,7 @@ html {
         @media (min-width: 1200px) {
           #articleBox #box .article .thumbNail {
             border-radius: 10px; } }
-      #articleBox #box .article .title {
+      #articleBox #box .article .title, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 {
         position: absolute;
         display: flex;
         flex-wrap: wrap;
@@ -138,22 +152,22 @@ html {
         background-color: white;
         border-radius: 0px 0px 5px 5px;
         opacity: 50%; }
-        #articleBox #box .article .title .date {
+        #articleBox #box .article .title .date, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .date, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .date {
           position: relative;
           display: flex;
           height: 30%;
           justify-content: right;
           width: 100%; }
           @media (max-width: 767px) {
-            #articleBox #box .article .title .date {
+            #articleBox #box .article .title .date, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .date, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .date {
               font-size: 1rem; } }
           @media (min-width: 768px) {
-            #articleBox #box .article .title .date {
-              font-size: 2rem; } }
+            #articleBox #box .article .title .date, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .date, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .date {
+              font-size: 1.5rem; } }
           @media (min-width: 1200px) {
-            #articleBox #box .article .title .date {
+            #articleBox #box .article .title .date, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .date, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .date {
               font-size: 2rem; } }
-        #articleBox #box .article .title .text {
+        #articleBox #box .article .title .text, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .text {
           position: absolute;
           display: flex;
           bottom: 0%;
@@ -161,45 +175,45 @@ html {
           width: 100%;
           text-align: left; }
           @media (max-width: 767px) {
-            #articleBox #box .article .title .text {
+            #articleBox #box .article .title .text, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .text {
               font-size: 1rem; } }
           @media (min-width: 768px) {
-            #articleBox #box .article .title .text {
-              font-size: 2rem; } }
+            #articleBox #box .article .title .text, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .text {
+              font-size: 1.5rem; } }
           @media (min-width: 1200px) {
-            #articleBox #box .article .title .text {
+            #articleBox #box .article .title .text, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .text {
               font-size: 2rem; } }
-        #articleBox #box .article .title .icon {
+        #articleBox #box .article .title .icon, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .icon, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .icon {
           position: absolute; }
           @media (max-width: 767px) {
-            #articleBox #box .article .title .icon {
+            #articleBox #box .article .title .icon, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .icon, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .icon {
               width: 11px;
               height: 11px;
-              left: 3%; } }
+              left: 1%; } }
           @media (min-width: 768px) {
-            #articleBox #box .article .title .icon {
-              width: 25px;
-              height: 25px;
-              left: 3%; } }
+            #articleBox #box .article .title .icon, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .icon, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .icon {
+              width: 20px;
+              height: 20px;
+              left: 2%; } }
           @media (min-width: 1200px) {
-            #articleBox #box .article .title .icon {
+            #articleBox #box .article .title .icon, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .icon, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .icon {
               width: 25px;
               height: 25px;
-              left: 3%; } }
-        #articleBox #box .article .title .count {
+              left: 2%; } }
+        #articleBox #box .article .title .count, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .count, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .count {
           position: absolute;
           font-weight: bold; }
           @media (max-width: 767px) {
-            #articleBox #box .article .title .count {
+            #articleBox #box .article .title .count, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .count, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .count {
               left: 15%;
               font-size: 1rem; } }
           @media (min-width: 768px) {
-            #articleBox #box .article .title .count {
+            #articleBox #box .article .title .count, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .count, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .count {
               top: 1.5%;
-              left: 13%;
-              font-size: 2rem; } }
+              left: 15%;
+              font-size: 1.5rem; } }
           @media (min-width: 1200px) {
-            #articleBox #box .article .title .count {
+            #articleBox #box .article .title .count, #articleBox #box .article #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .count, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #articleBox #box .article .title2 .count {
               top: 1.5%;
               left: 13%;
               font-size: 2rem; } }
@@ -220,8 +234,8 @@ html {
       height: 1.8rem; } }
   @media (min-width: 768px) {
     .memberBox {
-      width: 8.9rem;
-      height: 3.6rem; } }
+      width: 5.5rem;
+      height: 2.5rem; } }
   @media (min-width: 1200px) {
     .memberBox {
       width: 8.9rem;
@@ -237,8 +251,8 @@ html {
     @media (min-width: 768px) {
       .memberBox .icon {
         margin-right: 45%;
-        width: 16px;
-        height: 16px; } }
+        width: 13px;
+        height: 13px; } }
     @media (min-width: 1200px) {
       .memberBox .icon {
         margin-right: 45%;
@@ -258,7 +272,7 @@ html {
       .memberBox .count {
         padding-top: 3%;
         padding-left: 20%;
-        font-size: 2rem; } }
+        font-size: 1.5rem; } }
     @media (min-width: 1200px) {
       .memberBox .count {
         padding-top: 3%;
@@ -280,7 +294,7 @@ html {
       height: 10%; } }
   @media (min-width: 768px) {
     #pagination {
-      height: 12%; } }
+      height: 11%; } }
   @media (min-width: 1200px) {
     #pagination {
       height: 12%; } }
@@ -298,9 +312,9 @@ html {
         border-radius: 2px; } }
     @media (min-width: 768px) {
       #pagination .page {
-        width: 55px;
-        height: 55px;
-        padding-bottom: 55px;
+        width: 30px;
+        height: 30px;
+        padding-bottom: 30px;
         margin: 3%;
         border-radius: 5px; } }
     @media (min-width: 1200px) {
@@ -335,8 +349,16 @@ html {
   display: flex;
   flex-direction: column;
   width: 95%;
-  height: 85%;
   top: 5%; }
+  @media (max-width: 767px) {
+    #commentBox {
+      height: 80%; } }
+  @media (min-width: 768px) {
+    #commentBox {
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    #commentBox {
+      height: 70%; } }
   #commentBox #countWrapper {
     position: absolute;
     display: flex;
@@ -353,7 +375,7 @@ html {
           font-size: 1.5rem; } }
       @media (min-width: 768px) {
         #commentBox #countWrapper .count {
-          font-size: 2.5rem; } }
+          font-size: 2rem; } }
       @media (min-width: 1200px) {
         #commentBox #countWrapper .count {
           font-size: 2.5rem; } }
@@ -380,7 +402,7 @@ html {
             font-size: 1rem; } }
         @media (min-width: 768px) {
           #commentBox .box .dateBox .nickNameAndDate {
-            font-size: 2rem; } }
+            font-size: 1.5rem; } }
         @media (min-width: 1200px) {
           #commentBox .box .dateBox .nickNameAndDate {
             font-size: 2rem; } }
@@ -409,8 +431,8 @@ html {
               height: 1.1rem; } }
           @media (min-width: 768px) {
             #commentBox .box .dateBox .dotWrapper .dot {
-              width: 2.5rem;
-              height: 2.5rem; } }
+              width: 1.5rem;
+              height: 1.5rem; } }
           @media (min-width: 1200px) {
             #commentBox .box .dateBox .dotWrapper .dot {
               width: 2.5rem;
@@ -434,13 +456,13 @@ html {
             left: 3%; } }
         @media (min-width: 768px) {
           #commentBox .box #imgAndText .imgWrapper {
-            height: 47px;
-            width: 47px;
+            height: 35px;
+            width: 35px;
             left: 2%; } }
         @media (min-width: 1200px) {
           #commentBox .box #imgAndText .imgWrapper {
-            height: 47px;
-            width: 47px;
+            height: 45px;
+            width: 45px;
             left: 2%; } }
         #commentBox .box #imgAndText .imgWrapper .img {
           position: absolute;
@@ -461,8 +483,8 @@ html {
               height: 13px; } }
           @media (min-width: 768px) {
             #commentBox .box #imgAndText .imgWrapper .shield {
-              width: 20px;
-              height: 20px; } }
+              width: 15px;
+              height: 15px; } }
           @media (min-width: 1200px) {
             #commentBox .box #imgAndText .imgWrapper .shield {
               width: 20px;
@@ -471,7 +493,6 @@ html {
         position: absolute;
         display: flex;
         width: 80%;
-        height: 50%;
         border: none;
         outline: none;
         overflow: hidden;
@@ -479,15 +500,18 @@ html {
         border-radius: 5px; }
         @media (max-width: 767px) {
           #commentBox .box #imgAndText #input {
-            left: 12.5%;
-            font-size: 1.3rem; } }
+            left: 11.5%;
+            font-size: 1.3rem;
+            height: 50%; } }
         @media (min-width: 768px) {
           #commentBox .box #imgAndText #input {
-            left: 9%;
-            font-size: 2.3rem; } }
+            left: 10%;
+            font-size: 1.87rem;
+            height: 70%; } }
         @media (min-width: 1200px) {
           #commentBox .box #imgAndText #input {
             left: 9%;
+            height: 50%;
             font-size: 2.3rem; } }
       #commentBox .box #imgAndText #text {
         position: absolute;
@@ -495,12 +519,12 @@ html {
         width: 80%; }
         @media (max-width: 767px) {
           #commentBox .box #imgAndText #text {
-            left: 12.5%;
+            left: 11.5%;
             font-size: 1.3rem; } }
         @media (min-width: 768px) {
           #commentBox .box #imgAndText #text {
-            left: 9%;
-            font-size: 2.3rem; } }
+            left: 10%;
+            font-size: 1.8rem; } }
         @media (min-width: 1200px) {
           #commentBox .box #imgAndText #text {
             left: 9%;
@@ -513,18 +537,22 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 15%;
-  left: 2%; }
+  height: 100%; }
   @media (max-width: 767px) {
     #menuWrapper {
-      display: flex; } }
+      display: flex;
+      width: 15%;
+      left: 2%; } }
   @media (min-width: 768px) {
     #menuWrapper {
-      display: none; } }
+      display: flex;
+      width: 5%;
+      left: 2%; } }
   @media (min-width: 1200px) {
     #menuWrapper {
-      display: none; } }
+      display: none;
+      width: 15%;
+      left: 2%; } }
   #menuWrapper .menu {
     position: relative;
     width: 30px;
@@ -536,18 +564,22 @@ html {
   position: absolute;
   align-items: center;
   justify-content: center;
-  height: 100%;
-  width: 15%;
-  right: 15%; }
+  height: 100%; }
   @media (max-width: 767px) {
     #searchWrapper {
-      display: flex; } }
+      display: flex;
+      width: 15%;
+      right: 15%; } }
   @media (min-width: 768px) {
     #searchWrapper {
-      display: none; } }
+      display: flex;
+      width: 5%;
+      right: 11%; } }
   @media (min-width: 1200px) {
     #searchWrapper {
-      display: none; } }
+      display: none;
+      width: 15%;
+      right: 15%; } }
   #searchWrapper .search {
     position: relative;
     width: 25px;
@@ -567,7 +599,7 @@ html {
       width: 15%; } }
   @media (min-width: 768px) {
     #loginWrapper {
-      width: 5%; } }
+      width: 15%; } }
   @media (min-width: 1200px) {
     #loginWrapper {
       width: 5%; } }
@@ -579,7 +611,7 @@ html {
         font-size: 2rem; } }
     @media (min-width: 768px) {
       #loginWrapper .login {
-        font-size: 2.5rem; } }
+        font-size: 2rem; } }
     @media (min-width: 1200px) {
       #loginWrapper .login {
         font-size: 2.5rem; } }
@@ -598,7 +630,7 @@ html {
       display: none; } }
   @media (min-width: 768px) {
     #hiddenMenuBox {
-      display: flex; } }
+      display: none; } }
   @media (min-width: 1200px) {
     #hiddenMenuBox {
       display: flex; } }
@@ -625,8 +657,7 @@ html {
         display: none; } }
     @media (min-width: 768px) {
       #hiddenSearchBox #searchWrapper {
-        display: flex;
-        justify-content: left; } }
+        display: none; } }
     @media (min-width: 1200px) {
       #hiddenSearchBox #searchWrapper {
         display: flex;
@@ -649,7 +680,7 @@ html {
         display: none; } }
     @media (min-width: 768px) {
       #hiddenSearchBox #imgWrapper {
-        display: flex; } }
+        display: none; } }
     @media (min-width: 1200px) {
       #hiddenSearchBox #imgWrapper {
         display: flex; } }
@@ -797,7 +828,7 @@ html {
       z-index: 999; } }
   @media (min-width: 768px) {
     #headerContainer {
-      z-index: 15; } }
+      z-index: 999; } }
   @media (min-width: 1200px) {
     #headerContainer {
       z-index: 15; } }
@@ -820,8 +851,8 @@ html {
           height: 60px; } }
       @media (min-width: 768px) {
         #headerContainer #logoBar .logo {
-          width: 115px;
-          height: 75px; } }
+          width: 95px;
+          height: 60px; } }
       @media (min-width: 1200px) {
         #headerContainer #logoBar .logo {
           width: 115px;
@@ -859,7 +890,7 @@ html {
       height: 100%; } }
   @media (min-width: 768px) {
     #conChinContainer {
-      height: 250%;
+      height: 150%;
       left: 50%;
       transform: translate(-50%, 0%); } }
   @media (min-width: 1200px) {
@@ -879,10 +910,10 @@ html {
         top: 10%; } }
     @media (min-width: 768px) {
       #conChinContainer #conChinExceptFooter {
-        width: 75%;
+        width: 100%;
         height: 100%;
         left: 50%;
-        top: 4%;
+        top: 6.7%;
         transform: translate(-50%, 0%); } }
     @media (min-width: 1200px) {
       #conChinContainer #conChinExceptFooter {
@@ -901,7 +932,7 @@ html {
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
-          height: 16%; } }
+          height: 15%; } }
       @media (min-width: 1200px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
@@ -919,7 +950,7 @@ html {
           height: 83%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #mainBox {
-          width: 80%;
+          width: 88%;
           height: 73%; } }
       @media (min-width: 1200px) {
         #conChinContainer #conChinExceptFooter #mainBox {
@@ -938,7 +969,7 @@ html {
     @media (min-width: 768px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 15.3%;
+        height: 18.5%;
         top: 185%; } }
     @media (min-width: 1200px) {
       #conChinContainer #fullFooter {
@@ -955,8 +986,8 @@ html {
           width: 75%; } }
       @media (min-width: 768px) {
         #conChinContainer #fullFooter #footerWrapper {
-          height: 70%;
-          width: 79%; } }
+          height: 100%;
+          width: 100%; } }
       @media (min-width: 1200px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 70%;
@@ -969,40 +1000,40 @@ html {
   border-bottom: 1.5px solid black;
   width: 100%;
   height: 10%; }
-  #conChinFindBox .title {
+  #conChinFindBox .title, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 {
     position: relative;
     display: inline-block;
     height: 100%; }
     @media (max-width: 767px) {
-      #conChinFindBox .title {
+      #conChinFindBox .title, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 {
         width: 70.5%;
         left: 5%; } }
     @media (min-width: 768px) {
-      #conChinFindBox .title {
-        width: 30%;
+      #conChinFindBox .title, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 {
+        width: 50%;
         left: 7%; } }
     @media (min-width: 1200px) {
-      #conChinFindBox .title {
+      #conChinFindBox .title, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 {
         width: 30%;
         left: 7%; } }
-    #conChinFindBox .title .textWrapper {
+    #conChinFindBox .title .textWrapper, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .textWrapper, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 .textWrapper {
       display: flex;
       align-items: center;
       position: relative;
       float: left;
       width: 80%;
       height: 100%; }
-      #conChinFindBox .title .textWrapper .text {
+      #conChinFindBox .title .textWrapper .text, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .textWrapper .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 .textWrapper .text {
         position: absolute;
         font-weight: bolder; }
         @media (max-width: 767px) {
-          #conChinFindBox .title .textWrapper .text {
+          #conChinFindBox .title .textWrapper .text, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .textWrapper .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 .textWrapper .text {
             font-size: 2.5rem; } }
         @media (min-width: 768px) {
-          #conChinFindBox .title .textWrapper .text {
-            font-size: 4rem; } }
+          #conChinFindBox .title .textWrapper .text, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .textWrapper .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 .textWrapper .text {
+            font-size: 3rem; } }
         @media (min-width: 1200px) {
-          #conChinFindBox .title .textWrapper .text {
+          #conChinFindBox .title .textWrapper .text, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .textWrapper .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 .textWrapper .text {
             font-size: 4rem; } }
   #conChinFindBox .btnWrapper {
     position: absolute;
@@ -1025,14 +1056,14 @@ html {
         #conChinFindBox .btnWrapper .btn {
           width: 65%;
           padding-left: 17%;
-          font-size: 1rem;
+          font-size: 1.3rem;
           height: 60%; } }
       @media (min-width: 768px) {
         #conChinFindBox .btnWrapper .btn {
-          width: 40%;
-          padding-left: 6.5%;
-          font-size: 2rem;
-          height: 45%; } }
+          width: 48%;
+          padding-left: 12%;
+          font-size: 1.5rem;
+          height: 50%; } }
       @media (min-width: 1200px) {
         #conChinFindBox .btnWrapper .btn {
           width: 40%;
@@ -1050,9 +1081,9 @@ html {
             right: 67.5%; } }
         @media (min-width: 768px) {
           #conChinFindBox .btnWrapper .btn .img {
-            width: 23px;
-            height: 23px;
-            right: 70.5%; } }
+            width: 18px;
+            height: 18px;
+            right: 72.5%; } }
         @media (min-width: 1200px) {
           #conChinFindBox .btnWrapper .btn .img {
             width: 23px;
@@ -1070,7 +1101,7 @@ html {
   @media (min-width: 768px) {
     #conChinBox {
       width: 100%;
-      height: 68%; } }
+      height: 65%; } }
   @media (min-width: 1200px) {
     #conChinBox {
       width: 100%;
@@ -1121,7 +1152,7 @@ html {
       top: 40%; } }
   @media (min-width: 768px) {
     #conChinmemberBoxWrapper {
-      top: 46%; } }
+      top: 43.6%; } }
   @media (min-width: 1200px) {
     #conChinmemberBoxWrapper {
       top: 46%; } }
@@ -1151,39 +1182,39 @@ html {
   border-bottom: 2px solid black; }
   @media (max-width: 767px) {
     #titleBox {
-      height: 8%; } }
+      height: 6%; } }
   @media (min-width: 768px) {
     #titleBox {
       height: 5%; } }
   @media (min-width: 1200px) {
     #titleBox {
       height: 5%; } }
-  #titleBox .title {
+  #titleBox .title, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 {
     position: absolute;
     display: flex;
     align-items: center;
-    justify-content: left;
-    bottom: 10%; }
+    justify-content: left; }
     @media (max-width: 767px) {
-      #titleBox .title {
+      #titleBox .title, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 {
         height: 80%;
         width: 70%; } }
     @media (min-width: 768px) {
-      #titleBox .title {
+      #titleBox .title, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 {
         height: 50%;
         width: 80%; } }
     @media (min-width: 1200px) {
-      #titleBox .title {
+      #titleBox .title, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 {
         height: 50%;
-        width: 80%; } }
+        width: 80%;
+        bottom: 10%; } }
     @media (max-width: 767px) {
-      #titleBox .title .text {
+      #titleBox .title .text, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 .text {
         font-size: 2rem; } }
     @media (min-width: 768px) {
-      #titleBox .title .text {
-        font-size: 4rem; } }
+      #titleBox .title .text, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 .text {
+        font-size: 3rem; } }
     @media (min-width: 1200px) {
-      #titleBox .title .text {
+      #titleBox .title .text, #titleBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titleBox .title2 .text {
         font-size: 4rem; } }
   #titleBox #profileBox {
     position: absolute;
@@ -1191,17 +1222,18 @@ html {
     align-items: center;
     justify-content: right;
     width: 35%;
-    right: 2%;
-    bottom: 10%; }
+    right: 2%; }
     @media (max-width: 767px) {
       #titleBox #profileBox {
         height: 80%; } }
     @media (min-width: 768px) {
       #titleBox #profileBox {
-        height: 50%; } }
+        height: 50%;
+        bottom: 35%; } }
     @media (min-width: 1200px) {
       #titleBox #profileBox {
-        height: 50%; } }
+        height: 50%;
+        bottom: 10%; } }
     #titleBox #profileBox .img {
       position: relative;
       border-radius: 100%; }
@@ -1213,10 +1245,10 @@ html {
           height: 25px; } }
       @media (min-width: 768px) {
         #titleBox #profileBox .img {
-          bottom: 10%;
+          bottom: 15%;
           right: 2%;
-          width: 40px;
-          height: 40px; } }
+          width: 33px;
+          height: 33px; } }
       @media (min-width: 1200px) {
         #titleBox #profileBox .img {
           bottom: 10%;
@@ -1228,7 +1260,9 @@ html {
       font-size: 1.3rem; } }
   @media (min-width: 768px) {
     #titleBox .nickName {
-      font-size: 2.5rem; } }
+      position: relative;
+      font-size: 2rem;
+      bottom: 5%; } }
   @media (min-width: 1200px) {
     #titleBox .nickName {
       font-size: 2.5rem; } }
@@ -1240,7 +1274,7 @@ html {
   @media (max-width: 767px) {
     #contentBox {
       height: 100%;
-      top: 7.8%; } }
+      top: 5%; } }
   @media (min-width: 768px) {
     #contentBox {
       height: 100%;
@@ -1254,7 +1288,7 @@ html {
     display: flex;
     align-items: center;
     width: 50%;
-    height: 5%; }
+    height: 7%; }
     #contentBox #viewBox .view {
       position: relative;
       display: flex;
@@ -1265,7 +1299,7 @@ html {
           font-size: 1rem; } }
       @media (min-width: 768px) {
         #contentBox #viewBox .view {
-          font-size: 2rem; } }
+          font-size: 1.5rem; } }
       @media (min-width: 1200px) {
         #contentBox #viewBox .view {
           font-size: 2rem; } }
@@ -1274,7 +1308,7 @@ html {
     display: flex;
     align-items: center;
     width: 50%;
-    height: 5%; }
+    height: 7%; }
     #contentBox #modifyBox .modifyBtn {
       position: absolute;
       display: flex;
@@ -1288,7 +1322,7 @@ html {
       @media (min-width: 768px) {
         #contentBox #modifyBox .modifyBtn {
           right: 35%;
-          font-size: 2.5rem; } }
+          font-size: 1.8rem; } }
       @media (min-width: 1200px) {
         #contentBox #modifyBox .modifyBtn {
           right: 35%;
@@ -1306,7 +1340,7 @@ html {
       @media (min-width: 768px) {
         #contentBox #modifyBox .deleteBtn {
           right: 23%;
-          font-size: 2.5rem; } }
+          font-size: 1.8rem; } }
       @media (min-width: 1200px) {
         #contentBox #modifyBox .deleteBtn {
           right: 23%;
@@ -1331,8 +1365,8 @@ html {
         padding-bottom: 35%; } }
     @media (min-width: 768px) {
       #contentBox #content {
-        height: 45%;
-        padding-bottom: 45%; } }
+        height: 37%;
+        padding-bottom: 37%; } }
     @media (min-width: 1200px) {
       #contentBox #content {
         height: 45%;
@@ -1351,9 +1385,9 @@ html {
           max-height: 70px; } }
       @media (min-width: 768px) {
         #contentBox #content #imgWrapper {
-          width: 35%;
-          height: 35%;
-          padding-bottom: 35%;
+          width: 37%;
+          height: 37%;
+          padding-bottom: 37%;
           left: 12%; } }
       @media (min-width: 1200px) {
         #contentBox #content #imgWrapper {
@@ -1380,7 +1414,7 @@ html {
           padding-bottom: 45%; } }
       @media (min-width: 768px) {
         #contentBox #content .text {
-          font-size: 2.5rem;
+          font-size: 1.8rem;
           right: -10%;
           width: 55%;
           height: 35%; } }
@@ -1417,15 +1451,15 @@ html {
     height: 20%; }
     @media (max-width: 767px) {
       #contentBox #paginationWrapper {
-        top: 92%;
+        top: 88%;
         height: 20%; } }
     @media (min-width: 768px) {
       #contentBox #paginationWrapper {
-        top: 96%;
-        height: 25%; } }
+        top: 110%;
+        height: 22.5%; } }
     @media (min-width: 1200px) {
       #contentBox #paginationWrapper {
-        top: 96%;
+        top: 92%;
         height: 25%; } }
 
 /****** conChinPostingBox ******/
@@ -1461,7 +1495,7 @@ html {
         top: 4%; } }
     @media (min-width: 768px) {
       #conChinPostingBox #curOrder {
-        font-size: 4rem;
+        font-size: 3rem;
         left: 8%;
         top: 5%; } }
     @media (min-width: 1200px) {
@@ -1487,24 +1521,24 @@ html {
     #conChinPostingBox .posting:hover {
       background-color: #ffce63;
       cursor: pointer; }
-    #conChinPostingBox .posting .title {
+    #conChinPostingBox .posting .title, #conChinPostingBox .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox .posting .title2 {
       position: absolute;
       display: flex;
       justify-content: left;
       align-items: center;
       left: 1%; }
       @media (max-width: 767px) {
-        #conChinPostingBox .posting .title {
+        #conChinPostingBox .posting .title, #conChinPostingBox .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox .posting .title2 {
           width: 65%;
           height: 100%;
           font-size: 1.3rem; } }
       @media (min-width: 768px) {
-        #conChinPostingBox .posting .title {
+        #conChinPostingBox .posting .title, #conChinPostingBox .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox .posting .title2 {
           width: 68%;
           height: 100%;
-          font-size: 3rem; } }
+          font-size: 2rem; } }
       @media (min-width: 1200px) {
-        #conChinPostingBox .posting .title {
+        #conChinPostingBox .posting .title, #conChinPostingBox .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox .posting .title2 {
           width: 68%;
           height: 100%;
           font-size: 3rem; } }
@@ -1520,7 +1554,7 @@ html {
           width: 15%; } }
       @media (min-width: 768px) {
         #conChinPostingBox .posting .date {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
           width: 19%;
           right: 15%; } }
       @media (min-width: 1200px) {
@@ -1540,7 +1574,7 @@ html {
           font-size: 1rem; } }
       @media (min-width: 768px) {
         #conChinPostingBox .posting .view {
-          font-size: 1.5rem; } }
+          font-size: 1.2rem; } }
       @media (min-width: 1200px) {
         #conChinPostingBox .posting .view {
           font-size: 1.5rem; } }
@@ -1548,6 +1582,7 @@ html {
       position: absolute;
       display: flex;
       align-items: center;
+      justify-content: right;
       height: 50%;
       right: 1%;
       text-align: right;
@@ -1558,12 +1593,323 @@ html {
           width: 16%; } }
       @media (min-width: 768px) {
         #conChinPostingBox .posting .place {
-          font-size: 1.5rem; } }
+          font-size: 1.2rem;
+          width: 18%; } }
       @media (min-width: 1200px) {
         #conChinPostingBox .posting .place {
           font-size: 1.5rem; } }
 
 /****** conChinPostingBox ******/
+#conChinProfileModal {
+  position: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /***** 공통 *****/
+  /***** 공통 *****/ }
+  @media (max-width: 767px) {
+    #conChinProfileModal {
+      position: fixed; } }
+  @media (min-width: 768px) {
+    #conChinProfileModal {
+      position: fixed; } }
+  @media (min-width: 1200px) {
+    #conChinProfileModal {
+      position: fixed; } }
+  #conChinProfileModal .title, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: 100%;
+    width: 15%;
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #conChinProfileModal .title, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 {
+        font-size: 1.5rem; } }
+    @media (min-width: 768px) {
+      #conChinProfileModal .title, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 {
+        font-size: 1.5rem; } }
+    @media (min-width: 1200px) {
+      #conChinProfileModal .title, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 {
+        font-size: 2rem; } }
+  #conChinProfileModal #bg {
+    z-index: 998;
+    position: fixed;
+    display: flex;
+    background-color: #404040;
+    opacity: 50%; }
+    @media (max-width: 767px) {
+      #conChinProfileModal #bg {
+        width: 0%;
+        height: 0%; } }
+    @media (min-width: 768px) {
+      #conChinProfileModal #bg {
+        width: 0%;
+        height: 0%; } }
+    @media (min-width: 1200px) {
+      #conChinProfileModal #bg {
+        width: 100%;
+        height: 100%; } }
+  #conChinProfileModal #modalBox {
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; }
+    @media (max-width: 767px) {
+      #conChinProfileModal #modalBox {
+        width: 100%;
+        height: 90%;
+        border-radius: 0px;
+        top: 10%; } }
+    @media (min-width: 768px) {
+      #conChinProfileModal #modalBox {
+        width: 100%;
+        height: 90%;
+        border-radius: 0px;
+        top: 10%; } }
+    @media (min-width: 1200px) {
+      #conChinProfileModal #modalBox {
+        width: 28%;
+        height: 60%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 20px; } }
+    #conChinProfileModal #modalBox #modal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 75%;
+      height: 100%; }
+      @media (max-width: 767px) {
+        #conChinProfileModal #modalBox #modal {
+          top: 2%; } }
+      @media (min-width: 768px) {
+        #conChinProfileModal #modalBox #modal {
+          top: 2%; } }
+      @media (min-width: 1200px) {
+        #conChinProfileModal #modalBox #modal {
+          top: 0%; } }
+      #conChinProfileModal #modalBox #modal #profileBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 30%;
+        top: 3%; }
+        #conChinProfileModal #modalBox #modal #profileBox #imgWrapper {
+          position: absolute;
+          display: flex;
+          top: 0%; }
+          @media (max-width: 767px) {
+            #conChinProfileModal #modalBox #modal #profileBox #imgWrapper {
+              width: 13rem;
+              height: 13rem; } }
+          @media (min-width: 768px) {
+            #conChinProfileModal #modalBox #modal #profileBox #imgWrapper {
+              width: 13rem;
+              height: 13rem; } }
+          @media (min-width: 1200px) {
+            #conChinProfileModal #modalBox #modal #profileBox #imgWrapper {
+              width: 13rem;
+              height: 13rem; } }
+          #conChinProfileModal #modalBox #modal #profileBox #imgWrapper .img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid #ffce63;
+            border-radius: 100%; }
+        #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 20%;
+          top: 13.4rem; }
+          #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper .nickName {
+            position: relative;
+            margin-left: 5%;
+            font-size: 2rem;
+            font-weight: bold; }
+          #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper #shieldWrapper {
+            position: relative;
+            display: flex;
+            width: 25px;
+            height: 25px;
+            margin-left: 1%; }
+            #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper #shieldWrapper .shield {
+              width: 100%;
+              height: 100%; }
+      #conChinProfileModal #modalBox #modal #introductionBox {
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 50%;
+        top: 35%; }
+        #conChinProfileModal #modalBox #modal #introductionBox #emailWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 13%;
+          top: 0%; }
+          #conChinProfileModal #modalBox #modal #introductionBox #emailWrapper .email {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            width: 85%;
+            height: 80%;
+            left: 15%;
+            padding-left: 2%;
+            background-color: #f3f3f3;
+            border: none;
+            border-radius: 5px; }
+            @media (max-width: 767px) {
+              #conChinProfileModal #modalBox #modal #introductionBox #emailWrapper .email {
+                font-size: 1.3rem; } }
+            @media (min-width: 768px) {
+              #conChinProfileModal #modalBox #modal #introductionBox #emailWrapper .email {
+                font-size: 1.3rem; } }
+            @media (min-width: 1200px) {
+              #conChinProfileModal #modalBox #modal #introductionBox #emailWrapper .email {
+                font-size: 1.5rem; } }
+        #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 13%;
+          top: 13%; }
+          #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 {
+            justify-content: center; }
+          #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .gender {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            width: 35%;
+            height: 80%;
+            padding-left: 2%;
+            background-color: #f3f3f3;
+            border: none;
+            border-radius: 5px; }
+            @media (max-width: 767px) {
+              #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .gender {
+                font-size: 1.3rem; } }
+            @media (min-width: 768px) {
+              #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .gender {
+                font-size: 1.3rem; } }
+            @media (min-width: 1200px) {
+              #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .gender {
+                font-size: 1.5rem; } }
+          #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .age {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            width: 35%;
+            height: 80%;
+            padding-left: 2%;
+            background-color: #f3f3f3;
+            border: none;
+            border-radius: 5px; }
+            @media (max-width: 767px) {
+              #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .age {
+                font-size: 1.3rem; } }
+            @media (min-width: 768px) {
+              #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .age {
+                font-size: 1.3rem; } }
+            @media (min-width: 1200px) {
+              #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .age {
+                font-size: 1.5rem; } }
+        #conChinProfileModal #modalBox #modal #introductionBox #introductionTitle {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 13%;
+          font-weight: bold;
+          top: 26%; }
+          @media (max-width: 767px) {
+            #conChinProfileModal #modalBox #modal #introductionBox #introductionTitle {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #conChinProfileModal #modalBox #modal #introductionBox #introductionTitle {
+              font-size: 1.5rem; } }
+          @media (min-width: 1200px) {
+            #conChinProfileModal #modalBox #modal #introductionBox #introductionTitle {
+              font-size: 2rem; } }
+        #conChinProfileModal #modalBox #modal #introductionBox #introductionWrapper {
+          position: absolute;
+          display: flex;
+          width: 100%;
+          height: 61%;
+          top: 39%; }
+          #conChinProfileModal #modalBox #modal #introductionBox #introductionWrapper #introduction {
+            width: 100%;
+            height: 90%;
+            top: 0%;
+            background-color: #f3f3f3;
+            border-radius: 5px; }
+            #conChinProfileModal #modalBox #modal #introductionBox #introductionWrapper #introduction .text {
+              position: absolute;
+              display: flex;
+              justify-content: left;
+              width: 100%;
+              height: 86%;
+              padding-left: 2%;
+              padding-right: 2%;
+              top: 2%; }
+              @media (max-width: 767px) {
+                #conChinProfileModal #modalBox #modal #introductionBox #introductionWrapper #introduction .text {
+                  font-size: 1.3rem; } }
+              @media (min-width: 768px) {
+                #conChinProfileModal #modalBox #modal #introductionBox #introductionWrapper #introduction .text {
+                  font-size: 1.3rem; } }
+              @media (min-width: 1200px) {
+                #conChinProfileModal #modalBox #modal #introductionBox #introductionWrapper #introduction .text {
+                  font-size: 1.5rem; } }
+      #conChinProfileModal #modalBox #modal #btnBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 15%;
+        top: 83%; }
+        #conChinProfileModal #modalBox #modal #btnBox .closeBtn {
+          position: relative;
+          width: 50%;
+          background-color: #ffce63;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          font-size: 1.8rem;
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #conChinProfileModal #modalBox #modal #btnBox .closeBtn {
+              font-size: 1.5rem;
+              height: 50%;
+              margin-bottom: 5%; } }
+          @media (min-width: 768px) {
+            #conChinProfileModal #modalBox #modal #btnBox .closeBtn {
+              font-size: 1.5rem;
+              height: 50%;
+              margin-bottom: 5%; } }
+          @media (min-width: 1200px) {
+            #conChinProfileModal #modalBox #modal #btnBox .closeBtn {
+              font-size: 2rem;
+              height: 60%;
+              margin-top: 5%; } }
+
 #myProfileBox {
   position: absolute;
   display: flex;
@@ -1574,8 +1920,8 @@ html {
       padding-bottom: 90%; } }
   @media (min-width: 768px) {
     #myProfileBox {
-      width: 35%;
-      padding-bottom: 35%;
+      width: 60%;
+      padding-bottom: 60%;
       top: 6%; } }
   @media (min-width: 1200px) {
     #myProfileBox {
@@ -1808,18 +2154,18 @@ html {
     @media (min-width: 1200px) {
       #myArticleBox #titleWrapper {
         width: 66%; } }
-    #myArticleBox #titleWrapper .title {
+    #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myArticleBox #titleWrapper .title2 {
       font-weight: bold; }
       @media (max-width: 767px) {
-        #myArticleBox #titleWrapper .title {
+        #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myArticleBox #titleWrapper .title2 {
           width: 90%;
           font-size: 2rem; } }
       @media (min-width: 768px) {
-        #myArticleBox #titleWrapper .title {
+        #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myArticleBox #titleWrapper .title2 {
           width: 85%;
           font-size: 4rem; } }
       @media (min-width: 1200px) {
-        #myArticleBox #titleWrapper .title {
+        #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myArticleBox #titleWrapper .title2 {
           width: 85%;
           font-size: 4rem; } }
   #myArticleBox #articleWrapper {
@@ -1884,16 +2230,16 @@ html {
     @media (min-width: 1200px) {
       #myCommentBox #titleWrapper {
         width: 85%; } }
-    #myCommentBox #titleWrapper .title {
+    #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myCommentBox #titleWrapper .title2 {
       font-weight: bold; }
       @media (max-width: 767px) {
-        #myCommentBox #titleWrapper .title {
+        #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myCommentBox #titleWrapper .title2 {
           font-size: 2rem; } }
       @media (min-width: 768px) {
-        #myCommentBox #titleWrapper .title {
+        #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myCommentBox #titleWrapper .title2 {
           font-size: 4rem; } }
       @media (min-width: 1200px) {
-        #myCommentBox #titleWrapper .title {
+        #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myCommentBox #titleWrapper .title2 {
           font-size: 4rem; } }
   #myCommentBox #commentWrapper {
     position: absolute;
@@ -2130,6 +2476,226 @@ html {
             #myProfileImageModal #modalBox #modal #modifyBtnWrapper .cancleBtn {
               font-size: 2.5rem; } }
 
+#myProfileResignMembershipModal {
+  position: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; }
+  @media (max-width: 767px) {
+    #myProfileResignMembershipModal {
+      position: fixed; } }
+  @media (min-width: 768px) {
+    #myProfileResignMembershipModal {
+      position: fixed; } }
+  @media (min-width: 1200px) {
+    #myProfileResignMembershipModal {
+      position: fixed; } }
+  #myProfileResignMembershipModal #bg {
+    z-index: 998;
+    position: fixed;
+    display: flex;
+    background-color: #404040;
+    opacity: 50%; }
+    @media (max-width: 767px) {
+      #myProfileResignMembershipModal #bg {
+        width: 0%;
+        height: 0%; } }
+    @media (min-width: 768px) {
+      #myProfileResignMembershipModal #bg {
+        width: 0%;
+        height: 0%; } }
+    @media (min-width: 1200px) {
+      #myProfileResignMembershipModal #bg {
+        width: 100%;
+        height: 100%; } }
+  #myProfileResignMembershipModal #modalBox {
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; }
+    @media (max-width: 767px) {
+      #myProfileResignMembershipModal #modalBox {
+        width: 100%;
+        height: 90%;
+        border-radius: 0px;
+        top: 10%; } }
+    @media (min-width: 768px) {
+      #myProfileResignMembershipModal #modalBox {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        top: 0%; } }
+    @media (min-width: 1200px) {
+      #myProfileResignMembershipModal #modalBox {
+        width: 28%;
+        height: 65%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 20px; } }
+    #myProfileResignMembershipModal #modalBox #modal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      top: 0%;
+      border-radius: 20px; }
+      #myProfileResignMembershipModal #modalBox #modal #titleWrapper {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%; }
+        @media (max-width: 767px) {
+          #myProfileResignMembershipModal #modalBox #modal #titleWrapper {
+            height: 10%;
+            top: 10%; } }
+        @media (min-width: 768px) {
+          #myProfileResignMembershipModal #modalBox #modal #titleWrapper {
+            height: 10%;
+            top: 5%; } }
+        @media (min-width: 1200px) {
+          #myProfileResignMembershipModal #modalBox #modal #titleWrapper {
+            height: 10%;
+            top: 5%; } }
+        #myProfileResignMembershipModal #modalBox #modal #titleWrapper #title {
+          position: relative;
+          font-weight: bold;
+          color: #ffce63; }
+          @media (max-width: 767px) {
+            #myProfileResignMembershipModal #modalBox #modal #titleWrapper #title {
+              font-size: 3.5rem; } }
+          @media (min-width: 768px) {
+            #myProfileResignMembershipModal #modalBox #modal #titleWrapper #title {
+              font-size: 4.5rem; } }
+          @media (min-width: 1200px) {
+            #myProfileResignMembershipModal #modalBox #modal #titleWrapper #title {
+              font-size: 4.5rem; } }
+      #myProfileResignMembershipModal #modalBox #modal #imgBox {
+        position: absolute;
+        display: flex;
+        justify-content: center; }
+        @media (max-width: 767px) {
+          #myProfileResignMembershipModal #modalBox #modal #imgBox {
+            top: 21%;
+            width: 20rem;
+            height: 20rem; } }
+        @media (min-width: 768px) {
+          #myProfileResignMembershipModal #modalBox #modal #imgBox {
+            top: 21%;
+            width: 20rem;
+            height: 20rem; } }
+        @media (min-width: 1200px) {
+          #myProfileResignMembershipModal #modalBox #modal #imgBox {
+            top: 15%;
+            width: 30rem;
+            height: 30rem; } }
+        #myProfileResignMembershipModal #modalBox #modal #imgBox #imgWrapper {
+          position: absolute;
+          display: flex;
+          width: 90%;
+          padding-bottom: 90%; }
+          #myProfileResignMembershipModal #modalBox #modal #imgBox #imgWrapper .img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0%; }
+      #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%; }
+        @media (max-width: 767px) {
+          #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
+            top: 53.5%; } }
+        @media (min-width: 768px) {
+          #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
+            top: 53.5%; } }
+        @media (min-width: 1200px) {
+          #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
+            top: 57.5%; } }
+        #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          width: 100%;
+          height: 100%;
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
+              font-size: 3rem; } }
+          @media (min-width: 768px) {
+            #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
+              font-size: 3rem; } }
+          @media (min-width: 1200px) {
+            #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
+              font-size: 3.5rem; } }
+      #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        width: 90%; }
+        @media (max-width: 767px) {
+          #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
+            height: 6%;
+            bottom: 15%; } }
+        @media (min-width: 768px) {
+          #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
+            height: 8%;
+            bottom: 10%; } }
+        @media (min-width: 1200px) {
+          #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
+            height: 8%;
+            bottom: 7.5%; } }
+        #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 45%;
+          height: 100%;
+          background-color: #ffce63;
+          border: none;
+          border-radius: 5px;
+          color: white; }
+          @media (max-width: 767px) {
+            #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn {
+              font-size: 2rem; } }
+          @media (min-width: 768px) {
+            #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn {
+              font-size: 2.5rem; } }
+          @media (min-width: 1200px) {
+            #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn {
+              font-size: 2.5rem; } }
+        #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .cancleBtn {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 45%;
+          height: 100%;
+          background-color: black;
+          border: none;
+          border-radius: 5px;
+          color: white; }
+          @media (max-width: 767px) {
+            #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .cancleBtn {
+              font-size: 2rem; } }
+          @media (min-width: 768px) {
+            #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .cancleBtn {
+              font-size: 2.5rem; } }
+          @media (min-width: 1200px) {
+            #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .cancleBtn {
+              font-size: 2.5rem; } }
+
 #myPageContainer {
   position: absolute;
   display: flex;
@@ -2142,7 +2708,7 @@ html {
       height: 180%; } }
   @media (min-width: 768px) {
     #myPageContainer {
-      height: 300%; } }
+      height: 200%; } }
   @media (min-width: 1200px) {
     #myPageContainer {
       height: 300%; } }
@@ -2157,7 +2723,7 @@ html {
         height: 33.33%; } }
     @media (min-width: 768px) {
       #myPageContainer #myProfileBoxWrapper {
-        height: 25%; } }
+        height: 33.33%; } }
     @media (min-width: 1200px) {
       #myPageContainer #myProfileBoxWrapper {
         height: 25%; } }
@@ -2229,58 +2795,338 @@ html {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
   width: 100%;
-  top: 10%; }
+  top: 10%;
+  /***** 공통 *****/
+  /***** 공통 *****/ }
   @media (max-width: 767px) {
     #conChinCertificationPage {
-      height: 180%; } }
+      height: 150%; } }
   @media (min-width: 768px) {
     #conChinCertificationPage {
-      height: 300%; } }
+      height: 150%; } }
   @media (min-width: 1200px) {
     #conChinCertificationPage {
-      height: 300%; } }
+      height: 227%; } }
+  #conChinCertificationPage #titleWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 50%;
+    top: 0%; }
+    #conChinCertificationPage #titleWrapper .title, #conChinCertificationPage #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinCertificationPage #titleWrapper .title2 {
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      font-weight: bold; }
+      @media (max-width: 767px) {
+        #conChinCertificationPage #titleWrapper .title, #conChinCertificationPage #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinCertificationPage #titleWrapper .title2 {
+          font-size: 1.8rem; } }
+      @media (min-width: 768px) {
+        #conChinCertificationPage #titleWrapper .title, #conChinCertificationPage #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinCertificationPage #titleWrapper .title2 {
+          font-size: 1.8rem; } }
+      @media (min-width: 1200px) {
+        #conChinCertificationPage #titleWrapper .title, #conChinCertificationPage #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinCertificationPage #titleWrapper .title2 {
+          font-size: 2.5rem; } }
   #conChinCertificationPage #profileBoxWrapper {
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    border: 2px solid green; }
+    width: 100%; }
     @media (max-width: 767px) {
+      #conChinCertificationPage #profileBoxWrapper {
+        height: 40%; } }
+    @media (min-width: 768px) {
       #conChinCertificationPage #profileBoxWrapper {
         height: 33.33%; } }
-    @media (min-width: 768px) {
-      #conChinCertificationPage #profileBoxWrapper {
-        height: 25%; } }
     @media (min-width: 1200px) {
       #conChinCertificationPage #profileBoxWrapper {
-        height: 25%; } }
+        height: 33.33%; } }
   #conChinCertificationPage #userInfoWrapper {
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    border: 2px solid blue; }
+    width: 100%; }
     @media (max-width: 767px) {
       #conChinCertificationPage #userInfoWrapper {
-        height: 66.67%; } }
+        top: 40%;
+        height: 60%; } }
     @media (min-width: 768px) {
       #conChinCertificationPage #userInfoWrapper {
-        height: 75%; } }
+        top: 50%;
+        height: 70%; } }
     @media (min-width: 1200px) {
       #conChinCertificationPage #userInfoWrapper {
-        height: 75%; } }
+        top: 33.33%;
+        height: 67%; } }
     #conChinCertificationPage #userInfoWrapper #userInfoBox {
       position: absolute;
       display: flex;
       align-items: center;
-      justify-content: center;
-      width: 90%;
-      height: 90%;
-      border: 1px solid red; }
+      justify-content: center; }
+      @media (max-width: 767px) {
+        #conChinCertificationPage #userInfoWrapper #userInfoBox {
+          width: 90%;
+          height: 90%; } }
+      @media (min-width: 768px) {
+        #conChinCertificationPage #userInfoWrapper #userInfoBox {
+          width: 90%;
+          height: 90%; } }
+      @media (min-width: 1200px) {
+        #conChinCertificationPage #userInfoWrapper #userInfoBox {
+          width: 40%;
+          height: 80%; } }
+      #conChinCertificationPage #userInfoWrapper #userInfoBox #emailWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 16.66%;
+        top: 0%; }
+        #conChinCertificationPage #userInfoWrapper #userInfoBox #emailWrapper #email {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 30%;
+          top: 60%;
+          padding-left: 2%;
+          background-color: #c4c4c4;
+          border: none;
+          border-radius: 5px; }
+          @media (max-width: 767px) {
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #emailWrapper #email {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #emailWrapper #email {
+              font-size: 1.5rem; } }
+          @media (min-width: 1200px) {
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #emailWrapper #email {
+              font-size: 2rem; } }
+      #conChinCertificationPage #userInfoWrapper #userInfoBox #birthdayWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 16.66%;
+        top: 16.66%; }
+        #conChinCertificationPage #userInfoWrapper #userInfoBox #birthdayWrapper #birthdayBox {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: 50%;
+          top: 50%; }
+          #conChinCertificationPage #userInfoWrapper #userInfoBox #birthdayWrapper #birthdayBox .short {
+            position: relative;
+            height: 60%;
+            width: 30%;
+            border: 1px solid #c4c4c4;
+            border-radius: 5px;
+            padding-left: 2%; }
+            @media (max-width: 767px) {
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #birthdayWrapper #birthdayBox .short {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #birthdayWrapper #birthdayBox .short {
+                font-size: 1.5rem; } }
+            @media (min-width: 1200px) {
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #birthdayWrapper #birthdayBox .short {
+                font-size: 2rem; } }
+      #conChinCertificationPage #userInfoWrapper #userInfoBox #genderBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 16.66%;
+        top: 33.32%; }
+        #conChinCertificationPage #userInfoWrapper #userInfoBox #genderBox .gender {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 30%;
+          top: 60%;
+          padding-left: 2%;
+          border: 1px solid #c4c4c4;
+          border-radius: 5px; }
+          @media (max-width: 767px) {
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #genderBox .gender {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #genderBox .gender {
+              font-size: 1.5rem; } }
+          @media (min-width: 1200px) {
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #genderBox .gender {
+              font-size: 2rem; } }
+      #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 33.32%;
+        top: 49.98%; }
+        #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 25%;
+          top: 0%; }
+          #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper .title, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper .title2 {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 100%;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper .title, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper .title2 {
+                font-size: 1.8rem; } }
+            @media (min-width: 768px) {
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper .title, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper .title2 {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper .title, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #titleWrapper .title2 {
+                font-size: 2.5rem; } }
+        #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #region {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 14.82%;
+          top: 30%;
+          padding-left: 2%;
+          border: 1px solid #c4c4c4;
+          border-radius: 5px; }
+          @media (max-width: 767px) {
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #region {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #region {
+              font-size: 1.5rem; } }
+          @media (min-width: 1200px) {
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox #region {
+              font-size: 2rem; } }
+        #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 50%;
+          top: 50%; }
+          #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 50%;
+            top: 0%; }
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .number, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .number {
+              position: relative;
+              height: 60%;
+              width: 70%;
+              border: 1px solid #a0a0a0;
+              border-radius: 5px;
+              padding-left: 2%; }
+              @media (max-width: 767px) {
+                #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .number, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .number {
+                  font-size: 1.5rem; } }
+              @media (min-width: 768px) {
+                #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .number, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .number {
+                  font-size: 1.5rem; } }
+              @media (min-width: 1200px) {
+                #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .number, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .number {
+                  font-size: 2rem; } }
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
+              position: relative;
+              height: 60%;
+              width: 28%;
+              background-color: #000;
+              border: none;
+              border-radius: 5px;
+              color: white; }
+              @media (max-width: 767px) {
+                #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
+                  font-size: 1.5rem; } }
+              @media (min-width: 768px) {
+                #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
+                  font-size: 1.5rem; } }
+              @media (min-width: 1200px) {
+                #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
+                  font-size: 2rem; } }
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
+              position: relative;
+              height: 60%;
+              width: 28%;
+              background-color: #000;
+              border: none;
+              border-radius: 5px;
+              color: white; }
+              @media (max-width: 767px) {
+                #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
+                  font-size: 1.5rem; } }
+              @media (min-width: 768px) {
+                #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
+                  font-size: 1.5rem; } }
+              @media (min-width: 1200px) {
+                #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
+                  font-size: 2rem; } }
+          #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper {
+            top: 50%; }
+      #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 16.66%;
+        top: 83.3%; }
+        #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 60%;
+          width: 90%; }
+          #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            height: 60%;
+            background-color: #ffce63;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
+                font-size: 1.5rem; } }
+            @media (min-width: 1200px) {
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
+                font-size: 2rem; } }
+          #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
+            background-color: #000; }
   #conChinCertificationPage #fullFooter {
     position: absolute;
     display: flex;
@@ -2289,7 +3135,7 @@ html {
     @media (max-width: 767px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 14%;
+        height: 18%;
         top: 103%; } }
     @media (min-width: 768px) {
       #conChinCertificationPage #fullFooter {
@@ -2299,8 +3145,8 @@ html {
     @media (min-width: 1200px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 12.5%;
-        top: 105%; } }
+        height: 16%;
+        top: 100%; } }
     #conChinCertificationPage #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -2374,7 +3220,7 @@ html {
         top: 10%; } }
     @media (min-width: 1200px) {
       #findPasswordModal #modalBox {
-        width: 35%;
+        width: 28%;
         height: 60%;
         padding-bottom: 30%;
         top: 50%;
@@ -2424,18 +3270,18 @@ html {
           width: 100%;
           height: 30%;
           top: 30%; }
-          #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+          #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
             position: absolute;
             color: #ffce63;
             font-weight: bold; }
             @media (max-width: 767px) {
-              #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+              #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
                 font-size: 3.5rem; } }
             @media (min-width: 768px) {
-              #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+              #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
                 font-size: 4.5rem; } }
             @media (min-width: 1200px) {
-              #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+              #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
                 font-size: 4.5rem; } }
         #findPasswordModal #modalBox #modal #titlesBox #explainWrapper {
           position: absolute;
@@ -2481,19 +3327,19 @@ html {
           width: 100%;
           height: 30%;
           top: 0%; }
-          #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title {
+          #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
             position: absolute;
             padding-left: 2%;
             color: #000;
             font-weight: bold; }
             @media (max-width: 767px) {
-              #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title {
+              #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
                 font-size: 2rem; } }
             @media (min-width: 768px) {
-              #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title {
+              #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
                 font-size: 2.5rem; } }
             @media (min-width: 1200px) {
-              #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title {
+              #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
                 font-size: 2.5rem; } }
         #findPasswordModal #modalBox #modal #emailBox #inputWrapper {
           position: absolute;
@@ -2633,7 +3479,7 @@ html {
         border-radius: 5px; } }
     @media (min-width: 1200px) {
       #confirmNumberModal #modalBox {
-        width: 35%;
+        width: 25%;
         height: 35%;
         top: 50%;
         transform: translate(0%, -50%);
@@ -2681,18 +3527,18 @@ html {
           @media (min-width: 1200px) {
             #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper {
               border-radius: 10px 10px 0px 0px; } }
-          #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title {
+          #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title, #confirmNumberModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #confirmNumberModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #confirmNumberModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
             position: absolute;
             color: white;
             font-weight: bold; }
             @media (max-width: 767px) {
-              #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title {
+              #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title, #confirmNumberModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #confirmNumberModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #confirmNumberModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
                 font-size: 1.5rem; } }
             @media (min-width: 768px) {
-              #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title {
+              #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title, #confirmNumberModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #confirmNumberModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #confirmNumberModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
                 font-size: 1.5rem; } }
             @media (min-width: 1200px) {
-              #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title {
+              #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title, #confirmNumberModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #confirmNumberModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #confirmNumberModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #confirmNumberModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
                 font-size: 1.8rem; } }
         #confirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper {
           position: absolute;
@@ -2818,7 +3664,9 @@ html {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  /***** 공통 *****/
+  /***** 공통 *****/ }
   @media (max-width: 767px) {
     #resetPasswordModal {
       position: absolute; } }
@@ -2828,6 +3676,43 @@ html {
   @media (min-width: 1200px) {
     #resetPasswordModal {
       position: fixed; } }
+  #resetPasswordModal #titleWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    top: 5%;
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #resetPasswordModal #titleWrapper .title, #resetPasswordModal #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #resetPasswordModal #titleWrapper .title2 {
+        font-size: 1.5rem; } }
+    @media (min-width: 768px) {
+      #resetPasswordModal #titleWrapper .title, #resetPasswordModal #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #resetPasswordModal #titleWrapper .title2 {
+        font-size: 1.8rem; } }
+    @media (min-width: 1200px) {
+      #resetPasswordModal #titleWrapper .title, #resetPasswordModal #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #resetPasswordModal #titleWrapper .title2 {
+        font-size: 1.8rem; } }
+  #resetPasswordModal #inputWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 70%;
+    top: 30%; }
+    #resetPasswordModal #inputWrapper .input {
+      position: absolute;
+      width: 100%;
+      height: 71.43%;
+      border: 1px solid #a0a0a0;
+      border-radius: 5px;
+      font-size: 1.5rem;
+      padding-left: 2%; }
+    #resetPasswordModal #inputWrapper .padlock {
+      position: absolute;
+      width: 1.5rem;
+      height: 1.5rem;
+      right: 2%; }
   #resetPasswordModal #bg {
     z-index: 991;
     position: fixed;
@@ -2917,19 +3802,19 @@ html {
           width: 100%;
           height: 50%;
           top: 0%; }
-          #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+          #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #resetPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #resetPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
             position: absolute;
             top: 40%;
             color: #ffce63;
             font-weight: bold; }
             @media (max-width: 767px) {
-              #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+              #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #resetPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #resetPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
                 font-size: 3rem; } }
             @media (min-width: 768px) {
-              #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+              #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #resetPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #resetPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
                 font-size: 3.5rem; } }
             @media (min-width: 1200px) {
-              #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title {
+              #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #resetPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #resetPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #resetPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
                 font-size: 3.5rem; } }
         #resetPasswordModal #modalBox #modal #titlesBox #explainWrapper {
           position: absolute;
@@ -2962,23 +3847,6 @@ html {
           width: 100%;
           height: 25%;
           top: 0%; }
-          #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 30%;
-            top: 5%;
-            font-weight: bold; }
-            @media (max-width: 767px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper .title {
-                font-size: 1.5rem; } }
-            @media (min-width: 768px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper .title {
-                font-size: 1.8rem; } }
-            @media (min-width: 1200px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper #titleWrapper .title {
-                font-size: 1.8rem; } }
           #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper .email {
             position: absolute;
             display: flex;
@@ -2991,120 +3859,320 @@ html {
             border-radius: 5px;
             font-size: 1.5rem;
             padding-left: 2%; }
-        #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper {
+        #resetPasswordModal #modalBox #modal #exceptTitlesBox .newPasswordWrapper, #resetPasswordModal #modalBox #modal #exceptTitlesBox .confirmPasswordWrapper, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper {
           position: absolute;
           display: flex;
           width: 100%;
           height: 25%;
           top: 25%; }
-          #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 30%;
-            top: 5%;
-            font-weight: bold; }
-            @media (max-width: 767px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper .title {
-                font-size: 1.5rem; } }
-            @media (min-width: 768px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper .title {
-                font-size: 1.8rem; } }
-            @media (min-width: 1200px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #titleWrapper .title {
-                font-size: 1.8rem; } }
-          #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #inputWrapper {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 70%;
-            top: 30%; }
-            #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #inputWrapper .input {
-              position: absolute;
-              width: 100%;
-              height: 71.43%;
-              border: 1px solid #a0a0a0;
-              border-radius: 5px;
-              font-size: 1.5rem;
-              padding-left: 2%; }
-            #resetPasswordModal #modalBox #modal #exceptTitlesBox #newPasswordWrapper #inputWrapper .padlock {
-              position: absolute;
-              width: 1.5rem;
-              height: 1.5rem;
-              right: 2%; }
-        #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper {
-          position: absolute;
-          display: flex;
-          width: 100%;
-          height: 25%;
+        #resetPasswordModal #modalBox #modal #exceptTitlesBox .confirmPasswordWrapper {
           top: 50%; }
-          #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #titleWrapper {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 30%;
-            top: 5%;
-            font-weight: bold; }
-            @media (max-width: 767px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #titleWrapper .title {
-                font-size: 1.5rem; } }
-            @media (min-width: 768px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #titleWrapper .title {
-                font-size: 1.8rem; } }
-            @media (min-width: 1200px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #titleWrapper .title {
-                font-size: 1.8rem; } }
-          #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #inputWrapper {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            width: 100%;
-            height: 70%;
-            top: 30%; }
-            #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #inputWrapper .input {
-              position: absolute;
-              width: 100%;
-              height: 71.43%;
-              border: 1px solid #a0a0a0;
-              border-radius: 5px;
-              font-size: 1.5rem;
-              padding-left: 2%; }
-            #resetPasswordModal #modalBox #modal #exceptTitlesBox #confirmPasswordWrapper #inputWrapper .padlock {
-              position: absolute;
-              width: 1.5rem;
-              height: 1.5rem;
-              right: 2%; }
-        #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper {
-          position: absolute;
-          display: flex;
+        #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper {
           align-items: center;
           justify-content: space-between;
-          width: 100%;
-          height: 25%;
           top: 75%; }
-          #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .cancelButton {
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
             position: relative;
             height: 50%;
             width: 45%;
-            background-color: #000;
+            background-color: #ffce63;
             border: none;
             border-radius: 5px;
             color: white;
             font-weight: bold; }
             @media (max-width: 767px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .cancelButton {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
                 font-size: 1.5rem; } }
             @media (min-width: 768px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .cancelButton {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
                 font-size: 1.8rem; } }
             @media (min-width: 1200px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .cancelButton {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
                 font-size: 1.8rem; } }
-          #resetPasswordModal #modalBox #modal #exceptTitlesBox #btnWrapper .cancelButton {
-            background-color: #ffce63; }
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
+            background-color: #000; }
+
+#myEditPage {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  top: 10%;
+  /***** 공통 *****/
+  /***** 공통 *****/ }
+  @media (max-width: 767px) {
+    #myEditPage {
+      height: 150%; } }
+  @media (min-width: 768px) {
+    #myEditPage {
+      height: 150%; } }
+  @media (min-width: 1200px) {
+    #myEditPage {
+      height: 227%; } }
+  #myEditPage #titleWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 50%;
+    top: 0%; }
+  #myEditPage .title, #myEditPage #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myEditPage .title2 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #myEditPage .title, #myEditPage #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myEditPage .title2 {
+        font-size: 1.8rem; } }
+    @media (min-width: 768px) {
+      #myEditPage .title, #myEditPage #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myEditPage .title2 {
+        font-size: 1.8rem; } }
+    @media (min-width: 1200px) {
+      #myEditPage .title, #myEditPage #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myEditPage .title2 {
+        font-size: 2.5rem; } }
+  #myEditPage #profileBoxWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; }
+    @media (max-width: 767px) {
+      #myEditPage #profileBoxWrapper {
+        height: 40%; } }
+    @media (min-width: 768px) {
+      #myEditPage #profileBoxWrapper {
+        height: 33.33%; } }
+    @media (min-width: 1200px) {
+      #myEditPage #profileBoxWrapper {
+        height: 33.33%; } }
+  #myEditPage #userInfoWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; }
+    @media (max-width: 767px) {
+      #myEditPage #userInfoWrapper {
+        top: 40%;
+        height: 60%; } }
+    @media (min-width: 768px) {
+      #myEditPage #userInfoWrapper {
+        top: 50%;
+        height: 70%; } }
+    @media (min-width: 1200px) {
+      #myEditPage #userInfoWrapper {
+        top: 33.33%;
+        height: 66.67%; } }
+    #myEditPage #userInfoWrapper #userInfoBox {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      @media (max-width: 767px) {
+        #myEditPage #userInfoWrapper #userInfoBox {
+          width: 90%;
+          height: 90%; } }
+      @media (min-width: 768px) {
+        #myEditPage #userInfoWrapper #userInfoBox {
+          width: 90%;
+          height: 90%; } }
+      @media (min-width: 1200px) {
+        #myEditPage #userInfoWrapper #userInfoBox {
+          width: 40%;
+          height: 80%; } }
+      #myEditPage #userInfoWrapper #userInfoBox #emailWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        top: 0%; }
+        #myEditPage #userInfoWrapper #userInfoBox #emailWrapper #email {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 30%;
+          top: 60%;
+          padding-left: 2%;
+          background-color: #c4c4c4;
+          border: none;
+          border-radius: 5px; }
+          @media (max-width: 767px) {
+            #myEditPage #userInfoWrapper #userInfoBox #emailWrapper #email {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #myEditPage #userInfoWrapper #userInfoBox #emailWrapper #email {
+              font-size: 1.5rem; } }
+          @media (min-width: 1200px) {
+            #myEditPage #userInfoWrapper #userInfoBox #emailWrapper #email {
+              font-size: 2rem; } }
+      #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        top: 20%; }
+        #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 50%;
+          top: 50%; }
+          #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #nickName {
+            position: relative;
+            height: 60%;
+            width: 100%;
+            border: 1px solid #c4c4c4;
+            border-radius: 5px;
+            padding-left: 2%; }
+            @media (max-width: 767px) {
+              #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #nickName {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #nickName {
+                font-size: 1.5rem; } }
+            @media (min-width: 1200px) {
+              #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #nickName {
+                font-size: 2rem; } }
+      #myEditPage #userInfoWrapper #userInfoBox #resetBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        top: 40%; }
+        #myEditPage #userInfoWrapper #userInfoBox #resetBox .reset {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 30%;
+          top: 60%;
+          padding-left: 2%;
+          border: 1px solid #c4c4c4;
+          border-radius: 5px; }
+          @media (max-width: 767px) {
+            #myEditPage #userInfoWrapper #userInfoBox #resetBox .reset {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #myEditPage #userInfoWrapper #userInfoBox #resetBox .reset {
+              font-size: 1.5rem; } }
+          @media (min-width: 1200px) {
+            #myEditPage #userInfoWrapper #userInfoBox #resetBox .reset {
+              font-size: 2rem; } }
+      #myEditPage #userInfoWrapper #userInfoBox #confirmBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        top: 60%; }
+        #myEditPage #userInfoWrapper #userInfoBox #confirmBox .confirm {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 29.64%;
+          top: 60%;
+          padding-left: 2%;
+          border: 1px solid #c4c4c4;
+          border-radius: 5px; }
+          @media (max-width: 767px) {
+            #myEditPage #userInfoWrapper #userInfoBox #confirmBox .confirm {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #myEditPage #userInfoWrapper #userInfoBox #confirmBox .confirm {
+              font-size: 1.5rem; } }
+          @media (min-width: 1200px) {
+            #myEditPage #userInfoWrapper #userInfoBox #confirmBox .confirm {
+              font-size: 2rem; } }
+      #myEditPage #userInfoWrapper #userInfoBox #btnBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        top: 80%; }
+        #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 50%;
+          width: 90%; }
+          #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            height: 60%;
+            background-color: #ffce63;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
+                font-size: 1.5rem; } }
+            @media (min-width: 1200px) {
+              #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
+                font-size: 2rem; } }
+          #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
+            background-color: #000; }
+  #myEditPage #fullFooter {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    background-color: black; }
+    @media (max-width: 767px) {
+      #myEditPage #fullFooter {
+        width: 100%;
+        height: 18%;
+        top: 103%; } }
+    @media (min-width: 768px) {
+      #myEditPage #fullFooter {
+        width: 100%;
+        height: 15.3%;
+        top: 180%; } }
+    @media (min-width: 1200px) {
+      #myEditPage #fullFooter {
+        width: 100%;
+        height: 16%;
+        top: 105%; } }
+    #myEditPage #fullFooter #footerWrapper {
+      position: absolute;
+      display: flex;
+      background-color: black; }
+      @media (max-width: 767px) {
+        #myEditPage #fullFooter #footerWrapper {
+          height: 100%;
+          width: 75%; } }
+      @media (min-width: 768px) {
+        #myEditPage #fullFooter #footerWrapper {
+          height: 70%;
+          width: 79%; } }
+      @media (min-width: 1200px) {
+        #myEditPage #fullFooter #footerWrapper {
+          height: 70%;
+          width: 79%; } }
 
 /***** 재혁 *****/
 /*---------------선영--------------------*/

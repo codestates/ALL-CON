@@ -10,7 +10,7 @@
     height: 180%;
   }
   @include md() {
-    height: 300%;
+    height: 200%;
   }
   @include lg() {
     height: 300%;
@@ -27,7 +27,7 @@
       height: 33.33%;
     }
     @include md() {
-      height: 25%;
+      height: 33.33%;
     }
     @include lg() {
       height: 25%;
