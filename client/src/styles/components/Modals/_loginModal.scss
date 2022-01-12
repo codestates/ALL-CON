@@ -14,11 +14,16 @@
     position: fixed;
     height: 100%;
   }
+  #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
   #background {
     z-index: 999;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
     @include mobile-only() {
     }
     @include md() {
@@ -113,6 +118,7 @@
             }
             #no2 {
               color: $yellow;
+              cursor: pointer;
             }
           }
         }
@@ -160,12 +166,15 @@
             align-items: center;
             background-color: $yellow;
             color: #fff;
+            cursor: pointer;
           }
           #goGoogle {
+            cursor: pointer;
             img {
               position: relative;
-              top: 10%;
+              // top: 10%;
               width: 10%;
+              // border: 1px solid blue;
             }
             .outerBox {
               position: relative;
@@ -207,6 +216,7 @@
             }
             #findPassword {
               color: $gray;
+              cursor: pointer;
               @include mobile-only() {
                 font-size: 1.2rem;
               }

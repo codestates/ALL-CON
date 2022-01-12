@@ -630,7 +630,7 @@
 
   @include mobile-only() {
     display: flex;
-    width: 15%;
+    width: 5%;
     right: 15%;
   }
   @include md() {
@@ -658,6 +658,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow:hidden;
   height: 100%;
   right: 0%;
   // border: 1px solid green;
@@ -665,7 +666,7 @@
     width: 15%;
   }
   @include md() {
-    width: 15%;
+    width: 10%;
   }
   @include lg() {
     width: 5%;
@@ -681,6 +682,28 @@
     }
     @include lg() {
       font-size: 2.5rem;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .profile {
+    position: relative;
+    border-radius: 100%;
+    border: solid #ffce63;
+    object-fit:cover;
+    width: 50%;
+    height: 100%;
+    right: 0%;
+
+    @include mobile-only() {
+      border-width: 2.5px;
+    }
+    @include md() {
+      border-width: 3px;
+    }
+    @include lg() {
+      border-width: 3.5px;
     }
     &:hover {
       cursor: pointer;

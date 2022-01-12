@@ -8,6 +8,13 @@
 html {
   font-size: 10px; }
 
+a {
+  text-decoration: none;
+  /* 링크의 밑줄 제거 */
+  color: inherit;
+  /* 링크의 색상 제거 */
+  cursor: pointer; }
+
 /****** grids ******/
 /****** orderBox ******/
 #bottomLineOrderBox {
@@ -568,7 +575,7 @@ html {
   @media (max-width: 767px) {
     #searchWrapper {
       display: flex;
-      width: 15%;
+      width: 5%;
       right: 15%; } }
   @media (min-width: 768px) {
     #searchWrapper {
@@ -592,6 +599,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
   height: 100%;
   right: 0%; }
   @media (max-width: 767px) {
@@ -599,7 +607,7 @@ html {
       width: 15%; } }
   @media (min-width: 768px) {
     #loginWrapper {
-      width: 15%; } }
+      width: 10%; } }
   @media (min-width: 1200px) {
     #loginWrapper {
       width: 5%; } }
@@ -616,6 +624,25 @@ html {
       #loginWrapper .login {
         font-size: 2.5rem; } }
     #loginWrapper .login:hover {
+      cursor: pointer; }
+  #loginWrapper .profile {
+    position: relative;
+    border-radius: 100%;
+    border: solid #ffce63;
+    object-fit: cover;
+    width: 50%;
+    height: 100%;
+    right: 0%; }
+    @media (max-width: 767px) {
+      #loginWrapper .profile {
+        border-width: 2.5px; } }
+    @media (min-width: 768px) {
+      #loginWrapper .profile {
+        border-width: 3px; } }
+    @media (min-width: 1200px) {
+      #loginWrapper .profile {
+        border-width: 3.5px; } }
+    #loginWrapper .profile:hover {
       cursor: pointer; }
 
 #hiddenMenuBox {
@@ -854,7 +881,8 @@ html {
       position: absolute;
       display: flex;
       top: 200%;
-      transform: translate(0, -50%); }
+      left: 50%;
+      transform: translate(-50%, -50%); }
       @media (max-width: 767px) {
         #headerContainer #logoBar .logo {
           width: 95px;
@@ -6410,11 +6438,15 @@ html {
     #loginModalContainer {
       position: fixed;
       height: 100%; } }
+  #loginModalContainer #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); }
   #loginModalContainer #background {
     z-index: 999;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2); }
+    height: 100%; }
     @media (min-width: 768px) {
       #loginModalContainer #background {
         display: flex;
@@ -6497,7 +6529,8 @@ html {
             #loginModalContainer #background #loginModal #alignContainer #topBox #goSignUp #no1, #loginModalContainer #signUpModalContainer #background #loginModal #signUpModal #alignContainer #topBox #goSignUp #midBox .outerTextBox #no2, #signUpModalContainer #loginModalContainer #background #loginModal #signUpModal #alignContainer #topBox #goSignUp #midBox .outerTextBox #no2, #loginModalContainer #signUpModalContainer #background #signUpModal #loginModal #alignContainer #topBox #goSignUp #midBox .outerTextBox #no2, #signUpModalContainer #loginModalContainer #background #signUpModal #loginModal #alignContainer #topBox #goSignUp #midBox .outerTextBox #no2, #loginModalContainer #signUpModalContainer #background #loginModal #signUpModal #alignContainer #midBox .outerTextBox #topBox #goSignUp #no2, #signUpModalContainer #loginModalContainer #background #loginModal #signUpModal #alignContainer #midBox .outerTextBox #topBox #goSignUp #no2, #loginModalContainer #signUpModalContainer #background #signUpModal #loginModal #alignContainer #midBox .outerTextBox #topBox #goSignUp #no2, #signUpModalContainer #loginModalContainer #background #signUpModal #loginModal #alignContainer #midBox .outerTextBox #topBox #goSignUp #no2 {
               color: #a0a0a0; }
             #loginModalContainer #background #loginModal #alignContainer #topBox #goSignUp #no2 {
-              color: #ffce63; }
+              color: #ffce63;
+              cursor: pointer; }
         #loginModalContainer #background #loginModal #alignContainer #midBox {
           display: flex;
           flex-direction: column;
@@ -6536,19 +6569,21 @@ html {
             justify-content: center;
             align-items: center;
             background-color: #ffce63;
-            color: #fff; }
-          #loginModalContainer #background #loginModal #alignContainer #bottomBox #goGoogle img, #loginModalContainer #background #loginModal #alignContainer #bottomBox #goKakao img {
-            position: relative;
-            top: 10%;
-            width: 10%; }
-          #loginModalContainer #background #loginModal #alignContainer #bottomBox #goGoogle .outerBox, #loginModalContainer #background #loginModal #alignContainer #bottomBox #goKakao .outerBox {
-            position: relative;
-            right: 5%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%; }
+            color: #fff;
+            cursor: pointer; }
+          #loginModalContainer #background #loginModal #alignContainer #bottomBox #goGoogle, #loginModalContainer #background #loginModal #alignContainer #bottomBox #goKakao {
+            cursor: pointer; }
+            #loginModalContainer #background #loginModal #alignContainer #bottomBox #goGoogle img, #loginModalContainer #background #loginModal #alignContainer #bottomBox #goKakao img {
+              position: relative;
+              width: 10%; }
+            #loginModalContainer #background #loginModal #alignContainer #bottomBox #goGoogle .outerBox, #loginModalContainer #background #loginModal #alignContainer #bottomBox #goKakao .outerBox {
+              position: relative;
+              right: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%; }
           #loginModalContainer #background #loginModal #alignContainer #bottomBox #lockBox {
             position: relative;
             top: 8%;
@@ -6573,7 +6608,8 @@ html {
                 #loginModalContainer #background #loginModal #alignContainer #bottomBox #lockBox #lock {
                   width: 6%; } }
             #loginModalContainer #background #loginModal #alignContainer #bottomBox #lockBox #findPassword {
-              color: #a0a0a0; }
+              color: #a0a0a0;
+              cursor: pointer; }
               @media (max-width: 767px) {
                 #loginModalContainer #background #loginModal #alignContainer #bottomBox #lockBox #findPassword {
                   font-size: 1.2rem; } }
@@ -6600,6 +6636,11 @@ html {
     #signUpModalContainer {
       position: fixed;
       height: 100%; } }
+  #signUpModalContainer #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); }
   #signUpModalContainer #background {
     z-index: 999;
     width: 100%;
@@ -6687,7 +6728,8 @@ html {
             #signUpModalContainer #background #signUpModal #alignContainer #topBox #goSignUp #no1, #signUpModalContainer #background #signUpModal #alignContainer #topBox #goSignUp #midBox .outerTextBox #no2, #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox #topBox #goSignUp #no2 {
               color: #a0a0a0; }
             #signUpModalContainer #background #signUpModal #alignContainer #topBox #goSignUp #no2 {
-              color: #ffce63; }
+              color: #ffce63;
+              cursor: pointer; }
         #signUpModalContainer #background #signUpModal #alignContainer #midBox {
           display: flex;
           flex-direction: column;
@@ -6697,7 +6739,7 @@ html {
           height: 60%; }
           #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox {
             width: 100%;
-            height: 16%; }
+            height: 13%; }
             #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox .textBoxMatch2 {
               width: 100%;
               height: 100%; }
@@ -6711,7 +6753,8 @@ html {
               color: gray;
               border: 0;
               border-radius: 5px;
-              font-weight: bold; }
+              font-weight: bold;
+              cursor: pointer; }
             #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox #no1, #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox #no2 {
               display: flex;
               align-items: center;
@@ -6725,29 +6768,46 @@ html {
           #signUpModalContainer #background #signUpModal #alignContainer #midBox .warningMsg {
             font-size: 1.2rem;
             color: red; }
+          #signUpModalContainer #background #signUpModal #alignContainer #midBox .hidden {
+            display: none; }
         #signUpModalContainer #background #signUpModal #alignContainer #bottomBox {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           width: 90%;
-          height: 23%; }
+          height: 23%;
+          margin-top: 5%; }
           #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             width: 100%;
             height: 55%; }
-            #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .fontMatch2 {
+            #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .agreeAll {
               font-weight: bold; }
               @media (max-width: 767px) {
-                #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .fontMatch2 {
+                #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .agreeAll {
                   font-size: 1.4rem; } }
               @media (min-width: 768px) {
-                #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .fontMatch2 {
+                #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .agreeAll {
                   font-size: 1.5rem; } }
               @media (min-width: 1200px) {
-                #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .fontMatch2 {
+                #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .agreeAll {
                   font-size: 1.5rem; } }
+            #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .agreeSub {
+              font-weight: bold;
+              cursor: pointer; }
+              @media (max-width: 767px) {
+                #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .agreeSub {
+                  font-size: 1.4rem; } }
+              @media (min-width: 768px) {
+                #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .agreeSub {
+                  font-size: 1.5rem; } }
+              @media (min-width: 1200px) {
+                #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .agreeSub {
+                  font-size: 1.5rem; } }
+            #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .agreeSub:hover {
+              color: #ffce63; }
             #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox {
               display: flex;
               align-items: center;
@@ -6801,7 +6861,8 @@ html {
               background-color: #ffce63;
               color: #fff;
               border: 0;
-              border-radius: 5px; }
+              border-radius: 5px;
+              cursor: pointer; }
             #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #buttons #exitBtn {
               background-color: #000; }
 
@@ -6821,6 +6882,11 @@ html {
     #TosModalContainer {
       position: fixed;
       height: 100%; } }
+  #TosModalContainer #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); }
   #TosModalContainer #background {
     z-index: 999;
     width: 100%;
@@ -6849,13 +6915,13 @@ html {
           height: 100%; } }
       @media (min-width: 768px) {
         #TosModalContainer #background #tosModal {
-          width: 60%;
-          height: 78%;
+          width: 25%;
+          height: 68%;
           border-radius: 20px; } }
       @media (min-width: 1200px) {
         #TosModalContainer #background #tosModal {
-          width: 30%;
-          height: 78%;
+          width: 25%;
+          height: 68%;
           border-radius: 20px; } }
       #TosModalContainer #background #tosModal #alignContainer {
         display: flex;
@@ -6871,10 +6937,10 @@ html {
               font-size: 1.5rem; } }
           @media (min-width: 768px) {
             #TosModalContainer #background #tosModal #alignContainer .fontMatch {
-              font-size: 1.8rem; } }
+              font-size: 1.3rem; } }
           @media (min-width: 1200px) {
             #TosModalContainer #background #tosModal #alignContainer .fontMatch {
-              font-size: 1.8rem; } }
+              font-size: 1.5rem; } }
         #TosModalContainer #background #tosModal #alignContainer .textBoxMatch {
           display: flex;
           width: 70%;
@@ -6892,13 +6958,13 @@ html {
             color: #ffce63; }
             @media (max-width: 767px) {
               #TosModalContainer #background #tosModal #alignContainer #topBox h2 {
-                font-size: 3.3rem; } }
+                font-size: 2.0rem; } }
             @media (min-width: 768px) {
               #TosModalContainer #background #tosModal #alignContainer #topBox h2 {
-                font-size: 3.8rem; } }
+                font-size: 1.5rem; } }
             @media (min-width: 1200px) {
               #TosModalContainer #background #tosModal #alignContainer #topBox h2 {
-                font-size: 3.8rem; } }
+                font-size: 2.5rem; } }
         #TosModalContainer #background #tosModal #alignContainer #midBox {
           display: flex;
           flex-direction: column;
@@ -6906,6 +6972,9 @@ html {
           justify-content: space-between;
           width: 90%;
           height: 70%; }
+          #TosModalContainer #background #tosModal #alignContainer #midBox .textArea {
+            width: 100%;
+            height: 90%; }
         #TosModalContainer #background #tosModal #alignContainer #bottomBox {
           display: flex;
           justify-content: space-between;
@@ -6917,24 +6986,16 @@ html {
             height: 20%;
             border: 1px solid #a0a0a0;
             border-radius: 5px; }
-          #TosModalContainer #background #tosModal #alignContainer #bottomBox #agree {
+          #TosModalContainer #background #tosModal #alignContainer #bottomBox #back {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 45%;
+            width: 100%;
             height: 100%;
             background-color: #ffce63;
             color: #fff;
-            border: 0; }
-          #TosModalContainer #background #tosModal #alignContainer #bottomBox #disagree {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 45%;
-            height: 100%;
-            background-color: #000;
-            color: #fff;
-            border: 0; }
+            border: 0;
+            cursor: pointer; }
 
 #landingContainer {
   /*중간 박스*/ }
@@ -7388,3 +7449,136 @@ html {
         top: 420%; } }
 
 /*------------선영----------*/
+/*------------정현----------*/
+#PrivacyModalContainer {
+  z-index: 999;
+  width: 100%; }
+  @media (max-width: 767px) {
+    #PrivacyModalContainer {
+      position: absolute;
+      top: 10%;
+      height: 90%; } }
+  @media (min-width: 768px) {
+    #PrivacyModalContainer {
+      position: fixed;
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    #PrivacyModalContainer {
+      position: fixed;
+      height: 100%; } }
+  #PrivacyModalContainer #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); }
+  #PrivacyModalContainer #background {
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); }
+    @media (min-width: 768px) {
+      #PrivacyModalContainer #background {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 1200px) {
+      #PrivacyModalContainer #background {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    #PrivacyModalContainer #background #tosModal {
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff; }
+      @media (max-width: 767px) {
+        #PrivacyModalContainer #background #tosModal {
+          position: absolute;
+          width: 100%;
+          height: 100%; } }
+      @media (min-width: 768px) {
+        #PrivacyModalContainer #background #tosModal {
+          width: 25%;
+          height: 68%;
+          border-radius: 20px; } }
+      @media (min-width: 1200px) {
+        #PrivacyModalContainer #background #tosModal {
+          width: 25%;
+          height: 68%;
+          border-radius: 20px; } }
+      #PrivacyModalContainer #background #tosModal #alignContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        height: 85%; }
+        #PrivacyModalContainer #background #tosModal #alignContainer .fontMatch {
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #PrivacyModalContainer #background #tosModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #PrivacyModalContainer #background #tosModal #alignContainer .fontMatch {
+              font-size: 1.3rem; } }
+          @media (min-width: 1200px) {
+            #PrivacyModalContainer #background #tosModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+        #PrivacyModalContainer #background #tosModal #alignContainer .textBoxMatch {
+          display: flex;
+          width: 70%;
+          height: 5%;
+          border: 1px solid #a0a0a0;
+          border-radius: 5px; }
+        #PrivacyModalContainer #background #tosModal #alignContainer #topBox {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          width: 90%;
+          height: 10%; }
+          #PrivacyModalContainer #background #tosModal #alignContainer #topBox h2 {
+            color: #ffce63; }
+            @media (max-width: 767px) {
+              #PrivacyModalContainer #background #tosModal #alignContainer #topBox h2 {
+                font-size: 2.0rem; } }
+            @media (min-width: 768px) {
+              #PrivacyModalContainer #background #tosModal #alignContainer #topBox h2 {
+                font-size: 1.5rem; } }
+            @media (min-width: 1200px) {
+              #PrivacyModalContainer #background #tosModal #alignContainer #topBox h2 {
+                font-size: 2.5rem; } }
+        #PrivacyModalContainer #background #tosModal #alignContainer #midBox {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: space-between;
+          width: 90%;
+          height: 70%; }
+          #PrivacyModalContainer #background #tosModal #alignContainer #midBox .textArea {
+            width: 100%;
+            height: 90%; }
+        #PrivacyModalContainer #background #tosModal #alignContainer #bottomBox {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          height: 8%; }
+          #PrivacyModalContainer #background #tosModal #alignContainer #bottomBox .textBoxMatch3 {
+            display: flex;
+            width: 100%;
+            height: 20%;
+            border: 1px solid #a0a0a0;
+            border-radius: 5px; }
+          #PrivacyModalContainer #background #tosModal #alignContainer #bottomBox #back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: #ffce63;
+            color: #fff;
+            border: 0;
+            cursor: pointer; }
+
+/*------------정현----------*/

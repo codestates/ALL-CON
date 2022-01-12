@@ -1,22 +1,22 @@
 /* Store import */
-import { showTosModal } from '../../store/ModalSlice';
+import { showPrivacyModal } from '../../store/ModalSlice';
 /* Library import */
 import { useDispatch } from 'react-redux';
 
-function TosModal() {
+function PrivacyModal() {
   const dispatch = useDispatch();
 
   return (
-    <div id='TosModalContainer'>
-      <div id='outside' onClick={() => dispatch(showTosModal(false))}/>
+    <div id='PrivacyModalContainer'>
+      <div id='outside' onClick={() => dispatch(showPrivacyModal(false))}/>
       <div id='background'>
         <div id='tosModal'>
           <div id='alignContainer'>
             <div id='topBox'>
-              <h2>이용 약관</h2>
+              <h2>개인정보 수집 및 이용 동의</h2>
             </div>
             <div id='midBox'>
-              <p className='fontMatch'>ALL-CON 이용 약관</p>
+              <p className='fontMatch'>ALL-CON 개인정보 수집 및 이용 동의</p>
               <textarea className='textArea' readOnly defaultValue="
                 제1장 총칙 제1조(목적) 
           
@@ -261,7 +261,7 @@ function TosModal() {
                 제33조(분쟁의 해결) '회사'는 분쟁이 발생하였을 경우에 '이용자'가 제기하는 정당한 의견이나 불만을 반영하여 적절하고 신속한 조치를 취합니다. 다만, 신속한 처리가 곤란한 경우에 '회사'는 '이용자'에게 그 사유와 처리일정을 통보합니다." />
             </div>
             <div id='bottomBox'>
-              <button className='fontMatch textBoxMatch3' id='back' onClick={() => dispatch(showTosModal(false))}>
+              <button className='fontMatch textBoxMatch3' id='back' onClick={() => dispatch(showPrivacyModal(false))}>
                 뒤로가기
               </button>
             </div>
@@ -271,4 +271,4 @@ function TosModal() {
     </div>
   );
 }
-export default TosModal;
+export default PrivacyModal;

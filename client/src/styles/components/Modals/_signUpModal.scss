@@ -14,6 +14,12 @@
     position: fixed;
     height: 100%;
   }
+  #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
   #background {
     z-index: 999;
     width: 100%;
@@ -114,6 +120,7 @@
             }
             #no2 {
               color: $yellow;
+              cursor: pointer;
             }
           }
         }
@@ -127,7 +134,7 @@
           // border: 1px solid red;
           .outerTextBox {
             width: 100%;
-            height: 16%;
+            height: 13%;
             .textBoxMatch2 {
               width: 100%;
               height: 100%;
@@ -143,6 +150,7 @@
               border: 0;
               border-radius: 5px;
               font-weight: bold;
+              cursor: pointer;
             }
             #no1 {
               display: flex;
@@ -165,6 +173,9 @@
             font-size: 1.2rem;
             color: red;
           }
+          .hidden {
+            display: none;
+          }
         }
         #bottomBox {
           display: flex;
@@ -172,6 +183,7 @@
           justify-content: space-between;
           width: 90%;
           height: 23%;
+          margin-top: 5%;
           // border: 1px solid blue;
           #agreeBox {
             display: flex;
@@ -180,7 +192,7 @@
             width: 100%;
             height: 55%;
             // border: 1px solid pink;
-            .fontMatch2 {
+            .agreeAll {
               font-weight: bold;
               @include mobile-only() {
                 font-size: 1.4rem;
@@ -191,6 +203,22 @@
               @include lg() {
                 font-size: 1.5rem;
               }
+            }
+            .agreeSub {
+              font-weight: bold;
+              cursor: pointer;
+              @include mobile-only() {
+                font-size: 1.4rem;
+              }
+              @include md() {
+                font-size: 1.5rem;
+              }
+              @include lg() {
+                font-size: 1.5rem;
+              }
+            }
+            .agreeSub:hover{
+              color: #ffce63
             }
             .checkBox {
               display: flex;
@@ -254,6 +282,7 @@
               color: #fff;
               border: 0;
               border-radius: 5px;
+              cursor: pointer;
             }
             #exitBtn {
               @extend #signUpBtn;
