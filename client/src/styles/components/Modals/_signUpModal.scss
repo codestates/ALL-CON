@@ -14,6 +14,12 @@
     position: fixed;
     height: 100%;
   }
+  #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
   #background {
     z-index: 999;
     width: 100%;
@@ -46,12 +52,12 @@
       @include md() {
         width: 30%;
         height: 78%;
-        border-radius: 5px;
+        border-radius: 20px;
       }
       @include lg() {
         width: 30%;
         height: 78%;
-        border-radius: 5px;
+        border-radius: 20px;
       }
       #alignContainer {
         display: flex;
@@ -86,7 +92,7 @@
           justify-content: space-between;
           align-items: center;
           width: 90%;
-          height: 18%;
+          height: 15%;
           // border: 1px solid green;
           h2 {
             color: $yellow;
@@ -112,6 +118,7 @@
             }
             #no2 {
               color: $yellow;
+              cursor: pointer;
             }
           }
         }
@@ -121,11 +128,51 @@
           align-items: flex-start;
           justify-content: space-between;
           width: 90%;
-          height: 49%;
+          height: 60%;
           // border: 1px solid red;
-          .textBoxMatch2 {
+          .outerTextBox {
             width: 100%;
-            height: 16%;
+            height: 13%;
+            .textBoxMatch2 {
+              width: 100%;
+              height: 100%;
+            }
+            button {
+              position: relative;
+              top: -78%;
+              left: 78%;
+              width: 20%;
+              height: 55%;
+              background-color: $yellow;
+              color: gray;
+              border: 0;
+              border-radius: 5px;
+              font-weight: bold;
+              cursor: pointer;
+            }
+            #no1 {
+              display: flex;
+              align-items: center;
+              position: relative;
+              top: -100%;
+              left: 90%;
+              width: 6%;
+              height: 100%;
+              // border: 1px solid blue;
+              .Img {
+                width: 100%;
+              }
+            }
+            #no2 {
+              @extend #no1;
+            }
+          }
+          .warningMsg {
+            font-size: 1.2rem;
+            color: red;
+          }
+          .hidden {
+            display: none;
           }
         }
         #bottomBox {
@@ -133,7 +180,8 @@
           flex-direction: column;
           justify-content: space-between;
           width: 90%;
-          height: 25%;
+          height: 23%;
+          margin-top: 5%;
           // border: 1px solid blue;
           #agreeBox {
             display: flex;
@@ -142,10 +190,10 @@
             width: 100%;
             height: 55%;
             // border: 1px solid pink;
-            .fontMatch2 {
+            .agreeAll {
               font-weight: bold;
               @include mobile-only() {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
               }
               @include md() {
                 font-size: 1.5rem;
@@ -153,6 +201,22 @@
               @include lg() {
                 font-size: 1.5rem;
               }
+            }
+            .agreeSub {
+              font-weight: bold;
+              cursor: pointer;
+              @include mobile-only() {
+                font-size: 1.4rem;
+              }
+              @include md() {
+                font-size: 1.5rem;
+              }
+              @include lg() {
+                font-size: 1.5rem;
+              }
+            }
+            .agreeSub:hover{
+              color: #ffce63
             }
             .checkBox {
               display: flex;
@@ -175,9 +239,8 @@
               }
               p {
                 position: absolute;
-                left: 18%;
                 @include mobile-only() {
-                  left: 38%;
+                  left: 20%;
                 }
                 @include md() {
                   left: 40%;
@@ -217,17 +280,11 @@
               color: #fff;
               border: 0;
               border-radius: 5px;
+              cursor: pointer;
             }
             #exitBtn {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 45%;
-              height: 100%;
+              @extend #signUpBtn;
               background-color: $black;
-              color: #fff;
-              border: 0;
-              border-radius: 5px;
             }
           }
         }

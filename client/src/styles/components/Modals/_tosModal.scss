@@ -14,6 +14,12 @@
     position: fixed;
     height: 100%;
   }
+  #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
   #background {
     z-index: 999;
     width: 100%;
@@ -44,14 +50,14 @@
         height: 100%;
       }
       @include md() {
-        width: 30%;
-        height: 78%;
-        border-radius: 5px;
+        width: 25%;
+        height: 68%;
+        border-radius: 20px;
       }
       @include lg() {
-        width: 30%;
-        height: 78%;
-        border-radius: 5px;
+        width: 25%;
+        height: 68%;
+        border-radius: 20px;
       }
       #alignContainer {
         display: flex;
@@ -67,10 +73,10 @@
             font-size: 1.5rem;
           }
           @include md() {
-            font-size: 1.8rem;
+            font-size: 1.3rem;
           }
           @include lg() {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
           }
         }
         .textBoxMatch {
@@ -91,13 +97,13 @@
           h2 {
             color: $yellow;
             @include mobile-only() {
-              font-size: 3rem;
+              font-size: 2.0rem;
             }
             @include md() {
-              font-size: 3.8rem;
+              font-size: 1.5rem;
             }
             @include lg() {
-              font-size: 3.8rem;
+              font-size: 2.5rem;
             }
           }
         }
@@ -109,6 +115,11 @@
           width: 90%;
           height: 70%;
           // border: 1px solid red;
+
+          .textArea {
+            width: 100%;
+            height: 90%;
+          }
         }
         #bottomBox {
           display: flex;
@@ -123,25 +134,16 @@
             border: 1px solid $gray;
             border-radius: 5px;
           }
-          #agree {
+          #back {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 45%;
+            width: 100%;
             height: 100%;
             background-color: $yellow;
             color: #fff;
             border: 0;
-          }
-          #disagree {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 45%;
-            height: 100%;
-            background-color: $black;
-            color: #fff;
-            border: 0;
+            cursor: pointer;
           }
         }
       }

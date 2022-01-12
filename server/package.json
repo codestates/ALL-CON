@@ -25,6 +25,7 @@
     "mysql2": "^2.3.3",
     "node-schedule": "^2.1.0",
     "nodemailer": "^6.7.2",
+    "nodemon": "^2.0.15",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
     "routers": "^0.1.4",

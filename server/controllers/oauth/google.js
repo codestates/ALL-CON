@@ -34,7 +34,6 @@ module.exports = {
           image: picture,
           sign_method: 'google'
         });
-
         // 토큰을 발급하고 쿠키에 저장한다.
         const accssToekn = generateAccessToken(createUserInfo.dataValues);
         sendAccessToken(res, accssToekn);

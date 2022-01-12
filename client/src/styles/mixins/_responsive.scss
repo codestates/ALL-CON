@@ -14,6 +14,7 @@ $lg: 1200px;
     @content;
   }
 }
+
 @mixin mobile-only() {
   @media (max-width: #{$md - 1px}) {
     @content;

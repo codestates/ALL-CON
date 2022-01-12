@@ -23,7 +23,7 @@
   width: 100%;
 
   @include mobile-only() {
-    height: 8%;
+    height: 6%;
   }
   @include md() {
     height: 5%;
@@ -31,7 +31,7 @@
   @include lg() {
     height: 5%;
   }
-  // border:1px solid blue;
+  // border: 1px solid blue;
   border-bottom: 2px solid black;
   .title {
     position: absolute;
@@ -39,7 +39,6 @@
     align-items: center;
     justify-content: left;
 
-    bottom: 10%;
     @include mobile-only() {
       height: 80%;
       width: 70%;
@@ -51,6 +50,7 @@
     @include lg() {
       height: 50%;
       width: 80%;
+      bottom: 10%;
     }
     // border:1px solid blue;
 
@@ -59,7 +59,7 @@
         font-size: 2rem;
       }
       @include md() {
-        font-size: 4rem;
+        font-size: 3rem;
       }
       @include lg() {
         font-size: 4rem;
@@ -74,15 +74,17 @@
     justify-content: right;
     width: 35%;
     right: 2%;
-    bottom: 10%;
+
     @include mobile-only() {
       height: 80%;
     }
     @include md() {
       height: 50%;
+      bottom: 35%;
     }
     @include lg() {
       height: 50%;
+      bottom: 10%;
     }
     // border:1px solid blue;
     .img {
@@ -96,10 +98,10 @@
         height: 25px;
       }
       @include md() {
-        bottom: 10%;
+        bottom: 15%;
         right: 2%;
-        width: 40px;
-        height: 40px;
+        width: 33px;
+        height: 33px;
       }
       @include lg() {
         bottom: 10%;
@@ -114,7 +116,9 @@
       font-size: 1.3rem;
     }
     @include md() {
-      font-size: 2.5rem;
+      position: relative;
+      font-size: 2rem;
+      bottom: 5%;
     }
     @include lg() {
       font-size: 2.5rem;
@@ -129,7 +133,7 @@
   // border:1px solid red;
   @include mobile-only() {
     height: 100%;
-    top: 7.8%;
+    top: 5%;
   }
   @include md() {
     height: 100%;
@@ -144,7 +148,7 @@
     display: flex;
     align-items: center;
     width: 50%;
-    height: 5%;
+    height: 7%;
     // border:1px solid red;
     .view {
       position: relative;
@@ -156,7 +160,7 @@
         font-size: 1rem;
       }
       @include md() {
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
       @include lg() {
         font-size: 2rem;
@@ -168,7 +172,7 @@
     display: flex;
     align-items: center;
     width: 50%;
-    height: 5%;
+    height: 7%;
     // border:1px solid red;
     .modifyBtn {
       position: absolute;
@@ -184,7 +188,7 @@
       }
       @include md() {
         right: 35%;
-        font-size: 2.5rem;
+        font-size: 1.8rem;
       }
       @include lg() {
         right: 35%;
@@ -205,7 +209,7 @@
       }
       @include md() {
         right: 23%;
-        font-size: 2.5rem;
+        font-size: 1.8rem;
       }
       @include lg() {
         right: 23%;
@@ -234,8 +238,8 @@
       padding-bottom: 35%;
     }
     @include md() {
-      height: 45%;
-      padding-bottom: 45%;
+      height: 37%;
+      padding-bottom: 37%;
     }
     @include lg() {
       height: 45%;
@@ -253,9 +257,9 @@
         max-height: 70px;
       }
       @include md() {
-        width: 35%;
-        height: 35%;
-        padding-bottom: 35%;
+        width: 37%;
+        height: 37%;
+        padding-bottom: 37%;
         left: 12%;
       }
       @include lg() {
@@ -288,7 +292,7 @@
         padding-bottom: 45%;
       }
       @include md() {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
         right: -10%;
         width: 55%;
         height: 35%;
@@ -330,15 +334,15 @@
     height: 20%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 92%;
+      top: 88%;
       height: 20%;
     }
     @include md() {
-      top: 96%;
-      height: 25%;
+      top: 110%;
+      height: 22.5%;
     }
     @include lg() {
-      top: 96%;
+      top: 92%;
       height: 25%;
     }
   }

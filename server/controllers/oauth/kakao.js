@@ -23,9 +23,7 @@ module.exports = {
         { headers: { Authorization: `Bearer ${access_token}` } }
       );
       // 데이터베이스에 일치하는 데이터가 있는지 확인한다.
-      console.log('--------------------',kakaoUserInfo.data.kakao_account);
       const { email, profile } = kakaoUserInfo.data.kakao_account;
-      console.log('--------------------',email);
       const userInfo = await Users.findOne({ where: { email } });
       
       /* Users 테이블에 존재하지 않는 email이라면 회원가입 진행 */ 
@@ -36,7 +34,6 @@ module.exports = {
           image: profile.profile_image_url,
           sign_method: 'kakao'
         });
-
         // 토큰을 발급하고 쿠키에 저장한다.
         const accssToekn = generateAccessToken(createUserInfo.dataValues);
         sendAccessToken(res, accssToekn);
@@ -48,9 +45,9 @@ module.exports = {
       // 토큰을 발급하고 쿠키에 저장한다.
       const accssToekn = generateAccessToken(userInfo.dataValues);
       sendAccessToken(res, accssToekn);
-      res.status(200).json({ data: { userInfo: newUserInfo }, message: 'Success Kakao Login!' });
+      res.status(200).json({ data: { userInfo: userInfo }, message: 'Success Kakao Login!' });
     } catch (err) {
-      // console.log(err);
+      console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
     }
   }
