@@ -2,9 +2,6 @@ const { Concerts, Articles } = require('../../models');
 const nodemailer = require('nodemailer');
 
 const openDateCheck = async (targetOpenDate, concertid) => {
-
-  console.log(' --------------- 콘서트 클리너 openDateCheck 시작 -------------------')
-  console.log(concertid)
   
   let year = targetOpenDate.getUTCFullYear()
   let month = targetOpenDate.getUTCMonth()
@@ -13,13 +10,16 @@ const openDateCheck = async (targetOpenDate, concertid) => {
   let minute = targetOpenDate.getUTCMinutes()
 
   // 2022년 1월 14일
-  let today = new Date(2022, 0, 14, 11, 0, 0)
+  let today = new Date()
 
   let yearToday = today.getFullYear()
   let monthToday = today.getMonth()
   let dateToday = today.getDate()
   let hourToday = today.getHours()
   let minuteToday = today.getMinutes()
+
+  console.log('--------------------- 콘서트 오픈일 ------------------', year, month, date)
+  console.log('--------------------- Today -------------------------', today, yearToday, monthToday, dateToday)
 
   // 년 확인
   if(year !== yearToday) return 
@@ -43,12 +43,8 @@ const openDateCheck = async (targetOpenDate, concertid) => {
         { where: { id: articleid } }
       )
     }
-
-    console.log(articleInfo)
   }
   
-  
-  console.log(' --------------- 콘서트 클리너 openDateCheck 종료 -------------------')
   return
 }
 

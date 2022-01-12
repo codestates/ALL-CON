@@ -2270,6 +2270,12 @@ a {
             position: absolute;
             width: 100%;
             height: 100%; }
+        #myProfileImageModal #modalBox #modal #imgBox #imgSelection {
+          z-index: 999;
+          position: absolute;
+          display: flex;
+          width: 50%;
+          border: solid 3px red; }
       #myProfileImageModal #modalBox #modal #modifyBtnWrapper {
         position: absolute;
         display: flex;
