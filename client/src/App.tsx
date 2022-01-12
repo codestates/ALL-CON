@@ -52,6 +52,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/main/*' element={<MainPage />} />
+        <Route path='/mypage/*' element={<MyPage />} />
         <Route path='/concert/*' element={<ConcertPage />} />
         <Route path='/conchin/*' element={<ConChinPage />} />
         <Route path='/callbackGoogle/*' element={<CallbackGooglePage />} />

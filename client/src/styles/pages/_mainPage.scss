@@ -109,21 +109,45 @@
       height: 80%;
     }
   }
-  #mainFooterWrapper {
+  #fullFooter {
     position: absolute;
-    width: 100%;
-    // border: 1px solid green;
+    display: flex;
+    justify-content: center;
+    background-color: black;
     @include mobile-only() {
+      width: 100%;
+      height: 30%;
       top: 210%;
-      height: 33%;
     }
     @include md() {
-      top: 270%;
+      width: 100%;
       height: 30%;
+      top: 270%;
     }
     @include lg() {
+      width: 100%;
+      height: 38%;
       top: 310%;
-      height: 30%;
+    }
+    // border: 1px solid red;
+    #mainFooterWrapper {
+      position: absolute;
+      display: flex;
+
+      background-color: black;
+      // border: 1px solid red;
+      @include mobile-only() {
+        height: 100%;
+        width: 100%;
+      }
+      @include md() {
+        height: 100%;
+        width: 100%;
+      }
+      @include lg() {
+        height: 70%;
+        width: 79%;
+      }
     }
   }
 }

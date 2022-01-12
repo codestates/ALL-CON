@@ -32,28 +32,24 @@
       position: relative;
       width: 100%;
       height: 20%;
+      // border: 1px solid blue;
       #backBtn {
         position: absolute;
-        top: 20%;
-        width: 30%;
-        background-color: $yellow;
-        border: 0;
-        border-radius: 5px;
-        color: #fff;
-        font-weight: bold;
+        bottom: -65%;
+        opacity: 80%;
         @include mobile-only() {
           right: 5%;
-          height: 60%;
+          width: 20px;
           font-size: 1rem;
         }
         @include md() {
           right: 0%;
-          height: 65%;
+          width: 30px;
           font-size: 1.5rem;
         }
         @include lg() {
           right: 0%;
-          height: 65%;
+          width: 40px;
           font-size: 1.8rem;
         }
       }
@@ -98,6 +94,7 @@
       }
     }
     #bell {
+      display: none;
       position: absolute;
       left: 38%;
       height: 4%;
@@ -118,37 +115,29 @@
     #mailIcon {
       position: absolute;
       @include mobile-only() {
-        top: 8%;
-        left: 47%;
-        width: 7%;
+        top: 9%;
+        left: 39%;
+        width: 30px;
       }
       @include md() {
-        top: 5%;
-        left: 46%;
-        width: 5%;
+        display: none;
       }
       @include lg() {
-        top: 4.8%;
-        left: 45%;
-        width: 4%;
+        display: none;
       }
     }
     #kakaoIcon {
       position: absolute;
       @include mobile-only() {
-        top: 8%;
-        left: 57%;
-        width: 7%;
+        top: 9%;
+        left: 48%;
+        width: 30px;
       }
       @include md() {
-        top: 5%;
-        left: 54.5%;
-        width: 5%;
+        display: none;
       }
       @include lg() {
-        top: 4.8%;
-        left: 52%;
-        width: 4%;
+        display: none;
       }
     }
     #titleBox {
@@ -258,13 +247,24 @@
       #concertInfo {
         position: relative;
         width: 60%;
-        height: 100%;
         // border: 2px solid pink;
+        @include mobile-only() {
+          height: 100%;
+        }
+        @include md() {
+          height: 80%;
+          top: -10%;
+        }
+        @include lg() {
+          height: 80%;
+          top: -10%;
+        }
         .table {
           position: absolute;
           top: 0;
           width: 100%;
           height: 100%;
+          // border: 1px solid blue;
           .left-side {
             position: absolute;
             top: 0;
@@ -274,6 +274,7 @@
             .left {
               font-weight: bold;
               text-align: center;
+              // border: 1px solid green;
               @include mobile-only() {
                 font-size: 1.2rem;
               }
@@ -285,28 +286,63 @@
               }
             }
             #place {
-              height: 15%;
+              @include mobile-only() {
+                height: 15%;
+              }
+              @include md() {
+                height: 10%;
+              }
+              @include lg() {
+                height: 10%;
+              }
             }
             #date {
               @include mobile-only() {
                 height: 30%;
               }
               @include md() {
-                height: 15%;
+                height: 25%;
               }
               @include lg() {
-                height: 15%;
+                height: 25%;
               }
             }
             #time {
-              height: 15%;
+              @include mobile-only() {
+                height: 15%;
+              }
+              @include md() {
+                height: 10%;
+              }
+              @include lg() {
+                height: 10%;
+              }
             }
             #rating {
-              height: 15%;
+              @include mobile-only() {
+                height: 15%;
+              }
+              @include md() {
+                height: 10%;
+              }
+              @include lg() {
+                height: 10%;
+              }
             }
             #price {
               @include mobile-only() {
                 height: 25%;
+              }
+              @include md() {
+                height: 25%;
+              }
+              @include lg() {
+                height: 25%;
+              }
+            }
+            #alarm {
+              @include mobile-only() {
+                display: none;
               }
               @include md() {
                 height: 20%;
@@ -335,34 +371,79 @@
               }
             }
             #place_r {
-              height: 15%;
+              @include mobile-only() {
+                height: 15%;
+              }
+              @include md() {
+                height: 10%;
+              }
+              @include lg() {
+                height: 10%;
+              }
             }
             #date_r {
               @include mobile-only() {
                 height: 30%;
               }
               @include md() {
-                height: 15%;
+                height: 25%;
               }
               @include lg() {
-                height: 15%;
+                height: 25%;
               }
             }
             #time_r {
-              height: 15%;
+              @include mobile-only() {
+                height: 15%;
+              }
+              @include md() {
+                height: 10%;
+              }
+              @include lg() {
+                height: 10%;
+              }
             }
             #rating_r {
-              height: 15%;
+              @include mobile-only() {
+                height: 15%;
+              }
+              @include md() {
+                height: 10%;
+              }
+              @include lg() {
+                height: 10%;
+              }
             }
             #price_r {
               @include mobile-only() {
                 height: 25%;
               }
               @include md() {
+                height: 25%;
+              }
+              @include lg() {
+                height: 25%;
+              }
+            }
+            #alarm_r {
+              @include mobile-only() {
+                display: none;
+              }
+              @include md() {
                 height: 20%;
               }
               @include lg() {
                 height: 20%;
+              }
+              #mailIcon2 {
+                position: relative;
+                left: 5%;
+                width: 40px;
+              }
+              #kakaoIcon2 {
+                position: relative;
+                left: 10%;
+                width: 40px;
               }
             }
           }
@@ -387,7 +468,7 @@
       }
       @include lg() {
         position: absolute;
-        bottom: 6%;
+        bottom: 5%;
         left: 40.5%;
         width: 57%;
         height: 12%;
@@ -412,7 +493,8 @@
           height: 100%;
           img {
             @include mobile-only() {
-              width: 9%;
+              margin-right: 2%;
+              width: 7%;
               height: 90%;
             }
             @include md() {
@@ -421,7 +503,7 @@
               padding-right: 2%;
             }
             @include lg() {
-              width: 10%;
+              width: 9%;
               height: 80%;
               padding-right: 2%;
             }

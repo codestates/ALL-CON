@@ -1,5 +1,6 @@
 import poster from '../../../images/hiphop2.gif';
 import map from '../../../images/bigMap.png';
+import xButton from '../../../images/xButton.png';
 import { useState, useEffect } from 'react';
 
 function ConcertModal() {
@@ -23,6 +24,9 @@ function ConcertModal() {
             : 'stretchedConcertModal'
         }
       >
+        <div id='closeBox'>
+          <img src={xButton}></img>
+        </div>
         <div id='AlignBox'>
           <div id='top_box'>
             <div id='titleAndDay'>

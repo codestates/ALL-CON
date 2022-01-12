@@ -35,12 +35,13 @@
   #concertModal {
     z-index: 999;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
     background-color: #fff;
     border-radius: 5px;
-    // border: 1px solid red;
+    border: 1px solid red;
     @include mobile-only() {
       width: 90%;
       height: 70%;
@@ -55,6 +56,25 @@
       height: 90%;
       top: 10%;
       right: 5%;
+    }
+    #closeBox {
+      // border: 1px solid blue;
+      @include mobile-only() {
+        width: 90%;
+        height: 4%;
+      }
+      @include md() {
+        display: none;
+      }
+      @include lg() {
+        display: none;
+      }
+      img {
+        position: absolute;
+        top: 2%;
+        right: 4%;
+        width: 8%;
+      }
     }
     #AlignBox {
       display: flex;
@@ -273,12 +293,14 @@
   }
   #stretchedConcertModal {
     z-index: 999;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
     background-color: #fff;
     border-radius: 5px;
-    // border: 1px solid blue;
+    border: 1px solid blue;
     @include mobile-only() {
       display: flex;
       width: 90%;
@@ -295,6 +317,25 @@
       right: 5%;
       width: 40%;
       height: 90%;
+    }
+    #closeBox {
+      // border: 1px solid blue;
+      @include mobile-only() {
+        width: 90%;
+        height: 4%;
+      }
+      @include md() {
+        display: none;
+      }
+      @include lg() {
+        display: none;
+      }
+      img {
+        position: absolute;
+        top: 2%;
+        right: 4%;
+        width: 8%;
+      }
     }
     #AlignBox {
       display: flex;
@@ -514,12 +555,13 @@
   #onFooterModal {
     z-index: 999;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
     background-color: #fff;
     border-radius: 5px;
-    // border: 1px solid purple;
+    border: 1px solid purple;
     @include mobile-only() {
       width: 90%;
       height: 70%;
@@ -533,6 +575,25 @@
       right: 5%;
       width: 40%;
       height: 90%;
+    }
+    #closeBox {
+      // border: 1px solid blue;
+      @include mobile-only() {
+        width: 90%;
+        height: 4%;
+      }
+      @include md() {
+        display: none;
+      }
+      @include lg() {
+        display: none;
+      }
+      img {
+        position: absolute;
+        top: 2%;
+        right: 4%;
+        width: 8%;
+      }
     }
     #AlignBox {
       display: flex;

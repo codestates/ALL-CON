@@ -10,17 +10,12 @@ const crawler = async () => {
   let interData = await interparkCrawler();
   let yesData = await yes24Crawler()
 
-  console.log('--------------- 인터파크 RawData -------------------', interData)
-  console.log('--------------- YES24 RawData -------------------', yesData)
-  
   const concerts = []
   
   // 먼저 인터파크 데이터는 다 받는다
   for(let i = 0; i < interData.length; i++) {
     concerts.push(interData[i])
   }
-
-  console.log('--------------- 인터파크 입력후 concerts -------------------', concerts, concerts.length)
   
   // 인터파크 RawData가 0이 아닌 경우, 다음을 실행한다
   if(concerts.length !== 0) {
@@ -47,12 +42,9 @@ const crawler = async () => {
   else {
     console.log('------ 인터파크 RawData가 0인 경우 진입! -------')
     for(let k = 0; k < yesData.length; k++) {
-      console.log('--------------- 인터파크 yesData가 0인 경우 -------------------', yesData[k])
       concerts.push(yesData[k])
     }
   }
-
-  console.log('--------------- Yes24 입력후 concertList -------------------', concerts)
   
   // DB에 쌓아준다
   for(let i = 0; i < concerts.length; i++) {
