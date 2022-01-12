@@ -1,4 +1,5 @@
 /* Component import */
+import AlertModal from './components/Modals/AlertModal';
 import ConcertModal from './components/Modals/ConcertPage/ConcertModal';
 import ConChinWritingModal from './components/Modals/ConChinPage/ConChinWritingModal';
 import ConChinProfileModal from './components/Modals/ConChinPage/ConChinProfileModal';
@@ -30,28 +31,26 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  const { loginModal, signupModal, tosModal, privacyModal } = useSelector(
-    (state: RootState) => state.modal,
-  );
+  const { loginModal, signupModal, tosModal, privacyModal, findPasswordModal, alertModal } = useSelector((state: RootState) => state.modal);
 
   return (
     <div className='App'>
       <Header />
       {loginModal && <LoginModal />}
       {signupModal && <SignUpModal />}
-      {/* <MyProfileResignMembershipModal/> */}
-      {/* {tosModal && <TosModal />} */}
-      {/* {privacyModal && <PrivacyModal />} */}
+      {tosModal && <TosModal />}
+      {privacyModal && <PrivacyModal />}
+      {alertModal && <AlertModal />}
+      {findPasswordModal && <FindPasswordModal />}
       {/*<ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
       {/* <MyProfileImageModal /> */}
       {/* <ConfirmNumberModal /> */}
-      {/* <FindPasswordModal /> */}
       {/* <ResetPasswordModal /> */}
       {/* <ConChinCertificationPage /> */}
-      {/* <LandingPage /> */}
       {/* <MyPage /> */}
       <Routes>
+        <Route path='/' element={<LandingPage />} />
         <Route path='/main/*' element={<MainPage />} />
         <Route path='/mypage/*' element={<MyPage />} />
         <Route path='/concert/*' element={<ConcertPage />} />

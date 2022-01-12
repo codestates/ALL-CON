@@ -1,5 +1,5 @@
 #signUpModalContainer {
-  z-index: 999;
+  z-index: 500;
   width: 100%;
   @include mobile-only() {
     position: absolute;
@@ -21,7 +21,7 @@
     background-color: rgba(0, 0, 0, 0.25);
   }
   #background {
-    z-index: 999;
+    z-index: 501;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
@@ -38,16 +38,17 @@
       justify-content: center;
     }
     #signUpModal {
-      z-index: 999;
+      z-index: 502;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background-color: #fff;
       // border: 1px solid red;
       @include mobile-only() {
-        position: absolute;
+        position: fixed;
         width: 100%;
-        height: 100%;
+        height: 90%;
       }
       @include md() {
         width: 60%;
@@ -61,13 +62,33 @@
         border-radius: 20px;
         // border: 3px solid red;
       }
+      #xButtonContainer {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        @include mobile-only() {
+          width: 90%;
+          height: 5%;
+          img{
+            width:10%;
+            cursor: pointer;
+          }
+        }
+        @include md() {
+          display: none;
+        }
+        @include lg() {
+          display: none;
+        }
+        // border: 2px solid purple;
+      }
       #alignContainer {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         width: 90%;
-        height: 95%;
+        height: 87.5%;
         // border: 1px solid aqua;
         .fontMatch {
           font-weight: bold;
@@ -95,6 +116,7 @@
           align-items: center;
           width: 90%;
           height: 15%;
+          margin-bottom: 2.5%;
           // border: 1px solid green;
           h2 {
             color: $yellow;
@@ -102,10 +124,10 @@
               font-size: 3rem;
             }
             @include md() {
-              font-size: 3.8rem;
+              font-size: 3.5rem;
             }
             @include lg() {
-              font-size: 3.8rem;
+              font-size: 3.5rem;
             }
           }
           #goSignUp {
@@ -114,6 +136,7 @@
             align-items: center;
             width: 85%;
             height: 50%;
+            margin-top: 2.5%;
             // border: 1px solid purple;
             #no1 {
               color: $gray;
@@ -139,18 +162,32 @@
               width: 100%;
               height: 100%;
             }
-            button {
+            #no0 {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: flex-end;
               position: relative;
-              top: -78%;
-              left: 78%;
-              width: 20%;
-              height: 55%;
-              background-color: $yellow;
-              color: gray;
-              border: 0;
-              border-radius: 5px;
-              font-weight: bold;
-              cursor: pointer;
+              top: -100%;
+              left: 67.5%;
+              width: 30%;
+              height: 100%;
+              // border: 1px solid blue;
+              .Img {
+                width: 20%;
+                margin-right: 2.5%;
+              }
+              button {
+                width: 80%;
+                height: 75%;
+                background-color: $yellow;
+                color: gray;
+                border: 0;
+                border-radius: 5px;
+                font-weight: bold;
+                cursor: pointer;
+                // border: 1px solid blue;
+              }
             }
             #no1 {
               display: flex;
@@ -171,6 +208,11 @@
           }
           .warningMsg {
             font-size: 1.2rem;
+            color: red;
+          }
+          .duplicationMsg {
+            font-size: 1.2rem;
+            font-weight: bold;
             color: red;
           }
           .hidden {
@@ -226,7 +268,7 @@
               width: 100%;
               height: 20%;
               // border: 1px solid orange;
-              input {
+              #check00 {
                 position: absolute;
 
                 @include mobile-only() {
@@ -238,6 +280,12 @@
                 @include lg() {
                   left: 38%;
                 }
+              }
+              #check01 {
+                @extend #check00;
+              }
+              #check02 {
+                @extend #check00;
               }
               p {
                 position: absolute;
