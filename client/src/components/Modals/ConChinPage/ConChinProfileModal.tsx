@@ -9,7 +9,7 @@ function ConChinProfileModal() {
         <div id='modal'>
           <div id='profileBox'>
             <div id='imgWrapper'>
-              <img className='img' src={profileImage} />
+              <img className='img' src={profileImage} alt='profileImage' />
             </div>
             <div id='nickNameWrapper'>
               <p className='nickName'>냥냐라냥냥</p>

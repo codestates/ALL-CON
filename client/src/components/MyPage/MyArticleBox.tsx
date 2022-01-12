@@ -13,45 +13,57 @@ function MyArticleBox() {
         <div id='articleBox'>
           <div id='box'>
             <ul className='article'>
-              <img className='thumbNail' src={defaultImage}></img>
+              <img
+                className='thumbNail'
+                src={defaultImage}
+                alt='defaultImage'
+              ></img>
               <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
-                  <img className='icon' src={groupImage} />
+                  <img className='icon' src={groupImage} alt='groupImage' />
                   <div className='count'>1/3</div>
                 </div>
               </div>
               <div className='title'>
-                <img className='icon' src={viewImage} />
+                <img className='icon' src={viewImage} alt='viewImage' />
                 <p className='count'>523</p>
                 <p className='date'>2021.12.24</p>
                 <p className='text'>소심한 성격입니다. 조용히..</p>
               </div>
             </ul>
             <ul className='article'>
-              <img className='thumbNail' src={defaultImage}></img>
+              <img
+                className='thumbNail'
+                src={defaultImage}
+                alt='defaultImage'
+              ></img>
               <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
-                  <img className='icon' src={groupImage} />
+                  <img className='icon' src={groupImage} alt='groupImage' />
                   <div className='count'>1/3</div>
                 </div>
               </div>
               <div className='title'>
-                <img className='icon' src={viewImage} />
+                <img className='icon' src={viewImage} alt='viewImage' />
                 <p className='count'>523</p>
                 <p className='date'>2021.12.24</p>
                 <p className='text'>소심한 성격입니다. 조용히..</p>
               </div>
             </ul>
             <ul className='article'>
-              <img className='thumbNail' src={defaultImage}></img>
+              <img
+                className='thumbNail'
+                src={defaultImage}
+                alt='defaultImage'
+              ></img>
               <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
-                  <img className='icon' src={groupImage} />
+                  <img className='icon' src={groupImage} alt='groupImage' />
                   <div className='count'>1/3</div>
                 </div>
               </div>
               <div className='title'>
-                <img className='icon' src={viewImage} />
+                <img className='icon' src={viewImage} alt='viewImage' />
                 <p className='count'>523</p>
                 <p className='date'>2021.12.24</p>
                 <p className='text'>소심한 성격입니다. 조용히..</p>
@@ -60,45 +72,57 @@ function MyArticleBox() {
           </div>
           <div id='box'>
             <ul className='article'>
-              <img className='thumbNail' src={defaultImage}></img>
+              <img
+                className='thumbNail'
+                src={defaultImage}
+                alt='defaultImage'
+              ></img>
               <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
-                  <img className='icon' src={groupImage} />
+                  <img className='icon' src={groupImage} alt='groupImage' />
                   <div className='count'>1/3</div>
                 </div>
               </div>
               <div className='title'>
-                <img className='icon' src={viewImage} />
+                <img className='icon' src={viewImage} alt='viewImage' />
                 <p className='count'>523</p>
                 <p className='date'>2021.12.24</p>
                 <p className='text'>소심한 성격입니다. 조용히..</p>
               </div>
             </ul>
             <ul className='article'>
-              <img className='thumbNail' src={defaultImage}></img>
+              <img
+                className='thumbNail'
+                src={defaultImage}
+                alt='defaultImage'
+              ></img>
               <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
-                  <img className='icon' src={groupImage} />
+                  <img className='icon' src={groupImage} alt='groupImage' />
                   <div className='count'>1/3</div>
                 </div>
               </div>
               <div className='title'>
-                <img className='icon' src={viewImage} />
+                <img className='icon' src={viewImage} alt='viewImage' />
                 <p className='count'>523</p>
                 <p className='date'>2021.12.24</p>
                 <p className='text'>소심한 성격입니다. 조용히..</p>
               </div>
             </ul>
             <ul className='article'>
-              <img className='thumbNail' src={defaultImage}></img>
+              <img
+                className='thumbNail'
+                src={defaultImage}
+                alt='defaultImage'
+              ></img>
               <div id='myMemberBoxWrapper'>
                 <div className='memberBox'>
-                  <img className='icon' src={groupImage} />
+                  <img className='icon' src={groupImage} alt='groupImage' />
                   <div className='count'>1/3</div>
                 </div>
               </div>
               <div className='title'>
-                <img className='icon' src={viewImage} />
+                <img className='icon' src={viewImage} alt='viewImage' />
                 <p className='count'>523</p>
                 <p className='date'>2021.12.24</p>
                 <p className='text'>소심한 성격입니다. 조용히..</p>

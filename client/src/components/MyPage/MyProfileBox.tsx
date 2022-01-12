@@ -18,10 +18,12 @@ function MyProfileBox() {
       <div id='introductionBox'>
         <div id='nickNameWrapper'>
           <div id='oauthWrapper'>
+            {/* OAuth 상태에 따른 아이콘 표시 */}
             <img className='oauth' src={google} alt='google' />
           </div>
           <p className='nickName'>유태양발닦개</p>
           <div id='shieldWrapper'>
+            {/* 콘친 인증 상태에 따른 아이콘 표시 */}
             <img className='shield' src={shield} alt='shield' />
           </div>
         </div>
