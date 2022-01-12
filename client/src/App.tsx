@@ -29,12 +29,7 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      {/* <LandingPage /> */}
-      {/* <SignUpModal /> */}
-      {/* <TosModal /> */}
-      {/*<ConcertModal /> */}
-      {/* <ConChinWritingModal /> */}
-      <LoginModal />
+      <MainPage />
       <Routes>
         <Route path='/main/*' element={<MainPage />} />
         {/* <ConcertPage />*/}
@@ -44,12 +39,12 @@ function App() {
         <Route path='/callbackGoogle/*' element={<CallbackGoogle />} />
         <Route path='/callbackKakao/*' element={<CallbackKaKao />} />
       </Routes>
-      <div id='modalWrapper'>
-        {/* <MyProfileImageModal /> */}
-        {/* <ConfirmNumberModal />
+      {/* <div id='modalWrapper'> */}
+      {/* <MyProfileImageModal /> */}
+      {/* <ConfirmNumberModal />
         <FindPasswordModal /> */}
-        {/* <ResetPasswordModal /> */}
-      </div>
+      {/* <ResetPasswordModal /> */}
+      {/* </div> */}
     </div>
   );
 }

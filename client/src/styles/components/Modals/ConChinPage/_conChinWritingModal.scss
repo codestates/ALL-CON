@@ -14,12 +14,17 @@
     position: fixed;
     height: 100%;
   }
-
+  #outerBackGround {
+    position: fixed;
+    z-index: 998;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.2);
+  }
   #backGround {
     z-index: 999;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
     @include mobile-only() {
     }
     @include md() {
@@ -46,7 +51,7 @@
       height: 100%;
     }
     @include md() {
-      width: 30%;
+      width: 65%;
       height: 85%;
       border-radius: 5px;
     }

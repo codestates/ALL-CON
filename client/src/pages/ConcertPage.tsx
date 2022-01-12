@@ -1,5 +1,6 @@
 import ConcertBox from '../components/ConcertPage/ConcertBox';
 import ConcertChosenBox from '../components/ConcertPage/ConcertChosenBox';
+import Footer from '../components/Footer';
 
 function ConcertPage() {
   return (
@@ -35,6 +36,9 @@ function ConcertPage() {
           <div id='concertBoxWrapper7'>
             <ConcertBox />
           </div>
+        </div>
+        <div id='footerWrapper'>
+          <Footer />
         </div>
       </div>
     </>

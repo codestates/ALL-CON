@@ -37,7 +37,7 @@ function SignUpModal() {
               <div className='outerTextBox'>
                 <input className='textBoxMatch2'></input>
                 <div id='no1'>
-                  <img src={redLock} className='Img'></img>
+                  <img src={redLock} className='Img' alt='자물쇠 아이콘'></img>
                 </div>
               </div>
               <div className='warningMsg'>
@@ -48,7 +48,7 @@ function SignUpModal() {
               <div className='outerTextBox'>
                 <input className='textBoxMatch2'></input>
                 <div id='no2'>
-                  <img src={redLock} className='Img'></img>
+                  <img src={redLock} className='Img' alt='자물쇠 아이콘'></img>
                 </div>
               </div>
               <div className='warningMsg'>비밀번호가 일치하지 않습니다.</div>

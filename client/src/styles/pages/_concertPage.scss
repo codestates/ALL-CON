@@ -16,6 +16,12 @@
       width: 100%;
       height: 8%;
     }
+    @include md() {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 8%;
+    }
     @include lg() {
       width: 50%;
       left: 0;
@@ -46,8 +52,8 @@
       height: 130%;
     }
     @include md() {
-      width: 55%;
-      height: 200%;
+      width: 100%;
+      height: 185%;
     }
     @include lg() {
       width: 50%;
@@ -82,6 +88,21 @@
     #concertBoxWrapper7 {
       width: 90%;
       height: 12%;
+    }
+  }
+  #footerWrapper {
+    // border: 1px solid orange;
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    @include mobile-only() {
+      top: 145%;
+    }
+    @include md() {
+      top: 200%;
+    }
+    @include lg() {
+      top: 220%;
     }
   }
 }

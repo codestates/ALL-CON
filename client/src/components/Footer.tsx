@@ -8,10 +8,12 @@ function Footer() {
       <div className='team_members'>
         <div className='profiles'>
           <div className='profile'>
-            <img src={github} id='github'></img>
+            <div id='paddingBox'>
+              <img src={github} id='github' alt='깃허브 로고'></img>
+            </div>
             <div className='text'>
-              <div>최선영</div>
-              <div>Front end</div>
+              <div className='name'>최선영</div>
+              <div className='role'>Front end</div>
               <div>
                 sy.choi1106<br></br>@gmail.com
               </div>
@@ -19,10 +21,12 @@ function Footer() {
           </div>
 
           <div className='profile'>
-            <img src={github} id='github'></img>
+            <div id='paddingBox'>
+              <img src={github} id='github' alt='깃허브 로고'></img>
+            </div>
             <div className='text'>
-              <div>정재혁</div>
-              <div>Front end</div>
+              <div className='name'>정재혁</div>
+              <div className='role'>Front end</div>
               <div>
                 nezcoreen<br></br>@gmail.com
               </div>
@@ -30,10 +34,12 @@ function Footer() {
           </div>
 
           <div className='profile'>
-            <img src={github} id='github'></img>
+            <div id='paddingBox'>
+              <img src={github} id='github' alt='깃허브 로고'></img>
+            </div>
             <div className='text'>
-              <div>김정현</div>
-              <div>Back end</div>
+              <div className='name'>김정현</div>
+              <div className='role'>Back end</div>
               <div>
                 wjd5588<br></br>@gmail.com
               </div>
@@ -41,10 +47,12 @@ function Footer() {
           </div>
 
           <div className='profile'>
-            <img src={github} id='github'></img>
+            <div id='paddingBox'>
+              <img src={github} id='github' alt='깃허브 로고'></img>
+            </div>
             <div className='text'>
-              <div>김기쁨</div>
-              <div>Back end</div>
+              <div className='name'>김기쁨</div>
+              <div className='role'>Back end</div>
               <div>
                 joykim9311<br></br>@gmail.com
               </div>
@@ -54,8 +62,8 @@ function Footer() {
       </div>
 
       <div className='badges'>
-        <img src={youtube} id='youtube'></img>
-        <img src={insta} id='insta'></img>
+        <img src={youtube} id='youtube' alt='유튜브 로고'></img>
+        <img src={insta} id='insta' alt='인스타 로고'></img>
       </div>
       <div id='copyright'>Copyright ⓒ 2021-2022 weAct</div>
     </div>
