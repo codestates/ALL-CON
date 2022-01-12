@@ -50,7 +50,7 @@ function Header() {
   return (
     <div id='headerContainer'>
       <div id='logoBar'>
-      <Link to ='/main'><img className='logo' alt='logoImg' src={logo} /></Link>
+      <Link to ='/main'><img className='logo' alt='logoImg' src={logo}/></Link>
       </div>
       <div id={scrollPosition < 48 ? 'absoluteBar' : 'fixedBar'}>
         <div id='menuWrapper'>
