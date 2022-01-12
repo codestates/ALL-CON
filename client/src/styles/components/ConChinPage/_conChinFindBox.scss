@@ -11,7 +11,8 @@
     height: 14%;
   }
   @include lg() {
-    height: 10%;
+    top: 2%;
+    height: 8%;
   }
   // border: 1px solid red;
   .title {
@@ -60,10 +61,22 @@
     position: absolute;
     display: flex;
     align-items: center;
-    width: 25%;
+
     height: 100%;
     right: 1%;
 
+    @include mobile-only() {
+      bottom: 5%;
+      width: 25%;
+    }
+    @include md() {
+      bottom: 0%;
+      width: 28%;
+    }
+    @include lg() {
+      bottom: 0%;
+      width: 31%;
+    }
     .btn {
       position: absolute;
       height: 60%;
@@ -75,10 +88,10 @@
       color: white;
       font-weight: bold;
       @include mobile-only() {
-        width: 85%;
+        width: 80%;
         padding-left: 17%;
         font-size: 1.3rem;
-        height: 60%;
+        height: 80%;
       }
       @include md() {
         width: 48%;
@@ -100,7 +113,7 @@
         @include mobile-only() {
           width: 13px;
           height: 13px;
-          right: 67.5%;
+          right: 70.5%;
         }
         @include md() {
           width: 18px;

@@ -36,6 +36,7 @@
       height: 100%;
     }
   }
+
   #modalBox {
     z-index: 999;
     position: fixed;
@@ -85,7 +86,7 @@
 
         @include mobile-only() {
           height: 10%;
-          top: 10%;
+          top: 8%;
         }
         @include md() {
           height: 20%;
@@ -165,6 +166,9 @@
           bottom: 0%;
           width: 20%;
           padding-bottom: 20%;
+          &:hover {
+            cursor: pointer;
+          }
           // border: 1px solid blue;
           .camera {
             position: absolute;
@@ -188,7 +192,7 @@
 
         @include mobile-only() {
           height: 6%;
-          bottom: 30%;
+          bottom: 20%;
         }
         @include md() {
           height: 8%;
@@ -209,6 +213,9 @@
           border: none;
           border-radius: 5px;
           color: white;
+          &:hover {
+            cursor: pointer;
+          }
           @include mobile-only() {
             font-size: 2rem;
           }
@@ -230,6 +237,9 @@
           border: none;
           border-radius: 5px;
           color: white;
+          &:hover {
+            cursor: pointer;
+          }
           @include mobile-only() {
             font-size: 2rem;
           }

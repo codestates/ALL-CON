@@ -8,7 +8,7 @@
   // border: 1px solid red;
   @include mobile-only() {
     border-top: 5px solid $yellow;
-    height: 143%;
+    height: 170%;
     top: 15%;
   }
   @include md() {

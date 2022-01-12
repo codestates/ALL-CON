@@ -6,10 +6,10 @@
   top: 10%;
   // border: 3px solid red;
   @include mobile-only() {
-    height: 150%;
+    height: 180%;
   }
   @include md() {
-    height: 150%;
+    height: 180%;
   }
   @include lg() {
     height: 227%;
@@ -72,15 +72,15 @@
 
     // border: 2px solid blue;
     @include mobile-only() {
-      top: 30.33%;
+      top: 32.33%;
       height: 60%;
     }
     @include md() {
-      top: 40%;
+      top: 30%;
       height: 75%;
     }
     @include lg() {
-      top: 30.33%;
+      top: 28%;
       height: 67%;
     }
     #userInfoBox {
@@ -91,16 +91,16 @@
 
       // border: 1px solid red;
       @include mobile-only() {
-        width: 90%;
+        width: 80%;
         height: 90%;
       }
       @include md() {
-        width: 80%;
-        height: 90.1%;
+        width: 60%;
+        height: 80%;
       }
       @include lg() {
-        width: 50%;
-        height: 90%;
+        width: 40%;
+        height: 80%;
       }
 
       #emailWrapper {
@@ -303,8 +303,11 @@
               border: none;
               border-radius: 5px;
               color: white;
+              &:hover {
+                cursor: pointer;
+              }
               @include mobile-only() {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
               }
               @include md() {
                 font-size: 1.8rem;
@@ -321,8 +324,11 @@
               border: none;
               border-radius: 5px;
               color: white;
+              &:hover {
+                cursor: pointer;
+              }
               @include mobile-only() {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
               }
               @include md() {
                 font-size: 1.8rem;
@@ -367,6 +373,9 @@
             border: none;
             border-radius: 5px;
             color: white;
+            &:hover {
+              cursor: pointer;
+            }
             @include mobile-only() {
               font-size: 1.5rem;
             }
@@ -395,18 +404,18 @@
     background-color: black;
     @include mobile-only() {
       width: 100%;
-      height: 18%;
+      height: 15.3%;
       top: 93%;
     }
     @include md() {
       width: 100%;
-      height: 19%;
-      top: 115%;
+      height: 15.9%;
+      top: 103%;
     }
     @include lg() {
       width: 100%;
-      height: 16%;
-      top: 100%;
+      height: 18%;
+      top: 97%;
     }
     // border: 1px solid red;
     #footerWrapper {
@@ -420,12 +429,12 @@
         width: 100%;
       }
       @include md() {
-        height: 70%;
-        width: 100%;
+        height: 100%;
+        width: 90%;
       }
       @include lg() {
-        height: 73%;
-        width: 79%;
+        height: 70%;
+        width: 73%;
       }
     }
   }

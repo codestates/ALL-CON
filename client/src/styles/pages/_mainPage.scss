@@ -16,15 +16,18 @@
   #mainJumboWrapper {
     position: absolute;
     top: 0;
-    width: 100%;
+
     @include mobile-only() {
       height: 75%;
+      width: 100%;
     }
     @include md() {
       height: 65%;
+      width: 100%;
     }
     @include lg() {
-      height: 65%;
+      height: 80%;
+      width: 100%;
     }
   }
   #mainConcertInfoWrapper {

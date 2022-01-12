@@ -14,6 +14,9 @@ a {
   color: inherit;
   /* 링크의 색상 제거 */
   cursor: pointer; }
+  a:hover {
+    color: #ffce63;
+    transition: 0.15s all; }
 
 /****** grids ******/
 /****** orderBox ******/
@@ -80,7 +83,8 @@ a {
   .order:hover {
     background-color: #ffce63;
     color: white;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: 0.15s all; }
 
 /****** orderBox ******/
 /****** articleBox ******/
@@ -131,7 +135,8 @@ a {
           border-radius: 10px; } }
       #articleBox #box .article:hover {
         box-shadow: 3px 3px 14px 1px #606060;
-        cursor: pointer; }
+        cursor: pointer;
+        transition: 0.15s all; }
       #articleBox #box .article .thumbNail {
         position: absolute;
         display: flex;
@@ -333,7 +338,8 @@ a {
         border-radius: 5px; } }
     #pagination .page:hover {
       background-color: #ffce63;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: 0.1s all; }
   #pagination .text {
     position: absolute;
     color: white;
@@ -548,7 +554,7 @@ a {
   @media (max-width: 767px) {
     #menuWrapper {
       display: flex;
-      width: 15%;
+      width: 5%;
       left: 2%; } }
   @media (min-width: 768px) {
     #menuWrapper {
@@ -565,7 +571,9 @@ a {
     width: 30px;
     height: 30px; }
     #menuWrapper .menu:hover {
-      cursor: pointer; }
+      cursor: pointer;
+      color: #ffce63;
+      transition: 0.15s all; }
 
 #searchWrapper {
   position: absolute;
@@ -576,21 +584,30 @@ a {
     #searchWrapper {
       display: flex;
       width: 5%;
-      right: 15%; } }
+      right: 16%; } }
   @media (min-width: 768px) {
     #searchWrapper {
       display: flex;
       width: 5%;
-      right: 11%; } }
+      right: 9%; } }
   @media (min-width: 1200px) {
     #searchWrapper {
-      display: none;
-      width: 15%;
-      right: 15%; } }
+      display: none; } }
   #searchWrapper .search {
-    position: relative;
-    width: 25px;
-    height: 25px; }
+    position: relative; }
+    @media (max-width: 767px) {
+      #searchWrapper .search {
+        display: flex;
+        width: 20px;
+        height: 20px; } }
+    @media (min-width: 768px) {
+      #searchWrapper .search {
+        display: flex;
+        width: 25px;
+        height: 25px; } }
+    @media (min-width: 1200px) {
+      #searchWrapper .search {
+        display: none; } }
     #searchWrapper .search:hover {
       cursor: pointer; }
 
@@ -600,17 +617,19 @@ a {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 100%;
-  right: 0%; }
+  height: 100%; }
   @media (max-width: 767px) {
     #loginWrapper {
-      width: 15%; } }
+      width: 15%;
+      right: 0%; } }
   @media (min-width: 768px) {
     #loginWrapper {
-      width: 10%; } }
+      width: 10%;
+      right: 0%; } }
   @media (min-width: 1200px) {
     #loginWrapper {
-      width: 5%; } }
+      width: 5%;
+      right: 12%; } }
   #loginWrapper .login {
     position: relative;
     font-weight: bold; }
@@ -624,7 +643,9 @@ a {
       #loginWrapper .login {
         font-size: 2.5rem; } }
     #loginWrapper .login:hover {
-      cursor: pointer; }
+      cursor: pointer;
+      color: #ffce63;
+      transition: all 0.15s; }
   #loginWrapper .profile {
     position: relative;
     border-radius: 100%;
@@ -647,11 +668,12 @@ a {
 
 #hiddenMenuBox {
   position: absolute;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  width: 15%;
-  left: 1%; }
+  width: 23rem;
+  left: 12.5%; }
   @media (max-width: 767px) {
     #hiddenMenuBox {
       display: none; } }
@@ -662,6 +684,7 @@ a {
     #hiddenMenuBox {
       display: flex; } }
   #hiddenMenuBox .menu {
+    position: relative;
     font-size: 2.5rem;
     font-weight: bold; }
 
@@ -671,12 +694,12 @@ a {
   justify-content: right;
   align-items: center;
   width: 20%;
-  right: 6%; }
+  right: 5%; }
   #hiddenSearchBox #searchWrapper {
     position: absolute;
-    height: 25px;
-    width: 70%;
-    right: 0%;
+    height: 2.5rem;
+    width: 21rem;
+    right: 62%;
     background-color: #eaeaea;
     border-radius: 50px; }
     @media (max-width: 767px) {
@@ -701,7 +724,7 @@ a {
     position: absolute;
     height: 18px;
     width: 18px;
-    right: 3%; }
+    right: 64%; }
     @media (max-width: 767px) {
       #hiddenSearchBox #imgWrapper {
         display: none; } }
@@ -869,24 +892,62 @@ a {
   @media (min-width: 1200px) {
     #headerContainer {
       z-index: 15; } }
+  #headerContainer #hiddenBar {
+    z-index: 20;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    top: 0%;
+    height: 50%;
+    color: rgba(255, 255, 255, 0);
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #headerContainer #hiddenBar {
+        font-size: 1.5rem; } }
+    @media (min-width: 768px) {
+      #headerContainer #hiddenBar {
+        font-size: 1.5rem; } }
+    @media (min-width: 1200px) {
+      #headerContainer #hiddenBar {
+        font-size: 1.8rem; } }
+    #headerContainer #hiddenBar:hover {
+      position: relative;
+      height: 80%;
+      background-color: #ffce63;
+      transition: 0.25s all; }
+      @media (max-width: 767px) {
+        #headerContainer #hiddenBar:hover {
+          font-size: 1.5rem;
+          color: white; } }
+      @media (min-width: 768px) {
+        #headerContainer #hiddenBar:hover {
+          font-size: 1.5rem;
+          color: white; } }
+      @media (min-width: 1200px) {
+        #headerContainer #hiddenBar:hover {
+          font-size: 1.8rem;
+          color: white; } }
   #headerContainer #logoBar {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50%;
+    background-color: white;
+    height: 100%;
     width: 100%; }
     #headerContainer #logoBar .logo {
       z-index: 16;
-      position: absolute;
+      position: relative;
       display: flex;
       top: 200%;
       left: 50%;
-      transform: translate(-50%, -50%); }
+      transform: translate(-50%, 25%); }
       @media (max-width: 767px) {
         #headerContainer #logoBar .logo {
-          width: 95px;
-          height: 60px; } }
+          width: 85.5px;
+          height: 54px; } }
       @media (min-width: 768px) {
         #headerContainer #logoBar .logo {
           width: 95px;
@@ -900,10 +961,10 @@ a {
   #headerContainer #absoluteBar {
     z-index: 15;
     opacity: 100%;
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
-    top: 100%;
+    top: 0%;
     height: 100%;
     width: 100%;
     background-color: white; }
@@ -918,7 +979,7 @@ a {
     width: 100%;
     background-color: white; }
 
-/***** 재혁 *****/
+/*------------재혁------------*/
 #conChinContainer {
   position: absolute;
   display: flex;
@@ -966,7 +1027,7 @@ a {
       @media (max-width: 767px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
-          height: 10%; } }
+          height: 12%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
@@ -978,14 +1039,12 @@ a {
     #conChinContainer #conChinExceptFooter #postingWrapper {
       position: absolute;
       display: flex;
-      flex-wrap: wrap;
-      width: 80%;
-      height: 73%; }
+      flex-wrap: wrap; }
       @media (max-width: 767px) {
         #conChinContainer #conChinExceptFooter #postingWrapper {
           width: 95%;
           height: 80%;
-          top: 10%;
+          top: 12%;
           padding-top: 6%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #postingWrapper {
@@ -1007,7 +1066,7 @@ a {
         #conChinContainer #conChinExceptFooter #articleWrapper {
           width: 95%;
           height: 40.5%;
-          top: 43.5%; } }
+          top: 45.5%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #articleWrapper {
           width: 85%;
@@ -1027,7 +1086,7 @@ a {
       #conChinContainer #contentsWrapper {
         width: 93.5%;
         height: 60%;
-        top: 95%; } }
+        top: 106%; } }
     @media (min-width: 768px) {
       #conChinContainer #contentsWrapper {
         width: 85%;
@@ -1046,17 +1105,17 @@ a {
     @media (max-width: 767px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 17%;
-        top: 162%; } }
+        height: 22%;
+        top: 175%; } }
     @media (min-width: 768px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 18.5%;
+        height: 19.5%;
         top: 190%; } }
     @media (min-width: 1200px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 15.3%;
+        height: 17.5%;
         top: 179%; } }
     #conChinContainer #fullFooter #footerWrapper {
       position: absolute;
@@ -1065,15 +1124,15 @@ a {
       @media (max-width: 767px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 100%;
-          width: 75%; } }
+          width: 100%; } }
       @media (min-width: 768px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 100%;
-          width: 100%; } }
+          width: 90%; } }
       @media (min-width: 1200px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 70%;
-          width: 79%; } }
+          width: 73%; } }
 
 #conChinFindBox {
   position: absolute;
@@ -1089,7 +1148,8 @@ a {
       height: 14%; } }
   @media (min-width: 1200px) {
     #conChinFindBox {
-      height: 10%; } }
+      top: 2%;
+      height: 8%; } }
   #conChinFindBox .title, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 {
     position: relative;
     display: inline-block;
@@ -1129,9 +1189,20 @@ a {
     position: absolute;
     display: flex;
     align-items: center;
-    width: 25%;
     height: 100%;
     right: 1%; }
+    @media (max-width: 767px) {
+      #conChinFindBox .btnWrapper {
+        bottom: 5%;
+        width: 25%; } }
+    @media (min-width: 768px) {
+      #conChinFindBox .btnWrapper {
+        bottom: 0%;
+        width: 28%; } }
+    @media (min-width: 1200px) {
+      #conChinFindBox .btnWrapper {
+        bottom: 0%;
+        width: 31%; } }
     #conChinFindBox .btnWrapper .btn {
       position: absolute;
       height: 60%;
@@ -1144,10 +1215,10 @@ a {
       font-weight: bold; }
       @media (max-width: 767px) {
         #conChinFindBox .btnWrapper .btn {
-          width: 85%;
+          width: 80%;
           padding-left: 17%;
           font-size: 1.3rem;
-          height: 60%; } }
+          height: 80%; } }
       @media (min-width: 768px) {
         #conChinFindBox .btnWrapper .btn {
           width: 48%;
@@ -1168,7 +1239,7 @@ a {
           #conChinFindBox .btnWrapper .btn .img {
             width: 13px;
             height: 13px;
-            right: 67.5%; } }
+            right: 70.5%; } }
         @media (min-width: 768px) {
           #conChinFindBox .btnWrapper .btn .img {
             width: 18px;
@@ -1206,7 +1277,7 @@ a {
   @media (max-width: 767px) {
     #conChinArticleBox {
       border-top: 5px solid #ffce63;
-      height: 143%;
+      height: 170%;
       top: 15%; } }
   @media (min-width: 768px) {
     #conChinArticleBox {
@@ -1608,10 +1679,11 @@ a {
         width: 90%; } }
     @media (min-width: 1200px) {
       #conChinPostingBox .posting {
-        width: 90%; } }
+        width: 85%; } }
     #conChinPostingBox .posting:hover {
       background-color: #ffce63;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: 0.15s all; }
     #conChinPostingBox .posting .title, #conChinPostingBox .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox .posting .title2 {
       position: absolute;
       display: flex;
@@ -2029,7 +2101,7 @@ a {
   top: 10%; }
   @media (max-width: 767px) {
     #myPageContainer {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 768px) {
     #myPageContainer {
       height: 180%; } }
@@ -2086,17 +2158,17 @@ a {
     @media (max-width: 767px) {
       #myPageContainer #fullFooter {
         width: 100%;
-        height: 14%;
+        height: 15.3%;
         top: 103%; } }
     @media (min-width: 768px) {
       #myPageContainer #fullFooter {
         width: 100%;
-        height: 15.3%;
+        height: 15.9%;
         top: 104%; } }
     @media (min-width: 1200px) {
       #myPageContainer #fullFooter {
         width: 100%;
-        height: 12.5%;
+        height: 13.5%;
         top: 112%; } }
     #myPageContainer #fullFooter #footerWrapper {
       position: absolute;
@@ -2105,15 +2177,15 @@ a {
       @media (max-width: 767px) {
         #myPageContainer #fullFooter #footerWrapper {
           height: 100%;
-          width: 75%; } }
+          width: 100%; } }
       @media (min-width: 768px) {
         #myPageContainer #fullFooter #footerWrapper {
-          height: 70%;
-          width: 79%; } }
+          height: 100%;
+          width: 90%; } }
       @media (min-width: 1200px) {
         #myPageContainer #fullFooter #footerWrapper {
           height: 70%;
-          width: 79%; } }
+          width: 73%; } }
 
 #myProfileImageModal {
   z-index: 999;
@@ -2196,7 +2268,7 @@ a {
         @media (max-width: 767px) {
           #myProfileImageModal #modalBox #modal #titleWrapper {
             height: 10%;
-            top: 10%; } }
+            top: 8%; } }
         @media (min-width: 768px) {
           #myProfileImageModal #modalBox #modal #titleWrapper {
             height: 20%; } }
@@ -2266,6 +2338,8 @@ a {
           bottom: 0%;
           width: 20%;
           padding-bottom: 20%; }
+          #myProfileImageModal #modalBox #modal #imgBox #cameraWrapper:hover {
+            cursor: pointer; }
           #myProfileImageModal #modalBox #modal #imgBox #cameraWrapper .camera {
             position: absolute;
             width: 100%;
@@ -2284,7 +2358,7 @@ a {
         @media (max-width: 767px) {
           #myProfileImageModal #modalBox #modal #modifyBtnWrapper {
             height: 6%;
-            bottom: 30%; } }
+            bottom: 20%; } }
         @media (min-width: 768px) {
           #myProfileImageModal #modalBox #modal #modifyBtnWrapper {
             height: 8%;
@@ -2304,6 +2378,8 @@ a {
           border: none;
           border-radius: 5px;
           color: white; }
+          #myProfileImageModal #modalBox #modal #modifyBtnWrapper .modifyBtn:hover {
+            cursor: pointer; }
           @media (max-width: 767px) {
             #myProfileImageModal #modalBox #modal #modifyBtnWrapper .modifyBtn {
               font-size: 2rem; } }
@@ -2324,6 +2400,8 @@ a {
           border: none;
           border-radius: 5px;
           color: white; }
+          #myProfileImageModal #modalBox #modal #modifyBtnWrapper .cancleBtn:hover {
+            cursor: pointer; }
           @media (max-width: 767px) {
             #myProfileImageModal #modalBox #modal #modifyBtnWrapper .cancleBtn {
               font-size: 2rem; } }
@@ -2473,13 +2551,13 @@ a {
         height: 20%; }
         @media (max-width: 767px) {
           #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
-            bottom: 41.5%; } }
+            bottom: 34.5%; } }
         @media (min-width: 768px) {
           #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
             bottom: 22%; } }
         @media (min-width: 1200px) {
           #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
-            bottom: 25%; } }
+            bottom: 21%; } }
         #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
           position: absolute;
           display: flex;
@@ -2491,13 +2569,13 @@ a {
           font-weight: bold; }
           @media (max-width: 767px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 2.5rem; } }
+              font-size: 2rem; } }
           @media (min-width: 768px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 2.5rem; } }
+              font-size: 2.3rem; } }
           @media (min-width: 1200px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 3.5rem; } }
+              font-size: 2.5rem; } }
       #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
         position: absolute;
         display: flex;
@@ -2506,7 +2584,7 @@ a {
         @media (max-width: 767px) {
           #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
             height: 6%;
-            bottom: 33%; } }
+            bottom: 27%; } }
         @media (min-width: 768px) {
           #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
             height: 8%;
@@ -2526,6 +2604,8 @@ a {
           border: none;
           border-radius: 5px;
           color: white; }
+          #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn:hover {
+            cursor: pointer; }
           @media (max-width: 767px) {
             #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn {
               font-size: 2rem; } }
@@ -2546,6 +2626,8 @@ a {
           border: none;
           border-radius: 5px;
           color: white; }
+          #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .cancleBtn:hover {
+            cursor: pointer; }
           @media (max-width: 767px) {
             #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .cancleBtn {
               font-size: 2rem; } }
@@ -2566,10 +2648,10 @@ a {
   /***** 공통 *****/ }
   @media (max-width: 767px) {
     #conChinCertificationPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 768px) {
     #conChinCertificationPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 1200px) {
     #conChinCertificationPage {
       height: 227%; } }
@@ -2619,15 +2701,15 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #conChinCertificationPage #userInfoWrapper {
-        top: 30.33%;
+        top: 32.33%;
         height: 60%; } }
     @media (min-width: 768px) {
       #conChinCertificationPage #userInfoWrapper {
-        top: 40%;
+        top: 30%;
         height: 75%; } }
     @media (min-width: 1200px) {
       #conChinCertificationPage #userInfoWrapper {
-        top: 30.33%;
+        top: 28%;
         height: 67%; } }
     #conChinCertificationPage #userInfoWrapper #userInfoBox {
       position: absolute;
@@ -2636,16 +2718,16 @@ a {
       justify-content: center; }
       @media (max-width: 767px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
-          width: 90%;
+          width: 80%;
           height: 90%; } }
       @media (min-width: 768px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
-          width: 80%;
-          height: 90.1%; } }
+          width: 60%;
+          height: 80%; } }
       @media (min-width: 1200px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
-          width: 50%;
-          height: 90%; } }
+          width: 40%;
+          height: 80%; } }
       #conChinCertificationPage #userInfoWrapper #userInfoBox #emailWrapper {
         position: absolute;
         display: flex;
@@ -2826,9 +2908,11 @@ a {
               border: none;
               border-radius: 5px;
               color: white; }
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn:hover, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn:hover {
+                cursor: pointer; }
               @media (max-width: 767px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
-                  font-size: 1.5rem; } }
+                  font-size: 1.3rem; } }
               @media (min-width: 768px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
                   font-size: 1.8rem; } }
@@ -2843,9 +2927,11 @@ a {
               border: none;
               border-radius: 5px;
               color: white; }
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn:hover, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn:hover {
+                cursor: pointer; }
               @media (max-width: 767px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
-                  font-size: 1.5rem; } }
+                  font-size: 1.3rem; } }
               @media (min-width: 768px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
                   font-size: 1.8rem; } }
@@ -2881,6 +2967,8 @@ a {
             border-radius: 5px;
             color: white;
             font-weight: bold; }
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn:hover, #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn:hover {
+              cursor: pointer; }
             @media (max-width: 767px) {
               #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
                 font-size: 1.5rem; } }
@@ -2900,18 +2988,18 @@ a {
     @media (max-width: 767px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 18%;
+        height: 15.3%;
         top: 93%; } }
     @media (min-width: 768px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 19%;
-        top: 115%; } }
+        height: 15.9%;
+        top: 103%; } }
     @media (min-width: 1200px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 16%;
-        top: 100%; } }
+        height: 18%;
+        top: 97%; } }
     #conChinCertificationPage #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -2922,12 +3010,12 @@ a {
           width: 100%; } }
       @media (min-width: 768px) {
         #conChinCertificationPage #fullFooter #footerWrapper {
-          height: 70%;
-          width: 100%; } }
+          height: 100%;
+          width: 90%; } }
       @media (min-width: 1200px) {
         #conChinCertificationPage #fullFooter #footerWrapper {
-          height: 73%;
-          width: 79%; } }
+          height: 70%;
+          width: 73%; } }
 
 #findPasswordModal {
   z-index: 990;
@@ -3166,8 +3254,9 @@ a {
               border: none;
               border-radius: 5px;
               color: white;
-              font-weight: bold;
-              cursor: pointer; }
+              font-weight: bold; }
+              #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper .btn:hover {
+                cursor: pointer; }
               @media (max-width: 767px) {
                 #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper .btn {
                   font-size: 1.3rem; } }
@@ -3203,8 +3292,9 @@ a {
           border: none;
           border-radius: 5px;
           color: white;
-          font-weight: bold;
-          cursor: pointer; }
+          font-weight: bold; }
+          #findPasswordModal #modalBox #modal #btnBox .btn:hover {
+            cursor: pointer; }
           @media (max-width: 767px) {
             #findPasswordModal #modalBox #modal #btnBox .btn {
               font-size: 1.5rem; } }
@@ -3343,6 +3433,7 @@ a {
           width: 100%; }
           #confirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
             position: absolute;
+            user-select: none;
             right: 2%;
             color: white;
             cursor: pointer; }
@@ -3439,6 +3530,8 @@ a {
             border: none;
             border-radius: 5px;
             color: white; }
+            #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn:hover, #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn:hover {
+              cursor: pointer; }
             @media (max-width: 767px) {
               #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn, #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
                 font-size: 1.5rem; } }
@@ -3718,6 +3811,8 @@ a {
             border-radius: 5px;
             color: white;
             font-weight: bold; }
+            #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton:hover, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton:hover {
+              cursor: pointer; }
             @media (max-width: 767px) {
               #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
                 font-size: 1.5rem; } }
@@ -3731,13 +3826,15 @@ a {
             background-color: #000; }
 
 #myProfileBox {
+  z-index: 10;
   position: absolute;
   display: flex;
   justify-content: center; }
   @media (max-width: 767px) {
     #myProfileBox {
       width: 80%;
-      padding-bottom: 90%; } }
+      padding-bottom: 90%;
+      top: 6%; } }
   @media (min-width: 768px) {
     #myProfileBox {
       width: 60%;
@@ -3909,6 +4006,10 @@ a {
         border: none;
         border-radius: 5px;
         color: white; }
+        #myProfileBox #introductionBox #modifyBtnWrapper .btn:hover {
+          cursor: pointer;
+          background-color: #ffce63;
+          transition: all 0.15s; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #modifyBtnWrapper .btn {
             font-size: 1.5rem; } }
@@ -3944,6 +4045,10 @@ a {
         border: none;
         border-radius: 5px;
         color: white; }
+        #myProfileBox #introductionBox #resignBtnWrapper .btn:hover {
+          cursor: pointer;
+          background-color: #ffce63;
+          transition: all 0.15s; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #resignBtnWrapper .btn {
             font-size: 1.5rem; } }
@@ -4134,10 +4239,10 @@ a {
   /***** 공통 *****/ }
   @media (max-width: 767px) {
     #myEditPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 768px) {
     #myEditPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 1200px) {
     #myEditPage {
       height: 227%; } }
@@ -4191,7 +4296,7 @@ a {
         height: 50%; } }
     @media (min-width: 768px) {
       #myEditPage #userInfoWrapper {
-        top: 40%;
+        top: 30%;
         height: 70%; } }
     @media (min-width: 1200px) {
       #myEditPage #userInfoWrapper {
@@ -4204,16 +4309,16 @@ a {
       justify-content: center; }
       @media (max-width: 767px) {
         #myEditPage #userInfoWrapper #userInfoBox {
-          width: 90%;
+          width: 80%;
           height: 90%; } }
       @media (min-width: 768px) {
         #myEditPage #userInfoWrapper #userInfoBox {
-          width: 80%;
-          height: 90%; } }
+          width: 60%;
+          height: 80%; } }
       @media (min-width: 1200px) {
         #myEditPage #userInfoWrapper #userInfoBox {
-          width: 50%;
-          height: 87.2%; } }
+          width: 40%;
+          height: 80%; } }
       #myEditPage #userInfoWrapper #userInfoBox #emailWrapper {
         position: absolute;
         display: flex;
@@ -4358,6 +4463,8 @@ a {
             border-radius: 5px;
             color: white;
             font-weight: bold; }
+            #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn:hover, #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn:hover {
+              cursor: pointer; }
             @media (max-width: 767px) {
               #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
                 font-size: 1.5rem; } }
@@ -4377,18 +4484,18 @@ a {
     @media (max-width: 767px) {
       #myEditPage #fullFooter {
         width: 100%;
-        height: 18%;
-        top: 83%; } }
+        height: 15.3%;
+        top: 85%; } }
     @media (min-width: 768px) {
       #myEditPage #fullFooter {
         width: 100%;
-        height: 20%;
-        top: 112%; } }
+        height: 15.9%;
+        top: 98%; } }
     @media (min-width: 1200px) {
       #myEditPage #fullFooter {
         width: 100%;
-        height: 16%;
-        top: 100%; } }
+        height: 18%;
+        top: 95%; } }
     #myEditPage #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -4399,15 +4506,136 @@ a {
           width: 100%; } }
       @media (min-width: 768px) {
         #myEditPage #fullFooter #footerWrapper {
-          height: 70%;
-          width: 100%; } }
+          height: 100%;
+          width: 90%; } }
       @media (min-width: 1200px) {
         #myEditPage #fullFooter #footerWrapper {
-          height: 73%;
-          width: 79%; } }
+          height: 70%;
+          width: 73%; } }
 
-/***** 재혁 *****/
-/*---------------선영--------------------*/
+#sideMenuModal {
+  z-index: 993;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s; }
+  @media (max-width: 767px) {
+    #sideMenuModal {
+      position: absolute; } }
+  @media (min-width: 768px) {
+    #sideMenuModal {
+      position: fixed; } }
+  @media (min-width: 1200px) {
+    #sideMenuModal {
+      position: fixed; } }
+  #sideMenuModal #bg {
+    z-index: 994;
+    position: fixed;
+    display: flex;
+    background-color: #404040;
+    opacity: 50%; }
+    @media (max-width: 767px) {
+      #sideMenuModal #bg {
+        width: 100%;
+        height: 100%; } }
+    @media (min-width: 768px) {
+      #sideMenuModal #bg {
+        width: 100%;
+        height: 100%; } }
+    @media (min-width: 1200px) {
+      #sideMenuModal #bg {
+        width: 100%;
+        height: 100%; } }
+  #sideMenuModal #modalBox {
+    z-index: 995;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; }
+    @media (max-width: 767px) {
+      #sideMenuModal #modalBox {
+        width: 100%;
+        height: 20%;
+        top: 10%;
+        border-radius: 0px 0px 5px 5px; } }
+    @media (min-width: 768px) {
+      #sideMenuModal #modalBox {
+        width: 100%;
+        height: 20%;
+        top: 10%;
+        border-radius: 0px 0px 5px 5px; } }
+    @media (min-width: 1200px) {
+      #sideMenuModal #modalBox {
+        width: 33%;
+        height: 35%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 10px; } }
+    #sideMenuModal #modalBox #modal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      bottom: 0%;
+      border-radius: 5px; }
+  #sideMenuModal #downedModalBox {
+    z-index: 995;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; }
+    @media (max-width: 767px) {
+      #sideMenuModal #downedModalBox {
+        width: 100%;
+        height: 26%;
+        top: 0%;
+        border-radius: 0px 0px 5px 5px; } }
+    @media (min-width: 768px) {
+      #sideMenuModal #downedModalBox {
+        width: 100%;
+        height: 26%;
+        top: 0%;
+        border-radius: 0px 0px 5px 5px; } }
+    @media (min-width: 1200px) {
+      #sideMenuModal #downedModalBox {
+        width: 33%;
+        height: 35%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 10px; } }
+    #sideMenuModal #downedModalBox #downedModal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 80%;
+      bottom: 0%;
+      border-radius: 0px 0px 5px 5px; }
+  #sideMenuModal #sidemenuWrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    top: 0%; }
+    #sideMenuModal #sidemenuWrapper .menus {
+      z-index: 999;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-size: 1.8rem; }
+
+/*------------재혁------------*/
+/*------------선영------------*/
 #mainContainer {
   position: absolute;
   width: 100%;
@@ -4423,17 +4651,19 @@ a {
       justify-content: center; } }
   #mainContainer #mainJumboWrapper {
     position: absolute;
-    top: 0;
-    width: 100%; }
+    top: 0; }
     @media (max-width: 767px) {
       #mainContainer #mainJumboWrapper {
-        height: 75%; } }
+        height: 75%;
+        width: 100%; } }
     @media (min-width: 768px) {
       #mainContainer #mainJumboWrapper {
-        height: 65%; } }
+        height: 65%;
+        width: 100%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainJumboWrapper {
-        height: 65%; } }
+        height: 80%;
+        width: 100%; } }
   #mainContainer #mainConcertInfoWrapper {
     position: absolute;
     width: 100%; }
@@ -7669,8 +7899,8 @@ a {
           height: 70%;
           width: 79%; } }
 
-/*------------선영----------*/
-/*------------정현----------*/
+/*------------선영------------*/
+/*------------정현------------*/
 #PrivacyModalContainer {
   z-index: 999;
   width: 100%; }
@@ -7932,4 +8162,4 @@ a {
             border: 0;
             cursor: pointer; }
 
-/*------------정현----------*/
+/*------------정현------------*/

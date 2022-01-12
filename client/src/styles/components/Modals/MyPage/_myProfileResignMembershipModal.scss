@@ -36,6 +36,7 @@
       height: 100%;
     }
   }
+
   #modalBox {
     z-index: 999;
     position: fixed;
@@ -153,13 +154,13 @@
         width: 100%;
         height: 20%;
         @include mobile-only() {
-          bottom: 41.5%;
+          bottom: 34.5%;
         }
         @include md() {
           bottom: 22%;
         }
         @include lg() {
-          bottom: 25%;
+          bottom: 21%;
         }
         // border: 1px solid red;
         .explain {
@@ -174,13 +175,13 @@
           font-weight: bold;
           // border: 1px solid red;
           @include mobile-only() {
-            font-size: 2.5rem;
+            font-size: 2rem;
           }
           @include md() {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
           }
           @include lg() {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
           }
         }
       }
@@ -190,9 +191,10 @@
         justify-content: space-between;
         width: 90%;
         // border: 1px solid red;
+
         @include mobile-only() {
           height: 6%;
-          bottom: 33%;
+          bottom: 27%;
         }
         @include md() {
           height: 8%;
@@ -213,6 +215,9 @@
           border: none;
           border-radius: 5px;
           color: white;
+          &:hover {
+            cursor: pointer;
+          }
           @include mobile-only() {
             font-size: 2rem;
           }
@@ -234,6 +239,9 @@
           border: none;
           border-radius: 5px;
           color: white;
+          &:hover {
+            cursor: pointer;
+          }
           @include mobile-only() {
             font-size: 2rem;
           }
