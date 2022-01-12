@@ -29,7 +29,7 @@ function App() {
   return (
     <div className='App'>
       <Header />
-
+      {/* <ConcertModal /> */}
       {/* <SignUpModal /> */}
       {/* <TosModal /> */}
       {/* <ConcertModal /> */}
@@ -46,8 +46,8 @@ function App() {
       {/* <MainPage /> */}
       {/* <ConcertPage /> */}
       {/* <ConChinPage /> */}
-      <MyPage />
-      {/* <MyEditPage /> */}
+      {/* <MyPage /> */}
+      <MyEditPage />
       {/* <ConChinCertificationPage /> */}
 
       <Routes>

@@ -30,7 +30,7 @@
   #mainConcertInfoWrapper {
     position: absolute;
     width: 100%;
-    border: 2px solid red;
+    // border: 2px solid red;
     @include mobile-only() {
       top: 41.2%;
       height: 70%;
@@ -58,18 +58,18 @@
     position: absolute;
     // border: 1px solid green;
     @include mobile-only() {
-      top: 111%;
+      top: 115%;
       width: 100%;
-      height: 40%;
+      height: 55%;
     }
     @include md() {
-      top: 160%;
-      width: 65%;
-      height: 70%;
+      top: 137%;
+      width: 90%;
+      height: 45%;
     }
     @include lg() {
       top: 160%;
-      width: 65%;
+      width: 60%;
       height: 70%;
     }
   }
@@ -81,14 +81,15 @@
     justify-content: center;
     width: 100%;
     height: 5%;
+    // border: 1px solid red;
     @include mobile-only() {
-      top: 150%;
+      top: 163%;
     }
     @include md() {
-      top: 230%;
+      top: 190%;
     }
     @include lg() {
-      top: 230%;
+      top: 220%;
     }
   }
   #mainFindConchinWrapper {
@@ -96,12 +97,12 @@
     width: 100%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 151%;
+      top: 170%;
       height: 40%;
     }
     @include md() {
-      top: 230%;
-      height: 80%;
+      top: 200%;
+      height: 60%;
     }
     @include lg() {
       top: 230%;
@@ -111,9 +112,14 @@
   #mainFooterWrapper {
     position: absolute;
     width: 100%;
+    // border: 1px solid green;
     @include mobile-only() {
-      top: 191%;
+      top: 210%;
       height: 33%;
+    }
+    @include md() {
+      top: 270%;
+      height: 30%;
     }
     @include lg() {
       top: 310%;

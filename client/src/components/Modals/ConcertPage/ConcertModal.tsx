@@ -10,10 +10,19 @@ function ConcertModal() {
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
   });
+
   return (
     <div id='concertModalContainer'>
       <div id='background'></div>
-      <div id={scrollPosition > 70 ? 'stretchedConcertModal' : 'concertModal'}>
+      <div
+        id={
+          scrollPosition < 70
+            ? 'concertModal'
+            : scrollPosition > 1000
+            ? 'onFooterModal'
+            : 'stretchedConcertModal'
+        }
+      >
         <div id='AlignBox'>
           <div id='top_box'>
             <div id='titleAndDay'>
@@ -26,7 +35,7 @@ function ConcertModal() {
             </div>
           </div>
           <div id='mid_box'>
-            <img id='poster' src={poster}></img>
+            <img id='poster' src={poster} alt='포스터'></img>
             <div id='right-side'>
               <div id='conInfo'>
                 <div id='miniTitle'>
@@ -42,7 +51,7 @@ function ConcertModal() {
             </div>
           </div>
           <div id='bottom_box'>
-            <img id='map' src={map}></img>
+            <img id='map' src={map} alt='지도 이미지'></img>
           </div>
         </div>
       </div>

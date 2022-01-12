@@ -37,6 +37,7 @@ function TosModal() {
                 동의 2년 2.개인정보 열람등요구 처리 사용자 정보 개인정보보호법
                 제35조-제39조 3년
               </p>
+              <p className='fontMatch'>약관 3</p>
             </div>
             <div id='bottomBox'>
               <button className='fontMatch textBoxMatch3' id='agree'>

@@ -15,10 +15,18 @@ function MainPage() {
         <div id='mainConcertInfoWrapper'>
           <MainConcertInfo />
         </div>
-        <div id='mainCommentWrapper'>{/* <MainComment /> */}</div>
-        <div id='mainPaginationWrapper'>{/* <MainPagination /> */}</div>
-        <div id='mainFindConchinWrapper'>{/* <MainFindConchin /> */}</div>
-        <div id='mainFooterWrapper'>{/* <Footer /> */}</div>
+        <div id='mainCommentWrapper'>
+          <MainComment />
+        </div>
+        <div id='mainPaginationWrapper'>
+          <MainPagination />
+        </div>
+        <div id='mainFindConchinWrapper'>
+          <MainFindConchin />
+        </div>
+        <div id='mainFooterWrapper'>
+          <Footer />
+        </div>
       </div>
     </>
   );

@@ -44,7 +44,7 @@
         height: 100%;
       }
       @include md() {
-        width: 30%;
+        width: 60%;
         height: 78%;
         border-radius: 20px;
       }
@@ -91,7 +91,7 @@
           h2 {
             color: $yellow;
             @include mobile-only() {
-              font-size: 3rem;
+              font-size: 3.3rem;
             }
             @include md() {
               font-size: 3.8rem;

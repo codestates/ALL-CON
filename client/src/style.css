@@ -711,7 +711,7 @@ html {
       height: 100%; } }
   @media (min-width: 768px) {
     #FooterContainer {
-      height: 130%; } }
+      height: 100%; } }
   @media (min-width: 1200px) {
     #FooterContainer {
       height: 130%; } }
@@ -725,7 +725,7 @@ html {
         height: 60%; } }
     @media (min-width: 768px) {
       #FooterContainer .team_members {
-        width: 57%;
+        width: 70%;
         height: 60%; } }
     @media (min-width: 1200px) {
       #FooterContainer .team_members {
@@ -750,21 +750,24 @@ html {
         @media (min-width: 1200px) {
           #FooterContainer .team_members .profiles .profile {
             width: 25%; } }
-        #FooterContainer .team_members .profiles .profile #github {
-          padding-top: 6%;
-          padding-bottom: 6%; }
-          @media (max-width: 767px) {
-            #FooterContainer .team_members .profiles .profile #github {
-              width: 30%;
-              height: 30%; } }
-          @media (min-width: 768px) {
-            #FooterContainer .team_members .profiles .profile #github {
-              width: 23%;
-              height: 40%; } }
-          @media (min-width: 1200px) {
-            #FooterContainer .team_members .profiles .profile #github {
-              width: 23%;
-              height: 40%; } }
+        @media (max-width: 767px) {
+          #FooterContainer .team_members .profiles .profile #paddingBox {
+            width: 30%;
+            height: 30%;
+            padding-bottom: 2%; } }
+        @media (min-width: 768px) {
+          #FooterContainer .team_members .profiles .profile #paddingBox {
+            width: 30%;
+            height: 30%;
+            padding-bottom: 2%; } }
+        @media (min-width: 1200px) {
+          #FooterContainer .team_members .profiles .profile #paddingBox {
+            width: 28%;
+            height: 28%;
+            padding-bottom: 2%; } }
+        #FooterContainer .team_members .profiles .profile #paddingBox #github {
+          width: 100%;
+          height: 100%; }
         #FooterContainer .team_members .profiles .profile .text {
           display: flex;
           flex-direction: column;
@@ -779,10 +782,14 @@ html {
               font-size: 1.1rem; } }
           @media (min-width: 768px) {
             #FooterContainer .team_members .profiles .profile .text {
-              font-size: 1.8rem; } }
+              font-size: 1.4rem; } }
           @media (min-width: 1200px) {
             #FooterContainer .team_members .profiles .profile .text {
               font-size: 1.8rem; } }
+          #FooterContainer .team_members .profiles .profile .text .name {
+            font-weight: bold; }
+          #FooterContainer .team_members .profiles .profile .text .role {
+            color: #ffce63; }
   #FooterContainer .badges {
     display: flex;
     justify-content: space-between; }
@@ -792,7 +799,7 @@ html {
         height: 15%; } }
     @media (min-width: 768px) {
       #FooterContainer .badges {
-        width: 9%;
+        width: 12%;
         height: 15%; } }
     @media (min-width: 1200px) {
       #FooterContainer .badges {
@@ -807,11 +814,14 @@ html {
   #FooterContainer #copyright {
     color: #fff;
     text-align: center;
-    width: 40%;
+    width: 50%;
     height: 10%; }
+    @media (max-width: 767px) {
+      #FooterContainer #copyright {
+        font-size: 1.2rem; } }
     @media (min-width: 768px) {
       #FooterContainer #copyright {
-        font-size: 1.6rem; } }
+        font-size: 1.4rem; } }
     @media (min-width: 1200px) {
       #FooterContainer #copyright {
         font-size: 1.6rem; } }
@@ -4391,8 +4401,7 @@ html {
         height: 65%; } }
   #mainContainer #mainConcertInfoWrapper {
     position: absolute;
-    width: 100%;
-    border: 2px solid red; }
+    width: 100%; }
     @media (max-width: 767px) {
       #mainContainer #mainConcertInfoWrapper {
         top: 41.2%;
@@ -4419,18 +4428,18 @@ html {
     position: absolute; }
     @media (max-width: 767px) {
       #mainContainer #mainCommentWrapper {
-        top: 111%;
+        top: 115%;
         width: 100%;
-        height: 40%; } }
+        height: 55%; } }
     @media (min-width: 768px) {
       #mainContainer #mainCommentWrapper {
-        top: 160%;
-        width: 65%;
-        height: 70%; } }
+        top: 137%;
+        width: 90%;
+        height: 45%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainCommentWrapper {
         top: 160%;
-        width: 65%;
+        width: 60%;
         height: 70%; } }
   #mainContainer #mainPaginationWrapper {
     z-index: 77;
@@ -4442,24 +4451,24 @@ html {
     height: 5%; }
     @media (max-width: 767px) {
       #mainContainer #mainPaginationWrapper {
-        top: 150%; } }
+        top: 163%; } }
     @media (min-width: 768px) {
       #mainContainer #mainPaginationWrapper {
-        top: 230%; } }
+        top: 190%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainPaginationWrapper {
-        top: 230%; } }
+        top: 220%; } }
   #mainContainer #mainFindConchinWrapper {
     position: absolute;
     width: 100%; }
     @media (max-width: 767px) {
       #mainContainer #mainFindConchinWrapper {
-        top: 151%;
+        top: 170%;
         height: 40%; } }
     @media (min-width: 768px) {
       #mainContainer #mainFindConchinWrapper {
-        top: 230%;
-        height: 80%; } }
+        top: 200%;
+        height: 60%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainFindConchinWrapper {
         top: 230%;
@@ -4469,8 +4478,12 @@ html {
     width: 100%; }
     @media (max-width: 767px) {
       #mainContainer #mainFooterWrapper {
-        top: 191%;
+        top: 210%;
         height: 33%; } }
+    @media (min-width: 768px) {
+      #mainContainer #mainFooterWrapper {
+        top: 270%;
+        height: 30%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainFooterWrapper {
         top: 310%;
@@ -4651,6 +4664,22 @@ html {
   width: 100%;
   height: 100%; }
 
+.posterCover {
+  z-index: 40;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.posterCover2 {
+  z-index: 40;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  background-color: rgba(0, 0, 0, 0.7); }
+
 /*가운데*/
 #posterWrapper1 {
   position: absolute;
@@ -4658,6 +4687,46 @@ html {
   z-index: 10;
   left: 50%;
   transform: translate(-50%, -50%); }
+  #posterWrapper1:hover {
+    box-shadow: 3px 3px 14px 1px #606060;
+    cursor: pointer; }
+    #posterWrapper1:hover .dDay {
+      z-index: 50;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%; }
+      @media (max-width: 767px) {
+        #posterWrapper1:hover .dDay {
+          width: 75%;
+          height: 60%;
+          border: 4px solid #ffce63; } }
+      @media (min-width: 768px) {
+        #posterWrapper1:hover .dDay {
+          width: 75%;
+          height: 60%;
+          border: 5px solid #ffce63; } }
+      @media (min-width: 1200px) {
+        #posterWrapper1:hover .dDay {
+          width: 75%;
+          height: 60%;
+          border: 6px solid #ffce63; } }
+      #posterWrapper1:hover .dDay p {
+        color: #fff;
+        font-weight: bold; }
+        @media (max-width: 767px) {
+          #posterWrapper1:hover .dDay p {
+            font-size: 2.5rem; } }
+        @media (min-width: 768px) {
+          #posterWrapper1:hover .dDay p {
+            font-size: 4rem; } }
+        @media (min-width: 1200px) {
+          #posterWrapper1:hover .dDay p {
+            font-size: 5rem; } }
   @media (max-width: 767px) {
     #posterWrapper1 {
       width: 25%;
@@ -4666,13 +4735,13 @@ html {
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper1 {
-      width: 20%;
+      width: 22%;
       height: 70%;
       top: 45%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper1 {
-      width: 18%;
+      width: 16%;
       height: 75%;
       top: 45%;
       padding-bottom: 20%; } }
@@ -4691,23 +4760,22 @@ html {
       left: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper2 {
-      width: 20%;
+      width: 22%;
       height: 70%;
       padding-bottom: 20%;
       top: 50%;
       left: 35%; } }
   @media (min-width: 1200px) {
     #posterWrapper2 {
-      width: 18%;
+      width: 16%;
       height: 75%;
       padding-bottom: 20%;
       top: 50%;
-      left: 35%; } }
+      left: 40%; } }
 
 #posterWrapper3 {
   position: absolute;
   overflow: hidden;
-  padding-bottom: 30%;
   z-index: 9;
   transform: translate(-50%, -50%); }
   @media (max-width: 767px) {
@@ -4715,19 +4783,22 @@ html {
       width: 25%;
       height: 60%;
       top: 60%;
-      left: 70%; } }
+      left: 70%;
+      padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper3 {
-      width: 20%;
+      width: 22%;
       height: 70%;
       top: 50%;
-      left: 65%; } }
+      left: 65%;
+      padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper3 {
-      width: 18%;
+      width: 16%;
       height: 75%;
       top: 50%;
-      left: 65%; } }
+      left: 60%;
+      padding-bottom: 20%; } }
 
 #posterWrapper4 {
   position: absolute;
@@ -4743,17 +4814,17 @@ html {
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper4 {
-      width: 20%;
+      width: 22%;
       height: 70%;
       top: 60%;
       left: 20%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper4 {
-      width: 18%;
+      width: 16%;
       height: 75%;
       top: 60%;
-      left: 20%;
+      left: 30%;
       padding-bottom: 20%; } }
 
 #posterWrapper5 {
@@ -4770,17 +4841,17 @@ html {
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper5 {
-      width: 20%;
+      width: 22%;
       height: 70%;
       top: 60%;
       left: 80%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper5 {
-      width: 18%;
+      width: 16%;
       height: 75%;
       top: 60%;
-      left: 80%;
+      left: 70%;
       padding-bottom: 20%; } }
 
 #mainConcertInfoBox {
@@ -4799,8 +4870,7 @@ html {
   #mainConcertInfoBox #topBox {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    border: 1px solid blue; }
+    width: 100%; }
     @media (max-width: 767px) {
       #mainConcertInfoBox #topBox {
         justify-content: space-between;
@@ -4888,7 +4958,8 @@ html {
       @media (min-width: 768px) {
         #mainConcertInfoBox #topBox #bell {
           top: 5%;
-          width: 4.5%; } }
+          width: 4.5%;
+          height: 4.5%; } }
       @media (min-width: 1200px) {
         #mainConcertInfoBox #topBox #bell {
           top: 5%;
@@ -4930,10 +5001,12 @@ html {
     #mainConcertInfoBox #topBox #titleBox {
       position: relative;
       width: 100%;
-      border: 0;
-      background: #ccc; }
+      border: 0; }
       @media (max-width: 767px) {
         #mainConcertInfoBox #topBox #titleBox {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           height: 40%; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #topBox #titleBox {
@@ -4944,8 +5017,8 @@ html {
       #mainConcertInfoBox #topBox #titleBox #h2AlignBox {
         display: flex;
         align-items: center;
-        justify-content: center;
-        width: 100%;
+        justify-content: baseline;
+        width: 90%;
         height: 100%; }
         @media (max-width: 767px) {
           #mainConcertInfoBox #topBox #titleBox #h2AlignBox h2 {
@@ -4960,6 +5033,8 @@ html {
       color: #a0a0a0; }
       @media (max-width: 767px) {
         #mainConcertInfoBox #topBox #date {
+          position: relative;
+          left: 5%;
           font: 1.3rem; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #topBox #date {
@@ -4989,8 +5064,7 @@ html {
     #mainConcertInfoBox #middleBox #concertInfoBox {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border: 2px solid blue; }
+      justify-content: space-between; }
       @media (max-width: 767px) {
         #mainConcertInfoBox #middleBox #concertInfoBox {
           width: 90%;
@@ -5015,8 +5089,7 @@ html {
       #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo {
         position: relative;
         width: 60%;
-        height: 100%;
-        border: 2px solid pink; }
+        height: 100%; }
         #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table {
           position: absolute;
           top: 0;
@@ -5114,10 +5187,10 @@ html {
       @media (min-width: 768px) {
         #mainConcertInfoBox #middleBox #buttonsWrapper {
           position: absolute;
-          bottom: 6%;
+          bottom: 9%;
           left: 40.5%;
-          width: 57%;
-          height: 12%; } }
+          width: 56%;
+          height: 11%; } }
       @media (min-width: 1200px) {
         #mainConcertInfoBox #middleBox #buttonsWrapper {
           position: absolute;
@@ -5161,7 +5234,7 @@ html {
               font-size: 1.3rem; } }
           @media (min-width: 768px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen #open {
-              font-size: 2.2rem; } }
+              font-size: 1.7rem; } }
           @media (min-width: 1200px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen #open {
               font-size: 2.2rem; } }
@@ -5181,7 +5254,7 @@ html {
             font-size: 1.2rem; } }
         @media (min-width: 768px) {
           #mainConcertInfoBox #middleBox #buttonsWrapper #yellow-btn {
-            font-size: 2rem; } }
+            font-size: 1.7rem; } }
         @media (min-width: 1200px) {
           #mainConcertInfoBox #middleBox #buttonsWrapper #yellow-btn {
             font-size: 2rem; } }
@@ -5204,7 +5277,7 @@ html {
         font-size: 1.6rem; } }
     @media (min-width: 768px) {
       #mainGoConchin b {
-        font-size: 3rem; } }
+        font-size: 2.5rem; } }
     @media (min-width: 1200px) {
       #mainGoConchin b {
         font-size: 3rem; } }
@@ -5219,7 +5292,7 @@ html {
         height: 60%; } }
     @media (min-width: 768px) {
       #mainGoConchin #goConchin {
-        width: 45%;
+        width: 60%;
         height: 68%; } }
     @media (min-width: 1200px) {
       #mainGoConchin #goConchin {
@@ -5239,6 +5312,10 @@ html {
       #mainGoConchin button {
         width: 25%;
         font-size: 1.6rem; } }
+    @media (min-width: 768px) {
+      #mainGoConchin button {
+        width: 20%;
+        font-size: 1.8rem; } }
     @media (min-width: 1200px) {
       #mainGoConchin button {
         width: 15%;
@@ -5256,6 +5333,12 @@ html {
     position: absolute;
     top: 0; }
     @media (max-width: 767px) {
+      #concertContainer #lineOrderWrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        height: 8%; } }
+    @media (min-width: 768px) {
       #concertContainer #lineOrderWrapper {
         display: flex;
         justify-content: center;
@@ -5288,8 +5371,8 @@ html {
         height: 130%; } }
     @media (min-width: 768px) {
       #concertContainer #concertsBoard {
-        width: 55%;
-        height: 200%; } }
+        width: 100%;
+        height: 185%; } }
     @media (min-width: 1200px) {
       #concertContainer #concertsBoard {
         width: 50%;
@@ -5316,6 +5399,19 @@ html {
     #concertContainer #concertsBoard #concertBoxWrapper7 {
       width: 90%;
       height: 12%; }
+  #concertContainer #footerWrapper {
+    position: absolute;
+    width: 100%;
+    height: 30%; }
+    @media (max-width: 767px) {
+      #concertContainer #footerWrapper {
+        top: 145%; } }
+    @media (min-width: 768px) {
+      #concertContainer #footerWrapper {
+        top: 200%; } }
+    @media (min-width: 1200px) {
+      #concertContainer #footerWrapper {
+        top: 220%; } }
 
 #concertBoxOuterContainer {
   display: flex;
@@ -5542,29 +5638,32 @@ html {
 
 #concertModalContainer {
   z-index: 999;
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%; }
+  @media (max-width: 767px) {
+    #concertModalContainer {
+      position: fixed; } }
+  @media (min-width: 768px) {
+    #concertModalContainer {
+      position: fixed; } }
+  @media (min-width: 1200px) {
+    #concertModalContainer {
+      position: absolute; } }
   #concertModalContainer #background {
     z-index: 998;
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2); }
-    @media (min-width: 768px) {
-      #concertModalContainer #background {
-        position: absolute;
-        width: 40%;
-        height: 50%;
-        left: 55%; } }
     @media (min-width: 1200px) {
       #concertModalContainer #background {
         position: absolute;
-        width: 40%;
-        height: 50%;
+        width: 30%;
+        height: 0%;
         left: 55%; } }
   #concertModalContainer #concertModal {
     z-index: 999;
@@ -5580,15 +5679,15 @@ html {
         height: 70%; } }
     @media (min-width: 768px) {
       #concertModalContainer #concertModal {
-        width: 40%;
-        height: 90%; } }
+        width: 80%;
+        height: 85%; } }
     @media (min-width: 1200px) {
       #concertModalContainer #concertModal {
-        display: fixed;
-        top: 10%;
-        right: 5%;
+        display: flex;
         width: 40%;
-        height: 90%; } }
+        height: 90%;
+        top: 10%;
+        right: 5%; } }
     #concertModalContainer #concertModal #AlignBox {
       display: flex;
       flex-direction: column;
@@ -5599,7 +5698,7 @@ html {
           height: 90%; } }
       @media (min-width: 768px) {
         #concertModalContainer #concertModal #AlignBox {
-          width: 100%;
+          width: 90%;
           height: 100%; } }
       @media (min-width: 1200px) {
         #concertModalContainer #concertModal #AlignBox {
@@ -5770,7 +5869,6 @@ html {
             height: 85%; } }
   #concertModalContainer #stretchedConcertModal {
     z-index: 999;
-    display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -5778,15 +5876,17 @@ html {
     border-radius: 5px; }
     @media (max-width: 767px) {
       #concertModalContainer #stretchedConcertModal {
+        display: flex;
         width: 90%;
         height: 70%; } }
     @media (min-width: 768px) {
       #concertModalContainer #stretchedConcertModal {
-        width: 40%;
-        height: 90%; } }
+        display: flex;
+        width: 80%;
+        height: 85%; } }
     @media (min-width: 1200px) {
       #concertModalContainer #stretchedConcertModal {
-        display: fixed;
+        position: fixed;
         top: 5%;
         right: 5%;
         width: 40%;
@@ -5801,7 +5901,7 @@ html {
           height: 90%; } }
       @media (min-width: 768px) {
         #concertModalContainer #stretchedConcertModal #AlignBox {
-          width: 100%;
+          width: 90%;
           height: 100%; } }
       @media (min-width: 1200px) {
         #concertModalContainer #stretchedConcertModal #AlignBox {
@@ -5970,6 +6070,207 @@ html {
           #concertModalContainer #stretchedConcertModal #AlignBox #bottom_box #map {
             width: 50%;
             height: 85%; } }
+  #concertModalContainer #onFooterModal {
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 5px; }
+    @media (max-width: 767px) {
+      #concertModalContainer #onFooterModal {
+        width: 90%;
+        height: 70%; } }
+    @media (min-width: 768px) {
+      #concertModalContainer #onFooterModal {
+        width: 80%;
+        height: 85%; } }
+    @media (min-width: 1200px) {
+      #concertModalContainer #onFooterModal {
+        top: 130%;
+        right: 5%;
+        width: 40%;
+        height: 90%; } }
+    #concertModalContainer #onFooterModal #AlignBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center; }
+      @media (max-width: 767px) {
+        #concertModalContainer #onFooterModal #AlignBox {
+          width: 90%;
+          height: 90%; } }
+      @media (min-width: 768px) {
+        #concertModalContainer #onFooterModal #AlignBox {
+          width: 90%;
+          height: 100%; } }
+      @media (min-width: 1200px) {
+        #concertModalContainer #onFooterModal #AlignBox {
+          width: 100%;
+          height: 100%; } }
+      #concertModalContainer #onFooterModal #AlignBox #top_box {
+        position: relative;
+        width: 100%;
+        height: 15%; }
+        #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          height: 60%; }
+          #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay h2 {
+            display: flex;
+            align-items: center;
+            width: 85%;
+            height: 100%; }
+            @media (max-width: 767px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay h2 {
+                font-size: 1.6rem; } }
+            @media (min-width: 768px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay h2 {
+                font-size: 2.5rem; } }
+            @media (min-width: 1200px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay h2 {
+                font-size: 2.5rem; } }
+          #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay p {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #a0a0a0; }
+            @media (max-width: 767px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay p {
+                font-size: 2rem; } }
+            @media (min-width: 768px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay p {
+                font-size: 3rem; } }
+            @media (min-width: 1200px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay p {
+                font-size: 3rem; } }
+        #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 40%; }
+          #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #where {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 15%;
+            height: 70%;
+            background-color: #ffce63;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #where {
+                font-size: 1.1rem; } }
+            @media (min-width: 768px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #where {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #where {
+                font-size: 1.8rem; } }
+          #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #date {
+            padding-left: 1%; }
+            @media (max-width: 767px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #date {
+                font-size: 1.2rem; } }
+            @media (min-width: 768px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #date {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #date {
+                font-size: 1.8rem; } }
+      #concertModalContainer #onFooterModal #AlignBox #mid_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+        height: 40%; }
+        #concertModalContainer #onFooterModal #AlignBox #mid_box #poster {
+          width: 30%;
+          height: 90%; }
+        #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-start;
+          width: 65%;
+          height: 90%; }
+          #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo {
+            display: flex;
+            width: 100%;
+            height: 60%; }
+            #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
+              display: flex;
+              flex-direction: column;
+              width: 30%;
+              height: 100%;
+              font-size: 1.4rem;
+              font-weight: bold; }
+              @media (max-width: 767px) {
+                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
+                  font-size: 1.4rem; } }
+              @media (min-width: 768px) {
+                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
+                  font-size: 1.4rem; } }
+              @media (min-width: 1200px) {
+                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
+                  font-size: 1.8rem; } }
+              #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #miniTitle #time {
+                position: absolute;
+                top: 30%; }
+            #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #answer {
+              display: flex;
+              flex-direction: column;
+              width: 60%;
+              height: 100%; }
+              @media (max-width: 767px) {
+                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #answer {
+                  font-size: 1.2rem; } }
+              @media (min-width: 768px) {
+                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #answer {
+                  font-size: 1.6rem; } }
+              @media (min-width: 1200px) {
+                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #answer {
+                  font-size: 1.6rem; } }
+              #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #answer #time_r {
+                position: absolute;
+                top: 30%; }
+          #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #more {
+            width: 100%;
+            background-color: #ffce63;
+            border: 0;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #more {
+                height: 13%; } }
+            @media (min-width: 768px) {
+              #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #more {
+                height: 14%; } }
+            @media (min-width: 1200px) {
+              #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #more {
+                font-size: 1.8rem;
+                height: 14%; } }
+      #concertModalContainer #onFooterModal #AlignBox #bottom_box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 45%; }
+        @media (max-width: 767px) {
+          #concertModalContainer #onFooterModal #AlignBox #bottom_box #map {
+            width: 55%;
+            height: 85%; } }
+        @media (min-width: 768px) {
+          #concertModalContainer #onFooterModal #AlignBox #bottom_box #map {
+            width: 50%;
+            height: 85%; } }
+        @media (min-width: 1200px) {
+          #concertModalContainer #onFooterModal #AlignBox #bottom_box #map {
+            width: 50%;
+            height: 85%; } }
 
 #conChinWritingContainer {
   z-index: 999;
@@ -5987,11 +6288,16 @@ html {
     #conChinWritingContainer {
       position: fixed;
       height: 100%; } }
+  #conChinWritingContainer #outerBackGround {
+    position: fixed;
+    z-index: 998;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.2); }
   #conChinWritingContainer #backGround {
     z-index: 999;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.2); }
+    height: 100%; }
     @media (min-width: 768px) {
       #conChinWritingContainer #backGround {
         display: flex;
@@ -6016,7 +6322,7 @@ html {
         height: 100%; } }
     @media (min-width: 768px) {
       #conChinWritingContainer #writingModal {
-        width: 30%;
+        width: 65%;
         height: 85%;
         border-radius: 5px; } }
     @media (min-width: 1200px) {
@@ -6132,7 +6438,7 @@ html {
           height: 100%; } }
       @media (min-width: 768px) {
         #loginModalContainer #background #loginModal {
-          width: 30%;
+          width: 60%;
           height: 78%;
           border-radius: 20px; } }
       @media (min-width: 1200px) {
@@ -6201,6 +6507,9 @@ html {
           @media (max-width: 767px) {
             #loginModalContainer #background #loginModal #alignContainer #midBox {
               height: 30%; } }
+          @media (min-width: 768px) {
+            #loginModalContainer #background #loginModal #alignContainer #midBox {
+              height: 30%; } }
           @media (min-width: 1200px) {
             #loginModalContainer #background #loginModal #alignContainer #midBox {
               height: 32%; } }
@@ -6245,7 +6554,7 @@ html {
             top: 8%;
             left: 50%;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             height: 15%;
             transform: translate(-50%, -50%); }
@@ -6257,9 +6566,12 @@ html {
                 width: 30%; } }
             @media (min-width: 1200px) {
               #loginModalContainer #background #loginModal #alignContainer #bottomBox #lockBox {
-                width: 30%; } }
+                width: 100%; } }
             #loginModalContainer #background #loginModal #alignContainer #bottomBox #lockBox #lock {
               width: 20%; }
+              @media (min-width: 1200px) {
+                #loginModalContainer #background #loginModal #alignContainer #bottomBox #lockBox #lock {
+                  width: 6%; } }
             #loginModalContainer #background #loginModal #alignContainer #bottomBox #lockBox #findPassword {
               color: #a0a0a0; }
               @media (max-width: 767px) {
@@ -6316,7 +6628,7 @@ html {
           height: 100%; } }
       @media (min-width: 768px) {
         #signUpModalContainer #background #signUpModal {
-          width: 30%;
+          width: 60%;
           height: 78%;
           border-radius: 20px; } }
       @media (min-width: 1200px) {
@@ -6448,7 +6760,7 @@ html {
                     left: 12%; } }
                 @media (min-width: 768px) {
                   #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox input {
-                    left: 38%; } }
+                    left: 26.5%; } }
                 @media (min-width: 1200px) {
                   #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox input {
                     left: 38%; } }
@@ -6459,7 +6771,7 @@ html {
                     left: 20%; } }
                 @media (min-width: 768px) {
                   #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox p {
-                    left: 40%; } }
+                    left: 30%; } }
                 @media (min-width: 1200px) {
                   #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox p {
                     left: 40%; } }
@@ -6537,7 +6849,7 @@ html {
           height: 100%; } }
       @media (min-width: 768px) {
         #TosModalContainer #background #tosModal {
-          width: 30%;
+          width: 60%;
           height: 78%;
           border-radius: 20px; } }
       @media (min-width: 1200px) {
@@ -6580,7 +6892,7 @@ html {
             color: #ffce63; }
             @media (max-width: 767px) {
               #TosModalContainer #background #tosModal #alignContainer #topBox h2 {
-                font-size: 3rem; } }
+                font-size: 3.3rem; } }
             @media (min-width: 768px) {
               #TosModalContainer #background #tosModal #alignContainer #topBox h2 {
                 font-size: 3.8rem; } }
@@ -6632,6 +6944,14 @@ html {
       top: 10%;
       width: 100%;
       height: 100%; } }
+  @media (min-width: 768px) {
+    #landingContainer {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 10%; } }
   @media (min-width: 1200px) {
     #landingContainer {
       display: flex;
@@ -6646,6 +6966,12 @@ html {
       top: 0;
       width: 100%;
       height: 75%; } }
+  @media (min-width: 768px) {
+    #landingContainer #landingJumboWrapper {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 60%; } }
   @media (min-width: 1200px) {
     #landingContainer #landingJumboWrapper {
       position: absolute;
@@ -6658,43 +6984,51 @@ html {
       width: 100%;
       height: 55%;
       padding-bottom: 30%; } }
+  @media (min-width: 768px) {
+    #landingContainer #landingJumboWrapper #jumboContainer {
+      position: absolute;
+      width: 100%;
+      height: 85%;
+      padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #landingContainer #landingJumboWrapper #jumboContainer {
       position: absolute;
       width: 100%;
       height: 85%;
       padding-bottom: 20%; } }
-  @media (max-width: 767px) {
-    #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9); } }
-  @media (min-width: 1200px) {
-    #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9); } }
-  #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer #jumboChosen {
-    opacity: 30%; }
+  #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 100%; }
     @media (max-width: 767px) {
-      #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer #jumboChosen {
-        width: 40%;
-        height: 85%; } }
-    @media (min-width: 1200px) {
-      #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer #jumboChosen {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 20%;
-        height: 90%;
-        opacity: 40%; } }
+      #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center; } }
+    #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer #jumboChosen {
+      opacity: 40%; }
+      @media (max-width: 767px) {
+        #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer #jumboChosen {
+          width: 40%;
+          height: 85%; } }
+      @media (min-width: 768px) {
+        #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer #jumboChosen {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 30%;
+          height: 90%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #landingJumboWrapper #jumboContainer #jumboMiniContainer #jumboChosen {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 20%;
+          height: 90%; } }
   #landingContainer #landingJumboWrapper .jumboTextBox {
     position: relative;
     display: flex;
@@ -6721,7 +7055,7 @@ html {
         font-size: 1.3rem; } }
     @media (min-width: 768px) {
       #landingContainer #landingJumboWrapper #jumboWhat {
-        font-size: 1.8rem; } }
+        font-size: 1.7rem; } }
     @media (min-width: 1200px) {
       #landingContainer #landingJumboWrapper #jumboWhat {
         font-size: 1.8rem; } }
@@ -6732,7 +7066,7 @@ html {
         font-size: 2.5rem; } }
     @media (min-width: 768px) {
       #landingContainer #landingJumboWrapper #jumboClassify {
-        font-size: 5rem; } }
+        font-size: 4.5rem; } }
     @media (min-width: 1200px) {
       #landingContainer #landingJumboWrapper #jumboClassify {
         font-size: 5rem; } }
@@ -6740,6 +7074,12 @@ html {
     #landingContainer #landingJumboWrapper #jumboPosterSlideWrapper {
       position: relative;
       bottom: -5%;
+      width: 80%;
+      height: 77%; } }
+  @media (min-width: 768px) {
+    #landingContainer #landingJumboWrapper #jumboPosterSlideWrapper {
+      position: relative;
+      bottom: -3%;
       width: 80%;
       height: 77%; } }
   @media (min-width: 1200px) {
@@ -6762,7 +7102,7 @@ html {
     @media (min-width: 768px) {
       #landingContainer #middleWrapper {
         height: 260%;
-        top: 70%; } }
+        top: 60%; } }
     @media (min-width: 1200px) {
       #landingContainer #middleWrapper {
         height: 300%;
@@ -6779,20 +7119,22 @@ html {
           height: 24%; } }
       @media (min-width: 768px) {
         #landingContainer #middleWrapper #firstBox, #landingContainer #middleWrapper #secondBox, #landingContainer #middleWrapper #thirdBox {
-          height: 30%; } }
+          height: 26%; } }
       @media (min-width: 1200px) {
         #landingContainer #middleWrapper #firstBox, #landingContainer #middleWrapper #secondBox, #landingContainer #middleWrapper #thirdBox {
           height: 30%; } }
       @media (max-width: 767px) {
         #landingContainer #middleWrapper #firstBox #firstImg, #landingContainer #middleWrapper #secondBox #firstImg, #landingContainer #middleWrapper #thirdBox #firstImg {
-          width: 90%; } }
+          width: 80%;
+          height: 60%; } }
       @media (min-width: 768px) {
         #landingContainer #middleWrapper #firstBox #firstImg, #landingContainer #middleWrapper #secondBox #firstImg, #landingContainer #middleWrapper #thirdBox #firstImg {
-          width: 60%; } }
+          width: 75%;
+          height: 65%; } }
       @media (min-width: 1200px) {
         #landingContainer #middleWrapper #firstBox #firstImg, #landingContainer #middleWrapper #secondBox #firstImg, #landingContainer #middleWrapper #thirdBox #firstImg {
-          width: 58%;
-          height: 65%; } }
+          width: 55%;
+          height: 68%; } }
       #landingContainer #middleWrapper #firstBox .alignBox, #landingContainer #middleWrapper #secondBox .alignBox, #landingContainer #middleWrapper #thirdBox .alignBox {
         display: flex;
         align-items: center;
@@ -6800,36 +7142,44 @@ html {
         @media (max-width: 767px) {
           #landingContainer #middleWrapper #firstBox .alignBox, #landingContainer #middleWrapper #secondBox .alignBox, #landingContainer #middleWrapper #thirdBox .alignBox {
             width: 80%;
-            height: 30%;
-            font-size: 1.1rem; } }
+            height: 30%; } }
         @media (min-width: 768px) {
           #landingContainer #middleWrapper #firstBox .alignBox, #landingContainer #middleWrapper #secondBox .alignBox, #landingContainer #middleWrapper #thirdBox .alignBox {
-            width: 45%;
-            height: 20%; } }
+            width: 70%;
+            height: 30%; } }
         @media (min-width: 1200px) {
           #landingContainer #middleWrapper #firstBox .alignBox, #landingContainer #middleWrapper #secondBox .alignBox, #landingContainer #middleWrapper #thirdBox .alignBox {
             width: 45%;
-            height: 25%;
-            font-size: 1.5rem; } }
-        #landingContainer #middleWrapper #firstBox .alignBox .grayGif, #landingContainer #middleWrapper #secondBox .alignBox .grayGif, #landingContainer #middleWrapper #thirdBox .alignBox .grayGif {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100%;
-          background-color: #a0a0a0;
-          border-radius: 5px;
-          font-weight: bold; }
+            height: 30%; } }
+        #landingContainer #middleWrapper #firstBox .alignBox #paddingBox, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox {
+          position: relative; }
           @media (max-width: 767px) {
-            #landingContainer #middleWrapper #firstBox .alignBox .grayGif, #landingContainer #middleWrapper #secondBox .alignBox .grayGif, #landingContainer #middleWrapper #thirdBox .alignBox .grayGif {
-              width: 30%; } }
+            #landingContainer #middleWrapper #firstBox .alignBox #paddingBox, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox {
+              width: 28%;
+              height: 100%; } }
           @media (min-width: 768px) {
-            #landingContainer #middleWrapper #firstBox .alignBox .grayGif, #landingContainer #middleWrapper #secondBox .alignBox .grayGif, #landingContainer #middleWrapper #thirdBox .alignBox .grayGif {
-              width: 25%;
-              font-size: 2rem; } }
+            #landingContainer #middleWrapper #firstBox .alignBox #paddingBox, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox {
+              width: 32%;
+              height: 100%;
+              font-size: 1.5rem; } }
           @media (min-width: 1200px) {
-            #landingContainer #middleWrapper #firstBox .alignBox .grayGif, #landingContainer #middleWrapper #secondBox .alignBox .grayGif, #landingContainer #middleWrapper #thirdBox .alignBox .grayGif {
-              width: 25%;
-              font-size: 2rem; } }
+            #landingContainer #middleWrapper #firstBox .alignBox #paddingBox, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox {
+              width: 30%;
+              height: 100%;
+              font-size: 2rem;
+              padding-bottom: 10%; } }
+          #landingContainer #middleWrapper #firstBox .alignBox #paddingBox .grayGif, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox .grayGif, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox .grayGif {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #a0a0a0;
+            border-radius: 5px;
+            font-weight: bold; }
+            #landingContainer #middleWrapper #firstBox .alignBox #paddingBox .grayGif div, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox .grayGif div, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox .grayGif div {
+              position: absolute; }
         #landingContainer #middleWrapper #firstBox .alignBox #textBox, #landingContainer #middleWrapper #secondBox .alignBox #textBox, #landingContainer #middleWrapper #thirdBox .alignBox #textBox {
           display: flex;
           align-items: center;
@@ -6851,32 +7201,43 @@ html {
                 font-size: 1.2rem; } }
             @media (min-width: 768px) {
               #landingContainer #middleWrapper #firstBox .alignBox #textBox #texts, #landingContainer #middleWrapper #secondBox .alignBox #textBox #texts, #landingContainer #middleWrapper #thirdBox .alignBox #textBox #texts {
-                font-size: 2.5rem; } }
+                font-size: 1.8rem; } }
             @media (min-width: 1200px) {
               #landingContainer #middleWrapper #firstBox .alignBox #textBox #texts, #landingContainer #middleWrapper #secondBox .alignBox #textBox #texts, #landingContainer #middleWrapper #thirdBox .alignBox #textBox #texts {
                 font-size: 2.5rem; } }
-    #landingContainer #middleWrapper .grayGif2, #landingContainer #middleWrapper #thirdBox .alignBox .grayGif3 {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #a0a0a0;
-      border-radius: 5px;
-      font-weight: bold; }
+    #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 {
+      position: relative; }
       @media (max-width: 767px) {
-        #landingContainer #middleWrapper .grayGif2, #landingContainer #middleWrapper #thirdBox .alignBox .grayGif3 {
+        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 {
           width: 30%;
-          height: 68%; } }
+          height: 70%; } }
       @media (min-width: 768px) {
-        #landingContainer #middleWrapper .grayGif2, #landingContainer #middleWrapper #thirdBox .alignBox .grayGif3 {
-          width: 25%;
+        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 {
+          width: 32%;
           height: 100%;
-          font-size: 2rem; } }
+          font-size: 1.5rem; } }
       @media (min-width: 1200px) {
-        #landingContainer #middleWrapper .grayGif2, #landingContainer #middleWrapper #thirdBox .alignBox .grayGif3 {
-          width: 25%;
+        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 {
+          width: 30%;
           height: 100%;
-          font-size: 2rem; } }
+          font-size: 2rem;
+          padding-bottom: 10%; } }
+      #landingContainer #middleWrapper #paddingBox31 .grayGif2, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 .grayGif2, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 .grayGif3 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #a0a0a0;
+        border-radius: 5px;
+        font-weight: bold; }
+        #landingContainer #middleWrapper #paddingBox31 .grayGif2 div, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 .grayGif2 div, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 .grayGif3 div {
+          position: absolute; }
     @media (max-width: 767px) {
+      #landingContainer #middleWrapper #secondBox {
+        height: 35%; } }
+    @media (min-width: 768px) {
       #landingContainer #middleWrapper #secondBox {
         height: 35%; } }
     @media (max-width: 767px) {
@@ -6885,13 +7246,34 @@ html {
         height: 60%; } }
     @media (min-width: 768px) {
       #landingContainer #middleWrapper #secondBox #secondImg {
-        width: 40%;
+        width: 70%;
         height: 70%; } }
     @media (min-width: 1200px) {
       #landingContainer #middleWrapper #secondBox #secondImg {
-        width: 35%;
+        width: 38%;
         height: 65%; } }
+    #landingContainer #middleWrapper #secondBox .alignBox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper #secondBox .alignBox {
+          width: 80%;
+          height: 30%;
+          font-size: 1.1rem; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper #secondBox .alignBox {
+          width: 70%;
+          height: 22%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper #secondBox .alignBox {
+          width: 45%;
+          height: 30%;
+          font-size: 1.5rem; } }
     @media (max-width: 767px) {
+      #landingContainer #middleWrapper #thirdBox {
+        height: 35%; } }
+    @media (min-width: 768px) {
       #landingContainer #middleWrapper #thirdBox {
         height: 35%; } }
     @media (max-width: 767px) {
@@ -6900,12 +7282,30 @@ html {
         height: 60%; } }
     @media (min-width: 768px) {
       #landingContainer #middleWrapper #thirdBox #thirdImg {
-        width: 40%;
+        width: 70%;
         height: 70%; } }
     @media (min-width: 1200px) {
       #landingContainer #middleWrapper #thirdBox #thirdImg {
-        width: 35%;
+        width: 38%;
         height: 65%; } }
+    #landingContainer #middleWrapper #thirdBox .alignBox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper #thirdBox .alignBox {
+          width: 80%;
+          height: 30%;
+          font-size: 1.1rem; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper #thirdBox .alignBox {
+          width: 70%;
+          height: 22%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper #thirdBox .alignBox {
+          width: 45%;
+          height: 30%;
+          font-size: 1.5rem; } }
   #landingContainer #bottomBox {
     position: absolute;
     display: flex;
@@ -6920,7 +7320,7 @@ html {
     @media (min-width: 768px) {
       #landingContainer #bottomBox {
         height: 40%;
-        top: 380%; } }
+        top: 335%; } }
     @media (min-width: 1200px) {
       #landingContainer #bottomBox {
         height: 40%;
@@ -6934,6 +7334,9 @@ html {
       @media (max-width: 767px) {
         #landingContainer #bottomBox #bottomAlignBox {
           height: 60%; } }
+      @media (min-width: 768px) {
+        #landingContainer #bottomBox #bottomAlignBox {
+          height: 55%; } }
       @media (min-width: 1200px) {
         #landingContainer #bottomBox #bottomAlignBox {
           height: 50%; } }
@@ -6948,7 +7351,7 @@ html {
             font-size: 1.5rem; } }
         @media (min-width: 768px) {
           #landingContainer #bottomBox #bottomAlignBox #bottomTextBox {
-            font-size: 2.5rem; } }
+            font-size: 2.3rem; } }
         @media (min-width: 1200px) {
           #landingContainer #bottomBox #bottomAlignBox #bottomTextBox {
             font-size: 2.5rem; } }
@@ -6979,7 +7382,7 @@ html {
         top: 275%; } }
     @media (min-width: 768px) {
       #landingContainer #landingFooterWrapper {
-        top: 420%; } }
+        top: 375%; } }
     @media (min-width: 1200px) {
       #landingContainer #landingFooterWrapper {
         top: 420%; } }

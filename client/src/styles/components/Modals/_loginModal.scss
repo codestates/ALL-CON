@@ -44,9 +44,10 @@
         height: 100%;
       }
       @include md() {
-        width: 30%;
+        width: 60%;
         height: 78%;
         border-radius: 20px;
+        // border: 2px solid purple;
       }
       @include lg() {
         width: 30%;
@@ -121,8 +122,10 @@
           align-items: flex-start;
           justify-content: space-between;
           width: 90%;
-          // border: 1px solid red;
           @include mobile-only() {
+            height: 30%;
+          }
+          @include md() {
             height: 30%;
           }
           @include lg() {
@@ -182,7 +185,7 @@
             top: 8%;
             left: 50%;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             height: 15%;
             transform: translate(-50%, -50%);
@@ -194,10 +197,13 @@
               width: 30%;
             }
             @include lg() {
-              width: 30%;
+              width: 100%;
             }
             #lock {
               width: 20%;
+              @include lg() {
+                width: 6%;
+              }
             }
             #findPassword {
               color: $gray;
