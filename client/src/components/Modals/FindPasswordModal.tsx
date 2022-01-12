@@ -1,7 +1,15 @@
+/* Store import */
+import { RootState } from '../../index';
+import { showFindPasswordModal } from '../../store/ModalSlice';
+/* Library import */
+import { useSelector, useDispatch } from 'react-redux';
+
 function FindPasswordModal() {
+  const dispatch = useDispatch();
+
   return (
     <div id='findPasswordModal'>
-      <div id='bg' />
+      <div id='bg' onClick={() => dispatch(showFindPasswordModal(false))}/>
       <div id='modalBox'>
         <div id='modal'>
           <div id='titlesBox'>
@@ -28,7 +36,7 @@ function FindPasswordModal() {
             </div>
           </div>
           <div id='btnBox'>
-            <button className='btn'>취소</button>
+            <button className='btn' onClick={() => dispatch(showFindPasswordModal(false))}>취소</button>
           </div>
         </div>
       </div>

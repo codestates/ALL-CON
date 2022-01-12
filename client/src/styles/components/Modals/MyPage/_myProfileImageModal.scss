@@ -176,6 +176,13 @@
             height: 100%;
           }
         }
+        #imgSelection {
+          z-index: 999;
+          position: absolute;
+          display: flex;
+          width: 50%;
+          border: solid 3px red;
+        }
       }
       #modifyBtnWrapper {
         position: absolute;

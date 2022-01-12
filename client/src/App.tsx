@@ -1,4 +1,5 @@
 /* Component import */
+import AlertModal from './components/Modals/AlertModal';
 import ConcertModal from './components/Modals/ConcertPage/ConcertModal';
 import ConChinWritingModal from './components/Modals/ConChinPage/ConChinWritingModal';
 import ConChinProfileModal from './components/Modals/ConChinPage/ConChinProfileModal';
@@ -31,8 +32,15 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  const { loginModal, signupModal, tosModal, privacyModal, sideMenuModal } =
-    useSelector((state: RootState) => state.modal);
+  const {
+    loginModal,
+    signupModal,
+    tosModal,
+    privacyModal,
+    findPasswordModal,
+    alertModal,
+    sideMenuModal,
+  } = useSelector((state: RootState) => state.modal);
 
   return (
     <div className='App'>
@@ -42,12 +50,13 @@ function App() {
       {tosModal && <TosModal />}
       {privacyModal && <PrivacyModal />}
       {sideMenuModal && <SideMenuModal />}
+      {alertModal && <AlertModal />}
+      {findPasswordModal && <FindPasswordModal />}
       {/*<ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
       {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
       {/* <ConfirmNumberModal /> */}
-      {/* <FindPasswordModal /> */}
       {/* <ResetPasswordModal /> */}
 
       {/* <LandingPage /> */}
@@ -56,7 +65,9 @@ function App() {
       {/* <MyPage /> */}
       {/*  */}
       <Routes>
+        <Route path='/' element={<LandingPage />} />
         <Route path='/main/*' element={<MainPage />} />
+        <Route path='/mypage/*' element={<MyPage />} />
         <Route path='/concert/*' element={<ConcertPage />} />
         <Route path='/conchin/*' element={<ConChinPage />} />
         <Route path='/callbackGoogle/*' element={<CallbackGooglePage />} />

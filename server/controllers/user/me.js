@@ -74,14 +74,17 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
+
+      console.log('----- 회원탈퇴 진입 완료! -----')
+
       // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
+      const userInfo = await userAuth(req, res);
 
       /* 임시 TEST CODE (삭제예정) */
       // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
+      // const userInfo = await Users.findOne({
+      //   where: { id: req.body.id }
+      // });
       /* 임시 TEST CODE (삭제예정) */
 
       Users.destroy({ where: { id: userInfo.id } });  // 유저 삭제

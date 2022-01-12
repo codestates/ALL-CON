@@ -90,19 +90,45 @@
       height: 12%;
     }
   }
-  #footerWrapper {
-    // border: 1px solid orange;
+  #fullFooter {
     position: absolute;
-    width: 100%;
-    height: 30%;
+    display: flex;
+    justify-content: center;
+    background-color: black;
     @include mobile-only() {
-      top: 145%;
+      width: 100%;
+      height: 30%;
+      top: 150%;
     }
     @include md() {
-      top: 200%;
+      width: 100%;
+      height: 30%;
+      top: 210%;
     }
     @include lg() {
-      top: 220%;
+      width: 100%;
+      height: 38%;
+      top: 230%;
+    }
+    // border: 1px solid red;
+    #footerWrapper {
+      position: absolute;
+      display: flex;
+
+      background-color: black;
+      // border: 1px solid red;
+      @include mobile-only() {
+        height: 100%;
+        width: 100%;
+      }
+      @include md() {
+        height: 100%;
+        width: 100%;
+      }
+      @include lg() {
+        height: 70%;
+        width: 79%;
+      }
     }
   }
 }

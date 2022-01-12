@@ -4,11 +4,12 @@ import { REACT_APP_API_URL, REACT_APP_CLIENT_URL } from '../../config.js'
 import google from '../../images/googleOAuth.png';
 import kakao from '../../images/kakaoOAuth.png';
 import originalLock from '../../images/originalPadlock.png';
+import xButton from '../../images/xButton.png';
 /* Store import */
 import { login, getUserInfo } from '../../store/AuthSlice';
-import { showLoginModal, showSignupModal } from '../../store/ModalSlice';
+import { showLoginModal, showSignupModal, showFindPasswordModal, showAlertModal, insertAlertText } from '../../store/ModalSlice';
 /* Library import */
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
@@ -20,7 +21,6 @@ function LoginModal() {
   /* 인풋 정보 상태 */
   const [inputEmail, setInputEmail] = useState<string>('');
   const [inputPassword, setInputPassword] = useState<string>('');
-  const [infoIsValid, setInfoIsValid] = useState<boolean>(false);
 
   /* 로그인 핸들러 */
   const loginHandler = async () => {
@@ -34,15 +34,17 @@ function LoginModal() {
       /* 서버의 응답결과에 유저 정보가 담겨있다면 로그인 성공*/
       if(response.data.data){
         /* 유효성 & 로그인 & 유저 상태 변경 후 메인페이지 리다이렉트 */
-        setInfoIsValid(false);
         dispatch(login());
         dispatch(getUserInfo(response.data.data));
         dispatch(showLoginModal(false));
         navigate('/main');
       }
     } catch(err) {
-      console.log(err);
-      setInfoIsValid(true);
+      const error = err as AxiosError;
+      if(error.response?.status===400) dispatch(insertAlertText('빈칸을 모두 입력해주세요! 😖'));
+      else if(error.response?.status===403) dispatch(insertAlertText('잘못된 이메일 혹은 비밀번호입니다! 😖'));
+      else dispatch(insertAlertText('Server Error! 😖'));
+      dispatch(showAlertModal(true));
     }
   };
 
@@ -78,6 +80,9 @@ function LoginModal() {
       <div id='outside' onClick={() => dispatch(showLoginModal(false))}/>
       <div id='background'>
         <div id='loginModal'>
+          <div id='xButtonContainer'>
+            <img alt='xButtonImg' src={xButton} onClick={() => dispatch(showLoginModal(false))}/>
+          </div>
           <div id='alignContainer'>
             <div id='topBox'>
               <h2>로그인</h2>
@@ -98,7 +103,6 @@ function LoginModal() {
               <input type='text' className='textBoxMatch2' value={inputEmail} onChange={emailChangeHandler}/>
               <p className='fontMatch'>비밀번호</p>
               <input type='password' className='textBoxMatch2' value={inputPassword} onChange={passwordChangeHandler}/>
-              {infoIsValid && <div id='warningMsg'>아이디 또는 비밀번호가 잘못 입력되었습니다.</div>}
             </div>
             <div id='bottomBox'>
               <button className='fontMatch textBoxMatch3' id='loginBtn' onClick={loginHandler}>
@@ -126,7 +130,9 @@ function LoginModal() {
               </button>
               <div id='lockBox'>
                 <img id='lock' src={originalLock} alt='자물쇠 아이콘'></img>
-                <p id='findPassword'>비밀번호 찾기</p>
+                <p id='findPassword' onClick={() => {
+                  dispatch(showFindPasswordModal(true));
+                }}>비밀번호 찾기</p>
               </div>
             </div>
           </div>

@@ -6,10 +6,10 @@
   height: 5%;
   background-color: white;
   @include mobile-only() {
-    z-index: 999;
+    z-index: 15;
   }
   @include md() {
-    z-index: 999;
+    z-index: 15;
   }
   @include lg() {
     z-index: 15;
