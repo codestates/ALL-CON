@@ -21,7 +21,7 @@ const autoAlarm = schedule.scheduleJob(
 
 // 콘서트 클리너 실행
 const autoConcertCleaner = schedule.scheduleJob(
-  '00 20 * * * *',
+  '00 20 1 * * *',
   async () => {
     concertCleaner()
     console.log('24시간마다 티켓 오픈일이 지난 콘서트 삭제중(non-activation)..')
@@ -30,7 +30,7 @@ const autoConcertCleaner = schedule.scheduleJob(
 
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 59 * * * *',
+  '00 35 * * * *',
   async () => {
     console.log('ec2 테스트')
     await crawler()

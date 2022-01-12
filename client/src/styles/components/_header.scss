@@ -9,7 +9,7 @@
     z-index: 999;
   }
   @include md() {
-    z-index: 15;
+    z-index: 999;
   }
   @include lg() {
     z-index: 15;
@@ -34,8 +34,8 @@
         height: 60px;
       }
       @include md() {
-        width: 115px;
-        height: 75px;
+        width: 95px;
+        height: 60px;
       }
       @include lg() {
         width: 115px;

@@ -46,12 +46,12 @@
       @include md() {
         width: 30%;
         height: 78%;
-        border-radius: 5px;
+        border-radius: 20px;
       }
       @include lg() {
         width: 30%;
         height: 78%;
-        border-radius: 5px;
+        border-radius: 20px;
       }
       #alignContainer {
         display: flex;
@@ -121,11 +121,20 @@
           align-items: flex-start;
           justify-content: space-between;
           width: 90%;
-          height: 30%;
           // border: 1px solid red;
+          @include mobile-only() {
+            height: 30%;
+          }
+          @include lg() {
+            height: 32%;
+          }
           .textBoxMatch2 {
             width: 100%;
             height: 29%;
+          }
+          #warningMsg {
+            font-size: 1.2rem;
+            color: red;
           }
         }
         #bottomBox {
@@ -166,20 +175,7 @@
             }
           }
           #goKakao {
-            img {
-              position: relative;
-              top: 10%;
-              width: 10%;
-            }
-            .outerBox {
-              position: relative;
-              right: 5%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 100%;
-              height: 100%;
-            }
+            @extend #goGoogle;
           }
           #lockBox {
             position: relative;
@@ -195,10 +191,10 @@
               width: 35%;
             }
             @include md() {
-              width: 27%;
+              width: 30%;
             }
             @include lg() {
-              width: 27%;
+              width: 30%;
             }
             #lock {
               width: 20%;
