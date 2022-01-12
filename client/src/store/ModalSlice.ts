@@ -10,6 +10,7 @@ export interface modal {
   findPasswordModal: boolean;
   alertModal: boolean;
   alertText: string;
+  myDropDown: boolean;
 }
 
 /* State 초기값 설정 */
@@ -22,6 +23,7 @@ const initialState: modal = {
   alertModal: false,
   alertText: '',
   sideMenuModal: false,
+  myDropDown: false,
 };
 
 const modalSlice = createSlice({
@@ -56,6 +58,9 @@ const modalSlice = createSlice({
     insertAlertText: (state: modal, { payload }: PayloadAction<string>) => {
       state.alertText = payload;
     },
+    showMyDropDown: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.myDropDown = payload;
+    },
   },
 });
 
@@ -68,5 +73,6 @@ export const {
   showAlertModal,
   insertAlertText,
   showSideMenuModal,
+  showMyDropDown,
 } = modalSlice.actions;
 export default modalSlice.reducer;

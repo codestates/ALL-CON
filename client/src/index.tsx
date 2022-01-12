@@ -6,10 +6,11 @@ import * as serviceWorker from './serviceWorker';
 /* Store import */
 import authSlice, { auth } from './store/AuthSlice';
 import modalSlice, { modal } from './store/ModalSlice';
+import headerSlice, { header } from './store/HeaderSlice';
 /* Library import */
-import {BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { combineReducers } from 'redux';
-import { configureStore } from "@reduxjs/toolkit"; 
+import { configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore, PERSIST } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
@@ -21,33 +22,35 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   version: 1,
-  storage
+  storage,
 };
 
 /* reducer 세팅 */
 const reducers = combineReducers({
   auth: authSlice,
-  modal: modalSlice
+  modal: modalSlice,
+  header: headerSlice,
 });
 
 /* persist reducer 세팅 (persistConfig가 추가된 reducer) */
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 /* store 세팅 */
-const store = configureStore({ 
+const store = configureStore({
   reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [PERSIST]
-      }
-    })
+        ignoredActions: [PERSIST],
+      },
+    }),
 });
 
 /* RootState Type 세팅 */
 export interface RootState {
   auth: auth;
   modal: modal;
+  header: header;
 }
 
 /* persist store 세팅 (새로고침, 종료해도 지속될 store) */

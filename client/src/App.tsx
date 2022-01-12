@@ -9,6 +9,7 @@ import Header from './components/Header';
 import LoginModal from './components/Modals/LoginModal';
 import MyProfileImageModal from './components/Modals/MyPage/MyProfileImageModal';
 import MyProfileResignMembershipModal from './components/Modals/MyPage/MyProfileResignMembershipModal';
+import MyDropDown from './components/Modals/MyPage/MyDropDown';
 import PrivacyModal from './components/Modals/PrivacyModal';
 import ResetPasswordModal from './components/Modals/ResetPasswordModal';
 import SignUpModal from './components/Modals/SignUpModal';
@@ -40,6 +41,7 @@ function App() {
     findPasswordModal,
     alertModal,
     sideMenuModal,
+    myDropDown,
   } = useSelector((state: RootState) => state.modal);
 
   return (
@@ -52,6 +54,7 @@ function App() {
       {sideMenuModal && <SideMenuModal />}
       {alertModal && <AlertModal />}
       {findPasswordModal && <FindPasswordModal />}
+      {myDropDown && <MyDropDown />}
       {/*<ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
       {/* <MyProfileImageModal /> */}
@@ -72,7 +75,8 @@ function App() {
         <Route path='/conchin/*' element={<ConChinPage />} />
         <Route path='/callbackGoogle/*' element={<CallbackGooglePage />} />
         <Route path='/callbackKakao/*' element={<CallbackKaKaoPage />} />
-        {/* <Route path='my/*' element={<MyPage />} /> */}
+        <Route path='/my/*' element={<MyPage />} />
+        <Route path='/landing/*' element={<LandingPage />} />
         {/* <Route path='myEdit/*' element={<MyEditPage />} /> */}
         {/* <Route path='conchinCert/*' element={<ConChinCertificationPage />} /> */}
       </Routes>
