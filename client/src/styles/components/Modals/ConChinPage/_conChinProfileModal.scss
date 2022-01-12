@@ -1,5 +1,6 @@
 #conChinProfileModal {
-  position: 999;
+  z-index: 999;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,8 +51,8 @@
       height: 0%;
     }
     @include md() {
-      width: 0%;
-      height: 0%;
+      width: 100%;
+      height: 100%;
     }
     @include lg() {
       width: 100%;
@@ -73,14 +74,15 @@
       top: 10%;
     }
     @include md() {
-      width: 100%;
-      height: 90%;
-      border-radius: 0px;
-      top: 10%;
+      width: 63%;
+      height: 70%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      border-radius: 20px;
     }
     @include lg() {
-      width: 28%;
-      height: 60%;
+      width: 33%;
+      height: 72%;
       top: 50%;
       transform: translate(0%, -50%);
       border-radius: 20px;
@@ -89,17 +91,21 @@
       position: absolute;
       display: flex;
       justify-content: center;
-      width: 75%;
-      height: 100%;
 
       @include mobile-only() {
         top: 2%;
+        width: 75%;
+        height: 75%;
       }
       @include md() {
         top: 2%;
+        width: 75%;
+        height: 100%;
       }
       @include lg() {
         top: 0%;
+        width: 75%;
+        height: 100%;
       }
       // border: 1px solid red;
       #profileBox {
@@ -149,8 +155,17 @@
           .nickName {
             position: relative;
             margin-left: 5%;
-            font-size: 2rem;
+
             font-weight: bold;
+            @include mobile-only() {
+              font-size: 2rem;
+            }
+            @include md() {
+              font-size: 2.3rem;
+            }
+            @include lg() {
+              font-size: 2.5rem;
+            }
           }
           #shieldWrapper {
             position: relative;
@@ -337,17 +352,17 @@
           font-weight: bold;
           @include mobile-only() {
             font-size: 1.5rem;
-            height: 50%;
+            height: 40%;
             margin-bottom: 5%;
           }
           @include md() {
             font-size: 1.5rem;
-            height: 50%;
+            height: 45%;
             margin-bottom: 5%;
           }
           @include lg() {
             font-size: 2rem;
-            height: 60%;
+            height: 50%;
             margin-top: 5%;
           }
         }

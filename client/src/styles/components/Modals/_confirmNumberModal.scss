@@ -53,14 +53,14 @@
       border-radius: 5px;
     }
     @include md() {
-      width: 100%;
+      width: 60%;
       height: 30%;
       top: 50%;
       transform: translate(0%, -50%);
       border-radius: 5px;
     }
     @include lg() {
-      width: 25%;
+      width: 33%;
       height: 35%;
       top: 50%;
       transform: translate(0%, -50%);
@@ -90,7 +90,7 @@
           border-radius: 5px 5px 0px 0px;
         }
         @include lg() {
-          height: 9%;
+          height: 11%;
           border-radius: 10px 10px 0px 0px;
         }
         #titleWrapper {
@@ -122,10 +122,10 @@
               font-size: 1.5rem;
             }
             @include md() {
-              font-size: 1.5rem;
+              font-size: 1.8rem;
             }
             @include lg() {
-              font-size: 1.8rem;
+              font-size: 2rem;
             }
           }
         }
@@ -147,7 +147,7 @@
               font-size: 2rem;
             }
             @include md() {
-              font-size: 2rem;
+              font-size: 2.3rem;
             }
             @include lg() {
               font-size: 2.5rem;
@@ -194,7 +194,7 @@
               font-size: 1.5rem;
             }
             @include md() {
-              font-size: 1.5rem;
+              font-size: 1.8rem;
             }
             @include lg() {
               font-size: 2rem;
@@ -227,10 +227,10 @@
               font-size: 1.3rem;
             }
             @include md() {
-              font-size: 1.3rem;
+              font-size: 1.5rem;
             }
             @include lg() {
-              font-size: 1.5rem;
+              font-size: 1.8rem;
             }
           }
         }
@@ -254,7 +254,7 @@
               font-size: 1.5rem;
             }
             @include md() {
-              font-size: 1.5rem;
+              font-size: 1.8rem;
             }
             @include lg() {
               font-size: 2rem;

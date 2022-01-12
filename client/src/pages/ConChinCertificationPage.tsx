@@ -5,9 +5,11 @@ function ConChinCertificationPage() {
   return (
     <div id='conChinCertificationPage'>
       <div id='profileBoxWrapper'>
+        {/* 프로필 */}
         <MyProfileBox />
       </div>
       <div id='userInfoWrapper'>
+        {/* 유저 정보 */}
         <div id='userInfoBox'>
           <div id='emailWrapper'>
             <div id='titleWrapper'>
@@ -61,6 +63,7 @@ function ConChinCertificationPage() {
       </div>
       <div id='fullFooter'>
         <div id='footerWrapper'>
+          {/* 푸터 */}
           <Footer />
         </div>
       </div>

@@ -4,6 +4,15 @@
   justify-content: center;
   width: 100%;
   height: 100%;
+  @include mobile-only() {
+    top: 2%;
+  }
+  @include md() {
+    top: 15%;
+  }
+  @include lg() {
+    top: 5%;
+  }
   // border: 4px solid green;
   #titleWrapper {
     position: absolute;
@@ -15,7 +24,7 @@
       width: 80%;
     }
     @include md() {
-      width: 66%;
+      width: 71%;
     }
     @include lg() {
       width: 66%;
@@ -28,7 +37,7 @@
       }
       @include md() {
         width: 85%;
-        font-size: 4rem;
+        font-size: 3rem;
       }
       @include lg() {
         width: 85%;
@@ -40,16 +49,32 @@
     position: absolute;
     display: flex;
     height: 90%;
-    top: 10%;
+
     // border: 2px solid red;
     @include mobile-only() {
       width: 100%;
+      top: 15%;
     }
     @include md() {
-      width: 85%;
+      width: 90%;
+      top: 15%;
     }
     @include lg() {
       width: 85%;
+      top: 11%;
+    }
+    #myMemberBoxWrapper {
+      position: absolute;
+
+      @include mobile-only() {
+        top: 40%;
+      }
+      @include md() {
+        top: 45%;
+      }
+      @include lg() {
+        top: 48%;
+      }
     }
   }
   #paginationWrapper {
@@ -64,7 +89,7 @@
       height: 25%;
     }
     @include md() {
-      top: 65%;
+      top: 63%;
       height: 45%;
     }
     @include lg() {
