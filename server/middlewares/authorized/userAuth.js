@@ -4,6 +4,8 @@ const { Users } = require('../../models');
 module.exports = {
   userAuth: async (req, res) => {
     try {
+
+      console.log('--- userAuth 진입완료! ---')
       
       // 쿠키에 accessToken이 있는지 판별
       const { accessToken } = req.cookies;
