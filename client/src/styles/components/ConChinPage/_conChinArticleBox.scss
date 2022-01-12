@@ -4,19 +4,22 @@
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  top: 10%;
-  // border:1px solid red;
+
+  // border: 1px solid red;
   @include mobile-only() {
     border-top: 5px solid $yellow;
-    height: 90%;
+    height: 143%;
+    top: 15%;
   }
   @include md() {
     border-top: 10px solid $yellow;
-    height: 90%;
+    height: 139%;
+    top: 14%;
   }
   @include lg() {
     border-top: 10px solid $yellow;
-    height: 90%;
+    height: 89.1%;
+    top: 10%;
   }
   #paginationWrapper {
     position: absolute;
@@ -25,15 +28,15 @@
     width: 100%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 83%;
+      top: 78%;
       height: 20%;
     }
     @include md() {
-      top: 82%;
+      top: 79%;
       height: 25%;
     }
     @include lg() {
-      top: 82%;
+      top: 75%;
       height: 25%;
     }
   }
@@ -45,9 +48,9 @@
     top: 40%;
   }
   @include md() {
-    top: 43.6%;
+    top: 45%;
   }
   @include lg() {
-    top: 46%;
+    top: 43%;
   }
 }

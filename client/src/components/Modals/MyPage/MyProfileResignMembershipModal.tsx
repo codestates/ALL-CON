@@ -11,7 +11,7 @@ function MyProfileResignMembershipModal() {
           </div>
           <div id='imgBox'>
             <div id='imgWrapper'>
-              <img className='img' src={ticket} />
+              <img className='img' src={ticket} alt='ticket' />
             </div>
           </div>
           <div id='explainWrapper'>

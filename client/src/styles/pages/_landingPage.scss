@@ -5,6 +5,14 @@
     width: 100%;
     height: 100%;
   }
+  @include md() {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 10%;
+  }
   @include lg {
     display: flex;
     justify-content: center;
@@ -20,6 +28,12 @@
       width: 100%;
       height: 75%;
     }
+    @include md() {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 60%;
+    }
     @include lg() {
       position: absolute;
       top: 0;
@@ -33,6 +47,12 @@
         height: 55%;
         padding-bottom: 30%;
       }
+      @include md() {
+        position: absolute;
+        width: 100%;
+        height: 85%;
+        padding-bottom: 20%;
+      }
       @include lg() {
         position: absolute;
         width: 100%;
@@ -40,27 +60,29 @@
         padding-bottom: 20%;
       }
       #jumboMiniContainer {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.9);
+        width: 100%;
+        height: 100%;
         @include mobile-only() {
-          position: absolute;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.9);
-        }
-        @include lg() {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.9);
         }
         #jumboChosen {
-          opacity: 30%;
+          opacity: 40%;
           @include mobile-only() {
             width: 40%;
             height: 85%;
+          }
+          @include md() {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30%;
+            height: 90%;
           }
           @include lg() {
             position: absolute;
@@ -69,7 +91,6 @@
             transform: translate(-50%, -50%);
             width: 20%;
             height: 90%;
-            opacity: 40%;
           }
         }
       }
@@ -102,7 +123,7 @@
         font-size: 1.3rem;
       }
       @include md() {
-        font-size: 1.8rem;
+        font-size: 1.7rem;
       }
       @include lg() {
         font-size: 1.8rem;
@@ -115,7 +136,7 @@
         font-size: 2.5rem;
       }
       @include md() {
-        font-size: 5rem;
+        font-size: 4.5rem;
       }
       @include lg() {
         font-size: 5rem;
@@ -126,6 +147,12 @@
       @include mobile-only() {
         position: relative;
         bottom: -5%;
+        width: 80%;
+        height: 77%;
+      }
+      @include md() {
+        position: relative;
+        bottom: -3%;
         width: 80%;
         height: 77%;
       }
@@ -152,7 +179,7 @@
     }
     @include md() {
       height: 260%;
-      top: 70%;
+      top: 60%;
     }
     @include lg() {
       height: 300%;
@@ -170,21 +197,23 @@
         height: 24%;
       }
       @include md() {
-        height: 30%;
+        height: 26%;
       }
       @include lg() {
         height: 30%;
       }
       #firstImg {
         @include mobile-only() {
-          width: 90%;
+          width: 80%;
+          height: 60%;
         }
         @include md() {
-          width: 60%;
+          width: 75%;
+          height: 65%;
         }
         @include lg() {
-          width: 58%;
-          height: 65%;
+          width: 55%;
+          height: 68%;
         }
       }
       .alignBox {
@@ -195,35 +224,46 @@
         @include mobile-only() {
           width: 80%;
           height: 30%;
-          font-size: 1.1rem;
         }
         @include md() {
-          width: 45%;
-          height: 20%;
+          width: 70%;
+          height: 30%;
         }
         @include lg() {
           width: 45%;
-          height: 25%;
-          font-size: 1.5rem;
+          height: 30%;
         }
-        .grayGif {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100%;
-          background-color: $gray;
-          border-radius: 5px;
-          font-weight: bold;
+        #paddingBox {
+          position: relative;
+          // border: 2px solid green;
           @include mobile-only() {
-            width: 30%;
+            width: 28%;
+            height: 100%;
           }
           @include md() {
-            width: 25%;
-            font-size: 2rem;
+            width: 32%;
+            height: 100%;
+            font-size: 1.5rem;
           }
           @include lg() {
-            width: 25%;
+            width: 30%;
+            height: 100%;
             font-size: 2rem;
+            padding-bottom: 10%;
+          }
+          .grayGif {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $gray;
+            border-radius: 5px;
+            font-weight: bold;
+            div {
+              position: absolute;
+            }
           }
         }
         #textBox {
@@ -247,7 +287,7 @@
               font-size: 1.2rem;
             }
             @include md() {
-              font-size: 2.5rem;
+              font-size: 1.8rem;
             }
             @include lg() {
               font-size: 2.5rem;
@@ -256,31 +296,45 @@
         }
       }
     }
-    .grayGif2 {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: $gray;
-      border-radius: 5px;
-      font-weight: bold;
+    #paddingBox31 {
+      position: relative;
+      // border: 2px solid green;
       @include mobile-only() {
         width: 30%;
-        height: 68%;
+        height: 70%;
       }
       @include md() {
-        width: 25%;
+        width: 32%;
         height: 100%;
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
       @include lg() {
-        width: 25%;
+        width: 30%;
         height: 100%;
         font-size: 2rem;
+        padding-bottom: 10%;
+      }
+      .grayGif2 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $gray;
+        border-radius: 5px;
+        font-weight: bold;
+        div {
+          position: absolute;
+        }
       }
     }
     #secondBox {
       @extend #firstBox;
       @include mobile-only() {
+        height: 35%;
+      }
+      @include md() {
         height: 35%;
       }
       #secondImg {
@@ -289,21 +343,42 @@
           height: 60%;
         }
         @include md() {
-          width: 40%;
+          width: 70%;
           height: 70%;
         }
         @include lg() {
-          width: 35%;
+          width: 38%;
           height: 65%;
         }
       }
 
       .alignBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        // border: 1px solid pink;
+        @include mobile-only() {
+          width: 80%;
+          height: 30%;
+          font-size: 1.1rem;
+        }
+        @include md() {
+          width: 70%;
+          height: 22%;
+        }
+        @include lg() {
+          width: 45%;
+          height: 30%;
+          font-size: 1.5rem;
+        }
       }
     }
     #thirdBox {
       @extend #firstBox;
       @include mobile-only() {
+        height: 35%;
+      }
+      @include md() {
         height: 35%;
       }
       #thirdImg {
@@ -312,17 +387,38 @@
           height: 60%;
         }
         @include md() {
-          width: 40%;
+          width: 70%;
           height: 70%;
         }
         @include lg() {
-          width: 35%;
+          width: 38%;
           height: 65%;
         }
       }
       .alignBox {
-        .grayGif3 {
-          @extend .grayGif2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        // border: 1px solid pink;
+        @include mobile-only() {
+          width: 80%;
+          height: 30%;
+          font-size: 1.1rem;
+        }
+        @include md() {
+          width: 70%;
+          height: 22%;
+        }
+        @include lg() {
+          width: 45%;
+          height: 30%;
+          font-size: 1.5rem;
+        }
+        #paddingBox32 {
+          @extend #paddingBox31;
+          .grayGif3 {
+            @extend .grayGif2;
+          }
         }
       }
     }
@@ -341,7 +437,7 @@
     }
     @include md() {
       height: 40%;
-      top: 380%;
+      top: 335%;
     }
     @include lg() {
       height: 40%;
@@ -357,6 +453,9 @@
       @include mobile-only() {
         height: 60%;
       }
+      @include md() {
+        height: 55%;
+      }
       @include lg() {
         height: 50%;
       }
@@ -370,7 +469,7 @@
           font-size: 1.5rem;
         }
         @include md() {
-          font-size: 2.5rem;
+          font-size: 2.3rem;
         }
         @include lg() {
           font-size: 2.5rem;
@@ -405,7 +504,7 @@
       top: 275%;
     }
     @include md() {
-      top: 420%;
+      top: 375%;
     }
     @include lg() {
       top: 420%;
