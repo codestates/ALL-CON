@@ -37,8 +37,9 @@ function App() {
       <Header />
       {loginModal && <LoginModal />}
       {signupModal && <SignUpModal />}
-      {tosModal && <TosModal />}
-      {privacyModal && <PrivacyModal />}
+      {/* <MyProfileResignMembershipModal/> */}
+      {/* {tosModal && <TosModal />} */}
+      {/* {privacyModal && <PrivacyModal />} */}
       {/*<ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
       {/* <MyProfileImageModal /> */}
@@ -50,6 +51,7 @@ function App() {
       {/* <MyPage /> */}
       <Routes>
         <Route path='/main/*' element={<MainPage />} />
+        <Route path='/mypage/*' element={<MyPage />} />
         <Route path='/concert/*' element={<ConcertPage />} />
         <Route path='/conchin/*' element={<ConChinPage />} />
         <Route path='/callbackGoogle/*' element={<CallbackGooglePage />} />
