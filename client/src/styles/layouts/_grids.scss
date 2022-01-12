@@ -599,7 +599,7 @@
 
   @include mobile-only() {
     display: flex;
-    width: 15%;
+    width: 5%;
     left: 2%;
   }
   @include md() {
@@ -631,23 +631,33 @@
   @include mobile-only() {
     display: flex;
     width: 5%;
-    right: 15%;
+    right: 16%;
   }
   @include md() {
     display: flex;
     width: 5%;
-    right: 11%;
+    right: 9%;
   }
   @include lg() {
     display: none;
-    width: 15%;
-    right: 15%;
   }
   // border: 1px solid green;
   .search {
     position: relative;
-    width: 25px;
-    height: 25px;
+
+    @include mobile-only() {
+      display: flex;
+      width: 20px;
+      height: 20px;
+    }
+    @include md() {
+      display: flex;
+      width: 25px;
+      height: 25px;
+    }
+    @include lg() {
+      display: none;
+    }
     &:hover {
       cursor: pointer;
     }
@@ -658,18 +668,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow:hidden;
+  overflow: hidden;
   height: 100%;
-  right: 0%;
+
   // border: 1px solid green;
   @include mobile-only() {
     width: 15%;
+    right: 0%;
   }
   @include md() {
     width: 10%;
+    right: 0%;
   }
   @include lg() {
     width: 5%;
+    right: 12%;
   }
   .login {
     position: relative;
@@ -691,7 +704,7 @@
     position: relative;
     border-radius: 100%;
     border: solid #ffce63;
-    object-fit:cover;
+    object-fit: cover;
     width: 50%;
     height: 100%;
     right: 0%;
@@ -712,11 +725,14 @@
 }
 #hiddenMenuBox {
   position: absolute;
+  display: flex;
+
   align-items: center;
   justify-content: space-between;
+
   height: 100%;
-  width: 15%;
-  left: 1%;
+  width: 23rem;
+  left: 12.5%;
   // border: 1px solid red;
   @include mobile-only() {
     display: none;
@@ -728,6 +744,7 @@
     display: flex;
   }
   .menu {
+    position: relative;
     font-size: 2.5rem;
     font-weight: bold;
   }
@@ -739,14 +756,14 @@
   justify-content: right;
   align-items: center;
   width: 20%;
-  right: 6%;
+  right: 5%;
   // border: 1px solid red;
 
   #searchWrapper {
     position: absolute;
-    height: 25px;
-    width: 70%;
-    right: 0%;
+    height: 2.5rem;
+    width: 21rem;
+    right: 62%;
     background-color: #eaeaea;
     // border: 1px solid blue;
     border-radius: 50px;
@@ -775,7 +792,7 @@
     position: absolute;
     height: 18px;
     width: 18px;
-    right: 3%;
+    right: 64%;
     @include mobile-only() {
       display: none;
     }

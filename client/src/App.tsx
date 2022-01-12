@@ -30,7 +30,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  const { loginModal, signupModal, tosModal, privacyModal } = useSelector((state: RootState) => state.modal);
+  const { loginModal, signupModal, tosModal, privacyModal } = useSelector(
+    (state: RootState) => state.modal,
+  );
 
   return (
     <div className='App'>
@@ -45,15 +47,21 @@ function App() {
       {/* <ConfirmNumberModal /> */}
       {/* <FindPasswordModal /> */}
       {/* <ResetPasswordModal /> */}
-      {/* <ConChinCertificationPage /> */}
+
       {/* <LandingPage /> */}
+      {/* <MyEditPage /> */}
+      {/* <ConChinCertificationPage /> */}
       {/* <MyPage /> */}
+      {/*  */}
       <Routes>
         <Route path='/main/*' element={<MainPage />} />
         <Route path='/concert/*' element={<ConcertPage />} />
         <Route path='/conchin/*' element={<ConChinPage />} />
         <Route path='/callbackGoogle/*' element={<CallbackGooglePage />} />
         <Route path='/callbackKakao/*' element={<CallbackKaKaoPage />} />
+        {/* <Route path='my/*' element={<MyPage />} /> */}
+        {/* <Route path='myEdit/*' element={<MyEditPage />} /> */}
+        {/* <Route path='conchinCert/*' element={<ConChinCertificationPage />} /> */}
       </Routes>
     </div>
   );

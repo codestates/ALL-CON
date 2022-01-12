@@ -5,6 +5,7 @@
   @include mobile-only() {
     width: 80%;
     padding-bottom: 90%;
+    top: 6%;
   }
   @include md() {
     width: 60%;

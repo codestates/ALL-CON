@@ -548,7 +548,7 @@ a {
   @media (max-width: 767px) {
     #menuWrapper {
       display: flex;
-      width: 15%;
+      width: 5%;
       left: 2%; } }
   @media (min-width: 768px) {
     #menuWrapper {
@@ -576,21 +576,30 @@ a {
     #searchWrapper {
       display: flex;
       width: 5%;
-      right: 15%; } }
+      right: 16%; } }
   @media (min-width: 768px) {
     #searchWrapper {
       display: flex;
       width: 5%;
-      right: 11%; } }
+      right: 9%; } }
   @media (min-width: 1200px) {
     #searchWrapper {
-      display: none;
-      width: 15%;
-      right: 15%; } }
+      display: none; } }
   #searchWrapper .search {
-    position: relative;
-    width: 25px;
-    height: 25px; }
+    position: relative; }
+    @media (max-width: 767px) {
+      #searchWrapper .search {
+        display: flex;
+        width: 20px;
+        height: 20px; } }
+    @media (min-width: 768px) {
+      #searchWrapper .search {
+        display: flex;
+        width: 25px;
+        height: 25px; } }
+    @media (min-width: 1200px) {
+      #searchWrapper .search {
+        display: none; } }
     #searchWrapper .search:hover {
       cursor: pointer; }
 
@@ -600,17 +609,19 @@ a {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 100%;
-  right: 0%; }
+  height: 100%; }
   @media (max-width: 767px) {
     #loginWrapper {
-      width: 15%; } }
+      width: 15%;
+      right: 0%; } }
   @media (min-width: 768px) {
     #loginWrapper {
-      width: 10%; } }
+      width: 10%;
+      right: 0%; } }
   @media (min-width: 1200px) {
     #loginWrapper {
-      width: 5%; } }
+      width: 5%;
+      right: 12%; } }
   #loginWrapper .login {
     position: relative;
     font-weight: bold; }
@@ -647,11 +658,12 @@ a {
 
 #hiddenMenuBox {
   position: absolute;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  width: 15%;
-  left: 1%; }
+  width: 23rem;
+  left: 12.5%; }
   @media (max-width: 767px) {
     #hiddenMenuBox {
       display: none; } }
@@ -662,6 +674,7 @@ a {
     #hiddenMenuBox {
       display: flex; } }
   #hiddenMenuBox .menu {
+    position: relative;
     font-size: 2.5rem;
     font-weight: bold; }
 
@@ -671,12 +684,12 @@ a {
   justify-content: right;
   align-items: center;
   width: 20%;
-  right: 6%; }
+  right: 5%; }
   #hiddenSearchBox #searchWrapper {
     position: absolute;
-    height: 25px;
-    width: 70%;
-    right: 0%;
+    height: 2.5rem;
+    width: 21rem;
+    right: 62%;
     background-color: #eaeaea;
     border-radius: 50px; }
     @media (max-width: 767px) {
@@ -701,7 +714,7 @@ a {
     position: absolute;
     height: 18px;
     width: 18px;
-    right: 3%; }
+    right: 64%; }
     @media (max-width: 767px) {
       #hiddenSearchBox #imgWrapper {
         display: none; } }
@@ -885,8 +898,8 @@ a {
       transform: translate(-50%, -50%); }
       @media (max-width: 767px) {
         #headerContainer #logoBar .logo {
-          width: 95px;
-          height: 60px; } }
+          width: 85.5px;
+          height: 54px; } }
       @media (min-width: 768px) {
         #headerContainer #logoBar .logo {
           width: 95px;
@@ -966,7 +979,7 @@ a {
       @media (max-width: 767px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
-          height: 10%; } }
+          height: 12%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
@@ -978,14 +991,12 @@ a {
     #conChinContainer #conChinExceptFooter #postingWrapper {
       position: absolute;
       display: flex;
-      flex-wrap: wrap;
-      width: 80%;
-      height: 73%; }
+      flex-wrap: wrap; }
       @media (max-width: 767px) {
         #conChinContainer #conChinExceptFooter #postingWrapper {
           width: 95%;
           height: 80%;
-          top: 10%;
+          top: 12%;
           padding-top: 6%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #postingWrapper {
@@ -1007,7 +1018,7 @@ a {
         #conChinContainer #conChinExceptFooter #articleWrapper {
           width: 95%;
           height: 40.5%;
-          top: 43.5%; } }
+          top: 45.5%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #articleWrapper {
           width: 85%;
@@ -1027,7 +1038,7 @@ a {
       #conChinContainer #contentsWrapper {
         width: 93.5%;
         height: 60%;
-        top: 95%; } }
+        top: 106%; } }
     @media (min-width: 768px) {
       #conChinContainer #contentsWrapper {
         width: 85%;
@@ -1046,17 +1057,17 @@ a {
     @media (max-width: 767px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 17%;
-        top: 162%; } }
+        height: 22%;
+        top: 175%; } }
     @media (min-width: 768px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 18.5%;
+        height: 19.5%;
         top: 190%; } }
     @media (min-width: 1200px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 15.3%;
+        height: 17.5%;
         top: 179%; } }
     #conChinContainer #fullFooter #footerWrapper {
       position: absolute;
@@ -1065,15 +1076,15 @@ a {
       @media (max-width: 767px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 100%;
-          width: 75%; } }
+          width: 100%; } }
       @media (min-width: 768px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 100%;
-          width: 100%; } }
+          width: 90%; } }
       @media (min-width: 1200px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 70%;
-          width: 79%; } }
+          width: 73%; } }
 
 #conChinFindBox {
   position: absolute;
@@ -1132,6 +1143,15 @@ a {
     width: 25%;
     height: 100%;
     right: 1%; }
+    @media (max-width: 767px) {
+      #conChinFindBox .btnWrapper {
+        bottom: 5%; } }
+    @media (min-width: 768px) {
+      #conChinFindBox .btnWrapper {
+        bottom: 0%; } }
+    @media (min-width: 1200px) {
+      #conChinFindBox .btnWrapper {
+        bottom: 0%; } }
     #conChinFindBox .btnWrapper .btn {
       position: absolute;
       height: 60%;
@@ -1144,10 +1164,10 @@ a {
       font-weight: bold; }
       @media (max-width: 767px) {
         #conChinFindBox .btnWrapper .btn {
-          width: 85%;
+          width: 80%;
           padding-left: 17%;
           font-size: 1.3rem;
-          height: 60%; } }
+          height: 80%; } }
       @media (min-width: 768px) {
         #conChinFindBox .btnWrapper .btn {
           width: 48%;
@@ -1168,7 +1188,7 @@ a {
           #conChinFindBox .btnWrapper .btn .img {
             width: 13px;
             height: 13px;
-            right: 67.5%; } }
+            right: 70.5%; } }
         @media (min-width: 768px) {
           #conChinFindBox .btnWrapper .btn .img {
             width: 18px;
@@ -1206,7 +1226,7 @@ a {
   @media (max-width: 767px) {
     #conChinArticleBox {
       border-top: 5px solid #ffce63;
-      height: 143%;
+      height: 170%;
       top: 15%; } }
   @media (min-width: 768px) {
     #conChinArticleBox {
@@ -2029,7 +2049,7 @@ a {
   top: 10%; }
   @media (max-width: 767px) {
     #myPageContainer {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 768px) {
     #myPageContainer {
       height: 180%; } }
@@ -2086,17 +2106,17 @@ a {
     @media (max-width: 767px) {
       #myPageContainer #fullFooter {
         width: 100%;
-        height: 14%;
+        height: 15.3%;
         top: 103%; } }
     @media (min-width: 768px) {
       #myPageContainer #fullFooter {
         width: 100%;
-        height: 15.3%;
+        height: 15.9%;
         top: 104%; } }
     @media (min-width: 1200px) {
       #myPageContainer #fullFooter {
         width: 100%;
-        height: 12.5%;
+        height: 13.5%;
         top: 112%; } }
     #myPageContainer #fullFooter #footerWrapper {
       position: absolute;
@@ -2105,15 +2125,15 @@ a {
       @media (max-width: 767px) {
         #myPageContainer #fullFooter #footerWrapper {
           height: 100%;
-          width: 75%; } }
+          width: 100%; } }
       @media (min-width: 768px) {
         #myPageContainer #fullFooter #footerWrapper {
-          height: 70%;
-          width: 79%; } }
+          height: 100%;
+          width: 90%; } }
       @media (min-width: 1200px) {
         #myPageContainer #fullFooter #footerWrapper {
           height: 70%;
-          width: 79%; } }
+          width: 73%; } }
 
 #myProfileImageModal {
   z-index: 999;
@@ -2560,10 +2580,10 @@ a {
   /***** 공통 *****/ }
   @media (max-width: 767px) {
     #conChinCertificationPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 768px) {
     #conChinCertificationPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 1200px) {
     #conChinCertificationPage {
       height: 227%; } }
@@ -2613,15 +2633,15 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #conChinCertificationPage #userInfoWrapper {
-        top: 30.33%;
+        top: 32.33%;
         height: 60%; } }
     @media (min-width: 768px) {
       #conChinCertificationPage #userInfoWrapper {
-        top: 40%;
+        top: 30%;
         height: 75%; } }
     @media (min-width: 1200px) {
       #conChinCertificationPage #userInfoWrapper {
-        top: 30.33%;
+        top: 28%;
         height: 67%; } }
     #conChinCertificationPage #userInfoWrapper #userInfoBox {
       position: absolute;
@@ -2630,16 +2650,16 @@ a {
       justify-content: center; }
       @media (max-width: 767px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
-          width: 90%;
+          width: 80%;
           height: 90%; } }
       @media (min-width: 768px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
-          width: 80%;
-          height: 90.1%; } }
+          width: 60%;
+          height: 80%; } }
       @media (min-width: 1200px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
-          width: 50%;
-          height: 90%; } }
+          width: 40%;
+          height: 80%; } }
       #conChinCertificationPage #userInfoWrapper #userInfoBox #emailWrapper {
         position: absolute;
         display: flex;
@@ -2822,7 +2842,7 @@ a {
               color: white; }
               @media (max-width: 767px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
-                  font-size: 1.5rem; } }
+                  font-size: 1.3rem; } }
               @media (min-width: 768px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
                   font-size: 1.8rem; } }
@@ -2839,7 +2859,7 @@ a {
               color: white; }
               @media (max-width: 767px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
-                  font-size: 1.5rem; } }
+                  font-size: 1.3rem; } }
               @media (min-width: 768px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
                   font-size: 1.8rem; } }
@@ -2894,18 +2914,18 @@ a {
     @media (max-width: 767px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 18%;
+        height: 15.3%;
         top: 93%; } }
     @media (min-width: 768px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 19%;
-        top: 115%; } }
+        height: 15.9%;
+        top: 103%; } }
     @media (min-width: 1200px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 16%;
-        top: 100%; } }
+        height: 18%;
+        top: 97%; } }
     #conChinCertificationPage #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -2916,12 +2936,12 @@ a {
           width: 100%; } }
       @media (min-width: 768px) {
         #conChinCertificationPage #fullFooter #footerWrapper {
-          height: 70%;
-          width: 100%; } }
+          height: 100%;
+          width: 90%; } }
       @media (min-width: 1200px) {
         #conChinCertificationPage #fullFooter #footerWrapper {
-          height: 73%;
-          width: 79%; } }
+          height: 70%;
+          width: 73%; } }
 
 #findPasswordModal {
   z-index: 990;
@@ -3730,7 +3750,8 @@ a {
   @media (max-width: 767px) {
     #myProfileBox {
       width: 80%;
-      padding-bottom: 90%; } }
+      padding-bottom: 90%;
+      top: 6%; } }
   @media (min-width: 768px) {
     #myProfileBox {
       width: 60%;
@@ -4127,10 +4148,10 @@ a {
   /***** 공통 *****/ }
   @media (max-width: 767px) {
     #myEditPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 768px) {
     #myEditPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 1200px) {
     #myEditPage {
       height: 227%; } }
@@ -4184,7 +4205,7 @@ a {
         height: 50%; } }
     @media (min-width: 768px) {
       #myEditPage #userInfoWrapper {
-        top: 40%;
+        top: 30%;
         height: 70%; } }
     @media (min-width: 1200px) {
       #myEditPage #userInfoWrapper {
@@ -4197,16 +4218,16 @@ a {
       justify-content: center; }
       @media (max-width: 767px) {
         #myEditPage #userInfoWrapper #userInfoBox {
-          width: 90%;
+          width: 80%;
           height: 90%; } }
       @media (min-width: 768px) {
         #myEditPage #userInfoWrapper #userInfoBox {
-          width: 80%;
-          height: 90%; } }
+          width: 60%;
+          height: 80%; } }
       @media (min-width: 1200px) {
         #myEditPage #userInfoWrapper #userInfoBox {
-          width: 50%;
-          height: 87.2%; } }
+          width: 40%;
+          height: 80%; } }
       #myEditPage #userInfoWrapper #userInfoBox #emailWrapper {
         position: absolute;
         display: flex;
@@ -4370,18 +4391,18 @@ a {
     @media (max-width: 767px) {
       #myEditPage #fullFooter {
         width: 100%;
-        height: 18%;
-        top: 83%; } }
+        height: 15.3%;
+        top: 85%; } }
     @media (min-width: 768px) {
       #myEditPage #fullFooter {
         width: 100%;
-        height: 20%;
-        top: 112%; } }
+        height: 15.9%;
+        top: 98%; } }
     @media (min-width: 1200px) {
       #myEditPage #fullFooter {
         width: 100%;
-        height: 16%;
-        top: 100%; } }
+        height: 18%;
+        top: 95%; } }
     #myEditPage #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -4392,12 +4413,12 @@ a {
           width: 100%; } }
       @media (min-width: 768px) {
         #myEditPage #fullFooter #footerWrapper {
-          height: 70%;
-          width: 100%; } }
+          height: 100%;
+          width: 90%; } }
       @media (min-width: 1200px) {
         #myEditPage #fullFooter #footerWrapper {
-          height: 73%;
-          width: 79%; } }
+          height: 70%;
+          width: 73%; } }
 
 /***** 재혁 *****/
 /*---------------선영--------------------*/
