@@ -9,20 +9,22 @@ function MyProfileBox() {
     <div id='myProfileBox'>
       <div id='imgBox'>
         <div id='imgWrapper'>
-          <img className='img' src={profileImage} />
+          <img className='img' src={profileImage} alt='profileImage' />
         </div>
         <div id='cameraWrapper'>
-          <img className='camera' src={camera} />
+          <img className='camera' src={camera} alt='camera' />
         </div>
       </div>
       <div id='introductionBox'>
         <div id='nickNameWrapper'>
           <div id='oauthWrapper'>
-            <img className='oauth' src={google} />
+            {/* OAuth 상태에 따른 아이콘 표시 */}
+            <img className='oauth' src={google} alt='google' />
           </div>
           <p className='nickName'>유태양발닦개</p>
           <div id='shieldWrapper'>
-            <img className='shield' src={shield} />
+            {/* 콘친 인증 상태에 따른 아이콘 표시 */}
+            <img className='shield' src={shield} alt='shield' />
           </div>
         </div>
         <div id='textWrapper'>

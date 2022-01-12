@@ -36,7 +36,7 @@
         font-size: 1.8rem;
       }
       @include md() {
-        font-size: 1.8rem;
+        font-size: 2rem;
       }
       @include lg() {
         font-size: 2.5rem;
@@ -54,7 +54,7 @@
 
     // border: 2px solid green;
     @include mobile-only() {
-      height: 40%;
+      height: 33.33%;
     }
     @include md() {
       height: 33.33%;
@@ -72,15 +72,15 @@
 
     // border: 2px solid blue;
     @include mobile-only() {
-      top: 40%;
+      top: 30.33%;
       height: 60%;
     }
     @include md() {
-      top: 50%;
-      height: 70%;
+      top: 40%;
+      height: 75%;
     }
     @include lg() {
-      top: 33.33%;
+      top: 30.33%;
       height: 67%;
     }
     #userInfoBox {
@@ -95,12 +95,12 @@
         height: 90%;
       }
       @include md() {
-        width: 90%;
-        height: 90%;
+        width: 80%;
+        height: 90.1%;
       }
       @include lg() {
-        width: 40%;
-        height: 80%;
+        width: 50%;
+        height: 90%;
       }
 
       #emailWrapper {
@@ -129,7 +129,7 @@
             font-size: 1.5rem;
           }
           @include md() {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
           }
           @include lg() {
             font-size: 2rem;
@@ -164,7 +164,7 @@
               font-size: 1.5rem;
             }
             @include md() {
-              font-size: 1.5rem;
+              font-size: 1.8rem;
             }
             @include lg() {
               font-size: 2rem;
@@ -196,7 +196,7 @@
             font-size: 1.5rem;
           }
           @include md() {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
           }
           @include lg() {
             font-size: 2rem;
@@ -232,7 +232,7 @@
               font-size: 1.8rem;
             }
             @include md() {
-              font-size: 1.8rem;
+              font-size: 2rem;
             }
             @include lg() {
               font-size: 2.5rem;
@@ -254,7 +254,7 @@
             font-size: 1.5rem;
           }
           @include md() {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
           }
           @include lg() {
             font-size: 2rem;
@@ -289,7 +289,7 @@
                 font-size: 1.5rem;
               }
               @include md() {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
               }
               @include lg() {
                 font-size: 2rem;
@@ -307,7 +307,7 @@
                 font-size: 1.5rem;
               }
               @include md() {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
               }
               @include lg() {
                 font-size: 2rem;
@@ -325,7 +325,7 @@
                 font-size: 1.5rem;
               }
               @include md() {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
               }
               @include lg() {
                 font-size: 2rem;
@@ -371,7 +371,7 @@
               font-size: 1.5rem;
             }
             @include md() {
-              font-size: 1.5rem;
+              font-size: 1.8rem;
             }
             @include lg() {
               font-size: 2rem;
@@ -396,12 +396,12 @@
     @include mobile-only() {
       width: 100%;
       height: 18%;
-      top: 103%;
+      top: 93%;
     }
     @include md() {
       width: 100%;
-      height: 15.3%;
-      top: 180%;
+      height: 19%;
+      top: 115%;
     }
     @include lg() {
       width: 100%;
@@ -417,14 +417,14 @@
       // border: 1px solid red;
       @include mobile-only() {
         height: 100%;
-        width: 75%;
+        width: 100%;
       }
       @include md() {
         height: 70%;
-        width: 79%;
+        width: 100%;
       }
       @include lg() {
-        height: 70%;
+        height: 73%;
         width: 79%;
       }
     }
