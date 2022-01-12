@@ -1,0 +1,235 @@
+#loginModalContainer {
+  z-index: 999;
+  width: 100%;
+  @include mobile-only() {
+    position: absolute;
+    top: 10%;
+    height: 90%;
+  }
+  @include md() {
+    position: fixed;
+    height: 100%;
+  }
+  @include lg() {
+    position: fixed;
+    height: 100%;
+  }
+  #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  #background {
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    @include mobile-only() {
+    }
+    @include md() {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @include lg() {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #loginModal {
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      // border: 1px solid red;
+      @include mobile-only() {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      @include md() {
+        width: 60%;
+        height: 78%;
+        border-radius: 20px;
+        // border: 2px solid purple;
+      }
+      @include lg() {
+        width: 30%;
+        height: 78%;
+        border-radius: 20px;
+      }
+      #alignContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        height: 85%;
+        // border: 1px solid aqua;
+        .fontMatch {
+          font-weight: bold;
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 1.8rem;
+          }
+        }
+        .textBoxMatch {
+          display: flex;
+          width: 70%;
+          height: 5%;
+          border: 1px solid $gray;
+          border-radius: 5px;
+        }
+        #topBox {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          width: 90%;
+          height: 20%;
+          // border: 1px solid green;
+          h2 {
+            color: $yellow;
+            @include mobile-only() {
+              font-size: 3rem;
+            }
+            @include md() {
+              font-size: 3.8rem;
+            }
+            @include lg() {
+              font-size: 3.8rem;
+            }
+          }
+          #goSignUp {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 50%;
+            // border: 1px solid purple;
+            #no1 {
+              color: $gray;
+            }
+            #no2 {
+              color: $yellow;
+              cursor: pointer;
+            }
+          }
+        }
+        #midBox {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: space-between;
+          width: 90%;
+          @include mobile-only() {
+            height: 30%;
+          }
+          @include md() {
+            height: 30%;
+          }
+          @include lg() {
+            height: 32%;
+          }
+          .textBoxMatch2 {
+            width: 100%;
+            height: 29%;
+          }
+          #warningMsg {
+            font-size: 1.2rem;
+            color: red;
+          }
+        }
+        #bottomBox {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 90%;
+          height: 40%;
+          // border: 1px solid blue;
+          .textBoxMatch3 {
+            display: flex;
+            width: 100%;
+            height: 20%;
+            border: 1px solid $gray;
+            border-radius: 5px;
+          }
+          #loginBtn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $yellow;
+            color: #fff;
+            cursor: pointer;
+          }
+          #goGoogle {
+            cursor: pointer;
+            img {
+              position: relative;
+              // top: 10%;
+              width: 10%;
+              // border: 1px solid blue;
+            }
+            .outerBox {
+              position: relative;
+              right: 5%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              height: 100%;
+            }
+          }
+          #goKakao {
+            @extend #goGoogle;
+          }
+          #lockBox {
+            position: relative;
+            top: 8%;
+            left: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 15%;
+            transform: translate(-50%, -50%);
+            // border: 1px solid blue;
+            @include mobile-only() {
+              width: 35%;
+            }
+            @include md() {
+              width: 30%;
+            }
+            @include lg() {
+              width: 100%;
+            }
+            #lock {
+              width: 20%;
+              @include lg() {
+                width: 6%;
+              }
+            }
+            #findPassword {
+              color: $gray;
+              cursor: pointer;
+              @include mobile-only() {
+                font-size: 1.2rem;
+              }
+              @include md() {
+                font-size: 1.5rem;
+              }
+              @include lg() {
+                font-size: 1.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

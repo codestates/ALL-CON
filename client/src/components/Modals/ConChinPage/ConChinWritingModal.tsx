@@ -2,6 +2,7 @@ import defaultImg from '../../../images/default_image.jpg';
 function ConChinWritingModal() {
   return (
     <div id='conChinWritingContainer'>
+      <div id='outerBackGround'></div>
       <div id='backGround'>
         <div id='writingModal'>
           <img src={defaultImg} alt='이미지' id='image'></img>

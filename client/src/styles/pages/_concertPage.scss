@@ -9,12 +9,22 @@
   #lineOrderWrapper {
     position: absolute;
     top: 0;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    // border: 2px solid red;
     @include mobile-only() {
+      display: flex;
+      justify-content: center;
+      width: 100%;
       height: 8%;
-      // border: 2px solid red;
+    }
+    @include md() {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 8%;
+    }
+    @include lg() {
+      width: 50%;
+      left: 0;
     }
     #bottomLineOrderBox {
       display: flex;
@@ -31,23 +41,24 @@
   #concertsBoard {
     position: absolute;
     top: 10%;
+    left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    // border: 1px solid blue;
     @include mobile-only() {
       width: 100%;
       height: 130%;
     }
     @include md() {
-      width: 55%;
-      height: 200%;
+      width: 100%;
+      height: 185%;
     }
     @include lg() {
-      width: 55%;
+      width: 50%;
       height: 200%;
     }
-    // border: 3px solid blue;
     #concertBoxWrapper {
       width: 90%;
       height: 12%;
@@ -77,6 +88,21 @@
     #concertBoxWrapper7 {
       width: 90%;
       height: 12%;
+    }
+  }
+  #footerWrapper {
+    // border: 1px solid orange;
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    @include mobile-only() {
+      top: 145%;
+    }
+    @include md() {
+      top: 200%;
+    }
+    @include lg() {
+      top: 220%;
     }
   }
 }

@@ -1,0 +1,327 @@
+#myEditPage {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  top: 10%;
+  // border: 3px solid red;
+  @include mobile-only() {
+    height: 150%;
+  }
+  @include md() {
+    height: 150%;
+  }
+  @include lg() {
+    height: 227%;
+  }
+
+  /***** 공통 *****/
+  #titleWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 50%;
+    top: 0%;
+  }
+  // border: 1px solid red;
+  .title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    font-weight: bold;
+    @include mobile-only() {
+      font-size: 1.8rem;
+    }
+    @include md() {
+      font-size: 2rem;
+    }
+    @include lg() {
+      font-size: 2.5rem;
+    }
+  }
+  /***** 공통 *****/
+
+  #profileBoxWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    // border: 2px solid green;
+    @include mobile-only() {
+      height: 33.33%;
+    }
+    @include md() {
+      height: 33.33%;
+    }
+    @include lg() {
+      height: 33.33%;
+    }
+  }
+  #userInfoWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    // border: 2px solid blue;
+    @include mobile-only() {
+      top: 31%;
+      height: 50%;
+    }
+    @include md() {
+      top: 40%;
+      height: 70%;
+    }
+    @include lg() {
+      top: 29%;
+      height: 66.67%;
+    }
+    #userInfoBox {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      // border: 1px solid red;
+      @include mobile-only() {
+        width: 90%;
+        height: 90%;
+      }
+      @include md() {
+        width: 80%;
+        height: 90%;
+      }
+      @include lg() {
+        width: 50%;
+        height: 87.2%;
+      }
+
+      #emailWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        top: 0%;
+        // border: 1px solid red;
+        #email {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 30%;
+          top: 60%;
+          padding-left: 2%;
+          background-color: $gray2;
+          border: none;
+          border-radius: 5px;
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 2rem;
+          }
+        }
+      }
+      #nickNameWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        top: 20%;
+        // border: 1px solid red;
+        #nickNameBox {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 50%;
+          top: 50%;
+          #nickName {
+            position: relative;
+            height: 60%;
+            width: 100%;
+            border: 1px solid $gray2;
+            border-radius: 5px;
+            padding-left: 2%;
+            @include mobile-only() {
+              font-size: 1.5rem;
+            }
+            @include md() {
+              font-size: 1.8rem;
+            }
+            @include lg() {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+      #resetBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        top: 40%;
+        // border: 1px solid red;
+        .reset {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 30%;
+          top: 60%;
+          padding-left: 2%;
+          border: 1px solid $gray2;
+          border-radius: 5px;
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 2rem;
+          }
+        }
+      }
+      #confirmBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        top: 60%;
+        // border: 1px solid red;
+
+        .confirm {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: left;
+          width: 100%;
+          height: 29.64%;
+          top: 60%;
+          padding-left: 2%;
+          border: 1px solid $gray2;
+          border-radius: 5px;
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 2rem;
+          }
+        }
+      }
+      #btnBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 20%;
+        top: 80%;
+        // border: 1px solid red;
+        #btnWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 50%;
+          width: 90%;
+          // border: 1px solid red;
+          .completeBtn {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+            height: 60%;
+            background-color: $yellow;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            @include mobile-only() {
+              font-size: 1.5rem;
+            }
+            @include md() {
+              font-size: 1.8rem;
+            }
+            @include lg() {
+              font-size: 2rem;
+            }
+            font-weight: bold;
+          }
+          .cancelBtn {
+            @extend .completeBtn;
+            background-color: $black;
+          }
+        }
+      }
+    }
+  }
+
+  #fullFooter {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+
+    background-color: black;
+    @include mobile-only() {
+      width: 100%;
+      height: 18%;
+      top: 83%;
+    }
+    @include md() {
+      width: 100%;
+      height: 20%;
+      top: 112%;
+    }
+    @include lg() {
+      width: 100%;
+      height: 16%;
+      top: 100%;
+    }
+    // border: 1px solid red;
+    #footerWrapper {
+      position: absolute;
+      display: flex;
+
+      background-color: black;
+      // border: 1px solid red;
+      @include mobile-only() {
+        height: 100%;
+        width: 100%;
+      }
+      @include md() {
+        height: 70%;
+        width: 100%;
+      }
+      @include lg() {
+        height: 73%;
+        width: 79%;
+      }
+    }
+  }
+}

@@ -4,19 +4,27 @@
   flex-direction: row;
   border-bottom: 1.5px solid black;
   width: 100%;
-  height: 10%;
-  // border:1px solid red;
+  @include mobile-only() {
+    height: 15%;
+  }
+  @include md() {
+    height: 14%;
+  }
+  @include lg() {
+    height: 10%;
+  }
+  // border: 1px solid red;
   .title {
     position: relative;
     display: inline-block;
     height: 100%;
-    // border:1px solid red;
+    // border: 1px solid red;
     @include mobile-only() {
       width: 70.5%;
       left: 5%;
     }
     @include md() {
-      width: 30%;
+      width: 50%;
       left: 7%;
     }
     @include lg() {
@@ -36,10 +44,10 @@
         // border:1px solid red;
         font-weight: bolder;
         @include mobile-only() {
-          font-size: 2.5rem;
+          font-size: 2.2rem;
         }
         @include md() {
-          font-size: 4rem;
+          font-size: 3rem;
         }
         @include lg() {
           font-size: 4rem;
@@ -67,16 +75,16 @@
       color: white;
       font-weight: bold;
       @include mobile-only() {
-        width: 65%;
+        width: 85%;
         padding-left: 17%;
-        font-size: 1rem;
+        font-size: 1.3rem;
         height: 60%;
       }
       @include md() {
-        width: 40%;
-        padding-left: 6.5%;
-        font-size: 2rem;
-        height: 45%;
+        width: 48%;
+        padding-left: 12%;
+        font-size: 1.5rem;
+        height: 50%;
       }
       @include lg() {
         width: 40%;
@@ -95,9 +103,9 @@
           right: 67.5%;
         }
         @include md() {
-          width: 23px;
-          height: 23px;
-          right: 70.5%;
+          width: 18px;
+          height: 18px;
+          right: 72.5%;
         }
         @include lg() {
           width: 23px;

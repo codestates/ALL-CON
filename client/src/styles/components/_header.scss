@@ -9,7 +9,7 @@
     z-index: 999;
   }
   @include md() {
-    z-index: 15;
+    z-index: 999;
   }
   @include lg() {
     z-index: 15;
@@ -28,14 +28,16 @@
       position: absolute;
       display: flex;
       top: 200%;
-      transform: translate(0, -50%);
+      left:50%;
+      transform: translate(-50%, -50%);
+      // border: 1px solid green;
       @include mobile-only() {
         width: 95px;
         height: 60px;
       }
       @include md() {
-        width: 115px;
-        height: 75px;
+        width: 95px;
+        height: 60px;
       }
       @include lg() {
         width: 115px;

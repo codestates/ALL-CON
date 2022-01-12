@@ -15,8 +15,8 @@ function MainComment() {
           </div>
           <div id='imgAndText'>
             <div className='imgWrapper'>
-              <img className='img' src={profileImage} />
-              <img className='shield' src={shield} />
+              <img className='img' src={profileImage} alt='프로필 사진' />
+              <img className='shield' src={shield} alt='인증 뱃지' />
             </div>
             <textarea id='input' placeholder='댓글을 입력해주세요.'></textarea>
           </div>
@@ -26,13 +26,13 @@ function MainComment() {
           <div className='dateBox'>
             <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
             <div className='dotWrapper'>
-              <img className='dot' src={tripleDot} />
+              <img className='dot' src={tripleDot} alt='메뉴 아이콘' />
             </div>
           </div>
           <div id='imgAndText'>
             <div className='imgWrapper'>
-              <img className='img' src={articleImage} />
-              <img className='shield' src={shield} />
+              <img className='img' src={profileImage} alt='프로필 사진' />
+              <img className='shield' src={shield} alt='인증 뱃지' />
             </div>
             <p id='text'>올콘 뛰세요..? 부럽다...</p>
           </div>
@@ -41,13 +41,13 @@ function MainComment() {
           <div className='dateBox'>
             <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
             <div className='dotWrapper'>
-              <img className='dot' src={tripleDot} />
+              <img className='dot' src={tripleDot} alt='메뉴 아이콘' />
             </div>
           </div>
           <div id='imgAndText'>
             <div className='imgWrapper'>
-              <img className='img' src={articleImage} />
-              <img className='shield' src={shield} />
+              <img className='img' src={profileImage} alt='프로필 사진' />
+              <img className='shield' src={shield} alt='인증 뱃지' />
             </div>
             <p id='text'>올콘 뛰세요..? 부럽다...</p>
           </div>
@@ -56,13 +56,13 @@ function MainComment() {
           <div className='dateBox'>
             <p className='nickNameAndDate'>*급해님 | 2021.12.27</p>
             <div className='dotWrapper'>
-              <img className='dot' src={tripleDot} />
+              <img className='dot' src={tripleDot} alt='메뉴 아이콘' />
             </div>
           </div>
           <div id='imgAndText'>
             <div className='imgWrapper'>
-              <img className='img' src={articleImage} />
-              <img className='shield' src={shield} />
+              <img className='img' src={profileImage} alt='프로필 사진' />
+              <img className='shield' src={shield} alt='인증 뱃지' />
             </div>
             <p id='text'>올콘 뛰세요..? 부럽다...</p>
           </div>

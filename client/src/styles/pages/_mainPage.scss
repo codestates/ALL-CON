@@ -1,114 +1,129 @@
-@include mobile-only {
-  #mainContainer {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 10%;
+#mainContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 10%;
+  @include mobile-only() {
+  }
+  @include md() {
+    display: flex;
+    justify-content: center;
+  }
+  @include lg() {
+    display: flex;
+    justify-content: center;
   }
   #mainJumboWrapper {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 75%;
+    @include mobile-only() {
+      height: 75%;
+    }
+    @include md() {
+      height: 65%;
+    }
+    @include lg() {
+      height: 65%;
+    }
   }
   #mainConcertInfoWrapper {
     position: absolute;
-    top: 41.2%;
     width: 100%;
-    height: 70%;
     // border: 2px solid red;
-  }
-  #mainCommentWrapper {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 111%;
-    width: 100%;
-    height: 40%;
-    // border: 1px solid green;
-  }
-  #mainFindConchinWrapper {
-    position: absolute;
-    top: 151%;
-    width: 100%;
-    height: 40%;
-    // border: 1px solid red;
-  }
-  #mainFooterWrapper {
-    position: absolute;
-    top: 191%;
-    width: 100%;
-    height: 33%;
-  }
-}
-@include lg() {
-  #mainContainer {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 10%;
-  }
-  #mainJumboWrapper {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 65%;
-    // border: 1px solid red;
-  }
-  #mainConcertInfoWrapper {
-    position: absolute;
-    top: 65%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 95%;
-    // border: 2px solid blue;
-  }
-
-  #mainCommentWrapper {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 160%;
-    width: 65%;
-    height: 70%;
-    // border: 1px solid red;
-    #paginationWrapper {
-      position: absolute;
+    @include mobile-only() {
+      top: 41.2%;
+      height: 70%;
+    }
+    @include md() {
+      top: 55%;
       display: flex;
       align-items: center;
+      justify-content: center;
+      height: 80%;
+    }
+    @include lg() {
+      top: 65%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 95%;
+    }
+  }
+  #mainCommentWrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    // border: 1px solid green;
+    @include mobile-only() {
+      top: 115%;
+      width: 100%;
+      height: 55%;
+    }
+    @include md() {
+      top: 137%;
       width: 90%;
-      height: 20%;
-      bottom: -5%;
-      // border:1px solid red;
-      @include mobile-only() {
-        top: 85%;
-        height: 20%;
-      }
-      @include lg() {
-        top: 87%;
-        height: 25%;
-      }
+      height: 45%;
+    }
+    @include lg() {
+      top: 160%;
+      width: 60%;
+      height: 70%;
+    }
+  }
+  #mainPaginationWrapper {
+    z-index: 77;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 5%;
+    // border: 1px solid red;
+    @include mobile-only() {
+      top: 163%;
+    }
+    @include md() {
+      top: 190%;
+    }
+    @include lg() {
+      top: 220%;
     }
   }
   #mainFindConchinWrapper {
     position: absolute;
-    top: 230%;
     width: 100%;
-    height: 80%;
-    // border: 2px solid green;
+    // border: 1px solid red;
+    @include mobile-only() {
+      top: 170%;
+      height: 40%;
+    }
+    @include md() {
+      top: 200%;
+      height: 60%;
+    }
+    @include lg() {
+      top: 230%;
+      height: 80%;
+    }
   }
   #mainFooterWrapper {
     position: absolute;
-    top: 310%;
     width: 100%;
-    height: 30%;
+    // border: 1px solid green;
+    @include mobile-only() {
+      top: 210%;
+      height: 33%;
+    }
+    @include md() {
+      top: 270%;
+      height: 30%;
+    }
+    @include lg() {
+      top: 310%;
+      height: 30%;
+    }
   }
 }

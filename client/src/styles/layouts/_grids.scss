@@ -52,9 +52,9 @@
     font-size: 1.6rem;
   }
   @include md() {
-    width: 10%;
+    width: 11%;
     height: 50%;
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   @include lg() {
     width: 10%;
@@ -73,6 +73,7 @@
 #articleBox {
   position: relative;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   width: 80%;
   height: 75%;
@@ -84,8 +85,22 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    height: 50%;
+
+    @include mobile-only() {
+      border-radius: 5px;
+      width: 100%;
+      height: 30%;
+    }
+    @include md() {
+      border-radius: 10px;
+      width: 100%;
+      height: 40%;
+    }
+    @include lg() {
+      border-radius: 10px;
+      width: 100%;
+      height: 50%;
+    }
     // border:1px solid red;
     padding: 1%;
     .article {
@@ -148,7 +163,7 @@
             font-size: 1rem;
           }
           @include md() {
-            font-size: 2rem;
+            font-size: 1.5rem;
           }
           @include lg() {
             font-size: 2rem;
@@ -166,7 +181,7 @@
             font-size: 1rem;
           }
           @include md() {
-            font-size: 2rem;
+            font-size: 1.5rem;
           }
           @include lg() {
             font-size: 2rem;
@@ -178,17 +193,17 @@
           @include mobile-only() {
             width: 11px;
             height: 11px;
-            left: 3%;
+            left: 1%;
           }
           @include md() {
-            width: 25px;
-            height: 25px;
-            left: 3%;
+            width: 20px;
+            height: 20px;
+            left: 2%;
           }
           @include lg() {
             width: 25px;
             height: 25px;
-            left: 3%;
+            left: 2%;
           }
         }
         .count {
@@ -201,8 +216,8 @@
           }
           @include md() {
             top: 1.5%;
-            left: 13%;
-            font-size: 2rem;
+            left: 15%;
+            font-size: 1.5rem;
           }
           @include lg() {
             top: 1.5%;
@@ -233,8 +248,8 @@
     // height:20%;
   }
   @include md() {
-    width: 8.9rem;
-    height: 3.6rem;
+    width: 5.5rem;
+    height: 2.5rem;
     // width:25%;
     // height:10%;
   }
@@ -254,8 +269,8 @@
     }
     @include md() {
       margin-right: 45%;
-      width: 16px;
-      height: 16px;
+      width: 13px;
+      height: 13px;
     }
     @include lg() {
       margin-right: 45%;
@@ -276,7 +291,7 @@
     @include md() {
       padding-top: 3%;
       padding-left: 20%;
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
     @include lg() {
       padding-top: 3%;
@@ -299,7 +314,7 @@
     height: 10%;
   }
   @include md() {
-    height: 12%;
+    height: 11%;
   }
   @include lg() {
     height: 12%;
@@ -320,9 +335,9 @@
       border-radius: 2px;
     }
     @include md() {
-      width: 55px;
-      height: 55px;
-      padding-bottom: 55px;
+      width: 30px;
+      height: 30px;
+      padding-bottom: 30px;
       margin: 3%;
       border-radius: 5px;
     }
@@ -362,8 +377,17 @@
   display: flex;
   flex-direction: column;
   width: 95%;
-  height: 85%;
+
   top: 5%;
+  @include mobile-only() {
+    height: 80%;
+  }
+  @include md() {
+    height: 100%;
+  }
+  @include lg() {
+    height: 70%;
+  }
   // border:2px solid red;
   #countWrapper {
     position: absolute;
@@ -382,7 +406,7 @@
         font-size: 1.5rem;
       }
       @include md() {
-        font-size: 2.5rem;
+        font-size: 2rem;
       }
       @include lg() {
         font-size: 2.5rem;
@@ -398,6 +422,7 @@
     margin-top: 3%;
     border: 1px solid #c4c4c4;
     border-radius: 5px;
+
     .dateBox {
       position: absolute;
       display: flex;
@@ -412,7 +437,7 @@
           font-size: 1rem;
         }
         @include md() {
-          font-size: 2rem;
+          font-size: 1.5rem;
         }
         @include lg() {
           font-size: 2rem;
@@ -445,8 +470,8 @@
             height: 1.1rem;
           }
           @include md() {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 1.5rem;
+            height: 1.5rem;
           }
           @include lg() {
             width: 2.5rem;
@@ -475,13 +500,13 @@
           left: 3%;
         }
         @include md() {
-          height: 47px;
-          width: 47px;
+          height: 35px;
+          width: 35px;
           left: 2%;
         }
         @include lg() {
-          height: 47px;
-          width: 47px;
+          height: 45px;
+          width: 45px;
           left: 2%;
         }
         // border:1px solid orange;
@@ -504,8 +529,8 @@
             height: 13px;
           }
           @include md() {
-            width: 20px;
-            height: 20px;
+            width: 15px;
+            height: 15px;
           }
           @include lg() {
             width: 20px;
@@ -517,7 +542,7 @@
         position: absolute;
         display: flex;
         width: 80%;
-        height: 50%;
+
         border: none;
         outline: none;
         overflow: hidden;
@@ -525,15 +550,18 @@
         border-radius: 5px;
 
         @include mobile-only() {
-          left: 12.5%;
+          left: 11.5%;
           font-size: 1.3rem;
+          height: 50%;
         }
         @include md() {
-          left: 9%;
-          font-size: 2.3rem;
+          left: 10%;
+          font-size: 1.87rem;
+          height: 70%;
         }
         @include lg() {
           left: 9%;
+          height: 50%;
           font-size: 2.3rem;
         }
       }
@@ -543,12 +571,12 @@
         width: 80%;
         // border: 1px solid red;
         @include mobile-only() {
-          left: 12.5%;
+          left: 11.5%;
           font-size: 1.3rem;
         }
         @include md() {
-          left: 9%;
-          font-size: 2.3rem;
+          left: 10%;
+          font-size: 1.8rem;
         }
         @include lg() {
           left: 9%;
@@ -568,16 +596,21 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  width: 15%;
-  left: 2%;
+
   @include mobile-only() {
     display: flex;
+    width: 15%;
+    left: 2%;
   }
   @include md() {
-    display: none;
+    display: flex;
+    width: 5%;
+    left: 2%;
   }
   @include lg() {
     display: none;
+    width: 15%;
+    left: 2%;
   }
   // border: 1px solid green;
   .menu {
@@ -594,16 +627,21 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  width: 15%;
-  right: 15%;
+
   @include mobile-only() {
     display: flex;
+    width: 5%;
+    right: 15%;
   }
   @include md() {
-    display: none;
+    display: flex;
+    width: 5%;
+    right: 11%;
   }
   @include lg() {
     display: none;
+    width: 15%;
+    right: 15%;
   }
   // border: 1px solid green;
   .search {
@@ -620,6 +658,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow:hidden;
   height: 100%;
   right: 0%;
   // border: 1px solid green;
@@ -627,7 +666,7 @@
     width: 15%;
   }
   @include md() {
-    width: 5%;
+    width: 10%;
   }
   @include lg() {
     width: 5%;
@@ -639,10 +678,32 @@
       font-size: 2rem;
     }
     @include md() {
-      font-size: 2.5rem;
+      font-size: 2rem;
     }
     @include lg() {
       font-size: 2.5rem;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .profile {
+    position: relative;
+    border-radius: 100%;
+    border: solid #ffce63;
+    object-fit:cover;
+    width: 50%;
+    height: 100%;
+    right: 0%;
+
+    @include mobile-only() {
+      border-width: 2.5px;
+    }
+    @include md() {
+      border-width: 3px;
+    }
+    @include lg() {
+      border-width: 3.5px;
     }
     &:hover {
       cursor: pointer;
@@ -661,7 +722,7 @@
     display: none;
   }
   @include md() {
-    display: flex;
+    display: none;
   }
   @include lg() {
     display: flex;
@@ -680,6 +741,7 @@
   width: 20%;
   right: 6%;
   // border: 1px solid red;
+
   #searchWrapper {
     position: absolute;
     height: 25px;
@@ -693,8 +755,7 @@
       display: none;
     }
     @include md() {
-      display: flex;
-      justify-content: left;
+      display: none;
     }
     @include lg() {
       display: flex;
@@ -719,7 +780,7 @@
       display: none;
     }
     @include md() {
-      display: flex;
+      display: none;
     }
     @include lg() {
       display: flex;
