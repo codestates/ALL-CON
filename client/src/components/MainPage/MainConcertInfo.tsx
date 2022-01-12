@@ -20,10 +20,7 @@ function MainConcertInfo() {
         </div>
         <div id='titleBox'>
           <div id='h2AlignBox'>
-            <h2>
-              요즘힙합 전국투어 콘서트-대구공연(조광일, 신스, 비오, 쿤타,
-              베이식, 머드 더 스튜던트, 아넌딜라이트)
-            </h2>
+            <h2>2022 이준호 FANMEETING 〈JUNHO THE MOMENT〉</h2>
           </div>
         </div>
         <p id='date'>등록일: 2021-11-24 | 조회수: 87</p>

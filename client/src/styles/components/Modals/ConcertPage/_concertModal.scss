@@ -1,29 +1,34 @@
 #concertModalContainer {
   z-index: 999;
-  position: fixed;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  @include mobile-only() {
+    position: fixed;
+  }
+  @include md() {
+    position: fixed;
+  }
+  @include lg() {
+    position: absolute;
+  }
   #background {
     z-index: 998;
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     @include mobile-only() {
     }
     @include md() {
-      position: absolute;
-      width: 40%;
-      height: 50%;
-      left: 55%;
     }
     @include lg() {
       position: absolute;
-      width: 40%;
-      height: 50%;
+      width: 30%;
+      height: 0%;
       left: 55%;
     }
   }
@@ -41,15 +46,15 @@
       height: 70%;
     }
     @include md() {
-      width: 40%;
-      height: 90%;
+      width: 80%;
+      height: 85%;
     }
     @include lg() {
-      display: fixed;
-      top: 10%;
-      right: 5%;
+      display: flex;
       width: 40%;
       height: 90%;
+      top: 10%;
+      right: 5%;
     }
     #AlignBox {
       display: flex;
@@ -61,7 +66,7 @@
         height: 90%;
       }
       @include md() {
-        width: 100%;
+        width: 90%;
         height: 100%;
       }
       @include lg() {
@@ -268,7 +273,6 @@
   }
   #stretchedConcertModal {
     z-index: 999;
-    display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
@@ -276,15 +280,17 @@
     border-radius: 5px;
     // border: 1px solid blue;
     @include mobile-only() {
+      display: flex;
       width: 90%;
       height: 70%;
     }
     @include md() {
-      width: 40%;
-      height: 90%;
+      display: flex;
+      width: 80%;
+      height: 85%;
     }
     @include lg() {
-      display: fixed;
+      position: fixed;
       top: 5%;
       right: 5%;
       width: 40%;
@@ -300,7 +306,245 @@
         height: 90%;
       }
       @include md() {
+        width: 90%;
+        height: 100%;
+      }
+      @include lg() {
         width: 100%;
+        height: 100%;
+      }
+      #top_box {
+        position: relative;
+        width: 100%;
+        height: 15%;
+        // border: 1px solid blue;
+        #titleAndDay {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          height: 60%;
+          // border: 1px solid purple;
+          h2 {
+            display: flex;
+            align-items: center;
+            width: 85%;
+            height: 100%;
+            @include mobile-only() {
+              font-size: 1.6rem;
+            }
+            @include md() {
+              font-size: 2.5rem;
+            }
+            @include lg() {
+              font-size: 2.5rem;
+            }
+          }
+          p {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: $gray;
+            @include mobile-only() {
+              font-size: 2rem;
+            }
+            @include md() {
+              font-size: 3rem;
+            }
+            @include lg() {
+              font-size: 3rem;
+            }
+          }
+        }
+        #whereAndDate {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 40%;
+          #where {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 15%;
+            height: 70%;
+            background-color: $yellow;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+            @include mobile-only() {
+              font-size: 1.1rem;
+            }
+            @include md() {
+              font-size: 1.8rem;
+            }
+            @include lg() {
+              font-size: 1.8rem;
+            }
+          }
+          #date {
+            // border: 1px solid red;
+            padding-left: 1%;
+            @include mobile-only() {
+              font-size: 1.2rem;
+            }
+            @include md() {
+              font-size: 1.8rem;
+            }
+            @include lg() {
+              font-size: 1.8rem;
+            }
+          }
+        }
+      }
+      #mid_box {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+        height: 40%;
+        // border: 1px solid hotpink;
+        #poster {
+          width: 30%;
+          height: 90%;
+        }
+        #right-side {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-start;
+          width: 65%;
+          height: 90%;
+          // border: 1px solid purple;
+          #conInfo {
+            display: flex;
+            width: 100%;
+            height: 60%;
+            // border: 1px solid green;
+            #miniTitle {
+              display: flex;
+              flex-direction: column;
+              width: 30%;
+              height: 100%;
+              font-size: 1.4rem;
+              font-weight: bold;
+              // border: 1px solid blue;
+              @include mobile-only() {
+                font-size: 1.4rem;
+              }
+              @include md() {
+                font-size: 1.4rem;
+              }
+              @include lg() {
+                font-size: 1.8rem;
+              }
+              #place {
+              }
+              #time {
+                position: absolute;
+                top: 30%;
+              }
+            }
+            #answer {
+              display: flex;
+              flex-direction: column;
+              width: 60%;
+              height: 100%;
+
+              // border: 1px solid red;
+              @include mobile-only() {
+                font-size: 1.2rem;
+              }
+              @include md() {
+                font-size: 1.6rem;
+              }
+              @include lg() {
+                font-size: 1.6rem;
+              }
+              #place_r {
+              }
+              #time_r {
+                position: absolute;
+                top: 30%;
+              }
+            }
+          }
+          #more {
+            width: 100%;
+            background-color: $yellow;
+            border: 0;
+            border-radius: 5px;
+            color: #fff;
+            font-weight: bold;
+            @include mobile-only() {
+              height: 13%;
+            }
+            @include md() {
+              height: 14%;
+            }
+            @include lg() {
+              font-size: 1.8rem;
+              height: 14%;
+            }
+          }
+        }
+      }
+      #bottom_box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 45%;
+        // border: 1px solid black;
+        #map {
+          @include mobile-only() {
+            width: 55%;
+            height: 85%;
+          }
+          @include md() {
+            width: 50%;
+            height: 85%;
+          }
+          @include lg() {
+            width: 50%;
+            height: 85%;
+          }
+        }
+      }
+    }
+  }
+  #onFooterModal {
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 5px;
+    // border: 1px solid purple;
+    @include mobile-only() {
+      width: 90%;
+      height: 70%;
+    }
+    @include md() {
+      width: 80%;
+      height: 85%;
+    }
+    @include lg() {
+      top: 130%;
+      right: 5%;
+      width: 40%;
+      height: 90%;
+    }
+    #AlignBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      // border: 3px solid green;
+      @include mobile-only() {
+        width: 90%;
+        height: 90%;
+      }
+      @include md() {
+        width: 90%;
         height: 100%;
       }
       @include lg() {

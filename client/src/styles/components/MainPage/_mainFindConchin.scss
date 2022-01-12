@@ -15,7 +15,7 @@
       font-size: 1.6rem;
     }
     @include md() {
-      font-size: 3rem;
+      font-size: 2.5rem;
     }
     @include lg() {
       font-size: 3rem;
@@ -31,7 +31,7 @@
       height: 60%;
     }
     @include md() {
-      width: 45%;
+      width: 60%;
       height: 68%;
     }
     @include lg() {
@@ -52,6 +52,10 @@
     @include mobile-only() {
       width: 25%;
       font-size: 1.6rem;
+    }
+    @include md() {
+      width: 20%;
+      font-size: 1.8rem;
     }
     @include lg() {
       width: 15%;

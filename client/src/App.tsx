@@ -41,22 +41,20 @@ function App() {
       {privacyModal && <PrivacyModal />}
       {/*<ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
+      {/* <MyProfileImageModal /> */}
+      {/* <ConfirmNumberModal /> */}
+      {/* <FindPasswordModal /> */}
+      {/* <ResetPasswordModal /> */}
+      {/* <ConChinCertificationPage /> */}
+      {/* <LandingPage /> */}
+      {/* <MyPage /> */}
       <Routes>
-        {/* <LandingPage /> */}
         <Route path='/main/*' element={<MainPage />} />
         <Route path='/concert/*' element={<ConcertPage />} />
         <Route path='/conchin/*' element={<ConChinPage />} />
-        {/* <ConChinCertificationPage /> */}
-        {/* <MyPage /> */}
         <Route path='/callbackGoogle/*' element={<CallbackGooglePage />} />
         <Route path='/callbackKakao/*' element={<CallbackKaKaoPage />} />
       </Routes>
-      {/* <div id='modalWrapper'> */}
-        {/* <MyProfileImageModal /> */}
-        {/* <ConfirmNumberModal />
-        <FindPasswordModal /> */}
-        {/* <ResetPasswordModal /> */}
-      {/* </div> */}
     </div>
   );
 }

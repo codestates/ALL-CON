@@ -29,12 +29,14 @@ function LandingPage() {
       {/*중간 박스 */}
       <div id='middleWrapper'>
         <div id='firstBox'>
-          <img id='firstImg' src={img1}></img>
+          <img id='firstImg' src={img1} alt='밴드 일러스트'></img>
           <div className='alignBox'>
-            <div className='grayGif'>
-              <div>
-                <p>정보를 검색 및</p>
-                <p> 확인하는 시연 영상</p>
+            <div id='paddingBox'>
+              <div className='grayGif'>
+                <div>
+                  <p>정보를 검색 및</p>
+                  <p> 확인하는 시연 영상</p>
+                </div>
               </div>
             </div>
             <div id='textBox'>
@@ -50,12 +52,14 @@ function LandingPage() {
         </div>
 
         <div id='secondBox'>
-          <img id='secondImg' src={img2}></img>
+          <img id='secondImg' src={img2} alt='콘친찾기 일러스트'></img>
           <div className='alignBox'>
-            <div className='grayGif2'>
-              <div>
-                <p>콘친을 찾는</p>
-                <p> 시연 영상</p>
+            <div id='paddingBox31'>
+              <div className='grayGif2'>
+                <div>
+                  <p>콘친을 찾는</p>
+                  <p> 시연 영상</p>
+                </div>
               </div>
             </div>
             <div id='textBox'>
@@ -69,12 +73,14 @@ function LandingPage() {
         </div>
 
         <div id='thirdBox'>
-          <img id='thirdImg' src={img3}></img>
+          <img id='thirdImg' src={img3} alt='알림 일러스트'></img>
           <div className='alignBox'>
-            <div className='grayGif3'>
-              <div>
-                <p>알림을 설정하는</p>
-                <p> 시연 영상</p>
+            <div id='paddingBox32'>
+              <div className='grayGif3'>
+                <div>
+                  <p>알림을 설정하는</p>
+                  <p> 시연 영상</p>
+                </div>
               </div>
             </div>
             <div id='textBox'>

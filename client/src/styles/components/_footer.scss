@@ -10,7 +10,7 @@
     height: 100%;
   }
   @include md() {
-    height: 130%;
+    height: 100%;
   }
   @include lg() {
     height: 130%;
@@ -19,12 +19,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    // border: 1px solid aqua;
     @include mobile-only() {
       width: 95%;
       height: 60%;
     }
     @include md() {
-      width: 57%;
+      width: 70%;
       height: 60%;
     }
     @include lg() {
@@ -53,21 +54,26 @@
         @include lg() {
           width: 25%;
         }
-        #github {
+        #paddingBox {
           // border: 1px solid orange;
-          padding-top: 6%;
-          padding-bottom: 6%;
           @include mobile-only() {
             width: 30%;
             height: 30%;
+            padding-bottom: 2%;
           }
           @include md() {
-            width: 23%;
-            height: 40%;
+            width: 30%;
+            height: 30%;
+            padding-bottom: 2%;
           }
           @include lg() {
-            width: 23%;
-            height: 40%;
+            width: 28%;
+            height: 28%;
+            padding-bottom: 2%;
+          }
+          #github {
+            width: 100%;
+            height: 100%;
           }
         }
         .text {
@@ -84,10 +90,16 @@
             font-size: 1.1rem;
           }
           @include md {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
           }
           @include lg {
             font-size: 1.8rem;
+          }
+          .name {
+            font-weight: bold;
+          }
+          .role {
+            color: $yellow;
           }
         }
       }
@@ -102,7 +114,7 @@
       height: 15%;
     }
     @include md() {
-      width: 9%;
+      width: 12%;
       height: 15%;
     }
     @include lg() {
@@ -121,10 +133,13 @@
   #copyright {
     color: #fff;
     text-align: center;
-    width: 40%;
+    width: 50%;
     height: 10%;
+    @include mobile-only() {
+      font-size: 1.2rem;
+    }
     @include md {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
     }
     @include lg {
       font-size: 1.6rem;

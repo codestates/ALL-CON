@@ -18,13 +18,13 @@ function MyCommentBox() {
             <div className='dateBox'>
               <p className='nickNameAndDate'>유태양발닦개님 | 2021.12.27</p>
               <div className='dotWrapper'>
-                <img className='dot' src={tripleDot} />
+                <img className='dot' src={tripleDot} alt='tripleDot' />
               </div>
             </div>
             <div id='imgAndText'>
               <div className='imgWrapper'>
-                <img className='img' src={profileImage} />
-                <img className='shield' src={shield} />
+                <img className='img' src={profileImage} alt='profileImage' />
+                <img className='shield' src={shield} alt='shield' />
               </div>
               <p id='text'>부럽다...</p>
             </div>
@@ -33,13 +33,13 @@ function MyCommentBox() {
             <div className='dateBox'>
               <p className='nickNameAndDate'>유태양발닦개님 | 2021.12.27</p>
               <div className='dotWrapper'>
-                <img className='dot' src={tripleDot} />
+                <img className='dot' src={tripleDot} alt='tripleDot' />
               </div>
             </div>
             <div id='imgAndText'>
               <div className='imgWrapper'>
-                <img className='img' src={profileImage} />
-                <img className='shield' src={shield} />
+                <img className='img' src={profileImage} alt='profileImage' />
+                <img className='shield' src={shield} alt='shield' />
               </div>
               <p id='text'>부럽다...</p>
             </div>
@@ -48,13 +48,13 @@ function MyCommentBox() {
             <div className='dateBox'>
               <p className='nickNameAndDate'>유태양발닦개님 | 2021.12.27</p>
               <div className='dotWrapper'>
-                <img className='dot' src={tripleDot} />
+                <img className='dot' src={tripleDot} alt='tripleDot' />
               </div>
             </div>
             <div id='imgAndText'>
               <div className='imgWrapper'>
-                <img className='img' src={profileImage} />
-                <img className='shield' src={shield} />
+                <img className='img' src={profileImage} alt='profileImage' />
+                <img className='shield' src={shield} alt='shield' />
               </div>
               <p id='text'>부럽다...</p>
             </div>

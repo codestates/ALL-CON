@@ -50,14 +50,16 @@
         height: 100%;
       }
       @include md() {
-        width: 30%;
+        width: 60%;
         height: 78%;
         border-radius: 20px;
+        // border: 3px solid purple;
       }
       @include lg() {
         width: 30%;
         height: 78%;
         border-radius: 20px;
+        // border: 3px solid red;
       }
       #alignContainer {
         display: flex;
@@ -231,7 +233,7 @@
                   left: 12%;
                 }
                 @include md() {
-                  left: 38%;
+                  left: 26.5%;
                 }
                 @include lg() {
                   left: 38%;
@@ -243,7 +245,7 @@
                   left: 20%;
                 }
                 @include md() {
-                  left: 40%;
+                  left: 30%;
                 }
                 @include lg() {
                   left: 40%;

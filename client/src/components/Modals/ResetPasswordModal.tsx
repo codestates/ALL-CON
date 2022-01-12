@@ -36,7 +36,7 @@ function ResetPasswordModal() {
               </div>
               <div id='inputWrapper'>
                 <input className='input'></input>
-                <img className='padlock' src={padlock} />
+                <img className='padlock' src={padlock} alt='padlock' />
               </div>
             </div>
             <div className='btnWrapper'>
