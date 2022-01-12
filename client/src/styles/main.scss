@@ -13,7 +13,7 @@
 @import './components/footer';
 @import './components/header.scss';
 
-/***** 재혁 *****/
+/*------------재혁------------*/
 @import './pages/conChinPage.scss';
 @import './components/ConChinPage/conChinFindBox.scss';
 @import './components/ConChinPage/conChinConChinBox.scss';
@@ -32,9 +32,10 @@
 @import './components/MyPage/myArticleBox.scss';
 @import './components/MyPage/myCommentBox.scss';
 @import './pages/myEditPage.scss';
-/***** 재혁 *****/
+@import './components//Modals/sideMenuModal';
+/*------------재혁------------*/
 
-/*---------------선영--------------------*/
+/*------------선영------------*/
 @import '../styles/pages/mainPage.scss';
 @import '../styles/layouts/jumbotronBackground';
 @import '../styles/components/posterSlide';
@@ -48,8 +49,8 @@
 @import '../styles/components/Modals/signUpModal';
 @import '../styles/components/Modals/tosModal';
 @import '../styles/pages/landingPage';
-/*------------선영----------*/
+/*------------선영------------*/
 
-/*------------정현----------*/
+/*------------정현------------*/
 @import '../styles/components/Modals/privacyModal';
-/*------------정현----------*/
+/*------------정현------------*/

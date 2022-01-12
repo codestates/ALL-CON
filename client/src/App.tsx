@@ -11,6 +11,7 @@ import MyProfileResignMembershipModal from './components/Modals/MyPage/MyProfile
 import PrivacyModal from './components/Modals/PrivacyModal';
 import ResetPasswordModal from './components/Modals/ResetPasswordModal';
 import SignUpModal from './components/Modals/SignUpModal';
+import SideMenuModal from './components/Modals/SideMenuModal';
 import TosModal from './components/Modals/TosModal';
 /* Page import */
 import CallbackGooglePage from './pages/CallBackPage/CallBackGoogle';
@@ -30,9 +31,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  const { loginModal, signupModal, tosModal, privacyModal } = useSelector(
-    (state: RootState) => state.modal,
-  );
+  const { loginModal, signupModal, tosModal, privacyModal, sideMenuModal } =
+    useSelector((state: RootState) => state.modal);
 
   return (
     <div className='App'>
@@ -41,6 +41,7 @@ function App() {
       {signupModal && <SignUpModal />}
       {tosModal && <TosModal />}
       {privacyModal && <PrivacyModal />}
+      {sideMenuModal && <SideMenuModal />}
       {/*<ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
       {/* <MyProfileImageModal /> */}
@@ -51,7 +52,7 @@ function App() {
 
       {/* <LandingPage /> */}
       {/* <MyEditPage /> */}
-      <ConChinCertificationPage />
+      {/* <ConChinCertificationPage /> */}
       {/* <MyPage /> */}
       {/*  */}
       <Routes>

@@ -8,7 +8,7 @@ import user from '../images/user.png';
 /* Store import */
 import { RootState } from '../index';
 import { logout } from '../store/AuthSlice';
-import { showLoginModal } from '../store/ModalSlice';
+import { showLoginModal, showSideMenuModal } from '../store/ModalSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -20,12 +20,13 @@ function Header() {
   const navigate = useNavigate();
   const { isLogin } = useSelector((state: RootState) => state.auth);
   const { userInfo } = useSelector((state: RootState) => state.auth);
+  const { sideMenuModal } = useSelector((state: RootState) => state.modal);
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
   });
-
+  /* 스크롤 위치 저장 */
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
   };
@@ -55,8 +56,13 @@ function Header() {
           <img className='logo' alt='logoImg' src={logo} />
         </Link>
       </div>
+      {/* 스크롤위치에 따라 헤더 포지션 변경 */}
       <div id={scrollPosition < 48 ? 'absoluteBar' : 'fixedBar'}>
-        <div id='menuWrapper'>
+        {/* 사이드메뉴 open여부에따라 open/close */}
+        <div
+          id='menuWrapper'
+          onClick={() => dispatch(showSideMenuModal(!sideMenuModal))}
+        >
           <img className='menu' alt='menuImg' src={menu} />
         </div>
         <div id='searchWrapper'>

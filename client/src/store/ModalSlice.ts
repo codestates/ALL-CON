@@ -6,9 +6,16 @@ export interface modal {
   signupModal: boolean;
   tosModal: boolean;
   privacyModal: boolean;
+  sideMenuModal: boolean;
 }
 /* State 초기값 설정 */
-const initialState: modal = { loginModal: false, signupModal: false, tosModal: false, privacyModal: false };
+const initialState: modal = {
+  loginModal: false,
+  signupModal: false,
+  tosModal: false,
+  privacyModal: false,
+  sideMenuModal: false,
+};
 
 const modalSlice = createSlice({
   name: 'modal',
@@ -26,9 +33,18 @@ const modalSlice = createSlice({
     },
     showPrivacyModal: (state, { payload }) => {
       state.privacyModal = payload;
-    }
-  }
+    },
+    showSideMenuModal: (state, { payload }) => {
+      state.sideMenuModal = payload;
+    },
+  },
 });
 
-export const { showLoginModal, showSignupModal, showTosModal, showPrivacyModal } = modalSlice.actions;
+export const {
+  showLoginModal,
+  showSignupModal,
+  showTosModal,
+  showPrivacyModal,
+  showSideMenuModal,
+} = modalSlice.actions;
 export default modalSlice.reducer;
