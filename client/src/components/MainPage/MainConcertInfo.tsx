@@ -1,20 +1,26 @@
 import bell from '../../images/notification2.png';
+import blackbell from '../../images/notification1.png';
 import ybposter from '../../images/ybposter.jpg';
 import kakaotalk from '../../images/kakao-talk-1.png';
 import email from '../../images/email2.png';
 import sandwatch from '../../images/sandWatch.png';
+import returnImg from '../../images/return.png';
 
 function MainConcertInfo() {
   return (
     <div id='mainConcertInfoBox'>
       <div id='topBox'>
         <div id='roofArea'>
-          <button id='backBtn'>콘서트 페이지로 돌아가기</button>
+          <img
+            id='backBtn'
+            src={returnImg}
+            alt='콘서트페이지 돌아가기 버튼'
+          ></img>
         </div>
         <div id='fromWhereBox'>
           <div className='where'>YES24</div>
           <div className='where'>인터파크</div>
-          <img alt='종' src={bell} id='bell'></img>
+          <img alt='종' src={blackbell} id='bell'></img>
           <img src={email} alt='메일아이콘' id='mailIcon'></img>
           <img src={kakaotalk} alt='카톡아이콘' id='kakaoIcon'></img>
         </div>
@@ -46,6 +52,9 @@ function MainConcertInfo() {
                 <p className='left' id='price'>
                   티켓 가격
                 </p>
+                <p className='left' id='alarm'>
+                  알림 받기
+                </p>
               </div>
               <div className='right-side'>
                 <p className='right' id='place_r'>
@@ -64,6 +73,10 @@ function MainConcertInfo() {
                 <p className='right' id='price_r'>
                   R석 132000원 / S석 121000원 / A석 99000원
                 </p>
+                <p className='right' id='alarm_r'>
+                  <img src={email} alt='메일아이콘' id='mailIcon2'></img>
+                  <img src={kakaotalk} alt='카톡아이콘' id='kakaoIcon2'></img>
+                </p>
               </div>
             </div>
           </div>
@@ -71,7 +84,7 @@ function MainConcertInfo() {
         <div id='buttonsWrapper'>
           <button id='black-btn'>
             <div id='imgAndOpen'>
-              <img src={sandwatch} />
+              <img src={blackbell} />
               <p id='open'>티켓 오픈일 &nbsp; 11.29(월) 오후 2:00</p>
             </div>
           </button>

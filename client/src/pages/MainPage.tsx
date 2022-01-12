@@ -24,8 +24,10 @@ function MainPage() {
         <div id='mainFindConchinWrapper'>
           <MainFindConchin />
         </div>
-        <div id='mainFooterWrapper'>
-          <Footer />
+        <div id='fullFooter'>
+          <div id='mainFooterWrapper'>
+            <Footer />
+          </div>
         </div>
       </div>
     </>

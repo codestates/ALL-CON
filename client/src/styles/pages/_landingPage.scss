@@ -164,144 +164,130 @@
       }
     }
   }
-  /*중간 박스*/
+
+  /*---------------중간 박스---------------*/
+
   #middleWrapper {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    position: absolute;
     width: 100%;
     // border: 1px solid red;
     @include mobile-only() {
-      height: 200%;
+      height: 250%;
       top: 45%;
     }
     @include md() {
-      height: 260%;
+      height: 350%;
       top: 60%;
     }
     @include lg() {
-      height: 300%;
+      height: 480%;
       top: 70%;
     }
-    #firstBox {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      // border: 1px solid blue;
+
+    #firstImg {
+      // border: 1px solid orange;
       @include mobile-only() {
-        height: 24%;
+        width: 85%;
+        height: 14%;
       }
       @include md() {
-        height: 26%;
+        width: 80%;
+        height: 14%;
       }
       @include lg() {
-        height: 30%;
+        width: 53%;
+        height: 14%;
       }
-      #firstImg {
+    }
+    .alignBox {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      // border: 1px solid pink;
+      @include mobile-only() {
+        width: 80%;
+        height: 6%;
+      }
+      @include md() {
+        width: 70%;
+        height: 6%;
+      }
+      @include lg() {
+        width: 45%;
+        height: 5%;
+      }
+      #paddingBox {
+        position: relative;
         @include mobile-only() {
-          width: 80%;
-          height: 60%;
+          width: 32%;
+          height: 100%;
         }
         @include md() {
-          width: 75%;
-          height: 65%;
+          width: 32%;
+          height: 100%;
+          font-size: 1.5rem;
         }
         @include lg() {
-          width: 55%;
-          height: 68%;
+          width: 30%;
+          height: 100%;
+          font-size: 2rem;
+          padding-bottom: 10%;
         }
-      }
-      .alignBox {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        // border: 1px solid pink;
-        @include mobile-only() {
-          width: 80%;
-          height: 30%;
-        }
-        @include md() {
-          width: 70%;
-          height: 30%;
-        }
-        @include lg() {
-          width: 45%;
-          height: 30%;
-        }
-        #paddingBox {
-          position: relative;
-          // border: 2px solid green;
-          @include mobile-only() {
-            width: 28%;
-            height: 100%;
-          }
-          @include md() {
-            width: 32%;
-            height: 100%;
-            font-size: 1.5rem;
-          }
-          @include lg() {
-            width: 30%;
-            height: 100%;
-            font-size: 2rem;
-            padding-bottom: 10%;
-          }
-          .grayGif {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: $gray;
-            border-radius: 5px;
-            font-weight: bold;
-            div {
-              position: absolute;
-            }
-          }
-        }
-        #textBox {
+        .grayGif {
+          position: absolute;
+          width: 100%;
+          height: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 90%;
-          // border: 1px solid green;
+          background-color: $gray;
+          border-radius: 5px;
+          font-weight: bold;
+          div {
+            position: absolute;
+          }
+        }
+      }
+      #textBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90%;
+        // border: 1px solid green;
+        @include mobile-only() {
+          width: 70%;
+        }
+        @include md() {
+          width: 60%;
+        }
+        @include lg() {
+          width: 60%;
+        }
+        #texts {
+          font-weight: bold;
           @include mobile-only() {
-            width: 70%;
+            font-size: 1.2rem;
           }
           @include md() {
-            width: 60%;
+            font-size: 1.8rem;
           }
           @include lg() {
-            width: 60%;
-          }
-          #texts {
-            font-weight: bold;
-            @include mobile-only() {
-              font-size: 1.2rem;
-            }
-            @include md() {
-              font-size: 1.8rem;
-            }
-            @include lg() {
-              font-size: 2.5rem;
-            }
+            font-size: 2.5rem;
           }
         }
       }
     }
+
     #paddingBox31 {
       position: relative;
       // border: 2px solid green;
       @include mobile-only() {
         width: 30%;
-        height: 70%;
+        height: 100%;
       }
       @include md() {
         width: 32%;
@@ -329,100 +315,52 @@
         }
       }
     }
-    #secondBox {
-      @extend #firstBox;
+
+    #secondImg {
+      // border: 1px solid orange;
       @include mobile-only() {
-        height: 35%;
+        width: 85%;
+        height: 20%;
       }
       @include md() {
-        height: 35%;
+        width: 75%;
+        height: 20%;
       }
-      #secondImg {
-        @include mobile-only() {
-          width: 60%;
-          height: 60%;
-        }
-        @include md() {
-          width: 70%;
-          height: 70%;
-        }
-        @include lg() {
-          width: 38%;
-          height: 65%;
-        }
-      }
-
-      .alignBox {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        // border: 1px solid pink;
-        @include mobile-only() {
-          width: 80%;
-          height: 30%;
-          font-size: 1.1rem;
-        }
-        @include md() {
-          width: 70%;
-          height: 22%;
-        }
-        @include lg() {
-          width: 45%;
-          height: 30%;
-          font-size: 1.5rem;
-        }
+      @include lg() {
+        width: 48%;
+        height: 18%;
       }
     }
-    #thirdBox {
-      @extend #firstBox;
+    .alignBox2 {
+      @extend .alignBox;
+    }
+    #thirdImg {
+      // border: 1px solid orange;
       @include mobile-only() {
-        height: 35%;
+        width: 85%;
+        height: 20%;
       }
       @include md() {
-        height: 35%;
+        width: 75%;
+        height: 20%;
       }
-      #thirdImg {
-        @include mobile-only() {
-          width: 60%;
-          height: 60%;
-        }
-        @include md() {
-          width: 70%;
-          height: 70%;
-        }
-        @include lg() {
-          width: 38%;
-          height: 65%;
-        }
+      @include lg() {
+        width: 50%;
+        height: 18%;
       }
-      .alignBox {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        // border: 1px solid pink;
-        @include mobile-only() {
-          width: 80%;
-          height: 30%;
-          font-size: 1.1rem;
-        }
-        @include md() {
-          width: 70%;
-          height: 22%;
-        }
-        @include lg() {
-          width: 45%;
-          height: 30%;
-          font-size: 1.5rem;
-        }
-        #paddingBox32 {
-          @extend #paddingBox31;
-          .grayGif3 {
-            @extend .grayGif2;
-          }
-        }
+    }
+
+    .alignBox3 {
+      @extend .alignBox;
+    }
+    #paddingBox32 {
+      @extend #paddingBox31;
+      .grayGif3 {
+        @extend .grayGif2;
       }
     }
   }
+
   #bottomBox {
     position: absolute;
     display: flex;
@@ -433,15 +371,15 @@
     // border: 1px solid green;
     @include mobile-only() {
       height: 20%;
-      top: 255%;
+      top: 310%;
     }
     @include md() {
-      height: 40%;
-      top: 335%;
+      height: 30%;
+      top: 420%;
     }
     @include lg() {
       height: 40%;
-      top: 380%;
+      top: 570%;
     }
     #bottomAlignBox {
       display: flex;
@@ -496,18 +434,45 @@
       }
     }
   }
-  #landingFooterWrapper {
+  #fullFooter {
     position: absolute;
-    width: 100%;
-    height: 30%;
+    display: flex;
+    justify-content: center;
+    background-color: black;
     @include mobile-only() {
-      top: 275%;
+      width: 100%;
+      height: 30%;
+      top: 330%;
     }
     @include md() {
-      top: 375%;
+      width: 100%;
+      height: 30%;
+      top: 450%;
     }
     @include lg() {
-      top: 420%;
+      width: 100%;
+      height: 38%;
+      top: 610%;
+    }
+    // border: 1px solid red;
+    #landingFooterWrapper {
+      position: absolute;
+      display: flex;
+
+      background-color: black;
+      // border: 1px solid red;
+      @include mobile-only() {
+        height: 100%;
+        width: 100%;
+      }
+      @include md() {
+        height: 100%;
+        width: 100%;
+      }
+      @include lg() {
+        height: 70%;
+        width: 79%;
+      }
     }
   }
 }
