@@ -882,20 +882,58 @@ a {
   @media (min-width: 1200px) {
     #headerContainer {
       z-index: 15; } }
+  #headerContainer #hiddenBar {
+    z-index: 20;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    top: 0%;
+    height: 50%;
+    color: rgba(255, 255, 255, 0);
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #headerContainer #hiddenBar {
+        font-size: 1.5rem; } }
+    @media (min-width: 768px) {
+      #headerContainer #hiddenBar {
+        font-size: 1.5rem; } }
+    @media (min-width: 1200px) {
+      #headerContainer #hiddenBar {
+        font-size: 1.8rem; } }
+    #headerContainer #hiddenBar:hover {
+      position: relative;
+      height: 80%;
+      background-color: #ffce63;
+      transition: 0.3s all; }
+      @media (max-width: 767px) {
+        #headerContainer #hiddenBar:hover {
+          font-size: 1.5rem;
+          color: white; } }
+      @media (min-width: 768px) {
+        #headerContainer #hiddenBar:hover {
+          font-size: 1.5rem;
+          color: white; } }
+      @media (min-width: 1200px) {
+        #headerContainer #hiddenBar:hover {
+          font-size: 1.8rem;
+          color: white; } }
   #headerContainer #logoBar {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50%;
+    background-color: white;
+    height: 100%;
     width: 100%; }
     #headerContainer #logoBar .logo {
       z-index: 16;
-      position: absolute;
+      position: relative;
       display: flex;
       top: 200%;
       left: 50%;
-      transform: translate(-50%, -50%); }
+      transform: translate(-50%, 25%); }
       @media (max-width: 767px) {
         #headerContainer #logoBar .logo {
           width: 85.5px;
@@ -913,10 +951,10 @@ a {
   #headerContainer #absoluteBar {
     z-index: 15;
     opacity: 100%;
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
-    top: 100%;
+    top: 0%;
     height: 100%;
     width: 100%;
     background-color: white; }

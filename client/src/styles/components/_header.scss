@@ -15,21 +15,64 @@
     z-index: 15;
   }
   // border: 1px solid red;
+  #hiddenBar {
+    z-index: 20;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    top: 0%;
+    height: 50%;
+    // border: 1px solid red;
+    color: rgba(255, 255, 255, 0%);
+    font-weight: bold;
+
+    @include mobile-only() {
+      font-size: 1.5rem;
+    }
+    @include md() {
+      font-size: 1.5rem;
+    }
+    @include lg() {
+      font-size: 1.8rem;
+    }
+    &:hover {
+      position: relative;
+      height: 80%;
+      background-color: $yellow;
+      transition: 0.3s all;
+
+      @include mobile-only() {
+        font-size: 1.5rem;
+        color: white;
+      }
+      @include md() {
+        font-size: 1.5rem;
+        color: white;
+      }
+      @include lg() {
+        font-size: 1.8rem;
+        color: white;
+      }
+    }
+  }
   #logoBar {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50%;
+    background-color: white;
+    height: 100%;
     width: 100%;
     // border: 0.5px solid blue;
     .logo {
       z-index: 16;
-      position: absolute;
+      position: relative;
       display: flex;
       top: 200%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, 25%);
       // border: 1px solid green;
       @include mobile-only() {
         width: 85.5px;
@@ -51,10 +94,10 @@
   #absoluteBar {
     z-index: 15;
     opacity: 100%;
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
-    top: 100%;
+    top: 0%;
     height: 100%;
     width: 100%;
     background-color: white;
