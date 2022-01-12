@@ -1,12 +1,14 @@
 /* Config import */
 import { REACT_APP_API_URL } from '../../config.js'
 /* CSS import */
+import check from '../../images/check.png'
 import redLock from '../../images/falsyPadlock.png';
+import xButton from '../../images/xButton.png';
 /* Store import */
-import { showLoginModal, showPrivacyModal, showSignupModal, showTosModal } from '../../store/ModalSlice';
+import { showLoginModal, showPrivacyModal, showSignupModal, showTosModal, showAlertModal, insertAlertText } from '../../store/ModalSlice';
 /* Library import */
-import axios from 'axios';
-import React, { useState } from 'react';
+import axios, { AxiosError } from 'axios';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 function SignUpModal() {
@@ -27,15 +29,23 @@ function SignUpModal() {
   });
   const { email, username, password, confirmPassword }: SignupInfo = signupInfo;
 
+  /* 닉네임 중복값 검사 상태 */
+  const [duplicationCheck, setDuplicationCheck] = useState<boolean>(true);
+  const [isCheckDuplication, setIsCheckDuplication] = useState<boolean>(false);
   /* 체크박스 상태 */
   const [tosCheck, setTosCheck] = useState<boolean>(false);
   const [privacyCheck, setPrivacyCheck] = useState<boolean>(false);
-
   /* 유효성 검사 상태 */
   const [emailErr, setEmailErr] = useState<boolean>(false);
   const [nameErr, setNameErr] = useState<boolean>(false);
   const [passwordErr, setPasswordErr] = useState<boolean>(false);
   const [confirmPasswordErr, setConfirmPasswordErr] = useState<boolean>(false);
+
+  console.log(duplicationCheck);
+
+  useEffect(() => {
+    duplicationHandler();
+  }, [duplicationCheck]);
 
   /* 이메일 에러 핸들러 */
   const emailErrCheck = (email: string): boolean => {
@@ -123,10 +133,28 @@ function SignUpModal() {
       password: '',
       confirmPassword: ''
     });
+    setDuplicationCheck(true);
+    setIsCheckDuplication(false);
     setEmailErr(false);
     setNameErr(false);
     setPasswordErr(false);
     setConfirmPasswordErr(false);
+  };
+
+  /* 닉네임 중복검사 핸들러 */
+  const duplicationHandler = async () => {
+    try {
+      const response = await axios.post(
+        `${REACT_APP_API_URL}/username`,
+        { username },
+        { withCredentials: true }
+      );
+      
+      setIsCheckDuplication(true);
+      setDuplicationCheck(response.data.state);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   /* 회원가입 핸들러 */
@@ -134,23 +162,35 @@ function SignUpModal() {
     try {
       if (isAllValid(signupInfo)) {
         if(tosCheck && privacyCheck){
-          await axios.post(
-            `${REACT_APP_API_URL}/signup`,
-            { email, username, password, confirmPassword },
-            { withCredentials: true }
-          );
-          resetInput();
-          alert('ALL-CON\n회원가입에 성공하였습니다! 🙂');
-          dispatch(showLoginModal(true));
-          dispatch(showSignupModal(false));
+          if(isCheckDuplication && duplicationCheck){
+            await axios.post(
+              `${REACT_APP_API_URL}/signup`,
+              { email, username, password, confirmPassword },
+              { withCredentials: true }
+            );
+            resetInput();
+            dispatch(insertAlertText('ALL-CON 회원가입에 성공하였습니다! 🙂'));
+            dispatch(showLoginModal(true));
+            dispatch(showSignupModal(false));
+            dispatch(showAlertModal(true));
+          } else {
+            dispatch(insertAlertText('닉네임 중복확인을 해주세요! 😖'));
+            dispatch(showAlertModal(true));
+          }
         } else{
-          alert('ALL-CON\n약관에 동의해주세요! 😖');
+          dispatch(insertAlertText('약관에 모두 동의해주세요! 😖'));
+          dispatch(showAlertModal(true));
         }
       } else {
-        alert('ALL-CON\n빈칸을 모두 작성해주세요! 😖');
+        dispatch(insertAlertText('빈칸을 모두 알맞게 작성해주세요! 😖'));
+        dispatch(showAlertModal(true));
       }
     } catch (err) {
-      console.log(err);
+      const error = err as AxiosError;
+      if(error.response?.status===400) dispatch(insertAlertText('잘못된 요청입니다! 😖'));
+      else if(error.response?.status===409) dispatch(insertAlertText('이미 존재하는 이메일입니다! 😖'));
+      else dispatch(insertAlertText('Server Error! 😖'));
+      dispatch(showAlertModal(true));
     }
   };
 
@@ -159,6 +199,9 @@ function SignUpModal() {
       <div id='outside' onClick={() => dispatch(showSignupModal(false))}/>
       <div id='background'>
         <div id='signUpModal'>
+          <div id='xButtonContainer'>
+            <img alt='xButtonImg' src={xButton} onClick={() => dispatch(showSignupModal(false))}/>
+          </div>
           <div id='alignContainer'>
             <div id='topBox'>
               <h2>회원가입</h2>
@@ -185,9 +228,13 @@ function SignUpModal() {
               <p className='fontMatch'>닉 네 임</p>
               <div className='outerTextBox'>
                 <input type='text' className='textBoxMatch2' value={signupInfo.username} onChange={inputValueHandler('username')}/>
-                <button>중복확인</button>
+                <div id='no0'>
+                  <img src={check} alt='checkImg' className={(duplicationCheck && isCheckDuplication) ? 'Img' : 'hidden'} />
+                  <button onClick={duplicationHandler}>중복확인</button>
+                </div>
               </div>
               <div className={nameErr ? 'warningMsg' : 'hidden'}>닉네임은 한글, 영문, 숫자만 가능하며 2-10자리로 입력해야 합니다.</div>
+              <div className={duplicationCheck ? 'hidden' : 'duplicationMsg'}>이미 사용중인 닉네임입니다.</div>
 
               <p className='fontMatch'>비밀번호</p>
               <div className='outerTextBox'>
@@ -211,15 +258,15 @@ function SignUpModal() {
             <div id='bottomBox'>
               <div id='agreeBox'>
                 <div className='checkBox agreeAll'>
-                  <input type='checkbox'/>
+                  <input type='checkbox' id='check00'/>
                   <p>전체동의</p>
                 </div>
                 <div className='checkBox agreeSub'>
-                  <input type='checkbox' onClick={()=>{setTosCheck(!tosCheck)}}/>
+                  <input type='checkbox' id='check01' onClick={()=>{setTosCheck(!tosCheck)}}/>
                   <p onClick={() => dispatch(showTosModal(true))}>[필수] ALL-CON 이용 약관 동의</p>
                 </div>
                 <div className='checkBox agreeSub'>
-                  <input type='checkbox'onClick={()=>{setPrivacyCheck(!privacyCheck)}}/>
+                  <input type='checkbox' id='check02' onClick={()=>{setPrivacyCheck(!privacyCheck)}}/>
                   <p onClick={() => dispatch(showPrivacyModal(true))}>[필수] 개인정보 수집/이용/취급 위탁 동의</p>
                 </div>
               </div>

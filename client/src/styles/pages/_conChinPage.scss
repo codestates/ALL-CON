@@ -47,7 +47,7 @@
       display: flex;
       @include mobile-only() {
         width: 100%;
-        height: 10%;
+        height: 12%;
       }
       @include md() {
         width: 100%;
@@ -63,13 +63,11 @@
       position: absolute;
       display: flex;
       flex-wrap: wrap;
-      width: 80%;
-      height: 73%;
 
       @include mobile-only() {
         width: 95%;
         height: 80%;
-        top: 10%;
+        top: 12%;
         padding-top: 6%;
       }
       @include md() {
@@ -93,7 +91,7 @@
       @include mobile-only() {
         width: 95%;
         height: 40.5%;
-        top: 43.5%;
+        top: 45.5%;
       }
       @include md() {
         width: 85%;
@@ -117,7 +115,7 @@
     @include mobile-only() {
       width: 93.5%;
       height: 60%;
-      top: 95%;
+      top: 106%;
     }
     @include md() {
       width: 85%;
@@ -139,17 +137,17 @@
     background-color: black;
     @include mobile-only() {
       width: 100%;
-      height: 17%;
-      top: 162%;
+      height: 22%;
+      top: 175%;
     }
     @include md() {
       width: 100%;
-      height: 18.5%;
+      height: 19.5%;
       top: 190%;
     }
     @include lg() {
       width: 100%;
-      height: 15.3%;
+      height: 17.5%;
       top: 179%;
     }
     // border: 1px solid red;
@@ -161,15 +159,15 @@
       // border: 1px solid red;
       @include mobile-only() {
         height: 100%;
-        width: 75%;
+        width: 100%;
       }
       @include md() {
         height: 100%;
-        width: 100%;
+        width: 90%;
       }
       @include lg() {
         height: 70%;
-        width: 79%;
+        width: 73%;
       }
     }
   }

@@ -1,5 +1,5 @@
 #loginModalContainer {
-  z-index: 999;
+  z-index: 500;
   width: 100%;
   @include mobile-only() {
     position: absolute;
@@ -21,7 +21,7 @@
     background-color: rgba(0, 0, 0, 0.25);
   }
   #background {
-    z-index: 999;
+    z-index: 501;
     width: 100%;
     height: 100%;
     @include mobile-only() {
@@ -37,16 +37,17 @@
       justify-content: center;
     }
     #loginModal {
-      z-index: 999;
+      z-index: 502;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background-color: #fff;
-      // border: 1px solid red;
+      // border: 2px solid red;
       @include mobile-only() {
-        position: absolute;
+        position: fixed;
         width: 100%;
-        height: 100%;
+        height: 90%;
       }
       @include md() {
         width: 60%;
@@ -59,13 +60,33 @@
         height: 78%;
         border-radius: 20px;
       }
+      #xButtonContainer {
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        @include mobile-only() {
+          width: 90%;
+          height: 5%;
+          img{
+            width:10%;
+            cursor: pointer;
+          }
+        }
+        @include md() {
+          display: none;
+        }
+        @include lg() {
+          display: none;
+        }
+        // border: 2px solid purple;
+      }
       #alignContainer {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         width: 90%;
-        height: 85%;
+        height: 87.5%;
         // border: 1px solid aqua;
         .fontMatch {
           font-weight: bold;

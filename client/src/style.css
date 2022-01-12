@@ -14,6 +14,9 @@ a {
   color: inherit;
   /* 링크의 색상 제거 */
   cursor: pointer; }
+  a:hover {
+    color: #ffce63;
+    transition: 0.15s all; }
 
 /****** grids ******/
 /****** orderBox ******/
@@ -80,7 +83,8 @@ a {
   .order:hover {
     background-color: #ffce63;
     color: white;
-    cursor: pointer; }
+    cursor: pointer;
+    transition: 0.15s all; }
 
 /****** orderBox ******/
 /****** articleBox ******/
@@ -131,7 +135,8 @@ a {
           border-radius: 10px; } }
       #articleBox #box .article:hover {
         box-shadow: 3px 3px 14px 1px #606060;
-        cursor: pointer; }
+        cursor: pointer;
+        transition: 0.15s all; }
       #articleBox #box .article .thumbNail {
         position: absolute;
         display: flex;
@@ -333,7 +338,8 @@ a {
         border-radius: 5px; } }
     #pagination .page:hover {
       background-color: #ffce63;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: 0.1s all; }
   #pagination .text {
     position: absolute;
     color: white;
@@ -548,7 +554,7 @@ a {
   @media (max-width: 767px) {
     #menuWrapper {
       display: flex;
-      width: 15%;
+      width: 5%;
       left: 2%; } }
   @media (min-width: 768px) {
     #menuWrapper {
@@ -565,7 +571,9 @@ a {
     width: 30px;
     height: 30px; }
     #menuWrapper .menu:hover {
-      cursor: pointer; }
+      cursor: pointer;
+      color: #ffce63;
+      transition: 0.15s all; }
 
 #searchWrapper {
   position: absolute;
@@ -576,21 +584,30 @@ a {
     #searchWrapper {
       display: flex;
       width: 5%;
-      right: 15%; } }
+      right: 16%; } }
   @media (min-width: 768px) {
     #searchWrapper {
       display: flex;
       width: 5%;
-      right: 11%; } }
+      right: 9%; } }
   @media (min-width: 1200px) {
     #searchWrapper {
-      display: none;
-      width: 15%;
-      right: 15%; } }
+      display: none; } }
   #searchWrapper .search {
-    position: relative;
-    width: 25px;
-    height: 25px; }
+    position: relative; }
+    @media (max-width: 767px) {
+      #searchWrapper .search {
+        display: flex;
+        width: 20px;
+        height: 20px; } }
+    @media (min-width: 768px) {
+      #searchWrapper .search {
+        display: flex;
+        width: 25px;
+        height: 25px; } }
+    @media (min-width: 1200px) {
+      #searchWrapper .search {
+        display: none; } }
     #searchWrapper .search:hover {
       cursor: pointer; }
 
@@ -600,17 +617,19 @@ a {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  height: 100%;
-  right: 0%; }
+  height: 100%; }
   @media (max-width: 767px) {
     #loginWrapper {
-      width: 15%; } }
+      width: 15%;
+      right: 0%; } }
   @media (min-width: 768px) {
     #loginWrapper {
-      width: 10%; } }
+      width: 10%;
+      right: 0%; } }
   @media (min-width: 1200px) {
     #loginWrapper {
-      width: 5%; } }
+      width: 5%;
+      right: 12%; } }
   #loginWrapper .login {
     position: relative;
     font-weight: bold; }
@@ -624,7 +643,9 @@ a {
       #loginWrapper .login {
         font-size: 2.5rem; } }
     #loginWrapper .login:hover {
-      cursor: pointer; }
+      cursor: pointer;
+      color: #ffce63;
+      transition: all 0.15s; }
   #loginWrapper .profile {
     position: relative;
     border-radius: 100%;
@@ -647,11 +668,12 @@ a {
 
 #hiddenMenuBox {
   position: absolute;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  width: 15%;
-  left: 1%; }
+  width: 23rem;
+  left: 12.5%; }
   @media (max-width: 767px) {
     #hiddenMenuBox {
       display: none; } }
@@ -662,6 +684,7 @@ a {
     #hiddenMenuBox {
       display: flex; } }
   #hiddenMenuBox .menu {
+    position: relative;
     font-size: 2.5rem;
     font-weight: bold; }
 
@@ -671,12 +694,12 @@ a {
   justify-content: right;
   align-items: center;
   width: 20%;
-  right: 6%; }
+  right: 5%; }
   #hiddenSearchBox #searchWrapper {
     position: absolute;
-    height: 25px;
-    width: 70%;
-    right: 0%;
+    height: 2.5rem;
+    width: 21rem;
+    right: 62%;
     background-color: #eaeaea;
     border-radius: 50px; }
     @media (max-width: 767px) {
@@ -701,7 +724,7 @@ a {
     position: absolute;
     height: 18px;
     width: 18px;
-    right: 3%; }
+    right: 64%; }
     @media (max-width: 767px) {
       #hiddenSearchBox #imgWrapper {
         display: none; } }
@@ -862,31 +885,69 @@ a {
   background-color: white; }
   @media (max-width: 767px) {
     #headerContainer {
-      z-index: 999; } }
+      z-index: 15; } }
   @media (min-width: 768px) {
     #headerContainer {
-      z-index: 999; } }
+      z-index: 15; } }
   @media (min-width: 1200px) {
     #headerContainer {
       z-index: 15; } }
+  #headerContainer #hiddenBar {
+    z-index: 20;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    top: 0%;
+    height: 50%;
+    color: rgba(255, 255, 255, 0);
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #headerContainer #hiddenBar {
+        font-size: 1.5rem; } }
+    @media (min-width: 768px) {
+      #headerContainer #hiddenBar {
+        font-size: 1.5rem; } }
+    @media (min-width: 1200px) {
+      #headerContainer #hiddenBar {
+        font-size: 1.8rem; } }
+    #headerContainer #hiddenBar:hover {
+      position: relative;
+      height: 80%;
+      background-color: #ffce63;
+      transition: 0.25s all; }
+      @media (max-width: 767px) {
+        #headerContainer #hiddenBar:hover {
+          font-size: 1.5rem;
+          color: white; } }
+      @media (min-width: 768px) {
+        #headerContainer #hiddenBar:hover {
+          font-size: 1.5rem;
+          color: white; } }
+      @media (min-width: 1200px) {
+        #headerContainer #hiddenBar:hover {
+          font-size: 1.8rem;
+          color: white; } }
   #headerContainer #logoBar {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 50%;
+    background-color: white;
+    height: 100%;
     width: 100%; }
     #headerContainer #logoBar .logo {
       z-index: 16;
-      position: absolute;
+      position: relative;
       display: flex;
       top: 200%;
       left: 50%;
-      transform: translate(-50%, -50%); }
+      transform: translate(-50%, 25%); }
       @media (max-width: 767px) {
         #headerContainer #logoBar .logo {
-          width: 95px;
-          height: 60px; } }
+          width: 85.5px;
+          height: 54px; } }
       @media (min-width: 768px) {
         #headerContainer #logoBar .logo {
           width: 95px;
@@ -900,10 +961,10 @@ a {
   #headerContainer #absoluteBar {
     z-index: 15;
     opacity: 100%;
-    position: absolute;
+    position: relative;
     display: flex;
     align-items: center;
-    top: 100%;
+    top: 0%;
     height: 100%;
     width: 100%;
     background-color: white; }
@@ -918,7 +979,7 @@ a {
     width: 100%;
     background-color: white; }
 
-/***** 재혁 *****/
+/*------------재혁------------*/
 #conChinContainer {
   position: absolute;
   display: flex;
@@ -966,7 +1027,7 @@ a {
       @media (max-width: 767px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
-          height: 10%; } }
+          height: 12%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
@@ -978,14 +1039,12 @@ a {
     #conChinContainer #conChinExceptFooter #postingWrapper {
       position: absolute;
       display: flex;
-      flex-wrap: wrap;
-      width: 80%;
-      height: 73%; }
+      flex-wrap: wrap; }
       @media (max-width: 767px) {
         #conChinContainer #conChinExceptFooter #postingWrapper {
           width: 95%;
           height: 80%;
-          top: 10%;
+          top: 12%;
           padding-top: 6%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #postingWrapper {
@@ -1007,7 +1066,7 @@ a {
         #conChinContainer #conChinExceptFooter #articleWrapper {
           width: 95%;
           height: 40.5%;
-          top: 43.5%; } }
+          top: 45.5%; } }
       @media (min-width: 768px) {
         #conChinContainer #conChinExceptFooter #articleWrapper {
           width: 85%;
@@ -1027,7 +1086,7 @@ a {
       #conChinContainer #contentsWrapper {
         width: 93.5%;
         height: 60%;
-        top: 95%; } }
+        top: 106%; } }
     @media (min-width: 768px) {
       #conChinContainer #contentsWrapper {
         width: 85%;
@@ -1046,17 +1105,17 @@ a {
     @media (max-width: 767px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 17%;
-        top: 162%; } }
+        height: 22%;
+        top: 175%; } }
     @media (min-width: 768px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 18.5%;
+        height: 19.5%;
         top: 190%; } }
     @media (min-width: 1200px) {
       #conChinContainer #fullFooter {
         width: 100%;
-        height: 15.3%;
+        height: 17.5%;
         top: 179%; } }
     #conChinContainer #fullFooter #footerWrapper {
       position: absolute;
@@ -1065,15 +1124,15 @@ a {
       @media (max-width: 767px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 100%;
-          width: 75%; } }
+          width: 100%; } }
       @media (min-width: 768px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 100%;
-          width: 100%; } }
+          width: 90%; } }
       @media (min-width: 1200px) {
         #conChinContainer #fullFooter #footerWrapper {
           height: 70%;
-          width: 79%; } }
+          width: 73%; } }
 
 #conChinFindBox {
   position: absolute;
@@ -1089,7 +1148,8 @@ a {
       height: 14%; } }
   @media (min-width: 1200px) {
     #conChinFindBox {
-      height: 10%; } }
+      top: 2%;
+      height: 8%; } }
   #conChinFindBox .title, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 {
     position: relative;
     display: inline-block;
@@ -1129,9 +1189,20 @@ a {
     position: absolute;
     display: flex;
     align-items: center;
-    width: 25%;
     height: 100%;
     right: 1%; }
+    @media (max-width: 767px) {
+      #conChinFindBox .btnWrapper {
+        bottom: 5%;
+        width: 25%; } }
+    @media (min-width: 768px) {
+      #conChinFindBox .btnWrapper {
+        bottom: 0%;
+        width: 28%; } }
+    @media (min-width: 1200px) {
+      #conChinFindBox .btnWrapper {
+        bottom: 0%;
+        width: 31%; } }
     #conChinFindBox .btnWrapper .btn {
       position: absolute;
       height: 60%;
@@ -1144,10 +1215,10 @@ a {
       font-weight: bold; }
       @media (max-width: 767px) {
         #conChinFindBox .btnWrapper .btn {
-          width: 85%;
+          width: 80%;
           padding-left: 17%;
           font-size: 1.3rem;
-          height: 60%; } }
+          height: 80%; } }
       @media (min-width: 768px) {
         #conChinFindBox .btnWrapper .btn {
           width: 48%;
@@ -1168,7 +1239,7 @@ a {
           #conChinFindBox .btnWrapper .btn .img {
             width: 13px;
             height: 13px;
-            right: 67.5%; } }
+            right: 70.5%; } }
         @media (min-width: 768px) {
           #conChinFindBox .btnWrapper .btn .img {
             width: 18px;
@@ -1206,7 +1277,7 @@ a {
   @media (max-width: 767px) {
     #conChinArticleBox {
       border-top: 5px solid #ffce63;
-      height: 143%;
+      height: 170%;
       top: 15%; } }
   @media (min-width: 768px) {
     #conChinArticleBox {
@@ -1608,10 +1679,11 @@ a {
         width: 90%; } }
     @media (min-width: 1200px) {
       #conChinPostingBox .posting {
-        width: 90%; } }
+        width: 85%; } }
     #conChinPostingBox .posting:hover {
       background-color: #ffce63;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: 0.15s all; }
     #conChinPostingBox .posting .title, #conChinPostingBox .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox .posting .title2 {
       position: absolute;
       display: flex;
@@ -2029,7 +2101,7 @@ a {
   top: 10%; }
   @media (max-width: 767px) {
     #myPageContainer {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 768px) {
     #myPageContainer {
       height: 180%; } }
@@ -2086,17 +2158,17 @@ a {
     @media (max-width: 767px) {
       #myPageContainer #fullFooter {
         width: 100%;
-        height: 14%;
+        height: 15.3%;
         top: 103%; } }
     @media (min-width: 768px) {
       #myPageContainer #fullFooter {
         width: 100%;
-        height: 15.3%;
+        height: 15.9%;
         top: 104%; } }
     @media (min-width: 1200px) {
       #myPageContainer #fullFooter {
         width: 100%;
-        height: 12.5%;
+        height: 13.5%;
         top: 112%; } }
     #myPageContainer #fullFooter #footerWrapper {
       position: absolute;
@@ -2105,15 +2177,15 @@ a {
       @media (max-width: 767px) {
         #myPageContainer #fullFooter #footerWrapper {
           height: 100%;
-          width: 75%; } }
+          width: 100%; } }
       @media (min-width: 768px) {
         #myPageContainer #fullFooter #footerWrapper {
-          height: 70%;
-          width: 79%; } }
+          height: 100%;
+          width: 90%; } }
       @media (min-width: 1200px) {
         #myPageContainer #fullFooter #footerWrapper {
           height: 70%;
-          width: 79%; } }
+          width: 73%; } }
 
 #myProfileImageModal {
   z-index: 999;
@@ -2196,7 +2268,7 @@ a {
         @media (max-width: 767px) {
           #myProfileImageModal #modalBox #modal #titleWrapper {
             height: 10%;
-            top: 10%; } }
+            top: 8%; } }
         @media (min-width: 768px) {
           #myProfileImageModal #modalBox #modal #titleWrapper {
             height: 20%; } }
@@ -2266,10 +2338,18 @@ a {
           bottom: 0%;
           width: 20%;
           padding-bottom: 20%; }
+          #myProfileImageModal #modalBox #modal #imgBox #cameraWrapper:hover {
+            cursor: pointer; }
           #myProfileImageModal #modalBox #modal #imgBox #cameraWrapper .camera {
             position: absolute;
             width: 100%;
             height: 100%; }
+        #myProfileImageModal #modalBox #modal #imgBox #imgSelection {
+          z-index: 999;
+          position: absolute;
+          display: flex;
+          width: 50%;
+          border: solid 3px red; }
       #myProfileImageModal #modalBox #modal #modifyBtnWrapper {
         position: absolute;
         display: flex;
@@ -2278,7 +2358,7 @@ a {
         @media (max-width: 767px) {
           #myProfileImageModal #modalBox #modal #modifyBtnWrapper {
             height: 6%;
-            bottom: 30%; } }
+            bottom: 20%; } }
         @media (min-width: 768px) {
           #myProfileImageModal #modalBox #modal #modifyBtnWrapper {
             height: 8%;
@@ -2298,6 +2378,8 @@ a {
           border: none;
           border-radius: 5px;
           color: white; }
+          #myProfileImageModal #modalBox #modal #modifyBtnWrapper .modifyBtn:hover {
+            cursor: pointer; }
           @media (max-width: 767px) {
             #myProfileImageModal #modalBox #modal #modifyBtnWrapper .modifyBtn {
               font-size: 2rem; } }
@@ -2318,6 +2400,8 @@ a {
           border: none;
           border-radius: 5px;
           color: white; }
+          #myProfileImageModal #modalBox #modal #modifyBtnWrapper .cancleBtn:hover {
+            cursor: pointer; }
           @media (max-width: 767px) {
             #myProfileImageModal #modalBox #modal #modifyBtnWrapper .cancleBtn {
               font-size: 2rem; } }
@@ -2467,13 +2551,13 @@ a {
         height: 20%; }
         @media (max-width: 767px) {
           #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
-            bottom: 41.5%; } }
+            bottom: 34.5%; } }
         @media (min-width: 768px) {
           #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
             bottom: 22%; } }
         @media (min-width: 1200px) {
           #myProfileResignMembershipModal #modalBox #modal #explainWrapper {
-            bottom: 25%; } }
+            bottom: 21%; } }
         #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
           position: absolute;
           display: flex;
@@ -2485,13 +2569,13 @@ a {
           font-weight: bold; }
           @media (max-width: 767px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 2.5rem; } }
+              font-size: 2rem; } }
           @media (min-width: 768px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 2.5rem; } }
+              font-size: 2.3rem; } }
           @media (min-width: 1200px) {
             #myProfileResignMembershipModal #modalBox #modal #explainWrapper .explain {
-              font-size: 3.5rem; } }
+              font-size: 2.5rem; } }
       #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
         position: absolute;
         display: flex;
@@ -2500,7 +2584,7 @@ a {
         @media (max-width: 767px) {
           #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
             height: 6%;
-            bottom: 33%; } }
+            bottom: 27%; } }
         @media (min-width: 768px) {
           #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper {
             height: 8%;
@@ -2520,6 +2604,8 @@ a {
           border: none;
           border-radius: 5px;
           color: white; }
+          #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn:hover {
+            cursor: pointer; }
           @media (max-width: 767px) {
             #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn {
               font-size: 2rem; } }
@@ -2540,6 +2626,8 @@ a {
           border: none;
           border-radius: 5px;
           color: white; }
+          #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .cancleBtn:hover {
+            cursor: pointer; }
           @media (max-width: 767px) {
             #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .cancleBtn {
               font-size: 2rem; } }
@@ -2560,10 +2648,10 @@ a {
   /***** 공통 *****/ }
   @media (max-width: 767px) {
     #conChinCertificationPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 768px) {
     #conChinCertificationPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 1200px) {
     #conChinCertificationPage {
       height: 227%; } }
@@ -2613,15 +2701,15 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #conChinCertificationPage #userInfoWrapper {
-        top: 30.33%;
+        top: 32.33%;
         height: 60%; } }
     @media (min-width: 768px) {
       #conChinCertificationPage #userInfoWrapper {
-        top: 40%;
+        top: 30%;
         height: 75%; } }
     @media (min-width: 1200px) {
       #conChinCertificationPage #userInfoWrapper {
-        top: 30.33%;
+        top: 28%;
         height: 67%; } }
     #conChinCertificationPage #userInfoWrapper #userInfoBox {
       position: absolute;
@@ -2630,16 +2718,16 @@ a {
       justify-content: center; }
       @media (max-width: 767px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
-          width: 90%;
+          width: 80%;
           height: 90%; } }
       @media (min-width: 768px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
-          width: 80%;
-          height: 90.1%; } }
+          width: 60%;
+          height: 80%; } }
       @media (min-width: 1200px) {
         #conChinCertificationPage #userInfoWrapper #userInfoBox {
-          width: 50%;
-          height: 90%; } }
+          width: 40%;
+          height: 80%; } }
       #conChinCertificationPage #userInfoWrapper #userInfoBox #emailWrapper {
         position: absolute;
         display: flex;
@@ -2820,9 +2908,11 @@ a {
               border: none;
               border-radius: 5px;
               color: white; }
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn:hover, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn:hover {
+                cursor: pointer; }
               @media (max-width: 767px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
-                  font-size: 1.5rem; } }
+                  font-size: 1.3rem; } }
               @media (min-width: 768px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
                   font-size: 1.8rem; } }
@@ -2837,9 +2927,11 @@ a {
               border: none;
               border-radius: 5px;
               color: white; }
+              #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn:hover, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn:hover {
+                cursor: pointer; }
               @media (max-width: 767px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
-                  font-size: 1.5rem; } }
+                  font-size: 1.3rem; } }
               @media (min-width: 768px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
                   font-size: 1.8rem; } }
@@ -2875,6 +2967,8 @@ a {
             border-radius: 5px;
             color: white;
             font-weight: bold; }
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn:hover, #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn:hover {
+              cursor: pointer; }
             @media (max-width: 767px) {
               #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
                 font-size: 1.5rem; } }
@@ -2894,18 +2988,18 @@ a {
     @media (max-width: 767px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 18%;
+        height: 15.3%;
         top: 93%; } }
     @media (min-width: 768px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 19%;
-        top: 115%; } }
+        height: 15.9%;
+        top: 103%; } }
     @media (min-width: 1200px) {
       #conChinCertificationPage #fullFooter {
         width: 100%;
-        height: 16%;
-        top: 100%; } }
+        height: 18%;
+        top: 97%; } }
     #conChinCertificationPage #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -2916,12 +3010,12 @@ a {
           width: 100%; } }
       @media (min-width: 768px) {
         #conChinCertificationPage #fullFooter #footerWrapper {
-          height: 70%;
-          width: 100%; } }
+          height: 100%;
+          width: 90%; } }
       @media (min-width: 1200px) {
         #conChinCertificationPage #fullFooter #footerWrapper {
-          height: 73%;
-          width: 79%; } }
+          height: 70%;
+          width: 73%; } }
 
 #findPasswordModal {
   z-index: 990;
@@ -2941,11 +3035,10 @@ a {
     #findPasswordModal {
       position: fixed; } }
   #findPasswordModal #bg {
-    z-index: 991;
+    z-index: 998;
     position: fixed;
     display: flex;
-    background-color: #404040;
-    opacity: 50%; }
+    background-color: rgba(0, 0, 0, 0.25); }
     @media (max-width: 767px) {
       #findPasswordModal #bg {
         width: 0%;
@@ -2959,7 +3052,7 @@ a {
         width: 100%;
         height: 100%; } }
   #findPasswordModal #modalBox {
-    z-index: 992;
+    z-index: 999;
     position: fixed;
     display: flex;
     align-items: center;
@@ -3162,6 +3255,8 @@ a {
               border-radius: 5px;
               color: white;
               font-weight: bold; }
+              #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper .btn:hover {
+                cursor: pointer; }
               @media (max-width: 767px) {
                 #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper .btn {
                   font-size: 1.3rem; } }
@@ -3198,6 +3293,8 @@ a {
           border-radius: 5px;
           color: white;
           font-weight: bold; }
+          #findPasswordModal #modalBox #modal #btnBox .btn:hover {
+            cursor: pointer; }
           @media (max-width: 767px) {
             #findPasswordModal #modalBox #modal #btnBox .btn {
               font-size: 1.5rem; } }
@@ -3336,6 +3433,7 @@ a {
           width: 100%; }
           #confirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
             position: absolute;
+            user-select: none;
             right: 2%;
             color: white;
             cursor: pointer; }
@@ -3432,6 +3530,8 @@ a {
             border: none;
             border-radius: 5px;
             color: white; }
+            #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn:hover, #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn:hover {
+              cursor: pointer; }
             @media (max-width: 767px) {
               #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn, #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
                 font-size: 1.5rem; } }
@@ -3711,6 +3811,8 @@ a {
             border-radius: 5px;
             color: white;
             font-weight: bold; }
+            #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton:hover, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton:hover {
+              cursor: pointer; }
             @media (max-width: 767px) {
               #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
                 font-size: 1.5rem; } }
@@ -3724,13 +3826,15 @@ a {
             background-color: #000; }
 
 #myProfileBox {
+  z-index: 10;
   position: absolute;
   display: flex;
   justify-content: center; }
   @media (max-width: 767px) {
     #myProfileBox {
       width: 80%;
-      padding-bottom: 90%; } }
+      padding-bottom: 90%;
+      top: 6%; } }
   @media (min-width: 768px) {
     #myProfileBox {
       width: 60%;
@@ -3902,6 +4006,10 @@ a {
         border: none;
         border-radius: 5px;
         color: white; }
+        #myProfileBox #introductionBox #modifyBtnWrapper .btn:hover {
+          cursor: pointer;
+          background-color: #ffce63;
+          transition: all 0.15s; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #modifyBtnWrapper .btn {
             font-size: 1.5rem; } }
@@ -3937,6 +4045,10 @@ a {
         border: none;
         border-radius: 5px;
         color: white; }
+        #myProfileBox #introductionBox #resignBtnWrapper .btn:hover {
+          cursor: pointer;
+          background-color: #ffce63;
+          transition: all 0.15s; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #resignBtnWrapper .btn {
             font-size: 1.5rem; } }
@@ -4127,10 +4239,10 @@ a {
   /***** 공통 *****/ }
   @media (max-width: 767px) {
     #myEditPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 768px) {
     #myEditPage {
-      height: 150%; } }
+      height: 180%; } }
   @media (min-width: 1200px) {
     #myEditPage {
       height: 227%; } }
@@ -4184,7 +4296,7 @@ a {
         height: 50%; } }
     @media (min-width: 768px) {
       #myEditPage #userInfoWrapper {
-        top: 40%;
+        top: 30%;
         height: 70%; } }
     @media (min-width: 1200px) {
       #myEditPage #userInfoWrapper {
@@ -4197,16 +4309,16 @@ a {
       justify-content: center; }
       @media (max-width: 767px) {
         #myEditPage #userInfoWrapper #userInfoBox {
-          width: 90%;
+          width: 80%;
           height: 90%; } }
       @media (min-width: 768px) {
         #myEditPage #userInfoWrapper #userInfoBox {
-          width: 80%;
-          height: 90%; } }
+          width: 60%;
+          height: 80%; } }
       @media (min-width: 1200px) {
         #myEditPage #userInfoWrapper #userInfoBox {
-          width: 50%;
-          height: 87.2%; } }
+          width: 40%;
+          height: 80%; } }
       #myEditPage #userInfoWrapper #userInfoBox #emailWrapper {
         position: absolute;
         display: flex;
@@ -4351,6 +4463,8 @@ a {
             border-radius: 5px;
             color: white;
             font-weight: bold; }
+            #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn:hover, #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn:hover {
+              cursor: pointer; }
             @media (max-width: 767px) {
               #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .completeBtn, #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
                 font-size: 1.5rem; } }
@@ -4370,18 +4484,18 @@ a {
     @media (max-width: 767px) {
       #myEditPage #fullFooter {
         width: 100%;
-        height: 18%;
-        top: 83%; } }
+        height: 15.3%;
+        top: 85%; } }
     @media (min-width: 768px) {
       #myEditPage #fullFooter {
         width: 100%;
-        height: 20%;
-        top: 112%; } }
+        height: 15.9%;
+        top: 98%; } }
     @media (min-width: 1200px) {
       #myEditPage #fullFooter {
         width: 100%;
-        height: 16%;
-        top: 100%; } }
+        height: 18%;
+        top: 95%; } }
     #myEditPage #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -4392,15 +4506,136 @@ a {
           width: 100%; } }
       @media (min-width: 768px) {
         #myEditPage #fullFooter #footerWrapper {
-          height: 70%;
-          width: 100%; } }
+          height: 100%;
+          width: 90%; } }
       @media (min-width: 1200px) {
         #myEditPage #fullFooter #footerWrapper {
-          height: 73%;
-          width: 79%; } }
+          height: 70%;
+          width: 73%; } }
 
-/***** 재혁 *****/
-/*---------------선영--------------------*/
+#sideMenuModal {
+  z-index: 993;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s; }
+  @media (max-width: 767px) {
+    #sideMenuModal {
+      position: absolute; } }
+  @media (min-width: 768px) {
+    #sideMenuModal {
+      position: fixed; } }
+  @media (min-width: 1200px) {
+    #sideMenuModal {
+      position: fixed; } }
+  #sideMenuModal #bg {
+    z-index: 994;
+    position: fixed;
+    display: flex;
+    background-color: #404040;
+    opacity: 50%; }
+    @media (max-width: 767px) {
+      #sideMenuModal #bg {
+        width: 100%;
+        height: 100%; } }
+    @media (min-width: 768px) {
+      #sideMenuModal #bg {
+        width: 100%;
+        height: 100%; } }
+    @media (min-width: 1200px) {
+      #sideMenuModal #bg {
+        width: 100%;
+        height: 100%; } }
+  #sideMenuModal #modalBox {
+    z-index: 995;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; }
+    @media (max-width: 767px) {
+      #sideMenuModal #modalBox {
+        width: 100%;
+        height: 20%;
+        top: 10%;
+        border-radius: 0px 0px 5px 5px; } }
+    @media (min-width: 768px) {
+      #sideMenuModal #modalBox {
+        width: 100%;
+        height: 20%;
+        top: 10%;
+        border-radius: 0px 0px 5px 5px; } }
+    @media (min-width: 1200px) {
+      #sideMenuModal #modalBox {
+        width: 33%;
+        height: 35%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 10px; } }
+    #sideMenuModal #modalBox #modal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      bottom: 0%;
+      border-radius: 5px; }
+  #sideMenuModal #downedModalBox {
+    z-index: 995;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; }
+    @media (max-width: 767px) {
+      #sideMenuModal #downedModalBox {
+        width: 100%;
+        height: 26%;
+        top: 0%;
+        border-radius: 0px 0px 5px 5px; } }
+    @media (min-width: 768px) {
+      #sideMenuModal #downedModalBox {
+        width: 100%;
+        height: 26%;
+        top: 0%;
+        border-radius: 0px 0px 5px 5px; } }
+    @media (min-width: 1200px) {
+      #sideMenuModal #downedModalBox {
+        width: 33%;
+        height: 35%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 10px; } }
+    #sideMenuModal #downedModalBox #downedModal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 80%;
+      bottom: 0%;
+      border-radius: 0px 0px 5px 5px; }
+  #sideMenuModal #sidemenuWrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    top: 0%; }
+    #sideMenuModal #sidemenuWrapper .menus {
+      z-index: 999;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-size: 1.8rem; }
+
+/*------------재혁------------*/
+/*------------선영------------*/
 #mainContainer {
   position: absolute;
   width: 100%;
@@ -4416,17 +4651,19 @@ a {
       justify-content: center; } }
   #mainContainer #mainJumboWrapper {
     position: absolute;
-    top: 0;
-    width: 100%; }
+    top: 0; }
     @media (max-width: 767px) {
       #mainContainer #mainJumboWrapper {
-        height: 75%; } }
+        height: 75%;
+        width: 100%; } }
     @media (min-width: 768px) {
       #mainContainer #mainJumboWrapper {
-        height: 65%; } }
+        height: 65%;
+        width: 100%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainJumboWrapper {
-        height: 65%; } }
+        height: 80%;
+        width: 100%; } }
   #mainContainer #mainConcertInfoWrapper {
     position: absolute;
     width: 100%; }
@@ -4501,21 +4738,42 @@ a {
       #mainContainer #mainFindConchinWrapper {
         top: 230%;
         height: 80%; } }
-  #mainContainer #mainFooterWrapper {
+  #mainContainer #fullFooter {
     position: absolute;
-    width: 100%; }
+    display: flex;
+    justify-content: center;
+    background-color: black; }
     @media (max-width: 767px) {
-      #mainContainer #mainFooterWrapper {
-        top: 210%;
-        height: 33%; } }
+      #mainContainer #fullFooter {
+        width: 100%;
+        height: 30%;
+        top: 210%; } }
     @media (min-width: 768px) {
-      #mainContainer #mainFooterWrapper {
-        top: 270%;
-        height: 30%; } }
+      #mainContainer #fullFooter {
+        width: 100%;
+        height: 30%;
+        top: 270%; } }
     @media (min-width: 1200px) {
-      #mainContainer #mainFooterWrapper {
-        top: 310%;
-        height: 30%; } }
+      #mainContainer #fullFooter {
+        width: 100%;
+        height: 38%;
+        top: 310%; } }
+    #mainContainer #fullFooter #mainFooterWrapper {
+      position: absolute;
+      display: flex;
+      background-color: black; }
+      @media (max-width: 767px) {
+        #mainContainer #fullFooter #mainFooterWrapper {
+          height: 100%;
+          width: 100%; } }
+      @media (min-width: 768px) {
+        #mainContainer #fullFooter #mainFooterWrapper {
+          height: 100%;
+          width: 100%; } }
+      @media (min-width: 1200px) {
+        #mainContainer #fullFooter #mainFooterWrapper {
+          height: 70%;
+          width: 79%; } }
 
 #jumboContainer {
   position: absolute;
@@ -4563,50 +4821,89 @@ a {
   align-items: center;
   width: 100%;
   height: 100%; }
-
-.jumboTextBox {
-  position: relative;
-  top: 5%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between; }
-  @media (max-width: 767px) {
-    .jumboTextBox {
-      width: 200px;
-      height: 8%; } }
-  @media (min-width: 768px) {
-    .jumboTextBox {
-      width: 400px;
-      height: 12%; } }
-  @media (min-width: 1200px) {
-    .jumboTextBox {
-      width: 600px;
-      height: 12%; } }
-
-#jumboWhat {
-  color: #fff; }
-  @media (max-width: 767px) {
-    #jumboWhat {
-      font-size: 30px; } }
-  @media (min-width: 768px) {
-    #jumboWhat {
-      font-size: 60px; } }
-  @media (min-width: 1200px) {
-    #jumboWhat {
-      font-size: 90px; } }
-
-#jumboClassify {
-  color: #ffce63; }
-  @media (max-width: 767px) {
-    #jumboClassify {
-      font-size: 30px; } }
-  @media (min-width: 768px) {
-    #jumboClassify {
-      font-size: 60px; } }
-  @media (min-width: 1200px) {
-    #jumboClassify {
-      font-size: 90px; } }
+  .jumboTopBox #jumboTextsAlignBox {
+    position: relative;
+    width: 100%;
+    height: 15%; }
+    .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
+      position: relative;
+      top: 65%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between; }
+      @media (max-width: 767px) {
+        .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
+          width: 200px;
+          height: 8%; } }
+      @media (min-width: 768px) {
+        .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
+          width: 400px;
+          height: 12%; } }
+      @media (min-width: 1200px) {
+        .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
+          width: 580px;
+          height: 100%; } }
+      .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboWhat {
+        color: #fff; }
+        @media (max-width: 767px) {
+          .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboWhat {
+            font-size: 30px; } }
+        @media (min-width: 768px) {
+          .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboWhat {
+            font-size: 60px; } }
+        @media (min-width: 1200px) {
+          .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboWhat {
+            font-size: 90px; } }
+      .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboClassify {
+        color: #ffce63; }
+        @media (max-width: 767px) {
+          .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboClassify {
+            font-size: 30px; } }
+        @media (min-width: 768px) {
+          .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboClassify {
+            font-size: 60px; } }
+        @media (min-width: 1200px) {
+          .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboClassify {
+            font-size: 90px; } }
+    .jumboTopBox #jumboTextsAlignBox #tabBar {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      @media (max-width: 767px) {
+        .jumboTopBox #jumboTextsAlignBox #tabBar {
+          top: 30%;
+          width: 10%;
+          height: 150%;
+          flex-direction: column;
+          right: 4%; } }
+      @media (min-width: 768px) {
+        .jumboTopBox #jumboTextsAlignBox #tabBar {
+          top: 0;
+          width: 20%;
+          height: 100%;
+          right: 2%; } }
+      @media (min-width: 1200px) {
+        .jumboTopBox #jumboTextsAlignBox #tabBar {
+          top: 0;
+          width: 20%;
+          height: 100%;
+          right: 4%; } }
+      .jumboTopBox #jumboTextsAlignBox #tabBar p {
+        color: #fff;
+        font-weight: bold; }
+        @media (max-width: 767px) {
+          .jumboTopBox #jumboTextsAlignBox #tabBar p {
+            font-size: 1.2rem; } }
+        @media (min-width: 768px) {
+          .jumboTopBox #jumboTextsAlignBox #tabBar p {
+            font-size: 1.8rem; } }
+        @media (min-width: 1200px) {
+          .jumboTopBox #jumboTextsAlignBox #tabBar p {
+            font-size: 2.5rem; } }
 
 #jumboChosen {
   opacity: 40%; }
@@ -4637,13 +4934,13 @@ a {
   height: 77%; }
   @media (max-width: 767px) {
     #jumboPosterSlideWrapper {
-      bottom: -5%; } }
+      top: 3%; } }
   @media (min-width: 768px) {
     #jumboPosterSlideWrapper {
-      bottom: -7.5%; } }
+      bottom: -6.7%; } }
   @media (min-width: 1200px) {
     #jumboPosterSlideWrapper {
-      bottom: -8%; } }
+      bottom: -6%; } }
 
 .posterContainer {
   width: 100%;
@@ -4657,7 +4954,7 @@ a {
     #crownWrapper {
       width: 40px;
       height: 40px;
-      top: 20%;
+      top: 24%;
       left: 38%;
       padding-bottom: 2%; } }
   @media (min-width: 768px) {
@@ -4665,7 +4962,7 @@ a {
       width: 65px;
       height: 65px;
       top: 8%;
-      left: 43%;
+      left: 40%;
       padding-bottom: 2%; } }
   @media (min-width: 1200px) {
     #crownWrapper {
@@ -4714,7 +5011,8 @@ a {
   overflow: hidden;
   z-index: 10;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  /*posterWrapper1*/ }
   #posterWrapper1:hover {
     box-shadow: 3px 3px 14px 1px #606060;
     cursor: pointer; }
@@ -4731,17 +5029,17 @@ a {
       @media (max-width: 767px) {
         #posterWrapper1:hover .dDay {
           width: 75%;
-          height: 60%;
+          height: 45%;
           border: 4px solid #ffce63; } }
       @media (min-width: 768px) {
         #posterWrapper1:hover .dDay {
           width: 75%;
-          height: 60%;
+          height: 50%;
           border: 5px solid #ffce63; } }
       @media (min-width: 1200px) {
         #posterWrapper1:hover .dDay {
           width: 75%;
-          height: 60%;
+          height: 58%;
           border: 6px solid #ffce63; } }
       #posterWrapper1:hover .dDay p {
         color: #fff;
@@ -4757,21 +5055,21 @@ a {
             font-size: 5rem; } }
   @media (max-width: 767px) {
     #posterWrapper1 {
-      width: 25%;
-      height: 60%;
-      top: 50%;
+      width: 29%;
+      height: 66%;
+      top: 57%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper1 {
-      width: 22%;
-      height: 70%;
-      top: 45%;
+      width: 25%;
+      height: 74%;
+      top: 48%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper1 {
       width: 16%;
-      height: 75%;
-      top: 45%;
+      height: 80%;
+      top: 47.5%;
       padding-bottom: 20%; } }
 
 #posterWrapper2 {
@@ -4781,14 +5079,14 @@ a {
   transform: translate(-50%, -50%); }
   @media (max-width: 767px) {
     #posterWrapper2 {
-      width: 25%;
+      width: 29%;
       height: 60%;
       padding-bottom: 30%;
       top: 60%;
       left: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper2 {
-      width: 22%;
+      width: 25%;
       height: 70%;
       padding-bottom: 20%;
       top: 50%;
@@ -4808,14 +5106,14 @@ a {
   transform: translate(-50%, -50%); }
   @media (max-width: 767px) {
     #posterWrapper3 {
-      width: 25%;
+      width: 29%;
       height: 60%;
       top: 60%;
       left: 70%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper3 {
-      width: 22%;
+      width: 25%;
       height: 70%;
       top: 50%;
       left: 65%;
@@ -4835,14 +5133,14 @@ a {
   transform: translate(-50%, -50%); }
   @media (max-width: 767px) {
     #posterWrapper4 {
-      width: 25%;
+      width: 29%;
       height: 60%;
       top: 70%;
       left: 15%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper4 {
-      width: 22%;
+      width: 25%;
       height: 70%;
       top: 60%;
       left: 20%;
@@ -4862,14 +5160,14 @@ a {
   transform: translate(-50%, -50%); }
   @media (max-width: 767px) {
     #posterWrapper5 {
-      width: 25%;
+      width: 29%;
       height: 60%;
       top: 70%;
       left: 85%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper5 {
-      width: 22%;
+      width: 25%;
       height: 70%;
       top: 60%;
       left: 80%;
@@ -4917,27 +5215,22 @@ a {
       height: 20%; }
       #mainConcertInfoBox #topBox #roofArea #backBtn {
         position: absolute;
-        top: 20%;
-        width: 30%;
-        background-color: #ffce63;
-        border: 0;
-        border-radius: 5px;
-        color: #fff;
-        font-weight: bold; }
+        bottom: -65%;
+        opacity: 80%; }
         @media (max-width: 767px) {
           #mainConcertInfoBox #topBox #roofArea #backBtn {
             right: 5%;
-            height: 60%;
+            width: 20px;
             font-size: 1rem; } }
         @media (min-width: 768px) {
           #mainConcertInfoBox #topBox #roofArea #backBtn {
             right: 0%;
-            height: 65%;
+            width: 30px;
             font-size: 1.5rem; } }
         @media (min-width: 1200px) {
           #mainConcertInfoBox #topBox #roofArea #backBtn {
             right: 0%;
-            height: 65%;
+            width: 40px;
             font-size: 1.8rem; } }
     #mainConcertInfoBox #topBox #fromWhereBox {
       display: flex;
@@ -4976,6 +5269,7 @@ a {
             height: 75%;
             font-size: 1.6rem; } }
     #mainConcertInfoBox #topBox #bell {
+      display: none;
       position: absolute;
       left: 38%;
       height: 4%; }
@@ -4996,36 +5290,28 @@ a {
       position: absolute; }
       @media (max-width: 767px) {
         #mainConcertInfoBox #topBox #mailIcon {
-          top: 8%;
-          left: 47%;
-          width: 7%; } }
+          top: 9%;
+          left: 39%;
+          width: 30px; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #topBox #mailIcon {
-          top: 5%;
-          left: 46%;
-          width: 5%; } }
+          display: none; } }
       @media (min-width: 1200px) {
         #mainConcertInfoBox #topBox #mailIcon {
-          top: 4.8%;
-          left: 45%;
-          width: 4%; } }
+          display: none; } }
     #mainConcertInfoBox #topBox #kakaoIcon {
       position: absolute; }
       @media (max-width: 767px) {
         #mainConcertInfoBox #topBox #kakaoIcon {
-          top: 8%;
-          left: 57%;
-          width: 7%; } }
+          top: 9%;
+          left: 48%;
+          width: 30px; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #topBox #kakaoIcon {
-          top: 5%;
-          left: 54.5%;
-          width: 5%; } }
+          display: none; } }
       @media (min-width: 1200px) {
         #mainConcertInfoBox #topBox #kakaoIcon {
-          top: 4.8%;
-          left: 52%;
-          width: 4%; } }
+          display: none; } }
     #mainConcertInfoBox #topBox #titleBox {
       position: relative;
       width: 100%;
@@ -5116,8 +5402,18 @@ a {
             width: 35%; } }
       #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo {
         position: relative;
-        width: 60%;
-        height: 100%; }
+        width: 60%; }
+        @media (max-width: 767px) {
+          #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo {
+            height: 100%; } }
+        @media (min-width: 768px) {
+          #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo {
+            height: 80%;
+            top: -10%; } }
+        @media (min-width: 1200px) {
+          #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo {
+            height: 80%;
+            top: -10%; } }
         #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table {
           position: absolute;
           top: 0;
@@ -5141,29 +5437,59 @@ a {
               @media (min-width: 1200px) {
                 #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side .left {
                   font-size: 2rem; } }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
-              height: 15%; }
+            @media (max-width: 767px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
+                height: 15%; } }
+            @media (min-width: 768px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
+                height: 10%; } }
+            @media (min-width: 1200px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
+                height: 10%; } }
             @media (max-width: 767px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #date {
                 height: 30%; } }
             @media (min-width: 768px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #date {
-                height: 15%; } }
+                height: 25%; } }
             @media (min-width: 1200px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #date {
+                height: 25%; } }
+            @media (max-width: 767px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
                 height: 15%; } }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
-              height: 15%; }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #rating {
-              height: 15%; }
+            @media (min-width: 768px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
+                height: 10%; } }
+            @media (min-width: 1200px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
+                height: 10%; } }
+            @media (max-width: 767px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #rating {
+                height: 15%; } }
+            @media (min-width: 768px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #rating {
+                height: 10%; } }
+            @media (min-width: 1200px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #rating {
+                height: 10%; } }
             @media (max-width: 767px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #price {
                 height: 25%; } }
             @media (min-width: 768px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #price {
-                height: 20%; } }
+                height: 25%; } }
             @media (min-width: 1200px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #price {
+                height: 25%; } }
+            @media (max-width: 767px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #alarm {
+                display: none; } }
+            @media (min-width: 768px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #alarm {
+                height: 20%; } }
+            @media (min-width: 1200px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #alarm {
                 height: 20%; } }
           #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side {
             position: absolute;
@@ -5180,30 +5506,68 @@ a {
             @media (min-width: 1200px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side .right {
                 font-size: 2rem; } }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
-              height: 15%; }
+            @media (max-width: 767px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
+                height: 15%; } }
+            @media (min-width: 768px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
+                height: 10%; } }
+            @media (min-width: 1200px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
+                height: 10%; } }
             @media (max-width: 767px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
                 height: 30%; } }
             @media (min-width: 768px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
-                height: 15%; } }
+                height: 25%; } }
             @media (min-width: 1200px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
+                height: 25%; } }
+            @media (max-width: 767px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
                 height: 15%; } }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
-              height: 15%; }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #rating_r {
-              height: 15%; }
+            @media (min-width: 768px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
+                height: 10%; } }
+            @media (min-width: 1200px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
+                height: 10%; } }
+            @media (max-width: 767px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #rating_r {
+                height: 15%; } }
+            @media (min-width: 768px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #rating_r {
+                height: 10%; } }
+            @media (min-width: 1200px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #rating_r {
+                height: 10%; } }
             @media (max-width: 767px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #price_r {
                 height: 25%; } }
             @media (min-width: 768px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #price_r {
-                height: 20%; } }
+                height: 25%; } }
             @media (min-width: 1200px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #price_r {
+                height: 25%; } }
+            @media (max-width: 767px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r {
+                display: none; } }
+            @media (min-width: 768px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r {
                 height: 20%; } }
+            @media (min-width: 1200px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r {
+                height: 20%; } }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2 {
+              position: relative;
+              left: 5%;
+              width: 40px; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
+              position: relative;
+              left: 10%;
+              width: 40px; }
     #mainConcertInfoBox #middleBox #buttonsWrapper {
       display: flex;
       flex-direction: column;
@@ -5222,7 +5586,7 @@ a {
       @media (min-width: 1200px) {
         #mainConcertInfoBox #middleBox #buttonsWrapper {
           position: absolute;
-          bottom: 6%;
+          bottom: 5%;
           left: 40.5%;
           width: 57%;
           height: 12%; } }
@@ -5245,7 +5609,8 @@ a {
           height: 100%; }
           @media (max-width: 767px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
-              width: 9%;
+              margin-right: 2%;
+              width: 7%;
               height: 90%; } }
           @media (min-width: 768px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
@@ -5254,7 +5619,7 @@ a {
               padding-right: 2%; } }
           @media (min-width: 1200px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
-              width: 10%;
+              width: 9%;
               height: 80%;
               padding-right: 2%; } }
           @media (max-width: 767px) {
@@ -5427,19 +5792,42 @@ a {
     #concertContainer #concertsBoard #concertBoxWrapper7 {
       width: 90%;
       height: 12%; }
-  #concertContainer #footerWrapper {
+  #concertContainer #fullFooter {
     position: absolute;
-    width: 100%;
-    height: 30%; }
+    display: flex;
+    justify-content: center;
+    background-color: black; }
     @media (max-width: 767px) {
-      #concertContainer #footerWrapper {
-        top: 145%; } }
+      #concertContainer #fullFooter {
+        width: 100%;
+        height: 30%;
+        top: 150%; } }
     @media (min-width: 768px) {
-      #concertContainer #footerWrapper {
-        top: 200%; } }
+      #concertContainer #fullFooter {
+        width: 100%;
+        height: 30%;
+        top: 210%; } }
     @media (min-width: 1200px) {
-      #concertContainer #footerWrapper {
-        top: 220%; } }
+      #concertContainer #fullFooter {
+        width: 100%;
+        height: 38%;
+        top: 230%; } }
+    #concertContainer #fullFooter #footerWrapper {
+      position: absolute;
+      display: flex;
+      background-color: black; }
+      @media (max-width: 767px) {
+        #concertContainer #fullFooter #footerWrapper {
+          height: 100%;
+          width: 100%; } }
+      @media (min-width: 768px) {
+        #concertContainer #fullFooter #footerWrapper {
+          height: 100%;
+          width: 100%; } }
+      @media (min-width: 1200px) {
+        #concertContainer #fullFooter #footerWrapper {
+          height: 70%;
+          width: 79%; } }
 
 #concertBoxOuterContainer {
   display: flex;
@@ -5696,11 +6084,13 @@ a {
   #concertModalContainer #concertModal {
     z-index: 999;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
     background-color: #fff;
-    border-radius: 5px; }
+    border-radius: 5px;
+    border: 1px solid red; }
     @media (max-width: 767px) {
       #concertModalContainer #concertModal {
         width: 90%;
@@ -5716,6 +6106,21 @@ a {
         height: 90%;
         top: 10%;
         right: 5%; } }
+    @media (max-width: 767px) {
+      #concertModalContainer #concertModal #closeBox {
+        width: 90%;
+        height: 4%; } }
+    @media (min-width: 768px) {
+      #concertModalContainer #concertModal #closeBox {
+        display: none; } }
+    @media (min-width: 1200px) {
+      #concertModalContainer #concertModal #closeBox {
+        display: none; } }
+    #concertModalContainer #concertModal #closeBox img {
+      position: absolute;
+      top: 2%;
+      right: 4%;
+      width: 8%; }
     #concertModalContainer #concertModal #AlignBox {
       display: flex;
       flex-direction: column;
@@ -5897,11 +6302,14 @@ a {
             height: 85%; } }
   #concertModalContainer #stretchedConcertModal {
     z-index: 999;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
     background-color: #fff;
-    border-radius: 5px; }
+    border-radius: 5px;
+    border: 1px solid blue; }
     @media (max-width: 767px) {
       #concertModalContainer #stretchedConcertModal {
         display: flex;
@@ -5919,6 +6327,21 @@ a {
         right: 5%;
         width: 40%;
         height: 90%; } }
+    @media (max-width: 767px) {
+      #concertModalContainer #stretchedConcertModal #closeBox {
+        width: 90%;
+        height: 4%; } }
+    @media (min-width: 768px) {
+      #concertModalContainer #stretchedConcertModal #closeBox {
+        display: none; } }
+    @media (min-width: 1200px) {
+      #concertModalContainer #stretchedConcertModal #closeBox {
+        display: none; } }
+    #concertModalContainer #stretchedConcertModal #closeBox img {
+      position: absolute;
+      top: 2%;
+      right: 4%;
+      width: 8%; }
     #concertModalContainer #stretchedConcertModal #AlignBox {
       display: flex;
       flex-direction: column;
@@ -6101,11 +6524,13 @@ a {
   #concertModalContainer #onFooterModal {
     z-index: 999;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: absolute;
     background-color: #fff;
-    border-radius: 5px; }
+    border-radius: 5px;
+    border: 1px solid purple; }
     @media (max-width: 767px) {
       #concertModalContainer #onFooterModal {
         width: 90%;
@@ -6120,6 +6545,21 @@ a {
         right: 5%;
         width: 40%;
         height: 90%; } }
+    @media (max-width: 767px) {
+      #concertModalContainer #onFooterModal #closeBox {
+        width: 90%;
+        height: 4%; } }
+    @media (min-width: 768px) {
+      #concertModalContainer #onFooterModal #closeBox {
+        display: none; } }
+    @media (min-width: 1200px) {
+      #concertModalContainer #onFooterModal #closeBox {
+        display: none; } }
+    #concertModalContainer #onFooterModal #closeBox img {
+      position: absolute;
+      top: 2%;
+      right: 4%;
+      width: 8%; }
     #concertModalContainer #onFooterModal #AlignBox {
       display: flex;
       flex-direction: column;
@@ -6423,7 +6863,7 @@ a {
         font-weight: bold; }
 
 #loginModalContainer {
-  z-index: 999;
+  z-index: 500;
   width: 100%; }
   @media (max-width: 767px) {
     #loginModalContainer {
@@ -6444,7 +6884,7 @@ a {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.25); }
   #loginModalContainer #background {
-    z-index: 999;
+    z-index: 501;
     width: 100%;
     height: 100%; }
     @media (min-width: 768px) {
@@ -6458,16 +6898,17 @@ a {
         align-items: center;
         justify-content: center; } }
     #loginModalContainer #background #loginModal {
-      z-index: 999;
+      z-index: 502;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background-color: #fff; }
       @media (max-width: 767px) {
         #loginModalContainer #background #loginModal {
-          position: absolute;
+          position: fixed;
           width: 100%;
-          height: 100%; } }
+          height: 90%; } }
       @media (min-width: 768px) {
         #loginModalContainer #background #loginModal {
           width: 60%;
@@ -6478,13 +6919,30 @@ a {
           width: 30%;
           height: 78%;
           border-radius: 20px; } }
+      #loginModalContainer #background #loginModal #xButtonContainer {
+        display: flex;
+        justify-content: right;
+        align-items: center; }
+        @media (max-width: 767px) {
+          #loginModalContainer #background #loginModal #xButtonContainer {
+            width: 90%;
+            height: 5%; }
+            #loginModalContainer #background #loginModal #xButtonContainer img {
+              width: 10%;
+              cursor: pointer; } }
+        @media (min-width: 768px) {
+          #loginModalContainer #background #loginModal #xButtonContainer {
+            display: none; } }
+        @media (min-width: 1200px) {
+          #loginModalContainer #background #loginModal #xButtonContainer {
+            display: none; } }
       #loginModalContainer #background #loginModal #alignContainer {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         width: 90%;
-        height: 85%; }
+        height: 87.5%; }
         #loginModalContainer #background #loginModal #alignContainer .fontMatch {
           font-weight: bold; }
           @media (max-width: 767px) {
@@ -6621,7 +7079,7 @@ a {
                   font-size: 1.5rem; } }
 
 #signUpModalContainer {
-  z-index: 999;
+  z-index: 500;
   width: 100%; }
   @media (max-width: 767px) {
     #signUpModalContainer {
@@ -6642,7 +7100,7 @@ a {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.25); }
   #signUpModalContainer #background {
-    z-index: 999;
+    z-index: 501;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.2); }
@@ -6657,16 +7115,17 @@ a {
         align-items: center;
         justify-content: center; } }
     #signUpModalContainer #background #signUpModal {
-      z-index: 999;
+      z-index: 502;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       background-color: #fff; }
       @media (max-width: 767px) {
         #signUpModalContainer #background #signUpModal {
-          position: absolute;
+          position: fixed;
           width: 100%;
-          height: 100%; } }
+          height: 90%; } }
       @media (min-width: 768px) {
         #signUpModalContainer #background #signUpModal {
           width: 60%;
@@ -6677,13 +7136,30 @@ a {
           width: 30%;
           height: 78%;
           border-radius: 20px; } }
+      #signUpModalContainer #background #signUpModal #xButtonContainer {
+        display: flex;
+        justify-content: right;
+        align-items: center; }
+        @media (max-width: 767px) {
+          #signUpModalContainer #background #signUpModal #xButtonContainer {
+            width: 90%;
+            height: 5%; }
+            #signUpModalContainer #background #signUpModal #xButtonContainer img {
+              width: 10%;
+              cursor: pointer; } }
+        @media (min-width: 768px) {
+          #signUpModalContainer #background #signUpModal #xButtonContainer {
+            display: none; } }
+        @media (min-width: 1200px) {
+          #signUpModalContainer #background #signUpModal #xButtonContainer {
+            display: none; } }
       #signUpModalContainer #background #signUpModal #alignContainer {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
         width: 90%;
-        height: 95%; }
+        height: 87.5%; }
         #signUpModalContainer #background #signUpModal #alignContainer .fontMatch {
           font-weight: bold; }
           @media (max-width: 767px) {
@@ -6707,7 +7183,8 @@ a {
           justify-content: space-between;
           align-items: center;
           width: 90%;
-          height: 15%; }
+          height: 15%;
+          margin-bottom: 2.5%; }
           #signUpModalContainer #background #signUpModal #alignContainer #topBox h2 {
             color: #ffce63; }
             @media (max-width: 767px) {
@@ -6715,16 +7192,17 @@ a {
                 font-size: 3rem; } }
             @media (min-width: 768px) {
               #signUpModalContainer #background #signUpModal #alignContainer #topBox h2 {
-                font-size: 3.8rem; } }
+                font-size: 3.5rem; } }
             @media (min-width: 1200px) {
               #signUpModalContainer #background #signUpModal #alignContainer #topBox h2 {
-                font-size: 3.8rem; } }
+                font-size: 3.5rem; } }
           #signUpModalContainer #background #signUpModal #alignContainer #topBox #goSignUp {
             display: flex;
             justify-content: space-around;
             align-items: center;
             width: 85%;
-            height: 50%; }
+            height: 50%;
+            margin-top: 2.5%; }
             #signUpModalContainer #background #signUpModal #alignContainer #topBox #goSignUp #no1, #signUpModalContainer #background #signUpModal #alignContainer #topBox #goSignUp #midBox .outerTextBox #no2, #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox #topBox #goSignUp #no2 {
               color: #a0a0a0; }
             #signUpModalContainer #background #signUpModal #alignContainer #topBox #goSignUp #no2 {
@@ -6743,18 +7221,28 @@ a {
             #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox .textBoxMatch2 {
               width: 100%;
               height: 100%; }
-            #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox button {
+            #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox #no0 {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: flex-end;
               position: relative;
-              top: -78%;
-              left: 78%;
-              width: 20%;
-              height: 55%;
-              background-color: #ffce63;
-              color: gray;
-              border: 0;
-              border-radius: 5px;
-              font-weight: bold;
-              cursor: pointer; }
+              top: -100%;
+              left: 67.5%;
+              width: 30%;
+              height: 100%; }
+              #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox #no0 .Img {
+                width: 20%;
+                margin-right: 2.5%; }
+              #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox #no0 button {
+                width: 80%;
+                height: 75%;
+                background-color: #ffce63;
+                color: gray;
+                border: 0;
+                border-radius: 5px;
+                font-weight: bold;
+                cursor: pointer; }
             #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox #no1, #signUpModalContainer #background #signUpModal #alignContainer #midBox .outerTextBox #no2 {
               display: flex;
               align-items: center;
@@ -6767,6 +7255,10 @@ a {
                 width: 100%; }
           #signUpModalContainer #background #signUpModal #alignContainer #midBox .warningMsg {
             font-size: 1.2rem;
+            color: red; }
+          #signUpModalContainer #background #signUpModal #alignContainer #midBox .duplicationMsg {
+            font-size: 1.2rem;
+            font-weight: bold;
             color: red; }
           #signUpModalContainer #background #signUpModal #alignContainer #midBox .hidden {
             display: none; }
@@ -6813,16 +7305,16 @@ a {
               align-items: center;
               width: 100%;
               height: 20%; }
-              #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox input {
+              #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check00, #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check01, #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check02 {
                 position: absolute; }
                 @media (max-width: 767px) {
-                  #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox input {
+                  #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check00, #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check01, #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check02 {
                     left: 12%; } }
                 @media (min-width: 768px) {
-                  #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox input {
+                  #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check00, #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check01, #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check02 {
                     left: 26.5%; } }
                 @media (min-width: 1200px) {
-                  #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox input {
+                  #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check00, #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check01, #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox #check02 {
                     left: 38%; } }
               #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .checkBox p {
                 position: absolute; }
@@ -6998,7 +7490,7 @@ a {
             cursor: pointer; }
 
 #landingContainer {
-  /*중간 박스*/ }
+  /*---------------중간 박스---------------*/ }
   @media (max-width: 767px) {
     #landingContainer {
       position: absolute;
@@ -7150,140 +7642,124 @@ a {
       width: 80%;
       height: 77%; } }
   #landingContainer #middleWrapper {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    position: absolute;
     width: 100%; }
     @media (max-width: 767px) {
       #landingContainer #middleWrapper {
-        height: 200%;
+        height: 250%;
         top: 45%; } }
     @media (min-width: 768px) {
       #landingContainer #middleWrapper {
-        height: 260%;
+        height: 350%;
         top: 60%; } }
     @media (min-width: 1200px) {
       #landingContainer #middleWrapper {
-        height: 300%;
+        height: 480%;
         top: 70%; } }
-    #landingContainer #middleWrapper #firstBox, #landingContainer #middleWrapper #secondBox, #landingContainer #middleWrapper #thirdBox {
-      position: relative;
+    @media (max-width: 767px) {
+      #landingContainer #middleWrapper #firstImg {
+        width: 85%;
+        height: 14%; } }
+    @media (min-width: 768px) {
+      #landingContainer #middleWrapper #firstImg {
+        width: 80%;
+        height: 14%; } }
+    @media (min-width: 1200px) {
+      #landingContainer #middleWrapper #firstImg {
+        width: 53%;
+        height: 14%; } }
+    #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3 {
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
       align-items: center;
-      width: 100%; }
+      justify-content: space-between; }
       @media (max-width: 767px) {
-        #landingContainer #middleWrapper #firstBox, #landingContainer #middleWrapper #secondBox, #landingContainer #middleWrapper #thirdBox {
-          height: 24%; } }
-      @media (min-width: 768px) {
-        #landingContainer #middleWrapper #firstBox, #landingContainer #middleWrapper #secondBox, #landingContainer #middleWrapper #thirdBox {
-          height: 26%; } }
-      @media (min-width: 1200px) {
-        #landingContainer #middleWrapper #firstBox, #landingContainer #middleWrapper #secondBox, #landingContainer #middleWrapper #thirdBox {
-          height: 30%; } }
-      @media (max-width: 767px) {
-        #landingContainer #middleWrapper #firstBox #firstImg, #landingContainer #middleWrapper #secondBox #firstImg, #landingContainer #middleWrapper #thirdBox #firstImg {
+        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3 {
           width: 80%;
-          height: 60%; } }
+          height: 6%; } }
       @media (min-width: 768px) {
-        #landingContainer #middleWrapper #firstBox #firstImg, #landingContainer #middleWrapper #secondBox #firstImg, #landingContainer #middleWrapper #thirdBox #firstImg {
-          width: 75%;
-          height: 65%; } }
+        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3 {
+          width: 70%;
+          height: 6%; } }
       @media (min-width: 1200px) {
-        #landingContainer #middleWrapper #firstBox #firstImg, #landingContainer #middleWrapper #secondBox #firstImg, #landingContainer #middleWrapper #thirdBox #firstImg {
-          width: 55%;
-          height: 68%; } }
-      #landingContainer #middleWrapper #firstBox .alignBox, #landingContainer #middleWrapper #secondBox .alignBox, #landingContainer #middleWrapper #thirdBox .alignBox {
-        display: flex;
-        align-items: center;
-        justify-content: space-between; }
+        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3 {
+          width: 45%;
+          height: 5%; } }
+      #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+        position: relative; }
         @media (max-width: 767px) {
-          #landingContainer #middleWrapper #firstBox .alignBox, #landingContainer #middleWrapper #secondBox .alignBox, #landingContainer #middleWrapper #thirdBox .alignBox {
-            width: 80%;
-            height: 30%; } }
+          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+            width: 32%;
+            height: 100%; } }
         @media (min-width: 768px) {
-          #landingContainer #middleWrapper #firstBox .alignBox, #landingContainer #middleWrapper #secondBox .alignBox, #landingContainer #middleWrapper #thirdBox .alignBox {
-            width: 70%;
-            height: 30%; } }
-        @media (min-width: 1200px) {
-          #landingContainer #middleWrapper #firstBox .alignBox, #landingContainer #middleWrapper #secondBox .alignBox, #landingContainer #middleWrapper #thirdBox .alignBox {
-            width: 45%;
-            height: 30%; } }
-        #landingContainer #middleWrapper #firstBox .alignBox #paddingBox, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox {
-          position: relative; }
-          @media (max-width: 767px) {
-            #landingContainer #middleWrapper #firstBox .alignBox #paddingBox, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox {
-              width: 28%;
-              height: 100%; } }
-          @media (min-width: 768px) {
-            #landingContainer #middleWrapper #firstBox .alignBox #paddingBox, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox {
-              width: 32%;
-              height: 100%;
-              font-size: 1.5rem; } }
-          @media (min-width: 1200px) {
-            #landingContainer #middleWrapper #firstBox .alignBox #paddingBox, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox {
-              width: 30%;
-              height: 100%;
-              font-size: 2rem;
-              padding-bottom: 10%; } }
-          #landingContainer #middleWrapper #firstBox .alignBox #paddingBox .grayGif, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox .grayGif, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox .grayGif {
-            position: absolute;
-            width: 100%;
+          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+            width: 32%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #a0a0a0;
-            border-radius: 5px;
-            font-weight: bold; }
-            #landingContainer #middleWrapper #firstBox .alignBox #paddingBox .grayGif div, #landingContainer #middleWrapper #secondBox .alignBox #paddingBox .grayGif div, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox .grayGif div {
-              position: absolute; }
-        #landingContainer #middleWrapper #firstBox .alignBox #textBox, #landingContainer #middleWrapper #secondBox .alignBox #textBox, #landingContainer #middleWrapper #thirdBox .alignBox #textBox {
+            font-size: 1.5rem; } }
+        @media (min-width: 1200px) {
+          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+            width: 30%;
+            height: 100%;
+            font-size: 2rem;
+            padding-bottom: 10%; } }
+        #landingContainer #middleWrapper .alignBox #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox2 #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox3 #paddingBox .grayGif {
+          position: absolute;
+          width: 100%;
+          height: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
-          height: 90%; }
+          background-color: #a0a0a0;
+          border-radius: 5px;
+          font-weight: bold; }
+          #landingContainer #middleWrapper .alignBox #paddingBox .grayGif div, #landingContainer #middleWrapper .alignBox2 #paddingBox .grayGif div, #landingContainer #middleWrapper .alignBox3 #paddingBox .grayGif div {
+            position: absolute; }
+      #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90%; }
+        @media (max-width: 767px) {
+          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+            width: 70%; } }
+        @media (min-width: 768px) {
+          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+            width: 60%; } }
+        @media (min-width: 1200px) {
+          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+            width: 60%; } }
+        #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+          font-weight: bold; }
           @media (max-width: 767px) {
-            #landingContainer #middleWrapper #firstBox .alignBox #textBox, #landingContainer #middleWrapper #secondBox .alignBox #textBox, #landingContainer #middleWrapper #thirdBox .alignBox #textBox {
-              width: 70%; } }
+            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+              font-size: 1.2rem; } }
           @media (min-width: 768px) {
-            #landingContainer #middleWrapper #firstBox .alignBox #textBox, #landingContainer #middleWrapper #secondBox .alignBox #textBox, #landingContainer #middleWrapper #thirdBox .alignBox #textBox {
-              width: 60%; } }
+            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+              font-size: 1.8rem; } }
           @media (min-width: 1200px) {
-            #landingContainer #middleWrapper #firstBox .alignBox #textBox, #landingContainer #middleWrapper #secondBox .alignBox #textBox, #landingContainer #middleWrapper #thirdBox .alignBox #textBox {
-              width: 60%; } }
-          #landingContainer #middleWrapper #firstBox .alignBox #textBox #texts, #landingContainer #middleWrapper #secondBox .alignBox #textBox #texts, #landingContainer #middleWrapper #thirdBox .alignBox #textBox #texts {
-            font-weight: bold; }
-            @media (max-width: 767px) {
-              #landingContainer #middleWrapper #firstBox .alignBox #textBox #texts, #landingContainer #middleWrapper #secondBox .alignBox #textBox #texts, #landingContainer #middleWrapper #thirdBox .alignBox #textBox #texts {
-                font-size: 1.2rem; } }
-            @media (min-width: 768px) {
-              #landingContainer #middleWrapper #firstBox .alignBox #textBox #texts, #landingContainer #middleWrapper #secondBox .alignBox #textBox #texts, #landingContainer #middleWrapper #thirdBox .alignBox #textBox #texts {
-                font-size: 1.8rem; } }
-            @media (min-width: 1200px) {
-              #landingContainer #middleWrapper #firstBox .alignBox #textBox #texts, #landingContainer #middleWrapper #secondBox .alignBox #textBox #texts, #landingContainer #middleWrapper #thirdBox .alignBox #textBox #texts {
-                font-size: 2.5rem; } }
-    #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 {
+            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+              font-size: 2.5rem; } }
+    #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #paddingBox32 {
       position: relative; }
       @media (max-width: 767px) {
-        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 {
+        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #paddingBox32 {
           width: 30%;
-          height: 70%; } }
+          height: 100%; } }
       @media (min-width: 768px) {
-        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 {
+        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #paddingBox32 {
           width: 32%;
           height: 100%;
           font-size: 1.5rem; } }
       @media (min-width: 1200px) {
-        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 {
+        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #paddingBox32 {
           width: 30%;
           height: 100%;
           font-size: 2rem;
           padding-bottom: 10%; } }
-      #landingContainer #middleWrapper #paddingBox31 .grayGif2, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 .grayGif2, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 .grayGif3 {
+      #landingContainer #middleWrapper #paddingBox31 .grayGif2, #landingContainer #middleWrapper #paddingBox32 .grayGif2, #landingContainer #middleWrapper #paddingBox32 .grayGif3 {
         position: absolute;
         width: 100%;
         height: 100%;
@@ -7293,80 +7769,32 @@ a {
         background-color: #a0a0a0;
         border-radius: 5px;
         font-weight: bold; }
-        #landingContainer #middleWrapper #paddingBox31 .grayGif2 div, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 .grayGif2 div, #landingContainer #middleWrapper #thirdBox .alignBox #paddingBox32 .grayGif3 div {
+        #landingContainer #middleWrapper #paddingBox31 .grayGif2 div, #landingContainer #middleWrapper #paddingBox32 .grayGif2 div, #landingContainer #middleWrapper #paddingBox32 .grayGif3 div {
           position: absolute; }
     @media (max-width: 767px) {
-      #landingContainer #middleWrapper #secondBox {
-        height: 35%; } }
+      #landingContainer #middleWrapper #secondImg {
+        width: 85%;
+        height: 20%; } }
     @media (min-width: 768px) {
-      #landingContainer #middleWrapper #secondBox {
-        height: 35%; } }
-    @media (max-width: 767px) {
-      #landingContainer #middleWrapper #secondBox #secondImg {
-        width: 60%;
-        height: 60%; } }
-    @media (min-width: 768px) {
-      #landingContainer #middleWrapper #secondBox #secondImg {
-        width: 70%;
-        height: 70%; } }
+      #landingContainer #middleWrapper #secondImg {
+        width: 75%;
+        height: 20%; } }
     @media (min-width: 1200px) {
-      #landingContainer #middleWrapper #secondBox #secondImg {
-        width: 38%;
-        height: 65%; } }
-    #landingContainer #middleWrapper #secondBox .alignBox {
-      display: flex;
-      align-items: center;
-      justify-content: space-between; }
-      @media (max-width: 767px) {
-        #landingContainer #middleWrapper #secondBox .alignBox {
-          width: 80%;
-          height: 30%;
-          font-size: 1.1rem; } }
-      @media (min-width: 768px) {
-        #landingContainer #middleWrapper #secondBox .alignBox {
-          width: 70%;
-          height: 22%; } }
-      @media (min-width: 1200px) {
-        #landingContainer #middleWrapper #secondBox .alignBox {
-          width: 45%;
-          height: 30%;
-          font-size: 1.5rem; } }
+      #landingContainer #middleWrapper #secondImg {
+        width: 48%;
+        height: 18%; } }
     @media (max-width: 767px) {
-      #landingContainer #middleWrapper #thirdBox {
-        height: 35%; } }
+      #landingContainer #middleWrapper #thirdImg {
+        width: 85%;
+        height: 20%; } }
     @media (min-width: 768px) {
-      #landingContainer #middleWrapper #thirdBox {
-        height: 35%; } }
-    @media (max-width: 767px) {
-      #landingContainer #middleWrapper #thirdBox #thirdImg {
-        width: 60%;
-        height: 60%; } }
-    @media (min-width: 768px) {
-      #landingContainer #middleWrapper #thirdBox #thirdImg {
-        width: 70%;
-        height: 70%; } }
+      #landingContainer #middleWrapper #thirdImg {
+        width: 75%;
+        height: 20%; } }
     @media (min-width: 1200px) {
-      #landingContainer #middleWrapper #thirdBox #thirdImg {
-        width: 38%;
-        height: 65%; } }
-    #landingContainer #middleWrapper #thirdBox .alignBox {
-      display: flex;
-      align-items: center;
-      justify-content: space-between; }
-      @media (max-width: 767px) {
-        #landingContainer #middleWrapper #thirdBox .alignBox {
-          width: 80%;
-          height: 30%;
-          font-size: 1.1rem; } }
-      @media (min-width: 768px) {
-        #landingContainer #middleWrapper #thirdBox .alignBox {
-          width: 70%;
-          height: 22%; } }
-      @media (min-width: 1200px) {
-        #landingContainer #middleWrapper #thirdBox .alignBox {
-          width: 45%;
-          height: 30%;
-          font-size: 1.5rem; } }
+      #landingContainer #middleWrapper #thirdImg {
+        width: 50%;
+        height: 18%; } }
   #landingContainer #bottomBox {
     position: absolute;
     display: flex;
@@ -7377,15 +7805,15 @@ a {
     @media (max-width: 767px) {
       #landingContainer #bottomBox {
         height: 20%;
-        top: 255%; } }
+        top: 310%; } }
     @media (min-width: 768px) {
       #landingContainer #bottomBox {
-        height: 40%;
-        top: 335%; } }
+        height: 30%;
+        top: 420%; } }
     @media (min-width: 1200px) {
       #landingContainer #bottomBox {
         height: 40%;
-        top: 380%; } }
+        top: 570%; } }
     #landingContainer #bottomBox #bottomAlignBox {
       display: flex;
       flex-direction: column;
@@ -7434,22 +7862,45 @@ a {
           #landingContainer #bottomBox #bottomAlignBox button {
             width: 30%;
             font-size: 2rem; } }
-  #landingContainer #landingFooterWrapper {
+  #landingContainer #fullFooter {
     position: absolute;
-    width: 100%;
-    height: 30%; }
+    display: flex;
+    justify-content: center;
+    background-color: black; }
     @media (max-width: 767px) {
-      #landingContainer #landingFooterWrapper {
-        top: 275%; } }
+      #landingContainer #fullFooter {
+        width: 100%;
+        height: 30%;
+        top: 330%; } }
     @media (min-width: 768px) {
-      #landingContainer #landingFooterWrapper {
-        top: 375%; } }
+      #landingContainer #fullFooter {
+        width: 100%;
+        height: 30%;
+        top: 450%; } }
     @media (min-width: 1200px) {
-      #landingContainer #landingFooterWrapper {
-        top: 420%; } }
+      #landingContainer #fullFooter {
+        width: 100%;
+        height: 38%;
+        top: 610%; } }
+    #landingContainer #fullFooter #landingFooterWrapper {
+      position: absolute;
+      display: flex;
+      background-color: black; }
+      @media (max-width: 767px) {
+        #landingContainer #fullFooter #landingFooterWrapper {
+          height: 100%;
+          width: 100%; } }
+      @media (min-width: 768px) {
+        #landingContainer #fullFooter #landingFooterWrapper {
+          height: 100%;
+          width: 100%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #fullFooter #landingFooterWrapper {
+          height: 70%;
+          width: 79%; } }
 
-/*------------선영----------*/
-/*------------정현----------*/
+/*------------선영------------*/
+/*------------정현------------*/
 #PrivacyModalContainer {
   z-index: 999;
   width: 100%; }
@@ -7581,4 +8032,134 @@ a {
             border: 0;
             cursor: pointer; }
 
-/*------------정현----------*/
+#AlertModalContainer {
+  z-index: 999;
+  width: 100%; }
+  @media (max-width: 767px) {
+    #AlertModalContainer {
+      position: fixed;
+      height: 90%; } }
+  @media (min-width: 768px) {
+    #AlertModalContainer {
+      position: fixed;
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    #AlertModalContainer {
+      position: fixed;
+      height: 100%; } }
+  #AlertModalContainer #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); }
+  #AlertModalContainer #alertBackground {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); }
+    @media (max-width: 767px) {
+      #AlertModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 768px) {
+      #AlertModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 1200px) {
+      #AlertModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    #AlertModalContainer #alertBackground #alertModal {
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff; }
+      @media (max-width: 767px) {
+        #AlertModalContainer #alertBackground #alertModal {
+          width: 60%;
+          height: 50%;
+          border-radius: 20px; } }
+      @media (min-width: 768px) {
+        #AlertModalContainer #alertBackground #alertModal {
+          width: 25%;
+          height: 30%;
+          border-radius: 20px; } }
+      @media (min-width: 1200px) {
+        #AlertModalContainer #alertBackground #alertModal {
+          width: 25%;
+          height: 30%;
+          border-radius: 20px; } }
+      #AlertModalContainer #alertBackground #alertModal #alignContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        height: 85%; }
+        #AlertModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #AlertModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #AlertModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.3rem; } }
+          @media (min-width: 1200px) {
+            #AlertModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+        #AlertModalContainer #alertBackground #alertModal #alignContainer .textBoxMatch {
+          display: flex;
+          width: 70%;
+          height: 5%;
+          border: 1px solid #a0a0a0;
+          border-radius: 5px; }
+        #AlertModalContainer #alertBackground #alertModal #alignContainer #topBox {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          width: 90%;
+          height: 40%; }
+          @media (max-width: 767px) {
+            #AlertModalContainer #alertBackground #alertModal #alignContainer #topBox img {
+              height: 100%; } }
+          @media (min-width: 768px) {
+            #AlertModalContainer #alertBackground #alertModal #alignContainer #topBox img {
+              height: 100%; } }
+          @media (min-width: 1200px) {
+            #AlertModalContainer #alertBackground #alertModal #alignContainer #topBox img {
+              height: 100%; } }
+        #AlertModalContainer #alertBackground #alertModal #alignContainer #midBox {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 90%;
+          height: 40%; }
+        #AlertModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          height: 15%; }
+          #AlertModalContainer #alertBackground #alertModal #alignContainer #bottomBox .textBoxMatch3 {
+            display: flex;
+            width: 100%;
+            height: 20%;
+            border: 1px solid #a0a0a0;
+            border-radius: 5px; }
+          #AlertModalContainer #alertBackground #alertModal #alignContainer #bottomBox #back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: #ffce63;
+            color: #fff;
+            border: 0;
+            cursor: pointer; }
+
+/*------------정현------------*/

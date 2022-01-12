@@ -7,7 +7,7 @@
   top: 10%;
   // border: 3px solid red;
   @include mobile-only() {
-    height: 150%;
+    height: 180%;
   }
   @include md() {
     height: 180%;
@@ -72,17 +72,17 @@
     background-color: black;
     @include mobile-only() {
       width: 100%;
-      height: 14%;
+      height: 15.3%;
       top: 103%;
     }
     @include md() {
       width: 100%;
-      height: 15.3%;
+      height: 15.9%;
       top: 104%;
     }
     @include lg() {
       width: 100%;
-      height: 12.5%;
+      height: 13.5%;
       top: 112%;
     }
     // border: 1px solid red;
@@ -94,15 +94,15 @@
       // border: 1px solid red;
       @include mobile-only() {
         height: 100%;
-        width: 75%;
+        width: 100%;
       }
       @include md() {
-        height: 70%;
-        width: 79%;
+        height: 100%;
+        width: 90%;
       }
       @include lg() {
         height: 70%;
-        width: 79%;
+        width: 73%;
       }
     }
   }
