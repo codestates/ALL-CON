@@ -44,13 +44,14 @@ function App() {
       {/*<ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
       {/* <MyProfileImageModal /> */}
+      {/* <MyProfileResignMembershipModal /> */}
       {/* <ConfirmNumberModal /> */}
       {/* <FindPasswordModal /> */}
       {/* <ResetPasswordModal /> */}
 
       {/* <LandingPage /> */}
       {/* <MyEditPage /> */}
-      {/* <ConChinCertificationPage /> */}
+      <ConChinCertificationPage />
       {/* <MyPage /> */}
       {/*  */}
       <Routes>

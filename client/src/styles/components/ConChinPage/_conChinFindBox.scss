@@ -11,7 +11,8 @@
     height: 14%;
   }
   @include lg() {
-    height: 10%;
+    top: 2%;
+    height: 8%;
   }
   // border: 1px solid red;
   .title {
@@ -60,18 +61,21 @@
     position: absolute;
     display: flex;
     align-items: center;
-    width: 25%;
+
     height: 100%;
     right: 1%;
 
     @include mobile-only() {
       bottom: 5%;
+      width: 25%;
     }
     @include md() {
       bottom: 0%;
+      width: 28%;
     }
     @include lg() {
       bottom: 0%;
+      width: 31%;
     }
     .btn {
       position: absolute;

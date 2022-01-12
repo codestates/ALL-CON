@@ -53,11 +53,12 @@
       width: 90%;
     }
     @include lg() {
-      width: 90%;
+      width: 85%;
     }
     &:hover {
       background-color: #ffce63;
       cursor: pointer;
+      transition: 0.15s all;
     }
     .title {
       position: absolute;

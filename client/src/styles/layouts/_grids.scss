@@ -65,6 +65,7 @@
     background-color: #ffce63;
     color: white;
     cursor: pointer;
+    transition: 0.15s all;
   }
 }
 /****** orderBox ******/
@@ -79,7 +80,7 @@
   height: 75%;
   left: 50%;
   transform: translate(-50%, 0%);
-  // border:1px solid blue;
+  // border: 1px solid blue;
   #box {
     position: relative;
     display: flex;
@@ -122,6 +123,7 @@
       &:hover {
         box-shadow: 3px 3px 14px 1px #606060;
         cursor: pointer;
+        transition: 0.15s all;
       }
       .thumbNail {
         position: absolute;
@@ -351,6 +353,7 @@
     &:hover {
       background-color: $yellow;
       cursor: pointer;
+      transition: 0.1s all;
     }
   }
   .text {
@@ -619,6 +622,8 @@
     height: 30px;
     &:hover {
       cursor: pointer;
+      color: $yellow;
+      transition: 0.15s all;
     }
   }
 }
@@ -698,6 +703,8 @@
     }
     &:hover {
       cursor: pointer;
+      color: $yellow;
+      transition: all 0.15s;
     }
   }
   .profile {

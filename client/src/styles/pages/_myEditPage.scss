@@ -262,6 +262,9 @@
             border: none;
             border-radius: 5px;
             color: white;
+            &:hover {
+              cursor: pointer;
+            }
             @include mobile-only() {
               font-size: 1.5rem;
             }
