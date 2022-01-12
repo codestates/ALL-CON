@@ -37,8 +37,10 @@ function ConcertPage() {
             <ConcertBox />
           </div>
         </div>
-        <div id='footerWrapper'>
-          <Footer />
+        <div id='fullFooter'>
+          <div id='footerWrapper'>
+            <Footer />
+          </div>
         </div>
       </div>
     </>

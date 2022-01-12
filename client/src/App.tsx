@@ -30,7 +30,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
   const dispatch = useDispatch();
-  const { loginModal, signupModal, tosModal, privacyModal } = useSelector((state: RootState) => state.modal);
+  const { loginModal, signupModal, tosModal, privacyModal } = useSelector(
+    (state: RootState) => state.modal,
+  );
 
   return (
     <div className='App'>
