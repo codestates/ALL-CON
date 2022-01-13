@@ -112,34 +112,6 @@
         width: 4%;
       }
     }
-    #mailIcon {
-      position: absolute;
-      @include mobile-only() {
-        top: 9%;
-        left: 39%;
-        width: 30px;
-      }
-      @include md() {
-        display: none;
-      }
-      @include lg() {
-        display: none;
-      }
-    }
-    #kakaoIcon {
-      position: absolute;
-      @include mobile-only() {
-        top: 9%;
-        left: 48%;
-        width: 30px;
-      }
-      @include md() {
-        display: none;
-      }
-      @include lg() {
-        display: none;
-      }
-    }
     #titleBox {
       position: relative;
       width: 100%;
@@ -286,70 +258,22 @@
               }
             }
             #place {
-              @include mobile-only() {
-                height: 15%;
-              }
-              @include md() {
-                height: 10%;
-              }
-              @include lg() {
-                height: 10%;
-              }
+              height: 10%;
             }
             #date {
-              @include mobile-only() {
-                height: 30%;
-              }
-              @include md() {
-                height: 25%;
-              }
-              @include lg() {
-                height: 25%;
-              }
+              height: 25%;
             }
             #time {
-              @include mobile-only() {
-                height: 15%;
-              }
-              @include md() {
-                height: 10%;
-              }
-              @include lg() {
-                height: 10%;
-              }
+              height: 10%;
             }
             #rating {
-              @include mobile-only() {
-                height: 15%;
-              }
-              @include md() {
-                height: 10%;
-              }
-              @include lg() {
-                height: 10%;
-              }
+              height: 10%;
             }
             #price {
-              @include mobile-only() {
-                height: 25%;
-              }
-              @include md() {
-                height: 25%;
-              }
-              @include lg() {
-                height: 25%;
-              }
+              height: 25%;
             }
             #alarm {
-              @include mobile-only() {
-                display: none;
-              }
-              @include md() {
-                height: 20%;
-              }
-              @include lg() {
-                height: 20%;
-              }
+              height: 20%;
             }
           }
           .right-side {
@@ -371,79 +295,40 @@
               }
             }
             #place_r {
-              @include mobile-only() {
-                height: 15%;
-              }
-              @include md() {
-                height: 10%;
-              }
-              @include lg() {
-                height: 10%;
-              }
+              height: 10%;
             }
             #date_r {
-              @include mobile-only() {
-                height: 30%;
-              }
-              @include md() {
-                height: 25%;
-              }
-              @include lg() {
-                height: 25%;
-              }
+              height: 25%;
             }
             #time_r {
-              @include mobile-only() {
-                height: 15%;
-              }
-              @include md() {
-                height: 10%;
-              }
-              @include lg() {
-                height: 10%;
-              }
+              height: 10%;
             }
             #rating_r {
-              @include mobile-only() {
-                height: 15%;
-              }
-              @include md() {
-                height: 10%;
-              }
-              @include lg() {
-                height: 10%;
-              }
+              height: 10%;
             }
             #price_r {
-              @include mobile-only() {
-                height: 25%;
-              }
-              @include md() {
-                height: 25%;
-              }
-              @include lg() {
-                height: 25%;
-              }
+              height: 25%;
             }
             #alarm_r {
-              @include mobile-only() {
-                display: none;
-              }
-              @include md() {
-                height: 20%;
-              }
-              @include lg() {
-                height: 20%;
-              }
+              height: 20%;
               #mailIcon2 {
                 position: relative;
-                left: 5%;
-                width: 40px;
+                @include mobile-only() {
+                  left: 5%;
+                  width: 30px;
+                }
+                @include md() {
+                  left: 5%;
+                  width: 40px;
+                }
+                @include lg() {
+                  left: 5%;
+                  width: 40px;
+                }
               }
               #kakaoIcon2 {
-                position: relative;
                 left: 10%;
-                width: 40px;
+                @extend #mailIcon2;
               }
             }
           }
@@ -494,16 +379,15 @@
           img {
             @include mobile-only() {
               margin-right: 2%;
-              width: 7%;
-              height: 90%;
+              width: 20px;
             }
             @include md() {
-              width: 10%;
+              width: 30px;
               height: 80%;
               padding-right: 2%;
             }
             @include lg() {
-              width: 9%;
+              width: 50px;
               height: 80%;
               padding-right: 2%;
             }
