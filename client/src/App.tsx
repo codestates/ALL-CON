@@ -28,16 +28,17 @@ import MyPage from './pages/MyPage';
 import { RootState } from './index';
 /* Library import */
 import { Routes, Route } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const dispatch = useDispatch();
   const {
     loginModal,
     signupModal,
     tosModal,
     privacyModal,
     findPasswordModal,
+    confirmNumberModal,
+    resetPasswordModal,
     alertModal,
     sideMenuModal,
   } = useSelector((state: RootState) => state.modal);
@@ -52,18 +53,14 @@ function App() {
       {sideMenuModal && <SideMenuModal />}
       {alertModal && <AlertModal />}
       {findPasswordModal && <FindPasswordModal />}
+      {confirmNumberModal && <ConfirmNumberModal />}
+      {resetPasswordModal && <ResetPasswordModal />}
       {/*<ConcertModal /> */}
       {/* <ConChinWritingModal /> */}
       {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
-      {/* <ConfirmNumberModal /> */}
-      {/* <ResetPasswordModal /> */}
-
-      {/* <LandingPage /> */}
       {/* <MyEditPage /> */}
       {/* <ConChinCertificationPage /> */}
-      {/* <MyPage /> */}
-      {/*  */}
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/main/*' element={<MainPage />} />
@@ -72,7 +69,6 @@ function App() {
         <Route path='/conchin/*' element={<ConChinPage />} />
         <Route path='/callbackGoogle/*' element={<CallbackGooglePage />} />
         <Route path='/callbackKakao/*' element={<CallbackKaKaoPage />} />
-        {/* <Route path='my/*' element={<MyPage />} /> */}
         {/* <Route path='myEdit/*' element={<MyEditPage />} /> */}
         {/* <Route path='conchinCert/*' element={<ConChinCertificationPage />} /> */}
       </Routes>

@@ -41,8 +41,6 @@ function SignUpModal() {
   const [passwordErr, setPasswordErr] = useState<boolean>(false);
   const [confirmPasswordErr, setConfirmPasswordErr] = useState<boolean>(false);
 
-  console.log(duplicationCheck);
-
   useEffect(() => {
     duplicationHandler();
   }, [duplicationCheck]);
@@ -257,10 +255,11 @@ function SignUpModal() {
 
             <div id='bottomBox'>
               <div id='agreeBox'>
-                <div className='checkBox agreeAll'>
+                {/* 전체동의 추후 구현 예정 */}
+                {/* <div className='checkBox agreeAll'>
                   <input type='checkbox' id='check00'/>
                   <p>전체동의</p>
-                </div>
+                </div> */}
                 <div className='checkBox agreeSub'>
                   <input type='checkbox' id='check01' onClick={()=>{setTosCheck(!tosCheck)}}/>
                   <p onClick={() => dispatch(showTosModal(true))}>[필수] ALL-CON 이용 약관 동의</p>
