@@ -6,6 +6,7 @@ import kakao from '../../images/kakaoOAuth.png';
 import originalLock from '../../images/originalPadlock.png';
 import xButton from '../../images/xButton.png';
 /* Store import */
+import { setScrollCount } from '../../store/HeaderSlice';
 import { login, getUserInfo } from '../../store/AuthSlice';
 import {
   showLoginModal,
@@ -14,15 +15,17 @@ import {
   showAlertModal,
   insertAlertText,
 } from '../../store/ModalSlice';
+import { RootState } from '../../index';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function LoginModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { scrollCount } = useSelector((state: RootState) => state.header);
 
   /* 인풋 정보 상태 */
   const [inputEmail, setInputEmail] = useState<string>('');
@@ -43,6 +46,7 @@ function LoginModal() {
         dispatch(login());
         dispatch(getUserInfo(response.data.data));
         dispatch(showLoginModal(false));
+        dispatch(setScrollCount(0));
         navigate('/main');
       }
     } catch (err) {
@@ -73,6 +77,7 @@ function LoginModal() {
     }
     /* LoginModal 종료 */
     dispatch(showLoginModal(false));
+    dispatch(setScrollCount(0));
   };
 
   /* 인풋 체인지 핸들러 */

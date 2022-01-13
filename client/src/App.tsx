@@ -72,7 +72,6 @@ function App() {
         <Route path='/conchin/*' element={<ConChinPage />} />
         <Route path='/callbackGoogle/*' element={<CallbackGooglePage />} />
         <Route path='/callbackKakao/*' element={<CallbackKaKaoPage />} />
-        <Route path='/landing/*' element={<LandingPage />} />
         {/* <Route path='myEdit/*' element={<MyEditPage />} /> */}
         {/* <Route path='conchinCert/*' element={<ConChinCertificationPage />} /> */}
       </Routes>
