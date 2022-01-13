@@ -1,18 +1,28 @@
 #concertModalContainer {
-  z-index: 999;
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  height: 100%;
+  // border: 1px solid blue;
+
   @include mobile-only() {
+    z-index: 999;
+    width: 100%;
+    height: 100%;
     position: fixed;
   }
   @include md() {
+    z-index: 999;
+    width: 100%;
+    height: 100%;
     position: fixed;
   }
   @include lg() {
+    z-index: 10;
+    width: 37.5%;
+    height: 100%;
+    top: 17.5%;
+    left: 50%;
     position: absolute;
   }
   #background {
@@ -26,10 +36,7 @@
     @include md() {
     }
     @include lg() {
-      position: absolute;
-      width: 30%;
-      height: 0%;
-      left: 55%;
+      display: none;
     }
   }
   #concertModal {
@@ -41,30 +48,30 @@
     position: absolute;
     background-color: #fff;
     border-radius: 5px;
-    border: 1px solid red;
+    // border: 1px solid red;
     @include mobile-only() {
       width: 90%;
       height: 70%;
     }
     @include md() {
-      width: 80%;
+      width: 70%;
       height: 85%;
     }
     @include lg() {
+      width: 90%;
+      height: 100%;
       display: flex;
-      width: 40%;
-      height: 90%;
-      top: 10%;
-      right: 5%;
     }
     #closeBox {
+      cursor: pointer;
       // border: 1px solid blue;
       @include mobile-only() {
         width: 90%;
         height: 4%;
       }
       @include md() {
-        display: none;
+        width: 90%;
+        height: 4%;
       }
       @include lg() {
         display: none;
@@ -73,7 +80,7 @@
         position: absolute;
         top: 2%;
         right: 4%;
-        width: 8%;
+        width: 6%;
       }
     }
     #AlignBox {
@@ -87,7 +94,7 @@
       }
       @include md() {
         width: 90%;
-        height: 100%;
+        height: 90%;
       }
       @include lg() {
         width: 100%;
@@ -96,7 +103,7 @@
       #top_box {
         position: relative;
         width: 100%;
-        height: 15%;
+        height: 12.5%;
         // border: 1px solid blue;
         #titleAndDay {
           display: flex;
@@ -180,7 +187,7 @@
         justify-content: space-between;
         align-items: flex-end;
         width: 100%;
-        height: 40%;
+        height: 30%;
         // border: 1px solid hotpink;
         #poster {
           width: 30%;
@@ -269,542 +276,40 @@
       }
       #bottom_box {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 45%;
+        margin-top: 5%;
+        height: 55%;
         // border: 1px solid black;
-        #map {
+        h1 {
           @include mobile-only() {
-            width: 55%;
-            height: 85%;
+            font-size: 2rem;
+            color: $yellow;
           }
           @include md() {
-            width: 50%;
-            height: 85%;
+            font-size: 2.5rem;
+            color: $yellow;
           }
           @include lg() {
-            width: 50%;
-            height: 85%;
+            font-size: 2.5rem;
+            color: $yellow;
           }
+          
         }
-      }
-    }
-  }
-  #stretchedConcertModal {
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid blue;
-    @include mobile-only() {
-      display: flex;
-      width: 90%;
-      height: 70%;
-    }
-    @include md() {
-      display: flex;
-      width: 80%;
-      height: 85%;
-    }
-    @include lg() {
-      position: fixed;
-      top: 5%;
-      right: 5%;
-      width: 40%;
-      height: 90%;
-    }
-    #closeBox {
-      // border: 1px solid blue;
-      @include mobile-only() {
-        width: 90%;
-        height: 4%;
-      }
-      @include md() {
-        display: none;
-      }
-      @include lg() {
-        display: none;
-      }
-      img {
-        position: absolute;
-        top: 2%;
-        right: 4%;
-        width: 8%;
-      }
-    }
-    #AlignBox {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      // border: 3px solid green;
-      @include mobile-only() {
-        width: 90%;
-        height: 90%;
-      }
-      @include md() {
-        width: 90%;
-        height: 100%;
-      }
-      @include lg() {
-        width: 100%;
-        height: 100%;
-      }
-      #top_box {
-        position: relative;
-        width: 100%;
-        height: 15%;
-        // border: 1px solid blue;
-        #titleAndDay {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-          height: 60%;
-          // border: 1px solid purple;
-          h2 {
-            display: flex;
-            align-items: center;
-            width: 85%;
-            height: 100%;
-            @include mobile-only() {
-              font-size: 1.6rem;
-            }
-            @include md() {
-              font-size: 2.5rem;
-            }
-            @include lg() {
-              font-size: 2.5rem;
-            }
-          }
-          p {
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            color: $gray;
-            @include mobile-only() {
-              font-size: 2rem;
-            }
-            @include md() {
-              font-size: 3rem;
-            }
-            @include lg() {
-              font-size: 3rem;
-            }
-          }
-        }
-        #whereAndDate {
-          display: flex;
-          align-items: center;
-          width: 100%;
-          height: 40%;
-          #where {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 15%;
-            height: 70%;
-            background-color: $yellow;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold;
-            @include mobile-only() {
-              font-size: 1.1rem;
-            }
-            @include md() {
-              font-size: 1.8rem;
-            }
-            @include lg() {
-              font-size: 1.8rem;
-            }
-          }
-          #date {
-            // border: 1px solid red;
-            padding-left: 1%;
-            @include mobile-only() {
-              font-size: 1.2rem;
-            }
-            @include md() {
-              font-size: 1.8rem;
-            }
-            @include lg() {
-              font-size: 1.8rem;
-            }
-          }
-        }
-      }
-      #mid_box {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        width: 100%;
-        height: 40%;
-        // border: 1px solid hotpink;
-        #poster {
-          width: 30%;
-          height: 90%;
-        }
-        #right-side {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: flex-start;
-          width: 65%;
-          height: 90%;
-          // border: 1px solid purple;
-          #conInfo {
-            display: flex;
-            width: 100%;
-            height: 60%;
-            // border: 1px solid green;
-            #miniTitle {
-              display: flex;
-              flex-direction: column;
-              width: 30%;
-              height: 100%;
-              font-size: 1.4rem;
-              font-weight: bold;
-              // border: 1px solid blue;
-              @include mobile-only() {
-                font-size: 1.4rem;
-              }
-              @include md() {
-                font-size: 1.4rem;
-              }
-              @include lg() {
-                font-size: 1.8rem;
-              }
-              #place {
-              }
-              #time {
-                position: absolute;
-                top: 30%;
-              }
-            }
-            #answer {
-              display: flex;
-              flex-direction: column;
-              width: 60%;
-              height: 100%;
-
-              // border: 1px solid red;
-              @include mobile-only() {
-                font-size: 1.2rem;
-              }
-              @include md() {
-                font-size: 1.6rem;
-              }
-              @include lg() {
-                font-size: 1.6rem;
-              }
-              #place_r {
-              }
-              #time_r {
-                position: absolute;
-                top: 30%;
-              }
-            }
-          }
-          #more {
-            width: 100%;
-            background-color: $yellow;
-            border: 0;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold;
-            @include mobile-only() {
-              height: 13%;
-            }
-            @include md() {
-              height: 14%;
-            }
-            @include lg() {
-              font-size: 1.8rem;
-              height: 14%;
-            }
-          }
-        }
-      }
-      #bottom_box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 45%;
-        // border: 1px solid black;
         #map {
           @include mobile-only() {
-            width: 55%;
-            height: 85%;
+            height: 80%;
+            opacity: 50%;
           }
           @include md() {
-            width: 50%;
-            height: 85%;
+            height: 80%;
+            opacity: 50%;
           }
           @include lg() {
-            width: 50%;
-            height: 85%;
-          }
-        }
-      }
-    }
-  }
-  #onFooterModal {
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid purple;
-    @include mobile-only() {
-      width: 90%;
-      height: 70%;
-    }
-    @include md() {
-      width: 80%;
-      height: 85%;
-    }
-    @include lg() {
-      top: 130%;
-      right: 5%;
-      width: 40%;
-      height: 90%;
-    }
-    #closeBox {
-      // border: 1px solid blue;
-      @include mobile-only() {
-        width: 90%;
-        height: 4%;
-      }
-      @include md() {
-        display: none;
-      }
-      @include lg() {
-        display: none;
-      }
-      img {
-        position: absolute;
-        top: 2%;
-        right: 4%;
-        width: 8%;
-      }
-    }
-    #AlignBox {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      // border: 3px solid green;
-      @include mobile-only() {
-        width: 90%;
-        height: 90%;
-      }
-      @include md() {
-        width: 90%;
-        height: 100%;
-      }
-      @include lg() {
-        width: 100%;
-        height: 100%;
-      }
-      #top_box {
-        position: relative;
-        width: 100%;
-        height: 15%;
-        // border: 1px solid blue;
-        #titleAndDay {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-          height: 60%;
-          // border: 1px solid purple;
-          h2 {
-            display: flex;
-            align-items: center;
-            width: 85%;
-            height: 100%;
-            @include mobile-only() {
-              font-size: 1.6rem;
-            }
-            @include md() {
-              font-size: 2.5rem;
-            }
-            @include lg() {
-              font-size: 2.5rem;
-            }
-          }
-          p {
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            color: $gray;
-            @include mobile-only() {
-              font-size: 2rem;
-            }
-            @include md() {
-              font-size: 3rem;
-            }
-            @include lg() {
-              font-size: 3rem;
-            }
-          }
-        }
-        #whereAndDate {
-          display: flex;
-          align-items: center;
-          width: 100%;
-          height: 40%;
-          #where {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 15%;
-            height: 70%;
-            background-color: $yellow;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold;
-            @include mobile-only() {
-              font-size: 1.1rem;
-            }
-            @include md() {
-              font-size: 1.8rem;
-            }
-            @include lg() {
-              font-size: 1.8rem;
-            }
-          }
-          #date {
-            // border: 1px solid red;
-            padding-left: 1%;
-            @include mobile-only() {
-              font-size: 1.2rem;
-            }
-            @include md() {
-              font-size: 1.8rem;
-            }
-            @include lg() {
-              font-size: 1.8rem;
-            }
-          }
-        }
-      }
-      #mid_box {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        width: 100%;
-        height: 40%;
-        // border: 1px solid hotpink;
-        #poster {
-          width: 30%;
-          height: 90%;
-        }
-        #right-side {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: flex-start;
-          width: 65%;
-          height: 90%;
-          // border: 1px solid purple;
-          #conInfo {
-            display: flex;
-            width: 100%;
-            height: 60%;
-            // border: 1px solid green;
-            #miniTitle {
-              display: flex;
-              flex-direction: column;
-              width: 30%;
-              height: 100%;
-              font-size: 1.4rem;
-              font-weight: bold;
-              // border: 1px solid blue;
-              @include mobile-only() {
-                font-size: 1.4rem;
-              }
-              @include md() {
-                font-size: 1.4rem;
-              }
-              @include lg() {
-                font-size: 1.8rem;
-              }
-              #place {
-              }
-              #time {
-                position: absolute;
-                top: 30%;
-              }
-            }
-            #answer {
-              display: flex;
-              flex-direction: column;
-              width: 60%;
-              height: 100%;
-
-              // border: 1px solid red;
-              @include mobile-only() {
-                font-size: 1.2rem;
-              }
-              @include md() {
-                font-size: 1.6rem;
-              }
-              @include lg() {
-                font-size: 1.6rem;
-              }
-              #place_r {
-              }
-              #time_r {
-                position: absolute;
-                top: 30%;
-              }
-            }
-          }
-          #more {
-            width: 100%;
-            background-color: $yellow;
-            border: 0;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold;
-            @include mobile-only() {
-              height: 13%;
-            }
-            @include md() {
-              height: 14%;
-            }
-            @include lg() {
-              font-size: 1.8rem;
-              height: 14%;
-            }
-          }
-        }
-      }
-      #bottom_box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 45%;
-        // border: 1px solid black;
-        #map {
-          @include mobile-only() {
-            width: 55%;
-            height: 85%;
-          }
-          @include md() {
-            width: 50%;
-            height: 85%;
-          }
-          @include lg() {
-            width: 50%;
-            height: 85%;
+            height: 80%;
+            opacity: 50%;
           }
         }
       }

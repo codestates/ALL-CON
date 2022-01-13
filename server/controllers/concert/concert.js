@@ -10,7 +10,7 @@ module.exports = {
       // 만약 최신순 정렬이라면, 다음을 실행한다
       if(order === 'new') {
         const concertInfo = await Concerts.findAll({ 
-          attributes: ['activation', 'exclusive', 'open_date', 'post_date', 'image_concert', 'title', 'place', 'view'],
+          attributes: ['id', 'activation', 'exclusive', 'open_date', 'post_date', 'image_concert', 'title', 'place', 'view'],
           order: [['createdAt','DESC'], ['view', 'DESC']],
           where: { activation: true }
         })
@@ -19,7 +19,7 @@ module.exports = {
       // 만약 티켓오픈일 임박순 정렬이라면, 다음을 실행한다
       else if(order === 'near') {
         const concertInfo = await Concerts.findAll({ 
-          attributes: ['activation', 'exclusive', 'open_date', 'post_date', 'image_concert', 'title', 'place', 'view'],
+          attributes: ['id', 'activation', 'exclusive', 'open_date', 'post_date', 'image_concert', 'title', 'place', 'view'],
           order: [['open_date','ASC'], ['view', 'DESC']],
           where: { activation: true }
         })
@@ -28,7 +28,7 @@ module.exports = {
       // 만약 그외의 경우엔 조회수 순 정렬 (Default)
       else {
         const concertInfo = await Concerts.findAll({ 
-          attributes: ['activation', 'exclusive', 'open_date', 'post_date', 'image_concert', 'title', 'place', 'view'],
+          attributes: ['id', 'activation', 'exclusive', 'open_date', 'post_date', 'image_concert', 'title', 'place', 'view'],
           order: [['view','DESC'], ['createdAt', 'DESC']],
           where: { activation: true }
         })

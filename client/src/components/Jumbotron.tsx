@@ -41,6 +41,8 @@ function Jumbotron() {
       console.log(err);
     }
   };
+<<<<<<< HEAD
+=======
   /*전체 콘서트 5개만 받아오기*/
   const getFiveConcerts = () => {
     const slicedArr: Array<object> = allConcerts.slice(-2);
@@ -55,12 +57,13 @@ function Jumbotron() {
     getAllConcerts();
     getFiveConcerts();
   }, []);
+>>>>>>> 4ef42b714bc31955b09a6ee691afc4852e81fba6
 
   return (
     <div id='jumboContainer'>
       <div id='jumboMiniContainer'>
         {/* 뒷배경 선택된 포스터*/}
-        <img src={target.image_concert} alt='선택된 포스터' id='jumboChosen' />
+        {/* <img src={target.image_concert} alt='선택된 포스터' id='jumboChosen' /> */}
       </div>
       {/*점보트론 검은배경 전체*/}
       <div className='jumboTopBox'>
