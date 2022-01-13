@@ -75,12 +75,12 @@
       border: 1px solid white;
 
       @include mobile-only() {
-        height: 17%;
+        height: 25%;
         width: 95%;
         right: 2%;
       }
       @include md() {
-        height: 20%;
+        height: 25%;
         width: 95%;
         right: 1%;
       }
@@ -89,17 +89,18 @@
         width: 95%;
         right: 1%;
       }
+      &:hover {
+        box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        transition: 0.15s all;
+      }
       &Chosen {
         @extend .posting;
         background-color: #ffce63;
         color: white;
         transition: 0.15s all;
       }
-      &:hover {
-        box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-        transition: 0.15s all;
-      }
+
       .title {
         position: absolute;
         display: flex;

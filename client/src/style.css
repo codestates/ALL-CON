@@ -1908,12 +1908,12 @@ a {
       border: 1px solid white; }
       @media (max-width: 767px) {
         #conChinPostingBox #positingBoxWrapper .posting, #conChinPostingBox #positingBoxWrapper .postingChosen {
-          height: 17%;
+          height: 25%;
           width: 95%;
           right: 2%; } }
       @media (min-width: 768px) {
         #conChinPostingBox #positingBoxWrapper .posting, #conChinPostingBox #positingBoxWrapper .postingChosen {
-          height: 20%;
+          height: 25%;
           width: 95%;
           right: 1%; } }
       @media (min-width: 1200px) {
@@ -1921,13 +1921,13 @@ a {
           height: 20%;
           width: 95%;
           right: 1%; } }
-      #conChinPostingBox #positingBoxWrapper .postingChosen {
-        background-color: #ffce63;
-        color: white;
-        transition: 0.15s all; }
       #conChinPostingBox #positingBoxWrapper .posting:hover, #conChinPostingBox #positingBoxWrapper .postingChosen:hover {
         box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.1);
         cursor: pointer;
+        transition: 0.15s all; }
+      #conChinPostingBox #positingBoxWrapper .postingChosen {
+        background-color: #ffce63;
+        color: white;
         transition: 0.15s all; }
       #conChinPostingBox #positingBoxWrapper .posting .title, #conChinPostingBox #positingBoxWrapper .postingChosen .title, #conChinPostingBox #positingBoxWrapper .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #positingBoxWrapper .posting .title2, #conChinPostingBox #positingBoxWrapper .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #positingBoxWrapper .postingChosen .title2 {
         position: absolute;
