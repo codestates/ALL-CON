@@ -45,9 +45,9 @@ function Header() {
   let nowSeconds = now.getSeconds() * sc;
 
   /* 타이머 변수 설정: 오픈 시간 */
-  let openHours = 9;
-  if (nowHours >= 9) openHours = 39 - (now.getHours() - 9);
-  else openHours = 9;
+  let openHours = 53;
+  if (nowHours >= 9) openHours -= now.getHours();
+  else openHours = 9 - now.getHours();
   let openTime = openHours * hr;
   let nowTime = nowHours + nowMinutes + nowSeconds;
   let distance = openTime - nowTime;
