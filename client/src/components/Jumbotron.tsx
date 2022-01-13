@@ -33,11 +33,12 @@ function Jumbotron() {
       console.log(err);
     }
   };
+
   return (
     <div id='jumboContainer'>
       <div id='jumboMiniContainer'>
         {/* 뒷배경 선택된 포스터*/}
-        <img src={target.image_concert} alt='선택된 포스터' id='jumboChosen' />
+        {/* <img src={target.image_concert} alt='선택된 포스터' id='jumboChosen' /> */}
       </div>
       {/*점보트론 검은배경 전체*/}
       <div className='jumboTopBox'>

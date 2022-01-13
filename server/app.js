@@ -10,8 +10,6 @@ const schedule = require('node-schedule');
 const app = express();
 const port = 8080;
 
-
-
 // 콘서트 티켓 오픈일 알라머 실행
 const autoAlarm = schedule.scheduleJob(
   '00 20 1 * * *',
@@ -20,7 +18,6 @@ const autoAlarm = schedule.scheduleJob(
     console.log('24시간마다 콘서트 알람중..')
   }
 )
-
 // 콘서트 클리너 실행
 const autoConcertCleaner = schedule.scheduleJob(
   '00 00 18 * * *',
@@ -29,17 +26,15 @@ const autoConcertCleaner = schedule.scheduleJob(
     console.log('24시간마다 티켓 오픈일이 지난 콘서트 삭제중(non-activation)..')
   }
 )
-
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 00 23 * * *',
+  '00 00 23 1 * *',
   async () => {
     console.log('ec2 테스트')
     await crawler()
     console.log('24시간마다 크롤링중..')
   }
 );
-
 /* Middleware */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -53,7 +48,6 @@ app.use(
 ); 
 
 // ****************** multer 테스트 ************************ //
-
 const multer = require('multer');
 app.use('/uploads', express.static('uploads'));
 
@@ -73,7 +67,6 @@ const upload = multer({
 });
 
 const { uploadFile, getFileStream } = require('./s3')
-
 app.get('/upload/:key', (req, res) => {
   const key = req.params.key
   const readStream = getFileStream(key)
@@ -102,7 +95,6 @@ try{
 });
 
 // ****************** multer 테스트 ************************ //
-
 /* Routing */ 
 app.use('/', router.authRouter);
 app.use('/oauth', router.oauthRouter);

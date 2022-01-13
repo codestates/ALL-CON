@@ -1,31 +1,22 @@
 import poster from '../../../images/hiphop2.gif';
-import map from '../../../images/bigMap.png';
+import map from '../../../images/map.jpg';
 import xButton from '../../../images/xButton.png';
-import { useState, useEffect } from 'react';
+/* Store import */
+import { showConcertModal, showAlertModal, insertAlertText } from '../../../store/ModalSlice';
+/* Library import */
+import axios, { AxiosError } from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function ConcertModal() {
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const updateScroll = () => {
-    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-  };
-  useEffect(() => {
-    window.addEventListener('scroll', updateScroll);
-  });
-
+  const dispatch = useDispatch();
+  
   return (
     <div id='concertModalContainer'>
       <div id='background'></div>
-      <div
-        id={
-          scrollPosition < 70
-            ? 'concertModal'
-            : scrollPosition > 1000
-            ? 'onFooterModal'
-            : 'stretchedConcertModal'
-        }
-      >
+      <div id='concertModal'>
         <div id='closeBox'>
-          <img src={xButton}></img>
+          <img src={xButton} alt='xButtonImg' onClick={() => dispatch(showConcertModal(false))}/>
         </div>
         <div id='AlignBox'>
           <div id='top_box'>
@@ -55,6 +46,7 @@ function ConcertModal() {
             </div>
           </div>
           <div id='bottom_box'>
+            <h1>콘서트 위치정보를 찾을수 없습니다!</h1>
             <img id='map' src={map} alt='지도 이미지'></img>
           </div>
         </div>

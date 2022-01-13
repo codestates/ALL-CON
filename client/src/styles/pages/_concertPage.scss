@@ -6,8 +6,10 @@
   top: 10%;
   width: 100%;
   height: 100%;
+  
   #lineOrderWrapper {
     position: absolute;
+    display: flex;
     top: 0;
     // border: 2px solid red;
     @include mobile-only() {
@@ -23,18 +25,50 @@
       height: 8%;
     }
     @include lg() {
-      width: 50%;
-      left: 0;
+      left:12.5%;
+      width: 37.5%;
     }
     #bottomLineOrderBox {
       display: flex;
+      
       align-items: center;
       width: 100%;
       height: 100%;
+      // border: 2px solid red;
       h1 {
         position: absolute;
-        left: 3%;
-        font-size: 2.2rem;
+        left: 1%;
+        font-size: 2rem;
+      }
+      .orderBy {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-right: 0.5%;
+        @include mobile-only() {
+          width: 19%;
+          height: 50%;
+          font-size: 1.6rem;
+        }
+        @include md() {
+          width: 12%;
+          height: 50%;
+          font-size: 1.8rem;
+        }
+        @include lg() {
+          width: 13%;
+          height: 50%;
+          font-size: 1.5rem;
+        }
+        &:hover {
+          background-color: #ffce63;
+          color: white;
+          cursor: pointer;
+          transition: 0.15s all;
+        }
       }
     }
   }
@@ -46,50 +80,92 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    overflow-y: scroll;
     // border: 1px solid blue;
     @include mobile-only() {
       width: 100%;
-      height: 130%;
+      height: 100%;
     }
     @include md() {
       width: 100%;
-      height: 185%;
+      height: 100%;
     }
     @include lg() {
-      width: 50%;
-      height: 200%;
+      left:12.5%;
+      width: 37.5%;
+      height: 100%;
     }
     #concertBoxWrapper {
+      cursor: pointer;
+      margin-bottom: 3%;
       width: 90%;
-      height: 12%;
+      height: 20%;
       // border: 1px solid pink;
     }
-    #concertBoxWrapper2 {
-      top: 8%;
-      width: 90%;
-      height: 12%;
+  }
+  /* 스크롤바 CSS */
+  #concertsBoard::-webkit-scrollbar{
+    @include mobile-only() {
+      width: 5px;
     }
-    #concertBoxWrapper3 {
-      width: 90%;
-      height: 12%;
+    @include md() {
+      width: 10px;
     }
-    #concertBoxWrapper4 {
-      width: 90%;
-      height: 12%;
-    }
-    #concertBoxWrapper5 {
-      width: 90%;
-      height: 12%;
-    }
-    #concertBoxWrapper6 {
-      width: 90%;
-      height: 12%;
-    }
-    #concertBoxWrapper7 {
-      width: 90%;
-      height: 12%;
+    @include lg() {
+      width: 10px;
     }
   }
+  /* 스크롤바 막대 설정*/
+  #concertsBoard::-webkit-scrollbar-thumb{
+    height: 5%;
+    background-color: $yellow;
+    border-radius: 10px;    
+  }
+  /* 스크롤바 뒷 배경 투명도 설정 */
+  #concert::-webkit-scrollbar-track{
+    background-color: rgba(0,0,0,0);
+  }
+  /* 스크롤바 CSS */
+
+  #modalBoard {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    // border: 1px solid purple;
+    @include mobile-only() {
+      display: none;
+    }
+    @include md() {
+      display: none;
+    }
+    @include lg() {
+      display: flex;
+      left:50%;
+      width: 37.5%;
+      height: 150%;
+    }
+    #concertWrapper {
+      width: 90%;
+      height: 67.5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      // border: 1px solid red;
+      h1{
+        font-size: 3rem;
+        color: $yellow;
+      }
+      img {
+        width: 100%;
+        opacity: 50%;
+      }
+    }
+  }
+
   #fullFooter {
     position: absolute;
     display: flex;
@@ -98,17 +174,17 @@
     @include mobile-only() {
       width: 100%;
       height: 30%;
-      top: 150%;
+      top: 130%;
     }
     @include md() {
       width: 100%;
       height: 30%;
-      top: 210%;
+      top: 130%;
     }
     @include lg() {
       width: 100%;
       height: 38%;
-      top: 230%;
+      top: 138%;
     }
     // border: 1px solid red;
     #footerWrapper {

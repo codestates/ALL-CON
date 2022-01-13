@@ -11,8 +11,9 @@ export interface modal {
   confirmNumberModal: boolean;
   resetPasswordModal: boolean;
   alertModal: boolean;
-  alertText: string;
   myDropDown: boolean;
+  concertModal: boolean;
+  alertText: string;
   deliverText: string;
 }
 
@@ -28,6 +29,7 @@ const initialState: modal = {
   alertModal: false,
   sideMenuModal: false,
   myDropDown: false,
+  concertModal: false,
   alertText: '',
   deliverText: '',
 };
@@ -53,25 +55,22 @@ const modalSlice = createSlice({
       state.sideMenuModal = payload;
     },
     showFindPasswordModal: (
-      state: modal,
-      { payload }: PayloadAction<boolean>,
-    ) => {
+      state: modal, { payload }: PayloadAction<boolean>) => {
       state.findPasswordModal = payload;
     },
     showConfirmNumberModal: (
-      state: modal,
-      { payload }: PayloadAction<boolean>,
-    ) => {
+      state: modal, { payload }: PayloadAction<boolean>) => {
       state.confirmNumberModal = payload;
     },
     showResetPasswordModal: (
-      state: modal,
-      { payload }: PayloadAction<boolean>,
-    ) => {
+      state: modal, { payload }: PayloadAction<boolean>) => {
       state.resetPasswordModal = payload;
     },
     showAlertModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.alertModal = payload;
+    },
+    showConcertModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.concertModal = payload;
     },
     insertAlertText: (state: modal, { payload }: PayloadAction<string>) => {
       state.alertText = payload;
@@ -94,6 +93,7 @@ export const {
   showConfirmNumberModal,
   showResetPasswordModal,
   showAlertModal,
+  showConcertModal,
   showSideMenuModal,
   showMyDropDown,
   insertAlertText,

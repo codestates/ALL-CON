@@ -48,7 +48,7 @@ function PosterSlide() {
         <div id='posterWrapper3'>
           <img
             alt='포스터'
-            src={target.image_concert}
+            // src={target.image_concert}
             className='posterImg'
             id='poster'
           ></img>
