@@ -34,7 +34,7 @@ const autoCrawling = schedule.scheduleJob(
   async () => {
     console.log('ec2 테스트')
     await crawler()
-    console.log('1시간마다 크롤링중..')
+    console.log('24시간마다 크롤링중..')
   }
 );
 
