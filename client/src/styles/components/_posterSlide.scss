@@ -26,7 +26,7 @@
     width: 70px;
     height: 70px;
     top: 8%;
-    left: 43%;
+    left: 41%;
     padding-bottom: 2%;
   }
   #posterCrown {
@@ -69,8 +69,64 @@
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-/*가운데*/
 #posterWrapper1 {
+  position: absolute;
+  overflow: hidden;
+  z-index: 8;
+  transform: translate(-50%, -50%);
+  @include mobile-only() {
+    width: 29%;
+    height: 60%;
+    top: 70%;
+    left: 15%;
+    padding-bottom: 30%;
+  }
+  @include md() {
+    width: 25%;
+    height: 70%;
+    top: 60%;
+    left: 20%;
+    padding-bottom: 20%;
+  }
+  @include lg() {
+    width: 20%;
+    height: 75%;
+    top: 60%;
+    left: 30%;
+    padding-bottom: 20%;
+  }
+}
+
+#posterWrapper2 {
+  position: absolute;
+  overflow: hidden;
+  z-index: 9;
+  transform: translate(-50%, -50%);
+  @include mobile-only() {
+    width: 29%;
+    height: 60%;
+    padding-bottom: 30%;
+    top: 60%;
+    left: 30%;
+  }
+  @include md() {
+    width: 25%;
+    height: 70%;
+    padding-bottom: 20%;
+    top: 50%;
+    left: 35%;
+  }
+  @include lg() {
+    width: 20%;
+    height: 75%;
+    padding-bottom: 20%;
+    top: 50%;
+    left: 40%;
+  }
+}
+
+/*가운데*/
+#posterWrapper3 {
   position: absolute;
   overflow: hidden;
   z-index: 10;
@@ -80,6 +136,8 @@
   &:hover {
     box-shadow: 3px 3px 14px 1px #606060;
     cursor: pointer;
+    transition: all 1s ease;
+
     .dDay {
       z-index: 50;
       position: absolute;
@@ -90,6 +148,7 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
+
       @include mobile-only() {
         width: 75%;
         height: 45%;
@@ -120,7 +179,7 @@
       }
     }
   }
-  /*posterWrapper1*/
+  /*posterWrapper3*/
   @include mobile-only() {
     width: 29%;
     height: 66%;
@@ -134,42 +193,14 @@
     padding-bottom: 20%;
   }
   @include lg() {
-    width: 16%;
+    width: 20%;
     height: 80%;
     top: 47.5%;
     padding-bottom: 20%;
   }
 }
 
-#posterWrapper2 {
-  position: absolute;
-  overflow: hidden;
-  z-index: 9;
-  transform: translate(-50%, -50%);
-  @include mobile-only() {
-    width: 29%;
-    height: 60%;
-    padding-bottom: 30%;
-    top: 60%;
-    left: 30%;
-  }
-  @include md() {
-    width: 25%;
-    height: 70%;
-    padding-bottom: 20%;
-    top: 50%;
-    left: 35%;
-  }
-  @include lg() {
-    width: 16%;
-    height: 75%;
-    padding-bottom: 20%;
-    top: 50%;
-    left: 40%;
-  }
-}
-
-#posterWrapper3 {
+#posterWrapper4 {
   position: absolute;
   overflow: hidden;
   z-index: 9;
@@ -189,38 +220,10 @@
     padding-bottom: 20%;
   }
   @include lg() {
-    width: 16%;
+    width: 20%;
     height: 75%;
     top: 50%;
     left: 60%;
-    padding-bottom: 20%;
-  }
-}
-
-#posterWrapper4 {
-  position: absolute;
-  overflow: hidden;
-  z-index: 8;
-  transform: translate(-50%, -50%);
-  @include mobile-only() {
-    width: 29%;
-    height: 60%;
-    top: 70%;
-    left: 15%;
-    padding-bottom: 30%;
-  }
-  @include md() {
-    width: 25%;
-    height: 70%;
-    top: 60%;
-    left: 20%;
-    padding-bottom: 20%;
-  }
-  @include lg() {
-    width: 16%;
-    height: 75%;
-    top: 60%;
-    left: 30%;
     padding-bottom: 20%;
   }
 }
@@ -245,7 +248,7 @@
     padding-bottom: 20%;
   }
   @include lg() {
-    width: 16%;
+    width: 20%;
     height: 75%;
     top: 60%;
     left: 70%;

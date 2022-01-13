@@ -1,28 +1,31 @@
+/* CSS import */
 import bell from '../../images/notification2.png';
 import blackbell from '../../images/notification1.png';
 import ybposter from '../../images/ybposter.jpg';
 import kakaotalk from '../../images/kakao-talk-1.png';
 import email from '../../images/email2.png';
-import sandwatch from '../../images/sandWatch.png';
 import returnImg from '../../images/return.png';
+/* Library import */
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 function MainConcertInfo() {
   return (
     <div id='mainConcertInfoBox'>
       <div id='topBox'>
         <div id='roofArea'>
-          <img
-            id='backBtn'
-            src={returnImg}
-            alt='콘서트페이지 돌아가기 버튼'
-          ></img>
+          <Link to='/concert'>
+            <img
+              id='backBtn'
+              src={returnImg}
+              alt='콘서트페이지 돌아가기 버튼'
+            ></img>
+          </Link>
         </div>
         <div id='fromWhereBox'>
           <div className='where'>YES24</div>
           <div className='where'>인터파크</div>
           <img alt='종' src={blackbell} id='bell'></img>
-          <img src={email} alt='메일아이콘' id='mailIcon'></img>
-          <img src={kakaotalk} alt='카톡아이콘' id='kakaoIcon'></img>
         </div>
         <div id='titleBox'>
           <div id='h2AlignBox'>

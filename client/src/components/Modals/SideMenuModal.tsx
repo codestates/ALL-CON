@@ -2,31 +2,25 @@
 import { RootState } from '../../index';
 import { showSideMenuModal } from '../../store/ModalSlice';
 /* Library import */
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
 function SideMenuModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [scrollPosition, setScrollPosition] = useState(0);
-
-  /* 스크롤 위치 저장 */
-  useEffect(() => {
-    window.addEventListener('scroll', updateScroll);
-  });
-  const updateScroll = () => {
-    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
-  };
+  const { scrollCount } = useSelector((state: RootState) => state.header);
 
   return (
     <div id='sideMenuModal'>
       <div
-        id='bg'
+        id={scrollCount < 0.5 ? 'bg' : 'bgUp'}
         onClick={() => dispatch(dispatch(showSideMenuModal(false)))}
       />
-      <div id={scrollPosition < 0.5 ? 'modalBox' : 'downedModalBox'}>
-        <div id={scrollPosition < 0.5 ? 'modal' : 'downedModal'}>
+      <div
+        id={scrollCount < 0.5 ? 'modalBox' : 'downedModalBox'}
+        onClick={() => dispatch(dispatch(showSideMenuModal(false)))}
+      >
+        <div id={scrollCount < 0.5 ? 'modal' : 'downedModal'}>
           <div id='sidemenuWrapper'>
             <Link to='/main' className='menus'>
               <p>홈</p>

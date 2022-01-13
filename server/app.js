@@ -10,6 +10,8 @@ const schedule = require('node-schedule');
 const app = express();
 const port = 8080;
 
+
+
 // 콘서트 티켓 오픈일 알라머 실행
 const autoAlarm = schedule.scheduleJob(
   '00 20 1 * * *',
@@ -49,6 +51,57 @@ app.use(
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS']
   })
 ); 
+
+// ****************** multer 테스트 ************************ //
+
+const multer = require('multer');
+app.use('/uploads', express.static('uploads'));
+
+const upload = multer({
+  storage: multer.diskStorage({
+    // set a localstorage destination
+    destination: (req, file, cb) => {
+      console.log(req)
+      cb(null, 'uploads/');
+    },
+    // convert a file name
+    filename: (req, file, cb) => {
+      console.log(req)
+      cb(null, file.originalname);
+    },
+  }),
+});
+
+const { uploadFile, getFileStream } = require('./s3')
+
+app.get('/upload/:key', (req, res) => {
+  const key = req.params.key
+  const readStream = getFileStream(key)
+
+  readStream.pipe(res)
+})
+
+// 클라이언트에서 받은 이미지를 업로드
+app.post('/upload', upload.single('img'), async (req, res) => {
+try{
+  console.log('서버 이미지 업로드 API 진입했습니다!')
+
+  const file = req.file
+  console.log('서버 file', file)
+  const result = await uploadFile(file)
+  console.log(result)
+  const description = req.body.description
+
+  // res.status(200).json({ data: { img: req.file.path }, message: 'Image Upload Success!' })
+  res.json({ result: result, imagePath: `/upload/${result.key}`})
+
+}catch(err) {
+  console.log(err)
+}
+
+});
+
+// ****************** multer 테스트 ************************ //
 
 /* Routing */ 
 app.use('/', router.authRouter);

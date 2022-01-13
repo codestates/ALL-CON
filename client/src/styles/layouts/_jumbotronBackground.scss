@@ -49,13 +49,15 @@
   #jumboTextsAlignBox {
     position: relative;
     width: 100%;
-    height: 15%;
+    height: 10%;
+    top: 5%;
     // border: 1px solid red;
     .jumboTextBox {
       position: relative;
-      top: 65%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      height: 100%;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -63,15 +65,12 @@
       // border: 1px solid yellow;
       @include mobile-only() {
         width: 200px;
-        height: 8%;
       }
       @include md() {
-        width: 400px;
-        height: 12%;
+        width: 380px;
       }
       @include lg() {
-        width: 580px;
-        height: 100%;
+        width: 600px;
       }
       #jumboWhat {
         color: #fff;
@@ -106,22 +105,22 @@
       align-items: center;
       // border: 1px solid #fff;
       @include mobile-only() {
-        top: 30%;
+        top: 0%;
         width: 10%;
-        height: 150%;
+        height: 250%;
         flex-direction: column;
         right: 4%;
       }
       @include md() {
         top: 0;
-        width: 20%;
-        height: 100%;
+        width: 18%;
+        height: 50%;
         right: 2%;
       }
       @include lg() {
         top: 0;
-        width: 20%;
-        height: 100%;
+        width: 16%;
+        height: 48%;
         right: 4%;
       }
       p {
@@ -131,11 +130,20 @@
           font-size: 1.2rem;
         }
         @include md() {
-          font-size: 1.8rem;
+          font-size: 1.5rem;
         }
         @include lg() {
           font-size: 2.5rem;
         }
+      }
+      #hot {
+        border-bottom: 2px solid #fff;
+      }
+      #near {
+        border-bottom: 2px solid #fff;
+      }
+      #new {
+        border-bottom: 2px solid #fff;
       }
     }
   }
@@ -178,5 +186,41 @@
   }
   @include lg() {
     bottom: -6%;
+  }
+  #arrows {
+    z-index: 44;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 20%;
+    // border: 2px solid yellowgreen;
+    @include mobile-only() {
+      width: 120%;
+    }
+    @include md() {
+      width: 120%;
+    }
+    @include lg() {
+      width: 90%;
+    }
+    #left {
+      opacity: 40%;
+      @include mobile-only() {
+        width: 35px;
+      }
+      @include md() {
+        width: 50px;
+      }
+      @include lg() {
+        width: 80px;
+      }
+    }
+    #right {
+      @extend #left;
+    }
   }
 }
