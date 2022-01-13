@@ -1,4 +1,5 @@
 import poster from '../../images/hiphop2.gif';
+
 function ConcertBox() {
   return (
     <div id='concertBoxOuterContainer'>

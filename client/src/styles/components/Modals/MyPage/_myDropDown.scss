@@ -1,0 +1,144 @@
+#myDropModal {
+  z-index: 997;
+  position: fixed;
+
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+
+  // border: 3px solid red;
+  @include mobile-only() {
+    position: fixed;
+    display: flex;
+  }
+  @include md() {
+    position: fixed;
+    display: flex;
+  }
+  @include lg() {
+    position: fixed;
+    display: flex;
+  }
+  #bg {
+    z-index: 995;
+    position: fixed;
+    display: flex;
+    @include mobile-only() {
+      width: 100%;
+      height: 100%;
+    }
+    @include md() {
+      width: 100%;
+      height: 100%;
+    }
+    @include lg() {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  #modalBox {
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.1);
+    @include mobile-only() {
+      width: 20%;
+      height: 10%;
+      top: 10%;
+      right: 0%;
+    }
+    @include md() {
+      width: 14%;
+      height: 10%;
+      top: 10%;
+      right: 0%;
+    }
+    @include lg() {
+      width: 7%;
+      height: 10%;
+      top: 10%;
+      right: 13%;
+    }
+    #modal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      bottom: 0%;
+      // border: 1px solid red;
+    }
+  }
+  #downedModalBox {
+    z-index: 995;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    @include mobile-only() {
+      width: 20%;
+      height: 10%;
+      top: 5%;
+      right: 0%;
+    }
+    @include md() {
+      width: 14%;
+      height: 10%;
+      top: 5%;
+      right: 0%;
+    }
+    @include lg() {
+      width: 7%;
+      height: 10%;
+      top: 5%;
+      right: 13%;
+    }
+    #downedModal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      bottom: 0%;
+      // border: 1px solid blue;
+    }
+  }
+  #myMenuWrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    // border: 1px solid purple;
+    .menus {
+      z-index: 999;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      font-weight: bold;
+      // border: 1px solid green;
+      @include mobile-only() {
+        font-size: 1.5rem;
+      }
+      @include md() {
+        font-size: 1.65rem;
+      }
+      @include lg() {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

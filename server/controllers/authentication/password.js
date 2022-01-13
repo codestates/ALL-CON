@@ -6,6 +6,7 @@ module.exports = {
   post: async (req, res) => {
     try {
       const { email } = req.body;
+      console.log('--------', email);
       // 클라이언트로부터 전달받은 email이 DB에 존재하는지 확인한다
       const userInfo = await Users.findOne({ where: { email: email } })
       // 만약 이메일이 일치하는 유저가 없다면, 다음을 실행한다

@@ -8,8 +8,13 @@ export interface modal {
   privacyModal: boolean;
   sideMenuModal: boolean;
   findPasswordModal: boolean;
+  confirmNumberModal: boolean;
+  resetPasswordModal: boolean;
   alertModal: boolean;
+  myDropDown: boolean;
+  concertModal: boolean;
   alertText: string;
+  deliverText: string;
 }
 
 /* State 초기값 설정 */
@@ -19,9 +24,14 @@ const initialState: modal = {
   tosModal: false,
   privacyModal: false,
   findPasswordModal: false,
+  confirmNumberModal: false,
+  resetPasswordModal: false,
   alertModal: false,
-  alertText: '',
   sideMenuModal: false,
+  myDropDown: false,
+  concertModal: false,
+  alertText: '',
+  deliverText: '',
 };
 
 const modalSlice = createSlice({
@@ -41,20 +51,35 @@ const modalSlice = createSlice({
     showPrivacyModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.privacyModal = payload;
     },
-    showSideMenuModal: (state, { payload }) => {
+    showSideMenuModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.sideMenuModal = payload;
     },
     showFindPasswordModal: (
-      state: modal,
-      { payload }: PayloadAction<boolean>,
-    ) => {
+      state: modal, { payload }: PayloadAction<boolean>) => {
       state.findPasswordModal = payload;
+    },
+    showConfirmNumberModal: (
+      state: modal, { payload }: PayloadAction<boolean>) => {
+      state.confirmNumberModal = payload;
+    },
+    showResetPasswordModal: (
+      state: modal, { payload }: PayloadAction<boolean>) => {
+      state.resetPasswordModal = payload;
     },
     showAlertModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.alertModal = payload;
     },
+    showConcertModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.concertModal = payload;
+    },
     insertAlertText: (state: modal, { payload }: PayloadAction<string>) => {
       state.alertText = payload;
+    },
+    showMyDropDown: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.myDropDown = payload;
+    },
+    insertDeliverText: (state: modal, { payload }: PayloadAction<string>) => {
+      state.deliverText = payload;
     },
   },
 });
@@ -65,8 +90,13 @@ export const {
   showTosModal,
   showPrivacyModal,
   showFindPasswordModal,
+  showConfirmNumberModal,
+  showResetPasswordModal,
   showAlertModal,
-  insertAlertText,
+  showConcertModal,
   showSideMenuModal,
+  showMyDropDown,
+  insertAlertText,
+  insertDeliverText,
 } = modalSlice.actions;
 export default modalSlice.reducer;

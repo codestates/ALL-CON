@@ -3,13 +3,10 @@ const { Users } = require('../../models');
 
 module.exports = {
   userAuth: async (req, res) => {
-    try {
-
-      console.log('--- userAuth 진입완료! ---')
-      
+    try {    
       // 쿠키에 accessToken이 있는지 판별
       const { accessToken } = req.cookies;
-      console.log(accessToken)
+
       if(!accessToken) return res.status(401).json({ message: 'AccessToken Is Empty!' });
 
       // accessToken이 유효한 토큰인지 판별

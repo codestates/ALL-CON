@@ -594,6 +594,7 @@
 /***** headerMenu *****/
 
 #menuWrapper {
+  z-index: 16;
   position: absolute;
   display: flex;
   align-items: center;
@@ -711,19 +712,25 @@
     position: relative;
     border-radius: 100%;
     border: solid #ffce63;
+    cursor: pointer;
     object-fit: cover;
-    width: 50%;
-    height: 100%;
+
     right: 0%;
 
     @include mobile-only() {
-      border-width: 2.5px;
+      border-width: 0.25rem;
+      width: 3rem;
+      height: 3rem;
     }
     @include md() {
-      border-width: 3px;
+      border-width: 0.3rem;
+      width: 3.5rem;
+      height: 3.5rem;
     }
     @include lg() {
-      border-width: 3.5px;
+      border-width: 0.35rem;
+      width: 4.5rem;
+      height: 4.5rem;
     }
     &:hover {
       cursor: pointer;
@@ -738,7 +745,7 @@
   justify-content: space-between;
 
   height: 100%;
-  width: 23rem;
+  width: 26rem;
   left: 12.5%;
   // border: 1px solid red;
   @include mobile-only() {

@@ -1,69 +1,75 @@
 #sideMenuModal {
-  z-index: 993;
+  z-index: 15;
   position: fixed;
-  display: flex;
+
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-  transition: all 0.3s;
+
   // border: 3px solid red;
   @include mobile-only() {
     position: absolute;
+    display: flex;
   }
   @include md() {
     position: fixed;
+    display: flex;
   }
   @include lg() {
+    z-index: -3;
     position: fixed;
+    display: none;
   }
   #bg {
-    z-index: 994;
+    z-index: 10;
     position: fixed;
     display: flex;
-
-    // background-color: white;
+    width: 100%;
     background-color: #404040;
+    // border: 3px solid red;
     opacity: 50%;
     @include mobile-only() {
-      width: 100%;
-      height: 100%;
+      top: 30%;
+      height: 70%;
     }
     @include md() {
-      width: 100%;
-      height: 100%;
+      top: 30%;
+      height: 70%;
     }
     @include lg() {
-      width: 100%;
-      height: 100%;
+      top: 35%;
+      height: 75%;
+    }
+    &Up {
+      @extend #bg;
+      top: 25%;
+      height: 75%;
     }
   }
   #modalBox {
-    z-index: 995;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: white;
-    // border: 1px solid red;
+    border-bottom: 1px solid #c4c4c4;
+    // border: 3px solid red;
     @include mobile-only() {
       width: 100%;
       height: 20%;
       top: 10%;
-      border-radius: 0px 0px 5px 5px;
     }
     @include md() {
       width: 100%;
       height: 20%;
       top: 10%;
-      border-radius: 0px 0px 5px 5px;
     }
     @include lg() {
       width: 33%;
       height: 35%;
       top: 50%;
       transform: translate(0%, -50%);
-      border-radius: 10px;
     }
     #modal {
       position: absolute;
@@ -73,28 +79,26 @@
       height: 100%;
       bottom: 0%;
       // border: 1px solid red;
-      border-radius: 5px;
     }
   }
   #downedModalBox {
-    z-index: 995;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: white;
+    border-bottom: 1px solid #c4c4c4;
+    opacity: 95%;
     // border: 1px solid blue;
     @include mobile-only() {
       width: 100%;
-      height: 26%;
-      top: 0%;
-      border-radius: 0px 0px 5px 5px;
+      height: 20%;
+      top: 5%;
     }
     @include md() {
       width: 100%;
-      height: 26%;
-      top: 0%;
-      border-radius: 0px 0px 5px 5px;
+      height: 20%;
+      top: 5%;
     }
     @include lg() {
       width: 33%;
@@ -108,10 +112,17 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      height: 80%;
+
       bottom: 0%;
-      // border: 1px solid blue;
-      border-radius: 0px 0px 5px 5px;
+      @include mobile-only() {
+        height: 90%;
+      }
+      @include md() {
+        height: 90%;
+      }
+      @include lg() {
+        height: 80%;
+      }
     }
   }
   #sidemenuWrapper {
@@ -131,6 +142,7 @@
       width: 100%;
       height: 100%;
       // border: 1px solid green;
+      font-weight: bold;
       font-size: 1.8rem;
     }
   }

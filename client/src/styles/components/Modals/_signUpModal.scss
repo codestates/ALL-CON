@@ -222,7 +222,7 @@
         #bottomBox {
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: flex-end;
           width: 90%;
           height: 23%;
           margin-top: 5%;
@@ -232,7 +232,8 @@
             flex-direction: column;
             justify-content: space-between;
             width: 100%;
-            height: 55%;
+            height: 30%;
+            margin-bottom: 5%;
             // border: 1px solid pink;
             .agreeAll {
               font-weight: bold;
@@ -306,7 +307,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            height: 25%;
+            height: 30%;
             // border: 1px solid red;
             .fontMatch {
               font-weight: bold;

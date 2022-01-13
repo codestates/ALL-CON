@@ -8,56 +8,159 @@ import user from '../images/user.png';
 /* Store import */
 import { RootState } from '../index';
 import { logout } from '../store/AuthSlice';
-import { showLoginModal, showSideMenuModal } from '../store/ModalSlice';
+import {
+  showLoginModal,
+  showSideMenuModal,
+  showMyDropDown,
+} from '../store/ModalSlice';
+import {
+  setIsScrolled,
+  setScrollCount,
+  setTimerMessage,
+} from '../store/HeaderSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLogin } = useSelector((state: RootState) => state.auth);
-  const { userInfo } = useSelector((state: RootState) => state.auth);
-  const { sideMenuModal } = useSelector((state: RootState) => state.modal);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
+  const { loginModal, signupModal, sideMenuModal, myDropDown } = useSelector(
+    (state: RootState) => state.modal,
+  );
+  const { isScrolled, scrollCount, timerMessage } = useSelector(
+    (state: RootState) => state.header,
+  );
 
+  /* 타이머 변수 설정: 현재 시간 */
+  let now = new Date();
+  const sc = 1000;
+  const mt = sc * 60;
+  const hr = mt * 60;
+  let nowHours = now.getHours() * hr;
+  let nowMinutes = now.getMinutes() * mt;
+  let nowSeconds = now.getSeconds() * sc;
+
+  /* 타이머 변수 설정: 오픈 시간 */
+  let openHours = 53;
+  if (nowHours >= 9) openHours -= now.getHours();
+  else openHours = 9 - now.getHours();
+  let openTime = openHours * hr;
+  let nowTime = nowHours + nowMinutes + nowSeconds;
+  let distance = openTime - nowTime;
+
+  /* 타이머 변수 설정: 남은 시간 */
+  let dHours: string | number = Math.floor(distance / hr);
+  let dMinutes: string | number = Math.floor((distance % hr) / mt);
+  let dSeconds: string | number = Math.floor((distance % mt) / sc);
+
+  /* 한자리 수일경우 옆에 0 붙이기 */
+  if (String(dHours).length === 1) {
+    dHours = `0${String(dHours)}`;
+  }
+  if (String(dMinutes).length === 1) {
+    dMinutes = `0${String(dMinutes)}`;
+  }
+  if (String(dSeconds).length === 1) {
+    dSeconds = `0${String(dSeconds)}`;
+  }
+
+  dispatch(
+    setTimerMessage(
+      `다음 콘서트를 업데이트하기까지 ${dHours}:${dMinutes}:${dSeconds}`,
+    ),
+  );
+
+  /* 스크롤 위치 저장 useEffect */
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
   });
-  /* 스크롤 위치 저장 */
-  const updateScroll = () => {
-    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  /* 해당 모달 띄워져있을 시 스크롤바 제거 useEffect */
+  useEffect(() => {
+    if (loginModal || signupModal) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
+  });
+
+  /* 현재시간 타이머 useEffect */
+  useEffect(() => {
+    const countdown = setInterval(
+      () => {
+        /* 현재 시간 */
+        now = new Date();
+        nowHours = now.getHours() * hr;
+        nowMinutes = now.getMinutes() * mt;
+        nowSeconds = now.getSeconds() * sc;
+        nowTime = nowHours + nowMinutes + nowSeconds;
+        distance = openTime - nowTime;
+
+        /* 남은 시, 초, 분 */
+        dHours = Math.floor(distance / hr);
+        dMinutes = Math.floor((distance % hr) / mt);
+        dSeconds = Math.floor((distance % mt) / sc);
+        /* 한자리 수일 경우 0 붙이기 */
+        if (String(dHours).length === 1) {
+          dHours = `0${String(dHours)}`;
+        }
+        if (String(dMinutes).length === 1) {
+          dMinutes = `0${String(dMinutes)}`;
+        }
+        if (String(dSeconds).length === 1) {
+          dSeconds = `0${String(dSeconds)}`;
+        }
+        dispatch(
+          setTimerMessage(
+            `다음 콘서트를 업데이트하기까지 ${dHours}:${dMinutes}:${dSeconds}`,
+          ),
+        );
+      },
+      1000,
+      timerMessage,
+    );
+  }, [now]);
+
+  /* 드랍다운 오픈 상태 변경 핸들러 */
+  const displayMyDropDown = () => {
+    dispatch(showMyDropDown(!myDropDown));
   };
-
-  /* 로그아웃 핸들러 */
-  const logoutHandler = async () => {
-    try {
-      await axios.post(
-        `${REACT_APP_API_URL}/logout`,
-        {},
-        { withCredentials: true },
-      );
-
-      /* 로그인 상태 변경 & main 페이지로 이동 */
-      dispatch(logout());
-      navigate('/main');
-    } catch (err) {
-      console.log(err);
-    }
+  /* 스크롤 위치 저장 핸들러 */
+  const updateScroll = () => {
+    dispatch(
+      setScrollCount(window.scrollY || document.documentElement.scrollTop),
+    );
+    if (scrollCount > 0.5) dispatch(setIsScrolled(true));
+  };
+  /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
+  const showTimer = () => {
+    dispatch(setIsScrolled(false));
   };
 
   return (
-    <div id='headerContainer'>
-      <div id='hiddenBar'>다음 콘서트를 업데이트하기까지 13:49:06</div>
+    /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */
+    <div
+      id={
+        loginModal || signupModal ? 'headerSecondContainer' : 'headerContainer'
+      }
+    >
+      {/* 스크롤 후 히든타이머 제거 */}
+      <div id={isScrolled === false ? 'firstHiddenBar' : 'hiddenBar'}>
+        {timerMessage}
+      </div>
+
       <div id='logoBar'>
-        <Link to='/main'>
-          <img className='logo' alt='logoImg' src={logo} />
+        <Link to='/' onClick={showTimer}>
+          {/* 스크롤 후 로고 호출*/}
+          <img
+            className={isScrolled === false ? 'logohide' : 'logo'}
+            alt='logoImg'
+            src={logo}
+          />
         </Link>
       </div>
       {/* 스크롤위치에 따라 헤더 포지션 변경 */}
-      <div id={scrollPosition < 48 ? 'absoluteBar' : 'fixedBar'}>
+      <div id={scrollCount < 48 ? 'absoluteBar' : 'fixedBar'}>
         {/* 사이드메뉴 open여부에따라 open/close */}
         <div
           id='menuWrapper'
@@ -75,7 +178,7 @@ function Header() {
               className='profile'
               alt='profileImg'
               src={userInfo.image ? userInfo.image : user}
-              onClick={() => logoutHandler()}
+              onClick={() => dispatch(displayMyDropDown())}
             />
           ) : (
             <p className='login' onClick={() => dispatch(showLoginModal(true))}>
