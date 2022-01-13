@@ -46,7 +46,7 @@
       height: 80%;
     }
     @include lg() {
-      top: 65%;
+      top: 75%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -71,7 +71,7 @@
       height: 45%;
     }
     @include lg() {
-      top: 160%;
+      top: 175%;
       width: 60%;
       height: 70%;
     }
@@ -92,7 +92,7 @@
       top: 190%;
     }
     @include lg() {
-      top: 220%;
+      top: 235%;
     }
   }
   #mainFindConchinWrapper {
@@ -108,7 +108,7 @@
       height: 60%;
     }
     @include lg() {
-      top: 230%;
+      top: 250%;
       height: 80%;
     }
   }
@@ -130,7 +130,7 @@
     @include lg() {
       width: 100%;
       height: 38%;
-      top: 310%;
+      top: 335%;
     }
     // border: 1px solid red;
     #mainFooterWrapper {

@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import authSlice, { auth } from './store/AuthSlice';
 import modalSlice, { modal } from './store/ModalSlice';
 import headerSlice, { header } from './store/HeaderSlice';
+import mainSlice, { main } from './store/MainSlice';
 /* Library import */
 import { BrowserRouter as Router } from 'react-router-dom';
 import { combineReducers } from 'redux';
@@ -30,6 +31,7 @@ const reducers = combineReducers({
   auth: authSlice,
   modal: modalSlice,
   header: headerSlice,
+  main: mainSlice,
 });
 
 /* persist reducer 세팅 (persistConfig가 추가된 reducer) */
@@ -51,6 +53,7 @@ export interface RootState {
   auth: auth;
   modal: modal;
   header: header;
+  main: main;
 }
 
 /* persist store 세팅 (새로고침, 종료해도 지속될 store) */

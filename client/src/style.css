@@ -2408,6 +2408,7 @@ a {
     z-index: 998;
     position: fixed;
     display: flex;
+    top: 0;
     background-color: #404040;
     opacity: 50%; }
     @media (max-width: 767px) {
@@ -2619,7 +2620,8 @@ a {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  top: 0%; }
   @media (max-width: 767px) {
     #myProfileResignMembershipModal {
       position: fixed; } }
@@ -2634,6 +2636,7 @@ a {
     position: fixed;
     display: flex;
     background-color: #404040;
+    border: 3px solid blue;
     opacity: 50%; }
     @media (max-width: 767px) {
       #myProfileResignMembershipModal #bg, #myProfileResignMembershipModal #sideMenuModal #bgUp, #sideMenuModal #myProfileResignMembershipModal #bgUp {
@@ -3267,14 +3270,14 @@ a {
     @media (min-width: 768px) {
       #findPasswordModal #modalBox {
         width: 60%;
-        height: 50%;
+        height: 55%;
         padding-bottom: 50%;
         top: 50%;
         transform: translate(0%, -50%);
         border-radius: 20px; } }
     @media (min-width: 1200px) {
       #findPasswordModal #modalBox {
-        width: 33%;
+        width: 28.5%;
         height: 55%;
         padding-bottom: 30%;
         top: 50%;
@@ -3289,19 +3292,19 @@ a {
         #findPasswordModal #modalBox #modal {
           width: 90%;
           height: 80%;
-          top: 35%;
+          top: 40%;
           transform: translate(0%, -50%); } }
       @media (min-width: 768px) {
         #findPasswordModal #modalBox #modal {
           width: 90%;
-          height: 100%;
-          top: 47%;
+          height: 90%;
+          top: 52.5%;
           transform: translate(0%, -50%); } }
       @media (min-width: 1200px) {
         #findPasswordModal #modalBox #modal {
           width: 90%;
-          height: 100%;
-          top: 42%;
+          height: 90%;
+          top: 52.5%;
           transform: translate(0%, -50%); } }
       #findPasswordModal #modalBox #modal #titlesBox {
         position: absolute;
@@ -3309,13 +3312,13 @@ a {
         width: 100%; }
         @media (max-width: 767px) {
           #findPasswordModal #modalBox #modal #titlesBox {
-            height: 50%; } }
+            height: 55%; } }
         @media (min-width: 768px) {
           #findPasswordModal #modalBox #modal #titlesBox {
-            height: 50%; } }
+            height: 55%; } }
         @media (min-width: 1200px) {
           #findPasswordModal #modalBox #modal #titlesBox {
-            height: 60%; } }
+            height: 55%; } }
         #findPasswordModal #modalBox #modal #titlesBox #titleWrapper {
           position: absolute;
           display: flex;
@@ -3336,7 +3339,7 @@ a {
                 font-size: 4rem; } }
             @media (min-width: 1200px) {
               #findPasswordModal #modalBox #modal #titlesBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
-                font-size: 4.5rem; } }
+                font-size: 4rem; } }
         #findPasswordModal #modalBox #modal #titlesBox #explainWrapper {
           position: absolute;
           display: flex;
@@ -3349,7 +3352,7 @@ a {
               top: 45%; } }
           @media (min-width: 768px) {
             #findPasswordModal #modalBox #modal #titlesBox #explainWrapper {
-              top: 56%; } }
+              top: 51%; } }
           @media (min-width: 1200px) {
             #findPasswordModal #modalBox #modal #titlesBox #explainWrapper {
               top: 51%; } }
@@ -3361,33 +3364,33 @@ a {
                 font-size: 1.5rem; } }
             @media (min-width: 768px) {
               #findPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
-                font-size: 1.8rem; } }
+                font-size: 1.7rem; } }
             @media (min-width: 1200px) {
               #findPasswordModal #modalBox #modal #titlesBox #explainWrapper .explain {
-                font-size: 2rem; } }
+                font-size: 1.7rem; } }
       #findPasswordModal #modalBox #modal #emailBox {
         position: absolute;
         display: flex;
         width: 100%; }
         @media (max-width: 767px) {
           #findPasswordModal #modalBox #modal #emailBox {
-            height: 25%;
-            top: 44%; } }
+            height: 30%;
+            top: 55%; } }
         @media (min-width: 768px) {
           #findPasswordModal #modalBox #modal #emailBox {
-            height: 25%;
-            top: 54%; } }
+            height: 30%;
+            top: 55%; } }
         @media (min-width: 1200px) {
           #findPasswordModal #modalBox #modal #emailBox {
-            height: 25%;
-            top: 60%; } }
+            height: 30%;
+            top: 55%; } }
         #findPasswordModal #modalBox #modal #emailBox #titleWrapper {
           position: absolute;
           display: flex;
           align-items: center;
           justify-content: left;
           width: 100%;
-          height: 30%; }
+          height: 25%; }
           #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
             position: absolute;
             padding-left: 2%;
@@ -3395,24 +3398,23 @@ a {
             font-weight: bold; }
             @media (max-width: 767px) {
               #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
-                font-size: 2rem;
-                top: 50%; } }
+                font-size: 2rem; } }
             @media (min-width: 768px) {
               #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
                 font-size: 2.3rem;
                 top: 0%; } }
             @media (min-width: 1200px) {
               #findPasswordModal #modalBox #modal #emailBox #titleWrapper .title, #findPasswordModal #conChinProfileModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #emailBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #findPasswordModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2, #conChinProfileModal #findPasswordModal #modalBox #modal #introductionBox #genderAndAgeWrapper #emailBox #titleWrapper .title2 {
-                font-size: 2.5rem;
+                font-size: 2.0rem;
                 top: 0%; } }
         #findPasswordModal #modalBox #modal #emailBox #inputWrapper {
           position: absolute;
           display: flex;
           width: 100%;
-          top: 48%; }
+          top: 30%; }
           @media (max-width: 767px) {
             #findPasswordModal #modalBox #modal #emailBox #inputWrapper {
-              height: 30%; } }
+              height: 40%; } }
           @media (min-width: 768px) {
             #findPasswordModal #modalBox #modal #emailBox #inputWrapper {
               height: 40%; } }
@@ -3462,10 +3464,10 @@ a {
                   font-size: 1.3rem; } }
               @media (min-width: 768px) {
                 #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper .btn {
-                  font-size: 1.5rem; } }
+                  font-size: 1.4rem; } }
               @media (min-width: 1200px) {
                 #findPasswordModal #modalBox #modal #emailBox #inputWrapper #btnWrapper .btn {
-                  font-size: 1.8rem; } }
+                  font-size: 1.4rem; } }
       #findPasswordModal #modalBox #modal #btnBox {
         position: absolute;
         display: flex;
@@ -3474,20 +3476,20 @@ a {
         width: 100%; }
         @media (max-width: 767px) {
           #findPasswordModal #modalBox #modal #btnBox {
-            height: 23%;
-            top: 65%; } }
+            height: 15%;
+            top: 85%; } }
         @media (min-width: 768px) {
           #findPasswordModal #modalBox #modal #btnBox {
-            height: 30%;
-            top: 77%; } }
+            height: 15%;
+            top: 85%; } }
         @media (min-width: 1200px) {
           #findPasswordModal #modalBox #modal #btnBox {
-            height: 30%;
-            top: 83%; } }
+            height: 15%;
+            top: 85%; } }
         #findPasswordModal #modalBox #modal #btnBox .btn {
           position: relative;
           width: 100%;
-          height: 33%;
+          height: 70%;
           background-color: #000;
           border: none;
           border-radius: 5px;
@@ -3563,7 +3565,7 @@ a {
         border-radius: 5px; } }
     @media (min-width: 1200px) {
       #confirmNumberModal #modalBox {
-        width: 33%;
+        width: 27%;
         height: 35%;
         top: 50%;
         transform: translate(0%, -50%);
@@ -3597,7 +3599,6 @@ a {
           position: absolute;
           display: flex;
           align-items: center;
-          justify-content: left;
           width: 100%;
           height: 100%;
           padding-left: 2%;
@@ -3633,9 +3634,8 @@ a {
           width: 100%; }
           #confirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
             position: absolute;
-            user-select: none;
             right: 2%;
-            color: white;
+            width: 4%;
             cursor: pointer; }
             @media (max-width: 767px) {
               #confirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
@@ -3729,7 +3729,8 @@ a {
             background-color: #ffce63;
             border: none;
             border-radius: 5px;
-            color: white; }
+            color: white;
+            font-weight: bold; }
             #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn:hover, #confirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn:hover {
               cursor: pointer; }
             @media (max-width: 767px) {
@@ -3785,7 +3786,7 @@ a {
     display: flex;
     align-items: center;
     width: 100%;
-    height: 70%;
+    height: 60%;
     top: 30%; }
     #resetPasswordModal #inputWrapper .input {
       position: absolute;
@@ -3808,6 +3809,28 @@ a {
       width: 1.5rem;
       height: 1.5rem;
       right: 2%; }
+    #resetPasswordModal #inputWrapper .hidden {
+      display: none; }
+  #resetPasswordModal #warningWrapper {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 30%;
+    top: 80%; }
+    #resetPasswordModal #warningWrapper .warningMsg {
+      font-weight: bold;
+      color: red; }
+      @media (max-width: 767px) {
+        #resetPasswordModal #warningWrapper .warningMsg {
+          font-size: 0.8rem; } }
+      @media (min-width: 768px) {
+        #resetPasswordModal #warningWrapper .warningMsg {
+          font-size: 1rem; } }
+      @media (min-width: 1200px) {
+        #resetPasswordModal #warningWrapper .warningMsg {
+          font-size: 1.2rem; } }
+    #resetPasswordModal #warningWrapper .hidden {
+      display: none; }
   #resetPasswordModal #bg, #resetPasswordModal #sideMenuModal #bgUp, #sideMenuModal #resetPasswordModal #bgUp {
     z-index: 998;
     position: fixed;
@@ -3966,7 +3989,7 @@ a {
           position: absolute;
           display: flex;
           width: 100%;
-          height: 25%;
+          height: 22.5%;
           top: 0%; }
           #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper .email {
             position: absolute;
@@ -5008,7 +5031,7 @@ a {
         height: 80%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainConcertInfoWrapper {
-        top: 65%;
+        top: 75%;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -5031,7 +5054,7 @@ a {
         height: 45%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainCommentWrapper {
-        top: 160%;
+        top: 175%;
         width: 60%;
         height: 70%; } }
   #mainContainer #mainPaginationWrapper {
@@ -5050,7 +5073,7 @@ a {
         top: 190%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainPaginationWrapper {
-        top: 220%; } }
+        top: 235%; } }
   #mainContainer #mainFindConchinWrapper {
     position: absolute;
     width: 100%; }
@@ -5064,7 +5087,7 @@ a {
         height: 60%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainFindConchinWrapper {
-        top: 230%;
+        top: 250%;
         height: 80%; } }
   #mainContainer #fullFooter {
     position: absolute;
@@ -5085,7 +5108,7 @@ a {
       #mainContainer #fullFooter {
         width: 100%;
         height: 38%;
-        top: 310%; } }
+        top: 335%; } }
     #mainContainer #fullFooter #mainFooterWrapper {
       position: absolute;
       display: flex;
@@ -5152,28 +5175,27 @@ a {
   .jumboTopBox #jumboTextsAlignBox {
     position: relative;
     width: 100%;
-    height: 15%; }
+    height: 10%;
+    top: 5%; }
     .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
       position: relative;
-      top: 65%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      height: 100%;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between; }
       @media (max-width: 767px) {
         .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
-          width: 200px;
-          height: 8%; } }
+          width: 200px; } }
       @media (min-width: 768px) {
         .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
-          width: 400px;
-          height: 12%; } }
+          width: 380px; } }
       @media (min-width: 1200px) {
         .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
-          width: 580px;
-          height: 100%; } }
+          width: 600px; } }
       .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboWhat {
         color: #fff; }
         @media (max-width: 767px) {
@@ -5203,22 +5225,22 @@ a {
       align-items: center; }
       @media (max-width: 767px) {
         .jumboTopBox #jumboTextsAlignBox #tabBar {
-          top: 30%;
+          top: 0%;
           width: 10%;
-          height: 150%;
+          height: 250%;
           flex-direction: column;
           right: 4%; } }
       @media (min-width: 768px) {
         .jumboTopBox #jumboTextsAlignBox #tabBar {
           top: 0;
-          width: 20%;
-          height: 100%;
+          width: 18%;
+          height: 50%;
           right: 2%; } }
       @media (min-width: 1200px) {
         .jumboTopBox #jumboTextsAlignBox #tabBar {
           top: 0;
-          width: 20%;
-          height: 100%;
+          width: 16%;
+          height: 48%;
           right: 4%; } }
       .jumboTopBox #jumboTextsAlignBox #tabBar p {
         color: #fff;
@@ -5228,10 +5250,16 @@ a {
             font-size: 1.2rem; } }
         @media (min-width: 768px) {
           .jumboTopBox #jumboTextsAlignBox #tabBar p {
-            font-size: 1.8rem; } }
+            font-size: 1.5rem; } }
         @media (min-width: 1200px) {
           .jumboTopBox #jumboTextsAlignBox #tabBar p {
             font-size: 2.5rem; } }
+      .jumboTopBox #jumboTextsAlignBox #tabBar #hot {
+        border-bottom: 2px solid #fff; }
+      .jumboTopBox #jumboTextsAlignBox #tabBar #near {
+        border-bottom: 2px solid #fff; }
+      .jumboTopBox #jumboTextsAlignBox #tabBar #new {
+        border-bottom: 2px solid #fff; }
 
 #jumboChosen {
   opacity: 40%; }
@@ -5269,6 +5297,36 @@ a {
   @media (min-width: 1200px) {
     #jumboPosterSlideWrapper {
       bottom: -6%; } }
+  #jumboPosterSlideWrapper #arrows {
+    z-index: 44;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 20%; }
+    @media (max-width: 767px) {
+      #jumboPosterSlideWrapper #arrows {
+        width: 120%; } }
+    @media (min-width: 768px) {
+      #jumboPosterSlideWrapper #arrows {
+        width: 120%; } }
+    @media (min-width: 1200px) {
+      #jumboPosterSlideWrapper #arrows {
+        width: 90%; } }
+    #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
+      opacity: 40%; }
+      @media (max-width: 767px) {
+        #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
+          width: 35px; } }
+      @media (min-width: 768px) {
+        #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
+          width: 50px; } }
+      @media (min-width: 1200px) {
+        #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
+          width: 80px; } }
 
 .posterContainer {
   width: 100%;
@@ -5297,7 +5355,7 @@ a {
       width: 70px;
       height: 70px;
       top: 8%;
-      left: 43%;
+      left: 41%;
       padding-bottom: 2%; } }
   @media (max-width: 767px) {
     #crownWrapper #posterCrown {
@@ -5333,71 +5391,31 @@ a {
   top: 0%;
   background-color: rgba(0, 0, 0, 0.7); }
 
-/*가운데*/
 #posterWrapper1 {
   position: absolute;
   overflow: hidden;
-  z-index: 10;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /*posterWrapper1*/ }
-  #posterWrapper1:hover {
-    box-shadow: 3px 3px 14px 1px #606060;
-    cursor: pointer; }
-    #posterWrapper1:hover .dDay {
-      z-index: 50;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%; }
-      @media (max-width: 767px) {
-        #posterWrapper1:hover .dDay {
-          width: 75%;
-          height: 45%;
-          border: 4px solid #ffce63; } }
-      @media (min-width: 768px) {
-        #posterWrapper1:hover .dDay {
-          width: 75%;
-          height: 50%;
-          border: 5px solid #ffce63; } }
-      @media (min-width: 1200px) {
-        #posterWrapper1:hover .dDay {
-          width: 75%;
-          height: 58%;
-          border: 6px solid #ffce63; } }
-      #posterWrapper1:hover .dDay p {
-        color: #fff;
-        font-weight: bold; }
-        @media (max-width: 767px) {
-          #posterWrapper1:hover .dDay p {
-            font-size: 2.5rem; } }
-        @media (min-width: 768px) {
-          #posterWrapper1:hover .dDay p {
-            font-size: 4rem; } }
-        @media (min-width: 1200px) {
-          #posterWrapper1:hover .dDay p {
-            font-size: 5rem; } }
+  z-index: 8;
+  transform: translate(-50%, -50%); }
   @media (max-width: 767px) {
     #posterWrapper1 {
       width: 29%;
-      height: 66%;
-      top: 57%;
+      height: 60%;
+      top: 70%;
+      left: 15%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper1 {
       width: 25%;
-      height: 74%;
-      top: 48%;
+      height: 70%;
+      top: 60%;
+      left: 20%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper1 {
-      width: 16%;
-      height: 80%;
-      top: 47.5%;
+      width: 20%;
+      height: 75%;
+      top: 60%;
+      left: 30%;
       padding-bottom: 20%; } }
 
 #posterWrapper2 {
@@ -5421,64 +5439,105 @@ a {
       left: 35%; } }
   @media (min-width: 1200px) {
     #posterWrapper2 {
-      width: 16%;
+      width: 20%;
       height: 75%;
       padding-bottom: 20%;
       top: 50%;
       left: 40%; } }
 
+/*가운데*/
 #posterWrapper3 {
+  position: absolute;
+  overflow: hidden;
+  z-index: 10;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*posterWrapper3*/ }
+  #posterWrapper3:hover {
+    box-shadow: 3px 3px 14px 1px #606060;
+    cursor: pointer;
+    transition: all 1s ease; }
+    #posterWrapper3:hover .dDay {
+      z-index: 50;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%; }
+      @media (max-width: 767px) {
+        #posterWrapper3:hover .dDay {
+          width: 75%;
+          height: 45%;
+          border: 4px solid #ffce63; } }
+      @media (min-width: 768px) {
+        #posterWrapper3:hover .dDay {
+          width: 75%;
+          height: 50%;
+          border: 5px solid #ffce63; } }
+      @media (min-width: 1200px) {
+        #posterWrapper3:hover .dDay {
+          width: 75%;
+          height: 58%;
+          border: 6px solid #ffce63; } }
+      #posterWrapper3:hover .dDay p {
+        color: #fff;
+        font-weight: bold; }
+        @media (max-width: 767px) {
+          #posterWrapper3:hover .dDay p {
+            font-size: 2.5rem; } }
+        @media (min-width: 768px) {
+          #posterWrapper3:hover .dDay p {
+            font-size: 4rem; } }
+        @media (min-width: 1200px) {
+          #posterWrapper3:hover .dDay p {
+            font-size: 5rem; } }
+  @media (max-width: 767px) {
+    #posterWrapper3 {
+      width: 29%;
+      height: 66%;
+      top: 57%;
+      padding-bottom: 30%; } }
+  @media (min-width: 768px) {
+    #posterWrapper3 {
+      width: 25%;
+      height: 74%;
+      top: 48%;
+      padding-bottom: 20%; } }
+  @media (min-width: 1200px) {
+    #posterWrapper3 {
+      width: 20%;
+      height: 80%;
+      top: 47.5%;
+      padding-bottom: 20%; } }
+
+#posterWrapper4 {
   position: absolute;
   overflow: hidden;
   z-index: 9;
   transform: translate(-50%, -50%); }
   @media (max-width: 767px) {
-    #posterWrapper3 {
+    #posterWrapper4 {
       width: 29%;
       height: 60%;
       top: 60%;
       left: 70%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
-    #posterWrapper3 {
+    #posterWrapper4 {
       width: 25%;
       height: 70%;
       top: 50%;
       left: 65%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
-    #posterWrapper3 {
-      width: 16%;
+    #posterWrapper4 {
+      width: 20%;
       height: 75%;
       top: 50%;
       left: 60%;
-      padding-bottom: 20%; } }
-
-#posterWrapper4 {
-  position: absolute;
-  overflow: hidden;
-  z-index: 8;
-  transform: translate(-50%, -50%); }
-  @media (max-width: 767px) {
-    #posterWrapper4 {
-      width: 29%;
-      height: 60%;
-      top: 70%;
-      left: 15%;
-      padding-bottom: 30%; } }
-  @media (min-width: 768px) {
-    #posterWrapper4 {
-      width: 25%;
-      height: 70%;
-      top: 60%;
-      left: 20%;
-      padding-bottom: 20%; } }
-  @media (min-width: 1200px) {
-    #posterWrapper4 {
-      width: 16%;
-      height: 75%;
-      top: 60%;
-      left: 30%;
       padding-bottom: 20%; } }
 
 #posterWrapper5 {
@@ -5502,7 +5561,7 @@ a {
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper5 {
-      width: 16%;
+      width: 20%;
       height: 75%;
       top: 60%;
       left: 70%;
@@ -5614,32 +5673,6 @@ a {
         #mainConcertInfoBox #topBox #bell {
           top: 5%;
           width: 4%; } }
-    #mainConcertInfoBox #topBox #mailIcon {
-      position: absolute; }
-      @media (max-width: 767px) {
-        #mainConcertInfoBox #topBox #mailIcon {
-          top: 9%;
-          left: 39%;
-          width: 30px; } }
-      @media (min-width: 768px) {
-        #mainConcertInfoBox #topBox #mailIcon {
-          display: none; } }
-      @media (min-width: 1200px) {
-        #mainConcertInfoBox #topBox #mailIcon {
-          display: none; } }
-    #mainConcertInfoBox #topBox #kakaoIcon {
-      position: absolute; }
-      @media (max-width: 767px) {
-        #mainConcertInfoBox #topBox #kakaoIcon {
-          top: 9%;
-          left: 48%;
-          width: 30px; } }
-      @media (min-width: 768px) {
-        #mainConcertInfoBox #topBox #kakaoIcon {
-          display: none; } }
-      @media (min-width: 1200px) {
-        #mainConcertInfoBox #topBox #kakaoIcon {
-          display: none; } }
     #mainConcertInfoBox #topBox #titleBox {
       position: relative;
       width: 100%;
@@ -5765,60 +5798,18 @@ a {
               @media (min-width: 1200px) {
                 #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side .left {
                   font-size: 2rem; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
-                height: 15%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
-                height: 10%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
-                height: 10%; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #date {
-                height: 30%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #date {
-                height: 25%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #date {
-                height: 25%; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
-                height: 15%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
-                height: 10%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
-                height: 10%; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #rating {
-                height: 15%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #rating {
-                height: 10%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #rating {
-                height: 10%; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #price {
-                height: 25%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #price {
-                height: 25%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #price {
-                height: 25%; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #alarm {
-                display: none; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #alarm {
-                height: 20%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #alarm {
-                height: 20%; } }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
+              height: 10%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #date {
+              height: 25%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
+              height: 10%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #rating {
+              height: 10%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #price {
+              height: 25%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #alarm {
+              height: 20%; }
           #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side {
             position: absolute;
             top: 0;
@@ -5834,68 +5825,34 @@ a {
             @media (min-width: 1200px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side .right {
                 font-size: 2rem; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
-                height: 15%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
-                height: 10%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
-                height: 10%; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
-                height: 30%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
-                height: 25%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
-                height: 25%; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
-                height: 15%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
-                height: 10%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
-                height: 10%; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #rating_r {
-                height: 15%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #rating_r {
-                height: 10%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #rating_r {
-                height: 10%; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #price_r {
-                height: 25%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #price_r {
-                height: 25%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #price_r {
-                height: 25%; } }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r {
-                display: none; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r {
-                height: 20%; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r {
-                height: 20%; } }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2 {
-              position: relative;
-              left: 5%;
-              width: 40px; }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
-              position: relative;
-              left: 10%;
-              width: 40px; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
+              height: 10%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
+              height: 25%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
+              height: 10%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #rating_r {
+              height: 10%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #price_r {
+              height: 25%; }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r {
+              height: 20%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2, #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
+                position: relative; }
+                @media (max-width: 767px) {
+                  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2, #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
+                    left: 5%;
+                    width: 30px; } }
+                @media (min-width: 768px) {
+                  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2, #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
+                    left: 5%;
+                    width: 40px; } }
+                @media (min-width: 1200px) {
+                  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2, #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
+                    left: 5%;
+                    width: 40px; } }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
+                left: 10%; }
     #mainConcertInfoBox #middleBox #buttonsWrapper {
       display: flex;
       flex-direction: column;
@@ -5938,16 +5895,15 @@ a {
           @media (max-width: 767px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
               margin-right: 2%;
-              width: 7%;
-              height: 90%; } }
+              width: 20px; } }
           @media (min-width: 768px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
-              width: 10%;
+              width: 30px;
               height: 80%;
               padding-right: 2%; } }
           @media (min-width: 1200px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
-              width: 9%;
+              width: 50px;
               height: 80%;
               padding-right: 2%; } }
           @media (max-width: 767px) {
@@ -6193,13 +6149,13 @@ a {
         width: 100%;
         height: 70%;
         font-size: 1.2rem; }
-        #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left {
+        #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           width: 50%;
           height: 100%; }
-          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag {
+          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -6210,22 +6166,22 @@ a {
             font-weight: bold;
             border-radius: 5px; }
             @media (max-width: 767px) {
-              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
                 font-size: 1.2rem; } }
             @media (min-width: 768px) {
-              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
                 font-size: 1.8rem; } }
             @media (min-width: 1200px) {
-              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
                 font-size: 1.8rem; } }
           @media (max-width: 767px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
+            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
               font-size: 1.3rem; } }
           @media (min-width: 768px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
+            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
               font-size: 1.8rem; } }
           @media (min-width: 1200px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
+            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
               font-size: 1.8rem; } }
         #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
           display: flex;
@@ -6320,13 +6276,13 @@ a {
         width: 100%;
         height: 70%;
         font-size: 1.2rem; }
-        #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left {
+        #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           width: 50%;
           height: 100%; }
-          #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag {
+          #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -6337,22 +6293,22 @@ a {
             font-weight: bold;
             border-radius: 5px; }
             @media (max-width: 767px) {
-              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag {
+              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
                 font-size: 1.2rem; } }
             @media (min-width: 768px) {
-              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag {
+              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
                 font-size: 1.8rem; } }
             @media (min-width: 1200px) {
-              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag {
+              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
                 font-size: 1.8rem; } }
           @media (max-width: 767px) {
-            #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
+            #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
               font-size: 1.3rem; } }
           @media (min-width: 768px) {
-            #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
+            #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
               font-size: 1.8rem; } }
           @media (min-width: 1200px) {
-            #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
+            #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
               font-size: 1.8rem; } }
         #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
           display: flex;
@@ -7593,7 +7549,7 @@ a {
         #signUpModalContainer #background #signUpModal #alignContainer #bottomBox {
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: flex-end;
           width: 90%;
           height: 23%;
           margin-top: 5%; }
@@ -7602,7 +7558,8 @@ a {
             flex-direction: column;
             justify-content: space-between;
             width: 100%;
-            height: 55%; }
+            height: 30%;
+            margin-bottom: 5%; }
             #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #agreeBox .agreeAll {
               font-weight: bold; }
               @media (max-width: 767px) {
@@ -7660,7 +7617,7 @@ a {
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            height: 25%; }
+            height: 30%; }
             #signUpModalContainer #background #signUpModal #alignContainer #bottomBox #buttons .fontMatch {
               font-weight: bold; }
               @media (max-width: 767px) {

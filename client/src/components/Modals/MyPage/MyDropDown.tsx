@@ -39,7 +39,7 @@ function MyDropDown() {
       >
         <div id={scrollCount < 0.5 ? 'modal' : 'downedModal'}>
           <div id='myMenuWrapper'>
-            <Link to='/my' className='menus'>
+            <Link to='/mypage' className='menus'>
               <p>마이페이지</p>
             </Link>
             <Link to='/main' className='menus' onClick={() => logoutHandler()}>
