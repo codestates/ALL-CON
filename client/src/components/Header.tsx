@@ -53,6 +53,7 @@ function Header() {
   };
 
   return (
+    /* 해당 모달 띄워져있을 시 헤더 통채로 교체 */
     <div
       id={
         loginModal || signupModal ? 'headerSecondContainer' : 'headerContainer'

@@ -4856,8 +4856,7 @@ a {
   #myDropModal #bg, #myDropModal #sideMenuModal #bgUp, #sideMenuModal #myDropModal #bgUp {
     z-index: 995;
     position: fixed;
-    display: flex;
-    background-color: white; }
+    display: flex; }
     @media (max-width: 767px) {
       #myDropModal #bg, #myDropModal #sideMenuModal #bgUp, #sideMenuModal #myDropModal #bgUp {
         width: 100%;
