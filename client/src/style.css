@@ -6027,9 +6027,14 @@ a {
   align-items: center;
   top: 10%;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  /* 스크롤바 CSS */
+  /* 스크롤바 막대 설정*/
+  /* 스크롤바 뒷 배경 투명도 설정 */
+  /* 스크롤바 CSS */ }
   #concertContainer #lineOrderWrapper {
     position: absolute;
+    display: flex;
     top: 0; }
     @media (max-width: 767px) {
       #concertContainer #lineOrderWrapper {
@@ -6045,8 +6050,8 @@ a {
         height: 8%; } }
     @media (min-width: 1200px) {
       #concertContainer #lineOrderWrapper {
-        width: 50%;
-        left: 0; } }
+        left: 12.5%;
+        width: 37.5%; } }
     #concertContainer #lineOrderWrapper #bottomLineOrderBox {
       display: flex;
       align-items: center;
@@ -6054,8 +6059,36 @@ a {
       height: 100%; }
       #concertContainer #lineOrderWrapper #bottomLineOrderBox h1 {
         position: absolute;
-        left: 3%;
-        font-size: 2.2rem; }
+        left: 1%;
+        font-size: 2rem; }
+      #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-right: 0.5%; }
+        @media (max-width: 767px) {
+          #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy {
+            width: 19%;
+            height: 50%;
+            font-size: 1.6rem; } }
+        @media (min-width: 768px) {
+          #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy {
+            width: 12%;
+            height: 50%;
+            font-size: 1.8rem; } }
+        @media (min-width: 1200px) {
+          #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy {
+            width: 13%;
+            height: 50%;
+            font-size: 1.5rem; } }
+        #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy:hover {
+          background-color: #ffce63;
+          color: white;
+          cursor: pointer;
+          transition: 0.15s all; }
   #concertContainer #concertsBoard {
     position: absolute;
     top: 10%;
@@ -6063,41 +6096,73 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between; }
+    justify-content: space-between;
+    overflow-y: scroll; }
     @media (max-width: 767px) {
       #concertContainer #concertsBoard {
         width: 100%;
-        height: 130%; } }
+        height: 100%; } }
     @media (min-width: 768px) {
       #concertContainer #concertsBoard {
         width: 100%;
-        height: 185%; } }
+        height: 100%; } }
     @media (min-width: 1200px) {
       #concertContainer #concertsBoard {
-        width: 50%;
-        height: 200%; } }
+        left: 12.5%;
+        width: 37.5%;
+        height: 100%; } }
     #concertContainer #concertsBoard #concertBoxWrapper {
+      cursor: pointer;
+      margin-bottom: 3%;
       width: 90%;
-      height: 12%; }
-    #concertContainer #concertsBoard #concertBoxWrapper2 {
-      top: 8%;
+      height: 20%; }
+  @media (max-width: 767px) {
+    #concertContainer #concertsBoard::-webkit-scrollbar {
+      width: 5px; } }
+  @media (min-width: 768px) {
+    #concertContainer #concertsBoard::-webkit-scrollbar {
+      width: 10px; } }
+  @media (min-width: 1200px) {
+    #concertContainer #concertsBoard::-webkit-scrollbar {
+      width: 10px; } }
+  #concertContainer #concertsBoard::-webkit-scrollbar-thumb {
+    height: 5%;
+    background-color: #ffce63;
+    border-radius: 10px; }
+  #concertContainer #concert::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0); }
+  #concertContainer #modalBoard {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; }
+    @media (max-width: 767px) {
+      #concertContainer #modalBoard {
+        display: none; } }
+    @media (min-width: 768px) {
+      #concertContainer #modalBoard {
+        display: none; } }
+    @media (min-width: 1200px) {
+      #concertContainer #modalBoard {
+        display: flex;
+        left: 50%;
+        width: 37.5%;
+        height: 150%; } }
+    #concertContainer #modalBoard #concertWrapper {
       width: 90%;
-      height: 12%; }
-    #concertContainer #concertsBoard #concertBoxWrapper3 {
-      width: 90%;
-      height: 12%; }
-    #concertContainer #concertsBoard #concertBoxWrapper4 {
-      width: 90%;
-      height: 12%; }
-    #concertContainer #concertsBoard #concertBoxWrapper5 {
-      width: 90%;
-      height: 12%; }
-    #concertContainer #concertsBoard #concertBoxWrapper6 {
-      width: 90%;
-      height: 12%; }
-    #concertContainer #concertsBoard #concertBoxWrapper7 {
-      width: 90%;
-      height: 12%; }
+      height: 67.5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; }
+      #concertContainer #modalBoard #concertWrapper h1 {
+        font-size: 3rem;
+        color: #ffce63; }
+      #concertContainer #modalBoard #concertWrapper img {
+        width: 100%;
+        opacity: 50%; }
   #concertContainer #fullFooter {
     position: absolute;
     display: flex;
@@ -6107,17 +6172,17 @@ a {
       #concertContainer #fullFooter {
         width: 100%;
         height: 30%;
-        top: 150%; } }
+        top: 130%; } }
     @media (min-width: 768px) {
       #concertContainer #fullFooter {
         width: 100%;
         height: 30%;
-        top: 210%; } }
+        top: 130%; } }
     @media (min-width: 1200px) {
       #concertContainer #fullFooter {
         width: 100%;
         height: 38%;
-        top: 230%; } }
+        top: 138%; } }
     #concertContainer #fullFooter #footerWrapper {
       position: absolute;
       display: flex;
@@ -6359,21 +6424,29 @@ a {
               font-size: 1.6rem; } }
 
 #concertModalContainer {
-  z-index: 999;
   position: absolute;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%; }
+  align-items: center; }
   @media (max-width: 767px) {
     #concertModalContainer {
+      z-index: 999;
+      width: 100%;
+      height: 100%;
       position: fixed; } }
   @media (min-width: 768px) {
     #concertModalContainer {
+      z-index: 999;
+      width: 100%;
+      height: 100%;
       position: fixed; } }
   @media (min-width: 1200px) {
     #concertModalContainer {
+      z-index: 10;
+      width: 37.5%;
+      height: 100%;
+      top: 17.5%;
+      left: 50%;
       position: absolute; } }
   #concertModalContainer #background {
     z-index: 998;
@@ -6383,10 +6456,7 @@ a {
     background-color: rgba(0, 0, 0, 0.2); }
     @media (min-width: 1200px) {
       #concertModalContainer #background {
-        position: absolute;
-        width: 30%;
-        height: 0%;
-        left: 55%; } }
+        display: none; } }
   #concertModalContainer #concertModal {
     z-index: 999;
     display: flex;
@@ -6395,38 +6465,38 @@ a {
     justify-content: center;
     position: absolute;
     background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid red; }
+    border-radius: 5px; }
     @media (max-width: 767px) {
       #concertModalContainer #concertModal {
         width: 90%;
         height: 70%; } }
     @media (min-width: 768px) {
       #concertModalContainer #concertModal {
-        width: 80%;
+        width: 70%;
         height: 85%; } }
     @media (min-width: 1200px) {
       #concertModalContainer #concertModal {
-        display: flex;
-        width: 40%;
-        height: 90%;
-        top: 10%;
-        right: 5%; } }
-    @media (max-width: 767px) {
-      #concertModalContainer #concertModal #closeBox {
         width: 90%;
-        height: 4%; } }
-    @media (min-width: 768px) {
-      #concertModalContainer #concertModal #closeBox {
-        display: none; } }
-    @media (min-width: 1200px) {
-      #concertModalContainer #concertModal #closeBox {
-        display: none; } }
-    #concertModalContainer #concertModal #closeBox img {
-      position: absolute;
-      top: 2%;
-      right: 4%;
-      width: 8%; }
+        height: 100%;
+        display: flex; } }
+    #concertModalContainer #concertModal #closeBox {
+      cursor: pointer; }
+      @media (max-width: 767px) {
+        #concertModalContainer #concertModal #closeBox {
+          width: 90%;
+          height: 4%; } }
+      @media (min-width: 768px) {
+        #concertModalContainer #concertModal #closeBox {
+          width: 90%;
+          height: 4%; } }
+      @media (min-width: 1200px) {
+        #concertModalContainer #concertModal #closeBox {
+          display: none; } }
+      #concertModalContainer #concertModal #closeBox img {
+        position: absolute;
+        top: 2%;
+        right: 4%;
+        width: 6%; }
     #concertModalContainer #concertModal #AlignBox {
       display: flex;
       flex-direction: column;
@@ -6438,7 +6508,7 @@ a {
       @media (min-width: 768px) {
         #concertModalContainer #concertModal #AlignBox {
           width: 90%;
-          height: 100%; } }
+          height: 90%; } }
       @media (min-width: 1200px) {
         #concertModalContainer #concertModal #AlignBox {
           width: 100%;
@@ -6446,7 +6516,7 @@ a {
       #concertModalContainer #concertModal #AlignBox #top_box {
         position: relative;
         width: 100%;
-        height: 15%; }
+        height: 12.5%; }
         #concertModalContainer #concertModal #AlignBox #top_box #titleAndDay {
           display: flex;
           justify-content: space-between;
@@ -6520,7 +6590,7 @@ a {
         justify-content: space-between;
         align-items: flex-end;
         width: 100%;
-        height: 40%; }
+        height: 30%; }
         #concertModalContainer #concertModal #AlignBox #mid_box #poster {
           width: 30%;
           height: 90%; }
@@ -6590,461 +6660,36 @@ a {
                 height: 14%; } }
       #concertModalContainer #concertModal #AlignBox #bottom_box {
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 100%;
-        height: 45%; }
+        margin-top: 5%;
+        height: 55%; }
+        @media (max-width: 767px) {
+          #concertModalContainer #concertModal #AlignBox #bottom_box h1 {
+            font-size: 2rem;
+            color: #ffce63; } }
+        @media (min-width: 768px) {
+          #concertModalContainer #concertModal #AlignBox #bottom_box h1 {
+            font-size: 2.5rem;
+            color: #ffce63; } }
+        @media (min-width: 1200px) {
+          #concertModalContainer #concertModal #AlignBox #bottom_box h1 {
+            font-size: 2.5rem;
+            color: #ffce63; } }
         @media (max-width: 767px) {
           #concertModalContainer #concertModal #AlignBox #bottom_box #map {
-            width: 55%;
-            height: 85%; } }
+            height: 80%;
+            opacity: 50%; } }
         @media (min-width: 768px) {
           #concertModalContainer #concertModal #AlignBox #bottom_box #map {
-            width: 50%;
-            height: 85%; } }
+            height: 80%;
+            opacity: 50%; } }
         @media (min-width: 1200px) {
           #concertModalContainer #concertModal #AlignBox #bottom_box #map {
-            width: 50%;
-            height: 85%; } }
-  #concertModalContainer #stretchedConcertModal {
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid blue; }
-    @media (max-width: 767px) {
-      #concertModalContainer #stretchedConcertModal {
-        display: flex;
-        width: 90%;
-        height: 70%; } }
-    @media (min-width: 768px) {
-      #concertModalContainer #stretchedConcertModal {
-        display: flex;
-        width: 80%;
-        height: 85%; } }
-    @media (min-width: 1200px) {
-      #concertModalContainer #stretchedConcertModal {
-        position: fixed;
-        top: 5%;
-        right: 5%;
-        width: 40%;
-        height: 90%; } }
-    @media (max-width: 767px) {
-      #concertModalContainer #stretchedConcertModal #closeBox {
-        width: 90%;
-        height: 4%; } }
-    @media (min-width: 768px) {
-      #concertModalContainer #stretchedConcertModal #closeBox {
-        display: none; } }
-    @media (min-width: 1200px) {
-      #concertModalContainer #stretchedConcertModal #closeBox {
-        display: none; } }
-    #concertModalContainer #stretchedConcertModal #closeBox img {
-      position: absolute;
-      top: 2%;
-      right: 4%;
-      width: 8%; }
-    #concertModalContainer #stretchedConcertModal #AlignBox {
-      display: flex;
-      flex-direction: column;
-      align-items: center; }
-      @media (max-width: 767px) {
-        #concertModalContainer #stretchedConcertModal #AlignBox {
-          width: 90%;
-          height: 90%; } }
-      @media (min-width: 768px) {
-        #concertModalContainer #stretchedConcertModal #AlignBox {
-          width: 90%;
-          height: 100%; } }
-      @media (min-width: 1200px) {
-        #concertModalContainer #stretchedConcertModal #AlignBox {
-          width: 100%;
-          height: 100%; } }
-      #concertModalContainer #stretchedConcertModal #AlignBox #top_box {
-        position: relative;
-        width: 100%;
-        height: 15%; }
-        #concertModalContainer #stretchedConcertModal #AlignBox #top_box #titleAndDay {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-          height: 60%; }
-          #concertModalContainer #stretchedConcertModal #AlignBox #top_box #titleAndDay h2 {
-            display: flex;
-            align-items: center;
-            width: 85%;
-            height: 100%; }
-            @media (max-width: 767px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #titleAndDay h2 {
-                font-size: 1.6rem; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #titleAndDay h2 {
-                font-size: 2.5rem; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #titleAndDay h2 {
-                font-size: 2.5rem; } }
-          #concertModalContainer #stretchedConcertModal #AlignBox #top_box #titleAndDay p {
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            color: #a0a0a0; }
-            @media (max-width: 767px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #titleAndDay p {
-                font-size: 2rem; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #titleAndDay p {
-                font-size: 3rem; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #titleAndDay p {
-                font-size: 3rem; } }
-        #concertModalContainer #stretchedConcertModal #AlignBox #top_box #whereAndDate {
-          display: flex;
-          align-items: center;
-          width: 100%;
-          height: 40%; }
-          #concertModalContainer #stretchedConcertModal #AlignBox #top_box #whereAndDate #where {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 15%;
-            height: 70%;
-            background-color: #ffce63;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold; }
-            @media (max-width: 767px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #whereAndDate #where {
-                font-size: 1.1rem; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #whereAndDate #where {
-                font-size: 1.8rem; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #whereAndDate #where {
-                font-size: 1.8rem; } }
-          #concertModalContainer #stretchedConcertModal #AlignBox #top_box #whereAndDate #date {
-            padding-left: 1%; }
-            @media (max-width: 767px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #whereAndDate #date {
-                font-size: 1.2rem; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #whereAndDate #date {
-                font-size: 1.8rem; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #top_box #whereAndDate #date {
-                font-size: 1.8rem; } }
-      #concertModalContainer #stretchedConcertModal #AlignBox #mid_box {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        width: 100%;
-        height: 40%; }
-        #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #poster {
-          width: 30%;
-          height: 90%; }
-        #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: flex-start;
-          width: 65%;
-          height: 90%; }
-          #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo {
-            display: flex;
-            width: 100%;
-            height: 60%; }
-            #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
-              display: flex;
-              flex-direction: column;
-              width: 30%;
-              height: 100%;
-              font-size: 1.4rem;
-              font-weight: bold; }
-              @media (max-width: 767px) {
-                #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
-                  font-size: 1.4rem; } }
-              @media (min-width: 768px) {
-                #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
-                  font-size: 1.4rem; } }
-              @media (min-width: 1200px) {
-                #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
-                  font-size: 1.8rem; } }
-              #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo #miniTitle #time {
-                position: absolute;
-                top: 30%; }
-            #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo #answer {
-              display: flex;
-              flex-direction: column;
-              width: 60%;
-              height: 100%; }
-              @media (max-width: 767px) {
-                #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo #answer {
-                  font-size: 1.2rem; } }
-              @media (min-width: 768px) {
-                #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo #answer {
-                  font-size: 1.6rem; } }
-              @media (min-width: 1200px) {
-                #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo #answer {
-                  font-size: 1.6rem; } }
-              #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #conInfo #answer #time_r {
-                position: absolute;
-                top: 30%; }
-          #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #more {
-            width: 100%;
-            background-color: #ffce63;
-            border: 0;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold; }
-            @media (max-width: 767px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #more {
-                height: 13%; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #more {
-                height: 14%; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #stretchedConcertModal #AlignBox #mid_box #right-side #more {
-                font-size: 1.8rem;
-                height: 14%; } }
-      #concertModalContainer #stretchedConcertModal #AlignBox #bottom_box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 45%; }
-        @media (max-width: 767px) {
-          #concertModalContainer #stretchedConcertModal #AlignBox #bottom_box #map {
-            width: 55%;
-            height: 85%; } }
-        @media (min-width: 768px) {
-          #concertModalContainer #stretchedConcertModal #AlignBox #bottom_box #map {
-            width: 50%;
-            height: 85%; } }
-        @media (min-width: 1200px) {
-          #concertModalContainer #stretchedConcertModal #AlignBox #bottom_box #map {
-            width: 50%;
-            height: 85%; } }
-  #concertModalContainer #onFooterModal {
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid purple; }
-    @media (max-width: 767px) {
-      #concertModalContainer #onFooterModal {
-        width: 90%;
-        height: 70%; } }
-    @media (min-width: 768px) {
-      #concertModalContainer #onFooterModal {
-        width: 80%;
-        height: 85%; } }
-    @media (min-width: 1200px) {
-      #concertModalContainer #onFooterModal {
-        top: 130%;
-        right: 5%;
-        width: 40%;
-        height: 90%; } }
-    @media (max-width: 767px) {
-      #concertModalContainer #onFooterModal #closeBox {
-        width: 90%;
-        height: 4%; } }
-    @media (min-width: 768px) {
-      #concertModalContainer #onFooterModal #closeBox {
-        display: none; } }
-    @media (min-width: 1200px) {
-      #concertModalContainer #onFooterModal #closeBox {
-        display: none; } }
-    #concertModalContainer #onFooterModal #closeBox img {
-      position: absolute;
-      top: 2%;
-      right: 4%;
-      width: 8%; }
-    #concertModalContainer #onFooterModal #AlignBox {
-      display: flex;
-      flex-direction: column;
-      align-items: center; }
-      @media (max-width: 767px) {
-        #concertModalContainer #onFooterModal #AlignBox {
-          width: 90%;
-          height: 90%; } }
-      @media (min-width: 768px) {
-        #concertModalContainer #onFooterModal #AlignBox {
-          width: 90%;
-          height: 100%; } }
-      @media (min-width: 1200px) {
-        #concertModalContainer #onFooterModal #AlignBox {
-          width: 100%;
-          height: 100%; } }
-      #concertModalContainer #onFooterModal #AlignBox #top_box {
-        position: relative;
-        width: 100%;
-        height: 15%; }
-        #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-          height: 60%; }
-          #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay h2 {
-            display: flex;
-            align-items: center;
-            width: 85%;
-            height: 100%; }
-            @media (max-width: 767px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay h2 {
-                font-size: 1.6rem; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay h2 {
-                font-size: 2.5rem; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay h2 {
-                font-size: 2.5rem; } }
-          #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay p {
-            display: flex;
-            align-items: center;
-            font-weight: bold;
-            color: #a0a0a0; }
-            @media (max-width: 767px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay p {
-                font-size: 2rem; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay p {
-                font-size: 3rem; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #titleAndDay p {
-                font-size: 3rem; } }
-        #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate {
-          display: flex;
-          align-items: center;
-          width: 100%;
-          height: 40%; }
-          #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #where {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 15%;
-            height: 70%;
-            background-color: #ffce63;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold; }
-            @media (max-width: 767px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #where {
-                font-size: 1.1rem; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #where {
-                font-size: 1.8rem; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #where {
-                font-size: 1.8rem; } }
-          #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #date {
-            padding-left: 1%; }
-            @media (max-width: 767px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #date {
-                font-size: 1.2rem; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #date {
-                font-size: 1.8rem; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #onFooterModal #AlignBox #top_box #whereAndDate #date {
-                font-size: 1.8rem; } }
-      #concertModalContainer #onFooterModal #AlignBox #mid_box {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        width: 100%;
-        height: 40%; }
-        #concertModalContainer #onFooterModal #AlignBox #mid_box #poster {
-          width: 30%;
-          height: 90%; }
-        #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          align-items: flex-start;
-          width: 65%;
-          height: 90%; }
-          #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo {
-            display: flex;
-            width: 100%;
-            height: 60%; }
-            #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
-              display: flex;
-              flex-direction: column;
-              width: 30%;
-              height: 100%;
-              font-size: 1.4rem;
-              font-weight: bold; }
-              @media (max-width: 767px) {
-                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
-                  font-size: 1.4rem; } }
-              @media (min-width: 768px) {
-                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
-                  font-size: 1.4rem; } }
-              @media (min-width: 1200px) {
-                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
-                  font-size: 1.8rem; } }
-              #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #miniTitle #time {
-                position: absolute;
-                top: 30%; }
-            #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #answer {
-              display: flex;
-              flex-direction: column;
-              width: 60%;
-              height: 100%; }
-              @media (max-width: 767px) {
-                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #answer {
-                  font-size: 1.2rem; } }
-              @media (min-width: 768px) {
-                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #answer {
-                  font-size: 1.6rem; } }
-              @media (min-width: 1200px) {
-                #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #answer {
-                  font-size: 1.6rem; } }
-              #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #conInfo #answer #time_r {
-                position: absolute;
-                top: 30%; }
-          #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #more {
-            width: 100%;
-            background-color: #ffce63;
-            border: 0;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold; }
-            @media (max-width: 767px) {
-              #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #more {
-                height: 13%; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #more {
-                height: 14%; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #onFooterModal #AlignBox #mid_box #right-side #more {
-                font-size: 1.8rem;
-                height: 14%; } }
-      #concertModalContainer #onFooterModal #AlignBox #bottom_box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 45%; }
-        @media (max-width: 767px) {
-          #concertModalContainer #onFooterModal #AlignBox #bottom_box #map {
-            width: 55%;
-            height: 85%; } }
-        @media (min-width: 768px) {
-          #concertModalContainer #onFooterModal #AlignBox #bottom_box #map {
-            width: 50%;
-            height: 85%; } }
-        @media (min-width: 1200px) {
-          #concertModalContainer #onFooterModal #AlignBox #bottom_box #map {
-            width: 50%;
-            height: 85%; } }
+            height: 80%;
+            opacity: 50%; } }
 
 #conChinWritingContainer {
   z-index: 999;
@@ -7837,7 +7482,7 @@ a {
       position: absolute;
       top: 0;
       width: 100%;
-      height: 65%; } }
+      height: 80%; } }
   @media (max-width: 767px) {
     #landingContainer #landingJumboWrapper #jumboContainer {
       position: absolute;

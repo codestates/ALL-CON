@@ -22,16 +22,14 @@ const crawler = async () => {
     // YES24 데이터는 제목 중복여부를 판단하여 넣어준다
     for(let i = 0; i < yesData.length; i++) {
       // i번째 YES24 콘서트의 제목에서 띄어쓰기 부분을 모두 제거: ex) '하나 둘 셋' => '하나둘셋'
-      let newYesTitle = yesData[i].title.replace(/\s/g, '');
+      let newYesTitle = yesData[i].title.replaceAll(/\s/g, '');
       
       // title에 '티켓오픈안내' 문자가 들어가면 제거해준다
       if(newYesTitle.indexOf('티켓오픈안내')) newYesTitle = newYesTitle.replace('티켓오픈안내', '');
       
       for(let j = 0; j < concerts.length; j++) {  
         // j번째 인터파크 콘서트의 제목에서 띄어쓰기 부분을 모두 제거
-        let newInterTitle = concerts[j].title.replace(/\s/g, '');
-        console.log('------ interpark[j] ------', newInterTitle)
-        console.log('------ newYesTitle[i] ------', newYesTitle)
+        let newInterTitle = concerts[j].title.replaceAll(/\s/g, '');
         // 만약 j번째
         if(j === concerts.length - 1 && newYesTitle !== newInterTitle) concerts.push(yesData[i]);
         else if(newYesTitle === newInterTitle) break;
@@ -40,7 +38,6 @@ const crawler = async () => {
   }
   // 인터파크 RawData가 0인 경우, 다음을 실행한다
   else {
-    console.log('------ 인터파크 RawData가 0인 경우 진입! -------')
     for(let k = 0; k < yesData.length; k++) {
       concerts.push(yesData[k])
     }

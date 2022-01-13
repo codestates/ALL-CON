@@ -20,6 +20,7 @@ function MyProfileResignMembershipModal({ handleAccountDeleteBackground }: MyPro
   const dispatch = useDispatch();
   const navigate = useNavigate();
   /* useSelector */
+
   /* 지역상태 - useState */
 
   /* useEffect */

@@ -44,6 +44,12 @@ function LoginModal() {
       if (response.data.data) {
         /* 유효성 & 로그인 & 유저 상태 변경 후 메인페이지 리다이렉트 */
         dispatch(login());
+
+        console.log('------ response.data.data 확인 ------', response.data.data)
+        console.log('------ response.data.data 확인 ------', response.data.data.userInfo)
+        console.log('------ response.data.data 확인 ------', response.data.data.userInfo.email)
+
+
         dispatch(getUserInfo(response.data.data));
         dispatch(showLoginModal(false));
         dispatch(setScrollCount(0));
