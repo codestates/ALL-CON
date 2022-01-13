@@ -1,54 +1,55 @@
 /* Config import */
-import { REACT_APP_API_URL, REACT_APP_CLIENT_URL } from '../../config.js';
+import { REACT_APP_API_URL } from '../../config';
+/* CSS import */
+import six from '../images/six.gif';
+import left from '../images/left_arrow.png';
+import right from '../images/right_arrow.png';
 /* Store import */
-import { login, getUserInfo } from '../../store/AuthSlice';
-import {
-  showLoginModal,
-  showSignupModal,
-  showFindPasswordModal,
-  showAlertModal,
-  insertAlertText,
-} from '../../store/ModalSlice';
 import { RootState } from '../../index';
+import {
+  setOrder,
+  setTarget,
+  setAllConcerts,
+  setFiveConcerts,
+} from '../../store/MainSlice';
 /* Library import */
-import axios, { AxiosError } from 'axios';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+/* Component import */
 import ConChinPostingOrderBox from './ConChinPositngOrderBox';
 
 function ConChinPostingBox() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { order } = useSelector((state: RootState) => state.main);
+  const { target } = useSelector((state: RootState) => state.main);
+  const { allConcerts } = useSelector((state: RootState) => state.main);
 
-  const [inputEmail, setInputEmail] = useState<string>('');
-  const [inputPassword, setInputPassword] = useState<string>('');
-  const loginHandler = async () => {
+  /*전체 콘서트 받아오기 */
+  const getAllConcerts = async () => {
     try {
-      /* response 변수에 /login 서버 응답결과를 담는다 */
-      const response = await axios.post(
-        `${REACT_APP_API_URL}/login`,
-        { email: inputEmail, password: inputPassword },
+      const response = await axios.get(
+        `${REACT_APP_API_URL}/concert?${order}`,
         { withCredentials: true },
       );
-      /* 서버의 응답결과에 유저 정보가 담겨있다면 로그인 성공*/
-      if (response.data.data) {
-        /* 유효성 & 로그인 & 유저 상태 변경 후 메인페이지 리다이렉트 */
-        dispatch(login());
-        dispatch(getUserInfo(response.data.data));
-        dispatch(showLoginModal(false));
-        navigate('/main');
+      if (response.data) {
+        dispatch(setAllConcerts(response.data.data.concertInfo));
+        const allTitle = allConcerts.map(el => {
+          return el.title;
+        });
+        console.log(allConcerts);
+        console.log(allConcerts[0].title);
       }
     } catch (err) {
-      const error = err as AxiosError;
-      if (error.response?.status === 400)
-        dispatch(insertAlertText('빈칸을 모두 입력해주세요! 😖'));
-      else if (error.response?.status === 403)
-        dispatch(insertAlertText('잘못된 이메일 혹은 비밀번호입니다! 😖'));
-      else dispatch(insertAlertText('Server Error! 😖'));
-      dispatch(showAlertModal(true));
+      console.log(err);
     }
   };
+
+  useEffect(() => {
+    getAllConcerts();
+  }, []);
 
   return (
     <li id='conChinPostingBox'>

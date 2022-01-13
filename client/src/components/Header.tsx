@@ -45,15 +45,19 @@ function Header() {
   let nowSeconds = now.getSeconds() * sc;
 
   /* 타이머 변수 설정: 오픈 시간 */
-  let openHours = 53;
-  if (nowHours >= 9) openHours -= now.getHours();
-  else openHours = 9 - now.getHours();
+  let openHours = 65;
+
+  if (now.getHours() >= 9) {
+    openHours -= now.getHours();
+  } else {
+    openHours = (9 - now.getHours()) * 2;
+  }
   let openTime = openHours * hr;
   let nowTime = nowHours + nowMinutes + nowSeconds;
   let distance = openTime - nowTime;
 
   /* 타이머 변수 설정: 남은 시간 */
-  let dHours: string | number = Math.floor(distance / hr);
+  let dHours: string | number = Math.floor(distance / hr / 2);
   let dMinutes: string | number = Math.floor((distance % hr) / mt);
   let dSeconds: string | number = Math.floor((distance % mt) / sc);
 
@@ -97,7 +101,7 @@ function Header() {
         distance = openTime - nowTime;
 
         /* 남은 시, 초, 분 */
-        dHours = Math.floor(distance / hr);
+        dHours = Math.floor(distance / hr / 2);
         dMinutes = Math.floor((distance % hr) / mt);
         dSeconds = Math.floor((distance % mt) / sc);
         /* 한자리 수일 경우 0 붙이기 */

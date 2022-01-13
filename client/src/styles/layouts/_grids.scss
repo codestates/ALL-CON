@@ -710,11 +710,12 @@
   }
   .profile {
     position: relative;
+    display: block;
+    margin: auto;
     border-radius: 100%;
     border: solid #ffce63;
     cursor: pointer;
     object-fit: cover;
-
     right: 0%;
 
     @include mobile-only() {
