@@ -33,6 +33,7 @@ function CallbackGooglePage() {
         );
         /* 로그인 & 유저 상태 변경 */
         dispatch(login());
+        console.log('------ response.data.data 확인 ------', response.data.data)
         dispatch(getUserInfo(response.data.data));
       }
       navigate('/main');

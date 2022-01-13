@@ -4,7 +4,9 @@ module.exports = {
   post: async (req, res) => {
     try {
       // 로그인 인증검사
-      await userAuth(req, res);
+      const token = await userAuth(req, res);
+
+      console.log('--- 로그아웃 token 확인 ---', token)
       // 쿠키 삭제
       res.cookie('accessToken', null, { maxAge: 0 });
       // 로그아웃 성공

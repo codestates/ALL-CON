@@ -20,7 +20,7 @@ const autoAlarm = schedule.scheduleJob(
 )
 // 콘서트 클리너 실행
 const autoConcertCleaner = schedule.scheduleJob(
-  '00 00 18 * * *',
+  '00 00 * * * *',
   async () => {
     concertCleaner()
     console.log('24시간마다 티켓 오픈일이 지난 콘서트 삭제중(non-activation)..')
@@ -28,7 +28,7 @@ const autoConcertCleaner = schedule.scheduleJob(
 )
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 00 23 1 * *',
+  '00 05 * * * *',
   async () => {
     console.log('ec2 테스트')
     await crawler()
@@ -55,12 +55,13 @@ const upload = multer({
   storage: multer.diskStorage({
     // set a localstorage destination
     destination: (req, file, cb) => {
-      console.log(req)
+      console.log('**************************************************', req)
+      console.log('**************************************************', file)
       cb(null, 'uploads/');
     },
     // convert a file name
     filename: (req, file, cb) => {
-      console.log(req)
+      // console.log(req)
       cb(null, file.originalname);
     },
   }),
@@ -68,6 +69,9 @@ const upload = multer({
 
 const { uploadFile, getFileStream } = require('./s3')
 app.get('/upload/:key', (req, res) => {
+
+  console.log('---- upload get 진입확인 ----')
+
   const key = req.params.key
   const readStream = getFileStream(key)
 
@@ -76,6 +80,7 @@ app.get('/upload/:key', (req, res) => {
 
 // 클라이언트에서 받은 이미지를 업로드
 app.post('/upload', upload.single('img'), async (req, res) => {
+  // app.post('/upload', async (req, res) => {
 try{
   console.log('서버 이미지 업로드 API 진입했습니다!')
 
@@ -86,7 +91,8 @@ try{
   const description = req.body.description
 
   // res.status(200).json({ data: { img: req.file.path }, message: 'Image Upload Success!' })
-  res.json({ result: result, imagePath: `/upload/${result.key}`})
+  // res.json({ result: result, imagePath: `/upload/${result.key}`})
+  res.status(201).json({ result: result, imagePath: `${result.key}`})
 
 }catch(err) {
   console.log(err)

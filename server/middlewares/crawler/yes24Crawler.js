@@ -250,7 +250,7 @@ const yes24Crawler = async () => {
 
       } 
       // while문 조건
-      while(pageNum < 3) 
+      while(pageNum < 5) 
       
       console.log('-------------- YES24 크롤링 종료 -----------------')
       await driver.sleep(10000*1.5);

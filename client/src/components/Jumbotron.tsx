@@ -7,11 +7,16 @@ import left from '../images/left_arrow.png';
 import right from '../images/right_arrow.png';
 /* Store import */
 import { RootState } from '../index';
-import { setOrder, setTarget } from '../store/MainSlice';
+import {
+  setOrder,
+  setTarget,
+  setAllConcerts,
+  setFiveConcerts,
+} from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Jumbotron() {
@@ -19,20 +24,40 @@ function Jumbotron() {
   const navigate = useNavigate();
   const { order } = useSelector((state: RootState) => state.main);
   const { target } = useSelector((state: RootState) => state.main);
+  const { allConcerts } = useSelector((state: RootState) => state.main);
+  const { fiveConcerts } = useSelector((state: RootState) => state.main);
 
-  const getHotPoster = async () => {
+  /*전체 콘서트 받아오기 */
+  const getAllConcerts = async () => {
     try {
       const response = await axios.get(
         `${REACT_APP_API_URL}/concert?${order}`,
         { withCredentials: true },
       );
       if (response.data) {
-        dispatch(setTarget(response.data.data.concertInfo[0]));
+        dispatch(setAllConcerts(response.data.data.concertInfo));
       }
     } catch (err) {
       console.log(err);
     }
   };
+<<<<<<< HEAD
+=======
+  /*전체 콘서트 5개만 받아오기*/
+  const getFiveConcerts = () => {
+    const slicedArr: Array<object> = allConcerts.slice(-2);
+    //마지막 인덱스2개랑 처음꺼 3개
+    const frontConcerts = allConcerts.slice(0, 3);
+    const five = slicedArr.concat(frontConcerts);
+    dispatch(setFiveConcerts(five));
+    console.log(allConcerts);
+  };
+
+  useEffect(() => {
+    getAllConcerts();
+    getFiveConcerts();
+  }, []);
+>>>>>>> 4ef42b714bc31955b09a6ee691afc4852e81fba6
 
   return (
     <div id='jumboContainer'>
@@ -60,7 +85,6 @@ function Jumbotron() {
               id={order === 'hot' ? 'hot' : undefined}
               onClick={() => {
                 dispatch(setOrder('hot'));
-                getHotPoster();
               }}
             >
               HOT
