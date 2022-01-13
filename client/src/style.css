@@ -1159,7 +1159,7 @@ a {
     width: 100%;
     background-color: white; }
   #headerSecondContainer #fixedBar {
-    z-index: 10;
+    z-index: 16;
     position: fixed;
     display: flex;
     align-items: center;
@@ -1172,7 +1172,7 @@ a {
         opacity: 100%; } }
     @media (min-width: 768px) {
       #headerSecondContainer #fixedBar {
-        top: 0;
+        top: 5;
         opacity: 95%; } }
     @media (min-width: 1200px) {
       #headerSecondContainer #fixedBar {
@@ -4737,7 +4737,6 @@ a {
     z-index: 10;
     position: fixed;
     display: flex;
-    background-color: #404040;
     opacity: 50%; }
     @media (max-width: 767px) {
       #sideMenuModal #bg, #sideMenuModal #bgUp {
@@ -4760,7 +4759,8 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white; }
+    background-color: white;
+    border-bottom: 1px solid #c4c4c4; }
     @media (max-width: 767px) {
       #sideMenuModal #modalBox {
         width: 100%;
@@ -4791,6 +4791,7 @@ a {
     align-items: center;
     justify-content: center;
     background-color: white;
+    border-bottom: 1px solid #c4c4c4;
     opacity: 100%; }
     @media (max-width: 767px) {
       #sideMenuModal #downedModalBox {
@@ -4855,7 +4856,8 @@ a {
   #myDropModal #bg, #myDropModal #sideMenuModal #bgUp, #sideMenuModal #myDropModal #bgUp {
     z-index: 995;
     position: fixed;
-    display: flex; }
+    display: flex;
+    background-color: white; }
     @media (max-width: 767px) {
       #myDropModal #bg, #myDropModal #sideMenuModal #bgUp, #sideMenuModal #myDropModal #bgUp {
         width: 100%;

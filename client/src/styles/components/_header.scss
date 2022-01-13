@@ -309,7 +309,7 @@
     // border: 0.5px solid red;
   }
   #fixedBar {
-    z-index: 10;
+    z-index: 16;
     position: fixed;
     display: flex;
     align-items: center;
@@ -323,7 +323,7 @@
       opacity: 100%;
     }
     @include md() {
-      top: 0;
+      top: 5;
       opacity: 95%;
     }
     @include lg() {
