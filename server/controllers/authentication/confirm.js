@@ -29,6 +29,7 @@ module.exports = {
   patch: async (req, res) => {
     try {
       // 클라이언트로부터 email, newPassword를 전달 받는다. 
+      console.log(req.body);
       const { email, newPassword } = req.body
 
       // 요청 바디의 값이 없다면 에러메시지 반환
@@ -47,6 +48,7 @@ module.exports = {
       )
       res.status(200).json({ message: 'Success Change Password!' });
     } catch (err) {
+      console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
     }
   }

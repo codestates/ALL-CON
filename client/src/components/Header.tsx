@@ -18,10 +18,9 @@ import { useSelector, useDispatch } from 'react-redux';
 function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isLogin } = useSelector((state: RootState) => state.auth);
-  const { userInfo } = useSelector((state: RootState) => state.auth);
+  const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { sideMenuModal } = useSelector((state: RootState) => state.modal);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [ scrollPosition, setScrollPosition ] = useState(0);
 
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
