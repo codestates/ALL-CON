@@ -25,22 +25,21 @@
     z-index: 10;
     position: fixed;
     display: flex;
-
-    // background-color: white;
-    // background-color: #404040;
+    width: 100%;
+    background-color: #404040;
     // border: 3px solid red;
     opacity: 50%;
     @include mobile-only() {
-      width: 100%;
-      height: 100%;
+      top: 30%;
+      height: 70%;
     }
     @include md() {
-      width: 100%;
-      height: 100%;
+      top: 30%;
+      height: 70%;
     }
     @include lg() {
-      width: 100%;
-      height: 100%;
+      top: 35%;
+      height: 75%;
     }
     &Up {
       @extend #bg;
@@ -136,6 +135,7 @@
       width: 100%;
       height: 100%;
       // border: 1px solid green;
+      font-weight: bold;
       font-size: 1.8rem;
     }
   }

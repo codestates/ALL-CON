@@ -306,6 +306,7 @@
     height: 100%;
     width: 100%;
     background-color: white;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     // border: 0.5px solid red;
   }
   #fixedBar {
@@ -317,6 +318,7 @@
     height: 5%;
     width: 100%;
     background-color: white;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     // border: 0.5px solid blue;
     @include mobile-only() {
       top: 5%;
