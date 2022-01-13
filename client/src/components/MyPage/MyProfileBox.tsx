@@ -8,6 +8,8 @@ import kakao from '../../images/kakaoOAuth.png';
 import google from '../../images/googleOAuth.png';
 import shield from '../../images/shield.png';
 /* Store import */
+import { RootState } from '../../index';
+import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 /* Library import */
 
@@ -15,6 +17,7 @@ function MyProfileBox() {
 
   /* dispatch / navigate */
   /* useSelector */
+  const { userInfo } = useSelector((state: RootState) => state.auth);
   /* 지역상태 - useState */
 
   /* useEffect */
@@ -55,10 +58,10 @@ function MyProfileBox() {
       { profileEdit ? <MyProfileImageModal handleProfileEditBackground={handleProfileEditBackground}/> : null}
       <div id='imgBox'>
         <div id='imgWrapper'>
-          <img className='img' src={profileImage} alt='profileImage' />
+          <img className='img' src={`${userInfo.image}`} alt='profileImage' />
         </div>
         <div id='cameraWrapper'>
-          <img className='camera' src={camera} alt='camera' />
+          <img className='camera' src={camera} alt='camera' onClick={() => {handleProfileEdit()}} />
         </div>
       </div>
       <div id='introductionBox'>
@@ -79,7 +82,7 @@ function MyProfileBox() {
           </textarea>
         </div>
         <div id='modifyBtnWrapper'>
-          <button className='btn' onClick={() => {handleProfileEdit()}}>프로필 수정</button>
+          <button className='btn' >프로필 수정</button>
           <button className='btn'>콘친 인증</button>
         </div>
         <div id='resignBtnWrapper'>

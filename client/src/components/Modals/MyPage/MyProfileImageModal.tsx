@@ -1,14 +1,15 @@
 /* Config import */
-import { REACT_APP_API_URL } from '../../../config'
+import { REACT_APP_API_URL, REACT_APP_DEFAULTUSERIMAGE_URL, REACT_APP_IMAGE_URL  } from '../../../config'
 /* CSS import */
 import profileImage from '../../../images/taeyang.png';
 import camera from '../../../images/camera.png';
 /* Store import */
-import { logout } from '../../../store/AuthSlice';
+import { RootState } from '../../../index';
+import { logout, getUserInfo } from '../../../store/AuthSlice';
 /* Library import */
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 
 /* 타입 스크립트 */
@@ -22,74 +23,71 @@ function MyProfileImageModal({ handleProfileEditBackground }: MyProfileImageModa
   const dispatch = useDispatch();
   const navigate = useNavigate();
   /* useSelector */
+  const { userInfo } = useSelector((state: RootState) => state.auth);
   /* 지역상태 - useState */
 
   const [content, setContent] = useState<object>({})
 
-  const [test, setTest] = useState<string>('')
+  const [test, setTest] = useState<string>(camera)
 
   // 미리보기 이미지 상태
   const [preview, setPreview] = useState<string>('')
+  const [previewHandle, setPreviewHandle] = useState<boolean>(false)
 
   /* useEffect */
   // 프로필 이미지가 선택되었을 때 (미리보기)
   useEffect(()  => {
       // handleImageUpload()
+      console.log('-------- userInfo 확인 ----------------', userInfo)
+      console.log('-------- userInfo image 확인 ----------------', userInfo.image)
   }, [content])
 
   /* handler 함수 (기능별 정렬) */
-
-  // 이미지 파일 선택 버튼
-  const onChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+  // useEffect handle 함수 (async 못쓰기 때문에...)
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     if(e.target.files) {
-        // setContent(e.target.files[0])
-        // setContent({
-        //   lastModified: e.target.files[0].lastModified,
-        //   name: e.target.files[0].name,
-        //   size: e.target.files[0].size,
-        //   type: e.target.files[0].type
-        // })
-        handleImageUpload(e)
+
+      // formData 빈 객체를 만들어준다
+      const formData = new FormData();
+
+      formData.append('img', e.target.files[0]);
+      // 선택한 이미지를 서버와 s3 bucket에 업로드한다
+      const response = await axios.post(`http://localhost:8080/upload`, formData, {
+        headers: {
+          'Content-Type' : 'multipart/form-data'
+        }
+      })
+      // AWS 버킷 주소 + 객체 키 값
+      let imageFullUrl = `${REACT_APP_IMAGE_URL}` + `${response.data.imagePath}`
+      // 미리보기 기능
+      setPreview(imageFullUrl)
+      setPreviewHandle(true)
     }
   }
 
   // 변경 버튼을 클릭하면, 현재 preview 이미자가 유저의 프로필 이미지로 변경된다 (Users DB에 해당 이미지 url를 저장한다)
   const handleProfileImgSave = async () => {
-    console.log('변경 버튼을 클릭했습니다!')
-    alert('ALL-CON\n프로필 사진이 변경되었습니다! 😖') 
-    // 유저 프로필 상태 변경 & mypage 페이지로 이동 
-    // dispatch(logout());
-    handleProfileEditBackground()
-    navigate('/mypage')
-  }
+    try {
+      // 변경하기 버튼을 클릭하면, 해당 이미지를 프로필 이미지로 변경
+      const response = await axios.patch(
+        `${REACT_APP_API_URL}/user/picture`,
+        { image: preview },
+        { withCredentials: true },
+      );
+      // 성공적으로 프로필 이미지가 변경되었다면, 다음을 실행한다
+      if (response.data.data) {
+        // 변경된 프로필 이미지로 유저 상태를 업데이트 한다
+        dispatch(getUserInfo(response.data.data));
+        // 프로필 변경 모달을 닫고, 마이페이지로 이동한다
+        handleProfileEditBackground()
+        navigate('/mypage')
+      }
+    } catch (err) {
 
-  // useEffect handle 함수 (async 못쓰기 때문에...)
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
-    if(e.target.files) {
-
-      const formData = new FormData();
-      formData.append('img', e.target.files[0], e.target.files[0].name);
-
-      console.log('formData', formData)
-
-      const response = await axios.post(`http://localhost:8080/upload`, {
-        fieldname: 'img',
-        originalname: 'smil.png',
-        encoding: '7bit',
-        mimetype: 'image/png',
-        destination: 'uploads/',
-        filename: 'smil.png',
-        path: 'uploads/smil.png',
-        size: 54752
-      }, {
-        headers: {
-          'Content-Type' : 'multipart/form-data'
-        }
-      })
-
-      console.log('response', response)
     }
   }
+
+  
 
   return (
     <div id='myProfileImageModal'>
@@ -101,13 +99,16 @@ function MyProfileImageModal({ handleProfileEditBackground }: MyProfileImageModa
           </div>
           <div id='imgBox'>
             <div id='imgWrapper'>
-              <img className='img' src={profileImage} alt='profileImage' />
+              { previewHandle 
+                ? <img className='img' src={`${preview}`} alt='profileImage' />
+                : <img className='img' src={`${userInfo.image}`} />
+              }
             </div>
             <div id='cameraWrapper'>
               <img className='camera' src={camera} alt='camera' />
             </div>
             <div id='imgSelectionWrapper'>
-              <input type='file' id='imgSelection' onChange={onChange} />
+              <input type='file' id='imgSelection' onChange={handleImageUpload} />
             </div>
           </div>
           <div id='modifyBtnWrapper'>
