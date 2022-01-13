@@ -28,12 +28,33 @@ module.exports = {
       
       /* Users 테이블에 존재하지 않는 email이라면 회원가입 진행 */ 
       if (!userInfo) {
+        let newUsername = profile.nickname;
+
+        /* 닉네임 중복확인 (고유 닉네임 찾을때까지 무한루프)*/
+        while(true){
+          const isValidUsernameInfo = await Users.findOne({ where: { username: newUsername } });
+          /* 해당 닉네임이 중복되지 않았다면 반복문 탈출 */
+          if(!isValidUsernameInfo){
+            break;
+          } else {
+            /* 해당 닉네임이 중복이라면 아래 코드 실행 */
+            // 1000~9999 4자리 난수 설정
+            const max = 9999;
+            const min = 1000;
+            const tag = Math.floor(Math.random() * (max - min)) + min;
+
+            // 6자리 난수 태그 추가
+            newUsername = `${newUsername}#${tag}`;
+          }
+        }
+
         const createUserInfo = await Users.create({
           email,
           username: profile.nickname,
           image: profile.profile_image_url,
           sign_method: 'kakao'
         });
+
         // 토큰을 발급하고 쿠키에 저장한다.
         const accssToekn = generateAccessToken(createUserInfo.dataValues);
         sendAccessToken(res, accssToekn);

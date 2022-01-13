@@ -8,8 +8,11 @@ export interface modal {
   privacyModal: boolean;
   sideMenuModal: boolean;
   findPasswordModal: boolean;
+  confirmNumberModal: boolean;
+  resetPasswordModal: boolean;
   alertModal: boolean;
   alertText: string;
+  deliverText: string;
 }
 
 /* State 초기값 설정 */
@@ -19,9 +22,12 @@ const initialState: modal = {
   tosModal: false,
   privacyModal: false,
   findPasswordModal: false,
+  confirmNumberModal: false,
+  resetPasswordModal: false,
   alertModal: false,
-  alertText: '',
   sideMenuModal: false,
+  alertText: '',
+  deliverText: ''
 };
 
 const modalSlice = createSlice({
@@ -41,20 +47,26 @@ const modalSlice = createSlice({
     showPrivacyModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.privacyModal = payload;
     },
-    showSideMenuModal: (state, { payload }) => {
+    showSideMenuModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.sideMenuModal = payload;
     },
-    showFindPasswordModal: (
-      state: modal,
-      { payload }: PayloadAction<boolean>,
-    ) => {
+    showFindPasswordModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.findPasswordModal = payload;
+    },
+    showConfirmNumberModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.confirmNumberModal = payload;
+    },
+    showResetPasswordModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.resetPasswordModal = payload;
     },
     showAlertModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.alertModal = payload;
     },
     insertAlertText: (state: modal, { payload }: PayloadAction<string>) => {
       state.alertText = payload;
+    },
+    insertDeliverText: (state: modal, { payload }: PayloadAction<string>) => {
+      state.deliverText = payload;
     },
   },
 });
@@ -65,8 +77,11 @@ export const {
   showTosModal,
   showPrivacyModal,
   showFindPasswordModal,
+  showConfirmNumberModal,
+  showResetPasswordModal,
   showAlertModal,
-  insertAlertText,
   showSideMenuModal,
+  insertAlertText,
+  insertDeliverText
 } = modalSlice.actions;
 export default modalSlice.reducer;
