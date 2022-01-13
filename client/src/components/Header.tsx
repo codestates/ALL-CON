@@ -50,7 +50,7 @@ function Header() {
   if (now.getHours() >= 9) {
     openHours -= now.getHours();
   } else {
-    openHours = (9 - now.getHours()) * 2;
+    openHours = (10 - now.getHours()) * 2;
   }
   let openTime = openHours * hr;
   let nowTime = nowHours + nowMinutes + nowSeconds;
