@@ -2208,6 +2208,7 @@ a {
     z-index: 998;
     position: fixed;
     display: flex;
+    top: 0;
     background-color: #404040;
     opacity: 50%; }
     @media (max-width: 767px) {
@@ -2419,7 +2420,8 @@ a {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  top: 0%; }
   @media (max-width: 767px) {
     #myProfileResignMembershipModal {
       position: fixed; } }
@@ -2434,6 +2436,7 @@ a {
     position: fixed;
     display: flex;
     background-color: #404040;
+    border: 3px solid blue;
     opacity: 50%; }
     @media (max-width: 767px) {
       #myProfileResignMembershipModal #bg {
