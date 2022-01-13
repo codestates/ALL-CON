@@ -41,8 +41,6 @@ function Jumbotron() {
       console.log(err);
     }
   };
-<<<<<<< HEAD
-=======
   /*전체 콘서트 5개만 받아오기*/
   const getFiveConcerts = () => {
     const slicedArr: Array<object> = allConcerts.slice(-2);
@@ -57,7 +55,6 @@ function Jumbotron() {
     getAllConcerts();
     getFiveConcerts();
   }, []);
->>>>>>> 4ef42b714bc31955b09a6ee691afc4852e81fba6
 
   return (
     <div id='jumboContainer'>

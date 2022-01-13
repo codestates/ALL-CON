@@ -13,11 +13,15 @@ import {
   showSideMenuModal,
   showMyDropDown,
 } from '../store/ModalSlice';
-import { setIsScrolled, setScrollCount } from '../store/HeaderSlice';
+import {
+  setIsScrolled,
+  setScrollCount,
+  setTimerMessage,
+} from '../store/HeaderSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Header() {
@@ -27,8 +31,47 @@ function Header() {
   const { loginModal, signupModal, sideMenuModal, myDropDown } = useSelector(
     (state: RootState) => state.modal,
   );
-  const { isScrolled, scrollCount } = useSelector(
+  const { isScrolled, scrollCount, timerMessage } = useSelector(
     (state: RootState) => state.header,
+  );
+
+  /* 타이머 변수 설정: 현재 시간 */
+  let now = new Date();
+  const sc = 1000;
+  const mt = sc * 60;
+  const hr = mt * 60;
+  let nowHours = now.getHours() * hr;
+  let nowMinutes = now.getMinutes() * mt;
+  let nowSeconds = now.getSeconds() * sc;
+
+  /* 타이머 변수 설정: 오픈 시간 */
+  let openHours = 53;
+  if (nowHours >= 9) openHours -= now.getHours();
+  else openHours = 9 - now.getHours();
+  let openTime = openHours * hr;
+  let nowTime = nowHours + nowMinutes + nowSeconds;
+  let distance = openTime - nowTime;
+
+  /* 타이머 변수 설정: 남은 시간 */
+  let dHours: string | number = Math.floor(distance / hr);
+  let dMinutes: string | number = Math.floor((distance % hr) / mt);
+  let dSeconds: string | number = Math.floor((distance % mt) / sc);
+
+  /* 한자리 수일경우 옆에 0 붙이기 */
+  if (String(dHours).length === 1) {
+    dHours = `0${String(dHours)}`;
+  }
+  if (String(dMinutes).length === 1) {
+    dMinutes = `0${String(dMinutes)}`;
+  }
+  if (String(dSeconds).length === 1) {
+    dSeconds = `0${String(dSeconds)}`;
+  }
+
+  dispatch(
+    setTimerMessage(
+      `다음 콘서트를 업데이트하기까지 ${dHours}:${dMinutes}:${dSeconds}`,
+    ),
   );
 
   /* 스크롤 위치 저장 useEffect */
@@ -40,33 +83,75 @@ function Header() {
     if (loginModal || signupModal) document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'unset';
   });
+
+  /* 현재시간 타이머 useEffect */
+  useEffect(() => {
+    const countdown = setInterval(
+      () => {
+        /* 현재 시간 */
+        now = new Date();
+        nowHours = now.getHours() * hr;
+        nowMinutes = now.getMinutes() * mt;
+        nowSeconds = now.getSeconds() * sc;
+        nowTime = nowHours + nowMinutes + nowSeconds;
+        distance = openTime - nowTime;
+
+        /* 남은 시, 초, 분 */
+        dHours = Math.floor(distance / hr);
+        dMinutes = Math.floor((distance % hr) / mt);
+        dSeconds = Math.floor((distance % mt) / sc);
+        /* 한자리 수일 경우 0 붙이기 */
+        if (String(dHours).length === 1) {
+          dHours = `0${String(dHours)}`;
+        }
+        if (String(dMinutes).length === 1) {
+          dMinutes = `0${String(dMinutes)}`;
+        }
+        if (String(dSeconds).length === 1) {
+          dSeconds = `0${String(dSeconds)}`;
+        }
+        dispatch(
+          setTimerMessage(
+            `다음 콘서트를 업데이트하기까지 ${dHours}:${dMinutes}:${dSeconds}`,
+          ),
+        );
+      },
+      1000,
+      timerMessage,
+    );
+  }, [now]);
+
   /* 드랍다운 오픈 상태 변경 핸들러 */
   const displayMyDropDown = () => {
     dispatch(showMyDropDown(!myDropDown));
   };
   /* 스크롤 위치 저장 핸들러 */
   const updateScroll = () => {
-    dispatch(setIsScrolled(true));
     dispatch(
       setScrollCount(window.scrollY || document.documentElement.scrollTop),
     );
+    if (scrollCount > 0.5) dispatch(setIsScrolled(true));
+  };
+  /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
+  const showTimer = () => {
+    dispatch(setIsScrolled(false));
   };
 
   return (
-    /* 해당 모달 띄워져있을 시 헤더 통채로 교체 */
+    /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */
     <div
       id={
         loginModal || signupModal ? 'headerSecondContainer' : 'headerContainer'
       }
     >
-      {/* 첫 스크롤 전까지는 타이머 고정, 그 후부터는 숨겨지게 변경*/}
+      {/* 스크롤 후 히든타이머 제거 */}
       <div id={isScrolled === false ? 'firstHiddenBar' : 'hiddenBar'}>
-        다음 콘서트를 업데이트하기까지 13:49:06
+        {timerMessage}
       </div>
 
       <div id='logoBar'>
-        <Link to='/landing'>
-          {/* 첫 스크롤 전까지는 로고 숨김, 그 후부터는 나타나게 변경*/}
+        <Link to='/' onClick={showTimer}>
+          {/* 스크롤 후 로고 호출*/}
           <img
             className={isScrolled === false ? 'logohide' : 'logo'}
             alt='logoImg'

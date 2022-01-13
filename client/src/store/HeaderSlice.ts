@@ -4,12 +4,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface header {
   isScrolled: boolean;
   scrollCount: number;
+  timerMessage: string | number;
 }
 
 /* State 초기값 설정 */
 const initialState: header = {
   isScrolled: false,
   scrollCount: 0,
+  timerMessage: '',
 };
 
 const headerSlice = createSlice({
@@ -23,8 +25,15 @@ const headerSlice = createSlice({
     setScrollCount: (state: header, { payload }: PayloadAction<number>) => {
       state.scrollCount = payload;
     },
+    setTimerMessage: (
+      state: header,
+      { payload }: PayloadAction<string | number>,
+    ) => {
+      state.timerMessage = payload;
+    },
   },
 });
 
-export const { setIsScrolled, setScrollCount } = headerSlice.actions;
+export const { setIsScrolled, setScrollCount, setTimerMessage } =
+  headerSlice.actions;
 export default headerSlice.reducer;

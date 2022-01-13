@@ -2,6 +2,7 @@
 import { REACT_APP_API_URL } from '../../../config.js';
 /* Store import */
 import { RootState } from '../../../index';
+import { setScrollCount } from '../../../store/HeaderSlice';
 import { showMyDropDown } from '../../../store/ModalSlice';
 import { logout } from '../../../store/AuthSlice';
 /* Library import */
@@ -25,6 +26,7 @@ function MyDropDown() {
       /* 로그인 상태 변경 & main 페이지로 이동 */
       dispatch(logout());
       navigate('/main');
+      dispatch(setScrollCount(0));
     } catch (err) {
       console.log(err);
     }

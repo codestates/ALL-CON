@@ -1,5 +1,5 @@
 #sideMenuModal {
-  z-index: 12;
+  z-index: 15;
   position: fixed;
 
   align-items: center;
@@ -25,22 +25,21 @@
     z-index: 10;
     position: fixed;
     display: flex;
-
-    // background-color: white;
-    // background-color: #404040;
+    width: 100%;
+    background-color: #404040;
     // border: 3px solid red;
     opacity: 50%;
     @include mobile-only() {
-      width: 100%;
-      height: 100%;
+      top: 30%;
+      height: 70%;
     }
     @include md() {
-      width: 100%;
-      height: 100%;
+      top: 30%;
+      height: 70%;
     }
     @include lg() {
-      width: 100%;
-      height: 100%;
+      top: 35%;
+      height: 75%;
     }
     &Up {
       @extend #bg;
@@ -49,14 +48,13 @@
     }
   }
   #modalBox {
-    z-index: 995;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: white;
     border-bottom: 1px solid #c4c4c4;
-    // border: 1px solid red;
+    // border: 3px solid red;
     @include mobile-only() {
       width: 100%;
       height: 20%;
@@ -84,24 +82,23 @@
     }
   }
   #downedModalBox {
-    z-index: 10;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: white;
     border-bottom: 1px solid #c4c4c4;
-    opacity: 100%;
+    opacity: 95%;
     // border: 1px solid blue;
     @include mobile-only() {
       width: 100%;
-      height: 25%;
-      top: 0%;
+      height: 20%;
+      top: 5%;
     }
     @include md() {
       width: 100%;
-      height: 25%;
-      top: 0%;
+      height: 20%;
+      top: 5%;
     }
     @include lg() {
       width: 33%;
@@ -115,8 +112,17 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      height: 80%;
+
       bottom: 0%;
+      @include mobile-only() {
+        height: 90%;
+      }
+      @include md() {
+        height: 90%;
+      }
+      @include lg() {
+        height: 80%;
+      }
     }
   }
   #sidemenuWrapper {
@@ -136,6 +142,7 @@
       width: 100%;
       height: 100%;
       // border: 1px solid green;
+      font-weight: bold;
       font-size: 1.8rem;
     }
   }

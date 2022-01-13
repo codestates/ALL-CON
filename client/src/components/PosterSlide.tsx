@@ -46,50 +46,6 @@ function PosterSlide() {
         <div id='crownWrapper'>
           <img id='posterCrown' src={crown} alt='왕관아이콘'></img>
         </div>
-<<<<<<< HEAD
-        <div id='posterWrapper1'>
-          <img
-            alt='포스터'
-            src={defaultPoster}
-            className='posterImg'
-            id='poster'
-          ></img>
-          <div className='posterCover2'></div>
-        </div>
-        <div id='posterWrapper2'>
-          <img
-            alt='포스터'
-            src={defaultPoster}
-            className='posterImg'
-            id='poster'
-          ></img>
-          <div className='posterCover'></div>
-        </div>
-        <div id='posterWrapper3'>
-          <img
-            alt='포스터'
-            // src={target.image_concert}
-            className='posterImg'
-            id='poster'
-          ></img>
-          <div className='dDay'>
-            <p>D-5</p>
-          </div>
-        </div>
-        <div id='posterWrapper4'>
-          <img alt='포스터' src={six} className='posterImg' id='poster'></img>
-          <div className='posterCover'></div>
-        </div>
-        <div id='posterWrapper5'>
-          <img
-            alt='포스터'
-            src={victon}
-            className='posterImg'
-            id='poster'
-          ></img>
-          <div className='posterCover2'></div>
-        </div>
-=======
         {fiveConcerts ? (
           <>
             <div id='posterWrapper1'>
@@ -143,7 +99,6 @@ function PosterSlide() {
         ) : (
           <p>받아온 콘서트 정보가 없습니다.</p>
         )}
->>>>>>> 4ef42b714bc31955b09a6ee691afc4852e81fba6
       </div>
     </>
   );
