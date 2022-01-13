@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 /* Store import */
 import authSlice, { auth } from './store/AuthSlice';
 import modalSlice, { modal } from './store/ModalSlice';
+import headerSlice, { header } from './store/HeaderSlice';
 import mainSlice, { main } from './store/MainSlice';
 /* Library import */
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -29,6 +30,7 @@ const persistConfig = {
 const reducers = combineReducers({
   auth: authSlice,
   modal: modalSlice,
+  header: headerSlice,
   main: mainSlice,
 });
 
@@ -50,6 +52,7 @@ const store = configureStore({
 export interface RootState {
   auth: auth;
   modal: modal;
+  header: header;
   main: main;
 }
 

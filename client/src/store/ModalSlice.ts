@@ -12,6 +12,7 @@ export interface modal {
   resetPasswordModal: boolean;
   alertModal: boolean;
   alertText: string;
+  myDropDown: boolean;
   deliverText: string;
 }
 
@@ -26,8 +27,9 @@ const initialState: modal = {
   resetPasswordModal: false,
   alertModal: false,
   sideMenuModal: false,
+  myDropDown: false,
   alertText: '',
-  deliverText: ''
+  deliverText: '',
 };
 
 const modalSlice = createSlice({
@@ -50,13 +52,22 @@ const modalSlice = createSlice({
     showSideMenuModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.sideMenuModal = payload;
     },
-    showFindPasswordModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+    showFindPasswordModal: (
+      state: modal,
+      { payload }: PayloadAction<boolean>,
+    ) => {
       state.findPasswordModal = payload;
     },
-    showConfirmNumberModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+    showConfirmNumberModal: (
+      state: modal,
+      { payload }: PayloadAction<boolean>,
+    ) => {
       state.confirmNumberModal = payload;
     },
-    showResetPasswordModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+    showResetPasswordModal: (
+      state: modal,
+      { payload }: PayloadAction<boolean>,
+    ) => {
       state.resetPasswordModal = payload;
     },
     showAlertModal: (state: modal, { payload }: PayloadAction<boolean>) => {
@@ -64,6 +75,9 @@ const modalSlice = createSlice({
     },
     insertAlertText: (state: modal, { payload }: PayloadAction<string>) => {
       state.alertText = payload;
+    },
+    showMyDropDown: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.myDropDown = payload;
     },
     insertDeliverText: (state: modal, { payload }: PayloadAction<string>) => {
       state.deliverText = payload;
@@ -81,7 +95,8 @@ export const {
   showResetPasswordModal,
   showAlertModal,
   showSideMenuModal,
+  showMyDropDown,
   insertAlertText,
-  insertDeliverText
+  insertDeliverText,
 } = modalSlice.actions;
 export default modalSlice.reducer;
