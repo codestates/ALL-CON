@@ -94,6 +94,29 @@
         top: 40%;
       }
     }
+    /* 스크롤바 CSS */
+    #postingBoxWrapper::-webkit-scrollbar {
+      @include mobile-only() {
+        width: 5px;
+      }
+      @include md() {
+        width: 10px;
+      }
+      @include lg() {
+        width: 10px;
+      }
+    }
+    /* 스크롤바 막대 설정*/
+    #postingBoxWrapper::-webkit-scrollbar-thumb {
+      height: 5%;
+      background-color: $yellow;
+      border-radius: 10px;
+    }
+    /* 스크롤바 뒷 배경 투명도 설정 */
+    #postingBoxWrapper::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    /* 스크롤바 CSS */
     .posting {
       position: relative;
       display: flex;

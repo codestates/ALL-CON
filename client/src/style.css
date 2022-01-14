@@ -2009,7 +2009,11 @@ a {
     justify-content: center;
     overflow-y: scroll;
     overflow: overlay;
-    width: 93%; }
+    width: 93%;
+    /* 스크롤바 CSS */
+    /* 스크롤바 막대 설정*/
+    /* 스크롤바 뒷 배경 투명도 설정 */
+    /* 스크롤바 CSS */ }
     @media (max-width: 767px) {
       #conChinPostingBox #postingBoxWrapper, #conChinPostingBox #postingBoxWrapperChosen {
         height: 70%;
@@ -2034,6 +2038,21 @@ a {
       #conChinPostingBox #postingBoxWrapperChosen {
         height: 50%;
         top: 40%; } }
+    @media (max-width: 767px) {
+      #conChinPostingBox #postingBoxWrapper #postingBoxWrapper::-webkit-scrollbar, #conChinPostingBox #postingBoxWrapperChosen #postingBoxWrapper::-webkit-scrollbar, #conChinPostingBox #postingBoxWrapper #postingBoxWrapperChosen::-webkit-scrollbar, #conChinPostingBox #postingBoxWrapperChosen #postingBoxWrapperChosen::-webkit-scrollbar {
+        width: 5px; } }
+    @media (min-width: 768px) {
+      #conChinPostingBox #postingBoxWrapper #postingBoxWrapper::-webkit-scrollbar, #conChinPostingBox #postingBoxWrapperChosen #postingBoxWrapper::-webkit-scrollbar, #conChinPostingBox #postingBoxWrapper #postingBoxWrapperChosen::-webkit-scrollbar, #conChinPostingBox #postingBoxWrapperChosen #postingBoxWrapperChosen::-webkit-scrollbar {
+        width: 10px; } }
+    @media (min-width: 1200px) {
+      #conChinPostingBox #postingBoxWrapper #postingBoxWrapper::-webkit-scrollbar, #conChinPostingBox #postingBoxWrapperChosen #postingBoxWrapper::-webkit-scrollbar, #conChinPostingBox #postingBoxWrapper #postingBoxWrapperChosen::-webkit-scrollbar, #conChinPostingBox #postingBoxWrapperChosen #postingBoxWrapperChosen::-webkit-scrollbar {
+        width: 10px; } }
+    #conChinPostingBox #postingBoxWrapper #postingBoxWrapper::-webkit-scrollbar-thumb, #conChinPostingBox #postingBoxWrapperChosen #postingBoxWrapper::-webkit-scrollbar-thumb, #conChinPostingBox #postingBoxWrapper #postingBoxWrapperChosen::-webkit-scrollbar-thumb, #conChinPostingBox #postingBoxWrapperChosen #postingBoxWrapperChosen::-webkit-scrollbar-thumb {
+      height: 5%;
+      background-color: #ffce63;
+      border-radius: 10px; }
+    #conChinPostingBox #postingBoxWrapper #postingBoxWrapper::-webkit-scrollbar-track, #conChinPostingBox #postingBoxWrapperChosen #postingBoxWrapper::-webkit-scrollbar-track, #conChinPostingBox #postingBoxWrapper #postingBoxWrapperChosen::-webkit-scrollbar-track, #conChinPostingBox #postingBoxWrapperChosen #postingBoxWrapperChosen::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0); }
     #conChinPostingBox #postingBoxWrapper .posting, #conChinPostingBox #postingBoxWrapperChosen .posting, #conChinPostingBox #postingBoxWrapper .postingChosen, #conChinPostingBox #postingBoxWrapperChosen .postingChosen {
       position: relative;
       display: flex;
