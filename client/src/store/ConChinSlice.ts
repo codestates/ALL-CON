@@ -5,12 +5,15 @@ export interface conChin {
   /*hot,new,near */
   postingOrder: string;
   articleOrder: string;
+  /* 받아온 게시물 목록 */
+  allArticles: any[];
 }
 
 /* State 초기값 설정 */
 const initialState: conChin = {
   postingOrder: 'hot',
   articleOrder: 'hot',
+  allArticles: [],
 };
 
 const conChinSlice = createSlice({
@@ -24,8 +27,15 @@ const conChinSlice = createSlice({
     setArticleOrder: (state: conChin, { payload }: PayloadAction<string>) => {
       state.articleOrder = payload;
     },
+    setAllArticles: (
+      state: conChin,
+      { payload }: PayloadAction<Array<any>>,
+    ) => {
+      state.allArticles = payload;
+    },
   },
 });
 
-export const { setPostingOrder, setArticleOrder } = conChinSlice.actions;
+export const { setPostingOrder, setArticleOrder, setAllArticles } =
+  conChinSlice.actions;
 export default conChinSlice.reducer;

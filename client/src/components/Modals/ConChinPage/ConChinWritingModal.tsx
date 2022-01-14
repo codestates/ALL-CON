@@ -102,18 +102,20 @@ function ConChinWritingModal() {
     const response = await axios.post(
       `${REACT_APP_API_URL}/concert/44/article`,
       {
+        //44 부분에 ${target.id}
         title: title,
         content: content,
         image: preview,
       },
       { withCredentials: true },
     );
-
-    // console.log(response.data)
+    console.log(response.data);
+    navigate('/conchin');
+    dispatch(showConChinWritingModal(false));
     // 주의: 글 작성 성공 알림 모달 필요함!
 
     // 콘친 페이지 이동
-    navigate('/conchin');
+
     // 게시글 작성 모달도 닫는다
   };
 

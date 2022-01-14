@@ -8,14 +8,19 @@ import ConChinArticleOrderBox from './ConChinArticleOrderBox';
 import ConChinArticlePagination from './ConChinArticlePagination';
 /* Store import */
 import { RootState } from '../../index';
-import { setTarget, setAllConcerts } from '../../store/MainSlice';
-import { setPostingOrder } from '../../store/ConChinSlice';
+import { setAllArticles } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 
 function ConChinArticleBox() {
   const { target } = useSelector((state: RootState) => state.main);
+  const { articleOrder, allArticles } = useSelector(
+    (state: RootState) => state.conChin,
+  );
+  const dispatch = useDispatch();
+
   return (
     <div
       id={
@@ -30,146 +35,46 @@ function ConChinArticleBox() {
           Object.keys(target).length === 0 ? 'articleBox' : 'articleBoxChosen'
         }
       >
+        {/*게시물 맵핑 */}
         <div id={Object.keys(target).length === 0 ? 'box' : 'boxChosen'}>
-          <ul className='article'>
-            <img className='thumbNail' src={defaultImage}></img>
-            <div id='conChinmemberBoxWrapper'>
-              <div className='memberBox'>
-                <img className='icon' src={groupImage} />
-                <div className='count'>1/3</div>
-              </div>
-            </div>
-            <div className='title'>
-              <img className='icon' src={viewImage} />
-              <p className='count'>523</p>
-              <p className='date'>2021.12.24</p>
-              <p className='text'>소심한 성격입니다. 조용히..</p>
-            </div>
-          </ul>
-          <ul className='article'>
-            <img className='thumbNail' src={defaultImage}></img>
-            <div id='conChinmemberBoxWrapper'>
-              <div className='memberBox'>
-                <img className='icon' src={groupImage} />
-                <div className='count'>1/3</div>
-              </div>
-            </div>
-            <div className='title'>
-              <img className='icon' src={viewImage} />
-              <p className='count'>523</p>
-              <p className='date'>2021.12.24</p>
-              <p className='text'>소심한 성격입니다. 조용히..</p>
-            </div>
-          </ul>
-          <ul className='article'>
-            <img className='thumbNail' src={defaultImage}></img>
-            <div id='conChinmemberBoxWrapper'>
-              <div className='memberBox'>
-                <img className='icon' src={groupImage} />
-                <div className='count'>1/3</div>
-              </div>
-            </div>
-            <div className='title'>
-              <img className='icon' src={viewImage} />
-              <p className='count'>523</p>
-              <p className='date'>2021.12.24</p>
-              <p className='text'>소심한 성격입니다. 조용히..</p>
-            </div>
-          </ul>
-          <ul className='article'>
-            <img className='thumbNail' src={defaultImage}></img>
-            <div id='conChinmemberBoxWrapper'>
-              <div className='memberBox'>
-                <img className='icon' src={groupImage} />
-                <div className='count'>1/3</div>
-              </div>
-            </div>
-            <div className='title'>
-              <img className='icon' src={viewImage} />
-              <p className='count'>523</p>
-              <p className='date'>2021.12.24</p>
-              <p className='text'>소심한 성격입니다. 조용히..</p>
-            </div>
-          </ul>
-          <ul className='article'>
-            <img className='thumbNail' src={defaultImage}></img>
-            <div id='conChinmemberBoxWrapper'>
-              <div className='memberBox'>
-                <img className='icon' src={groupImage} />
-                <div className='count'>1/3</div>
-              </div>
-            </div>
-            <div className='title'>
-              <img className='icon' src={viewImage} />
-              <p className='count'>523</p>
-              <p className='date'>2021.12.24</p>
-              <p className='text'>소심한 성격입니다. 조용히..</p>
-            </div>
-          </ul>
-          <ul className='article'>
-            <img className='thumbNail' src={defaultImage}></img>
-            <div id='conChinmemberBoxWrapper'>
-              <div className='memberBox'>
-                <img className='icon' src={groupImage} />
-                <div className='count'>1/3</div>
-              </div>
-            </div>
-            <div className='title'>
-              <img className='icon' src={viewImage} />
-              <p className='count'>523</p>
-              <p className='date'>2021.12.24</p>
-              <p className='text'>소심한 성격입니다. 조용히..</p>
-            </div>
-          </ul>
+          {allArticles.map(article => {
+            return (
+              <ul
+                className='article'
+                key={article.id}
+                onClick={() => {
+                  console.log(article.id);
+                }}
+              >
+                <img
+                  className='thumbNail'
+                  src={
+                    article.image !== null
+                      ? `${REACT_APP_API_URL}/uploads/${article.image}`
+                      : defaultImage
+                  }
+                ></img>
+                <div id='conChinmemberBoxWrapper'>
+                  <div className='memberBox'>
+                    <img className='icon' src={groupImage} />
+                    <div className='count'>
+                      {article.member_count}/{article.total_member}
+                    </div>
+                  </div>
+                </div>
+                <div className='title'>
+                  <img className='icon' src={viewImage} />
+                  <p className='count'>{article.view}</p>
+                  <p className='date'>21.01.14</p>
+                  {/* {article.createdAt} */}
+                  <p className='text'>{article.content}</p>
+                </div>
+              </ul>
+            );
+          })}
         </div>
-        {/* <div id='box'> */}
-        {/* <ul className='article'>
-          <img className='thumbNail' src={defaultImage}></img>
-          <div id='conChinmemberBoxWrapper'>
-            <div className='memberBox'>
-              <img className='icon' src={groupImage} />
-              <div className='count'>1/3</div>
-            </div>
-          </div>
-          <div className='title'>
-            <img className='icon' src={viewImage} />
-            <p className='count'>523</p>
-            <p className='date'>2021.12.24</p>
-            <p className='text'>소심한 성격입니다. 조용히..</p>
-          </div>
-        </ul>
-        <ul className='article'>
-          <img className='thumbNail' src={defaultImage}></img>
-          <div id='conChinmemberBoxWrapper'>
-            <div className='memberBox'>
-              <img className='icon' src={groupImage} />
-              <div className='count'>1/3</div>
-            </div>
-          </div>
-          <div className='title'>
-            <img className='icon' src={viewImage} />
-            <p className='count'>523</p>
-            <p className='date'>2021.12.24</p>
-            <p className='text'>소심한 성격입니다. 조용히..</p>
-          </div>
-        </ul>
-        <ul className='article'>
-          <img className='thumbNail' src={defaultImage}></img>
-          <div id='conChinmemberBoxWrapper'>
-            <div className='memberBox'>
-              <img className='icon' src={groupImage} />
-              <div className='count'>1/3</div>
-            </div>
-          </div>
-          <div className='title'>
-            <img className='icon' src={viewImage} />
-            <p className='count'>523</p>
-            <p className='date'>2021.12.24</p>
-            <p className='text'>소심한 성격입니다. 조용히..</p>
-          </div>
-        </ul> */}
-        {/* </div> */}
       </div>
+      {/*게시물 맵핑 */}
       <div
         id={
           Object.keys(target).length === 0
