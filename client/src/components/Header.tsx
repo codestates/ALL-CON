@@ -1,5 +1,6 @@
 /* Config import */
 import { REACT_APP_API_URL } from '../config.js';
+import { persistor } from '../index';
 /* CSS import */
 import logo from '../images/allConLogo.png';
 import menu from '../images/menu.png';

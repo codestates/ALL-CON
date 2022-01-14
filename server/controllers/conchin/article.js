@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { userAuth } = require('../../middlewares/authorized/userAuth')
 const { Users, Articles, Concerts } = require('../../models');
 
@@ -56,21 +57,17 @@ module.exports = {
   },
   post: async (req, res) => {
     try {
-      // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
 
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
-      /* 임시 TEST CODE (삭제예정) */
+      // 로그인 인증 검사
+      const userInfo = await userAuth(req, res);
+
+      console.log('---- [POST] 게시글 작성 API 진입완료! ----', userInfo.dataValues.role, typeof userInfo.dataValues.role)
       
       const { concertid } = req.params;
       const { title, content, image } = req.body;
 
       // 일반회원은 게시글 작성 불가
-      if(userInfo.role === 3) return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
+      if(userInfo.dataValues.role === 3) return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
       // concertid, title 중 하나라도 전달되지 않았다면, 다음을 응답한다
       if(!concertid || !title ) return res.status(400).json({ message: 'Bad Request!' });
 
@@ -78,8 +75,8 @@ module.exports = {
       const articleInfo = await Articles.create({ 
         title: title, 
         content: content, 
-        image: image,
-        user_id: Number(userInfo.id), 
+        image: image || process.env.ARTICLE_DEFAULT_IMAGE,
+        user_id: Number(userInfo.dataValues.id), 
         concert_id: Number(concertid) 
       });
 
