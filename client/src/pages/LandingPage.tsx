@@ -21,7 +21,7 @@ function LandingPage() {
               <h1 id='jumboClassify'>ALL-CON</h1>
             </div>
             <div id='jumboPosterSlideWrapper'>
-              <PosterSlide />
+              {/* <PosterSlide /> */}
             </div>
           </div>
         </div>
