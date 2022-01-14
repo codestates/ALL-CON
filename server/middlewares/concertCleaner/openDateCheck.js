@@ -21,12 +21,10 @@ const openDateCheck = async (targetOpenDate, concertid) => {
   console.log('--------------------- 콘서트 오픈일 ------------------', year, month, date)
   console.log('--------------------- Today -------------------------', today, yearToday, monthToday, dateToday)
 
-  // 년 확인
-  if(year !== yearToday) return 
-  // 월 확인
-  if(month !== monthToday) return 
+  
+  /* 주의: 아래 코드 함수화 시켜야합니다!!! */
   // 날짜 확인
-  if(date+1 <= dateToday) {
+  if(year < yearToday) {
     // 해당 콘서트의 activation을 false로 바꿔준다!
     await Concerts.update(
       { activation: false },
@@ -42,6 +40,27 @@ const openDateCheck = async (targetOpenDate, concertid) => {
         { view: -999999 },
         { where: { id: articleid } }
       )
+    }
+  } 
+  // 
+  else if(year === yearToday) {
+    if(month <= monthToday && date+1 <= dateToday) {
+      // 해당 콘서트의 activation을 false로 바꿔준다!
+      await Concerts.update(
+        { activation: false },
+        { where: { id: concertid } }
+      )
+      
+      const articleInfo = await Articles.findAll({ where: { concert_id: concertid } })
+      
+      for(let i = 0; i < articleInfo.length; i++) {
+        let articleid = articleInfo[i].id
+        
+        await Articles.update(
+          { view: -999999 },
+          { where: { id: articleid } }
+        )
+      }
     }
   }
   

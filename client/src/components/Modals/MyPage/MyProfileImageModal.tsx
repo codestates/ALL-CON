@@ -28,8 +28,6 @@ function MyProfileImageModal({ handleProfileEditBackground }: MyProfileImageModa
 
   const [content, setContent] = useState<object>({})
 
-  const [test, setTest] = useState<string>(camera)
-
   // 미리보기 이미지 상태
   const [preview, setPreview] = useState<string>('')
   const [previewHandle, setPreviewHandle] = useState<boolean>(false)
@@ -52,7 +50,7 @@ function MyProfileImageModal({ handleProfileEditBackground }: MyProfileImageModa
 
       formData.append('img', e.target.files[0]);
       // 선택한 이미지를 서버와 s3 bucket에 업로드한다
-      const response = await axios.post(`http://localhost:8080/upload`, formData, {
+      const response = await axios.post(`${REACT_APP_API_URL}/upload`, formData, {
         headers: {
           'Content-Type' : 'multipart/form-data'
         }
@@ -87,8 +85,6 @@ function MyProfileImageModal({ handleProfileEditBackground }: MyProfileImageModa
     }
   }
 
-  
-
   return (
     <div id='myProfileImageModal'>
       <div id='bg' onClick={() => {handleProfileEditBackground()}}/>
@@ -107,7 +103,7 @@ function MyProfileImageModal({ handleProfileEditBackground }: MyProfileImageModa
             <div id='cameraWrapper'>
               <img className='camera' src={camera} alt='camera' />
             </div>
-            <div id='imgSelectionWrapper'>
+            <div className='imgSelectionWrapper'>
               <input type='file' id='imgSelection' onChange={handleImageUpload} />
             </div>
           </div>

@@ -1,9 +1,10 @@
-import PosterSlide from '../components/PosterSlide';
-import six from '../images/six.gif';
+/* CSS import */
 import img1 from '../images/landingImage1.png';
 import img2 from '../images/landingImage2.png';
 import img3 from '../images/landingImage3.png';
+import jiyoung from '../images/jiyoung.jpg';
 import Footer from '../components/Footer';
+import LandingPosterSlide from '../components/LandingPosterSlide';
 
 function LandingPage() {
   return (
@@ -13,7 +14,7 @@ function LandingPage() {
         {/*jumbotronBackground */}
         <div id='jumboContainer'>
           <div id='jumboMiniContainer'>
-            <img src={six} alt='선택된 포스터' id='jumboChosen' />
+            <img src={jiyoung} alt='선택된 포스터' id='jumboChosen' />
           </div>
           <div className='jumboTopBox'>
             <div className='jumboTextBox'>
@@ -21,7 +22,7 @@ function LandingPage() {
               <h1 id='jumboClassify'>ALL-CON</h1>
             </div>
             <div id='jumboPosterSlideWrapper'>
-              <PosterSlide />
+              <LandingPosterSlide />
             </div>
           </div>
         </div>

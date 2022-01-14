@@ -1,44 +1,117 @@
 /* CSS import */
 import crown from '../images/crown.png';
-import sf9 from '../images/sf99.jpg';
-import six from '../images/six.gif';
-import victon from '../images/victon.gif';
-import hiphop2 from '../images/hiphop2.gif';
-import kimjh from '../images/kimjh.jpg';
-import defaultPoster from '../images/default_poster.jpg';
 /* Store import */
 import { RootState } from '../index';
-import { setOrder, setTarget } from '../store/MainSlice';
+import { setOrder, setTarget, setFirstIdx } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-function PosterSlide() {
+type concertProps = {
+  firstConcert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    plrice?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
+  secondConcert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    plrice?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
+  thirdConcert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    plrice?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
+  fourthConcert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    plrice?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
+  fifthConcert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    plrice?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
+};
+
+function PosterSlide({
+  firstConcert,
+  secondConcert,
+  thirdConcert,
+  fourthConcert,
+  fifthConcert,
+}: concertProps) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { target } = useSelector((state: RootState) => state.main);
   const { fiveConcerts } = useSelector((state: RootState) => state.main);
-  let firstConcert = fiveConcerts[0];
-  let secondConcert = fiveConcerts[1];
-  let thirdConcert = fiveConcerts[2];
-  let fourthConcert = fiveConcerts[3];
-  let fifthConcert = fiveConcerts[4];
-
-  //현재 선택된 포스터 바꾸기(뒷배경 큰 포스터)
-  const getTargetPoster = () => {
-    dispatch(setTarget(thirdConcert));
-  };
-
-  useEffect(() => {
-    getTargetPoster();
-  }, []);
-
-  // 버튼을 누르면 fiveConcerts 배열이 변하게 만들기(인덱스 이동)
-  //allConcerts에서 받아온 콘서트들 인덱스
-  const updateFiveConcerts = () => {};
 
   return (
     <>
@@ -51,7 +124,7 @@ function PosterSlide() {
             <div id='posterWrapper1'>
               <img
                 alt='포스터'
-                src={firstConcert.image_concert}
+                src={fourthConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
@@ -60,7 +133,7 @@ function PosterSlide() {
             <div id='posterWrapper2'>
               <img
                 alt='포스터'
-                src={secondConcert.image_concert}
+                src={fifthConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
@@ -69,7 +142,7 @@ function PosterSlide() {
             <div id='posterWrapper3'>
               <img
                 alt='포스터'
-                src={thirdConcert.image_concert}
+                src={firstConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
@@ -80,7 +153,7 @@ function PosterSlide() {
             <div id='posterWrapper4'>
               <img
                 alt='포스터'
-                src={fourthConcert.image_concert}
+                src={secondConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
@@ -89,7 +162,7 @@ function PosterSlide() {
             <div id='posterWrapper5'>
               <img
                 alt='포스터'
-                src={fifthConcert.image_concert}
+                src={thirdConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
