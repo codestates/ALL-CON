@@ -2,25 +2,35 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 /* State Type 설정 */
 export interface main {
-  /*hot,new,near */
+  /* view, new, near */
   order: string;
-  /*현재 선택된 포스터*/
+  /* 현재 선택된 포스터 */
   target: {
+    id?: number;
     exclusive?: string;
-    open_date?: string;
+    open_date?: Date;
     post_date?: string;
     image_concert?: string;
     title?: string;
+    period?: string;
     place?: string;
+    plrice?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
     view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
   };
   /*실제 받아온 콘서트 목록들*/
   allConcerts: any[];
   /*들어오는 총 콘서트 목록(5개)*/
   fiveConcerts: any[];
+  /*allConcerts에서 firstConcert(=fiveConcerts[0])의 인덱스*/
+  firstIdx: number;
   /*현재 화면에 보이고 있는 슬라이드의 시작점*/
   /*슬라이드 내부 컨텐츠 전체 길이*/
-  /*타겟 인덱스*/
 }
 
 /* State 초기값 설정 */
@@ -29,6 +39,7 @@ const initialState: main = {
   target: {},
   allConcerts: [],
   fiveConcerts: [],
+  firstIdx: 0,
 };
 
 const mainSlice = createSlice({
@@ -48,9 +59,21 @@ const mainSlice = createSlice({
     setFiveConcerts: (state: main, { payload }: PayloadAction<Array<any>>) => {
       state.fiveConcerts = payload;
     },
+    setFirstIdx: (state: main, { payload }: PayloadAction<number>) => {
+      state.firstIdx = payload;
+    },
+    addNumberToFirstIdx: (state: main) => {
+      state.firstIdx = state.firstIdx + 1;
+    },
   },
 });
 
-export const { setOrder, setTarget, setAllConcerts, setFiveConcerts } =
-  mainSlice.actions;
+export const {
+  setOrder,
+  setTarget,
+  setAllConcerts,
+  setFiveConcerts,
+  setFirstIdx,
+  addNumberToFirstIdx,
+} = mainSlice.actions;
 export default mainSlice.reducer;
