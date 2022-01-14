@@ -49,7 +49,7 @@ module.exports = {
           order: [
             ['activation', 'DESC'],
             ['open_date', 'ASC'],
-            ['view', 'DESC']
+            ['view', 'DESC'],
           ],
           // where: { activation: true },
         });
