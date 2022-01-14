@@ -6334,6 +6334,10 @@ a {
       margin-bottom: 3%;
       width: 90%;
       height: 20%; }
+    #concertContainer #concertsBoard #concertBoxWrapper:hover {
+      border: 3px solid #ffce63;
+      border-radius: 15px;
+      transition: 0.25s; }
   @media (max-width: 767px) {
     #concertContainer #concertsBoard::-webkit-scrollbar {
       width: 5px; } }
@@ -6429,10 +6433,16 @@ a {
     align-items: center;
     justify-content: space-between;
     width: 95%;
-    height: 90%; }
-    #concertBoxOuterContainer #concertBoxContainer #poster {
+    height: 100%; }
+    #concertBoxOuterContainer #concertBoxContainer .imgWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 20%;
-      height: 100%; }
+      height: 100%;
+      overflow: hidden; }
+      #concertBoxOuterContainer #concertBoxContainer .imgWrapper #poster {
+        height: 100%; }
     #concertBoxOuterContainer #concertBoxContainer .infos {
       display: flex;
       flex-direction: column;
@@ -6460,59 +6470,72 @@ a {
           justify-content: space-between;
           width: 50%;
           height: 100%; }
-          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
+          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 35%;
-            height: 25%;
-            background: #ffce63;
-            color: #fff;
-            font-weight: bold;
-            border-radius: 5px; }
+            flex-direction: rows;
+            justify-content: flex-start;
+            height: 30%;
+            width: 100%; }
+            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-right: 2.5%;
+              width: 35%;
+              height: 100%;
+              background: #ffce63;
+              color: #fff;
+              font-weight: bold;
+              border-radius: 5px; }
+              @media (max-width: 767px) {
+                #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+                  font-size: 1rem; } }
+              @media (min-width: 768px) {
+                #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+                  font-size: 1.5rem; } }
+              @media (min-width: 1200px) {
+                #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+                  font-size: 1.3rem; } }
+          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
+            font-weight: bold; }
             @media (max-width: 767px) {
-              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
-                font-size: 1.2rem; } }
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
+                font-size: 1.3rem; } }
             @media (min-width: 768px) {
-              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
                 font-size: 1.8rem; } }
             @media (min-width: 1200px) {
-              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #whereTag {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
                 font-size: 1.8rem; } }
-          @media (max-width: 767px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
-              font-size: 1.3rem; } }
-          @media (min-width: 768px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
-              font-size: 1.8rem; } }
-          @media (min-width: 1200px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
-              font-size: 1.8rem; } }
         #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-end;
-          width: 30%;
+          width: 45%;
           height: 100%; }
-          @media (max-width: 767px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #view {
-              font-size: 1.2rem; } }
-          @media (min-width: 768px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #view {
-              font-size: 1.6rem; } }
-          @media (min-width: 1200px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #view {
-              font-size: 1.6rem; } }
-          @media (max-width: 767px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
-              font-size: 1.2rem; } }
-          @media (min-width: 768px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
-              font-size: 1.6rem; } }
-          @media (min-width: 1200px) {
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
-              font-size: 1.6rem; } }
+          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #view {
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #view {
+                font-size: 1.2rem; } }
+            @media (min-width: 768px) {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #view {
+                font-size: 1.6rem; } }
+            @media (min-width: 1200px) {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #view {
+                font-size: 1.6rem; } }
+          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
+                font-size: 1.6rem; } }
+            @media (min-width: 768px) {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
+                font-size: 1.2rem; } }
+            @media (min-width: 1200px) {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
+                font-size: 1.2rem; } }
 
 #concertChosenBoxOuterContainer {
   display: flex;
@@ -6750,13 +6773,16 @@ a {
                 font-size: 1.6rem; } }
             @media (min-width: 768px) {
               #concertModalContainer #concertModal #AlignBox #top_box #titleAndDay h2 {
-                font-size: 2.5rem; } }
+                font-size: 2rem; } }
             @media (min-width: 1200px) {
               #concertModalContainer #concertModal #AlignBox #top_box #titleAndDay h2 {
-                font-size: 2.5rem; } }
+                font-size: 2rem; } }
           #concertModalContainer #concertModal #AlignBox #top_box #titleAndDay p {
             display: flex;
             align-items: center;
+            justify-content: right;
+            width: 15%;
+            height: 100%;
             font-weight: bold;
             color: #a0a0a0; }
             @media (max-width: 767px) {
@@ -6764,54 +6790,71 @@ a {
                 font-size: 2rem; } }
             @media (min-width: 768px) {
               #concertModalContainer #concertModal #AlignBox #top_box #titleAndDay p {
-                font-size: 3rem; } }
+                font-size: 2.5rem; } }
             @media (min-width: 1200px) {
               #concertModalContainer #concertModal #AlignBox #top_box #titleAndDay p {
-                font-size: 3rem; } }
+                font-size: 2.5rem; } }
         #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate {
           display: flex;
           align-items: center;
           width: 100%;
           height: 40%; }
-          #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate #where {
+          #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate .whereWrapper {
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 15%;
+            width: 30%;
+            height: 70%; }
+            #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate .whereWrapper #where {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-right: 1.5%;
+              width: 50%;
+              height: 100%;
+              background-color: #ffce63;
+              border-radius: 5px;
+              color: #fff;
+              font-weight: bold; }
+              @media (max-width: 767px) {
+                #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate .whereWrapper #where {
+                  font-size: 1.1rem; } }
+              @media (min-width: 768px) {
+                #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate .whereWrapper #where {
+                  font-size: 1.5rem; } }
+              @media (min-width: 1200px) {
+                #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate .whereWrapper #where {
+                  font-size: 1.5rem; } }
+          #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate .dateWrapper {
+            display: flex;
+            justify-content: right;
+            width: 70%;
             height: 70%;
-            background-color: #ffce63;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold; }
+            color: gray; }
             @media (max-width: 767px) {
-              #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate #where {
-                font-size: 1.1rem; } }
-            @media (min-width: 768px) {
-              #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate #where {
-                font-size: 1.8rem; } }
-            @media (min-width: 1200px) {
-              #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate #where {
-                font-size: 1.8rem; } }
-          #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate #date {
-            padding-left: 1%; }
-            @media (max-width: 767px) {
-              #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate #date {
+              #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate .dateWrapper #date {
                 font-size: 1.2rem; } }
             @media (min-width: 768px) {
-              #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate #date {
-                font-size: 1.8rem; } }
+              #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate .dateWrapper #date {
+                font-size: 1.5rem; } }
             @media (min-width: 1200px) {
-              #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate #date {
-                font-size: 1.8rem; } }
+              #concertModalContainer #concertModal #AlignBox #top_box #whereAndDate .dateWrapper #date {
+                font-size: 1.5rem; } }
       #concertModalContainer #concertModal #AlignBox #mid_box {
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
         width: 100%;
-        height: 30%; }
-        #concertModalContainer #concertModal #AlignBox #mid_box #poster {
-          width: 30%;
-          height: 90%; }
+        height: 30%;
+        overflow: hidden; }
+        #concertModalContainer #concertModal #AlignBox #mid_box .posterWrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          width: 30%; }
+          #concertModalContainer #concertModal #AlignBox #mid_box .posterWrapper #poster {
+            width: 100%;
+            height: 100%; }
         #concertModalContainer #concertModal #AlignBox #mid_box #right-side {
           display: flex;
           flex-direction: column;
@@ -6822,13 +6865,13 @@ a {
           #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo {
             display: flex;
             width: 100%;
-            height: 60%; }
+            height: 80%; }
             #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
               display: flex;
               flex-direction: column;
+              justify-content: space-between;
               width: 30%;
               height: 100%;
-              font-size: 1.4rem;
               font-weight: bold; }
               @media (max-width: 767px) {
                 #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
@@ -6839,13 +6882,15 @@ a {
               @media (min-width: 1200px) {
                 #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo #miniTitle {
                   font-size: 1.8rem; } }
-              #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo #miniTitle #time {
-                position: absolute;
-                top: 30%; }
+              #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo #miniTitle p {
+                justify-content: left;
+                align-items: center;
+                height: 15%; }
             #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo #answer {
               display: flex;
               flex-direction: column;
-              width: 60%;
+              justify-content: space-between;
+              width: 70%;
               height: 100%; }
               @media (max-width: 767px) {
                 #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo #answer {
@@ -6856,9 +6901,10 @@ a {
               @media (min-width: 1200px) {
                 #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo #answer {
                   font-size: 1.6rem; } }
-              #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo #answer #time_r {
-                position: absolute;
-                top: 30%; }
+              #concertModalContainer #concertModal #AlignBox #mid_box #right-side #conInfo #answer p {
+                justify-content: left;
+                align-items: center;
+                height: 15%; }
           #concertModalContainer #concertModal #AlignBox #mid_box #right-side #more {
             width: 100%;
             background-color: #ffce63;

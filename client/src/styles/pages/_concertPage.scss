@@ -102,6 +102,11 @@
       height: 20%;
       // border: 1px solid pink;
     }
+    #concertBoxWrapper:hover {
+      border: 3px solid $yellow;
+      border-radius: 15px;
+      transition: 0.25s;
+    }
   }
   /* 스크롤바 CSS */
   #concertsBoard::-webkit-scrollbar{
