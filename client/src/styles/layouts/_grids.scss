@@ -20,6 +20,22 @@
     width: 93%;
     height: 15%;
   }
+  &Chosen {
+    @extend #bottomLineOrderBox;
+    // border: 1px solid blue;
+    @include mobile-only() {
+      width: 93%;
+      height: 21%;
+    }
+    @include md() {
+      width: 93%;
+      height: 15%;
+    }
+    @include lg() {
+      width: 93%;
+      height: 35%;
+    }
+  }
 }
 #noLineOrderBox {
   position: relative;

@@ -33,12 +33,11 @@ function ConChinPostingBox() {
 
   useEffect(() => {
     getAllConcerts();
-    console.log(target);
   }, [target]);
 
   return (
     <li id='conChinPostingBox'>
-      <h1 id='curOrder'>
+      <h1 id={Object.keys(target).length === 0 ? 'curOrder' : 'curOrderChosen'}>
         {postingOrder === 'hot'
           ? '조회수 순'
           : postingOrder === 'near'
@@ -48,13 +47,25 @@ function ConChinPostingBox() {
           : null}
       </h1>
       <ConChinPostingOrderBox />
-      <div id='positingBoxWrapper'>
+      <div
+        id={
+          Object.keys(target).length === 0
+            ? 'postingBoxWrapper'
+            : 'postingBoxWrapperChosen'
+        }
+      >
         {allConcerts.map(concert => {
           return (
             <ul
-              className={target === concert.id ? 'postingChosen' : 'posting'}
+              className={
+                target.id === concert.id
+                  ? 'postingChosen'
+                  : Object.keys(target).length === 0
+                  ? 'posting'
+                  : 'postingunChosen'
+              }
               key={concert.id}
-              onClick={() => dispatch(setTarget(concert.id))}
+              onClick={() => dispatch(setTarget(concert))}
             >
               <h1 className='title'>{concert.title}</h1>
               <p className='date'>

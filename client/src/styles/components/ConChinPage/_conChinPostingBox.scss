@@ -23,11 +23,11 @@
     position: absolute;
     display: flex;
     font-size: 4rem;
-
+    transition: 0.15s all;
     @include mobile-only() {
       font-size: 2.2rem;
-      left: 4%;
-      top: 4%;
+      left: 6.5%;
+      top: 7%;
     }
     @include md() {
       font-size: 3rem;
@@ -39,8 +39,21 @@
       left: 8%;
       top: 5%;
     }
+    &Chosen {
+      @extend #curOrder;
+      // border: 1px solid blue;
+      @include mobile-only() {
+        top: 7%;
+      }
+      @include md() {
+        top: 5%;
+      }
+      @include lg() {
+        top: 13%;
+      }
+    }
   }
-  #positingBoxWrapper {
+  #postingBoxWrapper {
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -65,7 +78,22 @@
       height: 80%;
       top: 15%;
     }
+    &Chosen {
+      @extend #postingBoxWrapper;
+      @include mobile-only() {
+        height: 70%;
 
+        top: 25%;
+      }
+      @include md() {
+        height: 80%;
+        top: 15%;
+      }
+      @include lg() {
+        height: 50%;
+        top: 40%;
+      }
+    }
     .posting {
       position: relative;
       display: flex;
@@ -95,12 +123,37 @@
         transition: 0.15s all;
       }
       &Chosen {
+        z-index: 16;
         @extend .posting;
+        position: absolute;
+        display: flex;
         background-color: #ffce63;
         color: white;
         transition: 0.15s all;
+        top: 0%;
+        right: 3.3%;
+        @include mobile-only() {
+          height: 25%;
+          width: 95%;
+          right: 2%;
+        }
+        @include md() {
+          height: 25%;
+          width: 95%;
+          right: 1%;
+        }
+        @include lg() {
+          height: 100%;
+          width: 100%;
+          left: 0%;
+          top: 0%;
+        }
       }
-
+      &unChosen {
+        display: none;
+        width: 0%;
+        height: 0%;
+      }
       .title {
         position: absolute;
         display: flex;

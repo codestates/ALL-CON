@@ -20,7 +20,7 @@ a {
 
 /****** grids ******/
 /****** orderBox ******/
-#bottomLineOrderBox {
+#bottomLineOrderBox, #bottomLineOrderBoxChosen {
   position: relative;
   display: flex;
   justify-content: right;
@@ -28,17 +28,29 @@ a {
   padding-top: 1%;
   border-bottom: 2px solid black; }
   @media (max-width: 767px) {
-    #bottomLineOrderBox {
+    #bottomLineOrderBox, #bottomLineOrderBoxChosen {
       width: 93%;
       height: 21%; } }
   @media (min-width: 768px) {
-    #bottomLineOrderBox {
+    #bottomLineOrderBox, #bottomLineOrderBoxChosen {
       width: 93%;
       height: 15%; } }
   @media (min-width: 1200px) {
-    #bottomLineOrderBox {
+    #bottomLineOrderBox, #bottomLineOrderBoxChosen {
       width: 93%;
       height: 15%; } }
+  @media (max-width: 767px) {
+    #bottomLineOrderBoxChosen {
+      width: 93%;
+      height: 21%; } }
+  @media (min-width: 768px) {
+    #bottomLineOrderBoxChosen {
+      width: 93%;
+      height: 15%; } }
+  @media (min-width: 1200px) {
+    #bottomLineOrderBoxChosen {
+      width: 93%;
+      height: 35%; } }
 
 #noLineOrderBox {
   position: relative;
@@ -1249,101 +1261,159 @@ a {
         #conChinContainer #conChinExceptFooter #jumbotron {
           width: 100%;
           height: 16%; } }
-    #conChinContainer #conChinExceptFooter #postingWrapper {
+    #conChinContainer #conChinExceptFooter #postingWrapper, #conChinContainer #conChinExceptFooter #postingWrapperChosen {
       position: absolute;
       display: flex;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+      transition: 0.5s all; }
       @media (max-width: 767px) {
-        #conChinContainer #conChinExceptFooter #postingWrapper {
+        #conChinContainer #conChinExceptFooter #postingWrapper, #conChinContainer #conChinExceptFooter #postingWrapperChosen {
           width: 95%;
           height: 80%;
           top: 12%;
           padding-top: 6%; } }
       @media (min-width: 768px) {
-        #conChinContainer #conChinExceptFooter #postingWrapper {
+        #conChinContainer #conChinExceptFooter #postingWrapper, #conChinContainer #conChinExceptFooter #postingWrapperChosen {
           width: 85%;
           height: 35%;
           top: 17%;
           padding-top: 4%; } }
       @media (min-width: 1200px) {
-        #conChinContainer #conChinExceptFooter #postingWrapper {
+        #conChinContainer #conChinExceptFooter #postingWrapper, #conChinContainer #conChinExceptFooter #postingWrapperChosen {
           width: 85%;
           height: 34%;
           top: 16%;
           padding-top: 3%; } }
-    #conChinContainer #conChinExceptFooter #articleWrapper {
+      @media (max-width: 767px) {
+        #conChinContainer #conChinExceptFooter #postingWrapperChosen {
+          width: 95%;
+          height: 80%;
+          top: 12%;
+          padding-top: 6%; } }
+      @media (min-width: 768px) {
+        #conChinContainer #conChinExceptFooter #postingWrapperChosen {
+          width: 85%;
+          height: 35%;
+          top: 17%;
+          padding-top: 4%; } }
+      @media (min-width: 1200px) {
+        #conChinContainer #conChinExceptFooter #postingWrapperChosen {
+          width: 85%;
+          height: 15%;
+          top: 16%;
+          padding-top: 3%; } }
+    #conChinContainer #conChinExceptFooter #articleWrapper, #conChinContainer #conChinExceptFooter #articleWrapperChosen {
       position: absolute;
       display: flex;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+      transition: 0.5s all; }
       @media (max-width: 767px) {
-        #conChinContainer #conChinExceptFooter #articleWrapper {
+        #conChinContainer #conChinExceptFooter #articleWrapper, #conChinContainer #conChinExceptFooter #articleWrapperChosen {
           width: 95%;
           height: 40.5%;
           top: 45.5%; } }
       @media (min-width: 768px) {
-        #conChinContainer #conChinExceptFooter #articleWrapper {
+        #conChinContainer #conChinExceptFooter #articleWrapper, #conChinContainer #conChinExceptFooter #articleWrapperChosen {
           width: 85%;
           height: 50%;
           top: 57%; } }
       @media (min-width: 1200px) {
-        #conChinContainer #conChinExceptFooter #articleWrapper {
+        #conChinContainer #conChinExceptFooter #articleWrapper, #conChinContainer #conChinExceptFooter #articleWrapperChosen {
           width: 85%;
           height: 50%;
           top: 50%; } }
-  #conChinContainer #contentsWrapper {
+      @media (max-width: 767px) {
+        #conChinContainer #conChinExceptFooter #articleWrapperChosen {
+          width: 95%;
+          height: 40.5%;
+          top: 45.5%; } }
+      @media (min-width: 768px) {
+        #conChinContainer #conChinExceptFooter #articleWrapperChosen {
+          width: 85%;
+          height: 50%;
+          top: 57%; } }
+      @media (min-width: 1200px) {
+        #conChinContainer #conChinExceptFooter #articleWrapperChosen {
+          width: 85%;
+          height: 50%;
+          top: 33%; } }
+  #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen {
     position: absolute;
-    display: flex;
+    display: none;
     left: 50%;
     transform: translate(-50%, 0%); }
     @media (max-width: 767px) {
-      #conChinContainer #contentsWrapper {
-        width: 93.5%;
-        height: 60%;
-        top: 106%; } }
+      #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen {
+        width: 0%;
+        height: 0%; } }
     @media (min-width: 768px) {
-      #conChinContainer #contentsWrapper {
-        width: 85%;
-        height: 65%;
-        top: 118%; } }
+      #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen {
+        width: 0%;
+        height: 0%; } }
     @media (min-width: 1200px) {
-      #conChinContainer #contentsWrapper {
-        width: 75%;
-        height: 70%;
-        top: 106%; } }
-  #conChinContainer #fullFooter {
+      #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen {
+        width: 0%;
+        height: 0%; } }
+    #conChinContainer #contentsWrapperChosen {
+      display: flex; }
+      @media (max-width: 767px) {
+        #conChinContainer #contentsWrapperChosen {
+          width: 93.5%;
+          height: 60%;
+          top: 106%; } }
+      @media (min-width: 768px) {
+        #conChinContainer #contentsWrapperChosen {
+          width: 85%;
+          height: 65%;
+          top: 118%; } }
+      @media (min-width: 1200px) {
+        #conChinContainer #contentsWrapperChosen {
+          width: 75%;
+          height: 70%;
+          top: 90%; } }
+  #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #conChinContainer #fullFooter {
+      #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen {
         width: 100%;
         height: 22%;
         top: 175%; } }
     @media (min-width: 768px) {
-      #conChinContainer #fullFooter {
+      #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen {
         width: 100%;
         height: 19.5%;
         top: 190%; } }
     @media (min-width: 1200px) {
-      #conChinContainer #fullFooter {
+      #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen {
         width: 100%;
         height: 17.5%;
-        top: 179%; } }
-    #conChinContainer #fullFooter #footerWrapper {
+        top: 110%; } }
+    @media (max-width: 767px) {
+      #conChinContainer #fullFooterChosen {
+        top: 175%; } }
+    @media (min-width: 768px) {
+      #conChinContainer #fullFooterChosen {
+        top: 190%; } }
+    @media (min-width: 1200px) {
+      #conChinContainer #fullFooterChosen {
+        top: 165%; } }
+    #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #conChinContainer #fullFooter #footerWrapper {
+        #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #conChinContainer #fullFooter #footerWrapper {
+        #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper {
           height: 100%;
           width: 90%; } }
       @media (min-width: 1200px) {
-        #conChinContainer #fullFooter #footerWrapper {
+        #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper {
           height: 70%;
           width: 73%; } }
 
@@ -1858,26 +1928,36 @@ a {
     #conChinPostingBox {
       width: 100%;
       height: 100%; } }
-  #conChinPostingBox #curOrder {
+  #conChinPostingBox #curOrder, #conChinPostingBox #curOrderChosen {
     position: absolute;
     display: flex;
-    font-size: 4rem; }
+    font-size: 4rem;
+    transition: 0.15s all; }
     @media (max-width: 767px) {
-      #conChinPostingBox #curOrder {
+      #conChinPostingBox #curOrder, #conChinPostingBox #curOrderChosen {
         font-size: 2.2rem;
-        left: 4%;
-        top: 4%; } }
+        left: 6.5%;
+        top: 7%; } }
     @media (min-width: 768px) {
-      #conChinPostingBox #curOrder {
+      #conChinPostingBox #curOrder, #conChinPostingBox #curOrderChosen {
         font-size: 3rem;
         left: 8%;
         top: 5%; } }
     @media (min-width: 1200px) {
-      #conChinPostingBox #curOrder {
+      #conChinPostingBox #curOrder, #conChinPostingBox #curOrderChosen {
         font-size: 4rem;
         left: 8%;
         top: 5%; } }
-  #conChinPostingBox #positingBoxWrapper {
+    @media (max-width: 767px) {
+      #conChinPostingBox #curOrderChosen {
+        top: 7%; } }
+    @media (min-width: 768px) {
+      #conChinPostingBox #curOrderChosen {
+        top: 5%; } }
+    @media (min-width: 1200px) {
+      #conChinPostingBox #curOrderChosen {
+        top: 13%; } }
+  #conChinPostingBox #postingBoxWrapper, #conChinPostingBox #postingBoxWrapperChosen {
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -1888,18 +1968,30 @@ a {
     overflow: overlay;
     width: 93%; }
     @media (max-width: 767px) {
-      #conChinPostingBox #positingBoxWrapper {
+      #conChinPostingBox #postingBoxWrapper, #conChinPostingBox #postingBoxWrapperChosen {
         height: 70%;
         top: 25%; } }
     @media (min-width: 768px) {
-      #conChinPostingBox #positingBoxWrapper {
+      #conChinPostingBox #postingBoxWrapper, #conChinPostingBox #postingBoxWrapperChosen {
         height: 80%;
         top: 15%; } }
     @media (min-width: 1200px) {
-      #conChinPostingBox #positingBoxWrapper {
+      #conChinPostingBox #postingBoxWrapper, #conChinPostingBox #postingBoxWrapperChosen {
         height: 80%;
         top: 15%; } }
-    #conChinPostingBox #positingBoxWrapper .posting, #conChinPostingBox #positingBoxWrapper .postingChosen {
+    @media (max-width: 767px) {
+      #conChinPostingBox #postingBoxWrapperChosen {
+        height: 70%;
+        top: 25%; } }
+    @media (min-width: 768px) {
+      #conChinPostingBox #postingBoxWrapperChosen {
+        height: 80%;
+        top: 15%; } }
+    @media (min-width: 1200px) {
+      #conChinPostingBox #postingBoxWrapperChosen {
+        height: 50%;
+        top: 40%; } }
+    #conChinPostingBox #postingBoxWrapper .posting, #conChinPostingBox #postingBoxWrapperChosen .posting, #conChinPostingBox #postingBoxWrapper .postingChosen, #conChinPostingBox #postingBoxWrapperChosen .postingChosen {
       position: relative;
       display: flex;
       align-items: center;
@@ -1907,89 +1999,114 @@ a {
       transition: 0.15s all;
       border: 1px solid white; }
       @media (max-width: 767px) {
-        #conChinPostingBox #positingBoxWrapper .posting, #conChinPostingBox #positingBoxWrapper .postingChosen {
+        #conChinPostingBox #postingBoxWrapper .posting, #conChinPostingBox #postingBoxWrapperChosen .posting, #conChinPostingBox #postingBoxWrapper .postingChosen, #conChinPostingBox #postingBoxWrapperChosen .postingChosen {
           height: 25%;
           width: 95%;
           right: 2%; } }
       @media (min-width: 768px) {
-        #conChinPostingBox #positingBoxWrapper .posting, #conChinPostingBox #positingBoxWrapper .postingChosen {
+        #conChinPostingBox #postingBoxWrapper .posting, #conChinPostingBox #postingBoxWrapperChosen .posting, #conChinPostingBox #postingBoxWrapper .postingChosen, #conChinPostingBox #postingBoxWrapperChosen .postingChosen {
           height: 25%;
           width: 95%;
           right: 1%; } }
       @media (min-width: 1200px) {
-        #conChinPostingBox #positingBoxWrapper .posting, #conChinPostingBox #positingBoxWrapper .postingChosen {
+        #conChinPostingBox #postingBoxWrapper .posting, #conChinPostingBox #postingBoxWrapperChosen .posting, #conChinPostingBox #postingBoxWrapper .postingChosen, #conChinPostingBox #postingBoxWrapperChosen .postingChosen {
           height: 20%;
           width: 95%;
           right: 1%; } }
-      #conChinPostingBox #positingBoxWrapper .posting:hover, #conChinPostingBox #positingBoxWrapper .postingChosen:hover {
+      #conChinPostingBox #postingBoxWrapper .posting:hover, #conChinPostingBox #postingBoxWrapperChosen .posting:hover, #conChinPostingBox #postingBoxWrapper .postingChosen:hover, #conChinPostingBox #postingBoxWrapperChosen .postingChosen:hover {
         box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.1);
         cursor: pointer;
         transition: 0.15s all; }
-      #conChinPostingBox #positingBoxWrapper .postingChosen {
+      #conChinPostingBox #postingBoxWrapper .postingChosen, #conChinPostingBox #postingBoxWrapperChosen .postingChosen {
+        z-index: 16;
+        position: absolute;
+        display: flex;
         background-color: #ffce63;
         color: white;
-        transition: 0.15s all; }
-      #conChinPostingBox #positingBoxWrapper .posting .title, #conChinPostingBox #positingBoxWrapper .postingChosen .title, #conChinPostingBox #positingBoxWrapper .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #positingBoxWrapper .posting .title2, #conChinPostingBox #positingBoxWrapper .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #positingBoxWrapper .postingChosen .title2 {
+        transition: 0.15s all;
+        top: 0%;
+        right: 3.3%; }
+        @media (max-width: 767px) {
+          #conChinPostingBox #postingBoxWrapper .postingChosen, #conChinPostingBox #postingBoxWrapperChosen .postingChosen {
+            height: 25%;
+            width: 95%;
+            right: 2%; } }
+        @media (min-width: 768px) {
+          #conChinPostingBox #postingBoxWrapper .postingChosen, #conChinPostingBox #postingBoxWrapperChosen .postingChosen {
+            height: 25%;
+            width: 95%;
+            right: 1%; } }
+        @media (min-width: 1200px) {
+          #conChinPostingBox #postingBoxWrapper .postingChosen, #conChinPostingBox #postingBoxWrapperChosen .postingChosen {
+            height: 100%;
+            width: 100%;
+            left: 0%;
+            top: 0%; } }
+      #conChinPostingBox #postingBoxWrapper .postingunChosen, #conChinPostingBox #postingBoxWrapperChosen .postingunChosen {
+        display: none;
+        width: 0%;
+        height: 0%; }
+      #conChinPostingBox #postingBoxWrapper .posting .title, #conChinPostingBox #postingBoxWrapperChosen .posting .title, #conChinPostingBox #postingBoxWrapper .postingChosen .title, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .title, #conChinPostingBox #postingBoxWrapper .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapper .posting .title2, #conChinPostingBox #postingBoxWrapperChosen .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapperChosen .posting .title2, #conChinPostingBox #postingBoxWrapper .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapper .postingChosen .title2, #conChinPostingBox #postingBoxWrapperChosen .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapperChosen .postingChosen .title2 {
         position: absolute;
         display: flex;
         justify-content: left;
         align-items: center;
         left: 1%; }
         @media (max-width: 767px) {
-          #conChinPostingBox #positingBoxWrapper .posting .title, #conChinPostingBox #positingBoxWrapper .postingChosen .title, #conChinPostingBox #positingBoxWrapper .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #positingBoxWrapper .posting .title2, #conChinPostingBox #positingBoxWrapper .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #positingBoxWrapper .postingChosen .title2 {
+          #conChinPostingBox #postingBoxWrapper .posting .title, #conChinPostingBox #postingBoxWrapperChosen .posting .title, #conChinPostingBox #postingBoxWrapper .postingChosen .title, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .title, #conChinPostingBox #postingBoxWrapper .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapper .posting .title2, #conChinPostingBox #postingBoxWrapperChosen .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapperChosen .posting .title2, #conChinPostingBox #postingBoxWrapper .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapper .postingChosen .title2, #conChinPostingBox #postingBoxWrapperChosen .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapperChosen .postingChosen .title2 {
             width: 55%;
             height: 100%;
             font-size: 1.3rem; } }
         @media (min-width: 768px) {
-          #conChinPostingBox #positingBoxWrapper .posting .title, #conChinPostingBox #positingBoxWrapper .postingChosen .title, #conChinPostingBox #positingBoxWrapper .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #positingBoxWrapper .posting .title2, #conChinPostingBox #positingBoxWrapper .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #positingBoxWrapper .postingChosen .title2 {
+          #conChinPostingBox #postingBoxWrapper .posting .title, #conChinPostingBox #postingBoxWrapperChosen .posting .title, #conChinPostingBox #postingBoxWrapper .postingChosen .title, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .title, #conChinPostingBox #postingBoxWrapper .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapper .posting .title2, #conChinPostingBox #postingBoxWrapperChosen .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapperChosen .posting .title2, #conChinPostingBox #postingBoxWrapper .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapper .postingChosen .title2, #conChinPostingBox #postingBoxWrapperChosen .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapperChosen .postingChosen .title2 {
             width: 60%;
             height: 100%;
             font-size: 2rem; } }
         @media (min-width: 1200px) {
-          #conChinPostingBox #positingBoxWrapper .posting .title, #conChinPostingBox #positingBoxWrapper .postingChosen .title, #conChinPostingBox #positingBoxWrapper .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #positingBoxWrapper .posting .title2, #conChinPostingBox #positingBoxWrapper .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #positingBoxWrapper .postingChosen .title2 {
+          #conChinPostingBox #postingBoxWrapper .posting .title, #conChinPostingBox #postingBoxWrapperChosen .posting .title, #conChinPostingBox #postingBoxWrapper .postingChosen .title, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .title, #conChinPostingBox #postingBoxWrapper .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapper .posting .title2, #conChinPostingBox #postingBoxWrapperChosen .posting #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapperChosen .posting .title2, #conChinPostingBox #postingBoxWrapper .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapper .postingChosen .title2, #conChinPostingBox #postingBoxWrapperChosen .postingChosen #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinPostingBox #postingBoxWrapperChosen .postingChosen .title2 {
             width: 60%;
             height: 100%;
             font-size: 3rem; } }
-      #conChinPostingBox #positingBoxWrapper .posting .date, #conChinPostingBox #positingBoxWrapper .postingChosen .date {
+      #conChinPostingBox #postingBoxWrapper .posting .date, #conChinPostingBox #postingBoxWrapperChosen .posting .date, #conChinPostingBox #postingBoxWrapper .postingChosen .date, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .date {
         position: absolute;
         display: flex;
         align-items: center;
         height: 100%;
         text-align: center; }
         @media (max-width: 767px) {
-          #conChinPostingBox #positingBoxWrapper .posting .date, #conChinPostingBox #positingBoxWrapper .postingChosen .date {
+          #conChinPostingBox #postingBoxWrapper .posting .date, #conChinPostingBox #postingBoxWrapperChosen .posting .date, #conChinPostingBox #postingBoxWrapper .postingChosen .date, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .date {
             right: 23%;
             font-size: 0.5rem;
             width: 15%; } }
         @media (min-width: 768px) {
-          #conChinPostingBox #positingBoxWrapper .posting .date, #conChinPostingBox #positingBoxWrapper .postingChosen .date {
+          #conChinPostingBox #postingBoxWrapper .posting .date, #conChinPostingBox #postingBoxWrapperChosen .posting .date, #conChinPostingBox #postingBoxWrapper .postingChosen .date, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .date {
             font-size: 1.3rem;
             width: 5%;
             right: 29%; } }
         @media (min-width: 1200px) {
-          #conChinPostingBox #positingBoxWrapper .posting .date, #conChinPostingBox #positingBoxWrapper .postingChosen .date {
+          #conChinPostingBox #postingBoxWrapper .posting .date, #conChinPostingBox #postingBoxWrapperChosen .posting .date, #conChinPostingBox #postingBoxWrapper .postingChosen .date, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .date {
             font-size: 1.5rem;
             width: 19%;
             right: 15%; } }
-      #conChinPostingBox #positingBoxWrapper .posting .view, #conChinPostingBox #positingBoxWrapper .postingChosen .view {
+      #conChinPostingBox #postingBoxWrapper .posting .view, #conChinPostingBox #postingBoxWrapperChosen .posting .view, #conChinPostingBox #postingBoxWrapper .postingChosen .view, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .view {
         position: absolute;
         display: flex;
         align-items: center;
         height: 50%;
         right: 1%; }
         @media (max-width: 767px) {
-          #conChinPostingBox #positingBoxWrapper .posting .view, #conChinPostingBox #positingBoxWrapper .postingChosen .view {
+          #conChinPostingBox #postingBoxWrapper .posting .view, #conChinPostingBox #postingBoxWrapperChosen .posting .view, #conChinPostingBox #postingBoxWrapper .postingChosen .view, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .view {
             font-size: 1rem;
             transform: translate(0%, -60%); } }
         @media (min-width: 768px) {
-          #conChinPostingBox #positingBoxWrapper .posting .view, #conChinPostingBox #positingBoxWrapper .postingChosen .view {
+          #conChinPostingBox #postingBoxWrapper .posting .view, #conChinPostingBox #postingBoxWrapperChosen .posting .view, #conChinPostingBox #postingBoxWrapper .postingChosen .view, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .view {
             font-size: 1.2rem;
             transform: translate(0%, -35%); } }
         @media (min-width: 1200px) {
-          #conChinPostingBox #positingBoxWrapper .posting .view, #conChinPostingBox #positingBoxWrapper .postingChosen .view {
+          #conChinPostingBox #postingBoxWrapper .posting .view, #conChinPostingBox #postingBoxWrapperChosen .posting .view, #conChinPostingBox #postingBoxWrapper .postingChosen .view, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .view {
             font-size: 1.5rem;
             transform: translate(0%, -30%); } }
-      #conChinPostingBox #positingBoxWrapper .posting .place, #conChinPostingBox #positingBoxWrapper .postingChosen .place {
+      #conChinPostingBox #postingBoxWrapper .posting .place, #conChinPostingBox #postingBoxWrapperChosen .posting .place, #conChinPostingBox #postingBoxWrapper .postingChosen .place, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .place {
         position: absolute;
         display: flex;
         align-items: center;
@@ -1999,17 +2116,17 @@ a {
         text-align: right;
         transform: translate(0%, 50%); }
         @media (max-width: 767px) {
-          #conChinPostingBox #positingBoxWrapper .posting .place, #conChinPostingBox #positingBoxWrapper .postingChosen .place {
+          #conChinPostingBox #postingBoxWrapper .posting .place, #conChinPostingBox #postingBoxWrapperChosen .posting .place, #conChinPostingBox #postingBoxWrapper .postingChosen .place, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .place {
             font-size: 1rem;
             width: 23%;
             transform: translate(0%, 40%); } }
         @media (min-width: 768px) {
-          #conChinPostingBox #positingBoxWrapper .posting .place, #conChinPostingBox #positingBoxWrapper .postingChosen .place {
+          #conChinPostingBox #postingBoxWrapper .posting .place, #conChinPostingBox #postingBoxWrapperChosen .posting .place, #conChinPostingBox #postingBoxWrapper .postingChosen .place, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .place {
             font-size: 1.2rem;
             width: 20%;
             transform: translate(0%, 35%); } }
         @media (min-width: 1200px) {
-          #conChinPostingBox #positingBoxWrapper .posting .place, #conChinPostingBox #positingBoxWrapper .postingChosen .place {
+          #conChinPostingBox #postingBoxWrapper .posting .place, #conChinPostingBox #postingBoxWrapperChosen .posting .place, #conChinPostingBox #postingBoxWrapper .postingChosen .place, #conChinPostingBox #postingBoxWrapperChosen .postingChosen .place {
             font-size: 1.5rem;
             transform: translate(0%, 30%); } }
 
@@ -2396,40 +2513,40 @@ a {
     @media (min-width: 1200px) {
       #myPageContainer #myCommentWrapper {
         height: 25%; } }
-  #myPageContainer #fullFooter {
+  #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #myPageContainer #fullFooter {
+      #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen {
         width: 100%;
         height: 15.3%;
         top: 103%; } }
     @media (min-width: 768px) {
-      #myPageContainer #fullFooter {
+      #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen {
         width: 100%;
         height: 15.9%;
         top: 104%; } }
     @media (min-width: 1200px) {
-      #myPageContainer #fullFooter {
+      #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen {
         width: 100%;
         height: 13.5%;
         top: 112%; } }
-    #myPageContainer #fullFooter #footerWrapper {
+    #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #myPageContainer #fullFooter #footerWrapper {
+        #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #myPageContainer #fullFooter #footerWrapper {
+        #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper {
           height: 100%;
           width: 90%; } }
       @media (min-width: 1200px) {
-        #myPageContainer #fullFooter #footerWrapper {
+        #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper {
           height: 70%;
           width: 73%; } }
 
@@ -3229,40 +3346,40 @@ a {
                 font-size: 2rem; } }
           #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
             background-color: #000; }
-  #conChinCertificationPage #fullFooter {
+  #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #conChinCertificationPage #fullFooter {
+      #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen {
         width: 100%;
         height: 15.3%;
         top: 93%; } }
     @media (min-width: 768px) {
-      #conChinCertificationPage #fullFooter {
+      #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen {
         width: 100%;
         height: 15.9%;
         top: 103%; } }
     @media (min-width: 1200px) {
-      #conChinCertificationPage #fullFooter {
+      #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen {
         width: 100%;
         height: 18%;
         top: 97%; } }
-    #conChinCertificationPage #fullFooter #footerWrapper {
+    #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #conChinCertificationPage #fullFooter #footerWrapper {
+        #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #conChinCertificationPage #fullFooter #footerWrapper {
+        #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper {
           height: 100%;
           width: 90%; } }
       @media (min-width: 1200px) {
-        #conChinCertificationPage #fullFooter #footerWrapper {
+        #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper {
           height: 70%;
           width: 73%; } }
 
@@ -4371,32 +4488,32 @@ a {
         #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myArticleBox #titleWrapper .title2 {
           width: 85%;
           font-size: 4rem; } }
-  #myArticleBox #articleWrapper {
+  #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
     position: absolute;
     display: flex;
     height: 90%; }
     @media (max-width: 767px) {
-      #myArticleBox #articleWrapper {
+      #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
         width: 100%;
         top: 15%; } }
     @media (min-width: 768px) {
-      #myArticleBox #articleWrapper {
+      #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
         width: 90%;
         top: 15%; } }
     @media (min-width: 1200px) {
-      #myArticleBox #articleWrapper {
+      #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
         width: 85%;
         top: 11%; } }
-    #myArticleBox #articleWrapper #myMemberBoxWrapper {
+    #myArticleBox #articleWrapper #myMemberBoxWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen #myMemberBoxWrapper, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen #myMemberBoxWrapper {
       position: absolute; }
       @media (max-width: 767px) {
-        #myArticleBox #articleWrapper #myMemberBoxWrapper {
+        #myArticleBox #articleWrapper #myMemberBoxWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen #myMemberBoxWrapper, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen #myMemberBoxWrapper {
           top: 40%; } }
       @media (min-width: 768px) {
-        #myArticleBox #articleWrapper #myMemberBoxWrapper {
+        #myArticleBox #articleWrapper #myMemberBoxWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen #myMemberBoxWrapper, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen #myMemberBoxWrapper {
           top: 45%; } }
       @media (min-width: 1200px) {
-        #myArticleBox #articleWrapper #myMemberBoxWrapper {
+        #myArticleBox #articleWrapper #myMemberBoxWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen #myMemberBoxWrapper, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen #myMemberBoxWrapper {
           top: 48%; } }
   #myArticleBox #paginationWrapper {
     position: absolute;
@@ -4745,40 +4862,40 @@ a {
                 font-size: 2rem; } }
           #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
             background-color: #000; }
-  #myEditPage #fullFooter {
+  #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #myEditPage #fullFooter {
+      #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen {
         width: 100%;
         height: 15.3%;
         top: 85%; } }
     @media (min-width: 768px) {
-      #myEditPage #fullFooter {
+      #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen {
         width: 100%;
         height: 15.9%;
         top: 98%; } }
     @media (min-width: 1200px) {
-      #myEditPage #fullFooter {
+      #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen {
         width: 100%;
         height: 18%;
         top: 95%; } }
-    #myEditPage #fullFooter #footerWrapper {
+    #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #myEditPage #fullFooter #footerWrapper {
+        #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #myEditPage #fullFooter #footerWrapper {
+        #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper {
           height: 100%;
           width: 90%; } }
       @media (min-width: 1200px) {
-        #myEditPage #fullFooter #footerWrapper {
+        #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper {
           height: 70%;
           width: 73%; } }
 
@@ -5147,40 +5264,40 @@ a {
       #mainContainer #mainFindConchinWrapper {
         top: 250%;
         height: 80%; } }
-  #mainContainer #fullFooter {
+  #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #mainContainer #fullFooter {
+      #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen {
         width: 100%;
         height: 30%;
         top: 210%; } }
     @media (min-width: 768px) {
-      #mainContainer #fullFooter {
+      #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen {
         width: 100%;
         height: 30%;
         top: 270%; } }
     @media (min-width: 1200px) {
-      #mainContainer #fullFooter {
+      #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen {
         width: 100%;
         height: 38%;
         top: 335%; } }
-    #mainContainer #fullFooter #mainFooterWrapper {
+    #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #mainContainer #fullFooter #mainFooterWrapper {
+        #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #mainContainer #fullFooter #mainFooterWrapper {
+        #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 1200px) {
-        #mainContainer #fullFooter #mainFooterWrapper {
+        #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper {
           height: 70%;
           width: 79%; } }
 
@@ -6088,16 +6205,16 @@ a {
       #concertContainer #lineOrderWrapper {
         left: 12.5%;
         width: 37.5%; } }
-    #concertContainer #lineOrderWrapper #bottomLineOrderBox {
+    #concertContainer #lineOrderWrapper #bottomLineOrderBox, #concertContainer #lineOrderWrapper #bottomLineOrderBoxChosen {
       display: flex;
       align-items: center;
       width: 100%;
       height: 100%; }
-      #concertContainer #lineOrderWrapper #bottomLineOrderBox h1 {
+      #concertContainer #lineOrderWrapper #bottomLineOrderBox h1, #concertContainer #lineOrderWrapper #bottomLineOrderBoxChosen h1 {
         position: absolute;
         left: 1%;
         font-size: 2rem; }
-      #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy {
+      #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy, #concertContainer #lineOrderWrapper #bottomLineOrderBoxChosen .orderBy {
         position: relative;
         display: flex;
         align-items: center;
@@ -6106,21 +6223,21 @@ a {
         font-weight: bold;
         margin-right: 0.5%; }
         @media (max-width: 767px) {
-          #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy {
+          #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy, #concertContainer #lineOrderWrapper #bottomLineOrderBoxChosen .orderBy {
             width: 19%;
             height: 50%;
             font-size: 1.6rem; } }
         @media (min-width: 768px) {
-          #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy {
+          #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy, #concertContainer #lineOrderWrapper #bottomLineOrderBoxChosen .orderBy {
             width: 12%;
             height: 50%;
             font-size: 1.8rem; } }
         @media (min-width: 1200px) {
-          #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy {
+          #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy, #concertContainer #lineOrderWrapper #bottomLineOrderBoxChosen .orderBy {
             width: 13%;
             height: 50%;
             font-size: 1.5rem; } }
-        #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy:hover {
+        #concertContainer #lineOrderWrapper #bottomLineOrderBox .orderBy:hover, #concertContainer #lineOrderWrapper #bottomLineOrderBoxChosen .orderBy:hover {
           background-color: #ffce63;
           color: white;
           cursor: pointer;
@@ -6199,40 +6316,40 @@ a {
       #concertContainer #modalBoard #concertWrapper img {
         width: 100%;
         opacity: 50%; }
-  #concertContainer #fullFooter {
+  #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #concertContainer #fullFooter {
+      #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen {
         width: 100%;
         height: 30%;
         top: 130%; } }
     @media (min-width: 768px) {
-      #concertContainer #fullFooter {
+      #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen {
         width: 100%;
         height: 30%;
         top: 130%; } }
     @media (min-width: 1200px) {
-      #concertContainer #fullFooter {
+      #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen {
         width: 100%;
         height: 38%;
         top: 138%; } }
-    #concertContainer #fullFooter #footerWrapper {
+    #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #concertContainer #fullFooter #footerWrapper {
+        #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #concertContainer #fullFooter #footerWrapper {
+        #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 1200px) {
-        #concertContainer #fullFooter #footerWrapper {
+        #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper {
           height: 70%;
           width: 79%; } }
 
@@ -7850,40 +7967,40 @@ a {
           #landingContainer #bottomBox #bottomAlignBox button {
             width: 30%;
             font-size: 2rem; } }
-  #landingContainer #fullFooter {
+  #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #landingContainer #fullFooter {
+      #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen {
         width: 100%;
         height: 30%;
         top: 330%; } }
     @media (min-width: 768px) {
-      #landingContainer #fullFooter {
+      #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen {
         width: 100%;
         height: 30%;
         top: 450%; } }
     @media (min-width: 1200px) {
-      #landingContainer #fullFooter {
+      #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen {
         width: 100%;
         height: 38%;
         top: 610%; } }
-    #landingContainer #fullFooter #landingFooterWrapper {
+    #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #landingContainer #fullFooter #landingFooterWrapper {
+        #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #landingContainer #fullFooter #landingFooterWrapper {
+        #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 1200px) {
-        #landingContainer #fullFooter #landingFooterWrapper {
+        #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper {
           height: 70%;
           width: 79%; } }
 

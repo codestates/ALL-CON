@@ -12,7 +12,7 @@ import { useState, useEffect, useRef } from 'react';
 function ConChinPostingOrderBox() {
   const dispatch = useDispatch();
   const { postingOrder } = useSelector((state: RootState) => state.conChin);
-
+  const { target } = useSelector((state: RootState) => state.main);
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
     try {
@@ -30,11 +30,16 @@ function ConChinPostingOrderBox() {
 
   useEffect(() => {
     getAllConcerts();
-    console.log(postingOrder);
   }, [postingOrder]);
 
   return (
-    <div id='bottomLineOrderBox'>
+    <div
+      id={
+        Object.keys(target).length === 0
+          ? 'bottomLineOrderBox'
+          : 'bottomLineOrderBoxChosen'
+      }
+    >
       <p
         className='order'
         onClick={() => {

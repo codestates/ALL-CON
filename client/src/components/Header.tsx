@@ -18,6 +18,7 @@ import {
   setScrollCount,
   setTimerMessage,
 } from '../store/HeaderSlice';
+import { setTarget } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -34,6 +35,7 @@ function Header() {
   const { isScrolled, scrollCount, timerMessage } = useSelector(
     (state: RootState) => state.header,
   );
+  const { target } = useSelector((state: RootState) => state.main);
 
   /* 타이머 변수 설정: 현재 시간 */
   let now = new Date();
@@ -50,7 +52,7 @@ function Header() {
   if (now.getHours() >= 9) {
     openHours -= now.getHours();
   } else {
-    openHours = (10 - now.getHours()) * 2;
+    openHours = (11 - now.getHours()) * 2;
   }
   let openTime = openHours * hr;
   let nowTime = nowHours + nowMinutes + nowSeconds;
@@ -139,6 +141,11 @@ function Header() {
   /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
   const showTimer = () => {
     dispatch(setIsScrolled(false));
+    dispatch(setTarget({}));
+  };
+  /* 타겟 초기화 핸들러 */
+  const resetTarget = () => {
+    dispatch(setTarget({}));
   };
 
   return (
@@ -191,13 +198,13 @@ function Header() {
           )}
         </div>
         <div id='hiddenMenuBox'>
-          <Link to='/main'>
+          <Link to='/main' onClick={resetTarget}>
             <p className='menu'>홈</p>
           </Link>
-          <Link to='/concert'>
+          <Link to='/concert' onClick={resetTarget}>
             <p className='menu'>콘서트</p>
           </Link>
-          <Link to='/conchin'>
+          <Link to='/conchin' onClick={resetTarget}>
             <p className='menu'>콘친 찾기</p>
           </Link>
         </div>
