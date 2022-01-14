@@ -22,6 +22,7 @@ import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Jumbotron() {
+  console.log('확인');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { order } = useSelector((state: RootState) => state.main);
@@ -113,9 +114,7 @@ function Jumbotron() {
 
   useEffect(() => {
     getAllConcerts();
-    getFiveConcerts();
-    getTargetPoster();
-  }, [fiveConcerts]);
+  }, []);
 
   return (
     <div id='jumboContainer'>

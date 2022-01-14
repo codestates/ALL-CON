@@ -14,7 +14,7 @@ export interface main {
     title?: string;
     period?: string;
     place?: string;
-    plrice?: string;
+    price?: string;
     running_time?: string;
     rating?: string;
     link?: string;
@@ -23,7 +23,7 @@ export interface main {
     createdAt?: Date;
     updatedAt?: Date;
   };
-  /*실제 받아온 콘서트 목록들*/
+  /* 실제 받아온 콘서트 목록들 */
   allConcerts: any[];
   /*들어오는 총 콘서트 목록(5개)*/
   fiveConcerts: any[];

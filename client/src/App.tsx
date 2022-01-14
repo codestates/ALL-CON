@@ -41,6 +41,7 @@ function App() {
     confirmNumberModal,
     resetPasswordModal,
     alertModal,
+    concertModal,
     sideMenuModal,
     myDropDown,
   } = useSelector((state: RootState) => state.modal);
@@ -58,7 +59,7 @@ function App() {
       {myDropDown && <MyDropDown />}
       {confirmNumberModal && <ConfirmNumberModal />}
       {resetPasswordModal && <ResetPasswordModal />}
-      {/*<ConcertModal /> */}
+      {concertModal && <ConcertModal />}
       {/* <ConChinWritingModal /> */}
       {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
@@ -72,9 +73,8 @@ function App() {
         <Route path='/conchin/*' element={<ConChinPage />} />
         <Route path='/callbackGoogle/*' element={<CallbackGooglePage />} />
         <Route path='/callbackKakao/*' element={<CallbackKaKaoPage />} />
-        <Route path='/landing/*' element={<LandingPage />} />
-        {/* <Route path='myEdit/*' element={<MyEditPage />} /> */}
-        {/* <Route path='conchinCert/*' element={<ConChinCertificationPage />} /> */}
+        <Route path='myEdit/*' element={<MyEditPage />} />
+        <Route path='conchinCert/*' element={<ConChinCertificationPage />} />
       </Routes>
     </div>
   );

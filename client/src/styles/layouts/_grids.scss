@@ -20,6 +20,22 @@
     width: 93%;
     height: 15%;
   }
+  &Chosen {
+    @extend #bottomLineOrderBox;
+    // border: 1px solid blue;
+    @include mobile-only() {
+      width: 93%;
+      height: 21%;
+    }
+    @include md() {
+      width: 93%;
+      height: 15%;
+    }
+    @include lg() {
+      width: 93%;
+      height: 35%;
+    }
+  }
 }
 #noLineOrderBox {
   position: relative;
@@ -76,14 +92,21 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 80%;
+  width: 90%;
   height: 75%;
   left: 50%;
   transform: translate(-50%, 0%);
-  // border: 1px solid blue;
+  // border: 1px solid red;
+  &Chosen {
+    @extend #articleBox;
+    width: 100%;
+    height: 50%;
+    // border: 1px solid blue;
+  }
   #box {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
 
@@ -100,16 +123,40 @@
     @include lg() {
       border-radius: 10px;
       width: 100%;
-      height: 50%;
+      height: 100%;
     }
-    // border:1px solid red;
+    // border: 1px solid red;
     padding: 1%;
+    &Chosen {
+      @extend #box;
+      flex-direction: column;
+      justify-content: center;
+      // border: 1px solid blue;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      @include mobile-only() {
+        border-radius: 5px;
+        width: 100%;
+        height: 30%;
+      }
+      @include md() {
+        border-radius: 10px;
+        width: 100%;
+        height: 40%;
+      }
+      @include lg() {
+        border-radius: 10px;
+        width: 100%;
+        height: 90%;
+      }
+    }
     .article {
       position: relative;
       display: flex;
       align-items: center;
       width: 30%;
       padding-bottom: 30%;
+      margin: 1%;
       // border:1px solid green;
       @include mobile-only() {
         border-radius: 5px;
@@ -594,7 +641,7 @@
 /***** headerMenu *****/
 
 #menuWrapper {
-  z-index: 15;
+  z-index: 16;
   position: absolute;
   display: flex;
   align-items: center;
@@ -710,11 +757,12 @@
   }
   .profile {
     position: relative;
+    display: block;
+    margin: auto;
     border-radius: 100%;
     border: solid #ffce63;
     cursor: pointer;
     object-fit: cover;
-
     right: 0%;
 
     @include mobile-only() {

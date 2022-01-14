@@ -19,21 +19,23 @@ const autoAlarm = schedule.scheduleJob('00 20 1 * * *', async () => {
 });
 
 // 콘서트 클리너 실행
-const autoConcertCleaner = schedule.scheduleJob('00 00 * * * *', async () => {
-  concertCleaner();
-  console.log('24시간마다 티켓 오픈일이 지난 콘서트 삭제중(non-activation)..');
-});
+// const autoConcertCleaner = schedule.scheduleJob(
+//   '00 03 * * * *',
+//   async () => {
+//     concertCleaner()
+//     console.log('24시간마다 티켓 오픈일이 지난 콘서트 삭제중(non-activation)..')
+//   }
+// )
 
 /* Auto Crawling */
 // const autoCrawling = schedule.scheduleJob(
-//   '00 05 * * * *',
+//   '00 00 9 * * *',
 //   async () => {
 //     console.log('ec2 테스트')
 //     await crawler()
-//     console.log('1시간마다 크롤링중..')
+//     console.log('24시간마다 크롤링중..')
 //   }
 // );
-
 /* Middleware */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -47,7 +49,6 @@ app.use(
 );
 
 // ****************** multer 테스트 ************************ //
-
 const multer = require('multer');
 app.use('/uploads', express.static('uploads'));
 
@@ -68,7 +69,6 @@ const upload = multer({
 });
 
 const { uploadFile, getFileStream } = require('./s3');
-
 app.get('/upload/:key', (req, res) => {
   console.log('---- upload get 진입확인 ----');
 
@@ -99,7 +99,6 @@ app.post('/upload', upload.single('img'), async (req, res) => {
 });
 
 // ****************** multer 테스트 ************************ //
-
 /* Routing */
 app.use('/', router.authRouter);
 app.use('/oauth', router.oauthRouter);
