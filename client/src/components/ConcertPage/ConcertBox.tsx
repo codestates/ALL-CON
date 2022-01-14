@@ -1,20 +1,62 @@
-import poster from '../../images/hiphop2.gif';
+/* Store import */
+import { RootState } from '../../index';
+/* Library import */
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
-function ConcertBox() {
+/* props Type 설정 */
+interface concertProps { 
+  concert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    plrice?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }
+}
+
+function ConcertBox( { concert }: concertProps ) {
+  // /* 전역 상태 */
+  // const { target } = useSelector((state: RootState) => state.main);
+  // /* 클릭 상태 */
+  // const [ isChosen, setIsChosen ] = useState<boolean>(false);
+
+  // useEffect(() => {
+  //   if(target.id === concert.id) setIsChosen(true);
+  //   else {
+  //     setIsChosen(false);
+  //   }
+  // }, [target]);
+
   return (
     <div id='concertBoxOuterContainer'>
       <div id='concertBoxContainer'>
-        <img id='poster' src={poster} alt='포스터'></img>
+        <div className='imgWrapper'>
+          <img id='poster' src={concert.image_concert} alt='포스터'/>
+        </div>
         <div className='infos'>
-          <h2>앙코르 핸즈포히어로 힙합페스티발</h2>
+          <h2>{concert.title}</h2>
           <div className='miniBox'>
             <div id='left'>
-              <p id='whereTag'>YES24</p>
-              <p id='date'>202x.xx.xx~202x.xx.xx</p>
+              {(concert.exclusive==='') && <div className='tagWrapper'><p id='whereTag'>인터파크</p><p id='whereTag'>YES24</p></div>}
+              {(concert.exclusive==='인터파크') && <div className='tagWrapper'><p id='whereTag'>인터파크</p></div>}
+              {(concert.exclusive==='YES24') && <div className='tagWrapper'><p id='whereTag'>YES24</p></div>}
+              <p id='date'>{concert.post_date}</p>
             </div>
             <div id='right'>
-              <p id='view'>조회수 1,715</p>
-              <p id='place'>KBS 아레나</p>
+              <p id='view'>{concert.view}</p>
+              <p id='place'>{concert.place}</p>
             </div>
           </div>
         </div>

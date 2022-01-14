@@ -110,7 +110,7 @@ function Jumbotron() {
             <img id='left' src={left} alt='왼쪽 화살표'></img>
             <img id='right' src={right} alt='오른쪽 화살표'></img>
           </div>
-          <PosterSlide />
+          {/* <PosterSlide /> */}
         </div>
       </div>
     </div>

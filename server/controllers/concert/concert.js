@@ -4,7 +4,7 @@ const { Concerts } = require('../../models');
 module.exports = {
   get: async (req, res) => {
     try {
-      // order: 조회수(view), 최신순(createdAt), 임박순(near)
+      // order: 조회수(view), 최신순(new), 임박순(near)
       const { order } = req.query;
 
       // 만약 최신순 정렬이라면, 다음을 실행한다
@@ -22,10 +22,10 @@ module.exports = {
             'view',
           ],
           order: [
-            ['createdAt', 'DESC'],
-            ['view', 'DESC'],
+            ['post_date', 'DESC'],
+            ['view', 'DESC']
           ],
-          where: { activation: true },
+          // where: { activation: true },
         });
         res
           .status(200)
@@ -49,10 +49,11 @@ module.exports = {
             'view',
           ],
           order: [
+            ['activation', 'DESC'],
             ['open_date', 'ASC'],
-            ['view', 'DESC'],
+            ['view', 'DESC']
           ],
-          where: { activation: true },
+          // where: { activation: true },
         });
         res
           .status(200)
@@ -77,9 +78,8 @@ module.exports = {
           ],
           order: [
             ['view', 'DESC'],
-            ['createdAt', 'DESC'],
           ],
-          where: { activation: true },
+          // where: { activation: true },
         });
         res
           .status(200)

@@ -1,16 +1,51 @@
-import poster from '../../../images/hiphop2.gif';
 import map from '../../../images/map.jpg';
 import xButton from '../../../images/xButton.png';
 /* Store import */
-import { showConcertModal, showAlertModal, insertAlertText } from '../../../store/ModalSlice';
+import { RootState } from '../../../index';
+import { showConcertModal } from '../../../store/ModalSlice';
 /* Library import */
-import axios, { AxiosError } from 'axios';
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 function ConcertModal() {
   const dispatch = useDispatch();
+  const { target } = useSelector((state: RootState) => state.main);
   
+  useEffect(() => {
+  }, [target]);
+  console.log(target);
+
+  /* D-DAY 계산기 */
+  const dayCalculator = (openDate?: Date): string => {
+    if(openDate){
+      const today = new Date();
+      const targetDay = new Date(openDate);
+      const gap = targetDay.getTime() - today.getTime();
+      const count = Math.ceil(gap / (1000 * 60 * 60 * 24));
+      /* 남은 일수에 따라 디데이 리턴 */
+      if(count === 1) return 'D-DAY';
+      else if(count < 1) return '';
+      else return 'D-'+(count-1);
+    }
+    return '';
+  }
+
+  /* Date 객체 형변환 */
+  const dayFormatter = (openDate?: Date): string => {
+    if(openDate){
+      const strOpenDate = String(openDate);
+
+      const year = strOpenDate.substring(0,4);
+      const month = strOpenDate.substring(5,7);
+      const date = strOpenDate.substring(8,10);
+      const hour = strOpenDate.substring(11,13);
+      const minute = strOpenDate.substring(14,16);
+
+      return String(year+'년 '+month+'월 '+date+'일 '+hour+' : '+minute);
+    }
+    return '';
+  }
+
   return (
     <div id='concertModalContainer'>
       <div id='background'></div>
@@ -21,25 +56,35 @@ function ConcertModal() {
         <div id='AlignBox'>
           <div id='top_box'>
             <div id='titleAndDay'>
-              <h2>앙코르 핸즈포히어로 힙합페스티발</h2>
-              <p>D-5</p>
+              <h2>{target.title}</h2>
+              <p>{dayCalculator(target.open_date)}</p>
             </div>
             <div id='whereAndDate'>
-              <p id='where'>YES24</p>
-              <p id='date'>등록일: 202x.xx.xx | 조회수: 1,715</p>
+              {target.exclusive==='' && <div className='whereWrapper'><p id='where'>인터파크</p><p id='where'>YES24</p></div>}
+              {target.exclusive==='인터파크' && <div className='whereWrapper'><p id='where'>인터파크</p></div>}
+              {target.exclusive==='YES24' && <div className='whereWrapper'><p id='where'>YES24</p></div>}
+              <div className='dateWrapper'>
+                <p id='date'>등록일: {target.post_date}  |  조회수: {target.view}</p>
+              </div>
             </div>
           </div>
           <div id='mid_box'>
-            <img id='poster' src={poster} alt='포스터'></img>
+            <div className='posterWrapper'>
+              <img id='poster' src={target.image_concert} alt='posterImg'/>
+            </div>
             <div id='right-side'>
               <div id='conInfo'>
                 <div id='miniTitle'>
-                  <p id='place'>장소</p>
-                  <p id='time'>공연일시</p>
+                  {target.open_date && <p>티켓오픈일</p>}
+                  {target.running_time && <p>관람시간</p>}
+                  {target.rating && <p>등급</p>}
+                  {target.place && <p>공연장소</p>}
                 </div>
                 <div id='answer'>
-                  <p id='place_r'>KBS 아레나</p>
-                  <p id='time_r'>202x년 xx월 xx일 (x) 오후 x시</p>
+                  {target.open_date && <p>{dayFormatter(target.open_date)}</p>}
+                  {target.running_time && <p>{target.running_time}</p>}
+                  {target.rating && <p>{target.rating}</p>}
+                  {target.place && <p>{target.place}</p>}
                 </div>
               </div>
               <button id='more'>자세히 보기</button>
