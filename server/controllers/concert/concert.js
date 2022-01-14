@@ -4,7 +4,7 @@ const { Concerts } = require('../../models');
 module.exports = {
   get: async (req, res) => {
     try {
-      // order: 조회수(view), 최신순(createdAt), 임박순(near)
+      // order: 조회수(view), 최신순(new), 임박순(near)
       const { order } = req.query;
 
       // 만약 최신순 정렬이라면, 다음을 실행한다
@@ -22,17 +22,15 @@ module.exports = {
             'view',
           ],
           order: [
-            ['createdAt', 'DESC'],
+            ['post_date', 'DESC'],
             ['view', 'DESC'],
           ],
-          where: { activation: true },
+          // where: { activation: true },
         });
-        res
-          .status(200)
-          .json({
-            data: { concertInfo: concertInfo },
-            message: 'Concerts Order By New!',
-          });
+        res.status(200).json({
+          data: { concertInfo: concertInfo },
+          message: 'Concerts Order By New!',
+        });
       }
       // 만약 티켓오픈일 임박순 정렬이라면, 다음을 실행한다
       else if (order === 'near') {
@@ -49,17 +47,16 @@ module.exports = {
             'view',
           ],
           order: [
+            ['activation', 'DESC'],
             ['open_date', 'ASC'],
             ['view', 'DESC'],
           ],
-          where: { activation: true },
+          // where: { activation: true },
         });
-        res
-          .status(200)
-          .json({
-            data: { concertInfo: concertInfo },
-            message: 'Concerts Order By Near!',
-          });
+        res.status(200).json({
+          data: { concertInfo: concertInfo },
+          message: 'Concerts Order By Near!',
+        });
       }
       // 만약 그외의 경우엔 조회수 순 정렬 (Default)
       else {
@@ -75,18 +72,13 @@ module.exports = {
             'place',
             'view',
           ],
-          order: [
-            ['view', 'DESC'],
-            ['createdAt', 'DESC'],
-          ],
-          where: { activation: true },
+          order: [['view', 'DESC']],
+          // where: { activation: true },
         });
-        res
-          .status(200)
-          .json({
-            data: { concertInfo: concertInfo },
-            message: 'Concerts Order By View!',
-          });
+        res.status(200).json({
+          data: { concertInfo: concertInfo },
+          message: 'Concerts Order By View!',
+        });
       }
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });

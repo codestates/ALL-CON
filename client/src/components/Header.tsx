@@ -18,6 +18,7 @@ import {
   setScrollCount,
   setTimerMessage,
 } from '../store/HeaderSlice';
+import { setTarget } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -34,6 +35,7 @@ function Header() {
   const { isScrolled, scrollCount, timerMessage } = useSelector(
     (state: RootState) => state.header,
   );
+  const { target } = useSelector((state: RootState) => state.main);
 
   /* 타이머 변수 설정: 현재 시간 */
   let now = new Date();
@@ -45,15 +47,19 @@ function Header() {
   let nowSeconds = now.getSeconds() * sc;
 
   /* 타이머 변수 설정: 오픈 시간 */
-  let openHours = 53;
-  if (nowHours >= 9) openHours -= now.getHours();
-  else openHours = 9 - now.getHours();
+  let openHours = 65;
+
+  if (now.getHours() >= 9) {
+    openHours -= now.getHours();
+  } else {
+    openHours = (11 - now.getHours()) * 2;
+  }
   let openTime = openHours * hr;
   let nowTime = nowHours + nowMinutes + nowSeconds;
   let distance = openTime - nowTime;
 
   /* 타이머 변수 설정: 남은 시간 */
-  let dHours: string | number = Math.floor(distance / hr);
+  let dHours: string | number = Math.floor(distance / hr / 2);
   let dMinutes: string | number = Math.floor((distance % hr) / mt);
   let dSeconds: string | number = Math.floor((distance % mt) / sc);
 
@@ -97,7 +103,7 @@ function Header() {
         distance = openTime - nowTime;
 
         /* 남은 시, 초, 분 */
-        dHours = Math.floor(distance / hr);
+        dHours = Math.floor(distance / hr / 2);
         dMinutes = Math.floor((distance % hr) / mt);
         dSeconds = Math.floor((distance % mt) / sc);
         /* 한자리 수일 경우 0 붙이기 */
@@ -135,6 +141,11 @@ function Header() {
   /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
   const showTimer = () => {
     dispatch(setIsScrolled(false));
+    dispatch(setTarget({}));
+  };
+  /* 타겟 초기화 핸들러 */
+  const resetTarget = () => {
+    dispatch(setTarget({}));
   };
 
   return (
@@ -187,13 +198,13 @@ function Header() {
           )}
         </div>
         <div id='hiddenMenuBox'>
-          <Link to='/main'>
+          <Link to='/main' onClick={resetTarget}>
             <p className='menu'>홈</p>
           </Link>
-          <Link to='/concert'>
+          <Link to='/concert' onClick={resetTarget}>
             <p className='menu'>콘서트</p>
           </Link>
-          <Link to='/conchin'>
+          <Link to='/conchin' onClick={resetTarget}>
             <p className='menu'>콘친 찾기</p>
           </Link>
         </div>
