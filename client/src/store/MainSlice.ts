@@ -2,19 +2,28 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 /* State Type 설정 */
 export interface main {
-  /*hot,new,near */
+  /* view, new, near */
   order: string;
-  /*현재 선택된 포스터*/
+  /* 현재 선택된 포스터 */
   target: {
+    id?: number;
     exclusive?: string;
-    open_date?: string;
+    open_date?: Date;
     post_date?: string;
     image_concert?: string;
     title?: string;
+    period?: string;
     place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
     view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
   };
-  /*실제 받아온 콘서트 목록들*/
+  /* 실제 받아온 콘서트 목록들 */
   allConcerts: any[];
   /*들어오는 총 콘서트 목록(5개)*/
   fiveConcerts: any[];

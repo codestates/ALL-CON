@@ -69,8 +69,6 @@ function MyArticleBox() {
                 <p className='text'>소심한 성격입니다. 조용히..</p>
               </div>
             </ul>
-          </div>
-          <div id='box'>
             <ul className='article'>
               <img
                 className='thumbNail'
@@ -131,6 +129,7 @@ function MyArticleBox() {
           </div>
         </div>
       </div>
+
       <div id='paginationWrapper'>
         <MyArticlePagination />
       </div>

@@ -4,8 +4,8 @@
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-
-  // border: 1px solid red;
+  transition: all 0.15s;
+  // border: 3px solid red;
   @include mobile-only() {
     border-top: 5px solid $yellow;
     height: 170%;
@@ -20,6 +20,25 @@
     border-top: 10px solid $yellow;
     height: 89.1%;
     top: 10%;
+  }
+  &Chosen {
+    @extend #conChinArticleBox;
+
+    @include mobile-only() {
+      border-top: 5px solid $yellow;
+      height: 170%;
+      top: 15%;
+    }
+    @include md() {
+      border-top: 10px solid $yellow;
+      height: 139%;
+      top: 14%;
+    }
+    @include lg() {
+      border-top: 10px solid $yellow;
+      height: 100%;
+      top: 10%;
+    }
   }
   #paginationWrapper {
     position: absolute;
@@ -38,6 +57,9 @@
     @include lg() {
       top: 75%;
       height: 25%;
+    }
+    &Chosen {
+      display: none;
     }
   }
 }
