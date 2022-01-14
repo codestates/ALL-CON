@@ -1,3 +1,5 @@
+/* Config import */
+import { REACT_APP_API_URL } from '../../config';
 /* CSS import */
 import defaultImage from '../../images/default_image.jpg';
 import viewImage from '../../images/view.png';
@@ -6,7 +8,10 @@ import ConChinArticleOrderBox from './ConChinArticleOrderBox';
 import ConChinArticlePagination from './ConChinArticlePagination';
 /* Store import */
 import { RootState } from '../../index';
+import { setTarget, setAllConcerts } from '../../store/MainSlice';
+import { setPostingOrder } from '../../store/ConChinSlice';
 /* Library import */
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinArticleBox() {

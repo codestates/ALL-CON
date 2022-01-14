@@ -22,6 +22,7 @@ function ConChinPostingOrderBox() {
       );
       if (response.data) {
         dispatch(setAllConcerts(response.data.data.concertInfo));
+        resetTarget();
       }
     } catch (err) {
       console.log(err);
@@ -32,6 +33,10 @@ function ConChinPostingOrderBox() {
     getAllConcerts();
   }, [postingOrder]);
 
+  /* 타겟 초기화 핸들러 */
+  const resetTarget = () => {
+    dispatch(setTarget({}));
+  };
   return (
     <div
       id={

@@ -58,11 +58,11 @@
     @include lg() {
       width: 30%;
       height: 85%;
-      border-radius: 5px;
+      border-radius: 10px;
     }
     #image {
       width: 50%;
-      border-radius: 5px;
+      border-radius: 20px;
     }
     .box {
       display: flex;
@@ -123,6 +123,7 @@
         border: 0;
         border-radius: 5px;
         font-weight: bold;
+        cursor: pointer;
       }
       #no2 {
         color: #fff;
@@ -132,6 +133,7 @@
         border: 0;
         border-radius: 5px;
         font-weight: bold;
+        cursor: pointer;
       }
     }
   }

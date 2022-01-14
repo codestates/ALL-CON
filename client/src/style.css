@@ -706,8 +706,9 @@ a {
     @media (min-width: 1200px) {
       #loginWrapper .profile {
         border-width: 0.35rem;
-        width: 4.5rem;
-        height: 4.5rem; } }
+        width: 3.5rem;
+        height: 3.5rem;
+        bottom: 3%; } }
     #loginWrapper .profile:hover {
       cursor: pointer; }
 
@@ -1395,7 +1396,7 @@ a {
         #conChinContainer #contentsWrapperChosen {
           width: 75%;
           height: 70%;
-          top: 75%; } }
+          top: 77%; } }
   #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen {
     position: absolute;
     display: flex;
@@ -1611,27 +1612,37 @@ a {
   @media (min-width: 1200px) {
     #conChinArticleBoxChosen {
       border-top: 10px solid #ffce63;
-      height: 100%;
+      height: 70%;
       top: 10%; } }
-  #conChinArticleBox #paginationWrapper, #conChinArticleBoxChosen #paginationWrapper {
+  #conChinArticleBox #paginationWrapper, #conChinArticleBoxChosen #paginationWrapper, #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
     position: absolute;
     display: flex;
     align-items: center;
     width: 100%; }
     @media (max-width: 767px) {
-      #conChinArticleBox #paginationWrapper, #conChinArticleBoxChosen #paginationWrapper {
+      #conChinArticleBox #paginationWrapper, #conChinArticleBoxChosen #paginationWrapper, #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
         top: 78%;
         height: 20%; } }
     @media (min-width: 768px) {
-      #conChinArticleBox #paginationWrapper, #conChinArticleBoxChosen #paginationWrapper {
+      #conChinArticleBox #paginationWrapper, #conChinArticleBoxChosen #paginationWrapper, #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
         top: 79%;
         height: 25%; } }
     @media (min-width: 1200px) {
-      #conChinArticleBox #paginationWrapper, #conChinArticleBoxChosen #paginationWrapper {
-        top: 75%;
+      #conChinArticleBox #paginationWrapper, #conChinArticleBoxChosen #paginationWrapper, #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
+        top: 83%;
         height: 25%; } }
-    #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
-      display: none; }
+    @media (max-width: 767px) {
+      #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
+        top: 78%;
+        height: 20%; } }
+    @media (min-width: 768px) {
+      #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
+        top: 79%;
+        height: 25%; } }
+    @media (min-width: 1200px) {
+      #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
+        top: 65%;
+        height: 20%; } }
 
 #conChinmemberBoxWrapper {
   position: absolute;
@@ -1933,22 +1944,22 @@ a {
       #contentBox #commentWrapper {
         top: 40%;
         height: 55%; } }
-  #contentBox #paginationWrapper {
+  #contentBox #paginationWrapper, #contentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #contentBox #paginationWrapperChosen, #contentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #contentBox #paginationWrapperChosen {
     position: absolute;
     display: flex;
     align-items: center;
     width: 90%;
     height: 20%; }
     @media (max-width: 767px) {
-      #contentBox #paginationWrapper {
+      #contentBox #paginationWrapper, #contentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #contentBox #paginationWrapperChosen, #contentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #contentBox #paginationWrapperChosen {
         top: 82.5%;
         height: 20%; } }
     @media (min-width: 768px) {
-      #contentBox #paginationWrapper {
+      #contentBox #paginationWrapper, #contentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #contentBox #paginationWrapperChosen, #contentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #contentBox #paginationWrapperChosen {
         top: 115%;
         height: 22.5%; } }
     @media (min-width: 1200px) {
-      #contentBox #paginationWrapper {
+      #contentBox #paginationWrapper, #contentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #contentBox #paginationWrapperChosen, #contentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #contentBox #paginationWrapperChosen {
         top: 80%;
         height: 25%; } }
 
@@ -4580,7 +4591,7 @@ a {
       @media (min-width: 1200px) {
         #myArticleBox #articleWrapper #myMemberBoxWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen #myMemberBoxWrapper, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen #myMemberBoxWrapper {
           top: 48%; } }
-  #myArticleBox #paginationWrapper {
+  #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
     position: absolute;
     display: flex;
     align-items: center;
@@ -4588,15 +4599,15 @@ a {
     flex-wrap: wrap;
     width: 100%; }
     @media (max-width: 767px) {
-      #myArticleBox #paginationWrapper {
+      #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
         top: 75%;
         height: 25%; } }
     @media (min-width: 768px) {
-      #myArticleBox #paginationWrapper {
+      #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
         top: 63%;
         height: 45%; } }
     @media (min-width: 1200px) {
-      #myArticleBox #paginationWrapper {
+      #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
         top: 65%;
         height: 45%; } }
 
@@ -4660,7 +4671,7 @@ a {
       #myCommentBox #commentWrapper {
         width: 90%;
         height: 110%; } }
-  #myCommentBox #paginationWrapper {
+  #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
     position: absolute;
     display: flex;
     align-items: center;
@@ -4668,15 +4679,15 @@ a {
     flex-wrap: wrap;
     width: 100%; }
     @media (max-width: 767px) {
-      #myCommentBox #paginationWrapper {
+      #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
         top: 75%;
         height: 25%; } }
     @media (min-width: 768px) {
-      #myCommentBox #paginationWrapper {
+      #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
         top: 67%;
         height: 45%; } }
     @media (min-width: 1200px) {
-      #myCommentBox #paginationWrapper {
+      #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
         top: 86%;
         height: 45%; } }
 
@@ -7012,10 +7023,10 @@ a {
       #conChinWritingContainer #writingModal {
         width: 30%;
         height: 85%;
-        border-radius: 5px; } }
+        border-radius: 10px; } }
     #conChinWritingContainer #writingModal #image {
       width: 50%;
-      border-radius: 5px; }
+      border-radius: 20px; }
     #conChinWritingContainer #writingModal .box {
       display: flex;
       align-items: center;
@@ -7067,7 +7078,8 @@ a {
         height: 100%;
         border: 0;
         border-radius: 5px;
-        font-weight: bold; }
+        font-weight: bold;
+        cursor: pointer; }
       #conChinWritingContainer #writingModal #btnBox #no2 {
         color: #fff;
         background-color: #000;
@@ -7075,7 +7087,8 @@ a {
         height: 100%;
         border: 0;
         border-radius: 5px;
-        font-weight: bold; }
+        font-weight: bold;
+        cursor: pointer; }
 
 #loginModalContainer {
   z-index: 500;
