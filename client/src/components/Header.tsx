@@ -147,7 +147,6 @@ function Header() {
   /* 타겟 초기화 핸들러 */
   const resetTarget = () => {
     dispatch(setTarget({}));
-    dispatch(logout());
   };
 
   return (
