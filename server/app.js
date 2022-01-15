@@ -19,23 +19,23 @@ const autoAlarm = schedule.scheduleJob('00 20 1 * * *', async () => {
 });
 
 // 콘서트 클리너 실행
-// const autoConcertCleaner = schedule.scheduleJob(
-//   '00 03 * * * *',
-//   async () => {
-//     concertCleaner()
-//     console.log('24시간마다 티켓 오픈일이 지난 콘서트 삭제중(non-activation)..')
-//   }
-// )
+const autoConcertCleaner = schedule.scheduleJob(
+  '00 30 * * * *',
+  async () => {
+    concertCleaner()
+    console.log('24시간마다 티켓 오픈일이 지난 콘서트 삭제중(non-activation)..')
+  }
+)
 
 /* Auto Crawling */
-// const autoCrawling = schedule.scheduleJob(
-//   '00 00 9 * * *',
-//   async () => {
-//     console.log('ec2 테스트')
-//     await crawler()
-//     console.log('24시간마다 크롤링중..')
-//   }
-// );
+const autoCrawling = schedule.scheduleJob(
+  '00 46 * * * *',
+  async () => {
+    console.log('ec2 테스트')
+    await crawler()
+    console.log('24시간마다 크롤링중..')
+  }
+);
 /* Middleware */
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
