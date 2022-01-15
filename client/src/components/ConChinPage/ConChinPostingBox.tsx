@@ -1,7 +1,7 @@
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
-import { setAllArticles } from '../../store/ConChinSlice';
+import { setAllArticles, setArticleTotalPage } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
@@ -25,6 +25,7 @@ function ConChinPostingBox() {
       if (target !== undefined && target !== null) {
         if (Object.keys(target).length === 0) {
           dispatch(setAllArticles([]));
+          dispatch(setArticleTotalPage(0));
           console.log(' ConChinPostingBox=> 게시물이 없어요.');
         } else if (target === undefined || target === null) {
           console.log(
@@ -38,6 +39,7 @@ function ConChinPostingBox() {
           );
           if (response.data) {
             dispatch(setAllArticles(response.data.data.articleInfo));
+            dispatch(setArticleTotalPage(response.data.data.totalPage));
             console.log('allArticles: ');
             console.log(allArticles);
           } else {

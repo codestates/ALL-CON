@@ -141,6 +141,7 @@
       @extend #box;
       flex-direction: column;
       justify-content: center;
+      align-items: flex-start;
       // border: 1px solid blue;
       overflow-x: scroll;
       overflow-y: hidden;
@@ -162,6 +163,7 @@
     }
     .article {
       position: relative;
+
       display: flex;
       align-items: center;
       width: 30%;

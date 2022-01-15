@@ -146,6 +146,7 @@ a {
     #articleBox #boxChosen, #articleBoxChosen #boxChosen {
       flex-direction: column;
       justify-content: center;
+      align-items: flex-start;
       overflow-x: scroll;
       overflow-y: hidden; }
       @media (max-width: 767px) {

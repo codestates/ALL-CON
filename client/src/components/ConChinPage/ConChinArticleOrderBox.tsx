@@ -1,7 +1,11 @@
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget } from '../../store/MainSlice';
-import { setArticleOrder, setAllArticles } from '../../store/ConChinSlice';
+import {
+  setArticleOrder,
+  setAllArticles,
+  setArticleTotalPage,
+} from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -32,9 +36,11 @@ function ConChinArticleOrderBox() {
         );
         if (response.data) {
           dispatch(setAllArticles(response.data.data.articleInfo));
+          dispatch(setArticleTotalPage(response.data.data.totalPage));
           console.log(
             'ConChinArticleOrderBox=> 타겟이 없으니 정렬순으로 전체 표시합니다.',
           );
+          console.log('totalPage: ' + response.data.data.totalPage);
           console.log(allArticles);
         } else {
           console.log('ConChinArticleOrderBox=> 없거나 실수로 못가져왔어요.');
@@ -53,16 +59,19 @@ function ConChinArticleOrderBox() {
         );
         if (response.data) {
           dispatch(setAllArticles(response.data.data.articleInfo));
+          dispatch(setArticleTotalPage(response.data.data.totalPage));
           console.log(
             'ConChinArticleOrderBox=> 타겟에 종속된 게시물을 보여줍니다.',
           );
           console.log('ConChinArticleOrderBox=> allArticles: ' + allArticles);
+          console.log('totalPage: ' + response.data.data.totalPage);
         }
       }
     } catch (err) {
       console.log(err);
       console.log('에러가 났나봐요. 게시물 없음 처리합니다.');
       dispatch(setAllArticles([]));
+      dispatch(setArticleTotalPage(0));
     }
   };
 

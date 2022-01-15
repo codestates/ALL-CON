@@ -2,7 +2,11 @@
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
 import { setPostingOrder } from '../../store/ConChinSlice';
-import { setArticleOrder, setAllArticles } from '../../store/ConChinSlice';
+import {
+  setArticleOrder,
+  setAllArticles,
+  setArticleTotalPage,
+} from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -38,7 +42,9 @@ function ConChinPostingOrderBox() {
         { withCredentials: true },
       );
       if (response.data) {
+        console.log('받아줌');
         dispatch(setAllArticles(response.data.data.articleInfo));
+        dispatch(setArticleTotalPage(response.data.data.totalPage));
       } else {
         console.log('없거나 실수로 못가져왔어요..');
       }
