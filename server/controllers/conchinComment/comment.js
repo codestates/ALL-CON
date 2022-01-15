@@ -5,7 +5,7 @@ module.exports = {
   get: async (req, res) => {
     try {
       const { articleid } = req.params;
-      const { pageNum } = req.body;
+      const { pageNum } = req.query;
 
       /* 페이지네이션 한 페이지당 3개의 댓글 */
       const limit = 3;

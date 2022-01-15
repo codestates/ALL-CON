@@ -20,7 +20,7 @@ import {
   setScrollCount,
   setTimerMessage,
 } from '../store/HeaderSlice';
-import { setTarget } from '../store/MainSlice';
+import { setTarget, setTargetIdx } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -173,6 +173,7 @@ function Header() {
     // dispatch(logout());
     dispatch(setTarget({}));
     getAllArticles();
+    dispatch(setTargetIdx(0));
     dispatch(showConcertModal(false));
   };
   return (

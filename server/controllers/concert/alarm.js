@@ -3,6 +3,9 @@ const { Users, Concerts, Alarms } = require('../../models');
 module.exports = {
   post: async (req, res) => {
     try {
+      // 로그인 인증 검사
+      // const userInfo = await userAuth(req, res);
+
       // 특정 콘서트 id를 클라이언트로부터 전달받는다
       const { concertid } = req.params;
       // 유저확인 및 알람종류 확인
