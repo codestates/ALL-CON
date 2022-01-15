@@ -12,14 +12,14 @@ import {
   showLoginModal,
   showSideMenuModal,
   showMyDropDown,
-  showConcertModal
+  showConcertModal,
 } from '../store/ModalSlice';
 import {
   setIsScrolled,
   setScrollCount,
   setTimerMessage,
 } from '../store/HeaderSlice';
-import { setTarget } from '../store/MainSlice';
+import { setTarget, setTargetIdx } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -149,6 +149,7 @@ function Header() {
   const resetHandler = () => {
     // dispatch(logout());
     dispatch(setTarget({}));
+    dispatch(setTargetIdx(0));
     dispatch(showConcertModal(false));
   };
 

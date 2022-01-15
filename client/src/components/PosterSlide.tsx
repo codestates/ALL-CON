@@ -15,87 +15,111 @@ function PosterSlide() {
   const { thirdConcert } = useSelector((state: RootState) => state.main);
   const { fourthConcert } = useSelector((state: RootState) => state.main);
   const { fifthConcert } = useSelector((state: RootState) => state.main);
+  const { targetIdx } = useSelector((state: RootState) => state.main);
+  const { target } = useSelector((state: RootState) => state.main);
+
   const [isClick, setIsClick] = useState('disclicked');
-  useEffect(() => {}, [isClick]);
+
+  /* D-DAY 계산기 */
+  const dayCalculator = (openDate?: Date): string => {
+    if (openDate) {
+      const today = new Date();
+      const targetDay = new Date(openDate);
+      const gap = targetDay.getTime() - today.getTime();
+      const count = Math.ceil(gap / (1000 * 60 * 60 * 24));
+      /* 남은 일수에 따라 디데이 리턴 */
+      if (count === 1) return 'D';
+      else if (count < 1) return '';
+      else return 'D-' + (count - 1);
+    }
+    return '';
+  };
+
   return (
     <>
       <div className='posterContainer'>
         <div id='crownWrapper'>
-          <img id='posterCrown' src={crown} alt='왕관아이콘'></img>
+          <img
+            id={targetIdx === 0 ? 'posterCrown' : 'posterCrownDown'}
+            src={crown}
+            alt='왕관아이콘'
+          ></img>
         </div>
         <>
-          <div id='posterWrapper1'>
-            {firstConcert ? (
+          {firstConcert ? (
+            <div id='posterWrapper1'>
               <img
                 alt='포스터'
                 src={firstConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-            ) : (
-              console.log('받아온 이미지가 없습니다')
-            )}
-            <div className='posterCover2'></div>
-          </div>
-          <div id='posterWrapper2'>
-            {secondConcert ? (
+              <div className='posterCover2'></div>
+            </div>
+          ) : (
+            console.log('받아온 이미지가 없습니다')
+          )}
+          {secondConcert ? (
+            <div id='posterWrapper2'>
               <img
                 alt='포스터'
                 src={secondConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-            ) : (
-              console.log('받아온 이미지가 없습니다')
-            )}
-            <div className='posterCover'></div>
-          </div>
-          <div
-            id='posterWrapper3'
-            onClick={() => {
-              setIsClick('clicked');
-            }}
-          >
-            {thirdConcert ? (
+              <div className='posterCover'></div>
+            </div>
+          ) : (
+            console.log('받아온 이미지가 없습니다')
+          )}
+          {thirdConcert ? (
+            <div
+              id='posterWrapper3'
+              onClick={() => {
+                setIsClick('clicked');
+              }}
+            >
               <img
                 alt='포스터'
                 src={thirdConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-            ) : (
-              console.log('받아온 이미지가 없습니다')
-            )}
-            <div className='dDay'>
-              <p>D-5</p>
+              <div id='alignDay'>
+                <div id='dDay'>
+                  {/* <p>{dayCalculator(target.open_date)}</p> */}
+                </div>
+              </div>
             </div>
-          </div>
-          <div id='posterWrapper4'>
-            {fourthConcert ? (
+          ) : (
+            console.log('받아온 이미지가 없습니다')
+          )}
+          {fourthConcert ? (
+            <div id='posterWrapper4'>
               <img
                 alt='포스터'
                 src={fourthConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-            ) : (
-              console.log('받아온 이미지가 없습니다')
-            )}
-            <div className='posterCover'></div>
-          </div>
-          <div id='posterWrapper5'>
-            {fifthConcert ? (
+              <div className='posterCover'></div>
+            </div>
+          ) : (
+            console.log('받아온 이미지가 없습니다')
+          )}
+          {fifthConcert ? (
+            <div id='posterWrapper5'>
               <img
                 alt='포스터'
                 src={fifthConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-            ) : (
-              console.log('받아온 이미지가 없습니다')
-            )}
-            <div className='posterCover2'></div>
-          </div>
+              <div className='posterCover2'></div>
+            </div>
+          ) : (
+            console.log('받아온 이미지가 없습니다')
+          )}
         </>
       </div>
     </>
