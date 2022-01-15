@@ -146,6 +146,7 @@ a {
     #articleBox #boxChosen, #articleBoxChosen #boxChosen {
       flex-direction: column;
       justify-content: center;
+      align-items: center;
       overflow-x: scroll;
       overflow-y: hidden; }
       @media (max-width: 767px) {
@@ -1650,7 +1651,7 @@ a {
         height: 25%; } }
     @media (min-width: 1200px) {
       #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
-        top: 65%;
+        top: 55%;
         height: 20%; } }
 
 #conChinmemberBoxWrapper {

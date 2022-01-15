@@ -1,7 +1,11 @@
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget } from '../../store/MainSlice';
-import { setArticleOrder, setAllArticles } from '../../store/ConChinSlice';
+import {
+  setArticleOrder,
+  setAllArticles,
+  setArticleTotalPage,
+} from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -20,7 +24,6 @@ function ConChinArticleOrderBox() {
         Object.keys(target).length === 0 &&
         Object.keys(allArticles).length === 0
       ) {
-        dispatch(setAllArticles([]));
         console.log('ConChinArticleOrderBox=> 게시물이 없어요.');
       } else if (
         Object.keys(target).length === 0 &&
@@ -33,6 +36,7 @@ function ConChinArticleOrderBox() {
         );
         if (response.data) {
           dispatch(setAllArticles(response.data.data.articleInfo));
+          dispatch(setArticleTotalPage(response.data.data.totalPage));
           console.log(
             'ConChinArticleOrderBox=> 타겟이 없으니 정렬순으로 전체 표시합니다.',
           );
@@ -42,18 +46,19 @@ function ConChinArticleOrderBox() {
         }
       } else if (target === undefined || target === null) {
         dispatch(setTarget({}));
-        dispatch(setAllArticles([]));
+
         console.log(
           'ConChinArticleOrderBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
         );
       } else {
         /* 타겟에 종속된 게시물 정렬순표시 */
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/concert/${target.id}?order=${articleOrder}`,
+          `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
           { withCredentials: true },
         );
         if (response.data) {
           dispatch(setAllArticles(response.data.data.articleInfo));
+          dispatch(setArticleTotalPage(response.data.data.totalPage));
           console.log(
             'ConChinArticleOrderBox=> 타겟에 종속된 게시물을 보여줍니다.',
           );
@@ -62,7 +67,9 @@ function ConChinArticleOrderBox() {
       }
     } catch (err) {
       console.log(err);
-      console.log('에러가 났나봐요.');
+      console.log('에러가 났나봐요. 게시물 없음 처리합니다.');
+      dispatch(setAllArticles([]));
+      dispatch(setArticleTotalPage(0));
     }
   };
 

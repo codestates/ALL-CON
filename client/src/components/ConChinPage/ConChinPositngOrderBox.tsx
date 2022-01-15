@@ -2,7 +2,11 @@
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
 import { setPostingOrder } from '../../store/ConChinSlice';
-import { setAllArticles } from '../../store/ConChinSlice';
+import {
+  setArticleOrder,
+  setAllArticles,
+  setArticleTotalPage,
+} from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -30,15 +34,17 @@ function ConChinPostingOrderBox() {
       console.log(err);
     }
   };
-  /* 전체 게시물 받아오기(무조건) */
-  const getRealAllArticles = async () => {
+  /* 전체 게시물 받아오기 */
+  const getAllArticles = async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
         { withCredentials: true },
       );
       if (response.data) {
+        console.log('PostingOrderBox=> 전체 게시물을 받아왔습니다.');
         dispatch(setAllArticles(response.data.data.articleInfo));
+        dispatch(setArticleTotalPage(response.data.data.totalPage));
       } else {
         console.log('없거나 실수로 못가져왔어요..');
       }
@@ -48,9 +54,10 @@ function ConChinPostingOrderBox() {
     }
   };
 
+  /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
   useEffect(() => {
     getAllConcerts();
-    getRealAllArticles();
+    getAllArticles();
   }, [postingOrder]);
 
   /* 타겟 초기화 핸들러 */
@@ -69,8 +76,7 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('view'));
-          getAllConcerts();
-          getRealAllArticles();
+          getAllArticles();
         }}
         style={
           postingOrder === 'view'
@@ -84,8 +90,7 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('near'));
-          getAllConcerts();
-          getRealAllArticles();
+          getAllArticles();
         }}
         style={
           postingOrder === 'near'
@@ -99,8 +104,7 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('new'));
-          getAllConcerts();
-          getRealAllArticles();
+          getAllArticles();
         }}
         style={
           postingOrder === 'new'

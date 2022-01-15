@@ -2,21 +2,25 @@
 import defaultImg from '../../../images/default_image.jpg';
 /* Store import */
 import { RootState } from '../../../index';
-import { logout, getUserInfo } from '../../../store/AuthSlice';
 import { showConChinWritingModal } from '../../../store/ModalSlice';
+import {
+  setAllArticles,
+  setArticleTotalPage,
+} from '../../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function ConChinWritingModal() {
   /* dispatch / navigate */
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   /* useSelector */
-  const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { target } = useSelector((state: RootState) => state.main);
+  const { articleOrder, allArticles } = useSelector(
+    (state: RootState) => state.conChin,
+  );
   /* 지역상태 - useState */
   // 미리보기 이미지 상태
   const [preview, setPreview] = useState<string>('');
@@ -44,13 +48,17 @@ function ConChinWritingModal() {
 
       formData.append('img', e.target.files[0]);
       // 선택한 이미지를 서버와 s3 bucket에 업로드한다
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/upload`, formData, {
-        headers: {
-          'Content-Type' : 'multipart/form-data'
-        }
-      })
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/upload`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
       // AWS 버킷 주소 + 객체 키 값
-      let imageFullUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.imagePath}`
+      let imageFullUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.imagePath}`;
       // 미리보기 기능
       setPreview(imageFullUrl);
       setPreviewHandle(true);
@@ -85,12 +93,50 @@ function ConChinWritingModal() {
     setContent(e.target.value);
   };
 
+  /* 전체 게시물 받아오기(조건) */
+  const getAllArticles = async () => {
+    try {
+      /* 타겟에 종속된 게시물이 없을때, 게시물 없음 표시 */
+      if (target !== undefined && target !== null) {
+        if (Object.keys(target).length === 0) {
+          dispatch(setAllArticles([]));
+          dispatch(setArticleTotalPage(0));
+          console.log(' ConChinPostingBox=> 게시물이 없어요.');
+        } else if (target === undefined || target === null) {
+          console.log(
+            'ConChinPostingBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
+          );
+        } else {
+          /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
+            { withCredentials: true },
+          );
+          if (response.data) {
+            dispatch(setAllArticles(response.data.data.articleInfo));
+            dispatch(setArticleTotalPage(response.data.data.totalPage));
+            console.log('allArticles: ');
+            console.log(allArticles);
+          } else {
+            console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
+          }
+        }
+      }
+    } catch (err) {
+      console.log(err);
+      console.log(
+        'ConChinPostingBox=> 에러가 났나봐요. 게시물 없음 처리합니다.',
+      );
+    }
+  };
+
   // 작성하기 버튼
   const handleWriteBtn = async () => {
     // [POST] 서버로 게시물 작성 요청, ex) concert/:concertid/article => concertid는 변수 처리해야됨!
+    console.log(target.id);
     const response = await axios.post(
-      `${process.env.REACT_APP_API_URL}/concert/${target.id}}/article`,
-      { 
+      `${process.env.REACT_APP_API_URL}/concert/${target.id}/article`,
+      {
         title: title,
         content: content,
         image: preview,
@@ -99,7 +145,7 @@ function ConChinWritingModal() {
     );
     console.log(response.data);
     alert('글 작성 성공! 😖');
-    navigate('/conchin');
+    getAllArticles();
     dispatch(showConChinWritingModal(false));
     // 주의: 글 작성 성공 알림 모달 필요함!
 
