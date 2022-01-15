@@ -102,11 +102,12 @@ function ConcertModal() {
               <button id='more' onClick={moveMainHandler}>자세히 보기</button>
             </div>
           </div>
+          {target.place ? 
+          <div id='bottom_box'> <KakaoMap place={target.place}/></div> :
           <div id='bottom_box'>
-            {/* <h1>콘서트 위치정보를 찾을수 없습니다!</h1>
-            <img id='noMap' src={map} alt='지도 이미지'></img> */}
-            <KakaoMap place={target.place}/>
-          </div>
+            <h1>콘서트 위치정보를 찾을수 없습니다!</h1>
+            <img id='noMap' src={map} alt='지도 이미지'></img>
+          </div>}
         </div>
       </div>
     </div>

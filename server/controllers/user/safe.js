@@ -54,7 +54,6 @@ module.exports = {
   },
   patch: async (req, res) => {
     try {
-
       console.log(' --- 콘친 인증 완료 API 진입완료 --- ')
 
       // 로그인 인증 검사
