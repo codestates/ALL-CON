@@ -95,7 +95,17 @@
   width: 90%;
   height: 75%;
   left: 50%;
+
   transform: translate(-50%, 0%);
+  @include mobile-only() {
+    font-size: 1.5rem;
+  }
+  @include md() {
+    font-size: 2rem;
+  }
+  @include lg() {
+    font-size: 2.5rem;
+  }
   // border: 1px solid red;
   &Chosen {
     @extend #articleBox;

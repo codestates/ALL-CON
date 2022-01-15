@@ -8,171 +8,89 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-type concertProps = {
-  firstConcert: {
-    id?: number;
-    exclusive?: string;
-    open_date?: Date;
-    post_date?: string;
-    image_concert?: string;
-    title?: string;
-    period?: string;
-    place?: string;
-    plrice?: string;
-    running_time?: string;
-    rating?: string;
-    link?: string;
-    view?: number;
-    total_comment?: number;
-    createdAt?: Date;
-    updatedAt?: Date;
-  };
-  secondConcert: {
-    id?: number;
-    exclusive?: string;
-    open_date?: Date;
-    post_date?: string;
-    image_concert?: string;
-    title?: string;
-    period?: string;
-    place?: string;
-    plrice?: string;
-    running_time?: string;
-    rating?: string;
-    link?: string;
-    view?: number;
-    total_comment?: number;
-    createdAt?: Date;
-    updatedAt?: Date;
-  };
-  thirdConcert: {
-    id?: number;
-    exclusive?: string;
-    open_date?: Date;
-    post_date?: string;
-    image_concert?: string;
-    title?: string;
-    period?: string;
-    place?: string;
-    plrice?: string;
-    running_time?: string;
-    rating?: string;
-    link?: string;
-    view?: number;
-    total_comment?: number;
-    createdAt?: Date;
-    updatedAt?: Date;
-  };
-  fourthConcert: {
-    id?: number;
-    exclusive?: string;
-    open_date?: Date;
-    post_date?: string;
-    image_concert?: string;
-    title?: string;
-    period?: string;
-    place?: string;
-    plrice?: string;
-    running_time?: string;
-    rating?: string;
-    link?: string;
-    view?: number;
-    total_comment?: number;
-    createdAt?: Date;
-    updatedAt?: Date;
-  };
-  fifthConcert: {
-    id?: number;
-    exclusive?: string;
-    open_date?: Date;
-    post_date?: string;
-    image_concert?: string;
-    title?: string;
-    period?: string;
-    place?: string;
-    plrice?: string;
-    running_time?: string;
-    rating?: string;
-    link?: string;
-    view?: number;
-    total_comment?: number;
-    createdAt?: Date;
-    updatedAt?: Date;
-  };
-};
-
-function PosterSlide({
-  firstConcert,
-  secondConcert,
-  thirdConcert,
-  fourthConcert,
-  fifthConcert,
-}: concertProps) {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const { fiveConcerts } = useSelector((state: RootState) => state.main);
+function PosterSlide() {
+  const { firstConcert } = useSelector((state: RootState) => state.main);
+  const { secondConcert } = useSelector((state: RootState) => state.main);
+  const { thirdConcert } = useSelector((state: RootState) => state.main);
+  const { fourthConcert } = useSelector((state: RootState) => state.main);
+  const { fifthConcert } = useSelector((state: RootState) => state.main);
 
   return (
     <>
-      <div className='posterContainer'>
+      {/* <div className='posterContainer'>
         <div id='crownWrapper'>
           <img id='posterCrown' src={crown} alt='왕관아이콘'></img>
         </div>
-        {fiveConcerts ? (
-          <>
-            <div id='posterWrapper1'>
+        <>
+          <div id='posterWrapper1'>
+            {fourthConcert.image_concert ? (
               <img
                 alt='포스터'
                 src={fourthConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-              <div className='posterCover2'></div>
-            </div>
-            <div id='posterWrapper2'>
+            ) : (
+              console.log('받아온 이미지가 없습니다')
+            )}
+            <div className='posterCover2'></div>
+          </div>
+          <div id='posterWrapper2'>
+            {fifthConcert.image_concert ? (
               <img
                 alt='포스터'
                 src={fifthConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-              <div className='posterCover'></div>
-            </div>
-            <div id='posterWrapper3'>
+            ) : (
+              console.log('받아온 이미지가 없습니다')
+            )}
+            <div className='posterCover'></div>
+          </div>
+          <div id='posterWrapper3'>
+            {firstConcert.image_concert ? (
               <img
                 alt='포스터'
                 src={firstConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-              <div className='dDay'>
-                <p>D-5</p>
-              </div>
+            ) : (
+              console.log('받아온 이미지가 없습니다')
+            )}
+            <div className='dDay'>
+              <p>D-5</p>
             </div>
-            <div id='posterWrapper4'>
+          </div>
+          <div id='posterWrapper4'>
+            {secondConcert.image_concert ? (
               <img
                 alt='포스터'
                 src={secondConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-              <div className='posterCover'></div>
-            </div>
-            <div id='posterWrapper5'>
+            ) : (
+              console.log('받아온 이미지가 없습니다')
+            )}
+            <div className='posterCover'></div>
+          </div>
+          <div id='posterWrapper5'>
+            {thirdConcert.image_concert ? (
               <img
                 alt='포스터'
                 src={thirdConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-              <div className='posterCover2'></div>
-            </div>
-          </>
-        ) : (
-          <p>받아온 콘서트 정보가 없습니다.</p>
-        )}
-      </div>
+            ) : (
+              console.log('받아온 이미지가 없습니다')
+            )}
+            <div className='posterCover2'></div>
+          </div>
+        </>
+      </div> */}
     </>
   );
 }

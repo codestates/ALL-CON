@@ -21,7 +21,7 @@ function ConChinWritingModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   /* useSelector */
-  const { userInfo } = useSelector((state: RootState) => state.auth);
+  const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { target } = useSelector((state: RootState) => state.main);
   /* 지역상태 - useState */
   // 미리보기 이미지 상태
@@ -100,7 +100,7 @@ function ConChinWritingModal() {
   const handleWriteBtn = async () => {
     // [POST] 서버로 게시물 작성 요청, ex) concert/:concertid/article => concertid는 변수 처리해야됨!
     const response = await axios.post(
-      `${REACT_APP_API_URL}/concert/44/article`,
+      `${REACT_APP_API_URL}/concert/${target.id}/article`,
       {
         //44 부분에 ${target.id}
         title: title,
@@ -110,6 +110,7 @@ function ConChinWritingModal() {
       { withCredentials: true },
     );
     console.log(response.data);
+    alert('글 작성 성공! 😖');
     navigate('/conchin');
     dispatch(showConChinWritingModal(false));
     // 주의: 글 작성 성공 알림 모달 필요함!

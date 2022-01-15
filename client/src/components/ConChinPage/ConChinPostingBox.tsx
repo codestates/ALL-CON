@@ -20,60 +20,51 @@ function ConChinPostingBox() {
     (state: RootState) => state.conChin,
   );
 
-  /*전체 콘서트 받아오기 */
-  const getAllConcerts = async () => {
-    try {
-      const response = await axios.get(
-        `${REACT_APP_API_URL}/concert?${postingOrder}`,
-        { withCredentials: true },
-      );
-      if (response.data) {
-        dispatch(setAllConcerts(response.data.data.concertInfo));
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   /* 전체 게시물 받아오기(조건) */
   const getAllArticles = async () => {
     try {
       /* 타겟에 종속된 게시물이 없을때, 게시물 없음 표시 */
-      if (Object.keys(target).length === 0) {
-        dispatch(setAllArticles([]));
-        console.log('미안해요 게시물이 없어요.');
-      } else {
-        /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
-        const response = await axios.get(
-          `${REACT_APP_API_URL}/concert/:${target.id}?order=${articleOrder}`,
-          { withCredentials: true },
-        );
-        if (response.data) {
-          dispatch(setAllArticles(response.data.data.articleInfo));
-          console.log(allArticles);
+      if (target !== undefined && target !== null) {
+        if (Object.keys(target).length === 0) {
+          dispatch(setAllArticles([]));
+          console.log(' ConChinPostingBox=> 게시물이 없어요.');
+        } else if (target === undefined || target === null) {
+          console.log(
+            'ConChinPostingBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
+          );
         } else {
-          console.log('없거나 실수로 못가져왔어요..');
+          /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
+          const response = await axios.get(
+            `${REACT_APP_API_URL}/concert/${target.id}?order=${articleOrder}`,
+            { withCredentials: true },
+          );
+          if (response.data) {
+            dispatch(setAllArticles(response.data.data.articleInfo));
+            console.log('allArticles: ' + allArticles);
+          } else {
+            console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
+          }
         }
       }
     } catch (err) {
       console.log(err);
-      console.log('에러가 났나봐요.');
+      console.log('ConChinPostingBox=> 에러가 났나봐요.');
     }
   };
   /*전체 게시물 받아오기 & 타겟 교체 */
   function getAllArticlesAndSetTarget(concert: any[]) {
     dispatch(setTarget(concert));
     getAllArticles();
+    console.log('ConChinPostingBox=> target: ');
+    console.log(target);
+    console.log('ConChinPostingBox=> concert: ');
+    console.log(concert);
   }
-
-  useEffect(() => {
-    getAllConcerts();
-  }, [target]);
 
   return (
     <li id='conChinPostingBox'>
       <h1 id={Object.keys(target).length === 0 ? 'curOrder' : 'curOrderChosen'}>
-        {postingOrder === 'hot'
+        {postingOrder === 'view'
           ? '조회수 순'
           : postingOrder === 'near'
           ? '임박예정 순'
@@ -89,32 +80,34 @@ function ConChinPostingBox() {
             : 'postingBoxWrapperChosen'
         }
       >
-        {allConcerts.map(concert => {
-          return (
-            <ul
-              className={
-                target.id === concert.id
-                  ? 'postingChosen'
-                  : Object.keys(target).length === 0
-                  ? 'posting'
-                  : 'postingunChosen'
-              }
-              key={concert.id}
-              onClick={() => {
-                getAllArticlesAndSetTarget(concert);
-              }}
-            >
-              <h1 className='title'>{concert.title}</h1>
-              <p className='date'>
-                {' '}
-                오픈일
-                <br /> {concert.post_date}
-              </p>
-              <p className='view'> 조회수 {concert.view}</p>
-              <p className='place'> {concert.place}</p>
-            </ul>
-          );
-        })}
+        {target !== undefined
+          ? allConcerts.map(concert => {
+              return (
+                <ul
+                  className={
+                    target.id === concert.id
+                      ? 'postingChosen'
+                      : Object.keys(target).length === 0
+                      ? 'posting'
+                      : 'postingunChosen'
+                  }
+                  key={concert.id}
+                  onClick={() => {
+                    getAllArticlesAndSetTarget(concert);
+                  }}
+                >
+                  <h1 className='title'>{concert.title}</h1>
+                  <p className='date'>
+                    {' '}
+                    오픈일
+                    <br /> {concert.post_date}
+                  </p>
+                  <p className='view'> 조회수 {concert.view}</p>
+                  <p className='place'> {concert.place}</p>
+                </ul>
+              );
+            })
+          : null}
       </div>
     </li>
   );

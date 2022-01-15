@@ -70,12 +70,12 @@ function ConChinPostingOrderBox() {
       <p
         className='order'
         onClick={() => {
-          dispatch(setPostingOrder('hot'));
+          dispatch(setPostingOrder('view'));
           getAllConcerts();
           getRealAllArticles();
         }}
         style={
-          postingOrder === 'hot'
+          postingOrder === 'view'
             ? { backgroundColor: '#FFCE63', color: 'white' }
             : { backgroundColor: 'white', color: '#404040' }
         }

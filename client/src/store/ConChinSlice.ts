@@ -11,8 +11,8 @@ export interface conChin {
 
 /* State 초기값 설정 */
 const initialState: conChin = {
-  postingOrder: 'hot',
-  articleOrder: 'hot',
+  postingOrder: 'view',
+  articleOrder: 'view',
   allArticles: [],
 };
 

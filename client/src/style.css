@@ -109,6 +109,15 @@ a {
   height: 75%;
   left: 50%;
   transform: translate(-50%, 0%); }
+  @media (max-width: 767px) {
+    #articleBox, #articleBoxChosen {
+      font-size: 1.5rem; } }
+  @media (min-width: 768px) {
+    #articleBox, #articleBoxChosen {
+      font-size: 2rem; } }
+  @media (min-width: 1200px) {
+    #articleBox, #articleBoxChosen {
+      font-size: 2.5rem; } }
   #articleBoxChosen {
     width: 100%;
     height: 50%; }
