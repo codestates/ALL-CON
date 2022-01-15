@@ -20,10 +20,9 @@ function ConChinCertificationPage() {
   const navigate = useNavigate();
   
   /* useSelector */
-  const { userInfo, isPhoneCertificatePass } = useSelector((state: RootState) => state.auth);
+  const { userInfo, isPhoneCertificatePass, yearList, monthList, dateList } = useSelector((state: RootState) => state.auth);
   
   /* 지역상태 - useState */
-
   // 변경할 유저정보 상태 
   interface ConchinCertificateInfo {
     birthYear: string;
@@ -38,7 +37,7 @@ function ConChinCertificationPage() {
     birthYear: '',
     birthMonth: '',
     birthDate: '',
-    gender: '남자',
+    gender: '',
     phoneNumber: '',
   });
 
@@ -55,21 +54,21 @@ function ConChinCertificationPage() {
   /* handler 함수 (기능별 정렬) */
 
   // 인풋 입력 핸들러
-  const inputValueHandler = (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+  // const inputValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const info = { ...conchinCertificateInfo, [key]: e.target.value };
+  //   setConchinCertificateInfo(info);
+  // };
 
+  // (생년월일) 년 / 월 / 일, (성별) 남자 / 여자 인풋 입력 핸들러
+  const inputDropdownValueHandler = (key: string) => (e: React.ChangeEvent<HTMLSelectElement>) => {
     const info = { ...conchinCertificateInfo, [key]: e.target.value };
     setConchinCertificateInfo(info);
-    console.log('--- conchinCertificateInfo 확인! ---', conchinCertificateInfo)
-    // isAllValid(info);
   };
 
-  // 인풋 입력 핸들러
-  const genderValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const key: string = 'gender'
+  // 핸드폰 번호 인풋 입력 핸들러
+  const inputValueHandler = (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const info = { ...conchinCertificateInfo, [key]: e.target.value };
     setConchinCertificateInfo(info);
-    console.log('--- conchinCertificateInfo 확인! ---', conchinCertificateInfo)
-    // isAllValid(info);
   };
 
   const isAllValid = (conchinCertificateInfo: ConchinCertificateInfo): boolean => {
@@ -85,14 +84,6 @@ function ConChinCertificationPage() {
     // 인증번호 받기 버튼이 클릭되었는지
     const isGetConfirmNumberClicked = checkImg
 
-    console.log('1', isBirthYearValid)
-    console.log('2', isBirthMonthValid)
-    console.log('3', isBirthDateValid)
-    console.log('4', isGenderValid)
-    console.log('5', isPhoneNumberValid)
-    console.log('6', isGetConfirmNumberClicked)
-    console.log('7', isPhoneCertificatePass)
-
     return isBirthYearValid && isBirthMonthValid && isBirthDateValid && isGenderValid && isPhoneNumberValid && isGetConfirmNumberClicked && isPhoneCertificatePass ? true : false;
   }
 
@@ -105,7 +96,7 @@ function ConChinCertificationPage() {
     dispatch(showPhoneConfirmNumberModal(true));
     dispatch(getCertificateInfo(conchinCertificateInfo.phoneNumber))
     
-    // 입력된 휴대번호로 6자리 인증번호를 전송한다 (주의! 휴대폰 번호는 변수로 다시 지정해줘야 한다!)
+    // 입력된 휴대번호로 6자리 인증번호를 전송한다
     const response = await axios.post(
       `${process.env.REACT_APP_API_URL}/user/safe`,
       { phone_number: `${conchinCertificateInfo.phoneNumber}` },
@@ -115,10 +106,13 @@ function ConChinCertificationPage() {
 
   // 인증 완료 버튼 핸들러
   const handleCompleteCertificateBtn = async () => {
+    // 생년월일 정의: ex) 1993.11.2
+    const numBirthYear = Number(conchinCertificateInfo.birthYear.replace('년',''))
+    const numBirthMonth = Number(conchinCertificateInfo.birthMonth.replace('월',''))
+    const numBirthDate = Number(conchinCertificateInfo.birthDate.replace('일',''))
+    const birth = numBirthYear + '.' + numBirthMonth + '.' + numBirthDate
 
-    const birth = conchinCertificateInfo.birthYear + '.' + conchinCertificateInfo.birthMonth + '.' + conchinCertificateInfo.birthDate
-
-    console.log('인증 완료 버튼 핸들러 확인!')
+    // 생년월일 / 성별 / 인증번호 확인까지 모두 기입되었으면, 콘친 인증회원으로 유저 프로필 정보 업데이트
     if(isAllValid(conchinCertificateInfo)) {
       const response = await axios.patch(
         `${process.env.REACT_APP_API_URL}/user/safe`,
@@ -129,17 +123,17 @@ function ConChinCertificationPage() {
         },
         { withCredentials: true }
       );
-      // 입력값들을 reset
-      // resetInput();
-      navigate('/mypage')
+      
       dispatch(insertAlertText(`(${userInfo.username})님의 프로필이 변경되었습니다! 🙂`));
       dispatch(showAlertModal(true));
-      
+      // 프로필 정보 업데이트
+      dispatch(getUserInfo(response.data.data))
+      navigate('/mypage')
     }  else {
+      console.log('문제가 있음.......')
       dispatch(insertAlertText(`문제가 있음! 🙂`));
       dispatch(showAlertModal(true));
     }
-    
   }
 
   // 취소 버튼 핸들러
@@ -169,33 +163,33 @@ function ConChinCertificationPage() {
               <p className='title'>생년월일</p>
             </div>
             <div id='birthdayBox'>
-              <input type='text' className='short' placeholder='년(4자)' onChange={inputValueHandler('birthYear')} />
-              <input type='text' className='short' placeholder='월' onChange={inputValueHandler('birthMonth')} />
-              {/* <select className='short' >
-              <option > 월 </option>
-                <option value="1월"> 1월 </option>
-                <option value="2월"> 2월 </option>
-                <option value="3월"> 3월 </option>
-                <option value="4월"> 4월 </option>
-                <option value="5월"> 5월 </option>
-                <option value="6월"> 6월 </option>
-                <option value="7월"> 7월 </option>
-                <option value="8월"> 8월 </option>
-                <option value="9월"> 9월 </option>
-                <option value="10월"> 10월 </option>
-                <option value="11월"> 11월 </option>
-                <option value="12월"> 12월 </option>
-            </select> */}
-              <input type='text' className='short' placeholder='일' onChange={inputValueHandler('birthDate')} />
+              <select className='short' onChange={inputDropdownValueHandler('birthYear')}>
+                <option > 년 </option>
+                  {yearList.map((year, idx) => {
+                    return <option value={year}> {year} </option>
+                  })}
+              </select>
+              <select className='short' onChange={inputDropdownValueHandler('birthMonth')}>
+                <option > 월 </option>
+                  {monthList.map((month, idx) => {
+                    return <option value={month}> {month} </option>
+                  })}
+              </select>
+              <select className='short' onChange={inputDropdownValueHandler('birthDate')}>
+                <option > 일 </option>
+                  {dateList.map((date, idx) => {
+                    return <option value={date}> {date} </option>
+                  })}
+              </select>
             </div>
           </div>
           <div id='genderBox'>
             <div id='titleWrapper'>
               <p className='title'>성별</p>
             </div>
-            {/* <span className='gender'>성별</span> */}
-            {/* <select className='gender'   onChange={genderValueHandler} > */}
-            <select className='gender'>
+            <span className='gender'>성별</span>
+            <select className='gender'   onChange={inputDropdownValueHandler('gender')} >
+            {/* <select className='gender'> */}
               <option > 성별 </option>
               <option value="남자"> 남자 </option>
               <option value="여자"> 여자 </option>
