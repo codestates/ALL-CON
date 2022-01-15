@@ -23,14 +23,101 @@ export interface main {
     createdAt?: Date;
     updatedAt?: Date;
   };
-  /* 실제 받아온 콘서트 목록들 */
+  /*전체 콘서트 목록들 */
   allConcerts: any[];
-  /*들어오는 총 콘서트 목록(5개)*/
-  fiveConcerts: any[];
-  /*allConcerts에서 firstConcert(=fiveConcerts[0])의 인덱스*/
-  firstIdx: number;
-  /*현재 화면에 보이고 있는 슬라이드의 시작점*/
-  /*슬라이드 내부 컨텐츠 전체 길이*/
+  /* 가운데 포스터의 인덱스*/
+  targetIdx: number;
+  /*5개 콘서트 정보들*/
+  firstConcert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
+  secondConcert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
+  thirdConcert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
+  fourthConcert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
+  fifthConcert: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
 }
 
 /* State 초기값 설정 */
@@ -38,8 +125,12 @@ const initialState: main = {
   order: 'hot',
   target: {},
   allConcerts: [],
-  fiveConcerts: [],
-  firstIdx: 0,
+  targetIdx: 0,
+  firstConcert: {},
+  secondConcert: {},
+  thirdConcert: {},
+  fourthConcert: {},
+  fifthConcert: {},
 };
 
 const mainSlice = createSlice({
@@ -53,17 +144,29 @@ const mainSlice = createSlice({
     setTarget: (state: main, { payload }: PayloadAction<object>) => {
       state.target = payload;
     },
+    setTargetZero: (state: main) => {
+      state.target = state.allConcerts[0];
+    },
+    setTargetIdx: (state: main, { payload }: PayloadAction<number>) => {
+      state.targetIdx = payload;
+    },
     setAllConcerts: (state: main, { payload }: PayloadAction<Array<any>>) => {
       state.allConcerts = payload;
     },
-    setFiveConcerts: (state: main, { payload }: PayloadAction<Array<any>>) => {
-      state.fiveConcerts = payload;
+    setFirstConcert: (state: main, { payload }: PayloadAction<object>) => {
+      state.firstConcert = payload;
     },
-    setFirstIdx: (state: main, { payload }: PayloadAction<number>) => {
-      state.firstIdx = payload;
+    setSecondConcert: (state: main, { payload }: PayloadAction<object>) => {
+      state.secondConcert = payload;
     },
-    addNumberToFirstIdx: (state: main) => {
-      state.firstIdx = state.firstIdx + 1;
+    setThirdConcert: (state: main, { payload }: PayloadAction<object>) => {
+      state.thirdConcert = payload;
+    },
+    setFourthConcert: (state: main, { payload }: PayloadAction<object>) => {
+      state.fourthConcert = payload;
+    },
+    setFifthConcert: (state: main, { payload }: PayloadAction<object>) => {
+      state.fifthConcert = payload;
     },
   },
 });
@@ -71,9 +174,13 @@ const mainSlice = createSlice({
 export const {
   setOrder,
   setTarget,
+  setTargetZero,
+  setTargetIdx,
   setAllConcerts,
-  setFiveConcerts,
-  setFirstIdx,
-  addNumberToFirstIdx,
+  setFirstConcert,
+  setSecondConcert,
+  setThirdConcert,
+  setFourthConcert,
+  setFifthConcert,
 } = mainSlice.actions;
 export default mainSlice.reducer;

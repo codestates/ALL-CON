@@ -11,6 +11,7 @@ import MyProfileImageModal from './components/Modals/MyPage/MyProfileImageModal'
 import MyProfileResignMembershipModal from './components/Modals/MyPage/MyProfileResignMembershipModal';
 import MyDropDown from './components/Modals/MyPage/MyDropDown';
 import PrivacyModal from './components/Modals/PrivacyModal';
+import PhoneConfirmNumberModal from './components/Modals/MyPage/PhoneConfirmNumberModal';
 import ResetPasswordModal from './components/Modals/ResetPasswordModal';
 import SignUpModal from './components/Modals/SignUpModal';
 import SideMenuModal from './components/Modals/SideMenuModal';
@@ -39,11 +40,13 @@ function App() {
     privacyModal,
     findPasswordModal,
     confirmNumberModal,
+    phoneConfirmNumberModal,
     resetPasswordModal,
     alertModal,
     concertModal,
     sideMenuModal,
     myDropDown,
+    conChinWritingModal,
   } = useSelector((state: RootState) => state.modal);
 
   return (
@@ -58,9 +61,10 @@ function App() {
       {findPasswordModal && <FindPasswordModal />}
       {myDropDown && <MyDropDown />}
       {confirmNumberModal && <ConfirmNumberModal />}
+      { phoneConfirmNumberModal && <PhoneConfirmNumberModal />}
       {resetPasswordModal && <ResetPasswordModal />}
       {concertModal && <ConcertModal />}
-      {/* <ConChinWritingModal /> */}
+      {conChinWritingModal && <ConChinWritingModal />}
       {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
       {/* <MyEditPage /> */}

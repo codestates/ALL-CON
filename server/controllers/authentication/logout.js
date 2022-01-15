@@ -3,6 +3,9 @@ const { userAuth } = require('../../middlewares/authorized/userAuth')
 module.exports = {
   post: async (req, res) => {
     try {
+
+      console.log('---- 로그아웃 진입 완료 ----')
+
       // 로그인 인증검사
       const token = await userAuth(req, res);
       // 쿠키 삭제

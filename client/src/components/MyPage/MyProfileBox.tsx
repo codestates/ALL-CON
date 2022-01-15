@@ -19,15 +19,21 @@ function MyProfileBox() {
   /* dispatch / navigate */
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
   /* useSelector */
   const { userInfo } = useSelector((state: RootState) => state.auth);
+  
   /* 지역상태 - useState */
-
-  /* useEffect */
+  // 프로필 수정 버튼 모니터링 상태
+  const [profileChangeBtn, setProfileChangeBtn] = useState<boolean>(false)
   // 프로필 수정 모달 상태
   const [profileEdit, setProfileEdit] = useState<boolean>(false)
   // 회원탈퇴 모달 상태
   const [resignMembership, setResignMembership] = useState<boolean>(false)
+
+  /* useEffect */
+  
+
 
   /* handler 함수 (기능별 정렬) */
 
@@ -39,6 +45,10 @@ function MyProfileBox() {
   // 프로필 수정 버튼
   const handleProfileEdit = async () => {
     console.log('프로필 수정 버튼을 클릭하셨습니다!')
+
+    // 프로필 수정 버튼 클릭 상태 갱신
+    setProfileChangeBtn(true)
+    console.log(' --- profileChangeBtn 상태 확인! --- ', profileChangeBtn)
     navigate('/myEdit')
   }
 
@@ -99,9 +109,7 @@ function MyProfileBox() {
         </div>
         {/* 자기소개, 주의! null일 때 처리해줘야됨! */}
         <div id='textWrapper'>
-          <textarea id='introduction'>
-            { `${userInfo.introduction}` === undefined ? '' : `${userInfo.introduction}` }
-          </textarea>
+          <textarea id='introduction' disabled >  </textarea>
         </div>
         <div id='modifyBtnWrapper'>
           <button className='btn' onClick={() => {handleProfileEdit()}}>프로필 수정</button>
