@@ -1,12 +1,13 @@
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
-import { setPostingOrder } from '../../store/ConChinSlice';
 import {
   setArticleOrder,
   setAllArticles,
   setArticleTotalPage,
   setTargetArticle,
+  setPostingOrder,
+  setArticleCurPage,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -28,8 +29,8 @@ function ConChinPostingOrderBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        dispatch(setAllConcerts(response.data.data.concertInfo));
         resetTarget();
+        dispatch(setAllConcerts(response.data.data.concertInfo));
       }
     } catch (err) {
       console.log(err);
@@ -44,6 +45,7 @@ function ConChinPostingOrderBox() {
       );
       if (response.data) {
         console.log('PostingOrderBox=> 전체 게시물을 받아왔습니다.');
+        resetTarget();
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
       } else {
@@ -65,6 +67,7 @@ function ConChinPostingOrderBox() {
   const resetTarget = () => {
     dispatch(setTarget({}));
     dispatch(setTargetArticle({}));
+    dispatch(setArticleCurPage(1));
   };
   return (
     <div

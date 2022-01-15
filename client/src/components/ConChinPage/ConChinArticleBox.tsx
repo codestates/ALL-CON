@@ -76,9 +76,9 @@ function ConChinArticleBox() {
   };
 
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
-  useEffect(() => {
-    // getAllArticles();
-  }, []);
+  // useEffect(() => {
+  //   getAllArticles();
+  // }, []);
 
   return (
     <div id='conChinArticleBox'>
@@ -96,7 +96,11 @@ function ConChinArticleBox() {
               {allArticles.map(article => {
                 return (
                   <ul
-                    className='article'
+                    className={
+                      article.id === targetArticle.id
+                        ? 'articleChosen'
+                        : 'article'
+                    }
                     key={article.id}
                     onClick={() => {
                       getTargetArticlesInfo(article.id);
@@ -122,8 +126,7 @@ function ConChinArticleBox() {
                     <div className='title'>
                       <img className='icon' src={viewImage} />
                       <p className='count'>{article.view}</p>
-                      <p className='date'>21.01.14</p>
-                      {/* {article.createdAt} */}
+                      <p className='date'>{article.createdAt}</p>
                       <p className='text'>{article.title}</p>
                     </div>
                   </ul>
@@ -139,7 +142,11 @@ function ConChinArticleBox() {
               {allArticles.map(article => {
                 return (
                   <ul
-                    className='article'
+                    className={
+                      article.id === targetArticle.id
+                        ? 'articleChosen'
+                        : 'article'
+                    }
                     key={article.id}
                     onClick={() => {
                       getTargetArticlesInfo(article.id);
@@ -149,7 +156,11 @@ function ConChinArticleBox() {
                     }}
                   >
                     <img
-                      className='thumbNail'
+                      className={
+                        article.id === targetArticle.id
+                          ? 'thumbNailChosen'
+                          : 'thumbNail'
+                      }
                       src={
                         article.image !== null ? article.image : defaultImage
                       }
@@ -165,8 +176,8 @@ function ConChinArticleBox() {
                     <div className='title'>
                       <img className='icon' src={viewImage} />
                       <p className='count'>{article.view}</p>
-                      <p className='date'>21.01.14</p>
-                      {/* {article.createdAt} */}
+                      <p className='date'>{article.createdAt}</p>
+
                       <p className='text'>{article.title}</p>
                     </div>
                   </ul>

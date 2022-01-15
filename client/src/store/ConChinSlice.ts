@@ -23,6 +23,7 @@ export interface conChin {
     user_id?: number;
     view?: number;
   };
+  articleCurPage: number;
   /* 선택한 게시물 유저 정보 */
   targetArticlesUserInfo: {
     email?: string;
@@ -42,6 +43,7 @@ const initialState: conChin = {
   articleTotalPage: 0,
   targetArticle: {},
   targetArticlesUserInfo: {},
+  articleCurPage: 0,
 };
 
 const conChinSlice = createSlice({
@@ -76,6 +78,9 @@ const conChinSlice = createSlice({
     ) => {
       state.targetArticlesUserInfo = payload;
     },
+    setArticleCurPage: (state: conChin, { payload }: PayloadAction<number>) => {
+      state.articleCurPage = payload;
+    },
   },
 });
 
@@ -86,5 +91,6 @@ export const {
   setArticleTotalPage,
   setTargetArticle,
   setTargetArticlesUserInfo,
+  setArticleCurPage,
 } = conChinSlice.actions;
 export default conChinSlice.reducer;
