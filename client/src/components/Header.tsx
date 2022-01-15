@@ -12,7 +12,7 @@ import {
   showLoginModal,
   showSideMenuModal,
   showMyDropDown,
-  showConcertModal
+  showConcertModal,
 } from '../store/ModalSlice';
 import {
   setIsScrolled,
@@ -38,8 +38,6 @@ function Header() {
   );
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
-
-  console.log('target :', target);
 
   /* 타이머 변수 설정: 현재 시간 */
   let now = new Date();
