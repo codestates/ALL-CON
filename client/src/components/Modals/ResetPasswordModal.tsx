@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../config.js'
 /* CSS import */
 import padlock from '../../images/falsyPadlock.png';
 /* Store import */
@@ -89,7 +87,7 @@ function ResetPasswordModal() {
     try {
       if (isAllValid(signupInfo)) {
         await axios.patch(
-          `${REACT_APP_API_URL}/password/confirm`,
+          `${process.env.REACT_APP_API_URL}/password/confirm`,
           { email: deliverText, newPassword: password },
           { withCredentials: true }
         );

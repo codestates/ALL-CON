@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../config';
 /* CSS import */
 import PosterSlide from './PosterSlide';
 import six from '../images/six.gif';
@@ -42,7 +40,7 @@ function Jumbotron() {
   const getAllConcerts = async () => {
     try {
       const response = await axios.get(
-        `${REACT_APP_API_URL}/concert?${order}`,
+        `${process.env.REACT_APP_API_URL}/concert?${order}`,
         { withCredentials: true },
       );
       if (response.data) {

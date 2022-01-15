@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../../config.js';
 /* Store import */
 import { RootState } from '../../../index';
 import { setScrollCount } from '../../../store/HeaderSlice';
@@ -21,7 +19,7 @@ function MyDropDown() {
   const logoutHandler = async () => {
     try {
       await axios.post(
-        `${REACT_APP_API_URL}/logout`,
+        `${process.env.REACT_APP_API_URL}/logout`,
         {},
         { withCredentials: true },
       );
