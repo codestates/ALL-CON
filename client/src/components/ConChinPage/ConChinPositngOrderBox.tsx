@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../config';
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
@@ -21,7 +19,7 @@ function ConChinPostingOrderBox() {
   const getAllConcerts = async () => {
     try {
       const response = await axios.get(
-        `${REACT_APP_API_URL}/concert?order=${postingOrder}`,
+        `${process.env.REACT_APP_API_URL}/concert?order=${postingOrder}`,
         { withCredentials: true },
       );
       if (response.data) {
@@ -36,7 +34,7 @@ function ConChinPostingOrderBox() {
   const getRealAllArticles = async () => {
     try {
       const response = await axios.get(
-        `${REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
+        `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
         { withCredentials: true },
       );
       if (response.data) {

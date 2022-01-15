@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../config';
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
@@ -35,7 +33,7 @@ function ConChinPostingBox() {
         } else {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
           const response = await axios.get(
-            `${REACT_APP_API_URL}/concert/${target.id}?order=${articleOrder}`,
+            `${process.env.REACT_APP_API_URL}/concert/${target.id}?order=${articleOrder}`,
             { withCredentials: true },
           );
           if (response.data) {

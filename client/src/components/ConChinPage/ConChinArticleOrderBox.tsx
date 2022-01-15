@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../config';
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget } from '../../store/MainSlice';
@@ -30,7 +28,7 @@ function ConChinArticleOrderBox() {
       ) {
         /* 타겟이 없지만 전체 표시중일 때 게시물 전체 정렬순에 맞게 정렬 */
         const response = await axios.get(
-          `${REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
+          `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
           { withCredentials: true },
         );
         if (response.data) {
@@ -51,7 +49,7 @@ function ConChinArticleOrderBox() {
       } else {
         /* 타겟에 종속된 게시물 정렬순표시 */
         const response = await axios.get(
-          `${REACT_APP_API_URL}/concert/${target.id}?order=${articleOrder}`,
+          `${process.env.REACT_APP_API_URL}/concert/${target.id}?order=${articleOrder}`,
           { withCredentials: true },
         );
         if (response.data) {

@@ -1,9 +1,3 @@
-/* Config import */
-import {
-  REACT_APP_API_URL,
-  REACT_APP_DEFAULTUSERIMAGE_URL,
-  REACT_APP_IMAGE_URL,
-} from '../../../config';
 /* CSS import */
 import profileImage from '../../../images/taeyang.png';
 import camera from '../../../images/camera.png';
@@ -59,17 +53,13 @@ function MyProfileImageModal({
 
       formData.append('img', e.target.files[0]);
       // 선택한 이미지를 서버와 s3 bucket에 업로드한다
-      const response = await axios.post(
-        `${REACT_APP_API_URL}/upload`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/upload`, formData, {
+        headers: {
+          'Content-Type' : 'multipart/form-data'
+        }
+      })
       // AWS 버킷 주소 + 객체 키 값
-      let imageFullUrl = `${REACT_APP_IMAGE_URL}/${response.data.imagePath}`;
+      let imageFullUrl = `${process.env.REACT_APP_IMAGE_URL}${response.data.imagePath}`
       // 미리보기 기능
       setPreview(imageFullUrl);
       setPreviewHandle(true);
@@ -81,7 +71,7 @@ function MyProfileImageModal({
     try {
       // 변경하기 버튼을 클릭하면, 해당 이미지를 프로필 이미지로 변경
       const response = await axios.patch(
-        `${REACT_APP_API_URL}/user/picture`,
+        `${process.env.REACT_APP_API_URL}/user/picture`,
         { image: preview },
         { withCredentials: true },
       );

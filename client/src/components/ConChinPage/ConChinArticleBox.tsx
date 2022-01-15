@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../config';
 /* CSS import */
 import defaultImage from '../../images/default_image.jpg';
 import viewImage from '../../images/view.png';

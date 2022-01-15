@@ -1,14 +1,20 @@
+/* CSS import */
 import map from '../../../images/map.jpg';
 import xButton from '../../../images/xButton.png';
+/* Component import */
+import KakaoMap from '../../ConcertPage/KakaoMap';
 /* Store import */
 import { RootState } from '../../../index';
 import { showConcertModal } from '../../../store/ModalSlice';
 /* Library import */
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { setTarget } from '../../../store/MainSlice';
 
 function ConcertModal() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { target } = useSelector((state: RootState) => state.main);
   
   useEffect(() => {
@@ -44,6 +50,12 @@ function ConcertModal() {
       return String(year+'년 '+month+'월 '+date+'일 '+hour+' : '+minute);
     }
     return '';
+  }
+
+  /* 자세히 보기 버튼 클릭 핸들러 */
+  const moveMainHandler = () => {
+    dispatch(showConcertModal(false));
+    navigate('/main');
   }
 
   return (
@@ -87,12 +99,13 @@ function ConcertModal() {
                   {target.place && <p>{target.place}</p>}
                 </div>
               </div>
-              <button id='more'>자세히 보기</button>
+              <button id='more' onClick={moveMainHandler}>자세히 보기</button>
             </div>
           </div>
           <div id='bottom_box'>
-            <h1>콘서트 위치정보를 찾을수 없습니다!</h1>
-            <img id='map' src={map} alt='지도 이미지'></img>
+            {/* <h1>콘서트 위치정보를 찾을수 없습니다!</h1>
+            <img id='noMap' src={map} alt='지도 이미지'></img> */}
+            <KakaoMap place={target.place}/>
           </div>
         </div>
       </div>

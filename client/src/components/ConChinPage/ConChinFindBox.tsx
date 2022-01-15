@@ -1,11 +1,7 @@
-/* Config import */
-import {
-  REACT_APP_API_URL,
-  REACT_APP_DEFAULTUSERIMAGE_URL,
-  REACT_APP_IMAGE_URL,
-} from '../../config';
 /* CSS import */
 import shield from '../../images/shield.png';
+/* Component import */
+import ConChinWritingModal from '../Modals/ConChinPage/ConChinWritingModal';
 /* Store import */
 import { RootState } from '../../index';
 import { logout, getUserInfo } from '../../store/AuthSlice';

@@ -1,9 +1,3 @@
-/* Config import */
-import {
-  REACT_APP_API_URL,
-  REACT_APP_DEFAULTUSERIMAGE_URL,
-  REACT_APP_IMAGE_URL,
-} from '../../../config';
 /* CSS import */
 import defaultImg from '../../../images/default_image.jpg';
 /* Store import */
@@ -50,17 +44,13 @@ function ConChinWritingModal() {
 
       formData.append('img', e.target.files[0]);
       // 선택한 이미지를 서버와 s3 bucket에 업로드한다
-      const response = await axios.post(
-        `${REACT_APP_API_URL}/upload`,
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        },
-      );
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/upload`, formData, {
+        headers: {
+          'Content-Type' : 'multipart/form-data'
+        }
+      })
       // AWS 버킷 주소 + 객체 키 값
-      let imageFullUrl = `${REACT_APP_IMAGE_URL}/${response.data.imagePath}`;
+      let imageFullUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.imagePath}`
       // 미리보기 기능
       setPreview(imageFullUrl);
       setPreviewHandle(true);
@@ -99,9 +89,8 @@ function ConChinWritingModal() {
   const handleWriteBtn = async () => {
     // [POST] 서버로 게시물 작성 요청, ex) concert/:concertid/article => concertid는 변수 처리해야됨!
     const response = await axios.post(
-      `${REACT_APP_API_URL}/concert/${target.id}/article`,
-      {
-        //44 부분에 ${target.id}
+      `${process.env.REACT_APP_API_URL}/concert/${target.id}}/article`,
+      { 
         title: title,
         content: content,
         image: preview,

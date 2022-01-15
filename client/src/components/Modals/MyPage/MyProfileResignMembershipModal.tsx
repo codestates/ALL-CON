@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../../config'
 /* CSS import */
 import ticket from '../../../images/resignTicket.png';
 /* Store import */
@@ -38,7 +36,7 @@ function MyProfileResignMembershipModal({ handleAccountDeleteBackground }: MyPro
     // navigate('/main');
     try {
       await axios.delete(
-        `${REACT_APP_API_URL}/user/me`,
+        `${process.env.REACT_APP_API_URL}/user/me`,
         { withCredentials: true }
       );
       alert('ALL-CON\nGoodbye! 😖') 

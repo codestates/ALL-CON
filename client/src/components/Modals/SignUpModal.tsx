@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../config.js'
 /* CSS import */
 import check from '../../images/check.png'
 import redLock from '../../images/falsyPadlock.png';
@@ -143,7 +141,7 @@ function SignUpModal() {
   const duplicationHandler = async () => {
     try {
       const response = await axios.post(
-        `${REACT_APP_API_URL}/username`,
+        `${process.env.REACT_APP_API_URL}/username`,
         { username },
         { withCredentials: true }
       );
@@ -162,7 +160,7 @@ function SignUpModal() {
         if(tosCheck && privacyCheck){
           if(isCheckDuplication && duplicationCheck){
             await axios.post(
-              `${REACT_APP_API_URL}/signup`,
+              `${process.env.REACT_APP_API_URL}/signup`,
               { email, username, password, confirmPassword },
               { withCredentials: true }
             );
