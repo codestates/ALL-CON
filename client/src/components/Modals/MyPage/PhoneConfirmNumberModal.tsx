@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../../config.js'
 /* CSS import */
 import xButton from '../../../images/xWhiteButton.png';
 /* Store import */
@@ -51,7 +49,7 @@ function PhoneConfirmNumberModal() {
     try {
       //휴대폰 인증번호을 입력한 후 확인버튼을 클릭했을 때, 다음을 실행한다
       await axios.post(
-        `${REACT_APP_API_URL}/user/safe/confirm`,
+        `${process.env.REACT_APP_API_URL}/user/safe/confirm`,
         { message_key: inputCode },
         { withCredentials: true }
       );
@@ -81,7 +79,7 @@ function PhoneConfirmNumberModal() {
       console.log('--- 재전송(인증번호) 버튼 확인! ---')
       
       await axios.post(
-        `${REACT_APP_API_URL}/user/safe`,
+        `${process.env.REACT_APP_API_URL}/user/safe`,
         { phone_number: certificateInfo },
         { withCredentials: true }
       );

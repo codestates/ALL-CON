@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../config.js'
 /* CSS Import */
 import defaultImg from '../images/landingImage1.png';
 import ConcertBox from '../components/ConcertPage/ConcertBox';
@@ -27,11 +25,13 @@ function ConcertPage() {
   const orderByHandler = async (order: string) => {
     try{
       const response = await axios.get(
-        `${REACT_APP_API_URL}/concert?order=${concertOrder}`,
+        `${process.env.REACT_APP_API_URL}/concert?order=${concertOrder}`,
         { withCredentials: true },
       );
       if (response.data) {
         dispatch(setAllConcerts(response.data.data.concertInfo));
+        dispatch(setTarget({}));
+        dispatch(showConcertModal(false));
       }
     } catch(err){
       const error = err as AxiosError;
@@ -45,7 +45,7 @@ function ConcertPage() {
   const concertClickHandler = async (concertId: number) => {
     try{
       const response = await axios.get(
-        `${REACT_APP_API_URL}/concert/${concertId}`,
+        `${process.env.REACT_APP_API_URL}/concert/${concertId}`,
         { withCredentials: true },
       );
       if (response.data) {

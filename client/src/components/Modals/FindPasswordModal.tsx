@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../config.js'
 /* Store import */
 import { showFindPasswordModal, showConfirmNumberModal, insertAlertText, showAlertModal, insertDeliverText } from '../../store/ModalSlice';
 /* Library import */
@@ -20,7 +18,7 @@ function FindPasswordModal() {
   const requestHandler = async () => {
     try {
       await axios.post(
-        `${REACT_APP_API_URL}/password`,
+        `${process.env.REACT_APP_API_URL}/password`,
         { email: inputEmail },
         { withCredentials: true }
       );

@@ -16,6 +16,7 @@ export interface modal {
   phoneConfirmNumberModal: boolean;
   alertText: string;
   deliverText: string;
+  conChinWritingModal: boolean;
 }
 
 /* State 초기값 설정 */
@@ -34,6 +35,7 @@ const initialState: modal = {
   phoneConfirmNumberModal: false,
   alertText: '',
   deliverText: '',
+  conChinWritingModal: false,
 };
 
 const modalSlice = createSlice({
@@ -57,11 +59,15 @@ const modalSlice = createSlice({
       state.sideMenuModal = payload;
     },
     showFindPasswordModal: (
-      state: modal, { payload }: PayloadAction<boolean>) => {
+      state: modal,
+      { payload }: PayloadAction<boolean>,
+    ) => {
       state.findPasswordModal = payload;
     },
     showConfirmNumberModal: (
-      state: modal, { payload }: PayloadAction<boolean>) => {
+      state: modal,
+      { payload }: PayloadAction<boolean>,
+    ) => {
       state.confirmNumberModal = payload;
     },
     showPhoneConfirmNumberModal: (
@@ -69,7 +75,9 @@ const modalSlice = createSlice({
       state.phoneConfirmNumberModal = payload;
     },
     showResetPasswordModal: (
-      state: modal, { payload }: PayloadAction<boolean>) => {
+      state: modal,
+      { payload }: PayloadAction<boolean>,
+    ) => {
       state.resetPasswordModal = payload;
     },
     showAlertModal: (state: modal, { payload }: PayloadAction<boolean>) => {
@@ -86,6 +94,12 @@ const modalSlice = createSlice({
     },
     insertDeliverText: (state: modal, { payload }: PayloadAction<string>) => {
       state.deliverText = payload;
+    },
+    showConChinWritingModal: (
+      state: modal,
+      { payload }: PayloadAction<boolean>,
+    ) => {
+      state.conChinWritingModal = payload;
     },
   },
 });
@@ -105,5 +119,6 @@ export const {
   showMyDropDown,
   insertAlertText,
   insertDeliverText,
+  showConChinWritingModal,
 } = modalSlice.actions;
 export default modalSlice.reducer;

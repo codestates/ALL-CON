@@ -1,8 +1,6 @@
 import MyProfileBox from '../components/MyPage/MyProfileBox';
 import Footer from '../components/Footer';
 
-/* Config import */
-import { REACT_APP_API_URL, REACT_APP_DEFAULTUSERIMAGE_URL, REACT_APP_IMAGE_URL  } from '../config'
 /* CSS import */
 import check from '../images/check.png'
 /* Store import */
@@ -109,7 +107,7 @@ function ConChinCertificationPage() {
     
     // 입력된 휴대번호로 6자리 인증번호를 전송한다 (주의! 휴대폰 번호는 변수로 다시 지정해줘야 한다!)
     const response = await axios.post(
-      `${REACT_APP_API_URL}/user/safe`,
+      `${process.env.REACT_APP_API_URL}/user/safe`,
       { phone_number: `${conchinCertificateInfo.phoneNumber}` },
       { withCredentials: true }
       );
@@ -123,7 +121,7 @@ function ConChinCertificationPage() {
     console.log('인증 완료 버튼 핸들러 확인!')
     if(isAllValid(conchinCertificateInfo)) {
       const response = await axios.patch(
-        `${REACT_APP_API_URL}/user/safe`,
+        `${process.env.REACT_APP_API_URL}/user/safe`,
         { 
           birth: birth,
           gender: conchinCertificateInfo.gender,

@@ -1,5 +1,4 @@
 /* Config import */
-import { REACT_APP_API_URL } from '../config.js';
 import { persistor } from '../index';
 /* CSS import */
 import logo from '../images/allConLogo.png';
@@ -13,6 +12,7 @@ import {
   showLoginModal,
   showSideMenuModal,
   showMyDropDown,
+  showConcertModal
 } from '../store/ModalSlice';
 import {
   setIsScrolled,
@@ -38,6 +38,9 @@ function Header() {
   );
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
+
+  console.log('target :', target);
+
   /* 타이머 변수 설정: 현재 시간 */
   let now = new Date();
   const sc = 1000;
@@ -144,10 +147,11 @@ function Header() {
     dispatch(setIsScrolled(false));
     dispatch(setTarget({}));
   };
-  /* 타겟 초기화 핸들러 */
-  const resetTarget = () => {
+  /* 메뉴 이동시 상태 초기화 핸들러 */
+  const resetHandler = () => {
+    // dispatch(logout());
     dispatch(setTarget({}));
-    dispatch(logout());
+    dispatch(showConcertModal(false));
   };
 
   return (
@@ -200,13 +204,13 @@ function Header() {
           )}
         </div>
         <div id='hiddenMenuBox'>
-          <Link to='/main' onClick={resetTarget}>
+          <Link to='/main' onClick={resetHandler}>
             <p className='menu'>홈</p>
           </Link>
-          <Link to='/concert' onClick={resetTarget}>
+          <Link to='/concert' onClick={resetHandler}>
             <p className='menu'>콘서트</p>
           </Link>
-          <Link to='/conchin' onClick={resetTarget}>
+          <Link to='/conchin' onClick={resetHandler}>
             <p className='menu'>콘친 찾기</p>
           </Link>
         </div>

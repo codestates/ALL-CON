@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL, REACT_APP_DEFAULTUSERIMAGE_URL, REACT_APP_IMAGE_URL  } from '../config'
 import MyProfileBox from '../components/MyPage/MyProfileBox';
 import Footer from '../components/Footer';
 /* CSS import */
@@ -155,7 +153,7 @@ function MyEditPage() {
   const duplicationHandler = async () => {
     try {
       const response = await axios.post(
-        `${REACT_APP_API_URL}/username`,
+        `${process.env.REACT_APP_API_URL}/username`,
         { username },
         { withCredentials: true }
       );
@@ -189,7 +187,7 @@ function MyEditPage() {
       if (isAllValid(changeUserInfo)) {
           if(isCheckDuplication && duplicationCheck){
             const response = await axios.patch(
-              `${REACT_APP_API_URL}/user/me`,
+              `${process.env.REACT_APP_API_URL}/user/me`,
               { 
                 // introduction,
                 username: username, 
