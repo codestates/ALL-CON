@@ -8,6 +8,26 @@ export interface conChin {
   /* 받아온 게시물 목록 */
   allArticles: any[];
   articleTotalPage: number;
+  targetArticle: {
+    concert_id?: number;
+    id?: number;
+    createdAt?: Date;
+    content?: string;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    updatedAt?: Date;
+  };
 }
 
 /* State 초기값 설정 */
@@ -16,6 +36,7 @@ const initialState: conChin = {
   articleOrder: 'view',
   allArticles: [],
   articleTotalPage: 0,
+  targetArticle: {},
 };
 
 const conChinSlice = createSlice({
@@ -41,6 +62,9 @@ const conChinSlice = createSlice({
     ) => {
       state.articleTotalPage = payload;
     },
+    setTargetArticle: (state: conChin, { payload }: PayloadAction<object>) => {
+      state.targetArticle = payload;
+    },
   },
 });
 
@@ -49,5 +73,6 @@ export const {
   setArticleOrder,
   setAllArticles,
   setArticleTotalPage,
+  setTargetArticle,
 } = conChinSlice.actions;
 export default conChinSlice.reducer;

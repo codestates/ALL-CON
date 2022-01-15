@@ -42,7 +42,7 @@ function ConChinPostingOrderBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        console.log('받아줌');
+        console.log('PostingOrderBox=> 전체 게시물을 받아왔습니다.');
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
       } else {
@@ -54,6 +54,7 @@ function ConChinPostingOrderBox() {
     }
   };
 
+  /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
   useEffect(() => {
     getAllConcerts();
     getAllArticles();
@@ -75,7 +76,6 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('view'));
-          getAllConcerts();
           getAllArticles();
         }}
         style={
@@ -90,7 +90,6 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('near'));
-          getAllConcerts();
           getAllArticles();
         }}
         style={
@@ -105,7 +104,6 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('new'));
-          getAllConcerts();
           getAllArticles();
         }}
         style={

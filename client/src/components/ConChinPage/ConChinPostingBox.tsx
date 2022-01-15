@@ -54,6 +54,7 @@ function ConChinPostingBox() {
       );
     }
   };
+
   /*전체 게시물 받아오기 & 타겟 교체 */
   function getAllArticlesAndSetTarget(concert: any[]) {
     dispatch(setTarget(concert));
@@ -64,9 +65,11 @@ function ConChinPostingBox() {
     console.log(concert);
   }
 
+  /* useEffect: 타겟이 변경될 때마다 게시물 렌더링 */
   useEffect(() => {
     getAllArticles();
   }, [target]);
+
   return (
     <li id='conChinPostingBox'>
       <h1 id={Object.keys(target).length === 0 ? 'curOrder' : 'curOrderChosen'}>

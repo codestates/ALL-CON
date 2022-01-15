@@ -40,7 +40,6 @@ function ConChinArticleOrderBox() {
           console.log(
             'ConChinArticleOrderBox=> 타겟이 없으니 정렬순으로 전체 표시합니다.',
           );
-          console.log('totalPage: ' + response.data.data.totalPage);
           console.log(allArticles);
         } else {
           console.log('ConChinArticleOrderBox=> 없거나 실수로 못가져왔어요.');
@@ -64,7 +63,6 @@ function ConChinArticleOrderBox() {
             'ConChinArticleOrderBox=> 타겟에 종속된 게시물을 보여줍니다.',
           );
           console.log('ConChinArticleOrderBox=> allArticles: ' + allArticles);
-          console.log('totalPage: ' + response.data.data.totalPage);
         }
       }
     } catch (err) {
