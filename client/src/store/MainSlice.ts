@@ -25,8 +25,8 @@ export interface main {
   };
   /*전체 콘서트 목록들 */
   allConcerts: any[];
-  /*첫번째 포스터의 인덱스*/
-  firstIdx: number;
+  /* 가운데 포스터의 인덱스*/
+  targetIdx: number;
   /*5개 콘서트 정보들*/
   firstConcert: {
     id?: number;
@@ -125,7 +125,7 @@ const initialState: main = {
   order: 'hot',
   target: {},
   allConcerts: [],
-  firstIdx: 0,
+  targetIdx: 0,
   firstConcert: {},
   secondConcert: {},
   thirdConcert: {},
@@ -147,17 +147,11 @@ const mainSlice = createSlice({
     setTargetZero: (state: main) => {
       state.target = state.allConcerts[0];
     },
+    setTargetIdx: (state: main, { payload }: PayloadAction<number>) => {
+      state.targetIdx = payload;
+    },
     setAllConcerts: (state: main, { payload }: PayloadAction<Array<any>>) => {
       state.allConcerts = payload;
-    },
-    setFirstIdx: (state: main, { payload }: PayloadAction<number>) => {
-      state.firstIdx = payload;
-    },
-    makeFirstIdxZero: (state: main) => {
-      state.firstIdx = 0;
-    },
-    addNumberToFirstIdx: (state: main) => {
-      state.firstIdx = state.firstIdx + 1;
     },
     setFirstConcert: (state: main, { payload }: PayloadAction<object>) => {
       state.firstConcert = payload;
@@ -181,10 +175,8 @@ export const {
   setOrder,
   setTarget,
   setTargetZero,
+  setTargetIdx,
   setAllConcerts,
-  setFirstIdx,
-  makeFirstIdxZero,
-  addNumberToFirstIdx,
   setFirstConcert,
   setSecondConcert,
   setThirdConcert,

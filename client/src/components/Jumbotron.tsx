@@ -10,10 +10,8 @@ import {
   setOrder,
   setTarget,
   setTargetZero,
+  setTargetIdx,
   setAllConcerts,
-  setFirstIdx,
-  makeFirstIdxZero,
-  addNumberToFirstIdx,
   setFirstConcert,
   setSecondConcert,
   setThirdConcert,
@@ -22,7 +20,6 @@ import {
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -32,17 +29,10 @@ function Jumbotron() {
   const { order } = useSelector((state: RootState) => state.main);
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
-  const { firstIdx } = useSelector((state: RootState) => state.main);
-  const { firstConcert } = useSelector((state: RootState) => state.main);
-  const { secondConcert } = useSelector((state: RootState) => state.main);
-  const { thirdConcert } = useSelector((state: RootState) => state.main);
-  const { fourthConcert } = useSelector((state: RootState) => state.main);
-  const { fifthConcert } = useSelector((state: RootState) => state.main);
+  const { targetIdx } = useSelector((state: RootState) => state.main);
+
   const [isClick, setIsClick] = useState('disclicked');
 
-  let allConcertsId = allConcerts.map(el => el.id);
-  //target이 allConcerts배열에서 위치하는 인덱스
-  let targetIdx = allConcertsId.indexOf(target.id);
   let lastIdx = allConcerts.length - 1;
 
   /*전체 콘서트 받아오기 */
@@ -54,10 +44,15 @@ function Jumbotron() {
       );
       if (response.data) {
         dispatch(setAllConcerts(response.data.data.concertInfo));
-        dispatch(makeFirstIdxZero());
-        dispatch(setTargetZero());
-        console.log('확인');
-        updateFiveConcerts();
+        // dispatch(makeFirstIdxZero()); //firstIdx 0으로 세팅
+        dispatch(setTarget(allConcerts[0])); // target을 0번째 콘서트로 세팅
+        console.log(target);
+        //targetIdx의 인덱스 세팅
+        let allConcertsId = allConcerts.map(el => el.id);
+        dispatch(setTargetIdx(allConcertsId.indexOf(target.id)));
+        updateFiveConcertsRight();
+        console.log(lastIdx);
+        console.log(allConcerts);
       }
     } catch (err) {
       console.log(err);
@@ -69,48 +64,49 @@ function Jumbotron() {
     dispatch(setTarget(allConcerts[targetIdx]));
   };
 
-  const updateFiveConcerts = async () => {
-    try {
-      if (targetIdx === 0) {
-        /*targetIdx가 0일때 (처음 상황)*/
-        dispatch(setFirstConcert(allConcerts[lastIdx - 1]));
-        console.log(firstConcert);
-        dispatch(setSecondConcert(allConcerts[lastIdx]));
-        dispatch(setThirdConcert(allConcerts[targetIdx]));
-        dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
-        dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
-        // dispatch(addNumberToFirstIdx());
-        dispatch(setFirstIdx(firstIdx + 1));
-        console.log(firstIdx);
-      } else if (targetIdx === 1) {
-        /*targetIdx가 1일때 (오른쪽 넘김 +1)*/
-        //firstIdx가 클릭할때마다 1씩 커진다.
-        dispatch(setFirstConcert(allConcerts[lastIdx]));
-        dispatch(setSecondConcert(allConcerts[targetIdx - 1]));
-        dispatch(setThirdConcert(allConcerts[targetIdx]));
-        dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
-        dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
-        dispatch(setFirstIdx(firstIdx + 1));
-        console.log(firstIdx);
-      } else {
-        //firstIdx가 클릭할때마다 1씩 커진다.
-        dispatch(setFirstConcert(allConcerts[targetIdx - 2]));
-        dispatch(setSecondConcert(allConcerts[targetIdx - 1]));
-        dispatch(setThirdConcert(allConcerts[targetIdx]));
-        dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
-        dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
-        dispatch(addNumberToFirstIdx());
-        console.log(firstIdx);
-      }
-    } catch (err) {
-      console.log(err);
+  const updateFiveConcertsRight = () => {
+    if (targetIdx === 0) {
+      /*targetIdx가 0일때 (처음 상황)*/
+      dispatch(setFirstConcert(allConcerts[lastIdx - 1]));
+      dispatch(setSecondConcert(allConcerts[lastIdx]));
+      dispatch(setThirdConcert(allConcerts[targetIdx]));
+      dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
+      dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
+      console.log('targetIdx', targetIdx);
+    } else if (targetIdx === 1) {
+      /*targetIdx가 1일때 (오른쪽 넘김 +1)*/
+      //firstIdx가 클릭할때마다 1씩 커진다.
+      dispatch(setFirstConcert(allConcerts[lastIdx]));
+      dispatch(setSecondConcert(allConcerts[targetIdx - 1]));
+      dispatch(setThirdConcert(allConcerts[targetIdx]));
+      dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
+      dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
+      console.log('targetIdx', targetIdx);
+    } else {
+      //firstIdx가 클릭할때마다 1씩 커진다.
+      dispatch(setFirstConcert(allConcerts[targetIdx - 2]));
+      dispatch(setSecondConcert(allConcerts[targetIdx - 1]));
+      dispatch(setThirdConcert(allConcerts[targetIdx]));
+      dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
+      dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
+      console.log('targetIdx', targetIdx);
     }
   };
 
+  const updateFiveConcertsLeft = () => {
+    /*targetIdx가 2일때 (처음 상황)*/
+    dispatch(setFirstConcert(allConcerts[targetIdx - 2]));
+    dispatch(setSecondConcert(allConcerts[targetIdx - 1]));
+    dispatch(setThirdConcert(allConcerts[targetIdx]));
+    dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
+    dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
+    console.log('targetIdx', targetIdx);
+    console.log('lastIdx', lastIdx);
+  };
   useEffect(() => {
     getAllConcerts();
     getTargetPoster();
-  }, [targetIdx]);
+  }, [isClick]);
 
   return (
     <div id='jumboContainer'>
@@ -169,23 +165,44 @@ function Jumbotron() {
         {/*포스터 wrapper*/}
         <div id='jumboPosterSlideWrapper'>
           <div id='arrows'>
-            <img id='left' src={left} alt='왼쪽 화살표'></img>
+            <img
+              id='left'
+              src={left}
+              alt='왼쪽 화살표'
+              onClick={
+                targetIdx >= 0
+                  ? () => {
+                      updateFiveConcertsLeft();
+                      getTargetPoster();
+                      setIsClick('clicked');
+                      setIsClick('disclicked');
+                      dispatch(setTargetIdx(targetIdx - 1));
+                    }
+                  : () => {
+                      console.log('처음상태입니다. 왼쪽으로 더넘길 수 없어요');
+                    }
+              }
+            ></img>
             <img
               id='right'
               src={right}
               alt='오른쪽 화살표'
               onClick={
-                allConcerts.length > 5
+                allConcerts.length > 5 && targetIdx !== lastIdx
                   ? () => {
-                      updateFiveConcerts();
+                      updateFiveConcertsRight();
                       getTargetPoster();
                       setIsClick('clicked');
                       setIsClick('disclicked');
+                      dispatch(setTargetIdx(targetIdx + 1));
                     }
-                  : () =>
-                      console.log(
-                        '전체 포스터의 갯수가 5개 이하라 움직이지 않아요',
-                      )
+                  : () => {
+                      targetIdx === lastIdx
+                        ? console.log('마지막 포스터 입니다')
+                        : console.log(
+                            '전체 포스터의 갯수가 5개 이하라 움직이지 않아요',
+                          );
+                    }
               }
             ></img>
           </div>

@@ -13,6 +13,7 @@ export interface modal {
   alertModal: boolean;
   myDropDown: boolean;
   concertModal: boolean;
+  phoneConfirmNumberModal: boolean;
   alertText: string;
   deliverText: string;
   conChinWritingModal: boolean;
@@ -31,6 +32,7 @@ const initialState: modal = {
   sideMenuModal: false,
   myDropDown: false,
   concertModal: false,
+  phoneConfirmNumberModal: false,
   alertText: '',
   deliverText: '',
   conChinWritingModal: false,
@@ -67,6 +69,10 @@ const modalSlice = createSlice({
       { payload }: PayloadAction<boolean>,
     ) => {
       state.confirmNumberModal = payload;
+    },
+    showPhoneConfirmNumberModal: (
+      state: modal, { payload }: PayloadAction<boolean>) => {
+      state.phoneConfirmNumberModal = payload;
     },
     showResetPasswordModal: (
       state: modal,
@@ -105,6 +111,7 @@ export const {
   showPrivacyModal,
   showFindPasswordModal,
   showConfirmNumberModal,
+  showPhoneConfirmNumberModal,
   showResetPasswordModal,
   showAlertModal,
   showConcertModal,

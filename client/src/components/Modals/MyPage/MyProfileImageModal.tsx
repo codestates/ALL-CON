@@ -69,8 +69,7 @@ function MyProfileImageModal({
         },
       );
       // AWS 버킷 주소 + 객체 키 값
-      let imageFullUrl =
-        `${REACT_APP_IMAGE_URL}/` + `${response.data.imagePath}`;
+      let imageFullUrl = `${REACT_APP_IMAGE_URL}/${response.data.imagePath}`;
       // 미리보기 기능
       setPreview(imageFullUrl);
       setPreviewHandle(true);

@@ -3256,7 +3256,8 @@ a {
           top: 60%;
           padding-left: 2%;
           border: 1px solid #c4c4c4;
-          border-radius: 5px; }
+          border-radius: 5px;
+          background-color: white; }
           @media (max-width: 767px) {
             #conChinCertificationPage #userInfoWrapper #userInfoBox #genderBox .gender {
               font-size: 1.5rem; } }
@@ -3368,6 +3369,17 @@ a {
               @media (min-width: 1200px) {
                 #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .receiveBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .receiveBtn {
                   font-size: 2rem; } }
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .checkImg, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .checkImg {
+              position: absolute;
+              right: 31%;
+              height: 46%;
+              width: 6%; }
+            #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .hidden, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .hidden {
+              position: absolute;
+              right: 31%;
+              height: 46%;
+              width: 6%;
+              display: none; }
             #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .confirmBtn, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .confirmBtn {
               position: relative;
               height: 60%;
@@ -8401,3 +8413,243 @@ a {
             cursor: pointer; }
 
 /*------------정현------------*/
+/*------------기쁨------------*/
+#phoneConfirmNumberModal {
+  z-index: 993;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%; }
+  @media (max-width: 767px) {
+    #phoneConfirmNumberModal {
+      position: absolute; } }
+  @media (min-width: 768px) {
+    #phoneConfirmNumberModal {
+      position: fixed; } }
+  @media (min-width: 1200px) {
+    #phoneConfirmNumberModal {
+      position: fixed; } }
+  #phoneConfirmNumberModal #bg, #phoneConfirmNumberModal #sideMenuModal #bgUp, #sideMenuModal #phoneConfirmNumberModal #bgUp {
+    z-index: 994;
+    position: fixed;
+    display: flex;
+    background-color: #404040;
+    opacity: 50%; }
+    @media (max-width: 767px) {
+      #phoneConfirmNumberModal #bg, #phoneConfirmNumberModal #sideMenuModal #bgUp, #sideMenuModal #phoneConfirmNumberModal #bgUp {
+        width: 100%;
+        height: 100%; } }
+    @media (min-width: 768px) {
+      #phoneConfirmNumberModal #bg, #phoneConfirmNumberModal #sideMenuModal #bgUp, #sideMenuModal #phoneConfirmNumberModal #bgUp {
+        width: 100%;
+        height: 100%; } }
+    @media (min-width: 1200px) {
+      #phoneConfirmNumberModal #bg, #phoneConfirmNumberModal #sideMenuModal #bgUp, #sideMenuModal #phoneConfirmNumberModal #bgUp {
+        width: 100%;
+        height: 100%; } }
+  #phoneConfirmNumberModal #modalBox {
+    z-index: 995;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white; }
+    @media (max-width: 767px) {
+      #phoneConfirmNumberModal #modalBox {
+        width: 100%;
+        height: 30%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 5px; } }
+    @media (min-width: 768px) {
+      #phoneConfirmNumberModal #modalBox {
+        width: 60%;
+        height: 30%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 5px; } }
+    @media (min-width: 1200px) {
+      #phoneConfirmNumberModal #modalBox {
+        width: 27%;
+        height: 35%;
+        top: 50%;
+        transform: translate(0%, -50%);
+        border-radius: 10px; } }
+    #phoneConfirmNumberModal #modalBox #modal {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      top: 50%;
+      transform: translate(0%, -50%);
+      border-radius: 5px; }
+      #phoneConfirmNumberModal #modalBox #modal #titlesBox {
+        position: absolute;
+        display: flex;
+        width: 100%; }
+        @media (max-width: 767px) {
+          #phoneConfirmNumberModal #modalBox #modal #titlesBox {
+            height: 15%;
+            border-radius: 5px 5px 0px 0px; } }
+        @media (min-width: 768px) {
+          #phoneConfirmNumberModal #modalBox #modal #titlesBox {
+            height: 15%;
+            border-radius: 5px 5px 0px 0px; } }
+        @media (min-width: 1200px) {
+          #phoneConfirmNumberModal #modalBox #modal #titlesBox {
+            height: 11%;
+            border-radius: 10px 10px 0px 0px; } }
+        #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          padding-left: 2%;
+          background-color: #ffce63; }
+          @media (max-width: 767px) {
+            #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper {
+              border-radius: 5px 5px 0px 0px; } }
+          @media (min-width: 768px) {
+            #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper {
+              border-radius: 5px 5px 0px 0px; } }
+          @media (min-width: 1200px) {
+            #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper {
+              border-radius: 10px 10px 0px 0px; } }
+          #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title, #phoneConfirmNumberModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #phoneConfirmNumberModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #phoneConfirmNumberModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
+            position: absolute;
+            color: white;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title, #phoneConfirmNumberModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #phoneConfirmNumberModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #phoneConfirmNumberModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title, #phoneConfirmNumberModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #phoneConfirmNumberModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #phoneConfirmNumberModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper .title, #phoneConfirmNumberModal #conChinProfileModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #phoneConfirmNumberModal #modalBox #modal #titlesBox #titleWrapper #introductionBox #genderAndAgeWrapper .title2, #phoneConfirmNumberModal #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2, #conChinProfileModal #phoneConfirmNumberModal #modalBox #modal #introductionBox #genderAndAgeWrapper #titlesBox #titleWrapper .title2 {
+                font-size: 2rem; } }
+        #phoneConfirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-self: right;
+          height: 100%;
+          width: 100%; }
+          #phoneConfirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
+            position: absolute;
+            right: 2%;
+            width: 4%;
+            cursor: pointer; }
+            @media (max-width: 767px) {
+              #phoneConfirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
+                font-size: 2rem; } }
+            @media (min-width: 768px) {
+              #phoneConfirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
+                font-size: 2.3rem; } }
+            @media (min-width: 1200px) {
+              #phoneConfirmNumberModal #modalBox #modal #titlesBox #xButtonWrapper .xButton {
+                font-size: 2.5rem; } }
+      #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%; }
+        @media (max-width: 767px) {
+          #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox {
+            height: 85%;
+            top: 15%; } }
+        @media (min-width: 768px) {
+          #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox {
+            height: 85%;
+            top: 15%; } }
+        @media (min-width: 1200px) {
+          #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox {
+            height: 91%;
+            top: 9%; } }
+        #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #subTitleWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 33.33%;
+          top: 0%;
+          text-align: center; }
+          #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #subTitleWrapper .subTitle {
+            position: absolute;
+            bottom: 0%;
+            font-weight: bold; }
+            @media (max-width: 767px) {
+              #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #subTitleWrapper .subTitle {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #subTitleWrapper .subTitle {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #subTitleWrapper .subTitle {
+                font-size: 2rem; } }
+        #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 33.33%;
+          top: 35.33%; }
+          #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .input {
+            width: 80%;
+            height: 50%;
+            padding-left: 2%;
+            border: 1px solid #a0a0a0;
+            border-radius: 5px; }
+          #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .timer {
+            position: absolute;
+            display: flex;
+            font-weight: bold;
+            color: red;
+            right: 13%; }
+            @media (max-width: 767px) {
+              #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .timer {
+                font-size: 1.3rem; } }
+            @media (min-width: 768px) {
+              #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .timer {
+                font-size: 1.5rem; } }
+            @media (min-width: 1200px) {
+              #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .timer {
+                font-size: 1.8rem; } }
+        #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 80%;
+          height: 33.33%;
+          top: 66.66%; }
+          #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn, #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
+            width: 45%;
+            height: 50%;
+            background-color: #ffce63;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold; }
+            #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn:hover, #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn:hover {
+              cursor: pointer; }
+            @media (max-width: 767px) {
+              #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn, #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
+                font-size: 1.5rem; } }
+            @media (min-width: 768px) {
+              #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn, #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
+                font-size: 1.8rem; } }
+            @media (min-width: 1200px) {
+              #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .okBtn, #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
+                font-size: 2rem; } }
+          #phoneConfirmNumberModal #modalBox #modal #exceptTitleBox #btnWrapper .resendBtn {
+            background-color: #000; }
+
+/*------------기쁨------------*/
