@@ -14,6 +14,7 @@ import {
   showMyDropDown,
   showConcertModal,
 } from '../store/ModalSlice';
+import { setArticleOrder, setAllArticles } from '../store/ConChinSlice';
 import {
   setIsScrolled,
   setScrollCount,
@@ -35,6 +36,9 @@ function Header() {
   );
   const { isScrolled, scrollCount, timerMessage } = useSelector(
     (state: RootState) => state.header,
+  );
+  const { articleOrder, allArticles } = useSelector(
+    (state: RootState) => state.conChin,
   );
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
@@ -149,7 +153,27 @@ function Header() {
   const resetHandler = () => {
     // dispatch(logout());
     dispatch(setTarget({}));
+    getAllArticles();
     dispatch(showConcertModal(false));
+  };
+
+  /* 전체 게시물 받아오기 */
+  const getAllArticles = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setAllArticles(response.data.data.articleInfo));
+        console.log('Header => 나 실행됐어요!');
+      } else {
+        console.log('없거나 실수로 못가져왔어요..');
+      }
+    } catch (err) {
+      console.log(err);
+      console.log('에러가 났나봐요.');
+    }
   };
 
   return (

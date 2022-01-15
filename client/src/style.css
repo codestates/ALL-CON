@@ -1650,7 +1650,7 @@ a {
         height: 25%; } }
     @media (min-width: 1200px) {
       #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
-        top: 65%;
+        top: 55%;
         height: 20%; } }
 
 #conChinmemberBoxWrapper {

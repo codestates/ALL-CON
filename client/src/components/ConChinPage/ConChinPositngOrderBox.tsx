@@ -2,7 +2,7 @@
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
 import { setPostingOrder } from '../../store/ConChinSlice';
-import { setAllArticles } from '../../store/ConChinSlice';
+import { setArticleOrder, setAllArticles } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -30,8 +30,8 @@ function ConChinPostingOrderBox() {
       console.log(err);
     }
   };
-  /* 전체 게시물 받아오기(무조건) */
-  const getRealAllArticles = async () => {
+  /* 전체 게시물 받아오기 */
+  const getAllArticles = async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
@@ -50,7 +50,7 @@ function ConChinPostingOrderBox() {
 
   useEffect(() => {
     getAllConcerts();
-    getRealAllArticles();
+    getAllArticles();
   }, [postingOrder]);
 
   /* 타겟 초기화 핸들러 */
@@ -70,7 +70,7 @@ function ConChinPostingOrderBox() {
         onClick={() => {
           dispatch(setPostingOrder('view'));
           getAllConcerts();
-          getRealAllArticles();
+          getAllArticles();
         }}
         style={
           postingOrder === 'view'
@@ -85,7 +85,7 @@ function ConChinPostingOrderBox() {
         onClick={() => {
           dispatch(setPostingOrder('near'));
           getAllConcerts();
-          getRealAllArticles();
+          getAllArticles();
         }}
         style={
           postingOrder === 'near'
@@ -100,7 +100,7 @@ function ConChinPostingOrderBox() {
         onClick={() => {
           dispatch(setPostingOrder('new'));
           getAllConcerts();
-          getRealAllArticles();
+          getAllArticles();
         }}
         style={
           postingOrder === 'new'
