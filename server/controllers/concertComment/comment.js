@@ -4,10 +4,8 @@ const { Users, ConcertComments, Concerts } = require('../../models');
 module.exports = {
   get: async (req, res) => {
     try {
-      
       const { concertid } = req.params;
-      const { pageNum } = req.body;
-
+      const { pageNum } = req.query;
       
       /* 페이지네이션 한 페이지당 3개의 게시글 */
       const limit = 3;

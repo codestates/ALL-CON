@@ -14,7 +14,7 @@ module.exports = {
       });
       /* 임시 TEST CODE (삭제예정) */
 
-      const { pageNum } = req.body;
+      const { pageNum } = req.query;
 
       /* 페이지 네이션 한 페이지당 6개의 게시글 */ 
       const limit = 6;

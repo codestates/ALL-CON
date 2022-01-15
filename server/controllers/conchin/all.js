@@ -4,9 +4,6 @@ module.exports = {
   get: async (req, res) => {
     try {
       const { order, pageNum } = req.query;
-      // const { pageNum } = req.body;
-
-      console.log(order, pageNum)
 
       /* 페이지 네이션 한 페이지당 6개의 게시글 */ 
       const limit = 6;

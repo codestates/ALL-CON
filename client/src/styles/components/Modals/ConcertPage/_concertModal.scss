@@ -314,6 +314,7 @@
         width: 100%;
         margin-top: 5%;
         height: 55%;
+        
         // border: 1px solid black;
         h1 {
           @include mobile-only() {
@@ -330,31 +331,35 @@
           }
           
         }
-        // #map {
-        //   @include mobile-only() {
-        //     height: 80%;
-        //   }
-        //   @include md() {
-        //     height: 80%;
-        //   }
-        //   @include lg() {
-        //     width: 100%;
-        //     height: 80%;
-        //   }
-        // }
-        #map {
+        
+        #noMap {
+          opacity: 50%;
           @include mobile-only() {
             height: 80%;
-            // opacity: 50%;
           }
           @include md() {
             height: 80%;
+          }
+          @include lg() {
+            width: 100%;
+            height: 80%;
+          }
+        }
+
+        #map {
+          height: 80%;
+          @include mobile-only() {
+            border: 3px solid $yellow;
+            border-radius: 15px;
+          }
+          @include md() {
+            border: 3px solid $yellow;
+            border-radius: 20px;
             // opacity: 50%;
           }
           @include lg() {
-            height: 80%;
-            border: 3px solid $yellow;
-            border-radius: 20px;
+            border: 5px solid $yellow;
+            border-radius: 30px;
             // opacity: 50%;
           }
         }

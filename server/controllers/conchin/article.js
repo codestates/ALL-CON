@@ -6,8 +6,7 @@ module.exports = {
   get: async (req, res) => {
     try {
       const { concertid } = req.params;
-      const { order } = req.query;
-      const { pageNum } = req.body;
+      const { order, pageNum } = req.query;
 
       /* 페이지 네이션 한 페이지당 6개의 게시글 */ 
       const limit = 6;
@@ -57,7 +56,6 @@ module.exports = {
   },
   post: async (req, res) => {
     try {
-
       // 로그인 인증 검사
       const userInfo = await userAuth(req, res);
 
