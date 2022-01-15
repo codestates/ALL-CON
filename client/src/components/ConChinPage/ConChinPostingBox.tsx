@@ -1,7 +1,7 @@
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
-import { setAllArticles } from '../../store/ConChinSlice';
+import { setAllArticles, setArticleTotalPage } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
@@ -25,6 +25,7 @@ function ConChinPostingBox() {
       if (target !== undefined && target !== null) {
         if (Object.keys(target).length === 0) {
           dispatch(setAllArticles([]));
+          dispatch(setArticleTotalPage(0));
           console.log(' ConChinPostingBox=> 게시물이 없어요.');
         } else if (target === undefined || target === null) {
           console.log(
@@ -33,12 +34,14 @@ function ConChinPostingBox() {
         } else {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
           const response = await axios.get(
-            `${process.env.REACT_APP_API_URL}/concert/${target.id}?order=${articleOrder}`,
+            `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
             { withCredentials: true },
           );
           if (response.data) {
             dispatch(setAllArticles(response.data.data.articleInfo));
-            console.log('allArticles: ' + allArticles);
+            dispatch(setArticleTotalPage(response.data.data.totalPage));
+            console.log('allArticles: ');
+            console.log(allArticles);
           } else {
             console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
           }
@@ -46,9 +49,12 @@ function ConChinPostingBox() {
       }
     } catch (err) {
       console.log(err);
-      console.log('ConChinPostingBox=> 에러가 났나봐요.');
+      console.log(
+        'ConChinPostingBox=> 에러가 났나봐요. 게시물 없음 처리합니다.',
+      );
     }
   };
+
   /*전체 게시물 받아오기 & 타겟 교체 */
   function getAllArticlesAndSetTarget(concert: any[]) {
     dispatch(setTarget(concert));
@@ -58,6 +64,11 @@ function ConChinPostingBox() {
     console.log('ConChinPostingBox=> concert: ');
     console.log(concert);
   }
+
+  /* useEffect: 타겟이 변경될 때마다 게시물 렌더링 */
+  useEffect(() => {
+    getAllArticles();
+  }, [target]);
 
   return (
     <li id='conChinPostingBox'>

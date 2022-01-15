@@ -23,7 +23,6 @@ import { useDispatch, useSelector } from 'react-redux';
 function LoginModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { scrollCount } = useSelector((state: RootState) => state.header);
 
   /* 인풋 정보 상태 */
   const [inputEmail, setInputEmail] = useState<string>('');

@@ -14,6 +14,7 @@ import {
   showMyDropDown,
   showConcertModal,
 } from '../store/ModalSlice';
+import { setAllArticles, setArticleTotalPage } from '../store/ConChinSlice';
 import {
   setIsScrolled,
   setScrollCount,
@@ -23,7 +24,7 @@ import { setTarget, setTargetIdx } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Header() {
@@ -35,6 +36,9 @@ function Header() {
   );
   const { isScrolled, scrollCount, timerMessage } = useSelector(
     (state: RootState) => state.header,
+  );
+  const { articleOrder, allArticles } = useSelector(
+    (state: RootState) => state.conChin,
   );
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
@@ -93,41 +97,41 @@ function Header() {
   });
 
   /* 현재시간 타이머 useEffect */
-  useEffect(() => {
-    const countdown = setInterval(
-      () => {
-        /* 현재 시간 */
-        now = new Date();
-        nowHours = now.getHours() * hr;
-        nowMinutes = now.getMinutes() * mt;
-        nowSeconds = now.getSeconds() * sc;
-        nowTime = nowHours + nowMinutes + nowSeconds;
-        distance = openTime - nowTime;
+  // useEffect(() => {
+  //   const countdown = setInterval(
+  //     () => {
+  //       /* 현재 시간 */
+  //       now = new Date();
+  //       nowHours = now.getHours() * hr;
+  //       nowMinutes = now.getMinutes() * mt;
+  //       nowSeconds = now.getSeconds() * sc;
+  //       nowTime = nowHours + nowMinutes + nowSeconds;
+  //       distance = openTime - nowTime;
 
-        /* 남은 시, 초, 분 */
-        dHours = Math.floor(distance / hr / 2);
-        dMinutes = Math.floor((distance % hr) / mt);
-        dSeconds = Math.floor((distance % mt) / sc);
-        /* 한자리 수일 경우 0 붙이기 */
-        if (String(dHours).length === 1) {
-          dHours = `0${String(dHours)}`;
-        }
-        if (String(dMinutes).length === 1) {
-          dMinutes = `0${String(dMinutes)}`;
-        }
-        if (String(dSeconds).length === 1) {
-          dSeconds = `0${String(dSeconds)}`;
-        }
-        dispatch(
-          setTimerMessage(
-            `다음 콘서트를 업데이트하기까지 ${dHours}:${dMinutes}:${dSeconds}`,
-          ),
-        );
-      },
-      1000,
-      timerMessage,
-    );
-  }, [now]);
+  //       /* 남은 시, 초, 분 */
+  //       dHours = Math.floor(distance / hr / 2);
+  //       dMinutes = Math.floor((distance % hr) / mt);
+  //       dSeconds = Math.floor((distance % mt) / sc);
+  //       /* 한자리 수일 경우 0 붙이기 */
+  //       if (String(dHours).length === 1) {
+  //         dHours = `0${String(dHours)}`;
+  //       }
+  //       if (String(dMinutes).length === 1) {
+  //         dMinutes = `0${String(dMinutes)}`;
+  //       }
+  //       if (String(dSeconds).length === 1) {
+  //         dSeconds = `0${String(dSeconds)}`;
+  //       }
+  //       dispatch(
+  //         setTimerMessage(
+  //           `다음 콘서트를 업데이트하기까지 ${dHours}:${dMinutes}:${dSeconds}`,
+  //         ),
+  //       );
+  //     },
+  //     1000,
+  //     timerMessage,
+  //   );
+  // }, [now]);
 
   /* 드랍다운 오픈 상태 변경 핸들러 */
   const displayMyDropDown = () => {
@@ -145,14 +149,33 @@ function Header() {
     dispatch(setIsScrolled(false));
     dispatch(setTarget({}));
   };
+  /* 전체 게시물 받아오기 */
+  const getAllArticles = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setAllArticles(response.data.data.articleInfo));
+        dispatch(setArticleTotalPage(response.data.data.totalPage));
+        console.log('Header => 나 실행됐어요!');
+      } else {
+        console.log('없거나 실수로 못가져왔어요..');
+      }
+    } catch (err) {
+      console.log(err);
+      console.log('에러가 났나봐요.');
+    }
+  };
   /* 메뉴 이동시 상태 초기화 핸들러 */
   const resetHandler = () => {
     // dispatch(logout());
     dispatch(setTarget({}));
+    getAllArticles();
     dispatch(setTargetIdx(0));
     dispatch(showConcertModal(false));
   };
-
   return (
     /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */
     <div
