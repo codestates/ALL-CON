@@ -1,19 +1,36 @@
 /* CSS import */
-import defaultImage from '../../images/default_image.jpg';
-import profileImage from '../../images/taeyang.png';
+import articleDefaultImage from '../../images/default_image.jpg';
+import defaultImage from '../../images/user.png';
 import groupImage from '../../images/group.png';
-import articleImage from '../../images/inseong.png';
 import ConChinArticleCommentBox from './ConChinArticleCommentBox';
 import ConChinCommentPagination from './ConChinCommentPagination';
 /* Store import */
 import { RootState } from '../../index';
+import {
+  insertAlertText,
+  showConChinProfileModal,
+  showAlertModal,
+} from '../../store/ModalSlice';
 /* Library import */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinArticleContentBox() {
-  const { targetArticle } = useSelector((state: RootState) => state.conChin);
   const dispatch = useDispatch();
+  const { targetArticle, targetArticlesUserInfo } = useSelector(
+    (state: RootState) => state.conChin,
+  );
+
+  /* 유저정보 보기 핸들러 */
+  const showUserProfile = () => {
+    console.log('실행됨?');
+    dispatch(showConChinProfileModal(true));
+  };
+
+  const showAlert = () => {
+    dispatch(insertAlertText('탈퇴한 사용자입니다. 😖'));
+    dispatch(showAlertModal(true));
+  };
 
   return (
     <>
@@ -24,14 +41,30 @@ function ConChinArticleContentBox() {
               <h1 className='text'>{targetArticle.title}</h1>
             </div>
             <div id='profileBox'>
-              <img className='img' src={profileImage} />
-              <p className='nickName'>유태양발닦개</p>
+              <img
+                className='img'
+                src={
+                  targetArticlesUserInfo.image
+                    ? targetArticlesUserInfo.image
+                    : defaultImage
+                }
+                onClick={
+                  Object.keys(targetArticlesUserInfo).length === 0
+                    ? showAlert
+                    : showUserProfile
+                }
+              />
+              <p className='nickName'>
+                {targetArticlesUserInfo.username
+                  ? targetArticlesUserInfo.username
+                  : '탈퇴한 사용자'}
+              </p>
             </div>
           </div>
           <div id='contentBox'>
             <div id='viewBox'>
               <p className='view'>
-                등록일 : {targetArticle.createdAt} | 조회수 :{' '}
+                등록일 : {targetArticle.createdAt} | 조회수 :
                 {targetArticle.view}
               </p>
             </div>
@@ -51,7 +84,11 @@ function ConChinArticleContentBox() {
               <div id='imgWrapper'>
                 <img
                   className='img'
-                  src={targetArticle.image ? targetArticle.image : defaultImage}
+                  src={
+                    targetArticle.image
+                      ? targetArticle.image
+                      : articleDefaultImage
+                  }
                 />
               </div>
               <p className='text'>{targetArticle.content}</p>

@@ -17,6 +17,7 @@ export interface modal {
   alertText: string;
   deliverText: string;
   conChinWritingModal: boolean;
+  conChinProfileModal: boolean;
 }
 
 /* State 초기값 설정 */
@@ -36,6 +37,7 @@ const initialState: modal = {
   alertText: '',
   deliverText: '',
   conChinWritingModal: false,
+  conChinProfileModal: false,
 };
 
 const modalSlice = createSlice({
@@ -71,7 +73,9 @@ const modalSlice = createSlice({
       state.confirmNumberModal = payload;
     },
     showPhoneConfirmNumberModal: (
-      state: modal, { payload }: PayloadAction<boolean>) => {
+      state: modal,
+      { payload }: PayloadAction<boolean>,
+    ) => {
       state.phoneConfirmNumberModal = payload;
     },
     showResetPasswordModal: (
@@ -101,6 +105,12 @@ const modalSlice = createSlice({
     ) => {
       state.conChinWritingModal = payload;
     },
+    showConChinProfileModal: (
+      state: modal,
+      { payload }: PayloadAction<boolean>,
+    ) => {
+      state.conChinProfileModal = payload;
+    },
   },
 });
 
@@ -120,5 +130,6 @@ export const {
   insertAlertText,
   insertDeliverText,
   showConChinWritingModal,
+  showConChinProfileModal,
 } = modalSlice.actions;
 export default modalSlice.reducer;

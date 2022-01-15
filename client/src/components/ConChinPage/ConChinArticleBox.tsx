@@ -11,6 +11,7 @@ import {
   setAllArticles,
   setArticleTotalPage,
   setTargetArticle,
+  setTargetArticlesUserInfo,
 } from '../../store/ConChinSlice';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
 /* Library import */
@@ -21,18 +22,11 @@ import React, { useState, useEffect } from 'react';
 function ConChinArticleBox() {
   const dispatch = useDispatch();
   const { target, allConcerts } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles, targetArticle, postingOrder } =
-    useSelector((state: RootState) => state.conChin);
+  const { allArticles, targetArticle, targetArticlesUserInfo } = useSelector(
+    (state: RootState) => state.conChin,
+  );
 
-  function getTargetArticle(article: any[]) {
-    dispatch(setTargetArticle(article));
-    dispatch(setTarget(article));
-    //targetArticle에 article의 정보가 있다. conert_id가 콘서트 id
-    console.log('ConChinArticleBox=> targetArticle: ');
-    console.log(targetArticle);
-  }
-
-  /* targetArticle의 콘서트 정보 받아오기 (전체콘서트 받은 후 id 같은 것 필터링) */
+  /* 게시물에 관련된 콘서트 정보 조회 핸들러 */
   const getTargetArticlesConcert = async (id: number) => {
     try {
       const response = await axios.get(
@@ -46,6 +40,8 @@ function ConChinArticleBox() {
       console.log(err);
     }
   };
+
+  /* 게시물 정보 조회 핸들러 */
   const getTargetArticlesInfo = async (id: number) => {
     try {
       const response = await axios.get(
@@ -53,13 +49,16 @@ function ConChinArticleBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        console.log('받아옴?');
         dispatch(setTargetArticle(response.data.data.articleInfo));
+        console.log('ConChinArticleBox=> articleInfo 조회 성공입니다.');
+        console.log(targetArticle);
       }
     } catch (err) {
       console.log(err);
     }
   };
+
+  /* 게시물 작성자 유저정보 조회 핸들러 */
   const getTargetArticlesUserInfo = async (id: number) => {
     try {
       const response = await axios.get(
@@ -67,8 +66,9 @@ function ConChinArticleBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        console.log('받아옴?');
-        dispatch(setTargetArticle(response.data.data.articleInfo));
+        dispatch(setTargetArticlesUserInfo(response.data.data.userInfo));
+        console.log('ConChinArticleBox=> userInfo 조회 성공입니다.');
+        console.log(targetArticlesUserInfo);
       }
     } catch (err) {
       console.log(err);
@@ -101,6 +101,7 @@ function ConChinArticleBox() {
                     onClick={() => {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
+                      getTargetArticlesUserInfo(article.user_id);
                       console.log(article.concert_id);
                     }}
                   >
@@ -143,6 +144,7 @@ function ConChinArticleBox() {
                     onClick={() => {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
+                      getTargetArticlesUserInfo(article.user_id);
                       console.log(article.concert_id);
                     }}
                   >

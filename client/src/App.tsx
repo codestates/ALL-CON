@@ -47,6 +47,7 @@ function App() {
     sideMenuModal,
     myDropDown,
     conChinWritingModal,
+    conChinProfileModal,
   } = useSelector((state: RootState) => state.modal);
 
   return (
@@ -61,10 +62,11 @@ function App() {
       {findPasswordModal && <FindPasswordModal />}
       {myDropDown && <MyDropDown />}
       {confirmNumberModal && <ConfirmNumberModal />}
-      { phoneConfirmNumberModal && <PhoneConfirmNumberModal />}
+      {phoneConfirmNumberModal && <PhoneConfirmNumberModal />}
       {resetPasswordModal && <ResetPasswordModal />}
       {concertModal && <ConcertModal />}
       {conChinWritingModal && <ConChinWritingModal />}
+      {conChinProfileModal && <ConChinProfileModal />}
       {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
       {/* <MyEditPage /> */}
