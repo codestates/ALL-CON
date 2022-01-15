@@ -52,21 +52,20 @@ function MyEditPage() {
    const [passwordErr, setPasswordErr] = useState<boolean>(false);
    const [confirmPasswordErr, setConfirmPasswordErr] = useState<boolean>(false);
    
-   // 로그인 유형에 따른 비밀번호 변경 및 비밀번호 확인 ******** 여기서부처!!!
- 
+   // 로그인 유형에 따른 비밀번호 변경 및 비밀번호 확인 
+   const [activationPassword, setActivationPasswrd] = useState<boolean>(true); 
 
   /* useEffect */
   // user가 oauth로 로그인 했으면 비밀번호 변경, 비밀번호 확인란은 막는다
   useEffect(() => {
     // allcon으로 회원가입을 하지 않았다면,
     if(userInfo.sign_method !== 'allcon') {
-      
+      setActivationPasswrd(false);
     }
-
   }, [])
 
   /* handler 함수 (기능별 정렬) */
-  
+
   // 인풋 입력 핸들러
   const inputValueHandler = (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
 
@@ -79,12 +78,19 @@ function MyEditPage() {
   // 입력값 유효성 검사 핸들러
   const isAllValid = (changeUserInfo: ChangeUserInfo): boolean => {
     const { username, password, confirmPassword } = changeUserInfo;
+    // allcon으로 회원가입한 경우, 닉네임, 비밀번호 변경, 비밀번호 확인을 check
+    if(userInfo.sign_method === 'allcon') {
+      const isNameValid = nameErrCheck(username);
+      const isPasswordValid = passwordErrCheck(password);
+      const isConfirmPasswordValid = confirmPasswordErrCheck(password, confirmPassword);
 
-    const isNameValid = nameErrCheck(username);
-    const isPasswordValid = passwordErrCheck(password);
-    const isConfirmPasswordValid = confirmPasswordErrCheck(password, confirmPassword);
-
-    return isNameValid && isPasswordValid && isConfirmPasswordValid ? true : false;
+      return isNameValid && isPasswordValid && isConfirmPasswordValid ? true : false;
+    } 
+    // 구글 혹은 카카오톡으로 로그인 한 경우, 다음을 실행한다
+    else {
+      const isNameValid = nameErrCheck(username);
+      return isNameValid  ? true : false;
+    }
   };
 
   // 입력값 초기화 핸들러
@@ -156,9 +162,24 @@ function MyEditPage() {
       console.log(response.data.state)
       setIsCheckDuplication(true);
       setDuplicationCheck(response.data.state);
+      // 중복되지 않은 닉네임이라면, 다음을 실행한다
+      if(response.data.state) {
+        dispatch(insertAlertText(`사용가능한 닉네임입니다! 🙂`));
+        dispatch(showAlertModal(true));
+      }
+      // 중복된 닉네임이라면, 다음을 실행한다
+      else {
+        dispatch(insertAlertText(`이미 사용중인 닉네임입니다! 🙂`));
+        dispatch(showAlertModal(true));
+      }
     } catch (err) {
       console.log(err);
     }
+  }
+
+  // 중복확인 엔터... (주의! 좀더 좋은 방법이 있을꺼야!)
+  const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if(e.key === 'Enter') duplicationHandler()
   }
 
   // [PATCH] 변경 완료 버튼 핸들러
@@ -178,8 +199,10 @@ function MyEditPage() {
             );
             // 입력값들을 reset
             resetInput();
-            dispatch(insertAlertText('()님의 프로필이 변경되었습니! 🙂'));
+            dispatch(insertAlertText(`(${userInfo.username})님의 프로필이 변경되었습니다! 🙂`));
             dispatch(showAlertModal(true));
+            // userInfo 상태 업데이트
+            dispatch(getUserInfo(response.data.data));
             navigate('/mypage')
           } else {
             dispatch(insertAlertText('닉네임 중복확인을 해주세요! 😖'));
@@ -226,9 +249,9 @@ function MyEditPage() {
               <p className='title'>닉네임</p>
             </div>
             <div id='nickNameBox'>
-              <input type='text' id='nickName' value={changeUserInfo.username} onChange={inputValueHandler('username')} />
+              <input type='text' id='nickName' value={changeUserInfo.username} onChange={inputValueHandler('username')} onKeyPress={onKeyPress}/>
               <div>
-                <button onClick={duplicationHandler} > 중복확인 </button>
+                <button onClick={duplicationHandler}> 중복확인 </button>
               </div>
             </div>
           </div>
@@ -236,13 +259,21 @@ function MyEditPage() {
             <div id='titleWrapper'>
               <p className='title'>비밀번호 변경</p>
             </div>
-            <input type='password' className='reset' value={changeUserInfo.password} onChange={inputValueHandler('password')} />
+            {
+              activationPassword
+              ? <input type='password' className='reset' value={changeUserInfo.password} onChange={inputValueHandler('password')} />
+              : <input type='password' className='reset' placeholder='비밀번호 변경 구글 확인' disabled />
+            }
           </div>
           <div id='confirmBox'>
             <div id='titleWrapper'>
               <p className='title'>비밀번호 확인</p>
             </div>
-            <input type='password' className='confirm' value={changeUserInfo.confirmPassword} onChange={inputValueHandler('confirmPassword')} />
+            {
+              activationPassword
+              ? <input type='password' className='confirm' value={changeUserInfo.confirmPassword} onChange={inputValueHandler('confirmPassword')} />
+              : <input type='password' className='confirm' placeholder='비밀번호 확인 구글 확인' disabled />
+            }
           </div>
           <div id='btnBox'>
             <div id='btnWrapper'>

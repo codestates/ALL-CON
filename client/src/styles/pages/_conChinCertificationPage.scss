@@ -192,6 +192,7 @@
           padding-left: 2%;
           border: 1px solid $gray2;
           border-radius: 5px;
+          background-color: white;
           @include mobile-only() {
             font-size: 1.5rem;
           }
@@ -315,6 +316,20 @@
               @include lg() {
                 font-size: 2rem;
               }
+            }
+            .checkImg {
+              position: absolute;
+              right: 31%;
+              height: 46%;
+              width: 6%;
+              // border: 3px solid blue;
+            }
+            .hidden {
+              position: absolute;
+              right: 31%;
+              height: 46%;
+              width: 6%;
+              display: none;
             }
             .confirmBtn {
               position: relative;
