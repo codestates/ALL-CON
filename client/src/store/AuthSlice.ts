@@ -6,6 +6,9 @@ import { setTarget } from './MainSlice';
 /* State Type 설정 */
 export interface auth {
   isLogin: boolean;
+  yearList: Array<string>;
+  monthList: Array<string>;
+  dateList: Array<string>;
   isPhoneCertificatePass: boolean;
   certificateInfo: string;
   userInfo: {
@@ -27,7 +30,7 @@ export interface auth {
   }
 }
 /* State 초기값 설정 */
-const initialState: auth = { isLogin: false, userInfo: {}, isPhoneCertificatePass: false, certificateInfo: '' };
+const initialState: auth = { isLogin: false, userInfo: {}, yearList: [], monthList: [], dateList: [], isPhoneCertificatePass: false, certificateInfo: '' };
 
 const authSlice = createSlice({
   name: 'auth',
@@ -50,9 +53,18 @@ const authSlice = createSlice({
     },
     getCertificateInfo: (state: auth, { payload }: PayloadAction<string>) => { 
       state.certificateInfo = payload;
-    }
+    },
+    getYearList: (state: auth, { payload }: PayloadAction<Array<string>>) => { 
+      state.yearList = payload;
+    },
+    getMonthList: (state: auth, { payload }: PayloadAction<Array<string>>) => { 
+      state.monthList = payload;
+    },
+    getDateList: (state: auth, { payload }: PayloadAction<Array<string>>) => { 
+      state.dateList = payload;
+    },
   }
 });
 
-export const { login, logout, getUserInfo, getCertificateInfo, getPhoneCertificatePassInfo } = authSlice.actions;
+export const { login, logout, getUserInfo, getCertificateInfo, getPhoneCertificatePassInfo,  getYearList, getMonthList,  getDateList } = authSlice.actions;
 export default authSlice.reducer;

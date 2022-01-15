@@ -12,6 +12,7 @@ import { RootState } from '../../index';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
+import { getUserInfo, getYearList, getMonthList, getDateList } from '../../store/AuthSlice';
 /* Library import */
 
 function MyProfileBox() {
@@ -21,7 +22,7 @@ function MyProfileBox() {
   const navigate = useNavigate();
   
   /* useSelector */
-  const { userInfo } = useSelector((state: RootState) => state.auth);
+  const { userInfo, yearList, monthList, dateList } = useSelector((state: RootState) => state.auth);
   
   /* 지역상태 - useState */
   // 프로필 수정 버튼 모니터링 상태
@@ -33,8 +34,6 @@ function MyProfileBox() {
 
   /* useEffect */
   
-
-
   /* handler 함수 (기능별 정렬) */
 
   // 프로필 이미지 수정 버튼 (카메라 사진)
@@ -54,7 +53,37 @@ function MyProfileBox() {
 
   // 콘친 인증 버튼
   const handleConchinCertificate = async () => {
-    console.log('콘친 인증 버튼을 클릭하셨습니다!')
+    let year = 1900;
+    let localYearList = []
+
+    let month = 1;
+    let localMonthList = []
+
+    let date = 1;
+    let localDateList = []
+
+    // (생년월일) 년 계산
+    while(year < 2023 && yearList.length < 10) {
+      localYearList.push(year + '년')
+      year++
+    }
+
+    // (생년월일) 월 계산
+    while(month < 13 && monthList.length < 13) {
+      localMonthList.push(month + '월')
+      month++
+    }
+
+    // (생년월일) 일 계산
+    while(date < 32 && dateList.length < 10) {
+      localDateList.push(date + '일')
+      date++
+    }
+
+    dispatch(getYearList(localYearList))
+    dispatch(getMonthList(localMonthList))
+    dispatch(getDateList(localDateList))
+
     navigate('/conchinCert')
   }
 
