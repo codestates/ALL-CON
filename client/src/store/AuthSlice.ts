@@ -6,6 +6,8 @@ import { setTarget } from './MainSlice';
 /* State Type 설정 */
 export interface auth {
   isLogin: boolean;
+  isPhoneCertificatePass: boolean;
+  certificateInfo: string;
   userInfo: {
     id?: number;
     email?: string;
@@ -22,10 +24,10 @@ export interface auth {
     massage_key?: string;
     createdAt?: Date;
     updatedAt?: Date;
-  };
+  }
 }
 /* State 초기값 설정 */
-const initialState: auth = { isLogin: false, userInfo: {} };
+const initialState: auth = { isLogin: false, userInfo: {}, isPhoneCertificatePass: false, certificateInfo: '' };
 
 const authSlice = createSlice({
   name: 'auth',
@@ -42,9 +44,15 @@ const authSlice = createSlice({
     },
     getUserInfo: (state: auth, { payload }: PayloadAction<auth>) => { 
       state.userInfo = payload.userInfo;
+    },
+    getPhoneCertificatePassInfo: (state: auth, { payload }: PayloadAction<boolean>) => { 
+      state.isPhoneCertificatePass = payload;
+    },
+    getCertificateInfo: (state: auth, { payload }: PayloadAction<string>) => { 
+      state.certificateInfo = payload;
     }
   }
 });
 
-export const { login, logout, getUserInfo } = authSlice.actions;
+export const { login, logout, getUserInfo, getCertificateInfo, getPhoneCertificatePassInfo } = authSlice.actions;
 export default authSlice.reducer;
