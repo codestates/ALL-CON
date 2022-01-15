@@ -5,9 +5,11 @@ import {
   setArticleOrder,
   setAllArticles,
   setArticleTotalPage,
+  setTargetArticle,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
+import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinArticleOrderBox() {
@@ -46,6 +48,7 @@ function ConChinArticleOrderBox() {
         }
       } else if (target === undefined || target === null) {
         dispatch(setTarget({}));
+        dispatch(setTargetArticle({}));
 
         console.log(
           'ConChinArticleOrderBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
@@ -79,6 +82,10 @@ function ConChinArticleOrderBox() {
     console.log('ConChinArticleOrderBox=> 현재정렬은 ' + hotOrView);
     getAllArticles();
   };
+
+  useEffect(() => {
+    getAllArticles();
+  }, [articleOrder]);
 
   return (
     <div id='noLineOrderBox'>

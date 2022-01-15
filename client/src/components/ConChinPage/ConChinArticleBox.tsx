@@ -6,21 +6,80 @@ import ConChinArticleOrderBox from './ConChinArticleOrderBox';
 import ConChinArticlePagination from './ConChinArticlePagination';
 /* Store import */
 import { RootState } from '../../index';
-import { setAllArticles } from '../../store/ConChinSlice';
-import { setTarget } from '../../store/MainSlice';
+import {
+  setArticleOrder,
+  setAllArticles,
+  setArticleTotalPage,
+  setTargetArticle,
+} from '../../store/ConChinSlice';
+import { setTarget, setAllConcerts } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 
 function ConChinArticleBox() {
-  const { target } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles } = useSelector(
-    (state: RootState) => state.conChin,
-  );
   const dispatch = useDispatch();
+  const { target, allConcerts } = useSelector((state: RootState) => state.main);
+  const { articleOrder, allArticles, targetArticle, postingOrder } =
+    useSelector((state: RootState) => state.conChin);
 
-  useEffect(() => {}, [allArticles]);
+  function getTargetArticle(article: any[]) {
+    dispatch(setTargetArticle(article));
+    dispatch(setTarget(article));
+    //targetArticle에 article의 정보가 있다. conert_id가 콘서트 id
+    console.log('ConChinArticleBox=> targetArticle: ');
+    console.log(targetArticle);
+  }
+
+  /* targetArticle의 콘서트 정보 받아오기 (전체콘서트 받은 후 id 같은 것 필터링) */
+  const getTargetArticlesConcert = async (id: number) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${id}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setTarget(response.data.data.concertInfo));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const getTargetArticlesInfo = async (id: number) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${id}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        console.log('받아옴?');
+        dispatch(setTargetArticle(response.data.data.articleInfo));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const getTargetArticlesUserInfo = async (id: number) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/user/other/${id}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        console.log('받아옴?');
+        dispatch(setTargetArticle(response.data.data.articleInfo));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
+  useEffect(() => {
+    // getAllArticles();
+  }, []);
+
   return (
     <div id='conChinArticleBox'>
       <ConChinArticleOrderBox />
@@ -40,7 +99,9 @@ function ConChinArticleBox() {
                     className='article'
                     key={article.id}
                     onClick={() => {
-                      console.log(article);
+                      getTargetArticlesInfo(article.id);
+                      getTargetArticlesConcert(article.concert_id);
+                      console.log(article.concert_id);
                     }}
                   >
                     <img
@@ -80,7 +141,9 @@ function ConChinArticleBox() {
                     className='article'
                     key={article.id}
                     onClick={() => {
-                      console.log(article);
+                      getTargetArticlesInfo(article.id);
+                      getTargetArticlesConcert(article.concert_id);
+                      console.log(article.concert_id);
                     }}
                   >
                     <img
@@ -109,11 +172,11 @@ function ConChinArticleBox() {
               })}
             </div>
           ) : (
-            '게시물이 없습니다.'
+            '게시물이 없습니다. '
           )}
         </div>
       ) : (
-        <div id='articleBoxChosen'>게시물이 없습니다.</div>
+        <div id='articleBoxChosen'>게시물이 없습니다. 😢</div>
       )}
       {/*게시물 맵핑 */}
       <div

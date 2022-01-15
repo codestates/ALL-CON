@@ -109,9 +109,11 @@
   // border: 1px solid red;
   &Chosen {
     @extend #articleBox;
+    align-items: center;
+    justify-content: center;
+    font-size: 10rem;
     width: 100%;
     height: 50%;
-    // border: 1px solid blue;
   }
   #box {
     position: relative;
@@ -188,8 +190,10 @@
         position: absolute;
         display: flex;
         width: 100%;
+        height: 100%;
         left: 50%;
         top: 50%;
+        object-fit: cover;
         transform: translate(-50%, -50%);
         @include mobile-only() {
           border-radius: 5px;

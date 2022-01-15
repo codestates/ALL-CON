@@ -13,11 +13,7 @@ function ConChinArticlePagination() {
   const { articleOrder, allArticles } = useSelector(
     (state: RootState) => state.conChin,
   );
-
-  let pageArr: number[] = [];
-  for (let i = 1; i <= articleTotalPage; i++) {
-    pageArr.push(i);
-  }
+  const pageArr = Array.from({ length: articleTotalPage }, (v, i) => i + 1);
 
   const getPageArticles = async (pageNum: number) => {
     try {

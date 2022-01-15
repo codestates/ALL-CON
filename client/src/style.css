@@ -119,6 +119,9 @@ a {
     #articleBox, #articleBoxChosen {
       font-size: 2.5rem; } }
   #articleBoxChosen {
+    align-items: center;
+    justify-content: center;
+    font-size: 10rem;
     width: 100%;
     height: 50%; }
   #articleBox #box, #articleBoxChosen #box, #articleBox #boxChosen, #articleBoxChosen #boxChosen {
@@ -188,8 +191,10 @@ a {
         position: absolute;
         display: flex;
         width: 100%;
+        height: 100%;
         left: 50%;
         top: 50%;
+        object-fit: cover;
         transform: translate(-50%, -50%); }
         @media (max-width: 767px) {
           #articleBox #box .article .thumbNail, #articleBoxChosen #box .article .thumbNail, #articleBox #boxChosen .article .thumbNail, #articleBoxChosen #boxChosen .article .thumbNail {
@@ -1373,21 +1378,21 @@ a {
           width: 85%;
           height: 50%;
           top: 33%; } }
-  #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen {
+  #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen, #conChinContainer #contentsWrapperArticleNotChosen {
     position: absolute;
     display: none;
     left: 50%;
     transform: translate(-50%, 0%); }
     @media (max-width: 767px) {
-      #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen {
+      #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen, #conChinContainer #contentsWrapperArticleNotChosen {
         width: 0%;
         height: 0%; } }
     @media (min-width: 768px) {
-      #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen {
+      #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen, #conChinContainer #contentsWrapperArticleNotChosen {
         width: 0%;
         height: 0%; } }
     @media (min-width: 1200px) {
-      #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen {
+      #conChinContainer #contentsWrapper, #conChinContainer #contentsWrapperChosen, #conChinContainer #contentsWrapperArticleNotChosen {
         width: 0%;
         height: 0%; } }
     #conChinContainer #contentsWrapperChosen {
@@ -1407,23 +1412,42 @@ a {
           width: 75%;
           height: 70%;
           top: 77%; } }
-  #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen {
+    #conChinContainer #contentsWrapperArticleNotChosen {
+      align-items: center;
+      justify-content: center;
+      font-size: 10rem; }
+      @media (max-width: 767px) {
+        #conChinContainer #contentsWrapperArticleNotChosen {
+          width: 93.5%;
+          height: 60%;
+          top: 106%; } }
+      @media (min-width: 768px) {
+        #conChinContainer #contentsWrapperArticleNotChosen {
+          width: 85%;
+          height: 65%;
+          top: 118%; } }
+      @media (min-width: 1200px) {
+        #conChinContainer #contentsWrapperArticleNotChosen {
+          width: 0%;
+          height: 0%;
+          top: 75%; } }
+  #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen, #conChinContainer #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen {
+      #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen, #conChinContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 22%;
         top: 175%; } }
     @media (min-width: 768px) {
-      #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen {
+      #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen, #conChinContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 19.5%;
         top: 190%; } }
     @media (min-width: 1200px) {
-      #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen {
+      #conChinContainer #fullFooter, #conChinContainer #fullFooterChosen, #conChinContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 17.5%;
         top: 110%; } }
@@ -1436,20 +1460,29 @@ a {
     @media (min-width: 1200px) {
       #conChinContainer #fullFooterChosen {
         top: 150%; } }
-    #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper {
+    @media (max-width: 767px) {
+      #conChinContainer #fullFooterArticleNotChosen {
+        top: 175%; } }
+    @media (min-width: 768px) {
+      #conChinContainer #fullFooterArticleNotChosen {
+        top: 190%; } }
+    @media (min-width: 1200px) {
+      #conChinContainer #fullFooterArticleNotChosen {
+        top: 88%; } }
+    #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #fullFooterArticleNotChosen #footerWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper {
+        #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #fullFooterArticleNotChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper {
+        #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #fullFooterArticleNotChosen #footerWrapper {
           height: 100%;
           width: 90%; } }
       @media (min-width: 1200px) {
-        #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper {
+        #conChinContainer #fullFooter #footerWrapper, #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #fullFooterArticleNotChosen #footerWrapper {
           height: 70%;
           width: 73%; } }
 
@@ -1504,25 +1537,27 @@ a {
         @media (min-width: 1200px) {
           #conChinFindBox .title .textWrapper .text, #conChinFindBox #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2 .textWrapper .text, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #conChinFindBox .title2 .textWrapper .text {
             font-size: 4rem; } }
-  #conChinFindBox .btnWrapper {
+  #conChinFindBox .btnWrapper, #conChinFindBox .btnWrapperAllChosen {
     position: absolute;
     display: flex;
     align-items: center;
     height: 100%;
     right: 1%; }
     @media (max-width: 767px) {
-      #conChinFindBox .btnWrapper {
+      #conChinFindBox .btnWrapper, #conChinFindBox .btnWrapperAllChosen {
         bottom: 5%;
         width: 25%; } }
     @media (min-width: 768px) {
-      #conChinFindBox .btnWrapper {
+      #conChinFindBox .btnWrapper, #conChinFindBox .btnWrapperAllChosen {
         bottom: 0%;
         width: 28%; } }
     @media (min-width: 1200px) {
-      #conChinFindBox .btnWrapper {
+      #conChinFindBox .btnWrapper, #conChinFindBox .btnWrapperAllChosen {
         bottom: 0%;
         width: 31%; } }
-    #conChinFindBox .btnWrapper .btn {
+    #conChinFindBox .btnWrapperAllChosen {
+      display: none; }
+    #conChinFindBox .btnWrapper .btn, #conChinFindBox .btnWrapperAllChosen .btn {
       position: absolute;
       height: 60%;
       right: 0%;
@@ -1533,39 +1568,39 @@ a {
       color: white;
       font-weight: bold; }
       @media (max-width: 767px) {
-        #conChinFindBox .btnWrapper .btn {
+        #conChinFindBox .btnWrapper .btn, #conChinFindBox .btnWrapperAllChosen .btn {
           width: 80%;
           padding-left: 17%;
           font-size: 1.3rem;
           height: 80%; } }
       @media (min-width: 768px) {
-        #conChinFindBox .btnWrapper .btn {
+        #conChinFindBox .btnWrapper .btn, #conChinFindBox .btnWrapperAllChosen .btn {
           width: 48%;
           padding-left: 12%;
           font-size: 1.5rem;
           height: 50%; } }
       @media (min-width: 1200px) {
-        #conChinFindBox .btnWrapper .btn {
+        #conChinFindBox .btnWrapper .btn, #conChinFindBox .btnWrapperAllChosen .btn {
           width: 40%;
           padding-left: 6.5%;
           font-size: 2rem;
           height: 45%; } }
-      #conChinFindBox .btnWrapper .btn:hover {
+      #conChinFindBox .btnWrapper .btn:hover, #conChinFindBox .btnWrapperAllChosen .btn:hover {
         cursor: pointer; }
-      #conChinFindBox .btnWrapper .btn .img {
+      #conChinFindBox .btnWrapper .btn .img, #conChinFindBox .btnWrapperAllChosen .btn .img {
         position: absolute; }
         @media (max-width: 767px) {
-          #conChinFindBox .btnWrapper .btn .img {
+          #conChinFindBox .btnWrapper .btn .img, #conChinFindBox .btnWrapperAllChosen .btn .img {
             width: 13px;
             height: 13px;
             right: 70.5%; } }
         @media (min-width: 768px) {
-          #conChinFindBox .btnWrapper .btn .img {
+          #conChinFindBox .btnWrapper .btn .img, #conChinFindBox .btnWrapperAllChosen .btn .img {
             width: 18px;
             height: 18px;
             right: 72.5%; } }
         @media (min-width: 1200px) {
-          #conChinFindBox .btnWrapper .btn .img {
+          #conChinFindBox .btnWrapper .btn .img, #conChinFindBox .btnWrapperAllChosen .btn .img {
             width: 23px;
             height: 23px;
             right: 70.5%; } }
@@ -1651,8 +1686,8 @@ a {
         height: 25%; } }
     @media (min-width: 1200px) {
       #conChinArticleBox #paginationWrapperChosen, #conChinArticleBoxChosen #paginationWrapperChosen {
-        top: 55%;
-        height: 20%; } }
+        top: 60%;
+        height: 10%; } }
 
 #conChinmemberBoxWrapper {
   position: absolute;
@@ -2597,40 +2632,40 @@ a {
     @media (min-width: 1200px) {
       #myPageContainer #myCommentWrapper {
         height: 25%; } }
-  #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen {
+  #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen {
+      #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 15.3%;
         top: 103%; } }
     @media (min-width: 768px) {
-      #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen {
+      #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 15.9%;
         top: 104%; } }
     @media (min-width: 1200px) {
-      #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen {
+      #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 13.5%;
         top: 112%; } }
-    #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper {
+    #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper, #myPageContainer #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterArticleNotChosen #footerWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper {
+        #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper, #myPageContainer #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterArticleNotChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper {
+        #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper, #myPageContainer #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterArticleNotChosen #footerWrapper {
           height: 100%;
           width: 90%; } }
       @media (min-width: 1200px) {
-        #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper {
+        #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper, #myPageContainer #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterArticleNotChosen #footerWrapper {
           height: 70%;
           width: 73%; } }
 
@@ -3442,40 +3477,40 @@ a {
                 font-size: 2rem; } }
           #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
             background-color: #000; }
-  #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen {
+  #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen, #conChinCertificationPage #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #conChinCertificationPage #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen {
+      #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen, #conChinCertificationPage #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #conChinCertificationPage #fullFooterArticleNotChosen {
         width: 100%;
         height: 15.3%;
         top: 93%; } }
     @media (min-width: 768px) {
-      #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen {
+      #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen, #conChinCertificationPage #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #conChinCertificationPage #fullFooterArticleNotChosen {
         width: 100%;
         height: 15.9%;
         top: 103%; } }
     @media (min-width: 1200px) {
-      #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen {
+      #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen, #conChinCertificationPage #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #conChinCertificationPage #fullFooterArticleNotChosen {
         width: 100%;
         height: 18%;
         top: 97%; } }
-    #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper {
+    #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterArticleNotChosen #footerWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper {
+        #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterArticleNotChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper {
+        #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterArticleNotChosen #footerWrapper {
           height: 100%;
           width: 90%; } }
       @media (min-width: 1200px) {
-        #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper {
+        #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterArticleNotChosen #footerWrapper {
           height: 70%;
           width: 73%; } }
 
@@ -4272,7 +4307,7 @@ a {
               #resetPasswordModal #modalBox #modal #exceptTitlesBox #emailWrapper .email {
                 top: 40%;
                 height: 50%; } }
-        #resetPasswordModal #modalBox #modal #exceptTitlesBox .newPasswordWrapper, #resetPasswordModal #modalBox #modal #exceptTitlesBox .confirmPasswordWrapper, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper {
+        #resetPasswordModal #modalBox #modal #exceptTitlesBox .newPasswordWrapper, #resetPasswordModal #modalBox #modal #exceptTitlesBox .confirmPasswordWrapper, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen {
           position: absolute;
           display: flex;
           width: 100%;
@@ -4280,11 +4315,11 @@ a {
           top: 25%; }
         #resetPasswordModal #modalBox #modal #exceptTitlesBox .confirmPasswordWrapper {
           top: 50%; }
-        #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper {
+        #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen {
           align-items: center;
           justify-content: space-between;
           top: 75%; }
-          #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .resetButton, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .cancelButton, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .cancelButton {
             position: relative;
             height: 50%;
             width: 45%;
@@ -4293,18 +4328,18 @@ a {
             border-radius: 5px;
             color: white;
             font-weight: bold; }
-            #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton:hover, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton:hover {
+            #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton:hover, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .resetButton:hover, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .resetButton:hover, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton:hover, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .cancelButton:hover, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .cancelButton:hover {
               cursor: pointer; }
             @media (max-width: 767px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .resetButton, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .cancelButton, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .cancelButton {
                 font-size: 1.5rem; } }
             @media (min-width: 768px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .resetButton, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .cancelButton, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .cancelButton {
                 font-size: 1.8rem; } }
             @media (min-width: 1200px) {
-              #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
+              #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .resetButton, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .resetButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .cancelButton, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .cancelButton {
                 font-size: 2rem; } }
-          #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton {
+          #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapper .cancelButton, #resetPasswordModal #modalBox #modal #exceptTitlesBox #conChinFindBox .btnWrapperAllChosen .cancelButton, #conChinFindBox #resetPasswordModal #modalBox #modal #exceptTitlesBox .btnWrapperAllChosen .cancelButton {
             background-color: #000; }
 
 #myProfileBox {
@@ -4960,40 +4995,40 @@ a {
                 font-size: 2rem; } }
           #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
             background-color: #000; }
-  #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen {
+  #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen, #myEditPage #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myEditPage #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen {
+      #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen, #myEditPage #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myEditPage #fullFooterArticleNotChosen {
         width: 100%;
         height: 15.3%;
         top: 85%; } }
     @media (min-width: 768px) {
-      #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen {
+      #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen, #myEditPage #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myEditPage #fullFooterArticleNotChosen {
         width: 100%;
         height: 15.9%;
         top: 98%; } }
     @media (min-width: 1200px) {
-      #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen {
+      #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen, #myEditPage #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myEditPage #fullFooterArticleNotChosen {
         width: 100%;
         height: 18%;
         top: 95%; } }
-    #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper {
+    #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper, #myEditPage #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterArticleNotChosen #footerWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper {
+        #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper, #myEditPage #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterArticleNotChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper {
+        #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper, #myEditPage #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterArticleNotChosen #footerWrapper {
           height: 100%;
           width: 90%; } }
       @media (min-width: 1200px) {
-        #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper {
+        #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper, #myEditPage #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterArticleNotChosen #footerWrapper {
           height: 70%;
           width: 73%; } }
 
@@ -5362,40 +5397,40 @@ a {
       #mainContainer #mainFindConchinWrapper {
         top: 250%;
         height: 80%; } }
-  #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen {
+  #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen {
+      #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
         top: 210%; } }
     @media (min-width: 768px) {
-      #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen {
+      #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
         top: 270%; } }
     @media (min-width: 1200px) {
-      #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen {
+      #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 38%;
         top: 335%; } }
-    #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper {
+    #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterArticleNotChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterArticleNotChosen #mainFooterWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper {
+        #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterArticleNotChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterArticleNotChosen #mainFooterWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper {
+        #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterArticleNotChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterArticleNotChosen #mainFooterWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 1200px) {
-        #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper {
+        #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterArticleNotChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterArticleNotChosen #mainFooterWrapper {
           height: 70%;
           width: 79%; } }
 
@@ -6429,40 +6464,40 @@ a {
       #concertContainer #modalBoard #concertWrapper img {
         width: 100%;
         opacity: 50%; }
-  #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen {
+  #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen, #concertContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #concertContainer #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen {
+      #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen, #concertContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #concertContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
         top: 130%; } }
     @media (min-width: 768px) {
-      #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen {
+      #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen, #concertContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #concertContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
         top: 130%; } }
     @media (min-width: 1200px) {
-      #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen {
+      #concertContainer #fullFooter, #concertContainer #conChinContainer #fullFooterChosen, #conChinContainer #concertContainer #fullFooterChosen, #concertContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #concertContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 38%;
         top: 138%; } }
-    #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper {
+    #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper, #concertContainer #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterArticleNotChosen #footerWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper {
+        #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper, #concertContainer #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterArticleNotChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper {
+        #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper, #concertContainer #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterArticleNotChosen #footerWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 1200px) {
-        #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper {
+        #concertContainer #fullFooter #footerWrapper, #concertContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterChosen #footerWrapper, #concertContainer #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #concertContainer #fullFooterArticleNotChosen #footerWrapper {
           height: 70%;
           width: 79%; } }
 
@@ -8207,40 +8242,40 @@ a {
           #landingContainer #bottomBox #bottomAlignBox button {
             width: 30%;
             font-size: 2rem; } }
-  #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen {
+  #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen, #landingContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #landingContainer #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
     justify-content: center;
     background-color: black; }
     @media (max-width: 767px) {
-      #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen {
+      #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen, #landingContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #landingContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
         top: 330%; } }
     @media (min-width: 768px) {
-      #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen {
+      #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen, #landingContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #landingContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
         top: 450%; } }
     @media (min-width: 1200px) {
-      #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen {
+      #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen, #landingContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #landingContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 38%;
         top: 610%; } }
-    #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper {
+    #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterArticleNotChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterArticleNotChosen #landingFooterWrapper {
       position: absolute;
       display: flex;
       background-color: black; }
       @media (max-width: 767px) {
-        #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper {
+        #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterArticleNotChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterArticleNotChosen #landingFooterWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 768px) {
-        #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper {
+        #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterArticleNotChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterArticleNotChosen #landingFooterWrapper {
           height: 100%;
           width: 100%; } }
       @media (min-width: 1200px) {
-        #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper {
+        #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterArticleNotChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterArticleNotChosen #landingFooterWrapper {
           height: 70%;
           width: 79%; } }
 

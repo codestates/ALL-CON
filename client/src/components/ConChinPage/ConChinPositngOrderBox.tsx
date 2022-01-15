@@ -6,6 +6,7 @@ import {
   setArticleOrder,
   setAllArticles,
   setArticleTotalPage,
+  setTargetArticle,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -63,6 +64,7 @@ function ConChinPostingOrderBox() {
   /* 타겟 초기화 핸들러 */
   const resetTarget = () => {
     dispatch(setTarget({}));
+    dispatch(setTargetArticle({}));
   };
   return (
     <div
