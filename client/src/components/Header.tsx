@@ -12,14 +12,14 @@ import {
   showLoginModal,
   showSideMenuModal,
   showMyDropDown,
-  showConcertModal
+  showConcertModal,
 } from '../store/ModalSlice';
 import {
   setIsScrolled,
   setScrollCount,
   setTimerMessage,
 } from '../store/HeaderSlice';
-import { setTarget } from '../store/MainSlice';
+import { setTarget, setTargetIdx } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -38,8 +38,6 @@ function Header() {
   );
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
-
-  console.log('target :', target);
 
   /* 타이머 변수 설정: 현재 시간 */
   let now = new Date();
@@ -151,6 +149,7 @@ function Header() {
   const resetHandler = () => {
     // dispatch(logout());
     dispatch(setTarget({}));
+    dispatch(setTargetIdx(0));
     dispatch(showConcertModal(false));
   };
 

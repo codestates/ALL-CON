@@ -61,6 +61,7 @@ export interface RootState {
 
 /* persist store 세팅 (새로고침, 종료해도 지속될 store) */
 export let persistor = persistStore(store);
+// persistor.purge();
 
 ReactDOM.render(
   <Provider store={store}>

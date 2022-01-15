@@ -5,11 +5,16 @@ import ybposter from '../../images/ybposter.jpg';
 import kakaotalk from '../../images/kakao-talk-1.png';
 import email from '../../images/email2.png';
 import returnImg from '../../images/return.png';
+/* Store import */
+import { RootState } from '../../index';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 function MainConcertInfo() {
+  const { target } = useSelector((state: RootState) => state.main);
+
   return (
     <div id='mainConcertInfoBox'>
       <div id='topBox'>

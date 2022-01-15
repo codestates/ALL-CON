@@ -5641,6 +5641,9 @@ a {
     #crownWrapper #posterCrown {
       width: 65px;
       height: 65px; } }
+  #crownWrapper #posterCrownDown {
+    width: 0;
+    height: 0; }
 
 .posterImg {
   position: absolute;
@@ -5729,43 +5732,51 @@ a {
     box-shadow: 3px 3px 14px 1px #606060;
     cursor: pointer;
     transition: all 1s ease; }
-    #posterWrapper3:hover .dDay {
-      z-index: 50;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%; }
-      @media (max-width: 767px) {
-        #posterWrapper3:hover .dDay {
-          width: 75%;
-          height: 45%;
-          border: 4px solid #ffce63; } }
-      @media (min-width: 768px) {
-        #posterWrapper3:hover .dDay {
-          width: 75%;
-          height: 50%;
-          border: 5px solid #ffce63; } }
-      @media (min-width: 1200px) {
-        #posterWrapper3:hover .dDay {
-          width: 75%;
-          height: 58%;
-          border: 6px solid #ffce63; } }
-      #posterWrapper3:hover .dDay p {
-        color: #fff;
-        font-weight: bold; }
+    #posterWrapper3:hover #alignDay {
+      width: 100%;
+      height: 100%; }
+      #posterWrapper3:hover #alignDay #dDay {
+        z-index: 50;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%; }
         @media (max-width: 767px) {
-          #posterWrapper3:hover .dDay p {
-            font-size: 2.5rem; } }
+          #posterWrapper3:hover #alignDay #dDay {
+            width: 75%;
+            height: 45%;
+            border: 4px solid #ffce63; } }
         @media (min-width: 768px) {
-          #posterWrapper3:hover .dDay p {
-            font-size: 4rem; } }
+          #posterWrapper3:hover #alignDay #dDay {
+            width: 75%;
+            height: 50%;
+            border: 5px solid #ffce63; } }
         @media (min-width: 1200px) {
-          #posterWrapper3:hover .dDay p {
-            font-size: 5rem; } }
+          #posterWrapper3:hover #alignDay #dDay {
+            width: 75%;
+            height: 58%;
+            border: 6px solid #ffce63; } }
+        #posterWrapper3:hover #alignDay #dDay p {
+          color: #fff;
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #posterWrapper3:hover #alignDay #dDay p {
+              font-size: 2.5rem; } }
+          @media (min-width: 768px) {
+            #posterWrapper3:hover #alignDay #dDay p {
+              font-size: 4rem; } }
+          @media (min-width: 1200px) {
+            #posterWrapper3:hover #alignDay #dDay p {
+              font-size: 5rem; } }
+  #posterWrapper3 #alignDay {
+    width: 100%;
+    height: 100%; }
+    #posterWrapper3 #alignDay #dDay {
+      display: none; }
   @media (max-width: 767px) {
     #posterWrapper3 {
       width: 29%;
