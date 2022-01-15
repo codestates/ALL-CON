@@ -7,41 +7,14 @@ import email from '../../images/email2.png';
 import returnImg from '../../images/return.png';
 /* Store import */
 import { RootState } from '../../index';
-import { setTarget } from '../../store/MainSlice';
-import { showAlertModal, insertAlertText } from '../../store/ModalSlice';
 /* Library import */
-import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { title } from 'process';
 
 function MainConcertInfo() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { target } = useSelector((state: RootState) => state.main);
-
-  useEffect(() => {
-    getConcert()
-  }, []);
-
-  /* target에 따라 콘서트 정보를 가져올 getConcert 함수 */
-  const getConcert = async () => {
-    try{
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}`,
-        { withCredentials: true },
-      );
-      if (response.data) {
-        dispatch(setTarget(response.data.data.concertInfo));
-      }
-    } catch(err){
-      const error = err as AxiosError;
-      if(error.response?.status===400) dispatch(insertAlertText('잘못된 요청입니다! 😖'));
-      else dispatch(insertAlertText('Server Error! 😖'));
-      dispatch(showAlertModal(true));
-    }
-  }
 
   return (
     <div id='mainConcertInfoBox'>

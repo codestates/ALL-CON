@@ -54,8 +54,6 @@ module.exports = {
   },
   patch: async (req, res) => {
     try {
-      console.log(' --- 콘친 인증 완료 API 진입완료 --- ')
-
       // 로그인 인증 검사
       const userInfo = await userAuth(req, res);
 
@@ -78,7 +76,7 @@ module.exports = {
         },
         { where : { id: userInfo.dataValues.id } }
       );
-      
+
       // 새로 업데이트한 회원정보 조회
       const newUserInfo = await Users.findOne({ where: { id: userInfo.dataValues.id } });
       // 업데이트된 회원정보 반환

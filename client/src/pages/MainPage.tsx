@@ -13,7 +13,7 @@ function MainPage() {
           <Jumbotron />
         </div>
         <div id='mainConcertInfoWrapper'>
-          <MainConcertInfo />
+          {/* <MainConcertInfo /> */}
         </div>
         <div id='mainCommentWrapper'>
           <MainComment />
