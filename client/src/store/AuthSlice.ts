@@ -2,9 +2,15 @@
 import { persistor } from '../index';
 /* Library import */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { setTarget } from './MainSlice';
 /* State Type 설정 */
 export interface auth {
   isLogin: boolean;
+  yearList: Array<string>;
+  monthList: Array<string>;
+  dateList: Array<string>;
+  isPhoneCertificatePass: boolean;
+  certificateInfo: string;
   userInfo: {
     id?: number;
     email?: string;
@@ -21,10 +27,10 @@ export interface auth {
     massage_key?: string;
     createdAt?: Date;
     updatedAt?: Date;
-  };
+  }
 }
 /* State 초기값 설정 */
-const initialState: auth = { isLogin: false, userInfo: {} };
+const initialState: auth = { isLogin: false, userInfo: {}, yearList: [], monthList: [], dateList: [], isPhoneCertificatePass: false, certificateInfo: '' };
 
 const authSlice = createSlice({
   name: 'auth',
@@ -41,9 +47,24 @@ const authSlice = createSlice({
     },
     getUserInfo: (state: auth, { payload }: PayloadAction<auth>) => { 
       state.userInfo = payload.userInfo;
-    }
+    },
+    getPhoneCertificatePassInfo: (state: auth, { payload }: PayloadAction<boolean>) => { 
+      state.isPhoneCertificatePass = payload;
+    },
+    getCertificateInfo: (state: auth, { payload }: PayloadAction<string>) => { 
+      state.certificateInfo = payload;
+    },
+    getYearList: (state: auth, { payload }: PayloadAction<Array<string>>) => { 
+      state.yearList = payload;
+    },
+    getMonthList: (state: auth, { payload }: PayloadAction<Array<string>>) => { 
+      state.monthList = payload;
+    },
+    getDateList: (state: auth, { payload }: PayloadAction<Array<string>>) => { 
+      state.dateList = payload;
+    },
   }
 });
 
-export const { login, logout, getUserInfo } = authSlice.actions;
+export const { login, logout, getUserInfo, getCertificateInfo, getPhoneCertificatePassInfo,  getYearList, getMonthList,  getDateList } = authSlice.actions;
 export default authSlice.reducer;

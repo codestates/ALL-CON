@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../config.js';
 /* Store import */
 import { login, getUserInfo } from '../../store/AuthSlice';
 /* Library import */
@@ -27,13 +25,12 @@ function CallbackGooglePage() {
       if (authorizationCode) {
         /* Google OAuth CallBack 코드를 /oauth/google POST 메소드 엔드포인트로 넘겨준다 */
         const response = await axios.post(
-          `${REACT_APP_API_URL}/oauth/google`,
+          `${process.env.REACT_APP_API_URL}/oauth/google`,
           { authorizationCode },
           { withCredentials: true }
         );
         /* 로그인 & 유저 상태 변경 */
         dispatch(login());
-        console.log('------ response.data.data 확인 ------', response.data.data)
         dispatch(getUserInfo(response.data.data));
       }
       navigate('/main');

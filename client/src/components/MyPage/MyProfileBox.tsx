@@ -9,45 +9,96 @@ import google from '../../images/googleOAuth.png';
 import shield from '../../images/shield.png';
 /* Store import */
 import { RootState } from '../../index';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
+import { getUserInfo, getYearList, getMonthList, getDateList } from '../../store/AuthSlice';
 /* Library import */
 
 function MyProfileBox() {
 
   /* dispatch / navigate */
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   /* useSelector */
-  const { userInfo } = useSelector((state: RootState) => state.auth);
+  const { userInfo, yearList, monthList, dateList } = useSelector((state: RootState) => state.auth);
+  
   /* 지역상태 - useState */
-
-  /* useEffect */
+  // 프로필 수정 버튼 모니터링 상태
+  const [profileChangeBtn, setProfileChangeBtn] = useState<boolean>(false)
   // 프로필 수정 모달 상태
   const [profileEdit, setProfileEdit] = useState<boolean>(false)
   // 회원탈퇴 모달 상태
   const [resignMembership, setResignMembership] = useState<boolean>(false)
+
+  /* useEffect */
+  
   /* handler 함수 (기능별 정렬) */
 
-  // 프로필 수정 변경 버튼
+  // 프로필 이미지 수정 버튼 (카메라 사진)
+  const handleProfileImageEdit = async () => {
+    setProfileEdit(true)
+  }
+
+  // 프로필 수정 버튼
   const handleProfileEdit = async () => {
     console.log('프로필 수정 버튼을 클릭하셨습니다!')
-    setProfileEdit(true)
+
+    // 프로필 수정 버튼 클릭 상태 갱신
+    setProfileChangeBtn(true)
+    console.log(' --- profileChangeBtn 상태 확인! --- ', profileChangeBtn)
+    navigate('/myEdit')
+  }
+
+  // 콘친 인증 버튼
+  const handleConchinCertificate = async () => {
+    let year = 1900;
+    let localYearList = []
+
+    let month = 1;
+    let localMonthList = []
+
+    let date = 1;
+    let localDateList = []
+
+    // (생년월일) 년 계산
+    while(year < 2023 && yearList.length < 10) {
+      localYearList.push(year + '년')
+      year++
+    }
+
+    // (생년월일) 월 계산
+    while(month < 13 && monthList.length < 13) {
+      localMonthList.push(month + '월')
+      month++
+    }
+
+    // (생년월일) 일 계산
+    while(date < 32 && dateList.length < 10) {
+      localDateList.push(date + '일')
+      date++
+    }
+
+    dispatch(getYearList(localYearList))
+    dispatch(getMonthList(localMonthList))
+    dispatch(getDateList(localDateList))
+
+    navigate('/conchinCert')
   }
 
   // 프로필 수정 변경안함 버튼
   const handleProfileEditBackground = async () => {
-    console.log('프로필 수정 변경안함을 클릭하셨습니다!')
     setProfileEdit(false)
   }
 
   // 회원탈퇴 버튼
   const handleAccountDelete = async () => {
-    console.log('회원탈퇴 버튼을 클릭하셨습니다!')
     setResignMembership(true)
   }
 
   // 회원탈퇴취소 클릭
   const handleAccountDeleteBackground = async () => {
-    console.log('Background를 클릭하셨습니다!')
     setResignMembership(false)
   }
 
@@ -61,29 +112,37 @@ function MyProfileBox() {
           <img className='img' src={`${userInfo.image}`} alt='profileImage' />
         </div>
         <div id='cameraWrapper'>
-          <img className='camera' src={camera} alt='camera' onClick={() => {handleProfileEdit()}} />
+          <img className='camera' src={camera} alt='camera' onClick={() => {handleProfileImageEdit()}} />
         </div>
       </div>
       <div id='introductionBox'>
         <div id='nickNameWrapper'>
           <div id='oauthWrapper'>
             {/* OAuth 상태에 따른 아이콘 표시 */}
-            <img className='oauth' src={google} alt='google' />
+            {
+              userInfo.sign_method === 'allcon'
+              ? null
+              : <img className='oauth' src={`${userInfo.sign_method}` === 'google' ? google : kakao } alt='google' />
+            }
           </div>
-          <p className='nickName'>유태양발닦개</p>
+          {/* 유저네임 (username) */}
+          <p className='nickName'> {`${userInfo.username}`} </p>
           <div id='shieldWrapper'>
-            {/* 콘친 인증 상태에 따른 아이콘 표시 */}
-            <img className='shield' src={shield} alt='shield' />
+            {/* 콘친 인증 상태에 따른 아이콘 표시 (방패 아이콘) */}
+            {
+              userInfo.role === 3
+              ? null
+              : <img className='shield' src={shield} alt='shield' />
+            }
           </div>
         </div>
+        {/* 자기소개, 주의! null일 때 처리해줘야됨! */}
         <div id='textWrapper'>
-          <textarea id='introduction'>
-            유태양 찐팬 경기/30/누구든 콘친 ㄱㄱ
-          </textarea>
+          <textarea id='introduction' disabled >  </textarea>
         </div>
         <div id='modifyBtnWrapper'>
-          <button className='btn' >프로필 수정</button>
-          <button className='btn'>콘친 인증</button>
+          <button className='btn' onClick={() => {handleProfileEdit()}}>프로필 수정</button>
+          <button className='btn' onClick={() => {handleConchinCertificate()}}>콘친 인증</button>
         </div>
         <div id='resignBtnWrapper'>
           <button className='btn' onClick={() => {handleAccountDelete()}}>회원 탈퇴</button>

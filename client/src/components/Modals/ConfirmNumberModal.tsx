@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../config.js'
 /* CSS import */
 import xButton from '../../images/xWhiteButton.png';
 /* Store import */
@@ -46,7 +44,7 @@ function ConfirmNumberModal() {
   const requestHandler = async () => {
     try {
       await axios.post(
-        `${REACT_APP_API_URL}/password`,
+        `${process.env.REACT_APP_API_URL}/password`,
         { email: deliverText },
         { withCredentials: true }
       );
@@ -66,7 +64,7 @@ function ConfirmNumberModal() {
   const confirmHandler = async () => {
     try {
       await axios.post(
-        `${REACT_APP_API_URL}/password/confirm`,
+        `${process.env.REACT_APP_API_URL}/password/confirm`,
         { email_key: inputCode },
         { withCredentials: true }
       );

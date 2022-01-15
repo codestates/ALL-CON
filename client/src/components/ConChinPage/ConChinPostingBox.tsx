@@ -1,77 +1,123 @@
-/* Config import */
-import { REACT_APP_API_URL, REACT_APP_CLIENT_URL } from '../../config.js';
 /* Store import */
-import { login, getUserInfo } from '../../store/AuthSlice';
-import {
-  showLoginModal,
-  showSignupModal,
-  showFindPasswordModal,
-  showAlertModal,
-  insertAlertText,
-} from '../../store/ModalSlice';
 import { RootState } from '../../index';
+import { setTarget, setAllConcerts } from '../../store/MainSlice';
+import { setAllArticles, setArticleTotalPage } from '../../store/ConChinSlice';
 /* Library import */
-import axios, { AxiosError } from 'axios';
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { useState, useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+/* Component import */
 import ConChinPostingOrderBox from './ConChinPositngOrderBox';
 
 function ConChinPostingBox() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { postingOrder } = useSelector((state: RootState) => state.conChin);
+  const { target } = useSelector((state: RootState) => state.main);
+  const { allConcerts } = useSelector((state: RootState) => state.main);
+  const { articleOrder, allArticles } = useSelector(
+    (state: RootState) => state.conChin,
+  );
 
-  const [inputEmail, setInputEmail] = useState<string>('');
-  const [inputPassword, setInputPassword] = useState<string>('');
-  const loginHandler = async () => {
+  /* 전체 게시물 받아오기(조건) */
+  const getAllArticles = async () => {
     try {
-      /* response 변수에 /login 서버 응답결과를 담는다 */
-      const response = await axios.post(
-        `${REACT_APP_API_URL}/login`,
-        { email: inputEmail, password: inputPassword },
-        { withCredentials: true },
-      );
-      /* 서버의 응답결과에 유저 정보가 담겨있다면 로그인 성공*/
-      if (response.data.data) {
-        /* 유효성 & 로그인 & 유저 상태 변경 후 메인페이지 리다이렉트 */
-        dispatch(login());
-        dispatch(getUserInfo(response.data.data));
-        dispatch(showLoginModal(false));
-        navigate('/main');
+      /* 타겟에 종속된 게시물이 없을때, 게시물 없음 표시 */
+      if (target !== undefined && target !== null) {
+        if (Object.keys(target).length === 0) {
+          dispatch(setAllArticles([]));
+          dispatch(setArticleTotalPage(0));
+          console.log(' ConChinPostingBox=> 게시물이 없어요.');
+        } else if (target === undefined || target === null) {
+          console.log(
+            'ConChinPostingBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
+          );
+        } else {
+          /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
+            { withCredentials: true },
+          );
+          if (response.data) {
+            dispatch(setAllArticles(response.data.data.articleInfo));
+            dispatch(setArticleTotalPage(response.data.data.totalPage));
+            console.log('allArticles: ');
+            console.log(allArticles);
+          } else {
+            console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
+          }
+        }
       }
     } catch (err) {
-      const error = err as AxiosError;
-      if (error.response?.status === 400)
-        dispatch(insertAlertText('빈칸을 모두 입력해주세요! 😖'));
-      else if (error.response?.status === 403)
-        dispatch(insertAlertText('잘못된 이메일 혹은 비밀번호입니다! 😖'));
-      else dispatch(insertAlertText('Server Error! 😖'));
-      dispatch(showAlertModal(true));
+      console.log(err);
+      console.log(
+        'ConChinPostingBox=> 에러가 났나봐요. 게시물 없음 처리합니다.',
+      );
     }
   };
 
+  /*전체 게시물 받아오기 & 타겟 교체 */
+  function getAllArticlesAndSetTarget(concert: any[]) {
+    dispatch(setTarget(concert));
+    getAllArticles();
+    console.log('ConChinPostingBox=> target: ');
+    console.log(target);
+    console.log('ConChinPostingBox=> concert: ');
+    console.log(concert);
+  }
+
+  /* useEffect: 타겟이 변경될 때마다 게시물 렌더링 */
+  useEffect(() => {
+    getAllArticles();
+  }, [target]);
+
   return (
     <li id='conChinPostingBox'>
-      <h1 id='curOrder'>조회수 순</h1>
+      <h1 id={Object.keys(target).length === 0 ? 'curOrder' : 'curOrderChosen'}>
+        {postingOrder === 'view'
+          ? '조회수 순'
+          : postingOrder === 'near'
+          ? '임박예정 순'
+          : postingOrder === 'new'
+          ? '등록일 순'
+          : null}
+      </h1>
       <ConChinPostingOrderBox />
-      <ul className='posting'>
-        <h1 className='title'>[진주] 2021-22 YB 전국투어 콘서트〈LIGHTS〉</h1>
-        <p className='date'>2022.02.26 ~ 2022.02.27</p>
-        <p className='view'>조회수 2,366</p>
-        <p className='place'>경남문화예술회관 대공...</p>
-      </ul>
-      <ul className='posting'>
-        <h1 className='title'>2022 AB6IX CONCERT [COMPLETE WITH...</h1>
-        <p className='date'>2022.01.15 ~ 2022.01.26</p>
-        <p className='view'>조회수 1,746</p>
-        <p className='place'>잠실실내체육관</p>
-      </ul>
-      <ul className='posting'>
-        <h1 className='title'>2022 SF9 LIVE FANTASY #3 IMPERFECT</h1>
-        <p className='date'>2022.01.21 ~ 2022.01.23</p>
-        <p className='view'>조회수 536</p>
-        <p className='place'>올림픽공원 올림픽홀</p>
-      </ul>
+      <div
+        id={
+          Object.keys(target).length === 0
+            ? 'postingBoxWrapper'
+            : 'postingBoxWrapperChosen'
+        }
+      >
+        {target !== undefined
+          ? allConcerts.map(concert => {
+              return (
+                <ul
+                  className={
+                    target.id === concert.id
+                      ? 'postingChosen'
+                      : Object.keys(target).length === 0
+                      ? 'posting'
+                      : 'postingunChosen'
+                  }
+                  key={concert.id}
+                  onClick={() => {
+                    getAllArticlesAndSetTarget(concert);
+                  }}
+                >
+                  <h1 className='title'>{concert.title}</h1>
+                  <p className='date'>
+                    {' '}
+                    오픈일
+                    <br /> {concert.post_date}
+                  </p>
+                  <p className='view'> 조회수 {concert.view}</p>
+                  <p className='place'> {concert.place}</p>
+                </ul>
+              );
+            })
+          : null}
+      </div>
     </li>
   );
 }

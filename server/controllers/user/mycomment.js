@@ -11,7 +11,7 @@ module.exports = {
       // POSTMAN 테스트시 => req.body = { id, email }
       const userInfo = req.body; 
       /* 임시 TEST CODE (삭제예정) */
-      const { pageNum } = req.body;
+      const { pageNum } = req.query;
 
       /* 페이지 네이션 한 페이지당 3개의 댓글 */ 
       const limit = 3;

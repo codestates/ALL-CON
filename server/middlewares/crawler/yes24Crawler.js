@@ -206,6 +206,12 @@ const yes24Crawler = async () => {
             let inputImage = await imageResult[0].getAttribute('src');
 
             let inputUrl = targetUrl.replaceAll(`'`, '')
+
+            inputDate = inputDate.replaceAll('-', '.')
+
+            console.log('---- inputDate ----:', inputDate)
+
+            
             
             // 현재 Url이 DB에 있는 것보다 작거나 같으면 break, 더 크면 DB에 넣어준다
             if(Number(inputUrl.split('#id=')[1] <= lastUrlNum)) break;
@@ -250,7 +256,7 @@ const yes24Crawler = async () => {
 
       } 
       // while문 조건
-      while(pageNum < 5) 
+      while(pageNum < 3) 
       
       console.log('-------------- YES24 크롤링 종료 -----------------')
       await driver.sleep(10000*1.5);

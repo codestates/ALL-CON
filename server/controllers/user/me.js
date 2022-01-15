@@ -27,24 +27,17 @@ module.exports = {
   patch: async (req, res) => {
     try {
       // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
-
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
-      /* 임시 TEST CODE (삭제예정) */
+      const userInfo = await userAuth(req, res);
 
       const { username, introduction, password } = req.body;
 
       /* 임시 TEST CODE (닉네임 중복 API가 정상 작동한다면 삭제예정) */
-      // 요청 바디에 username이 있다면, 나를 제외한 username 중 이미 존재하는지 검사
+      // 요청 바디에 username이 있다면, 나를 제외한 username 중 이미 존재하는지 검사 => 중복확인 검사가 있는데 굳이 해야될까?!
       if(username) {
         const usernameInfo = await Users.findOne({ 
           where: { 
             username: username,
-            [Op.not]: [{ id: userInfo.id }]
+            [Op.not]: [{ id: userInfo.dataValues.id }]
           }
         });
         // 이미 존재하는 username이면 요청 거절
@@ -55,15 +48,15 @@ module.exports = {
       // 요청 바디가 없는 값은 그대로 유지, 있다면 새로 업데이트 한다
       await Users.update(
         {
-          username: username ? username : userInfo.username,
-          introduction: introduction ? introduction : userInfo.introduction,
+          username: username ? username : userInfo.dataValues.username,
+          introduction: introduction ? introduction : userInfo.dataValues.introduction,
           password: password
         },
-        { where : { id: userInfo.id } }
+        { where : { id: userInfo.dataValues.id } }
       );
 
       // 새로 업데이트한 회원정보 조회 후 민감정보(비밀번호) 삭제
-      const newUserInfo = await Users.findOne({ where: { id: userInfo.id } });
+      const newUserInfo = await Users.findOne({ where: { id: userInfo.dataValues.id } });
       delete newUserInfo.dataValues.password;
       
       // 업데이트된 회원정보 반환

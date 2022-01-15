@@ -6,15 +6,11 @@ const twilio = require("twilio")(process.env.TWILIO_SID, process.env.TWILIO_TOKE
 module.exports = {
   post: async (req, res) => {
     try {
-      // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
 
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
-      /* 임시 TEST CODE (삭제예정) */
+      console.log('[POST] 핸드폰 인증 번호 진입완료!')
+
+      // 로그인 인증 검사
+      const userInfo = await userAuth(req, res);
 
       const { phone_number } = req.body;
 
@@ -36,19 +32,19 @@ module.exports = {
       // Users 테이블 message_key 필드 업데이트
       await Users.update(
         { message_key: confirmNumber },
-        { where: { id: userInfo.id }}
+        { where: { id: userInfo.dataValues.id }}
       )
       
       // 인증번호 입력 시간이 지나면, message_key 값이 expired로 변경한다
-      setTimeout(async function() {
-        const messageKeyChecker = await Users.findOne({ where: { id: userInfo.id } })
-        if(messageKeyChecker.message_key !== 'success'){
-          await Users.update(
-            { message_key: 'expired' },
-            { where: { id: userInfo.id }}
-          )
-        }
-      }, 60000)
+      // setTimeout(async function() {
+      //   const messageKeyChecker = await Users.findOne({ where: { id: userInfo.dataValues.id } })
+      //   if(messageKeyChecker.message_key !== 'success'){
+      //     await Users.update(
+      //       { message_key: 'expired' },
+      //       { where: { id: userInfo.dataValues.id }}
+      //     )
+      //   }
+      // }, 60000)
 
       res.status(200).json({ message: 'Success Send Message!' });
     } catch (err) {
@@ -59,14 +55,7 @@ module.exports = {
   patch: async (req, res) => {
     try {
       // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
-
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
-      /* 임시 TEST CODE (삭제예정) */
+      const userInfo = await userAuth(req, res);
 
       // 요청 바디 (생년월일, 성별, 전화번호)
       const { birth, gender, phone_number } = req.body;
@@ -85,11 +74,11 @@ module.exports = {
           role: 2,
           message_key: 'expired'
         },
-        { where : { id: userInfo.id } }
+        { where : { id: userInfo.dataValues.id } }
       );
-      
+
       // 새로 업데이트한 회원정보 조회
-      const newUserInfo = await Users.findOne({ where: { id: userInfo.id } });
+      const newUserInfo = await Users.findOne({ where: { id: userInfo.dataValues.id } });
       // 업데이트된 회원정보 반환
       res.status(200).json({ data: { userInfo: newUserInfo }, message: 'Updated Success!' });
     } catch (err) {

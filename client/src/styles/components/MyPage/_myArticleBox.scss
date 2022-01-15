@@ -48,20 +48,22 @@
   #articleWrapper {
     position: absolute;
     display: flex;
-    height: 90%;
 
     // border: 2px solid red;
     @include mobile-only() {
-      width: 100%;
-      top: 15%;
-    }
-    @include md() {
       width: 90%;
       top: 15%;
+      height: 90%;
+    }
+    @include md() {
+      width: 80%;
+      top: 15%;
+      height: 90%;
     }
     @include lg() {
-      width: 85%;
+      width: 75%;
       top: 11%;
+      height: 90%;
     }
     #myMemberBoxWrapper {
       position: absolute;

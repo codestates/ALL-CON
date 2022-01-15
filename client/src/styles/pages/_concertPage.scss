@@ -97,10 +97,15 @@
     }
     #concertBoxWrapper {
       cursor: pointer;
-      margin-bottom: 3%;
+      margin-top: 1.5%;
+      margin-bottom: 1.5%;
       width: 90%;
       height: 20%;
       // border: 1px solid pink;
+    }
+    #concertBoxWrapper:hover {
+      box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.1);
+      transition: 0.25s all;
     }
   }
   /* 스크롤바 CSS */

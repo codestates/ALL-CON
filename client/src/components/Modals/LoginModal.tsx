@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL, REACT_APP_CLIENT_URL } from '../../config.js';
 /* CSS import */
 import google from '../../images/googleOAuth.png';
 import kakao from '../../images/kakaoOAuth.png';
@@ -25,7 +23,6 @@ import { useDispatch, useSelector } from 'react-redux';
 function LoginModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { scrollCount } = useSelector((state: RootState) => state.header);
 
   /* 인풋 정보 상태 */
   const [inputEmail, setInputEmail] = useState<string>('');
@@ -36,7 +33,7 @@ function LoginModal() {
     try {
       /* response 변수에 /login 서버 응답결과를 담는다 */
       const response = await axios.post(
-        `${REACT_APP_API_URL}/login`,
+        `${process.env.REACT_APP_API_URL}/login`,
         { email: inputEmail, password: inputPassword },
         { withCredentials: true },
       );
@@ -44,12 +41,6 @@ function LoginModal() {
       if (response.data.data) {
         /* 유효성 & 로그인 & 유저 상태 변경 후 메인페이지 리다이렉트 */
         dispatch(login());
-
-        console.log('------ response.data.data 확인 ------', response.data.data)
-        console.log('------ response.data.data 확인 ------', response.data.data.userInfo)
-        console.log('------ response.data.data 확인 ------', response.data.data.userInfo.email)
-
-
         dispatch(getUserInfo(response.data.data));
         dispatch(showLoginModal(false));
         dispatch(setScrollCount(0));
@@ -70,13 +61,13 @@ function LoginModal() {
   const oauthLoginHandler = (oauth: string) => {
     /* Google OAuth */
     if (oauth === 'google') {
-      const url = `${REACT_APP_CLIENT_URL}/callbackGoogle`;
+      const url = `${process.env.REACT_APP_CLIENT_URL}/callbackGoogle`;
       window.location.assign(
         `https://accounts.google.com/o/oauth2/auth?client_id=705123265700-pch2mtv4r94rfr4b61l3g65efbn2et2a.apps.googleusercontent.com&redirect_uri=${url}&response_type=code&scope=https://www.googleapis.com/auth/userinfo.email+https://www.googleapis.com/auth/userinfo.profile+openid`,
       );
       /* Kakao OAuth */
     } else if (oauth === 'kakao') {
-      const url = `${REACT_APP_CLIENT_URL}/callbackKakao`;
+      const url = `${process.env.REACT_APP_CLIENT_URL}/callbackKakao`;
       window.location.assign(
         `https://kauth.kakao.com/oauth/authorize?client_id=63851fd0da93b09688f7c4c7e4b1ec20&redirect_uri=${url}&response_type=code&scope=profile_nickname,profile_image,account_email`,
       );

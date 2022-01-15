@@ -1,53 +1,52 @@
 /* CSS import */
 import crown from '../images/crown.png';
-import sf9 from '../images/sf99.jpg';
-import six from '../images/six.gif';
-import victon from '../images/victon.gif';
-import hiphop2 from '../images/hiphop2.gif';
-import kimjh from '../images/kimjh.jpg';
-import defaultPoster from '../images/default_poster.jpg';
 /* Store import */
 import { RootState } from '../index';
 import { setOrder, setTarget } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
 
 function PosterSlide() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
+  const { firstConcert } = useSelector((state: RootState) => state.main);
+  const { secondConcert } = useSelector((state: RootState) => state.main);
+  const { thirdConcert } = useSelector((state: RootState) => state.main);
+  const { fourthConcert } = useSelector((state: RootState) => state.main);
+  const { fifthConcert } = useSelector((state: RootState) => state.main);
+  const { targetIdx } = useSelector((state: RootState) => state.main);
   const { target } = useSelector((state: RootState) => state.main);
-  const { fiveConcerts } = useSelector((state: RootState) => state.main);
-  let firstConcert = fiveConcerts[0];
-  let secondConcert = fiveConcerts[1];
-  let thirdConcert = fiveConcerts[2];
-  let fourthConcert = fiveConcerts[3];
-  let fifthConcert = fiveConcerts[4];
 
-  //현재 선택된 포스터 바꾸기(뒷배경 큰 포스터)
-  const getTargetPoster = () => {
-    dispatch(setTarget(thirdConcert));
+  const [isClick, setIsClick] = useState('disclicked');
+
+  /* D-DAY 계산기 */
+  const dayCalculator = (openDate?: Date): string => {
+    if (openDate) {
+      const today = new Date();
+      const targetDay = new Date(openDate);
+      const gap = targetDay.getTime() - today.getTime();
+      const count = Math.ceil(gap / (1000 * 60 * 60 * 24));
+      /* 남은 일수에 따라 디데이 리턴 */
+      if (count === 1) return 'D';
+      else if (count < 1) return '';
+      else return 'D-' + (count - 1);
+    }
+    return '';
   };
-
-  useEffect(() => {
-    getTargetPoster();
-  }, []);
-
-  // 버튼을 누르면 fiveConcerts 배열이 변하게 만들기(인덱스 이동)
-  //allConcerts에서 받아온 콘서트들 인덱스
-  const updateFiveConcerts = () => {};
 
   return (
     <>
       <div className='posterContainer'>
         <div id='crownWrapper'>
-          <img id='posterCrown' src={crown} alt='왕관아이콘'></img>
+          <img
+            id={targetIdx === 0 ? 'posterCrown' : 'posterCrownDown'}
+            src={crown}
+            alt='왕관아이콘'
+          ></img>
         </div>
-        {fiveConcerts ? (
-          <>
+        <>
+          {firstConcert ? (
             <div id='posterWrapper1'>
               <img
                 alt='포스터'
@@ -57,6 +56,10 @@ function PosterSlide() {
               ></img>
               <div className='posterCover2'></div>
             </div>
+          ) : (
+            console.log('받아온 이미지가 없습니다')
+          )}
+          {secondConcert ? (
             <div id='posterWrapper2'>
               <img
                 alt='포스터'
@@ -66,17 +69,32 @@ function PosterSlide() {
               ></img>
               <div className='posterCover'></div>
             </div>
-            <div id='posterWrapper3'>
+          ) : (
+            console.log('받아온 이미지가 없습니다')
+          )}
+          {thirdConcert ? (
+            <div
+              id='posterWrapper3'
+              onClick={() => {
+                setIsClick('clicked');
+              }}
+            >
               <img
                 alt='포스터'
                 src={thirdConcert.image_concert}
                 className='posterImg'
                 id='poster'
               ></img>
-              <div className='dDay'>
-                <p>D-5</p>
+              <div id='alignDay'>
+                <div id='dDay'>
+                  {/* <p>{dayCalculator(target.open_date)}</p> */}
+                </div>
               </div>
             </div>
+          ) : (
+            console.log('받아온 이미지가 없습니다')
+          )}
+          {fourthConcert ? (
             <div id='posterWrapper4'>
               <img
                 alt='포스터'
@@ -86,6 +104,10 @@ function PosterSlide() {
               ></img>
               <div className='posterCover'></div>
             </div>
+          ) : (
+            console.log('받아온 이미지가 없습니다')
+          )}
+          {fifthConcert ? (
             <div id='posterWrapper5'>
               <img
                 alt='포스터'
@@ -95,10 +117,10 @@ function PosterSlide() {
               ></img>
               <div className='posterCover2'></div>
             </div>
-          </>
-        ) : (
-          <p>받아온 콘서트 정보가 없습니다.</p>
-        )}
+          ) : (
+            console.log('받아온 이미지가 없습니다')
+          )}
+        </>
       </div>
     </>
   );

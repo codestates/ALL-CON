@@ -1,5 +1,3 @@
-/* Config import */
-import { REACT_APP_API_URL } from '../../config.js';
 /* Store import */
 import { login, getUserInfo } from '../../store/AuthSlice';
 /* Library import */
@@ -27,7 +25,7 @@ function CallbackKaKaoPage() {
       if (authorizationCode) {
         /* Kakao OAuth CallBack 코드를 /oauth/Kakao POST 메소드 엔드포인트로 넘겨준다 */
         const response = await axios.post(
-          `${REACT_APP_API_URL}/oauth/kakao`,
+          `${process.env.REACT_APP_API_URL}/oauth/kakao`,
           { authorizationCode },
           { withCredentials: true }
         );

@@ -120,25 +120,29 @@
               font-size: 1.6rem;
             }
             @include md() {
-              font-size: 2.5rem;
+              font-size: 2rem;
             }
             @include lg() {
-              font-size: 2.5rem;
+              font-size: 2rem;
             }
           }
           p {
             display: flex;
             align-items: center;
+            justify-content: right;
+            width: 15%;
+            height: 100%;
+            // border: 1px solid purple;
             font-weight: bold;
             color: $gray;
             @include mobile-only() {
               font-size: 2rem;
             }
             @include md() {
-              font-size: 3rem;
+              font-size: 2.5rem;
             }
             @include lg() {
-              font-size: 3rem;
+              font-size: 2.5rem;
             }
           }
         }
@@ -147,37 +151,55 @@
           align-items: center;
           width: 100%;
           height: 40%;
-          #where {
+          .whereWrapper {
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 15%;
+            width: 30%;
             height: 70%;
-            background-color: $yellow;
-            border-radius: 5px;
-            color: #fff;
-            font-weight: bold;
-            @include mobile-only() {
-              font-size: 1.1rem;
-            }
-            @include md() {
-              font-size: 1.8rem;
-            }
-            @include lg() {
-              font-size: 1.8rem;
+            // border: 1px solid purple;
+            #where {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-right: 1.5%;
+              width: 50%;
+              height: 100%;
+              background-color: $yellow;
+              border-radius: 5px;
+              color: #fff;
+              font-weight: bold;
+              @include mobile-only() {
+                font-size: 1.1rem;
+              }
+              @include md() {
+                font-size: 1.5rem;
+              }
+              @include lg() {
+                font-size: 1.5rem;
+              }
             }
           }
-          #date {
-            // border: 1px solid red;
-            padding-left: 1%;
-            @include mobile-only() {
-              font-size: 1.2rem;
-            }
-            @include md() {
-              font-size: 1.8rem;
-            }
-            @include lg() {
-              font-size: 1.8rem;
+          .dateWrapper {
+            display: flex;
+            // align-items: top;
+            justify-content: right;
+            width: 70%;
+            height: 70%;
+            color: gray;
+            // font-weight: bold;
+            // border: 1px solid purple;
+            #date {
+              // border: 1px solid red;
+              // padding-left: 1%;
+              @include mobile-only() {
+                font-size: 1.2rem;
+              }
+              @include md() {
+                font-size: 1.5rem;
+              }
+              @include lg() {
+                font-size: 1.5rem;
+              }
             }
           }
         }
@@ -188,11 +210,21 @@
         align-items: flex-end;
         width: 100%;
         height: 30%;
+        overflow: hidden;
         // border: 1px solid hotpink;
-        #poster {
+        .posterWrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          // border: 1px solid hotpink;
+          height: 100%;
           width: 30%;
-          height: 90%;
+          #poster {
+            width: 100%;
+            height: 100%;
+          }
         }
+        
         #right-side {
           display: flex;
           flex-direction: column;
@@ -204,16 +236,14 @@
           #conInfo {
             display: flex;
             width: 100%;
-            height: 60%;
-            // border: 1px solid green;
+            height: 80%;
             #miniTitle {
               display: flex;
               flex-direction: column;
+              justify-content: space-between;
               width: 30%;
               height: 100%;
-              font-size: 1.4rem;
               font-weight: bold;
-              // border: 1px solid blue;
               @include mobile-only() {
                 font-size: 1.4rem;
               }
@@ -223,19 +253,20 @@
               @include lg() {
                 font-size: 1.8rem;
               }
-              #place {
+              p {
+                justify-content: left;
+                align-items: center;
+                height: 15%;
+                // border: 1px solid blue;
               }
-              #time {
-                position: absolute;
-                top: 30%;
-              }
+              
             }
             #answer {
               display: flex;
               flex-direction: column;
-              width: 60%;
+              justify-content: space-between;
+              width: 70%;
               height: 100%;
-
               // border: 1px solid red;
               @include mobile-only() {
                 font-size: 1.2rem;
@@ -246,11 +277,11 @@
               @include lg() {
                 font-size: 1.6rem;
               }
-              #place_r {
-              }
-              #time_r {
-                position: absolute;
-                top: 30%;
+              p {
+                justify-content: left;
+                align-items: center;
+                height: 15%;
+                // border: 1px solid blue;
               }
             }
           }
@@ -261,6 +292,7 @@
             border-radius: 5px;
             color: #fff;
             font-weight: bold;
+            cursor: pointer;
             @include mobile-only() {
               height: 13%;
             }
@@ -282,6 +314,7 @@
         width: 100%;
         margin-top: 5%;
         height: 55%;
+        
         // border: 1px solid black;
         h1 {
           @include mobile-only() {
@@ -298,18 +331,36 @@
           }
           
         }
-        #map {
+        
+        #noMap {
+          opacity: 50%;
           @include mobile-only() {
             height: 80%;
-            opacity: 50%;
           }
           @include md() {
             height: 80%;
-            opacity: 50%;
           }
           @include lg() {
+            width: 100%;
             height: 80%;
-            opacity: 50%;
+          }
+        }
+
+        #map {
+          height: 80%;
+          @include mobile-only() {
+            border: 3px solid $yellow;
+            border-radius: 15px;
+          }
+          @include md() {
+            border: 3px solid $yellow;
+            border-radius: 20px;
+            // opacity: 50%;
+          }
+          @include lg() {
+            border: 5px solid $yellow;
+            border-radius: 30px;
+            // opacity: 50%;
           }
         }
       }
