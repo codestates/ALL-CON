@@ -67,12 +67,22 @@ function MainConcertInfo() {
       );
       if (res.data.data.alarmInfo) {
         console.log(res.data.data.alarmInfo);
-        setEmailClick(!emailClick);
-        setSmsClick(!smsClick);
       }
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const emailClickHandler = () => {
+    setAlarmType('email');
+    getAlarm();
+    setEmailClick(!emailClick);
+  };
+
+  const smsClickHandler = () => {
+    setAlarmType('phone');
+    getAlarm();
+    setSmsClick(!smsClick);
   };
 
   useEffect(() => {
@@ -174,8 +184,7 @@ function MainConcertInfo() {
                     alt='이메일아이콘'
                     id='mailIcon2'
                     onClick={() => {
-                      setAlarmType('email');
-                      getAlarm();
+                      emailClickHandler();
                     }}
                   ></img>
                   <img
@@ -183,8 +192,7 @@ function MainConcertInfo() {
                     alt='문자아이콘'
                     id='kakaoIcon2'
                     onClick={() => {
-                      setAlarmType('phone');
-                      getAlarm();
+                      smsClickHandler();
                     }}
                   ></img>
                 </p>
