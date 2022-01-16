@@ -1,4 +1,4 @@
-const { userAuth } = require('../../middlewares/authorized/userAuth')
+const { userAuth } = require('../../middlewares/authorized/userAuth');
 const { Users, ConcertComments, Concerts } = require('../../models');
 
 module.exports = {
@@ -14,6 +14,10 @@ module.exports = {
       /* 페이지 네이션 */ 
       
       const concertCommentInfo = await ConcertComments.findAndCountAll({
+        include: [{
+          model: Users,
+          attributes: ['username', 'image', 'role']
+        }],
         where: { concert_id: concertid },
         order: [['createdAt','DESC']],
         offset: offset,
@@ -36,14 +40,7 @@ module.exports = {
   post: async (req, res) => {
     try {
       // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
-
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
-      /* 임시 TEST CODE (삭제예정) */
+      const userInfo = await userAuth(req, res);
 
       const { concertid } = req.params;
       const { content } = req.body;
@@ -54,7 +51,7 @@ module.exports = {
       // ConcertComments 테이블에 전달받은 데이터로 새로운 행을 생성한다
       await ConcertComments.create({
         content: content,
-        user_id: userInfo.id,
+        user_id: userInfo.dataValues.id,
         concert_id: concertid
       })
       res.status(201).json({ message: 'Success Create Comment!' });

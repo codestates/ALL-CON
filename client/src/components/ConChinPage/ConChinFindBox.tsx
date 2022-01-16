@@ -23,7 +23,7 @@ function ConChinFindBox() {
   /* useSelector */
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { target } = useSelector((state: RootState) => state.main);
-
+  const { targetArticle } = useSelector((state: RootState) => state.conChin);
   /* 지역상태 - useState */
   const [writeModal, setWriteModal] = useState<boolean>(false);
 
@@ -57,7 +57,14 @@ function ConChinFindBox() {
           <span className='text'>콘친 찾기</span>
         </div>
       </div>
-      <div className='btnWrapper'>
+      <div
+        className={
+          Object.keys(targetArticle).length !== 0 &&
+          Object.keys(target).length !== 0
+            ? 'btnWrapperAllChosen'
+            : 'btnWrapper'
+        }
+      >
         <button
           className='btn'
           onClick={() => {

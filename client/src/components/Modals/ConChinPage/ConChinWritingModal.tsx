@@ -18,9 +18,9 @@ function ConChinWritingModal() {
   const dispatch = useDispatch();
   /* useSelector */
   const { target } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles } = useSelector(
-    (state: RootState) => state.conChin,
-  );
+  const { articleOrder, allArticles, targetArticle, targetArticlesUserInfo } =
+    useSelector((state: RootState) => state.conChin);
+  const { userInfo } = useSelector((state: RootState) => state.auth);
   /* 지역상태 - useState */
   // 미리보기 이미지 상태
   const [preview, setPreview] = useState<string>('');
@@ -149,9 +149,32 @@ function ConChinWritingModal() {
     dispatch(showConChinWritingModal(false));
     // 주의: 글 작성 성공 알림 모달 필요함!
 
-    // 콘친 페이지 이동
-
     // 게시글 작성 모달도 닫는다
+  };
+
+  // 수정하기 버튼
+  const handleModifyBtn = async () => {
+    // [POST] 서버로 게시물 작성 요청, ex) concert/:concertid/article => concertid는 변수 처리해야됨!
+    console.log(target.id);
+    const response = await axios.patch(
+      `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
+      {
+        title: title,
+        content: content,
+        image: preview,
+      },
+      { withCredentials: true },
+    );
+    alert('글 수정 성공! 😖');
+    console.log(response.data);
+    getAllArticles();
+    console.log('ConChinWritingModal=> target.id:');
+    console.log(target.id);
+    console.log('ConChinWritingModal=> targetArticle.id:');
+    console.log(targetArticle.id);
+    dispatch(showConChinWritingModal(false));
+    // 주의: 글 수정 성공 알림 모달 필요함!
+    // 게시글 수정 모달도 닫는다
   };
 
   return (
@@ -176,7 +199,11 @@ function ConChinWritingModal() {
               id='image'
             />
           ) : (
-            <img className='img' src={defaultImg} id='image' />
+            <img
+              className='img'
+              src={targetArticle.image ? targetArticle.image : defaultImg}
+              id='image'
+            />
           )}
           {/* 주의! 현재 선택된 콘서트의 제목을 store에서 가져와서 변수로 치환해줘야함 */}
           <div id='concert' className='box'>
@@ -185,7 +212,11 @@ function ConChinWritingModal() {
           <input
             className='box'
             id='write'
-            placeholder='글 제목을 입력해주세요'
+            placeholder={
+              targetArticle.title
+                ? targetArticle.title
+                : '글 제목을 입력해주세요'
+            }
             onChange={handleArticleTitle}
           ></input>
           <div id='peopleNum' className='box'>
@@ -193,30 +224,44 @@ function ConChinWritingModal() {
               type='number'
               min='1'
               className='want'
-              placeholder='모집중인 콘친 수'
+              placeholder={
+                targetArticle.total_member
+                  ? String(targetArticle.total_member)
+                  : '모집중인 콘친 수'
+              }
               onChange={handleTotalNumConchin}
             ></input>
             <input
               type='number'
               min='2'
               className='want'
-              placeholder='현재 모인 콘친 수'
+              placeholder={
+                targetArticle.member_count
+                  ? String(targetArticle.member_count)
+                  : '현재 모인 콘친 수'
+              }
               onChange={handlePresentNumConchin}
             ></input>
           </div>
           <input
             id='board'
-            placeholder='글 내용을 입력해주세요'
+            placeholder={
+              targetArticle.content
+                ? targetArticle.content
+                : '글 내용을 입력해주세요'
+            }
             onChange={handleArticleContent}
           ></input>
           <div className='box' id='btnBox'>
             <button
               id='no1'
-              onClick={() => {
-                handleWriteBtn();
-              }}
+              onClick={() =>
+                userInfo.id === targetArticle.user_id
+                  ? handleModifyBtn()
+                  : handleWriteBtn()
+              }
             >
-              작성하기
+              {Object.keys(targetArticle).length > 0 ? '수정하기' : '작성하기'}
             </button>
             <button
               id='no2'
