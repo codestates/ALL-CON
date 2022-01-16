@@ -9,6 +9,7 @@ import modalSlice, { modal } from './store/ModalSlice';
 import headerSlice, { header } from './store/HeaderSlice';
 import mainSlice, { main } from './store/MainSlice';
 import conChinSlice, { conChin } from './store/ConChinSlice';
+import ConcertCommentSlice, { concertComments } from './store/ConcertCommentSlice';
 /* Library import */
 import { BrowserRouter as Router } from 'react-router-dom';
 import { combineReducers } from 'redux';
@@ -34,6 +35,7 @@ const reducers = combineReducers({
   header: headerSlice,
   main: mainSlice,
   conChin: conChinSlice,
+  concertComments: ConcertCommentSlice
 });
 
 /* persist reducer 세팅 (persistConfig가 추가된 reducer) */
@@ -57,6 +59,7 @@ export interface RootState {
   header: header;
   main: main;
   conChin: conChin;
+  concertComments: concertComments;
 }
 
 /* persist store 세팅 (새로고침, 종료해도 지속될 store) */

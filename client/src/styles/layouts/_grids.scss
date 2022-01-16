@@ -450,49 +450,185 @@
   @include lg() {
     height: 70%;
   }
-  // border:2px solid red;
-  #countWrapper {
-    position: absolute;
+  .writeBox {
+    position: relative;
     display: flex;
-    width: 90%;
-    height: 10%;
-    top: -10%;
-    // border:1px solid purple;
-    .count {
+    width: 100%;
+    top: 0%;
+    margin-top: 1.5%;
+    border-radius: 5px;
+    @include mobile-only() {
+      height: 25%;
+      border: 1.5px solid $yellow;
+    }
+    @include md() {
+      height: 30%;
+      border: 2.5px solid $yellow;
+    }
+    @include lg() {
+      height: 35%;
+      border: 2.5px solid $yellow;
+    }
+    .nicknameBox {
       position: absolute;
       display: flex;
-      // border:1px solid red;
-      bottom: 5%;
-      left: 1%;
-      @include mobile-only() {
-        font-size: 1.5rem;
+      align-items: center;
+      justify-content: left;
+      font-weight: bold;
+      width: 100%;
+      height: 25%;
+      // border:1px solid blue;
+      .nickName {
+        margin-left: 1.5%;
+        color: $gray;
+        @include mobile-only() {
+          font-size: 1rem;
+        }
+        @include md() {
+          font-size: 1.5rem;
+        }
+        @include lg() {
+          font-size: 2rem;
+        }
+        // border:1px solid blue;
       }
-      @include md() {
-        font-size: 2rem;
+    }
+    .commentBodyBox {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 75%;
+      top: 25%;
+      // border: 1px solid purple;
+      .imgWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1%;
+        width: 10%;
+        // border: 1px solid red;
+        @include mobile-only() {
+          height: 50%;
+        }
+        @include md() {
+          height: 50%;
+        }
+        @include lg() {
+          height: 75%;
+        }
+        .img {
+          position: absolute;
+          display: flex;
+          height: 100%;
+          object-fit: 100%;
+          border-radius: 100%;
+        }
+        .shield {
+          position: absolute;
+          display: flex;
+          object-fit: 100%;
+          bottom: 0%;
+          right: 15%;
+          @include mobile-only() {
+            width: 16px;
+            height: 16px;
+          }
+          @include md() {
+            width: 20px;
+            height: 20px;
+          }
+          @include lg() {
+            width: 25px;
+            height: 25px;
+          }
+        }
       }
-      @include lg() {
-        font-size: 2.5rem;
+      .bodyWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 1%;
+        left: 10%;
+        width: 89%;
+        height: 80%;
+        // border: 1px solid blue;
+        
+        #input {
+          position: relative;
+          display: flex;
+          align-items: center;
+          width: 85%;
+          height: 100%;
+          border: none;
+          outline: none;
+          overflow: hidden;
+          resize: none;
+          border-radius: 5px;
+          // border: 1px solid blue;
+          @include mobile-only() {
+            font-size: 1.3rem;
+          }
+          @include md() {
+            font-size: 1.87rem;
+          }
+          @include lg() {
+            font-size: 2.0rem;
+          }
+        }
+        #inputBtn {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color:white;
+          font-weight: bold;
+          background-color: $yellow;       
+          margin-right: 1.5%;   
+          width: 10%;
+          height: 80%;
+          cursor: pointer;
+          @include mobile-only() {
+            border-radius: 7.5px;
+            font-size: 1rem;
+          }
+          @include md() {
+            border-radius: 10px;
+            font-size: 1.5rem;
+          }
+          @include lg() {
+            border-radius: 15px;
+            font-size: 1.5rem;
+          }
+        }
+        #hiddenBtn {
+          @extend #inputBtn;
+          background-color: #c4c4c4;
+          cursor: default;
+        }
       }
     }
   }
+
   .box {
     position: relative;
     display: flex;
     width: 100%;
-    height: 20%;
+    height: 21.5%;
     top: 0%;
-    margin-top: 3%;
+    margin-top: 1.5%;
     border: 1px solid #c4c4c4;
     border-radius: 5px;
-
     .dateBox {
       position: absolute;
       display: flex;
       width: 100%;
-      height: 30%;
+      height: 40%;
       top: 1.5%;
       left: 1.5%;
-      // border:1px solid red;
+      
       .nickNameAndDate {
         color: $gray;
         @include mobile-only() {
@@ -547,9 +683,9 @@
       display: flex;
       align-items: center;
       width: 100%;
-      height: 70%;
-      top: 30%;
-      // border: 1px solid red;
+      height: 60%;
+      top: 40%;
+      // border: 1px solid purple;
       .imgWrapper {
         position: absolute;
         display: flex;

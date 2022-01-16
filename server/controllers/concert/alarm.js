@@ -26,10 +26,12 @@ module.exports = {
             concert_id: concertid,
           });
 
-          return res.status(201).json({
-            data: { alarmInfo: alarmInfo },
-            message: 'Success Email Alarm!',
-          });
+          return res
+            .status(201)
+            .json({
+              data: { alarmInfo: alarmInfo },
+              message: 'Success Email Alarm!',
+            });
         }
         // 핸드폰 알람이면, 다음을 실행한다
         else if (alarm_type === 'phone') {
@@ -46,10 +48,12 @@ module.exports = {
               user_id: userInfo.dataValues.id,
               concert_id: concertid,
             });
-            return res.status(201).json({
-              data: { alarmInfo: alarmInfo },
-              message: 'Success Phone Alarm!',
-            });
+            return res
+              .status(201)
+              .json({
+                data: { alarmInfo: alarmInfo },
+                message: 'Success Phone Alarm!',
+              });
           }
         }
       }
@@ -66,7 +70,7 @@ module.exports = {
       // 알람 설정을 취소할 콘서트 id를 클라이언트로부터 전달받는다
       const { concertid } = req.params;
       // 유저와 알람종류를 전달받는다
-      const { user_id, alarm_type } = req.body;
+      const { alarm_type } = req.body;
 
       const concertInfo = await Concerts.findOne({ where: { id: concertid } });
       // 존재하지 않는다면, 다음을 실행한다
@@ -96,10 +100,12 @@ module.exports = {
               },
             });
 
-            return res.status(201).json({
-              data: { alarmDestroyInfo: alarmDestroyInfo },
-              message: 'Delete Email Alarm!',
-            });
+            return res
+              .status(201)
+              .json({
+                data: { alarmDestroyInfo: alarmDestroyInfo },
+                message: 'Delete Email Alarm!',
+              });
           }
           // 카카오톡 알람이면, 다음을 실행한다
           else if (alarm_type === 'phone') {
@@ -110,10 +116,12 @@ module.exports = {
               },
             });
 
-            return res.status(201).json({
-              data: { alarmDestroyInfo: alarmDestroyInfo },
-              message: 'Delete Phone Alarm!',
-            });
+            return res
+              .status(201)
+              .json({
+                data: { alarmDestroyInfo: alarmDestroyInfo },
+                message: 'Delete Phone Alarm!',
+              });
           }
         }
       }
