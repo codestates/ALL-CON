@@ -77,6 +77,10 @@
       bottom: 0%;
       width: 31%;
     }
+    &AllChosen {
+      @extend .btnWrapper;
+      display: none;
+    }
     .btn {
       position: absolute;
       height: 60%;

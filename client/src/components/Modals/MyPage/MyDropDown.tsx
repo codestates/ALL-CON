@@ -3,6 +3,7 @@ import { RootState } from '../../../index';
 import { setScrollCount } from '../../../store/HeaderSlice';
 import { showMyDropDown } from '../../../store/ModalSlice';
 import { setTarget } from '../../../store/MainSlice';
+import { setTargetArticle } from '../../../store/ConChinSlice';
 import { logout } from '../../../store/AuthSlice';
 /* Library import */
 import axios from 'axios';
@@ -36,6 +37,7 @@ function MyDropDown() {
 
   const resetTarget = () => {
     dispatch(setTarget({}));
+    dispatch(setTargetArticle({}));
     console.log(target);
   };
 

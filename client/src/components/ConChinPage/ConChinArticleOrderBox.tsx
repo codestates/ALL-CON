@@ -5,9 +5,12 @@ import {
   setArticleOrder,
   setAllArticles,
   setArticleTotalPage,
+  setTargetArticle,
+  setArticleCurPage,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
+import { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinArticleOrderBox() {
@@ -37,6 +40,7 @@ function ConChinArticleOrderBox() {
         if (response.data) {
           dispatch(setAllArticles(response.data.data.articleInfo));
           dispatch(setArticleTotalPage(response.data.data.totalPage));
+          dispatch(setArticleCurPage(1));
           console.log(
             'ConChinArticleOrderBox=> 타겟이 없으니 정렬순으로 전체 표시합니다.',
           );
@@ -46,7 +50,8 @@ function ConChinArticleOrderBox() {
         }
       } else if (target === undefined || target === null) {
         dispatch(setTarget({}));
-
+        dispatch(setTargetArticle({}));
+        dispatch(setArticleCurPage(1));
         console.log(
           'ConChinArticleOrderBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
         );
@@ -59,10 +64,10 @@ function ConChinArticleOrderBox() {
         if (response.data) {
           dispatch(setAllArticles(response.data.data.articleInfo));
           dispatch(setArticleTotalPage(response.data.data.totalPage));
+          dispatch(setArticleCurPage(1));
           console.log(
             'ConChinArticleOrderBox=> 타겟에 종속된 게시물을 보여줍니다.',
           );
-          console.log('ConChinArticleOrderBox=> allArticles: ' + allArticles);
         }
       }
     } catch (err) {
@@ -79,6 +84,10 @@ function ConChinArticleOrderBox() {
     console.log('ConChinArticleOrderBox=> 현재정렬은 ' + hotOrView);
     getAllArticles();
   };
+
+  useEffect(() => {
+    getAllArticles();
+  }, [articleOrder]);
 
   return (
     <div id='noLineOrderBox'>

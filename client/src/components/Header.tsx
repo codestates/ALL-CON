@@ -14,7 +14,11 @@ import {
   showMyDropDown,
   showConcertModal,
 } from '../store/ModalSlice';
-import { setAllArticles, setArticleTotalPage } from '../store/ConChinSlice';
+import {
+  setAllArticles,
+  setArticleTotalPage,
+  setArticleCurPage,
+} from '../store/ConChinSlice';
 import {
   setIsScrolled,
   setScrollCount,
@@ -58,7 +62,7 @@ function Header() {
   if (now.getHours() >= 9) {
     openHours -= now.getHours();
   } else {
-    openHours = (11 - now.getHours()) * 2;
+    openHours = (13 - now.getHours()) * 2;
   }
   let openTime = openHours * hr;
   let nowTime = nowHours + nowMinutes + nowSeconds;
@@ -175,6 +179,7 @@ function Header() {
     getAllArticles();
     dispatch(setTargetIdx(0));
     dispatch(showConcertModal(false));
+    dispatch(setArticleCurPage(1));
   };
   return (
     /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */
