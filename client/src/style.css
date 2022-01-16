@@ -6232,7 +6232,13 @@ a {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side .right {
                 font-size: 2rem; } }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
+              position: relative;
+              display: flex;
+              justify-content: flex-start;
               height: 10%; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img {
+                width: 30px;
+                height: 30px; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
               height: 25%; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
@@ -6258,7 +6264,8 @@ a {
                     left: 5%;
                     width: 40px; } }
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
-                left: 10%; }
+                left: 10%;
+                top: 3%; }
     #mainConcertInfoBox #middleBox #buttonsWrapper {
       display: flex;
       flex-direction: column;

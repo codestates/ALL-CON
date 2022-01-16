@@ -14,37 +14,51 @@ module.exports = {
       const concertInfo = await Concerts.findOne({ where: { id: concertid } });
 
       // 존재하지 않는다면, 다음을 실행한다
-      if(!concertInfo) res.status(400).json({ message: '콘서트가 존재하지 않습니다!' })
+      if (!concertInfo)
+        res.status(400).json({ message: '콘서트가 존재하지 않습니다!' });
       // 존재한다면, 다음을 실행한다
       else {
         // 이메일 알람이면, 다음을 실행한다
-        if(alarm_type === 'email') {
+        if (alarm_type === 'email') {
           const alarmInfo = await Alarms.create({
             email_alarm: true,
             user_id: userInfo.dataValues.id,
-            concert_id: concertid
-          })
+            concert_id: concertid,
+          });
 
-          return res.status(201).json({ data: { alarmInfo: alarmInfo }, message: 'Success Email Alarm!'})
+          return res
+            .status(201)
+            .json({
+              data: { alarmInfo: alarmInfo },
+              message: 'Success Email Alarm!',
+            });
         }
         // 핸드폰 알람이면, 다음을 실행한다
-        else if(alarm_type === 'phone') {
-
+        else if (alarm_type === 'phone') {
           // 유저 핸드폰 번호 필드값에 번호가 존재하지 않는다면, 다음을 실행한다
-          if(!userInfo.dataValues.phone_number) return res.status(401).json({ data: { userInfo: userInfo }, message: 'Not Authorized!' })
+          if (!userInfo.dataValues.phone_number)
+            return res.status(401).json({
+              data: { userInfo: userInfo },
+              message: 'Not Authorized!',
+            });
           // 만약 존재한다면, 다음을 실행한다
           else {
             const alarmInfo = await Alarms.create({
               phone_alarm: true,
               user_id: userInfo.dataValues.id,
-              concert_id: concertid
-            })
-            return res.status(201).json({ data: { alarmInfo: alarmInfo }, message: 'Success Phone Alarm!'})
+              concert_id: concertid,
+            });
+            return res
+              .status(201)
+              .json({
+                data: { alarmInfo: alarmInfo },
+                message: 'Success Phone Alarm!',
+              });
           }
         }
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
     }
   },
@@ -60,44 +74,59 @@ module.exports = {
 
       const concertInfo = await Concerts.findOne({ where: { id: concertid } });
       // 존재하지 않는다면, 다음을 실행한다
-      if(!concertInfo) return res.status(400).json({ message: 'Not Exist Concert!' })
+      if (!concertInfo)
+        return res.status(400).json({ message: 'Not Exist Concert!' });
       // 존재한다면, 다음을 실행한다
       else {
         // 요청한 유저와 콘서트 id가 일치하는 정보를 Alarms 테이블에서 찾는다
-        const alarmInfo = await Alarms.findOne({ where: {
-          user_id: userInfo.dataValues.id,
-          concert_id: concertid
-        }})
+        const alarmInfo = await Alarms.findOne({
+          where: {
+            user_id: userInfo.dataValues.id,
+            concert_id: concertid,
+          },
+        });
 
         // 만약 일치하는 알람 정보가 없다면, 다음을 실행한다
-        if(!alarmInfo) return res.status(400).json({ message: 'Bad Request!' })
+        if (!alarmInfo)
+          return res.status(400).json({ message: 'Bad Request!' });
         // 만약 일치하는 알람 정보가 있다면, 다음을 실행한다
         else {
           // 이메일 알람이면, 다음을 실행한다
-          if(alarm_type === 'email') {
+          if (alarm_type === 'email') {
+            const alarmDestroyInfo = await Alarms.destroy({
+              where: {
+                user_id: userInfo.dataValues.id,
+                concert_id: concertid,
+              },
+            });
 
-            const alarmDestroyInfo = await Alarms.destroy({ where: {
-              user_id: userInfo.dataValues.id,
-              concert_id: concertid
-            }})
-
-            return res.status(201).json({ data: { alarmDestroyInfo: alarmDestroyInfo }, message: 'Delete Email Alarm!'})
+            return res
+              .status(201)
+              .json({
+                data: { alarmDestroyInfo: alarmDestroyInfo },
+                message: 'Delete Email Alarm!',
+              });
           }
           // 카카오톡 알람이면, 다음을 실행한다
-          else if(alarm_type === 'phone') {
-            
-            const alarmDestroyInfo = await Alarms.destroy({ where: {
-              user_id: userInfo.dataValues.id,
-              concert_id: concertid
-            }})
+          else if (alarm_type === 'phone') {
+            const alarmDestroyInfo = await Alarms.destroy({
+              where: {
+                user_id: userInfo.dataValues.id,
+                concert_id: concertid,
+              },
+            });
 
-            return res.status(201).json({ data: { alarmDestroyInfo: alarmDestroyInfo }, message: 'Delete Phone Alarm!'})
+            return res
+              .status(201)
+              .json({
+                data: { alarmDestroyInfo: alarmDestroyInfo },
+                message: 'Delete Phone Alarm!',
+              });
           }
         }
       }
-
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
     }
-  }
+  },
 };

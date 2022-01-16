@@ -18,15 +18,9 @@ function MainPage() {
       <div id='mainJumboWrapper'>
         <Jumbotron />
       </div>
-      <div id='mainConcertInfoWrapper'>
-        {target && <MainConcertInfo />}
-      </div>
-      <div id='mainCommentWrapper'>
-        {target && <MainComment />}
-      </div>
-      <div id='mainPaginationWrapper'>
-        {target && <MainPagination />}
-      </div>
+      <div id='mainConcertInfoWrapper'>{target && <MainConcertInfo />}</div>
+      <div id='mainCommentWrapper'>{target && <MainComment />}</div>
+      <div id='mainPaginationWrapper'>{target && <MainPagination />}</div>
       <div id='mainFindConchinWrapper'>
         <MainFindConchin />
       </div>
