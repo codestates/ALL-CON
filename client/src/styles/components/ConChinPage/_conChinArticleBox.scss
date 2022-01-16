@@ -80,7 +80,7 @@
   position: absolute;
   display: flex;
   @include mobile-only() {
-    top: 40%;
+    top: 40.1%;
   }
   @include md() {
     top: 45%;

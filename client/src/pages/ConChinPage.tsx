@@ -49,9 +49,10 @@ function ConChinPage() {
         if (Object.keys(target).length === 0) {
           getAllArticles();
           dispatch(setArticleCurPage(1));
-          console.log(
-            ' ConChinPostingBox=> 타겟이 없으므로 전체를 가져옵니다.',
-          );
+          console
+            .log
+            // ' ConChinPostingBox=> 타겟이 없으므로 전체를 가져옵니다..',
+            ();
         } else if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
           const response = await axios.get(

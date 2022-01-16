@@ -1707,7 +1707,7 @@ a {
   display: flex; }
   @media (max-width: 767px) {
     #conChinmemberBoxWrapper {
-      top: 40%; } }
+      top: 40.1%; } }
   @media (min-width: 768px) {
     #conChinmemberBoxWrapper {
       top: 45%; } }
