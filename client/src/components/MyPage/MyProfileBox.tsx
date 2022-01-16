@@ -53,37 +53,45 @@ function MyProfileBox() {
 
   // 콘친 인증 버튼
   const handleConchinCertificate = async () => {
-    let year = 1900;
-    let localYearList = []
-
-    let month = 1;
-    let localMonthList = []
-
-    let date = 1;
-    let localDateList = []
-
     // (생년월일) 년 계산
-    while(year < 2023 && yearList.length < 10) {
-      localYearList.push(year + '년')
-      year++
+    if(yearList.length === 0) {
+      let year = 1920;
+      let localYearList = []
+
+      while(year < 2023) {
+        localYearList.push(year + '년')
+        year++
+      }
+
+      await dispatch(getYearList(localYearList))
     }
 
-    // (생년월일) 월 계산
-    while(month < 13 && monthList.length < 13) {
-      localMonthList.push(month + '월')
-      month++
+     // (생년월일) 월 계산
+    if(monthList.length === 0) {
+      let month = 1;
+      let localMonthList = []
+      
+      while(month < 13) {
+        localMonthList.push(month + '월')
+        month++
+      }
+
+      await dispatch(getMonthList(localMonthList))
     }
 
     // (생년월일) 일 계산
-    while(date < 32 && dateList.length < 10) {
-      localDateList.push(date + '일')
-      date++
+    if(dateList.length === 0) {
+      let date = 1;
+      let localDateList = []
+      
+      while(date < 32 && dateList.length < 10) {
+        localDateList.push(date + '일')
+        date++
+      }
+      
+      await dispatch(getDateList(localDateList))
     }
-
-    dispatch(getYearList(localYearList))
-    dispatch(getMonthList(localMonthList))
-    dispatch(getDateList(localDateList))
-
+    // 콘친 인증 페이지로 이동!
     navigate('/conchinCert')
   }
 

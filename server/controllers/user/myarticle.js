@@ -5,14 +5,7 @@ module.exports = {
   get: async (req, res) => {
     try {
       // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
-
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
-      /* 임시 TEST CODE (삭제예정) */
+      const userInfo = await userAuth(req, res);
 
       const { pageNum } = req.query;
 
@@ -23,7 +16,7 @@ module.exports = {
       /* 페이지 네이션 */ 
 
       const articleInfo = await Articles.findAndCountAll({ 
-        where: { user_id: userInfo.id },
+        where: { user_id: userInfo.dataValues.id },
         order: [['createdAt','DESC'], ['view', 'DESC']],
         offset: offset,
         limit: limit
