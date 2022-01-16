@@ -61,6 +61,7 @@ function ConChinArticleBox() {
   /* 게시물 작성자 유저정보 조회 핸들러 */
   const getTargetArticlesUserInfo = async (id: number) => {
     try {
+      console.log('targetUserInfo: ' + id);
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/user/other/${id}`,
         { withCredentials: true },
@@ -71,6 +72,7 @@ function ConChinArticleBox() {
         console.log(targetArticlesUserInfo);
       }
     } catch (err) {
+      console.log('targetUserInfo: ' + id);
       console.log(err);
     }
   };
