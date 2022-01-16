@@ -8,6 +8,7 @@ import authSlice, { auth } from './store/AuthSlice';
 import modalSlice, { modal } from './store/ModalSlice';
 import headerSlice, { header } from './store/HeaderSlice';
 import mainSlice, { main } from './store/MainSlice';
+import mySlice, { my } from './store/MySlice';
 import conChinSlice, { conChin } from './store/ConChinSlice';
 import ConcertCommentSlice, { concertComments } from './store/ConcertCommentSlice';
 /* Library import */
@@ -34,6 +35,7 @@ const reducers = combineReducers({
   modal: modalSlice,
   header: headerSlice,
   main: mainSlice,
+  my: mySlice,
   conChin: conChinSlice,
   concertComments: ConcertCommentSlice
 });
@@ -59,6 +61,7 @@ export interface RootState {
   header: header;
   main: main;
   conChin: conChin;
+  my: my;
   concertComments: concertComments;
 }
 
