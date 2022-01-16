@@ -419,40 +419,162 @@ a {
   @media (min-width: 1200px) {
     #commentBox {
       height: 70%; } }
-  #commentBox #countWrapper {
-    position: absolute;
+  #commentBox .writeBox {
+    position: relative;
     display: flex;
-    width: 90%;
-    height: 10%;
-    top: -10%; }
-    #commentBox #countWrapper .count {
+    width: 100%;
+    top: 0%;
+    margin-top: 1.5%;
+    border-radius: 5px; }
+    @media (max-width: 767px) {
+      #commentBox .writeBox {
+        height: 25%;
+        border: 1.5px solid #ffce63; } }
+    @media (min-width: 768px) {
+      #commentBox .writeBox {
+        height: 30%;
+        border: 2.5px solid #ffce63; } }
+    @media (min-width: 1200px) {
+      #commentBox .writeBox {
+        height: 35%;
+        border: 2.5px solid #ffce63; } }
+    #commentBox .writeBox .nicknameBox {
       position: absolute;
       display: flex;
-      bottom: 5%;
-      left: 1%; }
-      @media (max-width: 767px) {
-        #commentBox #countWrapper .count {
-          font-size: 1.5rem; } }
-      @media (min-width: 768px) {
-        #commentBox #countWrapper .count {
-          font-size: 2rem; } }
-      @media (min-width: 1200px) {
-        #commentBox #countWrapper .count {
-          font-size: 2.5rem; } }
+      align-items: center;
+      justify-content: left;
+      font-weight: bold;
+      width: 100%;
+      height: 25%; }
+      #commentBox .writeBox .nicknameBox .nickName {
+        margin-left: 1.5%;
+        color: #a0a0a0; }
+        @media (max-width: 767px) {
+          #commentBox .writeBox .nicknameBox .nickName {
+            font-size: 1rem; } }
+        @media (min-width: 768px) {
+          #commentBox .writeBox .nicknameBox .nickName {
+            font-size: 1.5rem; } }
+        @media (min-width: 1200px) {
+          #commentBox .writeBox .nicknameBox .nickName {
+            font-size: 2rem; } }
+    #commentBox .writeBox .commentBodyBox {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 75%;
+      top: 25%; }
+      #commentBox .writeBox .commentBodyBox .imgWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 1%;
+        width: 10%; }
+        @media (max-width: 767px) {
+          #commentBox .writeBox .commentBodyBox .imgWrapper {
+            height: 50%; } }
+        @media (min-width: 768px) {
+          #commentBox .writeBox .commentBodyBox .imgWrapper {
+            height: 50%; } }
+        @media (min-width: 1200px) {
+          #commentBox .writeBox .commentBodyBox .imgWrapper {
+            height: 75%; } }
+        #commentBox .writeBox .commentBodyBox .imgWrapper .img {
+          position: absolute;
+          display: flex;
+          height: 100%;
+          object-fit: 100%;
+          border-radius: 100%; }
+        #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
+          position: absolute;
+          display: flex;
+          object-fit: 100%;
+          bottom: 0%;
+          right: 15%; }
+          @media (max-width: 767px) {
+            #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
+              width: 16px;
+              height: 16px; } }
+          @media (min-width: 768px) {
+            #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
+              width: 20px;
+              height: 20px; } }
+          @media (min-width: 1200px) {
+            #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
+              width: 25px;
+              height: 25px; } }
+      #commentBox .writeBox .commentBodyBox .bodyWrapper {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 1%;
+        left: 10%;
+        width: 89%;
+        height: 80%; }
+        #commentBox .writeBox .commentBodyBox .bodyWrapper #input {
+          position: relative;
+          display: flex;
+          align-items: center;
+          width: 85%;
+          height: 100%;
+          border: none;
+          outline: none;
+          overflow: hidden;
+          resize: none;
+          border-radius: 5px; }
+          @media (max-width: 767px) {
+            #commentBox .writeBox .commentBodyBox .bodyWrapper #input {
+              font-size: 1.3rem; } }
+          @media (min-width: 768px) {
+            #commentBox .writeBox .commentBodyBox .bodyWrapper #input {
+              font-size: 1.87rem; } }
+          @media (min-width: 1200px) {
+            #commentBox .writeBox .commentBodyBox .bodyWrapper #input {
+              font-size: 2.0rem; } }
+        #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          background-color: #ffce63;
+          margin-right: 1.5%;
+          width: 10%;
+          height: 80%;
+          cursor: pointer; }
+          @media (max-width: 767px) {
+            #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
+              border-radius: 7.5px;
+              font-size: 1rem; } }
+          @media (min-width: 768px) {
+            #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
+              border-radius: 10px;
+              font-size: 1.5rem; } }
+          @media (min-width: 1200px) {
+            #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
+              border-radius: 15px;
+              font-size: 1.5rem; } }
+        #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
+          background-color: #c4c4c4;
+          cursor: default; }
   #commentBox .box {
     position: relative;
     display: flex;
     width: 100%;
-    height: 20%;
+    height: 21.5%;
     top: 0%;
-    margin-top: 3%;
+    margin-top: 1.5%;
     border: 1px solid #c4c4c4;
     border-radius: 5px; }
     #commentBox .box .dateBox {
       position: absolute;
       display: flex;
       width: 100%;
-      height: 30%;
+      height: 40%;
       top: 1.5%;
       left: 1.5%; }
       #commentBox .box .dateBox .nickNameAndDate {
@@ -502,8 +624,8 @@ a {
       display: flex;
       align-items: center;
       width: 100%;
-      height: 70%;
-      top: 30%; }
+      height: 60%;
+      top: 40%; }
       #commentBox .box #imgAndText .imgWrapper {
         position: absolute;
         display: flex; }
