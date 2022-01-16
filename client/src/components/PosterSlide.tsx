@@ -18,7 +18,7 @@ function PosterSlide() {
   const { targetIdx } = useSelector((state: RootState) => state.main);
   const { target } = useSelector((state: RootState) => state.main);
 
-  const [isClick, setIsClick] = useState('disclicked');
+  const [isClick, setIsClick] = useState(false);
 
   /* D-DAY 계산기 */
   const dayCalculator = (openDate?: Date): string => {
@@ -76,7 +76,7 @@ function PosterSlide() {
             <div
               id='posterWrapper3'
               onClick={() => {
-                setIsClick('clicked');
+                setIsClick(!isClick);
               }}
             >
               <img

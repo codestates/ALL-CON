@@ -295,7 +295,14 @@
               }
             }
             #place_r {
+              position: relative;
+              display: flex;
+              justify-content: flex-start;
               height: 10%;
+              img {
+                width: 30px;
+                height: 30px;
+              }
             }
             #date_r {
               height: 25%;
@@ -328,6 +335,7 @@
               }
               #kakaoIcon2 {
                 left: 10%;
+                top: 3%;
                 @extend #mailIcon2;
               }
             }
