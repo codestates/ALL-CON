@@ -3,7 +3,20 @@ import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
 import MyArticlePagination from './MyArticlePagination';
 
+import { RootState } from '../../index';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+
 function MyArticleBox() {
+  
+  const { articleInfo, myArticleTotalPage } = useSelector((state: RootState) => state.my);
+
+  console.log('-------', articleInfo)
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   return (
     <div id='myArticleBox'>
       <div id='titleWrapper'>
@@ -12,120 +25,32 @@ function MyArticleBox() {
       <div id='articleWrapper'>
         <div id='articleBox'>
           <div id='box'>
-            <ul className='article'>
-              <img
-                className='thumbNail'
-                src={defaultImage}
-                alt='defaultImage'
-              ></img>
-              <div id='myMemberBoxWrapper'>
-                <div className='memberBox'>
-                  <img className='icon' src={groupImage} alt='groupImage' />
-                  <div className='count'>1/3</div>
-                </div>
-              </div>
-              <div className='title'>
-                <img className='icon' src={viewImage} alt='viewImage' />
-                <p className='count'>523</p>
-                <p className='date'>2021.12.24</p>
-                <p className='text'>소심한 성격입니다. 조용히..</p>
-              </div>
-            </ul>
-            <ul className='article'>
-              <img
-                className='thumbNail'
-                src={defaultImage}
-                alt='defaultImage'
-              ></img>
-              <div id='myMemberBoxWrapper'>
-                <div className='memberBox'>
-                  <img className='icon' src={groupImage} alt='groupImage' />
-                  <div className='count'>1/3</div>
-                </div>
-              </div>
-              <div className='title'>
-                <img className='icon' src={viewImage} alt='viewImage' />
-                <p className='count'>523</p>
-                <p className='date'>2021.12.24</p>
-                <p className='text'>소심한 성격입니다. 조용히..</p>
-              </div>
-            </ul>
-            <ul className='article'>
-              <img
-                className='thumbNail'
-                src={defaultImage}
-                alt='defaultImage'
-              ></img>
-              <div id='myMemberBoxWrapper'>
-                <div className='memberBox'>
-                  <img className='icon' src={groupImage} alt='groupImage' />
-                  <div className='count'>1/3</div>
-                </div>
-              </div>
-              <div className='title'>
-                <img className='icon' src={viewImage} alt='viewImage' />
-                <p className='count'>523</p>
-                <p className='date'>2021.12.24</p>
-                <p className='text'>소심한 성격입니다. 조용히..</p>
-              </div>
-            </ul>
-            <ul className='article'>
-              <img
-                className='thumbNail'
-                src={defaultImage}
-                alt='defaultImage'
-              ></img>
-              <div id='myMemberBoxWrapper'>
-                <div className='memberBox'>
-                  <img className='icon' src={groupImage} alt='groupImage' />
-                  <div className='count'>1/3</div>
-                </div>
-              </div>
-              <div className='title'>
-                <img className='icon' src={viewImage} alt='viewImage' />
-                <p className='count'>523</p>
-                <p className='date'>2021.12.24</p>
-                <p className='text'>소심한 성격입니다. 조용히..</p>
-              </div>
-            </ul>
-            <ul className='article'>
-              <img
-                className='thumbNail'
-                src={defaultImage}
-                alt='defaultImage'
-              ></img>
-              <div id='myMemberBoxWrapper'>
-                <div className='memberBox'>
-                  <img className='icon' src={groupImage} alt='groupImage' />
-                  <div className='count'>1/3</div>
-                </div>
-              </div>
-              <div className='title'>
-                <img className='icon' src={viewImage} alt='viewImage' />
-                <p className='count'>523</p>
-                <p className='date'>2021.12.24</p>
-                <p className='text'>소심한 성격입니다. 조용히..</p>
-              </div>
-            </ul>
-            <ul className='article'>
-              <img
-                className='thumbNail'
-                src={defaultImage}
-                alt='defaultImage'
-              ></img>
-              <div id='myMemberBoxWrapper'>
-                <div className='memberBox'>
-                  <img className='icon' src={groupImage} alt='groupImage' />
-                  <div className='count'>1/3</div>
-                </div>
-              </div>
-              <div className='title'>
-                <img className='icon' src={viewImage} alt='viewImage' />
-                <p className='count'>523</p>
-                <p className='date'>2021.12.24</p>
-                <p className='text'>소심한 성격입니다. 조용히..</p>
-              </div>
-            </ul>
+            { 
+              Array.isArray(articleInfo)
+              ? articleInfo.map((el: any) => {
+                return (
+                <ul className='article'>
+                  <img
+                  className='thumbNail'
+                  src={el.image}
+                  // alt='defaultImage'
+                  ></img>
+                  <div id='myMemberBoxWrapper'>
+                    <div className='memberBox'>
+                      <img className='icon' src={groupImage} alt='groupImage' />
+                      <div className='count'> {el.member_count}/{el.total_member} </div>
+                      </div>
+                      </div>
+                      <div className='title'>
+                        <img className='icon' src={viewImage} alt='viewImage' />
+                        <p className='count'>{el.view}</p>
+                        <p className='date'>{el.updatedAt}</p>
+                        <p className='text'>{el.content}</p>
+                   </div>
+                  </ul>)
+                  })
+              : null
+            }
           </div>
         </div>
       </div>
