@@ -3,7 +3,9 @@ import { RootState } from '../../../index';
 import { setScrollCount } from '../../../store/HeaderSlice';
 import { showMyDropDown } from '../../../store/ModalSlice';
 import { setTarget } from '../../../store/MainSlice';
+import { setTargetArticle } from '../../../store/ConChinSlice';
 import { logout } from '../../../store/AuthSlice';
+import { getArticleInfo, getMyArticleTotalPage } from '../../../store/MySlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -14,6 +16,7 @@ function MyDropDown() {
   const navigate = useNavigate();
   const { scrollCount } = useSelector((state: RootState) => state.header);
   const { target } = useSelector((state: RootState) => state.main);
+  const { articleInfo } = useSelector((state: RootState) => state.my);
 
   /* 로그아웃 핸들러 */
   const logoutHandler = async () => {
@@ -34,9 +37,23 @@ function MyDropDown() {
     }
   };
 
-  const resetTarget = () => {
+  const resetTarget = async () => {
     dispatch(setTarget({}));
-    console.log(target);
+    dispatch(setTargetArticle({}));
+    // console.log(target);
+    console.log('---- 드랍다운 마이페이지 클릭 #1')
+    /* 내가 쓴 게시물 axios 테스트 */
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=1`,
+      { withCredentials: true },
+      );
+      console.log('---- 드랍다운 마이페이지 클릭 #2')
+      
+      console.log('---- DropDown---- ', response.data.data)
+      
+    dispatch(getArticleInfo(response.data.data))
+    dispatch(getMyArticleTotalPage(response.data.data.totalPage))
+    /* 내가 쓴 게시물 axios 테스트 */
   };
 
   return (

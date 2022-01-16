@@ -109,9 +109,11 @@
   // border: 1px solid red;
   &Chosen {
     @extend #articleBox;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
     width: 100%;
     height: 50%;
-    // border: 1px solid blue;
   }
   #box {
     position: relative;
@@ -170,6 +172,7 @@
       padding-bottom: 30%;
       margin: 1%;
       // border:1px solid green;
+      transition: 0.15s all;
       @include mobile-only() {
         border-radius: 5px;
       }
@@ -178,6 +181,11 @@
       }
       @include lg() {
         border-radius: 10px;
+      }
+      &Chosen {
+        @extend .article;
+        border: 1rem solid $yellow;
+        transition: 0.15s all;
       }
       &:hover {
         box-shadow: 3px 3px 14px 1px #606060;
@@ -188,8 +196,10 @@
         position: absolute;
         display: flex;
         width: 100%;
+        height: 100%;
         left: 50%;
         top: 50%;
+        object-fit: cover;
         transform: translate(-50%, -50%);
         @include mobile-only() {
           border-radius: 5px;
@@ -199,6 +209,10 @@
         }
         @include lg() {
           border-radius: 10px;
+        }
+        &Chosen {
+          @extend .thumbNail;
+          border-radius: 0px;
         }
       }
       .title {
@@ -388,6 +402,10 @@
     justify-content: center;
 
     background-color: black;
+    &Chosen {
+      @extend .page;
+      background-color: $yellow;
+    }
     @include mobile-only() {
       width: 30px;
       height: 30px;

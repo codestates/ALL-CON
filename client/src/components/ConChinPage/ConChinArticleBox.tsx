@@ -6,21 +6,80 @@ import ConChinArticleOrderBox from './ConChinArticleOrderBox';
 import ConChinArticlePagination from './ConChinArticlePagination';
 /* Store import */
 import { RootState } from '../../index';
-import { setAllArticles } from '../../store/ConChinSlice';
-import { setTarget } from '../../store/MainSlice';
+import {
+  setArticleOrder,
+  setAllArticles,
+  setArticleTotalPage,
+  setTargetArticle,
+  setTargetArticlesUserInfo,
+} from '../../store/ConChinSlice';
+import { setTarget, setAllConcerts } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 
 function ConChinArticleBox() {
-  const { target } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles } = useSelector(
+  const dispatch = useDispatch();
+  const { target, allConcerts } = useSelector((state: RootState) => state.main);
+  const { allArticles, targetArticle, targetArticlesUserInfo } = useSelector(
     (state: RootState) => state.conChin,
   );
-  const dispatch = useDispatch();
 
-  useEffect(() => {}, [allArticles]);
+  /* 게시물에 관련된 콘서트 정보 조회 핸들러 */
+  const getTargetArticlesConcert = async (id: number) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${id}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setTarget(response.data.data.concertInfo));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 게시물 정보 조회 핸들러 */
+  const getTargetArticlesInfo = async (id: number) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${id}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setTargetArticle(response.data.data.articleInfo));
+        console.log('ConChinArticleBox=> articleInfo 조회 성공입니다.');
+        console.log(targetArticle);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 게시물 작성자 유저정보 조회 핸들러 */
+  const getTargetArticlesUserInfo = async (id: number) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/user/other/${id}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setTargetArticlesUserInfo(response.data.data.userInfo));
+        console.log('ConChinArticleBox=> userInfo 조회 성공입니다.');
+        console.log(targetArticlesUserInfo);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
+  // useEffect(() => {
+  //   getAllArticles();
+  // }, []);
+
   return (
     <div id='conChinArticleBox'>
       <ConChinArticleOrderBox />
@@ -37,10 +96,17 @@ function ConChinArticleBox() {
               {allArticles.map(article => {
                 return (
                   <ul
-                    className='article'
+                    className={
+                      article.id === targetArticle.id
+                        ? 'articleChosen'
+                        : 'article'
+                    }
                     key={article.id}
                     onClick={() => {
-                      console.log(article);
+                      getTargetArticlesInfo(article.id);
+                      getTargetArticlesConcert(article.concert_id);
+                      getTargetArticlesUserInfo(article.user_id);
+                      console.log(article.concert_id);
                     }}
                   >
                     <img
@@ -60,8 +126,7 @@ function ConChinArticleBox() {
                     <div className='title'>
                       <img className='icon' src={viewImage} />
                       <p className='count'>{article.view}</p>
-                      <p className='date'>21.01.14</p>
-                      {/* {article.createdAt} */}
+                      <p className='date'>{article.createdAt}</p>
                       <p className='text'>{article.title}</p>
                     </div>
                   </ul>
@@ -77,14 +142,25 @@ function ConChinArticleBox() {
               {allArticles.map(article => {
                 return (
                   <ul
-                    className='article'
+                    className={
+                      article.id === targetArticle.id
+                        ? 'articleChosen'
+                        : 'article'
+                    }
                     key={article.id}
                     onClick={() => {
-                      console.log(article);
+                      getTargetArticlesInfo(article.id);
+                      getTargetArticlesConcert(article.concert_id);
+                      getTargetArticlesUserInfo(article.user_id);
+                      console.log(article.concert_id);
                     }}
                   >
                     <img
-                      className='thumbNail'
+                      className={
+                        article.id === targetArticle.id
+                          ? 'thumbNailChosen'
+                          : 'thumbNail'
+                      }
                       src={
                         article.image !== null ? article.image : defaultImage
                       }
@@ -100,8 +176,8 @@ function ConChinArticleBox() {
                     <div className='title'>
                       <img className='icon' src={viewImage} />
                       <p className='count'>{article.view}</p>
-                      <p className='date'>21.01.14</p>
-                      {/* {article.createdAt} */}
+                      <p className='date'>{article.createdAt}</p>
+
                       <p className='text'>{article.title}</p>
                     </div>
                   </ul>
@@ -109,11 +185,11 @@ function ConChinArticleBox() {
               })}
             </div>
           ) : (
-            '게시물이 없습니다.'
+            '게시물이 없습니다. '
           )}
         </div>
       ) : (
-        <div id='articleBoxChosen'>게시물이 없습니다.</div>
+        <div id='articleBoxChosen'>게시물이 없습니다. 😢</div>
       )}
       {/*게시물 맵핑 */}
       <div

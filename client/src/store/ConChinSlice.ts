@@ -8,25 +8,30 @@ export interface conChin {
   /* 받아온 게시물 목록 */
   allArticles: any[];
   articleTotalPage: number;
+  /* 선택한 게시물 */
   targetArticle: {
     concert_id?: number;
-    id?: number;
-    createdAt?: Date;
     content?: string;
-    exclusive?: string;
-    open_date?: Date;
-    post_date?: string;
-    image_concert?: string;
+    createdAt?: Date;
+    id?: number;
+    image?: string;
+    member_count?: number;
     title?: string;
-    period?: string;
-    place?: string;
-    price?: string;
-    running_time?: string;
-    rating?: string;
-    link?: string;
-    view?: number;
     total_comment?: number;
+    total_member?: number;
     updatedAt?: Date;
+    user_id?: number;
+    view?: number;
+  };
+  articleCurPage: number;
+  /* 선택한 게시물 유저 정보 */
+  targetArticlesUserInfo: {
+    email?: string;
+    username?: string;
+    image?: string;
+    introduction?: string;
+    birth?: string;
+    createdAt?: string;
   };
 }
 
@@ -37,6 +42,8 @@ const initialState: conChin = {
   allArticles: [],
   articleTotalPage: 0,
   targetArticle: {},
+  targetArticlesUserInfo: {},
+  articleCurPage: 0,
 };
 
 const conChinSlice = createSlice({
@@ -65,6 +72,15 @@ const conChinSlice = createSlice({
     setTargetArticle: (state: conChin, { payload }: PayloadAction<object>) => {
       state.targetArticle = payload;
     },
+    setTargetArticlesUserInfo: (
+      state: conChin,
+      { payload }: PayloadAction<object>,
+    ) => {
+      state.targetArticlesUserInfo = payload;
+    },
+    setArticleCurPage: (state: conChin, { payload }: PayloadAction<number>) => {
+      state.articleCurPage = payload;
+    },
   },
 });
 
@@ -74,5 +90,7 @@ export const {
   setAllArticles,
   setArticleTotalPage,
   setTargetArticle,
+  setTargetArticlesUserInfo,
+  setArticleCurPage,
 } = conChinSlice.actions;
 export default conChinSlice.reducer;
