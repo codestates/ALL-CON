@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 85%;
   @include mobile-only() {
     top: 2%;
   }
@@ -49,7 +49,7 @@
     position: absolute;
     display: flex;
 
-    // border: 2px solid red;
+    // border: 2px solid yellow;
     @include mobile-only() {
       width: 90%;
       top: 15%;
@@ -67,7 +67,7 @@
     }
     #myMemberBoxWrapper {
       position: absolute;
-
+      // border: 2px solid blue;
       @include mobile-only() {
         top: 40%;
       }

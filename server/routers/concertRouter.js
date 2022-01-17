@@ -19,6 +19,7 @@ router.patch('/:concertid/article/:articleid/comment/:commentid', conchinComment
 router.delete('/:concertid/article/:articleid/comment/:commentid', conchinComment.detail.delete);
 
 // Concert
+router.get('/alarm', concert.all.get);
 router.get('/', concert.concert.get);
 router.get('/:concertid', concert.detail.get);
 router.post('/:concertid/alarm', concert.alarm.post);

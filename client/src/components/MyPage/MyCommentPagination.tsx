@@ -1,21 +1,22 @@
-
-import axios from 'axios';
-
-import { RootState } from '../../index';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-
+/* Config import */
+/* CSS import */
+/* Store import */
 import { getMyConcertCommentInfo, getMyConcertCommentTotalPage, getMyArticleCommentInfo, getMyArticleCommentTotalPage } from '../../store/MySlice';
+/* Library import */
+import { RootState } from '../../index';
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 function MyCommentPagination() {
-
+  /* dispatch / navigate */
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+  /* useSelector */
+  const { myConcertCommentTotalPage, myArticleCommentTotalPage, commentBtnType } = useSelector((state: RootState) => state.my);
 
-  const { userInfo } = useSelector((state: RootState) => state.auth);
-  const { concertCommentInfo, myConcertCommentTotalPage, myArticleCommentTotalPage, commentBtnType } = useSelector((state: RootState) => state.my);
-
+  /* 지역상태 - useState */
   let concertPageArr: number[] = [];
   for (let i = 1; i <= myConcertCommentTotalPage; i++) {
     concertPageArr.push(i);
@@ -26,6 +27,9 @@ function MyCommentPagination() {
     articlePageArr.push(i);
   }
 
+  /* useEffect */
+
+    /* handler 함수 (기능별 정렬) */
   // 내가 쓴 (콘서트) 게시물 페이지를 클릭헀을 때, 다음을 실행한다
   const handleConcertPageClick = async (pageNum: number) => {
     
