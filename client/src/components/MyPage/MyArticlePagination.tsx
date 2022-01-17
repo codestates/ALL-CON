@@ -45,8 +45,8 @@ function MyArticlePagination() {
         pageArr.length > 0
         ? pageArr.map((el: number) => {
           return (
-          <ul className='page'>
-            <p className='text' onClick={() => handlePageClick(el)}> {el} </p>
+          <ul className='page' onClick={() => handlePageClick(el)}>
+            <p className='text'> {el} </p>
           </ul>
           )
         })

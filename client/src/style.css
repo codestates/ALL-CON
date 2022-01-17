@@ -4543,7 +4543,8 @@ a {
     justify-content: center;
     width: 80%;
     height: 64.5%;
-    bottom: 0%; }
+    bottom: 0%;
+    text-align: center; }
     #myProfileBox #introductionBox #nickNameWrapper {
       position: absolute;
       display: flex;
@@ -4622,7 +4623,8 @@ a {
         border: none;
         outline: none;
         resize: none;
-        overflow: hidden; }
+        overflow: hidden;
+        text-align: center; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #textWrapper #introduction {
             font-size: 1.5rem; } }
