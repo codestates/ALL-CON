@@ -7,8 +7,8 @@ import { RootState } from '../index';
 import {
   setTarget,
   setTargetIdx,
-  setAllConcerts,
   setOrder,
+  setIsRendering,
 } from '../store/MainSlice';
 import { showAlertModal, insertAlertText } from '../store/ModalSlice';
 /* Library import */
@@ -18,35 +18,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Jumbotron() {
   const dispatch = useDispatch();
-  const [isClick, setIsClick] = useState<boolean>(false);
-  const { target, order, targetIdx, allConcerts } = useSelector(
+  const { order, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
-
-  /* 렌더링 useEffect */
-  useEffect(() => {
-    getAllConcerts();
-  }, [isClick]);
-
-  /*전체 콘서트 받아오기 */
-  const getAllConcerts = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert?order=${order}`,
-        { withCredentials: true },
-      );
-      if (response.data) {
-        /* 서버 응답값이 있다면 클릭 & target 상태 변경 */
-        dispatch(setAllConcerts(response.data.data.concertInfo));
-        dispatch(setTargetIdx(0));
-        dispatch(setTarget(allConcerts[targetIdx]));
-        setIsClick(false);
-      }
-    } catch (err) {
-      dispatch(insertAlertText('Server Error! 😖'));
-      dispatch(showAlertModal(true));
-    }
-  };
 
   const leftClickHandler = () => {
     if (targetIdx > 0) {
@@ -63,9 +37,10 @@ function Jumbotron() {
   };
 
   const orderClickHandler = (clickOrder: string) => {
+    /* 정렬 버튼 클릭시 렌더링: false, 타겟값 초기화, order 갱신 */
+    dispatch(setIsRendering(false));
     dispatch(setTargetIdx(0));
     dispatch(setTarget({}));
-    setIsClick(true);
     dispatch(setOrder(clickOrder));
   };
 
@@ -84,28 +59,13 @@ function Jumbotron() {
           </div>
           {/*오른쪽 상단 탭 바*/}
           <div id='tabBar'>
-            <p
-              id={order === 'hot' ? 'hot' : undefined}
-              onClick={() => {
-                orderClickHandler('hot');
-              }}
-            >
+            <p id={order === 'hot' ? 'hot' : undefined} onMouseUp={() => { orderClickHandler('hot') }} onMouseDown={() => { orderClickHandler('hot') }}>
               HOT
             </p>
-            <p
-              id={order === 'near' ? 'near' : undefined}
-              onClick={() => {
-                orderClickHandler('near');
-              }}
-            >
+            <p id={order === 'near' ? 'near' : undefined} onMouseUp={() => { orderClickHandler('near') }} onMouseDown={() => { orderClickHandler('near') }}>
               NEAR
             </p>
-            <p
-              id={order === 'new' ? 'new' : undefined}
-              onClick={() => {
-                orderClickHandler('new');
-              }}
-            >
+            <p id={order === 'new' ? 'new' : undefined} onMouseUp={() => { orderClickHandler('new') }} onMouseDown={() => { orderClickHandler('new') }}>
               NEW
             </p>
           </div>

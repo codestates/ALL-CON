@@ -1,5 +1,5 @@
 const { userAuth } = require('../../middlewares/authorized/userAuth')
-const { Users, ConcertComments } = require('../../models');
+const { Concerts, ConcertComments } = require('../../models');
 
 module.exports = {
   patch: async (req, res) => {
@@ -29,7 +29,7 @@ module.exports = {
       const userInfo = await userAuth(req, res);
 
       const { concertid, commentid } = req.params;
-      const concertInfo = await ConcertComments.findOne({ where: { id: concertid }});
+      const concertInfo = await Concerts.findOne({ where: { id: concertid }});
       const concertCommentInfo = await ConcertComments.findOne({ where: { id: commentid }});
 
       if(userInfo.dataValues.role === 1) {
@@ -43,6 +43,9 @@ module.exports = {
       // 일반 유저일 경우, 다음을 실행한다
       else {
         // 타인이 작성한 댓글 삭제 불가
+        console.log('진입성공---');
+        console.log('콘서트 id---: ', concertCommentInfo.user_id)
+        console.log('유저 id---: ', userInfo.dataValues.id)
         if(concertCommentInfo.user_id !== userInfo.dataValues.id) return res.status(401).json({ message: 'Not Authroized!' });
         // concertInfo의 total_comment - 1
         const minusTotalComment = concertInfo.total_comment - 1;

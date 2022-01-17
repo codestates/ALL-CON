@@ -26,10 +26,11 @@ import { useState, useEffect } from 'react';
 function MainConcertInfo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { order, targetIdx, target } = useSelector(
+  const { isRendering, targetIdx, target, detail } = useSelector(
     (state: RootState) => state.main,
   );
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
+  const { order } = useSelector((state: RootState) => state.main);
 
   const [alarmType, setAlarmType] = useState('');
   const [emailClick, setEmailClick] = useState(false);
@@ -56,28 +57,44 @@ function MainConcertInfo() {
       console.log(err);
     }
   };
-
-  const getAlarm = async () => {
+  //내가 보낸 모든 알람 리스트 가져온 후에
+  //detail의 id(콘서트 아이디) 알람봤는데 내 알람이 존재한다.
+  //그러면 emailClick이 true인거임.
+  const getAllAlarm = async () => {
     try {
       console.log('알람타입>>>', alarmType);
-      const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${alarmType}`,
-        {},
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/alarm`,
         { withCredentials: true },
       );
-      if (res.data.data.alarmInfo) {
-        console.log(res.data.data.alarmInfo);
-        if (res.data.data.alarmInfo.email_alarm === true) {
-          setEmailClick(true);
-        }
-        if (res.data.data.alarmInfo.phone_alarm === true) {
-          setSmsClick(true);
-        }
+      if (res.data) {
+        console.log(res.data);
       }
     } catch (err) {
       console.log(err);
     }
   };
+  // const getAlarm = async () => {
+  //   try {
+  //     console.log('알람타입>>>', alarmType);
+  //     const res = await axios.post(
+  //       `${process.env.REACT_APP_API_URL}/concert/${detail.id}/alarm?alarm_type=${alarmType}`,
+  //       {},
+  //       { withCredentials: true },
+  //     );
+  //     if (res.data.data.alarmInfo) {
+  //       console.log(res.data.data.alarmInfo);
+  //       if (res.data.data.alarmInfo.email_alarm === true) {
+  //         setEmailClick(true);
+  //       }
+  //       if (res.data.data.alarmInfo.phone_alarm === true) {
+  //         setSmsClick(true);
+  //       }
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const handleOpenDate = (opendate: Date): any => {
     const day = String(opendate);
@@ -98,7 +115,7 @@ function MainConcertInfo() {
   const cancelAlarm = async () => {
     try {
       const res = await axios.delete(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${alarmType}`,
+        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/alarm?alarm_type=${alarmType}`,
         { withCredentials: true },
       );
       if (res.data) {
@@ -115,11 +132,11 @@ function MainConcertInfo() {
       dispatch(showLoginModal(true));
     } else {
       setAlarmType('email');
-      getAlarm(); //emailClick 상태도 true로 바꿔줌
+      // getAlarm(); //emailClick 상태도 true로 바꿔줌
       console.log('emailClick상태', emailClick);
-      if (emailClick) {
+      if (emailClick && detail) {
         dispatch(
-          insertAlertText(`${target.title} 이메일 알림이 설정되었습니다! 🙂`),
+          insertAlertText(`${detail.title} 이메일 알림이 설정되었습니다! 🙂`),
         );
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
@@ -137,12 +154,12 @@ function MainConcertInfo() {
       if (userInfo.role === 3) alert('콘친 인증을 해주세요! 😖');
       else {
         setAlarmType('phone');
-        getAlarm();
+        // getAlarm();
         console.log('smsClick의 상태', smsClick);
-        if (smsClick) {
+        if (smsClick && detail) {
           dispatch(
             insertAlertText(
-              `${target.title} 문자 메시지 알림이 설정되었습니다! 🙂`,
+              `${detail.title} 문자 메시지 알림이 설정되었습니다! 🙂`,
             ),
           );
           dispatch(insertBtnText('확인'));
@@ -151,7 +168,7 @@ function MainConcertInfo() {
       }
     }
   };
-  console.log(target);
+
   return (
     <div id='mainConcertInfoBox'>
       <div id='topBox'>
@@ -164,11 +181,11 @@ function MainConcertInfo() {
           />
         </div>
         <div id='fromWhereBox'>
-          {target.exclusive === '인터파크' && (
+          {detail.exclusive === '인터파크' && (
             <div className='where'>인터파크</div>
           )}
-          {target.exclusive === 'YES24' && <div className='where'>YES24</div>}
-          {target.exclusive === '' && (
+          {detail.exclusive === 'YES24' && <div className='where'>YES24</div>}
+          {detail.exclusive === '' && (
             <>
               <div className='where'>인터파크</div>
               <div className='where'>YES24</div>
@@ -177,43 +194,43 @@ function MainConcertInfo() {
           <img alt='종' src={bellOff} id='bell'></img>
         </div>
         <div id='titleBox'>
-          <div id='h2AlignBox'>
-            <h2>{target.title}</h2>
-          </div>
+          <div id='h2AlignBox'>{detail && <h2>{detail.title}</h2>}</div>
         </div>
-        <p id='date'>{`등록일: ${target.post_date} | 조회수: ${target.view}`}</p>
+        <p id='date'>
+          {detail && `등록일: ${detail.post_date} | 조회수: ${detail.view}`}
+        </p>
       </div>
       <div id='middleBox'>
         <div id='concertInfoBox'>
           <img
-            src={target.image_concert}
+            src={detail && detail.image_concert}
             alt='포스터'
             id='selectedPoster'
           ></img>
           <div id='concertInfo'>
             <div className='table'>
               <div className='left-side'>
-                {target.place && (
+                {detail.place && (
                   <p className='left' id='place'>
                     공연장소
                   </p>
                 )}
-                {target.period && (
+                {detail.period && (
                   <p className='left' id='date'>
                     공연기간
                   </p>
                 )}
-                {target.running_time && (
+                {detail.running_time && (
                   <p className='left' id='time'>
                     공연시간
                   </p>
                 )}
-                {target.rating && (
+                {detail.rating && (
                   <p className='left' id='rating'>
                     관람등급
                   </p>
                 )}
-                {target.price && (
+                {detail.price && (
                   <p className='left' id='price'>
                     티켓가격
                   </p>
@@ -223,30 +240,30 @@ function MainConcertInfo() {
                 </p>
               </div>
               <div className='right-side'>
-                {target.place && (
+                {detail.place && (
                   <p className='right' id='place_r'>
-                    <p>{target.place}</p>
+                    <p>{detail.place}</p>
                     <img src={map}></img>
                   </p>
                 )}
-                {target.period && (
+                {detail.period && (
                   <p className='right' id='date_r'>
-                    {target.period}
+                    {detail.period}
                   </p>
                 )}
-                {target.running_time && (
+                {detail.running_time && (
                   <p className='right' id='time_r'>
-                    {target.running_time}
+                    {detail.running_time}
                   </p>
                 )}
-                {target.rating && (
+                {detail.rating && (
                   <p className='right' id='rating_r'>
-                    {target.rating}
+                    {detail.rating}
                   </p>
                 )}
-                {target.price && (
+                {detail.price && (
                   <p className='right' id='price_r'>
-                    {target.price}
+                    {detail.price}
                   </p>
                 )}
                 <p className='right' id='alarm_r'>
@@ -255,7 +272,8 @@ function MainConcertInfo() {
                     alt='이메일아이콘'
                     id='mailIcon2'
                     onClick={() => {
-                      emailClickHandler();
+                      // emailClickHandler();
+                      getAllAlarm();
                     }}
                   ></img>
                   <img
@@ -272,7 +290,7 @@ function MainConcertInfo() {
           </div>
         </div>
         <div id='buttonsWrapper'>
-          {target.open_date && (
+          {detail && (
             <button id='black-btn'>
               <div id='imgAndOpen'>
                 <img src={smsClick || emailClick ? bellOn : bellOff} />
@@ -280,9 +298,11 @@ function MainConcertInfo() {
               </div>
             </button>
           )}
-          <a id='yellow-btn' href={target.link}>
-            예매하기
-          </a>
+          {detail && (
+            <a id='yellow-btn' href={detail.link}>
+              예매하기
+            </a>
+          )}
         </div>
       </div>
     </div>
