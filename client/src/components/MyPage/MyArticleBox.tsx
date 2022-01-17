@@ -3,19 +3,45 @@ import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
 import MyArticlePagination from './MyArticlePagination';
 
+import axios from 'axios';
+
 import { RootState } from '../../index';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { setTarget, setAllConcerts } from '../../store/MainSlice';
+import { setTargetArticle } from '../../store/ConChinSlice';
+
 function MyArticleBox() {
   
-  const { articleInfo, myArticleTotalPage } = useSelector((state: RootState) => state.my);
-
-  console.log('-------', articleInfo)
+  const { articleInfo } = useSelector((state: RootState) => state.my);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // 마이페이지 - 나의 게시물 중 한 게시물을 선택하면, 다음이 실행된다
+  const handleArticleSelected = async (id: number, concert_id: number, user_id: number) => {
+  
+    // 선택한 게시물에 해당하는 콘서트에 대한 정보를 불러온다
+    const responseConcert = await axios.get(
+      `${process.env.REACT_APP_API_URL}/concert/${concert_id}`,
+      { withCredentials: true },
+      );
+
+    // 선택한 게시물에 대한 정보를 불러온다
+    const responseArticle = await axios.get(
+      `${process.env.REACT_APP_API_URL}/concert/${concert_id}/article/${id}`,
+      { withCredentials: true },
+      );  
+    
+    // 현재 선택한 콘서트 업데이트 (target)
+    dispatch(setTarget(responseConcert.data.data))
+    // 현재 선택한 게시물 업데이트 (target)
+    dispatch(setTargetArticle(responseArticle.data.data))
+    navigate('/conchin')
+
+  }
 
   return (
     <div id='myArticleBox'>
@@ -29,7 +55,8 @@ function MyArticleBox() {
               Array.isArray(articleInfo)
               ? articleInfo.map((el: any) => {
                 return (
-                <ul className='article'>
+                  // 마이페이지, 내가 작성한 게시물에서 "특정 게시물"을 선택
+                <ul className='article' onClick={() => handleArticleSelected(el.id, el.concert_id, el.user_id)}>
                   <img
                   className='thumbNail'
                   src={el.image}
@@ -49,7 +76,7 @@ function MyArticleBox() {
                    </div>
                   </ul>)
                   })
-              : null
+                : null
             }
           </div>
         </div>

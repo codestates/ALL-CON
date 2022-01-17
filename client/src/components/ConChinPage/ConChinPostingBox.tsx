@@ -88,7 +88,7 @@ function ConChinPostingBox() {
     console.log('ConChinPostingBox=> target: ');
     console.log(target);
     console.log('ConChinPostingBox=> concert: ');
-    console.log(concert);
+    console.log('--------------------------concert-------------------------:', concert);
   }
 
   /* useEffect: 타겟이 변경될 때마다 게시물 렌더링 */
