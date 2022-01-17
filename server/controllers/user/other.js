@@ -65,12 +65,10 @@ module.exports = {
           '일',
       };
 
-      res
-        .status(200)
-        .json({
-          data: { userInfo: transformInfo },
-          message: 'Search Other UserInfo!',
-        });
+      res.status(200).json({
+        data: { userInfo: transformInfo },
+        message: 'Search Other UserInfo!',
+      });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ message: 'Server Error!' });

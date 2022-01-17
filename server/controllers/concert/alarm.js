@@ -12,7 +12,6 @@ module.exports = {
       const { concertid } = req.params;
       // 유저확인 및 알람종류 확인
       const { alarm_type } = req.query;
-      console.log('>>>>>>>>>>>', alarm_type);
       const concertInfo = await Concerts.findOne({ where: { id: concertid } });
       console.log('확인확인2');
       // 존재하지 않는다면, 다음을 실행한다
@@ -99,7 +98,6 @@ module.exports = {
                 concert_id: concertid,
               },
             });
-
             return res.status(201).json({
               data: { alarmDestroyInfo: alarmDestroyInfo },
               message: 'Delete Email Alarm!',

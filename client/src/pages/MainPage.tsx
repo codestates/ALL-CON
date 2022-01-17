@@ -9,9 +9,14 @@ import MainPagination from '../components/MainPage/MainPagination';
 import { RootState } from '../index';
 /* Library import */
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 function MainPage() {
   const { target } = useSelector((state: RootState) => state.main);
+
+  useEffect(() => {
+    
+  }, [target]);
 
   return (
     <div id='mainContainer'>

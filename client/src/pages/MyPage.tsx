@@ -3,7 +3,25 @@ import MyArticleBox from '../components/MyPage/MyArticleBox';
 import MyCommentBox from '../components/MyPage/MyCommentBox';
 import Footer from '../components/Footer';
 
+/* Store import */
+import { RootState } from '../index';
+import { logout, getUserInfo } from '../store/AuthSlice';
+import { showLoginModal, showPrivacyModal, showSignupModal, showTosModal, showAlertModal, insertAlertText } from '../store/ModalSlice';
+/* Library import */
+import axios, { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+
 function MyPage() {
+  
+  /* dispatch / navigate */
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  /* useSelector */
+  const { userInfo } = useSelector((state: RootState) => state.auth);
+  const { myIntroduction } = useSelector((state: RootState) => state.my);
+
   return (
     <div id='myPageContainer'>
       <div id='myProfileBoxWrapper'>

@@ -7,6 +7,7 @@ import camera from '../../../images/camera.png';
 import { RootState } from '../index';
 import { logout, getUserInfo } from '../store/AuthSlice';
 import { showLoginModal, showPrivacyModal, showSignupModal, showTosModal, showAlertModal, insertAlertText } from '../store/ModalSlice';
+import { setMyIntroductionState } from '../store/MySlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -20,12 +21,13 @@ function MyEditPage() {
   const navigate = useNavigate();
   /* useSelector */
   const { userInfo } = useSelector((state: RootState) => state.auth);
+  const { myIntroduction } = useSelector((state: RootState) => state.my);
   
   /* 지역상태 - useState */
 
   // 변경할 유저정보 상태 
   interface ChangeUserInfo {
-    // introduction: string;
+    introduction: string;
     username: string;
     password: string;
     confirmPassword: string;
@@ -33,7 +35,7 @@ function MyEditPage() {
 
   // 주의: 초기값을 바꿔줘야한다!
   const [changeUserInfo, setChangeUserInfo] = useState<ChangeUserInfo>({
-    // introduction: '',
+    introduction: '',
     username: '',
     password: '',
     confirmPassword: ''
@@ -94,6 +96,7 @@ function MyEditPage() {
   // 입력값 초기화 핸들러
   const resetInput = () => {
     setChangeUserInfo({
+      introduction: '',
       username: '',
       password: '',
       confirmPassword: ''
@@ -183,13 +186,15 @@ function MyEditPage() {
   // [PATCH] 변경 완료 버튼 핸들러
   const changeUserProfileHandler = async () => {
     try {
+
+      let finalIntroduction = myIntroduction.replace(' ', '')
       // 만약 변경된 유저의 정보가 모두 유효하다면, 다음을 실행한다
       if (isAllValid(changeUserInfo)) {
           if(isCheckDuplication && duplicationCheck){
             const response = await axios.patch(
               `${process.env.REACT_APP_API_URL}/user/me`,
               { 
-                // introduction,
+                introduction: finalIntroduction,
                 username: username, 
                 password: password 
               },
@@ -202,6 +207,8 @@ function MyEditPage() {
             // userInfo 상태 업데이트
             dispatch(getUserInfo(response.data.data));
             navigate('/mypage')
+            
+            dispatch(setMyIntroductionState(false))
           } else {
             dispatch(insertAlertText('닉네임 중복확인을 해주세요! 😖'));
             dispatch(showAlertModal(true));
@@ -224,6 +231,8 @@ function MyEditPage() {
   const handleCloseBtn = async () => {
     console.log('취소 버튼 확인!')
     navigate('/mypage')
+
+    dispatch(setMyIntroductionState(false))
   }
 
   return (

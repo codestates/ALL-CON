@@ -13,6 +13,7 @@ import MyDropDown from './components/Modals/MyPage/MyDropDown';
 import PrivacyModal from './components/Modals/PrivacyModal';
 import PhoneConfirmNumberModal from './components/Modals/MyPage/PhoneConfirmNumberModal';
 import ResetPasswordModal from './components/Modals/ResetPasswordModal';
+import SuccessModal from './components/Modals/SuccessModal';
 import SignUpModal from './components/Modals/SignUpModal';
 import SideMenuModal from './components/Modals/SideMenuModal';
 import TosModal from './components/Modals/TosModal';
@@ -43,6 +44,7 @@ function App() {
     phoneConfirmNumberModal,
     resetPasswordModal,
     alertModal,
+    successModal,
     concertModal,
     sideMenuModal,
     myDropDown,
@@ -59,6 +61,7 @@ function App() {
       {privacyModal && <PrivacyModal />}
       {sideMenuModal && <SideMenuModal />}
       {alertModal && <AlertModal />}
+      {successModal && <SuccessModal />}
       {findPasswordModal && <FindPasswordModal />}
       {myDropDown && <MyDropDown />}
       {confirmNumberModal && <ConfirmNumberModal />}

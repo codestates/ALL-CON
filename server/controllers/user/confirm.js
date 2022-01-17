@@ -5,9 +5,6 @@ const { Users } = require('../../models');
 module.exports = {
   post: async (req, res) => {
     try {
-
-      console.log('--- 인증번호 확인 버튼 API ************--- ')
-
       // 로그인 인증 검사
       const userInfo = await userAuth(req, res);
       

@@ -22,14 +22,7 @@ module.exports = {
   patch: async (req, res) => {
     try {
       // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
-
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
-      /* 임시 TEST CODE (삭제예정) */
+      const userInfo = await userAuth(req, res);
 
       const { articleid } = req.params;
       const { title, content, image, member_count, total_member } = req.body;
@@ -39,7 +32,7 @@ module.exports = {
       
       if(!articleInfo) return res.status(401).json({ message: 'Bad Request!' });
       // 본인 게시글 외 수정 불가
-      if(articleInfo.user_id !== userInfo.id) return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
+      if(articleInfo.user_id !== userInfo.dataValues.id) return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
       
       // 클라이언트로부터 전달받은 정보로 게시물 데이터를 변경한다
       articleInfo.update({ 
@@ -58,14 +51,7 @@ module.exports = {
   delete: async (req, res) => {
     try {
       // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
-
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
-      /* 임시 TEST CODE (삭제예정) */
+      const userInfo = await userAuth(req, res);
 
       const { articleid } = req.params;
 
@@ -74,7 +60,7 @@ module.exports = {
 
       if(!articleInfo) return res.status(401).json({ message: 'Bad Request!' });
       // 본인 게시글 외 수정 불가
-      if(articleInfo.user_id !== userInfo.id) return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
+      if(articleInfo.user_id !== userInfo.dataValues.id) return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
 
       articleInfo.destroy();
       res.status(200).json({ message: 'Success Delete Article!' });
