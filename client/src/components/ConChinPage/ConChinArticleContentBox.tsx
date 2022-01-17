@@ -59,9 +59,7 @@ function ConChinArticleContentBox() {
       dispatch(showAlertModal(true));
       deleteArticle();
       getAllArticles();
-      dispatch(setTarget({}));
       dispatch(setTargetArticle({}));
-      dispatch(setArticleCurPage(1));
     } else {
       console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
     }
@@ -94,7 +92,7 @@ function ConChinArticleContentBox() {
       if (response.data) {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
-        dispatch(setArticleCurPage(1));
+        // dispatch(setArticleCurPage(1));
       } else {
         console.log('없거나 실수로 못가져왔어요.');
       }

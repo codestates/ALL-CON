@@ -5,7 +5,6 @@ import {
   setArticleOrder,
   setAllArticles,
   setArticleTotalPage,
-  setTargetArticle,
   setArticleCurPage,
   setArticleRendered,
 } from '../../store/ConChinSlice';
@@ -80,7 +79,6 @@ function ConChinArticleOrderBox() {
   const setArticleOrderAndGetAllArticles = (hotOrView: string) => {
     dispatch(setArticleOrder(hotOrView));
     console.log('ConChinArticleOrderBox=> 현재정렬은 ' + hotOrView);
-    getAllArticles();
   };
 
   useEffect(() => {

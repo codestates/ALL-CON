@@ -11,7 +11,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
-import { setTargetArticle } from '../../store/ConChinSlice';
+import {
+  setTargetArticle,
+  setTargetArticlesUserInfo,
+} from '../../store/ConChinSlice';
 
 function MyArticleBox() {
   const { articleInfo } = useSelector((state: RootState) => state.my);
@@ -37,9 +40,19 @@ function MyArticleBox() {
       { withCredentials: true },
     );
 
+    // 선택한 게시물 작성자 유저정보를 불러온다 */
+
+    const responseUser = await axios.get(
+      `${process.env.REACT_APP_API_URL}/user/other/${user_id}`,
+      { withCredentials: true },
+    );
+
     // 현재 선택한 콘서트 업데이트 (target)
     console.log(responseConcert.data.data);
     dispatch(setTarget(responseConcert.data.data.concertInfo));
+
+    // 현재 선택한 유저정보 업데이트 (target)
+    dispatch(setTargetArticlesUserInfo(responseUser.data.data.userInfo));
 
     // 현재 선택한 게시물 업데이트 (target)
     console.log(responseArticle.data.data);
