@@ -5,16 +5,18 @@ import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
 /* Store import */
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
-import { setTargetArticle } from '../../store/ConChinSlice';
+import {
+  setTargetArticle,
+  setTargetArticlesUserInfo,
+} from '../../store/ConChinSlice';
 import MyArticlePagination from './MyArticlePagination';
 /* Library import */
 import axios from 'axios';
 import { RootState } from '../../index';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function MyArticleBox() {
-
   /* dispatch / navigate */
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,10 +27,14 @@ function MyArticleBox() {
   /* 지역상태 - useState */
 
   /* useEffect */
-  
+
   /* handler 함수 (기능별 정렬) */
   // 마이페이지 - 나의 게시물 중 한 게시물을 선택하면, 다음이 실행된다
-  const handleArticleSelected = async (id: number, concert_id: number, user_id: number) => {
+  const handleArticleSelected = async (
+    id: number,
+    concert_id: number,
+    user_id: number,
+  ) => {
     // 선택한 게시물에 해당하는 콘서트에 대한 정보를 불러온다
     const responseConcert = await axios.get(
       `${process.env.REACT_APP_API_URL}/concert/${concert_id}`,
@@ -41,8 +47,19 @@ function MyArticleBox() {
       { withCredentials: true },
     );
 
+    // 선택한 게시물 작성자 유저정보를 불러온다 */
+
+    const responseUser = await axios.get(
+      `${process.env.REACT_APP_API_URL}/user/other/${user_id}`,
+      { withCredentials: true },
+    );
+
     // 현재 선택한 콘서트 업데이트 (target)
     dispatch(setTarget(responseConcert.data.data.concertInfo));
+
+    // 현재 선택한 유저정보 업데이트 (target)
+    dispatch(setTargetArticlesUserInfo(responseUser.data.data.userInfo));
+
     // 현재 선택한 게시물 업데이트 (target)
     dispatch(setTargetArticle(responseArticle.data.data.articleInfo));
     navigate('/conchin');

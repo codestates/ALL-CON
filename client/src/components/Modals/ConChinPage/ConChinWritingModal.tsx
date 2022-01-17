@@ -152,7 +152,6 @@ function ConChinWritingModal() {
     getAllArticles();
     dispatch(showConChinWritingModal(false));
     // 주의: 글 작성 성공 알림 모달 필요함!
-
     // 게시글 작성 모달도 닫는다
   };
 

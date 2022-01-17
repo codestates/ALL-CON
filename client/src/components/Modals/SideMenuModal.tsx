@@ -19,10 +19,10 @@ function SideMenuModal() {
 
   /* 타겟 초기화 핸들러 */
   const resetTarget = () => {
-    // dispatch(setTarget({}));
-    // dispatch(setTargetArticle({}));
-    // dispatch(setArticleRendered(false));
-    // dispatch(setArticleCurPage(1));
+    dispatch(setTarget({}));
+    dispatch(setTargetArticle({}));
+    dispatch(setArticleRendered(false));
+    dispatch(setArticleCurPage(1));
   };
   return (
     <div id='sideMenuModal'>

@@ -51,6 +51,14 @@ a {
     #bottomLineOrderBoxChosen {
       width: 93%;
       height: 35%; } }
+  #bottomLineOrderBox #refreshBtnWrapper, #bottomLineOrderBoxChosen #refreshBtnWrapper {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1%;
+    cursor: pointer; }
+    #bottomLineOrderBox #refreshBtnWrapper .refreshBtn, #bottomLineOrderBoxChosen #refreshBtnWrapper .refreshBtn {
+      width: 100%;
+      height: 100%; }
 
 #noLineOrderBox {
   position: relative;
@@ -2771,7 +2779,8 @@ a {
         height: 33.33%; } }
     @media (min-width: 1200px) {
       #myPageContainer #myCommentWrapper {
-        height: 25%; } }
+        height: 25%;
+        top: 85%; } }
   #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;

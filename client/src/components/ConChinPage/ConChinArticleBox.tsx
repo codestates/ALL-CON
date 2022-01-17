@@ -52,6 +52,7 @@ function ConChinArticleBox() {
       );
       if (response.data) {
         dispatch(setTargetArticle(response.data.data.articleInfo));
+        console.log(response.data.data.articleInfo);
       }
     } catch (err) {
       console.log(err);
@@ -108,11 +109,9 @@ function ConChinArticleBox() {
   };
 
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
-  // useEffect(() => {
-  //   getTargetArticlesInfo();
-  //   getTargetArticlesConcert();
-  //   getTargetArticlesUserInfo();
-  // }, [targetArticle]);
+  useEffect(() => {
+    getAllArticles();
+  }, [targetArticle]);
 
   return (
     <div id='conChinArticleBox'>
