@@ -3,9 +3,12 @@ import defaultImg from '../../../images/default_image.jpg';
 /* Store import */
 import { RootState } from '../../../index';
 import { showConChinWritingModal } from '../../../store/ModalSlice';
+import { setTarget } from '../../../store/MainSlice';
 import {
   setAllArticles,
   setArticleTotalPage,
+  setTargetArticle,
+  setArticleCurPage,
 } from '../../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -115,6 +118,7 @@ function ConChinWritingModal() {
           if (response.data) {
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
+            dispatch(setArticleCurPage(1));
             console.log('allArticles: ');
             console.log(allArticles);
           } else {
@@ -167,14 +171,25 @@ function ConChinWritingModal() {
     );
     alert('글 수정 성공! 😖');
     console.log(response.data);
-    getAllArticles();
-    console.log('ConChinWritingModal=> target.id:');
-    console.log(target.id);
-    console.log('ConChinWritingModal=> targetArticle.id:');
-    console.log(targetArticle.id);
+    getTargetArticlesInfo();
     dispatch(showConChinWritingModal(false));
     // 주의: 글 수정 성공 알림 모달 필요함!
     // 게시글 수정 모달도 닫는다
+  };
+
+  /* 게시물 정보 조회 핸들러 */
+  const getTargetArticlesInfo = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setTargetArticle(response.data.data.articleInfo));
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

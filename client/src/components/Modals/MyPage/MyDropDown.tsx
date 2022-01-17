@@ -3,19 +3,23 @@ import { RootState } from '../../../index';
 import { setScrollCount } from '../../../store/HeaderSlice';
 import { showMyDropDown } from '../../../store/ModalSlice';
 import { setTarget } from '../../../store/MainSlice';
-import { setTargetArticle } from '../../../store/ConChinSlice';
+import {
+  setTargetArticle,
+  setArticleRendered,
+  setArticleCurPage,
+} from '../../../store/ConChinSlice';
 import { logout } from '../../../store/AuthSlice';
-import { 
-  setMyIntroductionState, 
+import {
+  setMyIntroductionState,
   getCommentBtnType,
-  getArticleInfo, 
-  getMyArticleTotalPage, 
-  getMyConcertCommentTotalPage, 
-  getMyConcertCommentInfo, 
-  getMyTotalConcertComment, 
-  getMyArticleCommentInfo, 
-  getMyArticleCommentTotalPage, 
-  getMyTotalArticleComment 
+  getArticleInfo,
+  getMyArticleTotalPage,
+  getMyConcertCommentTotalPage,
+  getMyConcertCommentInfo,
+  getMyTotalConcertComment,
+  getMyArticleCommentInfo,
+  getMyArticleCommentTotalPage,
+  getMyTotalArticleComment,
 } from '../../../store/MySlice';
 /* Library import */
 import axios from 'axios';
@@ -27,7 +31,9 @@ function MyDropDown() {
   const navigate = useNavigate();
   const { scrollCount } = useSelector((state: RootState) => state.header);
   const { target } = useSelector((state: RootState) => state.main);
-  const { articleInfo, concertCommentInfo } = useSelector((state: RootState) => state.my);
+  const { articleInfo, concertCommentInfo } = useSelector(
+    (state: RootState) => state.my,
+  );
 
   /* 로그아웃 핸들러 */
   const logoutHandler = async () => {
@@ -41,27 +47,27 @@ function MyDropDown() {
       dispatch(logout());
       navigate('/main');
       dispatch(setScrollCount(0));
-      dispatch(setTarget({}));
-      // console.log(target);
+      resetTarget();
+      console.log(target);
     } catch (err) {
       console.log(err);
     }
   };
 
+  /* 이동 시 타겟 초기화 핸들러 */
   const resetTarget = async () => {
+    /* ConChinPage */
     dispatch(setTarget({}));
     dispatch(setTargetArticle({}));
-    // console.log(target);
-
-    /* 마이페이지 - 자기소개 상태 관리 테스트 */
-    dispatch(setMyIntroductionState(false));
-    /* 마이페이지 - 자기소개 상태 관리 테스트 */
-
+    dispatch(setArticleRendered(false));
+    dispatch(setArticleCurPage(1));
+    console.log(target);
+    console.log('---- 드랍다운 마이페이지 클릭 #1');
     /* 내가 쓴 게시물 axios 테스트 */
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=1`,
       { withCredentials: true },
-      );
+    );
 
     dispatch(getArticleInfo(response.data.data));
     dispatch(getMyArticleTotalPage(response.data.data.totalPage));
@@ -71,11 +77,19 @@ function MyDropDown() {
     const responseMyConcertComment = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
       { withCredentials: true },
-      );
-    
-    dispatch(getMyConcertCommentInfo(responseMyConcertComment.data.data))
-    dispatch(getMyConcertCommentTotalPage(responseMyConcertComment.data.data.totalPage))
-    dispatch(getMyTotalConcertComment(responseMyConcertComment.data.data.totalConcertComment))
+    );
+
+    dispatch(getMyConcertCommentInfo(responseMyConcertComment.data.data));
+    dispatch(
+      getMyConcertCommentTotalPage(
+        responseMyConcertComment.data.data.totalPage,
+      ),
+    );
+    dispatch(
+      getMyTotalConcertComment(
+        responseMyConcertComment.data.data.totalConcertComment,
+      ),
+    );
 
     /* 내가 쓴 댓글(콘서트 게시물) axios 테스트 */
 
@@ -83,14 +97,25 @@ function MyDropDown() {
     const responseMyArticleComment = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
       { withCredentials: true },
-      );
+    );
 
-    console.log('---------------------***************^^^^^^^^^^^^^^^:', responseMyArticleComment.data.data)
-    
-    dispatch(getMyArticleCommentInfo(responseMyArticleComment.data.data))
-    dispatch(getMyArticleCommentTotalPage(responseMyArticleComment.data.data.totalPage))
-    dispatch(getMyTotalArticleComment(responseMyArticleComment.data.data.totalArticleComment))
-    dispatch(getCommentBtnType('콘서트'))
+    console.log(
+      '---------------------***************^^^^^^^^^^^^^^^:',
+      responseMyArticleComment.data.data,
+    );
+
+    dispatch(getMyArticleCommentInfo(responseMyArticleComment.data.data));
+    dispatch(
+      getMyArticleCommentTotalPage(
+        responseMyArticleComment.data.data.totalPage,
+      ),
+    );
+    dispatch(
+      getMyTotalArticleComment(
+        responseMyArticleComment.data.data.totalArticleComment,
+      ),
+    );
+    dispatch(getCommentBtnType('콘서트'));
 
     /* 내가 쓴 댓글(콘친 게시물) axios 테스트 */
   };
