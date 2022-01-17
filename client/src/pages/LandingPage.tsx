@@ -5,8 +5,43 @@ import img3 from '../images/landingImage3.png';
 import jiyoung from '../images/jiyoung.jpg';
 import Footer from '../components/Footer';
 import LandingPosterSlide from '../components/LandingPosterSlide';
+/* Store import */
+import { RootState } from '../index';
+import { setAllConcerts, setTargetIdx, setTarget } from '../store/MainSlice'
+/* Library import */
+import axios, { AxiosError } from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 function LandingPage() {
+  const dispatch = useDispatch();
+  const { targetIdx, allConcerts } = useSelector(
+    (state: RootState, ) => state.main, 
+  );
+
+  /* 1회만 렌더링 */
+  useEffect(() => {
+    getAllConcerts();
+  }, []);
+
+  /*전체 콘서트 받아오기(1회) */
+  const getAllConcerts = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert?order=view`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        /* 서버 응답값이 있다면 & target 상태 변경 */
+        dispatch(setAllConcerts(response.data.data.concertInfo));
+        dispatch(setTargetIdx(0));
+        dispatch(setTarget(allConcerts[targetIdx]));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div id='landingContainer'>
       {/*점보트론 */}

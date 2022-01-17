@@ -20,9 +20,8 @@ function ConChinPostingBox() {
   const { postingOrder } = useSelector((state: RootState) => state.conChin);
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles, articleRendered } = useSelector(
-    (state: RootState) => state.conChin,
-  );
+  const { articleOrder, allArticles, articleRendered, targetArticle } =
+    useSelector((state: RootState) => state.conChin);
 
   /* 조건부 게시물 받아오기 */
   const getAllArticlesWithCondition = async () => {
@@ -51,9 +50,20 @@ function ConChinPostingBox() {
         }
       } else {
         console.log('true인데 누르셨네요?');
-        getAllArticles();
-        dispatch(setArticleRendered(false));
-        // resetTarget();
+        if (
+          Object.keys(target).length > 0 &&
+          Object.keys(targetArticle).length === 0
+        ) {
+          resetAllTarget();
+        } else if (
+          Object.keys(target).length > 0 &&
+          Object.keys(targetArticle).length > 0
+        ) {
+          console.log('이제 reset안됩니다.');
+        } else if (Object.keys(target).length > 0 && allArticles.length === 0) {
+          console.log('들어오긴 함?');
+          resetAllTarget();
+        }
       }
     } catch (err) {
       console.log(err);
@@ -90,12 +100,12 @@ function ConChinPostingBox() {
     dispatch(setTarget(concert));
     getAllArticlesWithCondition();
   }
-  /* 타겟 초기화 핸들러 */
-  // const resetTarget = () => {
-  //   dispatch(setTarget({}));
-  //   dispatch(setTargetArticle({}));
-  //   dispatch(setArticleRendered(false));
-  // };
+  /* target,targetArticle 전체 초기화 핸들러 */
+  const resetAllTarget = () => {
+    dispatch(setTarget({}));
+    dispatch(setTargetArticle({}));
+    dispatch(setArticleRendered(false));
+  };
 
   /* useEffect: 타겟이 변경될 때마다 게시물 렌더링 */
   useEffect(() => {

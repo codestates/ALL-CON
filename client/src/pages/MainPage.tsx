@@ -18,24 +18,23 @@ import { showAlertModal, insertAlertText } from '../store/ModalSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
-  let { isRendering, order, target, detail, targetIdx, allConcerts } =
-    useSelector((state: RootState) => state.main);
+  const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
+    (state: RootState) => state.main,
+  );
 
+  /* order가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {
-    getAllConcerts();
-    if (isRendering) {
-      dispatch(setTargetIdx(0));
-      dispatch(setTarget(allConcerts[targetIdx]));
-      getDetailInfo();
-    }
+    getAllConcerts(); // 전체 콘서트 목록
+    getDetailInfo(); // 상세 콘서트 정보
   }, [isRendering]);
 
+  /* targetIdx가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {
-    getDetailInfo();
+    getDetailInfo(); // 상세 콘서트 정보
   }, [targetIdx]);
 
   /*전체 콘서트 받아오기 */
@@ -67,6 +66,7 @@ function MainPage() {
           { withCredentials: true },
         );
         if (res.data.data) {
+          /* 서버 응답값이 있다면 detail(상세정보) 갱신 */
           dispatch(setDetail(res.data.data.concertInfo));
         }
       }

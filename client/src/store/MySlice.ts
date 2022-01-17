@@ -41,6 +41,7 @@ export interface my {
     updatedAt?: Date;
   }
   articleCommentInfo: {
+    Article?: object,
     id?: number;
     content?: string;
     user_id?: number;

@@ -187,8 +187,6 @@ function Header() {
     dispatch(setArticleRendered(false));
     dispatch(setArticleCurPage(1));
     getAllArticles();
-    /* MainPage */
-    dispatch(setTargetIdx(0));
     /* ConcertPage */
     dispatch(showConcertModal(false));
   };

@@ -64,6 +64,45 @@
     }
     // border: 2px solid red;
   }
+  #myCountWrapper {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    bottom: 100%;
+    align-items: center;
+    // border: 3px solid blue;
+  }
+  .myOrder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    left: 74.2%;
+    margin-right: 0.5%;
+    font-weight: bold;
+    @include mobile-only() {
+      width: 19%;
+      height: 50%;
+      font-size: 1.6rem;
+    }
+    @include md() {
+      width: 12%;
+      height: 50%;
+      font-size: 1.8rem;
+    }
+    @include lg() {
+      width: 9%;
+      height: 50%;
+      font-size: 2.0rem;
+    }
+    &:hover {
+      background-color: #ffce63;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s all;
+    }
+  }
   #paginationWrapper {
     position: absolute;
     display: flex;
@@ -84,5 +123,5 @@
       height: 45%;
     }
     // border: 3px solid green;
-  }
+  }  
 }

@@ -12,7 +12,7 @@ import { RootState } from '../../index';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
-import { getUserInfo, getYearList, getMonthList, getDateList } from '../../store/AuthSlice';
+import { getYearList, getMonthList, getDateList } from '../../store/AuthSlice';
 import { setMyIntroductionState, getMyIntroduction } from '../../store/MySlice';
 /* Library import */
 
@@ -24,7 +24,7 @@ function MyProfileBox() {
   
   /* useSelector */
   const { userInfo, yearList, monthList, dateList } = useSelector((state: RootState) => state.auth);
-  const { myIntroductionState, myIntroduction } = useSelector((state: RootState) => state.my);
+  const { myIntroductionState } = useSelector((state: RootState) => state.my);
   
   /* 지역상태 - useState */
   // 프로필 수정 버튼 모니터링 상태
@@ -113,9 +113,9 @@ function MyProfileBox() {
   const handleAccountDeleteBackground = async () => {
     setResignMembership(false)
   }
-
+  
+  // 자기소개 글을 수정할 경우
   const inputIntroduction = async (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-
     dispatch(getMyIntroduction(e.target.value))
   }
 

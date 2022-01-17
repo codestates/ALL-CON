@@ -96,7 +96,7 @@ function MainConcertInfo() {
   //   }
   // };
 
-  const handleOpenDate = (opendate: Date): any => {
+  const handleOpenDate = (opendate?: Date): any => {
     const day = String(opendate);
     const setDay =
       day.substr(0, 4) +
@@ -294,7 +294,7 @@ function MainConcertInfo() {
             <button id='black-btn'>
               <div id='imgAndOpen'>
                 <img src={smsClick || emailClick ? bellOn : bellOff} />
-                <p id='open'>티켓 오픈일 &nbsp; {openDate}</p>
+                <p id='open'>티켓 오픈일 &nbsp; {detail.open_date}</p>
               </div>
             </button>
           )}
