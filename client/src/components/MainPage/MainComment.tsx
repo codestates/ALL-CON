@@ -4,7 +4,10 @@ import tripleDot from '../../images/tripleDot.png';
 /* Store import */
 import { RootState } from '../../index';
 import { showAlertModal, insertAlertText } from '../../store/ModalSlice';
-import { setPageAllComments, setTotalNum } from '../../store/ConcertCommentSlice';
+import {
+  setPageAllComments,
+  setTotalNum,
+} from '../../store/ConcertCommentSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import { useState, useEffect } from 'react';
@@ -14,12 +17,14 @@ function MainComment() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { target, targetIdx } = useSelector((state: RootState) => state.main);
-  const { pageNum, pageAllComments } = useSelector((state: RootState) => state.concertComments);
+  const { pageNum, pageAllComments } = useSelector(
+    (state: RootState) => state.concertComments,
+  );
   /* 댓글 인풋 && 버튼 클릭 상태 */
-  const [ inputComment, setInputComment ] = useState<string>('');
-  const [ isClick, setIsClick ] = useState<boolean>(false);
+  const [inputComment, setInputComment] = useState<string>('');
+  const [isClick, setIsClick] = useState<boolean>(false);
 
-  console.log('렌더링 횟수 체크')
+  // console.log('렌더링 횟수 체크')
 
   useEffect(() => {
     getAllComments();
@@ -71,48 +76,66 @@ function MainComment() {
         dispatch(setTotalNum(response.data.data.totalPage));
         dispatch(setPageAllComments(response.data.data.concertCommentInfo));
       }
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   return (
     <div id='commentBox'>
       {/* 로그인시 보일 댓글 작성 영역 */}
-      {isLogin && <div className='writeBox'>
-        <div className='nicknameBox'>
-          <p className='nickName'>{isLogin ? userInfo.username+' 님' : '로그인이 필요합니다.'}</p>
-        </div>
-        <div className='commentBodyBox'>
-          <div className='imgWrapper'>
-            {isLogin && <img className='img' src={userInfo.image} alt='프로필 사진' />}
-            {isLogin && userInfo.role!==3 && <img className='shield' src={shield} alt='인증 뱃지' />}
+      {isLogin && (
+        <div className='writeBox'>
+          <div className='nicknameBox'>
+            <p className='nickName'>
+              {isLogin ? userInfo.username + ' 님' : '로그인이 필요합니다.'}
+            </p>
           </div>
-          <div className='bodyWrapper'>
-            <textarea id='input' placeholder='댓글을 입력해주세요.' onChange={inputChangeHandler}></textarea>
-            <div id='inputBtn' onClick={commentBtnHandler}>작성하기</div> 
+          <div className='commentBodyBox'>
+            <div className='imgWrapper'>
+              {isLogin && (
+                <img className='img' src={userInfo.image} alt='프로필 사진' />
+              )}
+              {isLogin && userInfo.role !== 3 && (
+                <img className='shield' src={shield} alt='인증 뱃지' />
+              )}
+            </div>
+            <div className='bodyWrapper'>
+              <textarea
+                id='input'
+                placeholder='댓글을 입력해주세요.'
+                onChange={inputChangeHandler}
+              ></textarea>
+              <div id='inputBtn' onClick={commentBtnHandler}>
+                작성하기
+              </div>
+            </div>
           </div>
         </div>
-      </div>}
+      )}
 
       {/* 댓글 목록 map */}
-      {pageAllComments.map((comment)=>(
+      {pageAllComments.map(comment => (
         <div className='box'>
           <div className='dateBox'>
-            <p className='nickNameAndDate'>{comment.User.username} | {comment.createdAt.substring(0,10)}</p>
+            <p className='nickNameAndDate'>
+              {comment.User.username} | {comment.createdAt.substring(0, 10)}
+            </p>
             <div className='dotWrapper'>
-              {userInfo.id === comment.user_id && <img className='dot' src={tripleDot} alt='메뉴 아이콘' />}
+              {userInfo.id === comment.user_id && (
+                <img className='dot' src={tripleDot} alt='메뉴 아이콘' />
+              )}
             </div>
           </div>
           <div id='imgAndText'>
             <div className='imgWrapper'>
               <img className='img' src={comment.User.image} alt='프로필 사진' />
-              {comment.User.role!==3 && <img className='shield' src={shield} alt='인증 뱃지' />}
+              {comment.User.role !== 3 && (
+                <img className='shield' src={shield} alt='인증 뱃지' />
+              )}
             </div>
             <p id='text'>{comment.content}</p>
           </div>
         </div>
       ))}
-      
     </div>
   );
 }

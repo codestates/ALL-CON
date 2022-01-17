@@ -5,7 +5,6 @@ import right from '../images/right_arrow.png';
 /* Store import */
 import { RootState } from '../index';
 import {
-  setOrder,
   setTarget,
   setTargetZero,
   setTargetIdx,
@@ -18,13 +17,12 @@ import {
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Jumbotron() {
   const dispatch = useDispatch();
 
-  const { order } = useSelector((state: RootState) => state.main);
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
   const { targetIdx } = useSelector((state: RootState) => state.main);
@@ -45,9 +43,9 @@ function Jumbotron() {
       if (response.data) {
         //allConcerts 배열에 전체 콘서트 정보를 담음
         dispatch(setAllConcerts(response.data.data.concertInfo));
-        dispatch(setTarget(allConcerts[0])); // target을 0번째 콘서트로 세팅
         //targetIdx의 인덱스 세팅
         dispatch(setTargetIdx(0));
+        dispatch(setTarget(allConcerts[0])); // target을 0번째 콘서트로 세팅
         updateFiveConcertsRight();
       }
     } catch (err) {
@@ -68,34 +66,34 @@ function Jumbotron() {
       dispatch(setThirdConcert(allConcerts[targetIdx]));
       dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
       dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
+      console.log('targetIdx', targetIdx);
     } else if (targetIdx === 1) {
       /*targetIdx가 1일때 (오른쪽 넘김 +1)*/
-      //firstIdx가 클릭할때마다 1씩 커진다.
       dispatch(setFirstConcert(allConcerts[lastIdx]));
       dispatch(setSecondConcert(allConcerts[targetIdx - 1]));
       dispatch(setThirdConcert(allConcerts[targetIdx]));
       dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
       dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
+      console.log('targetIdx', targetIdx);
     } else {
-      //firstIdx가 클릭할때마다 1씩 커진다.
       dispatch(setFirstConcert(allConcerts[targetIdx - 2]));
       dispatch(setSecondConcert(allConcerts[targetIdx - 1]));
       dispatch(setThirdConcert(allConcerts[targetIdx]));
       dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
       dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
+      console.log('targetIdx', targetIdx);
     }
   };
 
   const updateFiveConcertsLeft = () => {
-    /*targetIdx가 2일때 (처음 상황)*/
-    if (targetIdx === 2) {
+    if (targetIdx === 0) {
       dispatch(setFirstConcert(allConcerts[lastIdx - 1]));
       dispatch(setSecondConcert(allConcerts[lastIdx]));
       dispatch(setThirdConcert(allConcerts[targetIdx]));
       dispatch(setFourthConcert(allConcerts[targetIdx + 1]));
       dispatch(setFifthConcert(allConcerts[targetIdx + 2]));
       console.log('targetIdx', targetIdx);
-    } else if (targetIdx === 3) {
+    } else if (targetIdx === 1) {
       dispatch(setFirstConcert(allConcerts[lastIdx]));
       dispatch(setSecondConcert(allConcerts[targetIdx - 1]));
       dispatch(setThirdConcert(allConcerts[targetIdx]));
@@ -114,38 +112,32 @@ function Jumbotron() {
 
   const onClickHandlerLeft = () => {
     if (targetIdx > 0) {
-      updateFiveConcertsLeft();
-      getTargetPoster();
-      setIsClick(!isClick);
       dispatch(setTargetIdx(targetIdx - 1));
+      updateFiveConcertsLeft();
+      setIsClick(!isClick);
     } else if (targetIdx === 0) {
       updateFiveConcertsLeft();
-      getTargetPoster();
       setIsClick(!isClick);
     } else if (targetIdx === lastIdx) {
-      updateFiveConcertsLeft();
-      getTargetPoster();
-      setIsClick(!isClick);
       dispatch(setTargetIdx(targetIdx - 1));
+      updateFiveConcertsLeft();
+      setIsClick(!isClick);
     }
   };
 
   const onClickHandlerRight = () => {
     if (allConcerts.length > 5 && targetIdx <= lastIdx) {
       if (targetIdx >= 0 && targetIdx !== lastIdx) {
-        updateFiveConcertsRight();
-        getTargetPoster();
-        setIsClick(!isClick);
         dispatch(setTargetIdx(targetIdx + 1));
+        updateFiveConcertsRight();
+        setIsClick(!isClick);
       } else if (targetIdx === lastIdx) {
         updateFiveConcertsRight();
-        getTargetPoster();
         setIsClick(!isClick);
       } else if (targetIdx === -1) {
-        updateFiveConcertsRight();
-        getTargetPoster();
-        setIsClick(!isClick);
         dispatch(setTargetIdx(targetIdx + 1));
+        updateFiveConcertsRight();
+        setIsClick(!isClick);
       }
     }
   };
@@ -227,9 +219,7 @@ function Jumbotron() {
                   ? () => {
                       onClickHandlerLeft();
                     }
-                  : () => {
-                      console.log('처음상태입니다. 왼쪽으로 넘길 수 없어요');
-                    }
+                  : undefined
               }
             ></img>
             <img

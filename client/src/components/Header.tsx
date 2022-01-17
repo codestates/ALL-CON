@@ -181,6 +181,16 @@ function Header() {
     dispatch(showConcertModal(false));
     dispatch(setArticleCurPage(1));
   };
+
+  const resetHandlerMain = () => {
+    // dispatch(logout());
+    // dispatch(setTarget(allConcerts[0]));
+    dispatch(setTargetIdx(0));
+    getAllArticles();
+    dispatch(showConcertModal(false));
+    dispatch(setArticleCurPage(1));
+  };
+
   return (
     /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */
     <div
@@ -231,7 +241,7 @@ function Header() {
           )}
         </div>
         <div id='hiddenMenuBox'>
-          <Link to='/main' onClick={resetHandler}>
+          <Link to='/main' onClick={resetHandlerMain}>
             <p className='menu'>홈</p>
           </Link>
           <Link to='/concert' onClick={resetHandler}>

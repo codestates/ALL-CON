@@ -57,7 +57,7 @@ function PosterSlide() {
               <div className='posterCover2'></div>
             </div>
           ) : (
-            console.log('받아온 이미지가 없습니다')
+            <div></div>
           )}
           {secondConcert ? (
             <div id='posterWrapper2'>
@@ -70,7 +70,7 @@ function PosterSlide() {
               <div className='posterCover'></div>
             </div>
           ) : (
-            console.log('받아온 이미지가 없습니다')
+            <div></div>
           )}
           {thirdConcert ? (
             <div
@@ -87,12 +87,12 @@ function PosterSlide() {
               ></img>
               <div id='alignDay'>
                 <div id='dDay'>
-                  {/* <p>{dayCalculator(target.open_date)}</p> */}
+                  <p>{target ? dayCalculator(target.open_date) : undefined}</p>
                 </div>
               </div>
             </div>
           ) : (
-            console.log('받아온 이미지가 없습니다')
+            <div></div>
           )}
           {fourthConcert ? (
             <div id='posterWrapper4'>
@@ -105,7 +105,7 @@ function PosterSlide() {
               <div className='posterCover'></div>
             </div>
           ) : (
-            console.log('받아온 이미지가 없습니다')
+            <div></div>
           )}
           {fifthConcert ? (
             <div id='posterWrapper5'>
@@ -118,7 +118,7 @@ function PosterSlide() {
               <div className='posterCover2'></div>
             </div>
           ) : (
-            console.log('받아온 이미지가 없습니다')
+            <div></div>
           )}
         </>
       </div>
