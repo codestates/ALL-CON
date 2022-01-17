@@ -54,6 +54,7 @@ a {
   #bottomLineOrderBox #refreshBtnWrapper, #bottomLineOrderBoxChosen #refreshBtnWrapper {
     width: 3rem;
     height: 3rem;
+    margin-right: 1%;
     cursor: pointer; }
     #bottomLineOrderBox #refreshBtnWrapper .refreshBtn, #bottomLineOrderBoxChosen #refreshBtnWrapper .refreshBtn {
       width: 100%;
