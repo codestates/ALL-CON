@@ -7,7 +7,13 @@ import MainFindConchin from '../components/MainPage/MainFindConchin';
 import MainPagination from '../components/MainPage/MainPagination';
 /* Store import */
 import { RootState } from '../index';
-import { setTarget, setTargetIdx, setAllConcerts, setDetail, setIsRendering } from '../store/MainSlice';
+import {
+  setTarget,
+  setTargetIdx,
+  setAllConcerts,
+  setDetail,
+  setIsRendering,
+} from '../store/MainSlice';
 import { showAlertModal, insertAlertText } from '../store/ModalSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
@@ -17,15 +23,15 @@ import { useEffect } from 'react';
 function MainPage() {
   const dispatch = useDispatch();
   const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
-    (state: RootState, ) => state.main, 
+    (state: RootState) => state.main,
   );
-  
+
   /* order가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {
-    getAllConcerts();  // 전체 콘서트 목록
-    getDetailInfo();  // 상세 콘서트 정보
+    getAllConcerts(); // 전체 콘서트 목록
+    getDetailInfo(); // 상세 콘서트 정보
   }, [isRendering]);
-  
+
   /* targetIdx가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {
     getDetailInfo(); // 상세 콘서트 정보
@@ -54,8 +60,7 @@ function MainPage() {
   /* 상세 콘서트 받아오기 */
   const getDetailInfo = async () => {
     try {
-      console.log('함수 진입전 target: ', target);
-      if(target){
+      if (target) {
         const res = await axios.get(
           `${process.env.REACT_APP_API_URL}/concert/${target.id}`,
           { withCredentials: true },
@@ -72,11 +77,27 @@ function MainPage() {
 
   return (
     <div id='mainContainer'>
-      <div id='mainJumboWrapper'><Jumbotron /></div>
-      <div id='mainConcertInfoWrapper'><MainConcertInfo /></div>
-      <div id='mainCommentWrapper'><MainComment /></div>
-      <div id='mainPaginationWrapper'><MainPagination /></div>
-      <div id='mainFindConchinWrapper'><MainFindConchin /></div>
+      <div id='mainJumboWrapper'>
+        <Jumbotron />
+      </div>
+      {isRendering && (
+        <div id='mainConcertInfoWrapper'>
+          <MainConcertInfo />
+        </div>
+      )}
+      {isRendering && (
+        <div id='mainCommentWrapper'>
+          <MainComment />
+        </div>
+      )}
+      {isRendering && (
+        <div id='mainPaginationWrapper'>
+          <MainPagination />
+        </div>
+      )}
+      <div id='mainFindConchinWrapper'>
+        <MainFindConchin />
+      </div>
       <div id='fullFooter'>
         <div id='mainFooterWrapper'>
           <Footer />
