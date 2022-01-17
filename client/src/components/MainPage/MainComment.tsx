@@ -21,7 +21,7 @@ import { useSelector, useDispatch } from 'react-redux';
 function MainComment() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { order, target, targetIdx } = useSelector(
+  const { detail } = useSelector(
     (state: RootState) => state.main,
   );
   const { pageNum, pageAllComments, comment } = useSelector(
@@ -36,7 +36,7 @@ function MainComment() {
 
   useEffect(() => {
     getAllComments();
-  }, [target.id, isClick, pageNum]);
+  }, [detail, isClick, pageNum]);
 
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -49,7 +49,7 @@ function MainComment() {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment`,
+        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/comment`,
         { content: inputComment },
         { withCredentials: true },
       );
@@ -77,7 +77,7 @@ function MainComment() {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.patch(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment/${comment.id}`,
+        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/comment/${comment.id}`,
         { content: editComment },
         { withCredentials: true },
       );
@@ -107,7 +107,7 @@ function MainComment() {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.delete(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment/${comment.id}`,
+        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/comment/${comment.id}`,
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 삭제 성공 */
@@ -120,12 +120,13 @@ function MainComment() {
       }
     } catch (err) {
       const error = err as AxiosError;
-      if (error.response?.status === 400)
+      if (error.response?.status === 400){
         dispatch(insertAlertText('잘못된 요청입니다! 😖'));
-      else if (error.response?.status === 401)
+        dispatch(showAlertModal(true));
+      } else if (error.response?.status === 401){
         dispatch(insertAlertText('댓글 삭제 권한이 없습니다! 😖'));
-      else dispatch(insertAlertText('Server Error! 😖'));
-      dispatch(showAlertModal(true));
+        dispatch(showAlertModal(true));
+      }
     }
   };
 
@@ -134,7 +135,7 @@ function MainComment() {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment?pageNum=${pageNum}`,
+        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/comment?pageNum=${pageNum}`,
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
@@ -205,7 +206,11 @@ function MainComment() {
               {userInfo.id === el.user_id && (
                 <div
                   className='optionBtn'
-                  onClick={() => {
+                  onMouseDown={() => {
+                    dispatch(setComment(el));
+                    commentDelHandler();
+                  }}
+                  onMouseUp={() => {
                     dispatch(setComment(el));
                     commentDelHandler();
                   }}
