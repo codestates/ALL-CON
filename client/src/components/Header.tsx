@@ -182,11 +182,11 @@ function Header() {
   /* 메뉴 이동시 상태 초기화 핸들러 */
   const resetHandler = () => {
     /* ConChinPage */
-    // dispatch(setTarget({}));
-    // dispatch(setTargetArticle({}));
-    // dispatch(setArticleRendered(false));
-    // dispatch(setArticleCurPage(1));
-    // getAllArticles();
+    dispatch(setTarget({}));
+    dispatch(setTargetArticle({}));
+    dispatch(setArticleRendered(false));
+    dispatch(setArticleCurPage(1));
+    getAllArticles();
     /* MainPage */
     dispatch(setTargetIdx(0));
     /* ConcertPage */

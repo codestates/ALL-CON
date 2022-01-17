@@ -10,6 +10,13 @@ import returnImg from '../../images/return.png';
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget } from '../../store/MainSlice';
+import {
+  showAlertModal,
+  insertAlertText,
+  insertBtnText,
+  showSuccessModal,
+  showLoginModal,
+} from '../../store/ModalSlice';
 /* Library import */
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -22,10 +29,14 @@ function MainConcertInfo() {
   const { order, targetIdx, target } = useSelector(
     (state: RootState) => state.main,
   );
+  const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
 
   const [alarmType, setAlarmType] = useState('');
   const [emailClick, setEmailClick] = useState(false);
   const [smsClick, setSmsClick] = useState(false);
+  const [openDate, setOpenDate] = useState('');
+
+  //유저가 각 콘서트 (target)별로 email,sms알람을 받는지 확인
 
   useEffect(() => {
     getPosterInfo();
@@ -39,12 +50,13 @@ function MainConcertInfo() {
       );
       if (res.data.data) {
         dispatch(setTarget(res.data.data.concertInfo));
+        handleOpenDate(target.open_date!);
       }
     } catch (err) {
       console.log(err);
     }
   };
-  // console.log(target);
+
   const getAlarm = async () => {
     try {
       console.log('알람타입>>>', alarmType);
@@ -53,13 +65,34 @@ function MainConcertInfo() {
         {},
         { withCredentials: true },
       );
-      if (res.data) {
-        console.log(res.data);
-        console.log('알람 나와라아아');
+      if (res.data.data.alarmInfo) {
+        console.log(res.data.data.alarmInfo);
+        if (res.data.data.alarmInfo.email_alarm === true) {
+          setEmailClick(true);
+        }
+        if (res.data.data.alarmInfo.phone_alarm === true) {
+          setSmsClick(true);
+        }
       }
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const handleOpenDate = (opendate: Date): any => {
+    const day = String(opendate);
+    const setDay =
+      day.substr(0, 4) +
+      '년' +
+      day.substr(5, 2) +
+      '월' +
+      day.substr(8, 2) +
+      '일' +
+      day.substr(11, 2) +
+      '시' +
+      day.substr(14, 2) +
+      '분';
+    setOpenDate(setDay);
   };
 
   const cancelAlarm = async () => {
@@ -76,6 +109,49 @@ function MainConcertInfo() {
     }
   };
 
+  const emailClickHandler = () => {
+    if (isLogin === false) {
+      alert('로그인 먼저 해주세요! 😖');
+      dispatch(showLoginModal(true));
+    } else {
+      setAlarmType('email');
+      getAlarm(); //emailClick 상태도 true로 바꿔줌
+      console.log('emailClick상태', emailClick);
+      if (emailClick) {
+        dispatch(
+          insertAlertText(`${target.title} 이메일 알림이 설정되었습니다! 🙂`),
+        );
+        dispatch(insertBtnText('확인'));
+        dispatch(showSuccessModal(true));
+      }
+    }
+  };
+
+  const smsClickHandler = () => {
+    if (isLogin === false) {
+      dispatch(showAlertModal(true));
+      dispatch(insertAlertText('로그인 먼저 해주세요! 😖'));
+    } else {
+      //로그인을 했는데 콘친인증 안한 경우(핸드폰 번호x)
+      //관리자 role=1 콘친인증 유저 role=2 콘친 인증안된 유저 role=3
+      if (userInfo.role === 3) alert('콘친 인증을 해주세요! 😖');
+      else {
+        setAlarmType('phone');
+        getAlarm();
+        console.log('smsClick의 상태', smsClick);
+        if (smsClick) {
+          dispatch(
+            insertAlertText(
+              `${target.title} 문자 메시지 알림이 설정되었습니다! 🙂`,
+            ),
+          );
+          dispatch(insertBtnText('확인'));
+          dispatch(showSuccessModal(true));
+        }
+      }
+    }
+  };
+  console.log(target);
   return (
     <div id='mainConcertInfoBox'>
       <div id='topBox'>
@@ -88,8 +164,16 @@ function MainConcertInfo() {
           />
         </div>
         <div id='fromWhereBox'>
-          <div className='where'>YES24</div>
-          <div className='where'>인터파크</div>
+          {target.exclusive === '인터파크' && (
+            <div className='where'>인터파크</div>
+          )}
+          {target.exclusive === 'YES24' && <div className='where'>YES24</div>}
+          {target.exclusive === '' && (
+            <>
+              <div className='where'>인터파크</div>
+              <div className='where'>YES24</div>
+            </>
+          )}
           <img alt='종' src={bellOff} id='bell'></img>
         </div>
         <div id='titleBox'>
@@ -167,38 +251,20 @@ function MainConcertInfo() {
                 )}
                 <p className='right' id='alarm_r'>
                   <img
-                    src={!emailClick ? emailOff : emailOn}
+                    src={emailClick ? emailOn : emailOff}
                     alt='이메일아이콘'
                     id='mailIcon2'
-                    onClick={
-                      // emailClick
-                      //   ? () => {
-                      //       emailCancelHandler();
-                      //     }
-                      //   : () => {
-                      //       emailClickHandler();
-                      //     }
-                      () => {
-                        // emailClickHandler();
-                      }
-                    }
+                    onClick={() => {
+                      emailClickHandler();
+                    }}
                   ></img>
                   <img
-                    src={!smsClick ? smsOff : smsOn}
+                    src={smsClick ? smsOn : smsOff}
                     alt='문자아이콘'
                     id='kakaoIcon2'
-                    onClick={
-                      //   smsClick
-                      //     ? () => {
-                      //         smsCancelHandler();
-                      //       }
-                      //     : () => {
-                      //         smsClickHandler();
-                      //       }
-                      () => {
-                        // smsClickHandler();
-                      }
-                    }
+                    onClick={() => {
+                      smsClickHandler();
+                    }}
                   ></img>
                 </p>
               </div>
@@ -206,12 +272,14 @@ function MainConcertInfo() {
           </div>
         </div>
         <div id='buttonsWrapper'>
-          <button id='black-btn'>
-            <div id='imgAndOpen'>
-              <img src={smsClick || emailClick ? bellOn : bellOff} />
-              <p id='open'>티켓 오픈일 &nbsp; 11.29(월) 오후 2:00</p>
-            </div>
-          </button>
+          {target.open_date && (
+            <button id='black-btn'>
+              <div id='imgAndOpen'>
+                <img src={smsClick || emailClick ? bellOn : bellOff} />
+                <p id='open'>티켓 오픈일 &nbsp; {openDate}</p>
+              </div>
+            </button>
+          )}
           <a id='yellow-btn' href={target.link}>
             예매하기
           </a>
