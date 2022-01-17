@@ -5,10 +5,10 @@ import right from '../images/right_arrow.png';
 /* Store import */
 import { RootState } from '../index';
 import {
-  setOrder,
   setTarget,
   setTargetIdx,
-  setAllConcerts
+  setAllConcerts,
+  setOrder,
 } from '../store/MainSlice';
 import { showAlertModal, insertAlertText } from '../store/ModalSlice';
 /* Library import */
@@ -18,8 +18,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Jumbotron() {
   const dispatch = useDispatch();
-  const [ isClick, setIsClick ] = useState<boolean>(false);
-  const { target, order, targetIdx, allConcerts } = useSelector((state: RootState) => state.main);
+  const [isClick, setIsClick] = useState<boolean>(false);
+  const { target, order, targetIdx, allConcerts } = useSelector(
+    (state: RootState) => state.main,
+  );
 
   /* 렌더링 useEffect */
   useEffect(() => {
@@ -49,14 +51,14 @@ function Jumbotron() {
   const leftClickHandler = () => {
     if (targetIdx > 0) {
       dispatch(setTargetIdx(targetIdx - 1));
-      dispatch(setTarget(allConcerts[targetIdx-1]));
+      dispatch(setTarget(allConcerts[targetIdx - 1]));
     }
   };
 
   const rigthClickHandler = () => {
-    if (targetIdx < allConcerts.length-1) {
+    if (targetIdx < allConcerts.length - 1) {
       dispatch(setTargetIdx(targetIdx + 1));
-      dispatch(setTarget(allConcerts[targetIdx+1]));
+      dispatch(setTarget(allConcerts[targetIdx + 1]));
     }
   };
 
@@ -65,12 +67,11 @@ function Jumbotron() {
     dispatch(setTarget({}));
     setIsClick(true);
     dispatch(setOrder(clickOrder));
-  }
+  };
 
   return (
     <div id='jumboContainer'>
-      <div id='jumboMiniContainer'>
-      </div>
+      <div id='jumboMiniContainer'></div>
       {/*점보트론 검은배경 전체*/}
       <div className='jumboTopBox'>
         <div id='jumboTextsAlignBox'>
@@ -86,7 +87,7 @@ function Jumbotron() {
             <p
               id={order === 'hot' ? 'hot' : undefined}
               onClick={() => {
-                orderClickHandler('hot')
+                orderClickHandler('hot');
               }}
             >
               HOT
@@ -94,7 +95,7 @@ function Jumbotron() {
             <p
               id={order === 'near' ? 'near' : undefined}
               onClick={() => {
-                orderClickHandler('near')
+                orderClickHandler('near');
               }}
             >
               NEAR
@@ -102,7 +103,7 @@ function Jumbotron() {
             <p
               id={order === 'new' ? 'new' : undefined}
               onClick={() => {
-                orderClickHandler('new')
+                orderClickHandler('new');
               }}
             >
               NEW

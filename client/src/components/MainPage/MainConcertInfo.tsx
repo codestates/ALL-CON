@@ -19,7 +19,9 @@ import { useState, useEffect } from 'react';
 function MainConcertInfo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { order, targetIdx, target } = useSelector((state: RootState) => state.main);
+  const { order, targetIdx, target } = useSelector(
+    (state: RootState) => state.main,
+  );
 
   const [alarmType, setAlarmType] = useState('');
   const [emailClick, setEmailClick] = useState(false);
@@ -42,18 +44,32 @@ function MainConcertInfo() {
       console.log(err);
     }
   };
-
+  // console.log(target);
   const getAlarm = async () => {
     try {
+      console.log('알람타입>>>', alarmType);
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm`,
-        { alarm_type: alarmType },
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${alarmType}`,
+        {},
         { withCredentials: true },
       );
-      if (res.data.data.alarmInfo) {
-        console.log(res.data.data.alarmInfo);
-        setEmailClick(!emailClick);
-        setSmsClick(!smsClick);
+      if (res.data) {
+        console.log(res.data);
+        console.log('알람 나와라아아');
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const cancelAlarm = async () => {
+    try {
+      const res = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${alarmType}`,
+        { withCredentials: true },
+      );
+      if (res.data) {
+        console.log(res.data);
       }
     } catch (err) {
       console.log(err);
@@ -154,19 +170,35 @@ function MainConcertInfo() {
                     src={!emailClick ? emailOff : emailOn}
                     alt='이메일아이콘'
                     id='mailIcon2'
-                    onClick={() => {
-                      setAlarmType('email');
-                      getAlarm();
-                    }}
+                    onClick={
+                      // emailClick
+                      //   ? () => {
+                      //       emailCancelHandler();
+                      //     }
+                      //   : () => {
+                      //       emailClickHandler();
+                      //     }
+                      () => {
+                        // emailClickHandler();
+                      }
+                    }
                   ></img>
                   <img
                     src={!smsClick ? smsOff : smsOn}
                     alt='문자아이콘'
                     id='kakaoIcon2'
-                    onClick={() => {
-                      setAlarmType('phone');
-                      getAlarm();
-                    }}
+                    onClick={
+                      //   smsClick
+                      //     ? () => {
+                      //         smsCancelHandler();
+                      //       }
+                      //     : () => {
+                      //         smsClickHandler();
+                      //       }
+                      () => {
+                        // smsClickHandler();
+                      }
+                    }
                   ></img>
                 </p>
               </div>
@@ -176,7 +208,7 @@ function MainConcertInfo() {
         <div id='buttonsWrapper'>
           <button id='black-btn'>
             <div id='imgAndOpen'>
-              <img src={bellOff} />
+              <img src={smsClick || emailClick ? bellOn : bellOff} />
               <p id='open'>티켓 오픈일 &nbsp; 11.29(월) 오후 2:00</p>
             </div>
           </button>

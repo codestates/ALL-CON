@@ -7,7 +7,9 @@ import { useSelector } from 'react-redux';
 import { useState } from 'react';
 
 function PosterSlide() {
-  const { target, targetIdx, allConcerts } = useSelector((state: RootState) => state.main);
+  const { target, targetIdx, allConcerts } = useSelector(
+    (state: RootState) => state.main,
+  );
 
   /* D-DAY 계산기 */
   const dayCalculator = (openDate?: Date): string => {
@@ -26,27 +28,61 @@ function PosterSlide() {
 
   return (
     <div className='posterContainer'>
-
-      {allConcerts[targetIdx-2] && <div id='posterWrapper1'>
-        <img alt='포스터' src={allConcerts[targetIdx-2].image_concert} className='posterImg' id='poster'/>
-        <div className='posterCover2'></div>
-      </div>}
-      {allConcerts[targetIdx-1] && <div id='posterWrapper2'>
-        <img alt='포스터' src={allConcerts[targetIdx-1].image_concert} className='posterImg' id='poster'/>
-        <div className='posterCover2'></div>
-      </div>}
-      {allConcerts[targetIdx] && <div id='posterWrapper3'>
-        <img alt='포스터' src={allConcerts[targetIdx].image_concert} className='posterImg' id='poster'/>
-        <div className='posterCover2'></div>
-      </div>}
-      {allConcerts[targetIdx+1] && <div id='posterWrapper4'>
-        <img alt='포스터' src={allConcerts[targetIdx+1].image_concert} className='posterImg' id='poster'/>
-        <div className='posterCover2'></div>
-      </div>}
-      {allConcerts[targetIdx+2] && <div id='posterWrapper5'>
-        <img alt='포스터' src={allConcerts[targetIdx+2].image_concert} className='posterImg' id='poster'/>
-        <div className='posterCover2'></div>
-      </div>}
+      {allConcerts[targetIdx - 2] && (
+        <div id='posterWrapper1'>
+          <img
+            alt='포스터'
+            src={allConcerts[targetIdx - 2].image_concert}
+            className='posterImg'
+            id='poster'
+          />
+          <div className='posterCover2'></div>
+        </div>
+      )}
+      {allConcerts[targetIdx - 1] && (
+        <div id='posterWrapper2'>
+          <img
+            alt='포스터'
+            src={allConcerts[targetIdx - 1].image_concert}
+            className='posterImg'
+            id='poster'
+          />
+          <div className='posterCover2'></div>
+        </div>
+      )}
+      {allConcerts[targetIdx] && (
+        <div id='posterWrapper3'>
+          <img
+            alt='포스터'
+            src={allConcerts[targetIdx].image_concert}
+            className='posterImg'
+            id='poster'
+          />
+          <div className='posterCover2'></div>
+        </div>
+      )}
+      {allConcerts[targetIdx + 1] && (
+        <div id='posterWrapper4'>
+          <img
+            alt='포스터'
+            src={allConcerts[targetIdx + 1].image_concert}
+            className='posterImg'
+            id='poster'
+          />
+          <div className='posterCover2'></div>
+        </div>
+      )}
+      {allConcerts[targetIdx + 2] && (
+        <div id='posterWrapper5'>
+          <img
+            alt='포스터'
+            src={allConcerts[targetIdx + 2].image_concert}
+            className='posterImg'
+            id='poster'
+          />
+          <div className='posterCover2'></div>
+        </div>
+      )}
     </div>
   );
 }

@@ -10,7 +10,9 @@ import headerSlice, { header } from './store/HeaderSlice';
 import mainSlice, { main } from './store/MainSlice';
 import mySlice, { my } from './store/MySlice';
 import conChinSlice, { conChin } from './store/ConChinSlice';
-import ConcertCommentSlice, { concertComments } from './store/ConcertCommentSlice';
+import ConcertCommentSlice, {
+  concertComments,
+} from './store/ConcertCommentSlice';
 /* Library import */
 import { BrowserRouter as Router } from 'react-router-dom';
 import { combineReducers } from 'redux';
@@ -37,7 +39,7 @@ const reducers = combineReducers({
   main: mainSlice,
   my: mySlice,
   conChin: conChinSlice,
-  concertComments: ConcertCommentSlice
+  concertComments: ConcertCommentSlice,
 });
 
 /* persist reducer 세팅 (persistConfig가 추가된 reducer) */

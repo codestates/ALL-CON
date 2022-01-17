@@ -2,8 +2,17 @@
 import shield from '../../images/shield.png';
 /* Store import */
 import { RootState } from '../../index';
-import { showAlertModal, insertAlertText, insertBtnText, showSuccessModal } from '../../store/ModalSlice';
-import { setPageAllComments, setTotalNum, setComment } from '../../store/ConcertCommentSlice';
+import {
+  showAlertModal,
+  insertAlertText,
+  insertBtnText,
+  showSuccessModal,
+} from '../../store/ModalSlice';
+import {
+  setPageAllComments,
+  setTotalNum,
+  setComment,
+} from '../../store/ConcertCommentSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import { useState, useEffect } from 'react';
@@ -12,23 +21,26 @@ import { useSelector, useDispatch } from 'react-redux';
 function MainComment() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { order, target, targetIdx } = useSelector((state: RootState) => state.main);
-  const { pageNum, pageAllComments, comment } = useSelector((state: RootState) => state.concertComments);
+  const { order, target, targetIdx } = useSelector(
+    (state: RootState) => state.main,
+  );
+  const { pageNum, pageAllComments, comment } = useSelector(
+    (state: RootState) => state.concertComments,
+  );
   /* 댓글 인풋 && 버튼 클릭 */
-  const [ inputComment, setInputComment ] = useState<string>('');
-  const [ isClick, setIsClick ] = useState<boolean>(false);
+  const [inputComment, setInputComment] = useState<string>('');
+  const [isClick, setIsClick] = useState<boolean>(false);
   /* 특정 댓글 클릭 && 댓글 수정 모드 상태  */
-  const [ clickId, setClickId ] = useState<number>(0);
-  const [ editComment, setEditComment ] = useState<string>('');
+  const [clickId, setClickId] = useState<number>(0);
+  const [editComment, setEditComment] = useState<string>('');
 
   useEffect(() => {
     getAllComments();
   }, [target.id, isClick, pageNum]);
-  
 
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if(clickId > 0) setEditComment(e.target.value);
+    if (clickId > 0) setEditComment(e.target.value);
     else setInputComment(e.target.value);
   };
 
@@ -91,7 +103,7 @@ function MainComment() {
 
   /* 댓글 삭제 핸들러 */
   const commentDelHandler = async () => {
-    console.log('삭제하려는 댓글 concert id: ', comment.id)
+    console.log('삭제하려는 댓글 concert id: ', comment.id);
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.delete(
@@ -133,64 +145,107 @@ function MainComment() {
         dispatch(setTotalNum(response.data.data.totalPage));
         dispatch(setPageAllComments(response.data.data.concertCommentInfo));
       }
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   return (
     <div id='commentBox'>
       {/* 로그인시 보일 댓글 작성 영역 */}
-      {isLogin && <div className='writeBox'>
-        <div className='nicknameBox'>
-          <p className='nickName'>{isLogin ? userInfo.username+' 님' : '로그인이 필요합니다.'}</p>
-        </div>
-        <div className='commentBodyBox'>
-          <div className='imgWrapper'>
-            {isLogin && <img className='img' src={userInfo.image} alt='프로필 사진' />}
-            {isLogin && userInfo.role!==3 && <img className='shield' src={shield} alt='인증 뱃지' />}
+      {isLogin && (
+        <div className='writeBox'>
+          <div className='nicknameBox'>
+            <p className='nickName'>
+              {isLogin ? userInfo.username + ' 님' : '로그인이 필요합니다.'}
+            </p>
           </div>
-          <div className='bodyWrapper'>
-            <textarea id='input' placeholder='댓글을 입력해주세요.' value={inputComment} onChange={inputChangeHandler}></textarea>
-            <div id='inputBtn' onClick={commentHandler}>작성하기</div> 
+          <div className='commentBodyBox'>
+            <div className='imgWrapper'>
+              {isLogin && (
+                <img className='img' src={userInfo.image} alt='프로필 사진' />
+              )}
+              {isLogin && userInfo.role !== 3 && (
+                <img className='shield' src={shield} alt='인증 뱃지' />
+              )}
+            </div>
+            <div className='bodyWrapper'>
+              <textarea
+                id='input'
+                placeholder='댓글을 입력해주세요.'
+                value={inputComment}
+                onChange={inputChangeHandler}
+              ></textarea>
+              <div id='inputBtn' onClick={commentHandler}>
+                작성하기
+              </div>
+            </div>
           </div>
         </div>
-      </div>}
+      )}
 
       {/* 댓글 목록 map */}
-      {pageAllComments.map((el)=>(
+      {pageAllComments.map(el => (
         <div className='box'>
           <div className='dateBox'>
-            <p className='nickNameAndDate'>{el.User.username} | {el.createdAt.substring(0,10)}</p>
+            <p className='nickNameAndDate'>
+              {el.User.username} | {el.createdAt.substring(0, 10)}
+            </p>
             <div className='optionWrapper'>
-              {userInfo.id === el.user_id && <div className='optionBtn' 
-                onClick={() => {
-                  setClickId(el.id);
-                  dispatch(setComment(el));
-                  setEditComment(el.content)
-                }}>수정하기</div>}
-              {userInfo.id === el.user_id && <div className='optionBtn' 
-                onClick={() => {
-                  dispatch(setComment(el));
-                  commentDelHandler(); 
-                }}>삭제하기</div>}
+              {userInfo.id === el.user_id && (
+                <div
+                  className='optionBtn'
+                  onClick={() => {
+                    setClickId(el.id);
+                    dispatch(setComment(el));
+                    setEditComment(el.content);
+                  }}
+                >
+                  수정하기
+                </div>
+              )}
+              {userInfo.id === el.user_id && (
+                <div
+                  className='optionBtn'
+                  onClick={() => {
+                    dispatch(setComment(el));
+                    commentDelHandler();
+                  }}
+                >
+                  삭제하기
+                </div>
+              )}
             </div>
           </div>
           <div id='imgAndText'>
             <div className='imgWrapper'>
               <img className='img' src={el.User.image} alt='프로필 사진' />
-              {el.User.role!==3 && <img className='shield' src={shield} alt='인증 뱃지' />}
+              {el.User.role !== 3 && (
+                <img className='shield' src={shield} alt='인증 뱃지' />
+              )}
             </div>
             <div className='textWrapper'>
-              {el.id === clickId ? 
-              <textarea id='text'value={editComment} onChange={inputChangeHandler}/>
-              : <p id='text'>{el.content}</p>}
-              {el.id === clickId && <div className='textBtn' onClick={commentEditHandler}>수정</div>}
-              {el.id === clickId && <div className='textBtn' onClick={() => setClickId(0)}>취소</div>}
+              {el.id === clickId ? (
+                <textarea
+                  id='text'
+                  value={editComment}
+                  onChange={inputChangeHandler}
+                />
+              ) : (
+                <p id='text'>{el.content}</p>
+              )}
+              {el.id === clickId && (
+                <div className='textBtn' onClick={commentEditHandler}>
+                  수정
+                </div>
+              )}
+              {el.id === clickId && (
+                <div className='textBtn' onClick={() => setClickId(0)}>
+                  취소
+                </div>
+              )}
             </div>
           </div>
         </div>
       ))}
-      
     </div>
   );
 }
