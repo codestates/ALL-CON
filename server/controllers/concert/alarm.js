@@ -4,15 +4,17 @@ const { Users, Concerts, Alarms } = require('../../models');
 module.exports = {
   post: async (req, res) => {
     try {
+      console.log('확인확인1');
       // 로그인 인증 검사
       const userInfo = await userAuth(req, res);
 
       // 특정 콘서트 id를 클라이언트로부터 전달받는다
       const { concertid } = req.params;
       // 유저확인 및 알람종류 확인
-      const { alarm_type } = req.body;
+      const { alarm_type } = req.query;
+      console.log('>>>>>>>>>>>', alarm_type);
       const concertInfo = await Concerts.findOne({ where: { id: concertid } });
-
+      console.log('확인확인2');
       // 존재하지 않는다면, 다음을 실행한다
       if (!concertInfo)
         res.status(400).json({ message: '콘서트가 존재하지 않습니다!' });
@@ -20,18 +22,18 @@ module.exports = {
       else {
         // 이메일 알람이면, 다음을 실행한다
         if (alarm_type === 'email') {
+          console.log('확인확인3');
           const alarmInfo = await Alarms.create({
             email_alarm: true,
             user_id: userInfo.dataValues.id,
             concert_id: concertid,
           });
+          console.log('확인확인4');
 
-          return res
-            .status(201)
-            .json({
-              data: { alarmInfo: alarmInfo },
-              message: 'Success Email Alarm!',
-            });
+          return res.status(201).json({
+            data: { alarmInfo: alarmInfo },
+            message: 'Success Email Alarm!',
+          });
         }
         // 핸드폰 알람이면, 다음을 실행한다
         else if (alarm_type === 'phone') {
@@ -48,12 +50,10 @@ module.exports = {
               user_id: userInfo.dataValues.id,
               concert_id: concertid,
             });
-            return res
-              .status(201)
-              .json({
-                data: { alarmInfo: alarmInfo },
-                message: 'Success Phone Alarm!',
-              });
+            return res.status(201).json({
+              data: { alarmInfo: alarmInfo },
+              message: 'Success Phone Alarm!',
+            });
           }
         }
       }
@@ -70,7 +70,7 @@ module.exports = {
       // 알람 설정을 취소할 콘서트 id를 클라이언트로부터 전달받는다
       const { concertid } = req.params;
       // 유저와 알람종류를 전달받는다
-      const { alarm_type } = req.body;
+      const { alarm_type } = req.query;
 
       const concertInfo = await Concerts.findOne({ where: { id: concertid } });
       // 존재하지 않는다면, 다음을 실행한다
@@ -100,12 +100,10 @@ module.exports = {
               },
             });
 
-            return res
-              .status(201)
-              .json({
-                data: { alarmDestroyInfo: alarmDestroyInfo },
-                message: 'Delete Email Alarm!',
-              });
+            return res.status(201).json({
+              data: { alarmDestroyInfo: alarmDestroyInfo },
+              message: 'Delete Email Alarm!',
+            });
           }
           // 카카오톡 알람이면, 다음을 실행한다
           else if (alarm_type === 'phone') {
@@ -116,12 +114,10 @@ module.exports = {
               },
             });
 
-            return res
-              .status(201)
-              .json({
-                data: { alarmDestroyInfo: alarmDestroyInfo },
-                message: 'Delete Phone Alarm!',
-              });
+            return res.status(201).json({
+              data: { alarmDestroyInfo: alarmDestroyInfo },
+              message: 'Delete Phone Alarm!',
+            });
           }
         }
       }
