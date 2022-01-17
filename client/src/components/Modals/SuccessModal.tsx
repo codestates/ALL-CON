@@ -1,18 +1,18 @@
 /* CSS import */
-import logo from '../../images/alert.png';
+import logo from '../../images/Congratulation.png';
 /* Store import */
 import { RootState } from '../../index';
-import { showAlertModal } from '../../store/ModalSlice';
+import { showAlertModal, showSuccessModal } from '../../store/ModalSlice';
 /* Library import */
 import { useSelector, useDispatch } from 'react-redux';
 
-function AlertModal() {
+function SuccessModal() {
   const dispatch = useDispatch();
   const { alertText, btnText } = useSelector((state: RootState) => state.modal);
 
   return (
     <div id='AlertModalContainer'>
-      <div id='outside' onClick={() => dispatch(showAlertModal(false))}/>
+      <div id='outside' onClick={() => dispatch(showSuccessModal(false))}/>
       <div id='alertBackground'>
         <div id='alertModal'>
           <div id='alignContainer'>
@@ -23,7 +23,7 @@ function AlertModal() {
               <p className='fontMatch'>{alertText}</p>
             </div>
             <div id='bottomBox'>
-              <button className='fontMatch textBoxMatch3' id='back' onClick={() => dispatch(showAlertModal(false))}>
+              <button className='fontMatch textBoxMatch3' id='back' onClick={() => dispatch(showSuccessModal(false))}>
                 {btnText}
               </button>
             </div>
@@ -33,4 +33,4 @@ function AlertModal() {
     </div>
   );
 }
-export default AlertModal;
+export default SuccessModal;

@@ -54,6 +54,7 @@ module.exports = {
         user_id: userInfo.dataValues.id,
         concert_id: concertid
       })
+      
       res.status(201).json({ message: 'Success Create Comment!' });
     } catch (err) {
       console.log(err);

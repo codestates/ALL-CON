@@ -10,7 +10,7 @@ module.exports = {
       // 특정 콘서트 id를 클라이언트로부터 전달받는다
       const { concertid } = req.params;
       // 유저확인 및 알람종류 확인
-      const { alarm_type } = req.body;
+      const { alarm_type } = req.query;
       const concertInfo = await Concerts.findOne({ where: { id: concertid } });
 
       // 존재하지 않는다면, 다음을 실행한다
@@ -99,7 +99,6 @@ module.exports = {
                 concert_id: concertid,
               },
             });
-
             return res
               .status(201)
               .json({

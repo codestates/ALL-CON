@@ -3,7 +3,7 @@ import check from '../../images/check.png'
 import redLock from '../../images/falsyPadlock.png';
 import xButton from '../../images/xButton.png';
 /* Store import */
-import { showLoginModal, showPrivacyModal, showSignupModal, showTosModal, showAlertModal, insertAlertText } from '../../store/ModalSlice';
+import { showLoginModal, showPrivacyModal, showSignupModal, showTosModal, showAlertModal, insertAlertText, showSuccessModal, insertBtnText } from '../../store/ModalSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
@@ -166,9 +166,10 @@ function SignUpModal() {
             );
             resetInput();
             dispatch(insertAlertText('ALL-CON 회원가입에 성공하였습니다! 🙂'));
+            dispatch(insertBtnText('확인'));
             dispatch(showLoginModal(true));
             dispatch(showSignupModal(false));
-            dispatch(showAlertModal(true));
+            dispatch(showSuccessModal(true));
           } else {
             dispatch(insertAlertText('닉네임 중복확인을 해주세요! 😖'));
             dispatch(showAlertModal(true));
