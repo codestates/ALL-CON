@@ -51,6 +51,14 @@ a {
     #bottomLineOrderBoxChosen {
       width: 93%;
       height: 35%; } }
+  #bottomLineOrderBox #refreshBtnWrapper, #bottomLineOrderBoxChosen #refreshBtnWrapper {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1%;
+    cursor: pointer; }
+    #bottomLineOrderBox #refreshBtnWrapper .refreshBtn, #bottomLineOrderBoxChosen #refreshBtnWrapper .refreshBtn {
+      width: 100%;
+      height: 100%; }
 
 #noLineOrderBox {
   position: relative;
@@ -103,6 +111,7 @@ a {
 #articleBox, #articleBoxChosen {
   position: relative;
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   width: 90%;
@@ -126,10 +135,9 @@ a {
     height: 50%; }
   #articleBox #box, #articleBoxChosen #box, #articleBox #boxChosen, #articleBoxChosen #boxChosen {
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
     padding: 1%; }
     @media (max-width: 767px) {
       #articleBox #box, #articleBoxChosen #box, #articleBox #boxChosen, #articleBoxChosen #boxChosen {
@@ -145,11 +153,13 @@ a {
       #articleBox #box, #articleBoxChosen #box, #articleBox #boxChosen, #articleBoxChosen #boxChosen {
         border-radius: 10px;
         width: 100%;
-        height: 100%; } }
+        height: 96%; } }
     #articleBox #boxChosen, #articleBoxChosen #boxChosen {
+      position: relative;
+      display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      flex-wrap: wrap;
+      align-items: stretch;
       overflow-x: scroll;
       overflow-y: hidden; }
       @media (max-width: 767px) {
@@ -170,10 +180,12 @@ a {
     #articleBox #box .article, #articleBoxChosen #box .article, #articleBox #boxChosen .article, #articleBoxChosen #boxChosen .article, #articleBox #box .articleChosen, #articleBoxChosen #box .articleChosen, #articleBox #boxChosen .articleChosen, #articleBoxChosen #boxChosen .articleChosen {
       position: relative;
       display: flex;
+      float: left;
       align-items: center;
-      width: 30%;
-      padding-bottom: 30%;
-      margin: 1%;
+      margin-left: 4%;
+      margin-top: 4%;
+      width: 28%;
+      padding-bottom: 28%;
       transition: 0.15s all; }
       @media (max-width: 767px) {
         #articleBox #box .article, #articleBoxChosen #box .article, #articleBox #boxChosen .article, #articleBoxChosen #boxChosen .article, #articleBox #box .articleChosen, #articleBoxChosen #box .articleChosen, #articleBox #boxChosen .articleChosen, #articleBoxChosen #boxChosen .articleChosen {
@@ -354,20 +366,13 @@ a {
 #pagination {
   position: absolute;
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 30%;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  height: 100%;
   left: 50%;
   transform: translate(-50%, 0%); }
-  @media (max-width: 767px) {
-    #pagination {
-      height: 10%; } }
-  @media (min-width: 768px) {
-    #pagination {
-      height: 11%; } }
-  @media (min-width: 1200px) {
-    #pagination {
-      height: 12%; } }
   #pagination .page, #pagination .pageChosen {
     position: relative;
     display: flex;
@@ -379,23 +384,29 @@ a {
       #pagination .page, #pagination .pageChosen {
         width: 30px;
         height: 30px;
-        padding-bottom: 30px;
-        margin: 2%;
-        border-radius: 2px; } }
+        padding: 0;
+        line-height: 30px;
+        margin-left: 10px;
+        border-radius: 3px;
+        float: left; } }
     @media (min-width: 768px) {
       #pagination .page, #pagination .pageChosen {
-        width: 30px;
-        height: 30px;
-        padding-bottom: 30px;
-        margin: 3%;
-        border-radius: 5px; } }
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        line-height: 40px;
+        margin-left: 25px;
+        border-radius: 4px;
+        float: left; } }
     @media (min-width: 1200px) {
       #pagination .page, #pagination .pageChosen {
-        width: 55px;
-        height: 55px;
-        padding-bottom: 55px;
-        margin: 3%;
-        border-radius: 5px; } }
+        width: 50px;
+        height: 50px;
+        padding: 0;
+        line-height: 50px;
+        margin-left: 30px;
+        border-radius: 5px;
+        float: left; } }
     #pagination .page:hover, #pagination .pageChosen:hover {
       background-color: #ffce63;
       cursor: pointer;
@@ -546,7 +557,7 @@ a {
               font-size: 1.87rem; } }
           @media (min-width: 1200px) {
             #commentBox .writeBox .commentBodyBox .bodyWrapper #input {
-              font-size: 2.0rem; } }
+              font-size: 2rem; } }
         #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
           position: relative;
           display: flex;
@@ -601,37 +612,25 @@ a {
         @media (min-width: 1200px) {
           #commentBox .box .dateBox .nickNameAndDate {
             font-size: 2rem; } }
-      #commentBox .box .dateBox .dotWrapper {
+      #commentBox .box .dateBox .optionWrapper {
         position: absolute;
         display: flex;
         align-items: center;
-        justify-content: center;
-        height: 4%;
-        width: 4%;
-        padding-bottom: 4%;
+        justify-content: space-between;
+        height: 100%;
+        width: 10%;
         top: 0%;
         right: 2%; }
-        #commentBox .box .dateBox .dotWrapper:hover {
-          cursor: pointer; }
-        #commentBox .box .dateBox .dotWrapper .dot {
-          position: absolute;
+        #commentBox .box .dateBox .optionWrapper .optionBtn {
+          position: relative;
           display: flex;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          object-fit: 100%; }
-          @media (max-width: 767px) {
-            #commentBox .box .dateBox .dotWrapper .dot {
-              width: 1.1rem;
-              height: 1.1rem; } }
-          @media (min-width: 768px) {
-            #commentBox .box .dateBox .dotWrapper .dot {
-              width: 1.5rem;
-              height: 1.5rem; } }
-          @media (min-width: 1200px) {
-            #commentBox .box .dateBox .dotWrapper .dot {
-              width: 2.5rem;
-              height: 2.5rem; } }
+          align-items: center;
+          justify-content: center;
+          color: #a0a0a0;
+          font-weight: bold;
+          width: 45%;
+          height: 100%;
+          cursor: pointer; }
     #commentBox .box #imgAndText {
       position: relative;
       display: flex;
@@ -684,46 +683,56 @@ a {
             #commentBox .box #imgAndText .imgWrapper .shield {
               width: 20px;
               height: 20px; } }
-      #commentBox .box #imgAndText #input {
+      #commentBox .box #imgAndText .textWrapper {
         position: absolute;
         display: flex;
-        width: 80%;
-        border: none;
-        outline: none;
-        overflow: hidden;
-        resize: none;
-        border-radius: 5px; }
-        @media (max-width: 767px) {
-          #commentBox .box #imgAndText #input {
-            left: 11.5%;
-            font-size: 1.3rem;
-            height: 50%; } }
-        @media (min-width: 768px) {
-          #commentBox .box #imgAndText #input {
-            left: 10%;
-            font-size: 1.87rem;
-            height: 70%; } }
-        @media (min-width: 1200px) {
-          #commentBox .box #imgAndText #input {
-            left: 9%;
-            height: 50%;
-            font-size: 2.3rem; } }
-      #commentBox .box #imgAndText #text {
-        position: absolute;
-        display: flex;
-        width: 80%; }
-        @media (max-width: 767px) {
-          #commentBox .box #imgAndText #text {
-            left: 11.5%;
-            font-size: 1.3rem; } }
-        @media (min-width: 768px) {
-          #commentBox .box #imgAndText #text {
-            left: 10%;
-            font-size: 1.8rem; } }
-        @media (min-width: 1200px) {
-          #commentBox .box #imgAndText #text {
-            left: 9%;
-            font-size: 2.3rem; } }
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        height: 100%;
+        left: 10%; }
+        #commentBox .box #imgAndText .textWrapper #text {
+          position: relative;
+          display: flex;
+          width: 85%;
+          height: 100%;
+          margin-right: 0.5%; }
+          @media (max-width: 767px) {
+            #commentBox .box #imgAndText .textWrapper #text {
+              font-size: 1.3rem; } }
+          @media (min-width: 768px) {
+            #commentBox .box #imgAndText .textWrapper #text {
+              font-size: 1.5rem; } }
+          @media (min-width: 1200px) {
+            #commentBox .box #imgAndText .textWrapper #text {
+              font-size: 1.5rem; } }
+        #commentBox .box #imgAndText .textWrapper .textBtn {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          background-color: black;
+          margin-right: 1%;
+          width: 7.5%;
+          height: 80%;
+          cursor: pointer; }
+          @media (max-width: 767px) {
+            #commentBox .box #imgAndText .textWrapper .textBtn {
+              border-radius: 5px;
+              font-size: 1rem; } }
+          @media (min-width: 768px) {
+            #commentBox .box #imgAndText .textWrapper .textBtn {
+              border-radius: 8px;
+              font-size: 1.3rem; } }
+          @media (min-width: 1200px) {
+            #commentBox .box #imgAndText .textWrapper .textBtn {
+              border-radius: 12px;
+              font-size: 1.5rem; } }
+        #commentBox .box #imgAndText .textWrapper .textBtn:hover {
+          transition: 0.25s all;
+          background-color: #ffce63; }
 
 /***** commentBox *****/
 /***** headerMenu *****/
@@ -2728,7 +2737,7 @@ a {
     #myPageContainer {
       height: 300%; } }
   #myPageContainer #myProfileBoxWrapper {
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2741,11 +2750,12 @@ a {
         height: 33.33%; } }
     @media (min-width: 1200px) {
       #myPageContainer #myProfileBoxWrapper {
-        height: 25%; } }
+        height: 20%; } }
   #myPageContainer #myArticleBoxWrapper {
-    position: relative;
+    position: absolute;
     display: flex;
-    width: 100%; }
+    width: 100%;
+    top: 24%; }
     @media (max-width: 767px) {
       #myPageContainer #myArticleBoxWrapper {
         height: 33.33%; } }
@@ -2756,10 +2766,11 @@ a {
       #myPageContainer #myArticleBoxWrapper {
         height: 50%; } }
   #myPageContainer #myCommentWrapper {
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: center;
-    width: 100%; }
+    width: 100%;
+    top: 65%; }
     @media (max-width: 767px) {
       #myPageContainer #myCommentWrapper {
         height: 33.33%; } }
@@ -2768,7 +2779,8 @@ a {
         height: 33.33%; } }
     @media (min-width: 1200px) {
       #myPageContainer #myCommentWrapper {
-        height: 25%; } }
+        height: 25%;
+        top: 85%; } }
   #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
@@ -2788,7 +2800,7 @@ a {
       #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 13.5%;
-        top: 112%; } }
+        top: 103%; } }
     #myPageContainer #fullFooter #footerWrapper, #myPageContainer #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterChosen #footerWrapper, #myPageContainer #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #myPageContainer #fullFooterArticleNotChosen #footerWrapper {
       position: absolute;
       display: flex;
@@ -4545,7 +4557,8 @@ a {
     justify-content: center;
     width: 80%;
     height: 64.5%;
-    bottom: 0%; }
+    bottom: 0%;
+    text-align: center; }
     #myProfileBox #introductionBox #nickNameWrapper {
       position: absolute;
       display: flex;
@@ -4624,7 +4637,8 @@ a {
         border: none;
         outline: none;
         resize: none;
-        overflow: hidden; }
+        overflow: hidden;
+        text-align: center; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #textWrapper #introduction {
             font-size: 1.5rem; } }
@@ -4718,7 +4732,7 @@ a {
   display: flex;
   justify-content: center;
   width: 100%;
-  height: 100%; }
+  height: 85%; }
   @media (max-width: 767px) {
     #myArticleBox {
       top: 2%; } }
@@ -4865,6 +4879,41 @@ a {
       #myCommentBox #commentWrapper {
         width: 90%;
         height: 110%; } }
+  #myCommentBox #myCountWrapper {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    bottom: 100%;
+    align-items: center; }
+  #myCommentBox .myOrder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    left: 74.2%;
+    margin-right: 0.5%;
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #myCommentBox .myOrder {
+        width: 19%;
+        height: 50%;
+        font-size: 1.6rem; } }
+    @media (min-width: 768px) {
+      #myCommentBox .myOrder {
+        width: 12%;
+        height: 50%;
+        font-size: 1.8rem; } }
+    @media (min-width: 1200px) {
+      #myCommentBox .myOrder {
+        width: 9%;
+        height: 50%;
+        font-size: 2.0rem; } }
+    #myCommentBox .myOrder:hover {
+      background-color: #ffce63;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s all; }
   #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
     position: absolute;
     display: flex;
@@ -6447,7 +6496,8 @@ a {
     color: #fff;
     font-weight: bold;
     border: 0;
-    border-radius: 5px; }
+    border-radius: 5px;
+    cursor: pointer; }
     @media (max-width: 767px) {
       #mainGoConchin button {
         width: 25%;

@@ -13,12 +13,25 @@ router.patch('/:concertid/article/:articleid', conchin.detail.patch);
 router.delete('/:concertid/article/:articleid', conchin.detail.delete);
 
 // Con-Chin Comment
-router.get('/:concertid/article/:articleid/comment', conchinComment.comment.get);
-router.post('/:concertid/article/:articleid/comment', conchinComment.comment.post);
-router.patch('/:concertid/article/:articleid/comment/:commentid', conchinComment.detail.patch);
-router.delete('/:concertid/article/:articleid/comment/:commentid', conchinComment.detail.delete);
+router.get(
+  '/:concertid/article/:articleid/comment',
+  conchinComment.comment.get,
+);
+router.post(
+  '/:concertid/article/:articleid/comment',
+  conchinComment.comment.post,
+);
+router.patch(
+  '/:concertid/article/:articleid/comment/:commentid',
+  conchinComment.detail.patch,
+);
+router.delete(
+  '/:concertid/article/:articleid/comment/:commentid',
+  conchinComment.detail.delete,
+);
 
 // Concert
+router.get('/alarm', concert.all.get);
 router.get('/', concert.concert.get);
 router.get('/:concertid', concert.detail.get);
 router.post('/:concertid/alarm', concert.alarm.post);

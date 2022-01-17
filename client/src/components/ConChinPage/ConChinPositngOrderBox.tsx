@@ -1,3 +1,5 @@
+/* CSS import */
+import refreshBtn from '../../images/refresh.png';
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
@@ -8,6 +10,7 @@ import {
   setTargetArticle,
   setPostingOrder,
   setArticleCurPage,
+  setArticleRendered,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -18,7 +21,7 @@ function ConChinPostingOrderBox() {
   const dispatch = useDispatch();
   const { postingOrder } = useSelector((state: RootState) => state.conChin);
   const { target } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles } = useSelector(
+  const { articleOrder, allArticles, articleRendered } = useSelector(
     (state: RootState) => state.conChin,
   );
   /*전체 콘서트 받아오기 */
@@ -29,7 +32,7 @@ function ConChinPostingOrderBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        resetTarget();
+        // resetTarget();
         dispatch(setAllConcerts(response.data.data.concertInfo));
       }
     } catch (err) {
@@ -45,9 +48,10 @@ function ConChinPostingOrderBox() {
       );
       if (response.data) {
         console.log('PostingOrderBox=> 전체 게시물을 받아왔습니다.');
-        resetTarget();
+        // resetTarget();
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
+        dispatch(setArticleCurPage(1));
       } else {
         console.log('없거나 실수로 못가져왔어요..');
       }
@@ -60,12 +64,13 @@ function ConChinPostingOrderBox() {
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
   useEffect(() => {
     getAllConcerts();
-    getAllArticles();
+    // getAllArticles();
   }, [postingOrder]);
 
   /* 타겟 초기화 핸들러 */
-  const resetTarget = () => {
+  const resetTargetHandler = () => {
     dispatch(setTarget({}));
+    dispatch(setArticleRendered(false));
     dispatch(setTargetArticle({}));
     dispatch(setArticleCurPage(1));
   };
@@ -77,11 +82,15 @@ function ConChinPostingOrderBox() {
           : 'bottomLineOrderBoxChosen'
       }
     >
+      <div id='refreshBtnWrapper' onClick={resetTargetHandler}>
+        <img className='refreshBtn' src={refreshBtn} alt='refreshBtn' />
+      </div>
       <p
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('view'));
-          getAllArticles();
+          getAllConcerts();
+          // getAllArticles();
         }}
         style={
           postingOrder === 'view'
@@ -95,7 +104,8 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('near'));
-          getAllArticles();
+          getAllConcerts();
+          // getAllArticles();
         }}
         style={
           postingOrder === 'near'
@@ -109,7 +119,8 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('new'));
-          getAllArticles();
+          getAllConcerts();
+          // getAllArticles();
         }}
         style={
           postingOrder === 'new'

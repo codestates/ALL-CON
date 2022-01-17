@@ -9,7 +9,7 @@ import { RootState } from '../../index';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ConChinArticlePagination() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function ConChinArticlePagination() {
     (state: RootState) => state.conChin,
   );
   const { target } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles } = useSelector(
+  const { articleOrder, allArticles, targetArticle } = useSelector(
     (state: RootState) => state.conChin,
   );
 
@@ -35,10 +35,7 @@ function ConChinArticlePagination() {
           );
           if (response.data) {
             dispatch(setAllArticles(response.data.data.articleInfo));
-            console.log(
-              'ConChinArticlePagination=> 타겟이 없으니 정렬순으로 전체 표시합니다.',
-            );
-            console.log(allArticles);
+            dispatch(setArticleTotalPage(response.data.data.totalPage));
           } else {
             console.log(
               'ConChinArticlePagination=> 없거나 실수로 못가져왔어요.',
@@ -52,10 +49,7 @@ function ConChinArticlePagination() {
           );
           if (response.data) {
             dispatch(setAllArticles(response.data.data.articleInfo));
-            console.log(
-              'ConChinArticlePagination=> 타겟이 있으니 타겟에 종속된 게시물들을 표시합니다.',
-            );
-            console.log(allArticles);
+            dispatch(setArticleTotalPage(response.data.data.totalPage));
           } else {
             console.log(
               'ConChinArticlePagination=> 없거나 실수로 못가져왔어요.',
@@ -65,14 +59,16 @@ function ConChinArticlePagination() {
       }
     } catch (err) {
       console.log(err);
-      console.log(
-        'ConChinArticlePagination=> 에러가 났나봐요. 게시물 없음 처리합니다.',
-      );
-      console.log(pageArr);
       dispatch(setAllArticles([]));
       dispatch(setArticleTotalPage(0));
     }
   };
+  useEffect(() => {
+    getPageArticles(articleCurPage);
+  }, [articleCurPage]);
+  useEffect(() => {
+    getPageArticles(articleCurPage);
+  }, [articleTotalPage]);
 
   const getClickedPageNumber = (pageNum: number) => {
     console.log(pageNum);

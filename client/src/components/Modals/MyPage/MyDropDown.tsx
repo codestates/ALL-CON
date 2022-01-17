@@ -3,22 +3,38 @@ import { RootState } from '../../../index';
 import { setScrollCount } from '../../../store/HeaderSlice';
 import { showMyDropDown } from '../../../store/ModalSlice';
 import { setTarget } from '../../../store/MainSlice';
-import { setTargetArticle } from '../../../store/ConChinSlice';
+import { setTargetArticle, setArticleRendered, setArticleCurPage } from '../../../store/ConChinSlice';
 import { logout } from '../../../store/AuthSlice';
-import { getArticleInfo, getMyArticleTotalPage } from '../../../store/MySlice';
+import {
+  getCommentBtnType,
+  getArticleInfo,
+  getMyArticleTotalPage,
+  getMyConcertCommentTotalPage,
+  getMyConcertCommentInfo,
+  getMyTotalConcertComment,
+  getMyArticleCommentInfo,
+  getMyArticleCommentTotalPage,
+  getMyTotalArticleComment,
+} from '../../../store/MySlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
 function MyDropDown() {
+  /* dispatch / navigate */
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+  /* useSelector */
   const { scrollCount } = useSelector((state: RootState) => state.header);
   const { target } = useSelector((state: RootState) => state.main);
-  const { articleInfo } = useSelector((state: RootState) => state.my);
-
-  /* 로그아웃 핸들러 */
+  
+  /* 지역상태 - useState */
+  /* useEffect */
+  
+  /* handler 함수 (기능별 정렬) */
+  // 로그아웃 핸들러
   const logoutHandler = async () => {
     try {
       await axios.post(
@@ -30,30 +46,67 @@ function MyDropDown() {
       dispatch(logout());
       navigate('/main');
       dispatch(setScrollCount(0));
-      dispatch(setTarget({}));
+      resetTarget();
       console.log(target);
     } catch (err) {
       console.log(err);
     }
   };
 
+  // 이동 시 타겟 초기화 핸들러
   const resetTarget = async () => {
+    /* ConChinPage */
     dispatch(setTarget({}));
     dispatch(setTargetArticle({}));
-    // console.log(target);
-    console.log('---- 드랍다운 마이페이지 클릭 #1')
+    dispatch(setArticleRendered(false));
+    dispatch(setArticleCurPage(1));
+    console.log(target);
+    
     /* 내가 쓴 게시물 axios 테스트 */
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=1`,
       { withCredentials: true },
-      );
-      console.log('---- 드랍다운 마이페이지 클릭 #2')
-      
-      console.log('---- DropDown---- ', response.data.data)
-      
-    dispatch(getArticleInfo(response.data.data))
-    dispatch(getMyArticleTotalPage(response.data.data.totalPage))
-    /* 내가 쓴 게시물 axios 테스트 */
+    );
+
+    dispatch(getArticleInfo(response.data.data));
+    dispatch(getMyArticleTotalPage(response.data.data.totalPage));
+
+    // 내가 쓴 댓글(콘서트 게시물) axios 테스트
+    const responseMyConcertComment = await axios.get(
+      `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
+      { withCredentials: true },
+    );
+
+    dispatch(getMyConcertCommentInfo(responseMyConcertComment.data.data));
+    dispatch(
+      getMyConcertCommentTotalPage(
+        responseMyConcertComment.data.data.totalPage,
+      ),
+    );
+    dispatch(
+      getMyTotalConcertComment(
+        responseMyConcertComment.data.data.totalConcertComment,
+      ),
+    );
+
+    // 내가 쓴 댓글(콘친 게시물) axios 테스트
+    const responseMyArticleComment = await axios.get(
+      `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
+      { withCredentials: true },
+    );
+
+    dispatch(getMyArticleCommentInfo(responseMyArticleComment.data.data));
+    dispatch(
+      getMyArticleCommentTotalPage(
+        responseMyArticleComment.data.data.totalPage,
+      ),
+    );
+    dispatch(
+      getMyTotalArticleComment(
+        responseMyArticleComment.data.data.totalArticleComment,
+      ),
+    );
+    dispatch(getCommentBtnType('콘서트'));
   };
 
   return (

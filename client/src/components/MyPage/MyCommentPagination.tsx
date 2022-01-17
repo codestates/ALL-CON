@@ -1,0 +1,89 @@
+/* Config import */
+/* CSS import */
+/* Store import */
+import { getMyConcertCommentInfo, getMyConcertCommentTotalPage, getMyArticleCommentInfo, getMyArticleCommentTotalPage } from '../../store/MySlice';
+/* Library import */
+import { RootState } from '../../index';
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+function MyCommentPagination() {
+  /* dispatch / navigate */
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  /* useSelector */
+  const { myConcertCommentTotalPage, myArticleCommentTotalPage, commentBtnType } = useSelector((state: RootState) => state.my);
+
+  /* 지역상태 - useState */
+  let concertPageArr: number[] = [];
+  for (let i = 1; i <= myConcertCommentTotalPage; i++) {
+    concertPageArr.push(i);
+  }
+
+  let articlePageArr: number[] = [];
+  for (let i = 1; i <= myArticleCommentTotalPage; i++) {
+    articlePageArr.push(i);
+  }
+
+  /* useEffect */
+
+    /* handler 함수 (기능별 정렬) */
+  // 내가 쓴 (콘서트) 게시물 페이지를 클릭헀을 때, 다음을 실행한다
+  const handleConcertPageClick = async (pageNum: number) => {
+    
+    /* 내가 쓴 댓글(콘서트 게시물) axios 테스트 */
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${pageNum}`,
+      { withCredentials: true },
+      );
+      
+    dispatch(getMyConcertCommentInfo(response.data.data))
+    dispatch(getMyConcertCommentTotalPage(response.data.data.totalPage))
+    /* 내가 쓴 댓글(콘서트 게시물) axios 테스트 */
+  } 
+
+  // 내가 쓴 (콘친) 게시물 페이지를 클릭헀을 때, 다음을 실행한다
+  const handleArticlePageClick = async (pageNum: number) => {
+    
+    /* 내가 쓴 댓글(콘친 게시물) axios 테스트 */
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${pageNum}&comment_type=article`,
+      { withCredentials: true },
+      );
+      
+    dispatch(getMyArticleCommentInfo(response.data.data))
+    dispatch(getMyArticleCommentTotalPage(response.data.data.totalPage))
+    /* 내가 쓴 댓글(콘친 게시물) axios 테스트 */
+  } 
+
+  return (
+    <div id='pagination'>
+      {/* 어떤 버튼 (콘서트 / 콘친 게시물)이 눌림에 따라 페이지수가 달라진다 */}
+      { commentBtnType === '콘서트'
+        ?
+          (concertPageArr.length > 0
+          ? concertPageArr.map((el: number) => {
+            return (
+            <ul className='page' onClick={() => handleConcertPageClick(el)}>
+              <p className='text'> {el} </p>
+            </ul>
+            )
+          })
+          : null)
+        : (articlePageArr.length > 0
+          ? articlePageArr.map((el: number) => {
+            return (
+            <ul className='page' onClick={() => handleArticlePageClick(el)}>
+              <p className='text'> {el} </p>
+            </ul>
+            )
+          })
+          : null)
+      }
+    </div>
+  );
+}
+
+export default MyCommentPagination;

@@ -16,7 +16,7 @@
     height: 300%;
   }
   #myProfileBoxWrapper {
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,13 +30,14 @@
       height: 33.33%;
     }
     @include lg() {
-      height: 25%;
+      height: 20%;
     }
   }
   #myArticleBoxWrapper {
-    position: relative;
+    position: absolute;
     display: flex;
     width: 100%;
+    top: 24%;
     // border: 2px solid blue;
     @include mobile-only() {
       height: 33.33%;
@@ -49,10 +50,12 @@
     }
   }
   #myCommentWrapper {
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: center;
     width: 100%;
+    top: 65%;
+
     // border: 2px solid yellow;
     @include mobile-only() {
       height: 33.33%;
@@ -62,6 +65,7 @@
     }
     @include lg() {
       height: 25%;
+      top: 85%;
     }
   }
   #fullFooter {
@@ -83,7 +87,7 @@
     @include lg() {
       width: 100%;
       height: 13.5%;
-      top: 112%;
+      top: 103%;
     }
     // border: 1px solid red;
     #footerWrapper {

@@ -12,7 +12,8 @@ import { RootState } from '../../index';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
-import { getUserInfo, getYearList, getMonthList, getDateList } from '../../store/AuthSlice';
+import { getYearList, getMonthList, getDateList } from '../../store/AuthSlice';
+import { setMyIntroductionState, getMyIntroduction } from '../../store/MySlice';
 /* Library import */
 
 function MyProfileBox() {
@@ -23,6 +24,7 @@ function MyProfileBox() {
   
   /* useSelector */
   const { userInfo, yearList, monthList, dateList } = useSelector((state: RootState) => state.auth);
+  const { myIntroductionState } = useSelector((state: RootState) => state.my);
   
   /* 지역상태 - useState */
   // 프로필 수정 버튼 모니터링 상태
@@ -47,7 +49,7 @@ function MyProfileBox() {
 
     // 프로필 수정 버튼 클릭 상태 갱신
     setProfileChangeBtn(true)
-    console.log(' --- profileChangeBtn 상태 확인! --- ', profileChangeBtn)
+    dispatch(setMyIntroductionState(true))
     navigate('/myEdit')
   }
 
@@ -91,6 +93,8 @@ function MyProfileBox() {
       
       await dispatch(getDateList(localDateList))
     }
+    // 자기소개 상태값 업데이트 (false)
+    dispatch(setMyIntroductionState(false))
     // 콘친 인증 페이지로 이동!
     navigate('/conchinCert')
   }
@@ -108,6 +112,11 @@ function MyProfileBox() {
   // 회원탈퇴취소 클릭
   const handleAccountDeleteBackground = async () => {
     setResignMembership(false)
+  }
+  
+  // 자기소개 글을 수정할 경우
+  const inputIntroduction = async (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    dispatch(getMyIntroduction(e.target.value))
   }
 
   return (
@@ -146,7 +155,11 @@ function MyProfileBox() {
         </div>
         {/* 자기소개, 주의! null일 때 처리해줘야됨! */}
         <div id='textWrapper'>
-          <textarea id='introduction' disabled >  </textarea>
+          {
+            myIntroductionState
+            ? <textarea id='introduction' placeholder={userInfo.introduction} onChange={inputIntroduction}></textarea>
+            : <div id='introduction'>{userInfo.introduction}</div> 
+          }
         </div>
         <div id='modifyBtnWrapper'>
           <button className='btn' onClick={() => {handleProfileEdit()}}>프로필 수정</button>

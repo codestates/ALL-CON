@@ -18,6 +18,8 @@ import {
   setAllArticles,
   setArticleTotalPage,
   setArticleCurPage,
+  setTargetArticle,
+  setArticleRendered,
 } from '../store/ConChinSlice';
 import {
   setIsScrolled,
@@ -35,9 +37,13 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { loginModal, signupModal, sideMenuModal, myDropDown } = useSelector(
-    (state: RootState) => state.modal,
-  );
+  const {
+    loginModal,
+    signupModal,
+    sideMenuModal,
+    myDropDown,
+    conChinProfileModal,
+  } = useSelector((state: RootState) => state.modal);
   const { isScrolled, scrollCount, timerMessage } = useSelector(
     (state: RootState) => state.header,
   );
@@ -96,7 +102,8 @@ function Header() {
   });
   /* 해당 모달 띄워져있을 시 스크롤바 제거 useEffect */
   useEffect(() => {
-    if (loginModal || signupModal) document.body.style.overflow = 'hidden';
+    if (loginModal || signupModal || conChinProfileModal)
+      document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'unset';
   });
 
@@ -151,7 +158,7 @@ function Header() {
   /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
   const showTimer = () => {
     dispatch(setIsScrolled(false));
-    dispatch(setTarget({}));
+    resetHandler();
   };
   /* 전체 게시물 받아오기 */
   const getAllArticles = async () => {
@@ -163,7 +170,7 @@ function Header() {
       if (response.data) {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
-        console.log('Header => 나 실행됐어요!');
+        dispatch(setArticleCurPage(1));
       } else {
         console.log('없거나 실수로 못가져왔어요..');
       }
@@ -174,18 +181,32 @@ function Header() {
   };
   /* 메뉴 이동시 상태 초기화 핸들러 */
   const resetHandler = () => {
-    // dispatch(logout());
+    /* ConChinPage */
     dispatch(setTarget({}));
+    dispatch(setTargetArticle({}));
+    dispatch(setArticleRendered(false));
+    dispatch(setArticleCurPage(1));
     getAllArticles();
+    /* ConcertPage */
+    dispatch(showConcertModal(false));
+  };
+
+  const resetHandlerMain = () => {
+    // dispatch(logout());
+    // dispatch(setTarget(allConcerts[0]));
     dispatch(setTargetIdx(0));
+    getAllArticles();
     dispatch(showConcertModal(false));
     dispatch(setArticleCurPage(1));
   };
+
   return (
     /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */
     <div
       id={
-        loginModal || signupModal ? 'headerSecondContainer' : 'headerContainer'
+        loginModal || signupModal || conChinProfileModal
+          ? 'headerSecondContainer'
+          : 'headerContainer'
       }
     >
       {/* 스크롤 후 히든타이머 제거 */}
@@ -231,7 +252,7 @@ function Header() {
           )}
         </div>
         <div id='hiddenMenuBox'>
-          <Link to='/main' onClick={resetHandler}>
+          <Link to='/main' onClick={resetHandlerMain}>
             <p className='menu'>홈</p>
           </Link>
           <Link to='/concert' onClick={resetHandler}>

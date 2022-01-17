@@ -11,10 +11,12 @@ export interface modal {
   confirmNumberModal: boolean;
   resetPasswordModal: boolean;
   alertModal: boolean;
+  successModal: boolean;
   myDropDown: boolean;
   concertModal: boolean;
   phoneConfirmNumberModal: boolean;
   alertText: string;
+  btnText: string;
   deliverText: string;
   conChinWritingModal: boolean;
   conChinProfileModal: boolean;
@@ -30,11 +32,13 @@ const initialState: modal = {
   confirmNumberModal: false,
   resetPasswordModal: false,
   alertModal: false,
+  successModal: false,
   sideMenuModal: false,
   myDropDown: false,
   concertModal: false,
   phoneConfirmNumberModal: false,
   alertText: '',
+  btnText: '뒤로가기',
   deliverText: '',
   conChinWritingModal: false,
   conChinProfileModal: false,
@@ -87,11 +91,17 @@ const modalSlice = createSlice({
     showAlertModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.alertModal = payload;
     },
+    showSuccessModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.successModal = payload;
+    },
     showConcertModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.concertModal = payload;
     },
     insertAlertText: (state: modal, { payload }: PayloadAction<string>) => {
       state.alertText = payload;
+    },
+    insertBtnText: (state: modal, { payload }: PayloadAction<string>) => {
+      state.btnText = payload;
     },
     showMyDropDown: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.myDropDown = payload;
@@ -124,10 +134,12 @@ export const {
   showPhoneConfirmNumberModal,
   showResetPasswordModal,
   showAlertModal,
+  showSuccessModal,
   showConcertModal,
   showSideMenuModal,
   showMyDropDown,
   insertAlertText,
+  insertBtnText,
   insertDeliverText,
   showConChinWritingModal,
   showConChinProfileModal,

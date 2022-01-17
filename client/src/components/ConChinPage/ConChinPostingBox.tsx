@@ -5,6 +5,8 @@ import {
   setAllArticles,
   setArticleTotalPage,
   setArticleCurPage,
+  setArticleRendered,
+  setTargetArticle,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -18,21 +20,14 @@ function ConChinPostingBox() {
   const { postingOrder } = useSelector((state: RootState) => state.conChin);
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles } = useSelector(
-    (state: RootState) => state.conChin,
-  );
+  const { articleOrder, allArticles, articleRendered, targetArticle } =
+    useSelector((state: RootState) => state.conChin);
 
   /* 조건부 게시물 받아오기 */
   const getAllArticlesWithCondition = async () => {
     try {
-      /* 타겟에 종속된 게시물이 없을때, 게시물 없음 표시 */
-      if (target !== undefined && target !== null) {
-        if (Object.keys(target).length === 0) {
-          getAllArticles();
-          console.log(
-            ' ConChinPostingBox=> 타겟이 없으므로 전체를 가져옵니다.',
-          );
-        } else if (Object.keys(target).length > 0 && allArticles.length > 0) {
+      if (!articleRendered) {
+        if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
           const response = await axios.get(
             `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
@@ -42,6 +37,8 @@ function ConChinPostingBox() {
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
             dispatch(setArticleCurPage(1));
+            dispatch(setArticleRendered(true));
+            console.log(articleRendered);
             console.log(
               ' ConChinPostingBox=> 타겟에 종속된 게시물들을 가져옵니다.',
             );
@@ -50,6 +47,22 @@ function ConChinPostingBox() {
           } else {
             console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
           }
+        }
+      } else {
+        console.log('true인데 누르셨네요?');
+        if (
+          Object.keys(target).length > 0 &&
+          Object.keys(targetArticle).length === 0
+        ) {
+          resetAllTarget();
+        } else if (
+          Object.keys(target).length > 0 &&
+          Object.keys(targetArticle).length > 0
+        ) {
+          console.log('이제 reset안됩니다.');
+        } else if (Object.keys(target).length > 0 && allArticles.length === 0) {
+          console.log('들어오긴 함?');
+          resetAllTarget();
         }
       }
     } catch (err) {
@@ -68,10 +81,11 @@ function ConChinPostingBox() {
         { withCredentials: true },
       );
       if (response.data) {
+        // dispatch(setTarget({}));
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
-        console.log('ConChinArticleBox => 전체 콘서트를 가져왔습니다.');
+        console.log('ConChinPostingBox => 전체 콘서트를 가져왔습니다.');
       } else {
         console.log('없거나 실수로 못가져왔어요..');
       }
@@ -82,14 +96,16 @@ function ConChinPostingBox() {
   };
 
   /* 조건부 게시물 받아오기 & 타겟 교체 */
-  function getAllArticlesAndSetTarget(concert: any[]) {
+  function changeTarget(concert: any[]) {
     dispatch(setTarget(concert));
     getAllArticlesWithCondition();
-    console.log('ConChinPostingBox=> target: ');
-    console.log(target);
-    console.log('ConChinPostingBox=> concert: ');
-    console.log(concert);
   }
+  /* target,targetArticle 전체 초기화 핸들러 */
+  const resetAllTarget = () => {
+    dispatch(setTarget({}));
+    dispatch(setTargetArticle({}));
+    dispatch(setArticleRendered(false));
+  };
 
   /* useEffect: 타겟이 변경될 때마다 게시물 렌더링 */
   useEffect(() => {
@@ -128,7 +144,7 @@ function ConChinPostingBox() {
                   }
                   key={concert.id}
                   onClick={() => {
-                    getAllArticlesAndSetTarget(concert);
+                    changeTarget(concert);
                   }}
                 >
                   <h1 className='title'>{concert.title}</h1>
