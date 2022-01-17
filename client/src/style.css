@@ -6450,7 +6450,8 @@ a {
     color: #fff;
     font-weight: bold;
     border: 0;
-    border-radius: 5px; }
+    border-radius: 5px;
+    cursor: pointer; }
     @media (max-width: 767px) {
       #mainGoConchin button {
         width: 25%;

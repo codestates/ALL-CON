@@ -4,7 +4,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface main {
   /* view, new, near */
   order: string;
-  /* 현재 선택된 포스터 */
+  /* 콘서트 목록중 현재 선택된 포스터(간략한 정보) */
   target: {
     id?: number;
     exclusive?: string;

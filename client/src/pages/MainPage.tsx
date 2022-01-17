@@ -7,36 +7,28 @@ import MainFindConchin from '../components/MainPage/MainFindConchin';
 import MainPagination from '../components/MainPage/MainPagination';
 /* Store import */
 import { RootState } from '../index';
-import {
-  setTarget,
-  setTargetIdx,
-  setAllConcerts,
-  setDetail,
-  setIsRendering,
-} from '../store/MainSlice';
+import { setTarget, setTargetIdx, setAllConcerts, setDetail, setIsRendering } from '../store/MainSlice';
 import { showAlertModal, insertAlertText } from '../store/ModalSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
-  let { isRendering, order, target, detail, targetIdx, allConcerts } = useSelector(
+  const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState, ) => state.main, 
   );
-
+  
+  /* order가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {
-    getAllConcerts();
-    if(isRendering){
-      dispatch(setTargetIdx(0));
-      dispatch(setTarget(allConcerts[targetIdx]));
-      getDetailInfo();
-    }
+    getAllConcerts();  // 전체 콘서트 목록
+    getDetailInfo();  // 상세 콘서트 정보
   }, [isRendering]);
   
+  /* targetIdx가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {
-    getDetailInfo();
+    getDetailInfo(); // 상세 콘서트 정보
   }, [targetIdx]);
 
   /*전체 콘서트 받아오기 */
@@ -69,6 +61,7 @@ function MainPage() {
           { withCredentials: true },
         );
         if (res.data.data) {
+          /* 서버 응답값이 있다면 detail(상세정보) 갱신 */
           dispatch(setDetail(res.data.data.concertInfo));
         }
       }
@@ -80,9 +73,9 @@ function MainPage() {
   return (
     <div id='mainContainer'>
       <div id='mainJumboWrapper'><Jumbotron /></div>
-      {isRendering && <div id='mainConcertInfoWrapper'><MainConcertInfo /></div>}
-      {isRendering && <div id='mainCommentWrapper'><MainComment /></div>}
-      {isRendering && <div id='mainPaginationWrapper'><MainPagination /></div>}
+      <div id='mainConcertInfoWrapper'><MainConcertInfo /></div>
+      <div id='mainCommentWrapper'><MainComment /></div>
+      <div id='mainPaginationWrapper'><MainPagination /></div>
       <div id='mainFindConchinWrapper'><MainFindConchin /></div>
       <div id='fullFooter'>
         <div id='mainFooterWrapper'>
