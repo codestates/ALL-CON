@@ -23,18 +23,41 @@ export interface main {
     createdAt?: Date;
     updatedAt?: Date;
   };
+  /* 현재 선택된 포스터 상세정보 */
+  detail: {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  };
   /*전체 콘서트 목록들 */
   allConcerts: any[];
   /* 가운데 포스터의 인덱스*/
   targetIdx: number;
+  /* 전체 페이지 렌더링 여부 상태 */
+  isRendering : boolean;
 }
 
 /* State 초기값 설정 */
 const initialState: main = {
   order: 'hot',
   target: {},
+  detail: {},
   allConcerts: [],
-  targetIdx: 0
+  targetIdx: 0,
+  isRendering : false
 };
 
 const mainSlice = createSlice({
@@ -45,15 +68,21 @@ const mainSlice = createSlice({
     setOrder: (state: main, { payload }: PayloadAction<string>) => {
       state.order = payload;
     },
+    setAllConcerts: (state: main, { payload }: PayloadAction<Array<any>>) => {
+      state.allConcerts = payload;
+    },
     setTarget: (state: main, { payload }: PayloadAction<object>) => {
       state.target = payload;
+    },
+    setDetail: (state: main, { payload }: PayloadAction<object>) => {
+      state.detail = payload;
     },
     setTargetIdx: (state: main, { payload }: PayloadAction<number>) => {
       state.targetIdx = payload;
     },
-    setAllConcerts: (state: main, { payload }: PayloadAction<Array<any>>) => {
-      state.allConcerts = payload;
-    }
+    setIsRendering: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.isRendering = payload;
+    },
   },
 });
 
@@ -61,6 +90,8 @@ export const {
   setOrder,
   setTarget,
   setTargetIdx,
+  setDetail,
   setAllConcerts,
+  setIsRendering
 } = mainSlice.actions;
 export default mainSlice.reducer;
