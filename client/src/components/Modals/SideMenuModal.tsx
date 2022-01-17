@@ -2,6 +2,11 @@
 import { RootState } from '../../index';
 import { showSideMenuModal } from '../../store/ModalSlice';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
+import {
+  setTargetArticle,
+  setArticleRendered,
+  setArticleCurPage,
+} from '../../store/ConChinSlice';
 /* Library import */
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,7 +19,10 @@ function SideMenuModal() {
 
   /* 타겟 초기화 핸들러 */
   const resetTarget = () => {
-    dispatch(setTarget({}));
+    // dispatch(setTarget({}));
+    // dispatch(setTargetArticle({}));
+    // dispatch(setArticleRendered(false));
+    // dispatch(setArticleCurPage(1));
   };
   return (
     <div id='sideMenuModal'>

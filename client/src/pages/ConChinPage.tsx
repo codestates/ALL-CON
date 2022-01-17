@@ -13,6 +13,7 @@ import {
   setArticleTotalPage,
   setTargetArticle,
   setArticleCurPage,
+  setArticleRendered,
 } from '../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -35,7 +36,6 @@ function ConChinPage() {
       if (response.data) {
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setArticleCurPage(1));
-        console.log('ConChinPage=> 전체 콘서트를 받아옵니다.');
       }
     } catch (err) {
       console.log(err);
@@ -53,6 +53,7 @@ function ConChinPage() {
             .log
             // ' ConChinPostingBox=> 타겟이 없으므로 전체를 가져옵니다..',
             ();
+          getAllConcerts();
         } else if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
           const response = await axios.get(
@@ -62,11 +63,6 @@ function ConChinPage() {
           if (response.data) {
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
-            console.log(
-              'ConChinPostingBox=> 타겟에 종속된 게시물들을 가져옵니다.',
-            );
-            console.log('allArticles: ');
-            console.log(allArticles);
           } else {
             console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
           }
@@ -96,16 +92,17 @@ function ConChinPage() {
       }
     } catch (err) {
       console.log(err);
-      console.log('에러가 났나봐요.');
     }
   };
 
   /* 타겟 초기화 핸들러 */
-  const resetTarget = () => {
-    dispatch(setTarget({}));
-    dispatch(setTargetArticle({}));
-  };
+  // const resetTarget = () => {
+  //   dispatch(setTarget({}));
+  //   dispatch(setTargetArticle({}));
+  //   // dispatch(setArticleRendered(false));
+  // };
 
+  /* 맨 처음 렌더링, 타겟이 있는지 없는지 유무에 따라 렌더링한다. */
   useEffect(() => {
     getAllConcerts();
     getAllArticlesWithCondition();

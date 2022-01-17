@@ -90,6 +90,7 @@
 #articleBox {
   position: relative;
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   width: 90%;
@@ -106,7 +107,7 @@
   @include lg() {
     font-size: 2.5rem;
   }
-  // border: 1px solid red;
+
   &Chosen {
     @extend #articleBox;
     align-items: center;
@@ -114,14 +115,13 @@
     font-size: 5rem;
     width: 100%;
     height: 50%;
+    // border: 1px solid red;
   }
   #box {
     position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
     @include mobile-only() {
       border-radius: 5px;
       width: 100%;
@@ -135,15 +135,18 @@
     @include lg() {
       border-radius: 10px;
       width: 100%;
-      height: 100%;
+      height: 96%;
     }
     // border: 1px solid red;
     padding: 1%;
     &Chosen {
       @extend #box;
+      position: relative;
+      display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      flex-wrap: wrap;
+      align-items: stretch;
+
       // border: 1px solid blue;
       overflow-x: scroll;
       overflow-y: hidden;
@@ -165,13 +168,14 @@
     }
     .article {
       position: relative;
-
       display: flex;
+      float: left;
       align-items: center;
-      width: 30%;
-      padding-bottom: 30%;
-      margin: 1%;
-      // border:1px solid green;
+      margin-left: 4%;
+      margin-top: 4%;
+      width: 28%;
+      padding-bottom: 28%;
+      // border: 1px solid green;
       transition: 0.15s all;
       @include mobile-only() {
         border-radius: 5px;
@@ -381,19 +385,13 @@
 #pagination {
   position: absolute;
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 30%;
+  align-items: center;
+  list-style: none;
+  width: 100%;
+  height: 100%;
   left: 50%;
-  @include mobile-only() {
-    height: 10%;
-  }
-  @include md() {
-    height: 11%;
-  }
-  @include lg() {
-    height: 12%;
-  }
+
   // border: 1px solid purple;
   transform: translate(-50%, 0%);
   .page {
@@ -409,23 +407,29 @@
     @include mobile-only() {
       width: 30px;
       height: 30px;
-      padding-bottom: 30px;
-      margin: 2%;
-      border-radius: 2px;
+      padding: 0;
+      line-height: 30px;
+      margin-left: 10px;
+      border-radius: 3px;
+      float: left;
     }
     @include md() {
-      width: 30px;
-      height: 30px;
-      padding-bottom: 30px;
-      margin: 3%;
-      border-radius: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      line-height: 40px;
+      margin-left: 25px;
+      border-radius: 4px;
+      float: left;
     }
     @include lg() {
-      width: 55px;
-      height: 55px;
-      padding-bottom: 55px;
-      margin: 3%;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      line-height: 50px;
+      margin-left: 30px;
       border-radius: 5px;
+      float: left;
     }
     &:hover {
       background-color: $yellow;
@@ -573,7 +577,7 @@
         width: 89%;
         height: 80%;
         // border: 1px solid blue;
-        
+
         #input {
           position: relative;
           display: flex;
@@ -593,7 +597,7 @@
             font-size: 1.87rem;
           }
           @include lg() {
-            font-size: 2.0rem;
+            font-size: 2rem;
           }
         }
         #inputBtn {
@@ -601,10 +605,10 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          color:white;
+          color: white;
           font-weight: bold;
-          background-color: $yellow;       
-          margin-right: 1.5%;   
+          background-color: $yellow;
+          margin-right: 1.5%;
           width: 10%;
           height: 80%;
           cursor: pointer;
@@ -646,7 +650,7 @@
       height: 40%;
       top: 1.5%;
       left: 1.5%;
-      
+
       .nickNameAndDate {
         color: $gray;
         @include mobile-only() {

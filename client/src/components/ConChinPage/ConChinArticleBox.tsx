@@ -12,17 +12,19 @@ import {
   setArticleTotalPage,
   setTargetArticle,
   setTargetArticlesUserInfo,
+  setArticleRendered,
+  setArticleCurPage,
 } from '../../store/ConChinSlice';
-import { setTarget, setAllConcerts } from '../../store/MainSlice';
+import { setTarget } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 function ConChinArticleBox() {
   const dispatch = useDispatch();
-  const { target, allConcerts } = useSelector((state: RootState) => state.main);
-  const { allArticles, targetArticle, targetArticlesUserInfo } = useSelector(
+  const { target } = useSelector((state: RootState) => state.main);
+  const { allArticles, targetArticle, articleOrder } = useSelector(
     (state: RootState) => state.conChin,
   );
 
@@ -50,8 +52,6 @@ function ConChinArticleBox() {
       );
       if (response.data) {
         dispatch(setTargetArticle(response.data.data.articleInfo));
-        console.log('ConChinArticleBox=> articleInfo 조회 성공입니다.');
-        console.log(targetArticle);
       }
     } catch (err) {
       console.log(err);
@@ -68,19 +68,49 @@ function ConChinArticleBox() {
       );
       if (response.data) {
         dispatch(setTargetArticlesUserInfo(response.data.data.userInfo));
-        console.log('ConChinArticleBox=> userInfo 조회 성공입니다.');
-        console.log(targetArticlesUserInfo);
       }
     } catch (err) {
-      console.log('targetUserInfo: ' + id);
       console.log(err);
     }
   };
 
+  /* 게시글 조회 핸들러 */
+  const getAllArticles = async () => {
+    try {
+      if (
+        Object.keys(target).length === 0 &&
+        Object.keys(allArticles).length !== 0
+      ) {
+        /* 타겟이 없지만 전체 표시중일 때 게시물 전체 정렬순에 맞게 정렬 */
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
+          { withCredentials: true },
+        );
+        if (response.data) {
+          dispatch(setAllArticles(response.data.data.articleInfo));
+          dispatch(setArticleTotalPage(response.data.data.totalPage));
+        } else {
+          console.log('ConChinArticleOrderBox=> 없거나 실수로 못가져왔어요.');
+        }
+      } else if (target === undefined || target === null) {
+        // dispatch(setTarget({}));
+        // dispatch(setTargetArticle({}));
+        // dispatch(setArticleCurPage(1));
+        console.log(
+          'ConChinArticleOrderBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
+        );
+      }
+    } catch (err) {
+      console.log(err);
+      dispatch(setAllArticles([]));
+      dispatch(setArticleTotalPage(0));
+    }
+  };
+
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
-  // useEffect(() => {
-  //   getAllArticles();
-  // }, []);
+  useEffect(() => {
+    getAllArticles();
+  }, [targetArticle]);
 
   return (
     <div id='conChinArticleBox'>
@@ -108,7 +138,6 @@ function ConChinArticleBox() {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
                       getTargetArticlesUserInfo(article.user_id);
-                      console.log(article.concert_id);
                     }}
                   >
                     <img
@@ -179,7 +208,6 @@ function ConChinArticleBox() {
                       <img className='icon' src={viewImage} />
                       <p className='count'>{article.view}</p>
                       <p className='date'>{article.createdAt}</p>
-
                       <p className='text'>{article.title}</p>
                     </div>
                   </ul>

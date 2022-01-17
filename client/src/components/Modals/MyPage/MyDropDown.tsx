@@ -3,7 +3,11 @@ import { RootState } from '../../../index';
 import { setScrollCount } from '../../../store/HeaderSlice';
 import { showMyDropDown } from '../../../store/ModalSlice';
 import { setTarget } from '../../../store/MainSlice';
-import { setTargetArticle } from '../../../store/ConChinSlice';
+import {
+  setTargetArticle,
+  setArticleRendered,
+  setArticleCurPage,
+} from '../../../store/ConChinSlice';
 import { logout } from '../../../store/AuthSlice';
 import { getArticleInfo, getMyArticleTotalPage } from '../../../store/MySlice';
 /* Library import */
@@ -30,29 +34,33 @@ function MyDropDown() {
       dispatch(logout());
       navigate('/main');
       dispatch(setScrollCount(0));
-      dispatch(setTarget({}));
+      resetTarget();
       console.log(target);
     } catch (err) {
       console.log(err);
     }
   };
 
+  /* 이동 시 타겟 초기화 핸들러 */
   const resetTarget = async () => {
-    dispatch(setTarget({}));
-    dispatch(setTargetArticle({}));
+    /* ConChinPage */
+    // dispatch(setTarget({}));
+    // dispatch(setTargetArticle({}));
+    // dispatch(setArticleRendered(false));
+    // dispatch(setArticleCurPage(1));
     // console.log(target);
-    console.log('---- 드랍다운 마이페이지 클릭 #1')
+    console.log('---- 드랍다운 마이페이지 클릭 #1');
     /* 내가 쓴 게시물 axios 테스트 */
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=1`,
       { withCredentials: true },
-      );
-      console.log('---- 드랍다운 마이페이지 클릭 #2')
-      
-      console.log('---- DropDown---- ', response.data.data)
-      
-    dispatch(getArticleInfo(response.data.data))
-    dispatch(getMyArticleTotalPage(response.data.data.totalPage))
+    );
+    console.log('---- 드랍다운 마이페이지 클릭 #2');
+
+    console.log('---- DropDown---- ', response.data.data);
+
+    dispatch(getArticleInfo(response.data.data));
+    dispatch(getMyArticleTotalPage(response.data.data.totalPage));
     /* 내가 쓴 게시물 axios 테스트 */
   };
 

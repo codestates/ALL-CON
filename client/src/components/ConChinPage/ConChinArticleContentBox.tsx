@@ -12,15 +12,23 @@ import {
   showAlertModal,
   showConChinWritingModal,
 } from '../../store/ModalSlice';
+import { setTarget } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  setAllArticles,
+  setTargetArticle,
+  setArticleCurPage,
+  setArticleTotalPage,
+  setArticleOrder,
+} from '../../store/ConChinSlice';
 
 function ConChinArticleContentBox() {
   const dispatch = useDispatch();
-  const { targetArticle, targetArticlesUserInfo } = useSelector(
-    (state: RootState) => state.conChin,
-  );
+  const { articleOrder, targetArticle, targetArticlesUserInfo, allArticles } =
+    useSelector((state: RootState) => state.conChin);
   const { target } = useSelector((state: RootState) => state.main);
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
@@ -50,6 +58,10 @@ function ConChinArticleContentBox() {
       dispatch(insertAlertText('글을 삭제합니다. 😖'));
       dispatch(showAlertModal(true));
       deleteArticle();
+      getAllArticles();
+      dispatch(setTarget({}));
+      dispatch(setTargetArticle({}));
+      dispatch(setArticleCurPage(1));
     } else {
       console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
     }
@@ -67,10 +79,29 @@ function ConChinArticleContentBox() {
     }
   };
 
-  /* 탈퇴 유저 정보 보기 경고 메세지 핸들러 */
+  /* 알림 모달 */
   const showAlert = () => {
-    dispatch(insertAlertText('탈퇴한 사용자입니다. 😖'));
     dispatch(showAlertModal(true));
+  };
+
+  /* 전체 게시물 받아오기 */
+  const getAllArticles = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setAllArticles(response.data.data.articleInfo));
+        dispatch(setArticleTotalPage(response.data.data.totalPage));
+        dispatch(setArticleCurPage(1));
+      } else {
+        console.log('없거나 실수로 못가져왔어요.');
+      }
+    } catch (err) {
+      console.log(err);
+      console.log('에러가 났나봐요.');
+    }
   };
 
   return (

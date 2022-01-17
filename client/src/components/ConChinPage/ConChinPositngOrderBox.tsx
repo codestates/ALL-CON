@@ -8,6 +8,7 @@ import {
   setTargetArticle,
   setPostingOrder,
   setArticleCurPage,
+  setArticleRendered,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -48,6 +49,7 @@ function ConChinPostingOrderBox() {
         resetTarget();
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
+        dispatch(setArticleCurPage(1));
       } else {
         console.log('없거나 실수로 못가져왔어요..');
       }
@@ -60,14 +62,15 @@ function ConChinPostingOrderBox() {
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
   useEffect(() => {
     getAllConcerts();
-    getAllArticles();
+    // getAllArticles();
   }, [postingOrder]);
 
   /* 타겟 초기화 핸들러 */
   const resetTarget = () => {
-    dispatch(setTarget({}));
-    dispatch(setTargetArticle({}));
-    dispatch(setArticleCurPage(1));
+    // dispatch(setTarget({}));
+    // dispatch(setArticleRendered(false));
+    // dispatch(setTargetArticle({}));
+    // dispatch(setArticleCurPage(1));
   };
   return (
     <div
@@ -81,7 +84,8 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('view'));
-          getAllArticles();
+          getAllConcerts();
+          // getAllArticles();
         }}
         style={
           postingOrder === 'view'
@@ -95,7 +99,8 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('near'));
-          getAllArticles();
+          getAllConcerts();
+          // getAllArticles();
         }}
         style={
           postingOrder === 'near'
@@ -109,7 +114,8 @@ function ConChinPostingOrderBox() {
         className='order'
         onClick={() => {
           dispatch(setPostingOrder('new'));
-          getAllArticles();
+          getAllConcerts();
+          // getAllArticles();
         }}
         style={
           postingOrder === 'new'

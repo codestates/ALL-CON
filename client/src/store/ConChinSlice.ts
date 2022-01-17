@@ -2,8 +2,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 /* State Type 설정 */
 export interface conChin {
-  /*hot,new,near */
+  /*view,new,near - 콘서트 정렬 */
   postingOrder: string;
+  /*view,new,near - 게시글 정렬 */
   articleOrder: string;
   /* 받아온 게시물 목록 */
   allArticles: any[];
@@ -23,6 +24,7 @@ export interface conChin {
     user_id?: number;
     view?: number;
   };
+  /* 게시물 현재 페이지 */
   articleCurPage: number;
   /* 선택한 게시물 유저 정보 */
   targetArticlesUserInfo: {
@@ -33,6 +35,8 @@ export interface conChin {
     birth?: string;
     createdAt?: string;
   };
+  /* 게시물 렌더 상태 */
+  articleRendered?: boolean;
 }
 
 /* State 초기값 설정 */
@@ -44,6 +48,7 @@ const initialState: conChin = {
   targetArticle: {},
   targetArticlesUserInfo: {},
   articleCurPage: 0,
+  articleRendered: false,
 };
 
 const conChinSlice = createSlice({
@@ -81,6 +86,12 @@ const conChinSlice = createSlice({
     setArticleCurPage: (state: conChin, { payload }: PayloadAction<number>) => {
       state.articleCurPage = payload;
     },
+    setArticleRendered: (
+      state: conChin,
+      { payload }: PayloadAction<boolean>,
+    ) => {
+      state.articleRendered = payload;
+    },
   },
 });
 
@@ -92,5 +103,6 @@ export const {
   setTargetArticle,
   setTargetArticlesUserInfo,
   setArticleCurPage,
+  setArticleRendered,
 } = conChinSlice.actions;
 export default conChinSlice.reducer;
