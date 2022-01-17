@@ -1,27 +1,34 @@
-import defaultImage from '../../images/default_image.jpg';
+/* Config import */
+
+/* CSS import */
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
-import MyArticlePagination from './MyArticlePagination';
-
-import axios from 'axios';
-
-import { RootState } from '../../index';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-
+/* Store import */
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
 import {
   setTargetArticle,
   setTargetArticlesUserInfo,
 } from '../../store/ConChinSlice';
+import MyArticlePagination from './MyArticlePagination';
+/* Library import */
+import axios from 'axios';
+import { RootState } from '../../index';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 
 function MyArticleBox() {
-  const { articleInfo } = useSelector((state: RootState) => state.my);
-
+  /* dispatch / navigate */
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  /* useSelector */
+  const { articleInfo } = useSelector((state: RootState) => state.my);
+
+  /* 지역상태 - useState */
+
+  /* useEffect */
+
+  /* handler 함수 (기능별 정렬) */
   // 마이페이지 - 나의 게시물 중 한 게시물을 선택하면, 다음이 실행된다
   const handleArticleSelected = async (
     id: number,
@@ -48,14 +55,12 @@ function MyArticleBox() {
     );
 
     // 현재 선택한 콘서트 업데이트 (target)
-    console.log(responseConcert.data.data);
     dispatch(setTarget(responseConcert.data.data.concertInfo));
 
     // 현재 선택한 유저정보 업데이트 (target)
     dispatch(setTargetArticlesUserInfo(responseUser.data.data.userInfo));
 
     // 현재 선택한 게시물 업데이트 (target)
-    console.log(responseArticle.data.data);
     dispatch(setTargetArticle(responseArticle.data.data.articleInfo));
     navigate('/conchin');
   };

@@ -19,7 +19,7 @@ import { useState, useEffect } from 'react';
 function MainConcertInfo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { order, targetIdx, target } = useSelector(
+  const { isRendering, targetIdx, target, detail } = useSelector(
     (state: RootState) => state.main,
   );
 
@@ -27,29 +27,11 @@ function MainConcertInfo() {
   const [emailClick, setEmailClick] = useState(false);
   const [smsClick, setSmsClick] = useState(false);
 
-  useEffect(() => {
-    getPosterInfo();
-  }, [order, targetIdx]);
-
-  const getPosterInfo = async () => {
-    try {
-      const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}`,
-        { withCredentials: true },
-      );
-      if (res.data.data) {
-        dispatch(setTarget(res.data.data.concertInfo));
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  // console.log(target);
   const getAlarm = async () => {
     try {
       console.log('알람타입>>>', alarmType);
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${alarmType}`,
+        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/alarm?alarm_type=${alarmType}`,
         {},
         { withCredentials: true },
       );
@@ -65,7 +47,7 @@ function MainConcertInfo() {
   const cancelAlarm = async () => {
     try {
       const res = await axios.delete(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${alarmType}`,
+        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/alarm?alarm_type=${alarmType}`,
         { withCredentials: true },
       );
       if (res.data) {
@@ -94,42 +76,42 @@ function MainConcertInfo() {
         </div>
         <div id='titleBox'>
           <div id='h2AlignBox'>
-            <h2>{target.title}</h2>
+            <h2>{detail.title}</h2>
           </div>
         </div>
-        <p id='date'>{`등록일: ${target.post_date} | 조회수: ${target.view}`}</p>
+        <p id='date'>{`등록일: ${detail.post_date} | 조회수: ${detail.view}`}</p>
       </div>
       <div id='middleBox'>
         <div id='concertInfoBox'>
           <img
-            src={target.image_concert}
+            src={detail.image_concert}
             alt='포스터'
             id='selectedPoster'
           ></img>
           <div id='concertInfo'>
             <div className='table'>
               <div className='left-side'>
-                {target.place && (
+                {detail.place && (
                   <p className='left' id='place'>
                     공연장소
                   </p>
                 )}
-                {target.period && (
+                {detail.period && (
                   <p className='left' id='date'>
                     공연기간
                   </p>
                 )}
-                {target.running_time && (
+                {detail.running_time && (
                   <p className='left' id='time'>
                     공연시간
                   </p>
                 )}
-                {target.rating && (
+                {detail.rating && (
                   <p className='left' id='rating'>
                     관람등급
                   </p>
                 )}
-                {target.price && (
+                {detail.price && (
                   <p className='left' id='price'>
                     티켓가격
                   </p>
@@ -139,30 +121,30 @@ function MainConcertInfo() {
                 </p>
               </div>
               <div className='right-side'>
-                {target.place && (
+                {detail.place && (
                   <p className='right' id='place_r'>
-                    <p>{target.place}</p>
+                    <p>{detail.place}</p>
                     <img src={map}></img>
                   </p>
                 )}
-                {target.period && (
+                {detail.period && (
                   <p className='right' id='date_r'>
-                    {target.period}
+                    {detail.period}
                   </p>
                 )}
-                {target.running_time && (
+                {detail.running_time && (
                   <p className='right' id='time_r'>
-                    {target.running_time}
+                    {detail.running_time}
                   </p>
                 )}
-                {target.rating && (
+                {detail.rating && (
                   <p className='right' id='rating_r'>
-                    {target.rating}
+                    {detail.rating}
                   </p>
                 )}
-                {target.price && (
+                {detail.price && (
                   <p className='right' id='price_r'>
-                    {target.price}
+                    {detail.price}
                   </p>
                 )}
                 <p className='right' id='alarm_r'>
@@ -212,7 +194,7 @@ function MainConcertInfo() {
               <p id='open'>티켓 오픈일 &nbsp; 11.29(월) 오후 2:00</p>
             </div>
           </button>
-          <a id='yellow-btn' href={target.link}>
+          <a id='yellow-btn' href={detail.link}>
             예매하기
           </a>
         </div>
