@@ -81,21 +81,13 @@ module.exports = {
       // 로그인 인증 검사
       const userInfo = await userAuth(req, res);
 
-      console.log(
-        '---- [POST] 게시글 작성 API 진입완료! ----',
-        userInfo.dataValues.role,
-        typeof userInfo.dataValues.role,
-      );
-
       const { concertid } = req.params;
       const { title, content, image } = req.body;
 
       // 일반회원은 게시글 작성 불가
-      if (userInfo.dataValues.role === 3)
-        return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
+      if (userInfo.dataValues.role === 3) return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
       // concertid, title 중 하나라도 전달되지 않았다면, 다음을 응답한다
-      if (!concertid || !title)
-        return res.status(400).json({ message: 'Bad Request!' });
+      if (!concertid || !title) return res.status(400).json({ message: 'Bad Request!' });
 
       // 새로운 콘친찾기 게시글이 작성되었다면, Articles 테이블 생성
       const articleInfo = await Articles.create({

@@ -15,12 +15,10 @@ module.exports = {
       // 해당 게시물의 조회수가 +1 된다
       let plusView = articleInfo.view + 1;
       await articleInfo.update({ view: plusView });
-      res
-        .status(200)
-        .json({
-          data: { articleInfo: articleInfo },
-          message: 'Article Detail!',
-        });
+      res.status(200).json({
+        data: { articleInfo: articleInfo },
+        message: 'Article Detail!',
+      });
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
     }
@@ -50,12 +48,10 @@ module.exports = {
         member_count: member_count,
         total_member: total_member,
       });
-      res
-        .status(200)
-        .json({
-          data: { articleInfo: articleInfo },
-          message: 'Success Edit Article!',
-        });
+      res.status(200).json({
+        data: { articleInfo: articleInfo },
+        message: 'Success Edit Article!',
+      });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ message: 'Server Error!' });

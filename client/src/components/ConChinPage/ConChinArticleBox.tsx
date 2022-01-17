@@ -108,9 +108,11 @@ function ConChinArticleBox() {
   };
 
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
-  useEffect(() => {
-    getAllArticles();
-  }, [targetArticle]);
+  // useEffect(() => {
+  //   getTargetArticlesInfo();
+  //   getTargetArticlesConcert();
+  //   getTargetArticlesUserInfo();
+  // }, [targetArticle]);
 
   return (
     <div id='conChinArticleBox'>

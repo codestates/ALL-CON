@@ -9,39 +9,27 @@ import emailOff from '../../images/email3.png';
 import returnImg from '../../images/return.png';
 /* Store import */
 import { RootState } from '../../index';
+import { setTarget } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 
 function MainConcertInfo() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { target } = useSelector((state: RootState) => state.main);
+  const { order, targetIdx, target } = useSelector(
+    (state: RootState) => state.main,
+  );
 
-  type obj = {
-    activation?: boolean;
-    createdAt?: Date;
-    exclusive?: string;
-    id?: number;
-    image_concert?: string;
-    link?: string;
-    open_date?: Date;
-    period?: string;
-    place?: string;
-    post_date?: string;
-    price?: string;
-    rating?: string;
-    running_time?: string;
-    title?: string;
-    total_comment?: number;
-    updatedAt?: Date;
-    view?: number;
-  };
-  const [targetPoster, setTargetPoster] = useState<obj>({});
   const [alarmType, setAlarmType] = useState('');
   const [emailClick, setEmailClick] = useState(false);
   const [smsClick, setSmsClick] = useState(false);
+
+  useEffect(() => {
+    getPosterInfo();
+  }, [order, targetIdx]);
 
   const getPosterInfo = async () => {
     try {
@@ -49,35 +37,44 @@ function MainConcertInfo() {
         `${process.env.REACT_APP_API_URL}/concert/${target.id}`,
         { withCredentials: true },
       );
-      if (res.data.data.concertInfo) {
-        const changePoster = res.data.data.concertInfo;
-        setTargetPoster(changePoster);
+      if (res.data.data) {
+        dispatch(setTarget(res.data.data.concertInfo));
       }
     } catch (err) {
       console.log(err);
     }
   };
-
+  // console.log(target);
   const getAlarm = async () => {
     try {
+      console.log('알람타입>>>', alarmType);
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm`,
-        { alarm_type: alarmType },
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${alarmType}`,
+        {},
         { withCredentials: true },
       );
-      if (res.data.data.alarmInfo) {
-        console.log(res.data.data.alarmInfo);
-        setEmailClick(!emailClick);
-        setSmsClick(!smsClick);
+      if (res.data) {
+        console.log(res.data);
+        console.log('알람 나와라아아');
       }
     } catch (err) {
       console.log(err);
     }
   };
 
-  useEffect(() => {
-    getPosterInfo();
-  }, [target]);
+  const cancelAlarm = async () => {
+    try {
+      const res = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${alarmType}`,
+        { withCredentials: true },
+      );
+      if (res.data) {
+        console.log(res.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div id='mainConcertInfoBox'>
@@ -97,42 +94,42 @@ function MainConcertInfo() {
         </div>
         <div id='titleBox'>
           <div id='h2AlignBox'>
-            <h2>{targetPoster.title}</h2>
+            <h2>{target.title}</h2>
           </div>
         </div>
-        <p id='date'>{`등록일: ${targetPoster.post_date} | 조회수: ${targetPoster.view}`}</p>
+        <p id='date'>{`등록일: ${target.post_date} | 조회수: ${target.view}`}</p>
       </div>
       <div id='middleBox'>
         <div id='concertInfoBox'>
           <img
-            src={targetPoster.image_concert}
+            src={target.image_concert}
             alt='포스터'
             id='selectedPoster'
           ></img>
           <div id='concertInfo'>
             <div className='table'>
               <div className='left-side'>
-                {targetPoster.place && (
+                {target.place && (
                   <p className='left' id='place'>
                     공연장소
                   </p>
                 )}
-                {targetPoster.period && (
+                {target.period && (
                   <p className='left' id='date'>
                     공연기간
                   </p>
                 )}
-                {targetPoster.running_time && (
+                {target.running_time && (
                   <p className='left' id='time'>
                     공연시간
                   </p>
                 )}
-                {targetPoster.rating && (
+                {target.rating && (
                   <p className='left' id='rating'>
                     관람등급
                   </p>
                 )}
-                {targetPoster.price && (
+                {target.price && (
                   <p className='left' id='price'>
                     티켓가격
                   </p>
@@ -142,30 +139,30 @@ function MainConcertInfo() {
                 </p>
               </div>
               <div className='right-side'>
-                {targetPoster.place && (
+                {target.place && (
                   <p className='right' id='place_r'>
-                    <p>{targetPoster.place}</p>
+                    <p>{target.place}</p>
                     <img src={map}></img>
                   </p>
                 )}
-                {targetPoster.period && (
+                {target.period && (
                   <p className='right' id='date_r'>
-                    {targetPoster.period}
+                    {target.period}
                   </p>
                 )}
-                {targetPoster.running_time && (
+                {target.running_time && (
                   <p className='right' id='time_r'>
-                    {targetPoster.running_time}
+                    {target.running_time}
                   </p>
                 )}
-                {targetPoster.rating && (
+                {target.rating && (
                   <p className='right' id='rating_r'>
-                    {targetPoster.rating}
+                    {target.rating}
                   </p>
                 )}
-                {targetPoster.price && (
+                {target.price && (
                   <p className='right' id='price_r'>
-                    {targetPoster.price}
+                    {target.price}
                   </p>
                 )}
                 <p className='right' id='alarm_r'>
@@ -173,19 +170,35 @@ function MainConcertInfo() {
                     src={!emailClick ? emailOff : emailOn}
                     alt='이메일아이콘'
                     id='mailIcon2'
-                    onClick={() => {
-                      setAlarmType('email');
-                      getAlarm();
-                    }}
+                    onClick={
+                      // emailClick
+                      //   ? () => {
+                      //       emailCancelHandler();
+                      //     }
+                      //   : () => {
+                      //       emailClickHandler();
+                      //     }
+                      () => {
+                        // emailClickHandler();
+                      }
+                    }
                   ></img>
                   <img
                     src={!smsClick ? smsOff : smsOn}
                     alt='문자아이콘'
                     id='kakaoIcon2'
-                    onClick={() => {
-                      setAlarmType('phone');
-                      getAlarm();
-                    }}
+                    onClick={
+                      //   smsClick
+                      //     ? () => {
+                      //         smsCancelHandler();
+                      //       }
+                      //     : () => {
+                      //         smsClickHandler();
+                      //       }
+                      () => {
+                        // smsClickHandler();
+                      }
+                    }
                   ></img>
                 </p>
               </div>
@@ -195,11 +208,11 @@ function MainConcertInfo() {
         <div id='buttonsWrapper'>
           <button id='black-btn'>
             <div id='imgAndOpen'>
-              <img src={bellOff} />
+              <img src={smsClick || emailClick ? bellOn : bellOff} />
               <p id='open'>티켓 오픈일 &nbsp; 11.29(월) 오후 2:00</p>
             </div>
           </button>
-          <a id='yellow-btn' href={targetPoster.link}>
+          <a id='yellow-btn' href={target.link}>
             예매하기
           </a>
         </div>

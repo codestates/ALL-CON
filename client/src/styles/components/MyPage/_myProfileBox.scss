@@ -74,6 +74,7 @@
     width: 80%;
     height: 64.5%;
     bottom: 0%;
+    text-align: center;
     // border: 1px solid red;
     #nickNameWrapper {
       position: absolute;
@@ -166,6 +167,7 @@
         outline: none;
         resize: none;
         overflow: hidden;
+        text-align: center;
         @include mobile-only() {
           font-size: 1.5rem;
         }

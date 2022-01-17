@@ -28,6 +28,7 @@ module.exports = {
       )
       // 총 페이지 수
       const totalPage = Math.ceil(articleCommentInfo.count / limit);
+      
       res.status(200).json({ data: { articleCommentInfo: articleCommentInfo.rows, totalPage: totalPage }, message: 'AticlesComments!' })
     } catch (err) {
       console.log(err)
@@ -37,14 +38,7 @@ module.exports = {
   post: async (req, res) => {
     try {
       // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
-
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
-      /* 임시 TEST CODE (삭제예정) */
+      const userInfo = await userAuth(req, res);
 
       const { articleid } = req.params;
       const { content } = req.body;
@@ -55,8 +49,8 @@ module.exports = {
       // ConcertComments 테이블에 전달받은 데이터로 새로운 행을 생성합니다
       await ArticleComments.create({
         content: content,
-        user_id: Number(userInfo.id),
-        article_id: Number(articleid)
+        user_id: userInfo.dataValues.id,
+        article_id: articleid
       })
 
       res.status(201).json({ message: 'Success Create ArticleComment!' });
