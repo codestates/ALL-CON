@@ -99,7 +99,6 @@ module.exports = {
                 concert_id: concertid,
               },
             });
-
             return res
               .status(201)
               .json({

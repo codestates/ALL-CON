@@ -601,37 +601,25 @@ a {
         @media (min-width: 1200px) {
           #commentBox .box .dateBox .nickNameAndDate {
             font-size: 2rem; } }
-      #commentBox .box .dateBox .dotWrapper {
+      #commentBox .box .dateBox .optionWrapper {
         position: absolute;
         display: flex;
         align-items: center;
-        justify-content: center;
-        height: 4%;
-        width: 4%;
-        padding-bottom: 4%;
+        justify-content: space-between;
+        height: 100%;
+        width: 10%;
         top: 0%;
         right: 2%; }
-        #commentBox .box .dateBox .dotWrapper:hover {
-          cursor: pointer; }
-        #commentBox .box .dateBox .dotWrapper .dot {
-          position: absolute;
+        #commentBox .box .dateBox .optionWrapper .optionBtn {
+          position: relative;
           display: flex;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          object-fit: 100%; }
-          @media (max-width: 767px) {
-            #commentBox .box .dateBox .dotWrapper .dot {
-              width: 1.1rem;
-              height: 1.1rem; } }
-          @media (min-width: 768px) {
-            #commentBox .box .dateBox .dotWrapper .dot {
-              width: 1.5rem;
-              height: 1.5rem; } }
-          @media (min-width: 1200px) {
-            #commentBox .box .dateBox .dotWrapper .dot {
-              width: 2.5rem;
-              height: 2.5rem; } }
+          align-items: center;
+          justify-content: center;
+          color: #a0a0a0;
+          font-weight: bold;
+          width: 45%;
+          height: 100%;
+          cursor: pointer; }
     #commentBox .box #imgAndText {
       position: relative;
       display: flex;
@@ -684,46 +672,56 @@ a {
             #commentBox .box #imgAndText .imgWrapper .shield {
               width: 20px;
               height: 20px; } }
-      #commentBox .box #imgAndText #input {
+      #commentBox .box #imgAndText .textWrapper {
         position: absolute;
         display: flex;
-        width: 80%;
-        border: none;
-        outline: none;
-        overflow: hidden;
-        resize: none;
-        border-radius: 5px; }
-        @media (max-width: 767px) {
-          #commentBox .box #imgAndText #input {
-            left: 11.5%;
-            font-size: 1.3rem;
-            height: 50%; } }
-        @media (min-width: 768px) {
-          #commentBox .box #imgAndText #input {
-            left: 10%;
-            font-size: 1.87rem;
-            height: 70%; } }
-        @media (min-width: 1200px) {
-          #commentBox .box #imgAndText #input {
-            left: 9%;
-            height: 50%;
-            font-size: 2.3rem; } }
-      #commentBox .box #imgAndText #text {
-        position: absolute;
-        display: flex;
-        width: 80%; }
-        @media (max-width: 767px) {
-          #commentBox .box #imgAndText #text {
-            left: 11.5%;
-            font-size: 1.3rem; } }
-        @media (min-width: 768px) {
-          #commentBox .box #imgAndText #text {
-            left: 10%;
-            font-size: 1.8rem; } }
-        @media (min-width: 1200px) {
-          #commentBox .box #imgAndText #text {
-            left: 9%;
-            font-size: 2.3rem; } }
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        height: 100%;
+        left: 10%; }
+        #commentBox .box #imgAndText .textWrapper #text {
+          position: relative;
+          display: flex;
+          width: 85%;
+          height: 100%;
+          margin-right: 0.5%; }
+          @media (max-width: 767px) {
+            #commentBox .box #imgAndText .textWrapper #text {
+              font-size: 1.3rem; } }
+          @media (min-width: 768px) {
+            #commentBox .box #imgAndText .textWrapper #text {
+              font-size: 1.5rem; } }
+          @media (min-width: 1200px) {
+            #commentBox .box #imgAndText .textWrapper #text {
+              font-size: 1.5rem; } }
+        #commentBox .box #imgAndText .textWrapper .textBtn {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          font-weight: bold;
+          background-color: black;
+          margin-right: 1%;
+          width: 7.5%;
+          height: 80%;
+          cursor: pointer; }
+          @media (max-width: 767px) {
+            #commentBox .box #imgAndText .textWrapper .textBtn {
+              border-radius: 5px;
+              font-size: 1rem; } }
+          @media (min-width: 768px) {
+            #commentBox .box #imgAndText .textWrapper .textBtn {
+              border-radius: 8px;
+              font-size: 1.3rem; } }
+          @media (min-width: 1200px) {
+            #commentBox .box #imgAndText .textWrapper .textBtn {
+              border-radius: 12px;
+              font-size: 1.5rem; } }
+        #commentBox .box #imgAndText .textWrapper .textBtn:hover {
+          transition: 0.25s all;
+          background-color: #ffce63; }
 
 /***** commentBox *****/
 /***** headerMenu *****/
