@@ -49,6 +49,7 @@
     font-weight: bold;
     border: 0;
     border-radius: 5px;
+    cursor: pointer;
     @include mobile-only() {
       width: 25%;
       font-size: 1.6rem;
