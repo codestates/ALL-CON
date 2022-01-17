@@ -2151,7 +2151,7 @@ a {
         height: 22.5%; } }
     @media (min-width: 1200px) {
       #contentBox #paginationWrapper, #contentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #contentBox #paginationWrapperChosen, #contentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #contentBox #paginationWrapperChosen {
-        top: 80%;
+        top: 70%;
         height: 25%; } }
 
 /****** conChinPostingBox ******/
