@@ -8,7 +8,7 @@ module.exports = {
     host: process.env.DATABASE_HOST,
     port: process.env.DATABASE_PORT,
     dialect: 'mysql',
-    timezone: 'Asia/Seoul'
+    timezone: 'Asia/Seoul',
   },
   test: {
     username: process.env.DATABASE_USERNAME,
@@ -17,7 +17,7 @@ module.exports = {
     host: process.env.DATABASE_HOST,
     port: process.env.DATABASE_PORT,
     dialect: 'mysql',
-    timezone: 'Asia/Seoul'
+    timezone: 'Asia/Seoul',
   },
   production: {
     username: process.env.DATABASE_USERNAME,
@@ -26,6 +26,6 @@ module.exports = {
     host: process.env.DATABASE_HOST,
     port: process.env.DATABASE_PORT,
     dialect: 'mysql',
-    timezone: 'Asia/Seoul'
-  }
+    timezone: 'Asia/Seoul',
+  },
 };
