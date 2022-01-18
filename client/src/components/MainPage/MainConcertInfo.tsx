@@ -1,12 +1,13 @@
 /* CSS import */
 import bellOn from '../../images/notification2.png';
 import bellOff from '../../images/notification1.png';
-import map from '../../images/map.png';
-import smsOn from '../../images/mail4.png';
-import smsOff from '../../images/mail4off.png';
+import comment from '../../images/comment.png';
 import emailOn from '../../images/email2.png';
 import emailOff from '../../images/email3.png';
+import map from '../../images/map.png';
 import returnImg from '../../images/return.png';
+import smsOn from '../../images/mail4.png';
+import smsOff from '../../images/mail4off.png';
 /* Store import */
 import { RootState } from '../../index';
 import {
@@ -102,7 +103,6 @@ function MainConcertInfo() {
           const all = res.data.data.myAllAlarmInfo;
           //모든 알람 allAlarms에 배열로 저장
           setAllAlarms(all);
-          console.log(allAlarms);
           if (allAlarms) {
             let flag = 1;
             let check = () => {
@@ -164,21 +164,21 @@ function MainConcertInfo() {
     }
   };
 
-  const handleOpenDate = (opendate?: Date): string => {
-    const day = String(opendate);
-    const setDay =
-      day.substr(0, 4) +
-      '년' +
-      day.substr(5, 2) +
-      '월' +
-      day.substr(8, 2) +
-      '일' +
-      day.substr(11, 2) +
-      '시' +
-      day.substr(14, 2) +
-      '분';
-    return setDay;
-  };
+  /* Date 객체 형변환 */
+  const dayFormatter = (openDate?: Date): string => {
+    if(openDate){
+      const strOpenDate = String(openDate);
+
+      const year = strOpenDate.substring(0,4);
+      const month = strOpenDate.substring(5,7);
+      const date = strOpenDate.substring(8,10);
+      const hour = Number(strOpenDate.substring(11,13))+9;  // 9시간 더해주기
+      const minute = strOpenDate.substring(14,16);
+
+      return String(year+'년 '+month+'월 '+date+'일 '+hour+' : '+minute);
+    }
+    return '';
+  }
 
   const emailClickHandler = () => {
     if (isLogin === false) {
@@ -370,7 +370,7 @@ function MainConcertInfo() {
               <div id='imgAndOpen'>
                 <img src={smsClick || emailClick ? bellOn : bellOff} />
                 <p id='open'>
-                  티켓 오픈일 &nbsp; {handleOpenDate(detail.open_date)}
+                  티켓 오픈일 &nbsp; {dayFormatter(detail.open_date)}
                 </p>
               </div>
             </button>
@@ -383,6 +383,7 @@ function MainConcertInfo() {
         </div>
       </div>
       <div id='bottomBox'>
+        <img src={comment} alt='commentImg'/>
         <div>{detail.total_comment}개의 댓글</div>
       </div>
     </div>

@@ -14,7 +14,7 @@ function MainPagination() {
 
   useEffect(() => {
 
-  }, [totalNum]);
+  }, [totalNum, pageNum]);
 
   return (
     <div id='paginationWrapper'>

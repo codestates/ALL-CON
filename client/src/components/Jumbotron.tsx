@@ -9,9 +9,10 @@ import {
   setTargetIdx,
   setOrder,
   setIsRendering,
-  setMainToConcert,
+  setMainToConcert
 } from '../store/MainSlice';
 /* Library import */
+import axios from 'axios';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -22,25 +23,25 @@ function Jumbotron() {
   );
 
   useEffect(() => {
-    
   }, [order]);
 
-  const leftClickHandler = () => {
-    if (targetIdx > 0) {
-      dispatch(setMainToConcert(false));
-      dispatch(setTargetIdx(targetIdx - 1));
-      dispatch(setTarget(allConcerts[targetIdx - 1]));
+  /* 포스터 이동 핸들러 */
+  const moveHandler = (move: string) => {
+    if(move === 'left'){
+      if (targetIdx > 0) {
+        dispatch(setTargetIdx(targetIdx - 1));
+        dispatch(setTarget(allConcerts[targetIdx - 1]));
+      }
+    } else if(move === 'right') {
+      if (targetIdx < allConcerts.length - 1) {
+        dispatch(setTargetIdx(targetIdx + 1));
+        dispatch(setTarget(allConcerts[targetIdx + 1]));
+      }
     }
+    dispatch(setMainToConcert(false)); // 콘서트 -> 메인 페이지 상태 false
   };
 
-  const rigthClickHandler = () => {
-    if (targetIdx < allConcerts.length - 1) {
-      dispatch(setMainToConcert(false));
-      dispatch(setTargetIdx(targetIdx + 1));
-      dispatch(setTarget(allConcerts[targetIdx + 1]));
-    }
-  };
-
+  /* orderClick 핸들러 */
   const orderClickHandler = (clickValue: string) => {
     /* 정렬 버튼 클릭시 렌더링: false, 타겟값 초기화, order 갱신 */
     dispatch(setIsRendering(false));
@@ -64,13 +65,13 @@ function Jumbotron() {
           </div>
           {/*오른쪽 상단 탭 바*/}
           <div id='tabBar'>
-            <p id={order === 'view' ? 'hot' : undefined} onMouseUp={() => { orderClickHandler('view') }} onMouseDown={() => { orderClickHandler('view') }}>
+            <p id={order === 'view' ? 'hot' : undefined} onClick={() => { orderClickHandler('view') }}>
               HOT
             </p>
-            <p id={order === 'near' ? 'near' : undefined} onMouseUp={() => { orderClickHandler('near') }} onMouseDown={() => { orderClickHandler('near') }}>
+            <p id={order === 'near' ? 'near' : undefined} onClick={() => { orderClickHandler('near') }}>
               NEAR
             </p>
-            <p id={order === 'new' ? 'new' : undefined} onMouseUp={() => { orderClickHandler('new') }} onMouseDown={() => { orderClickHandler('new') }}>
+            <p id={order === 'new' ? 'new' : undefined} onClick={() => { orderClickHandler('new') }}>
               NEW
             </p>
           </div>
@@ -82,13 +83,13 @@ function Jumbotron() {
               id='left'
               src={left}
               alt='왼쪽 화살표'
-              onClick={leftClickHandler}
+              onClick={() => moveHandler('left')}
             ></img>
             <img
               id='right'
               src={right}
               alt='오른쪽 화살표'
-              onClick={rigthClickHandler}
+              onClick={() => moveHandler('right')}
             ></img>
           </div>
           <PosterSlide />
