@@ -15,6 +15,7 @@ import {
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setPageNum } from '../store/ConcertCommentSlice';
 
 function Jumbotron() {
   const dispatch = useDispatch();
@@ -22,19 +23,19 @@ function Jumbotron() {
     (state: RootState) => state.main,
   );
 
-  useEffect(() => {}, [order]);
-
   /* 포스터 이동 핸들러 */
   const moveHandler = (move: string) => {
     if (move === 'left') {
       if (targetIdx > 0) {
         dispatch(setTargetIdx(targetIdx - 1));
         dispatch(setTarget(allConcerts[targetIdx - 1]));
+        dispatch(setPageNum(1));
       }
     } else if (move === 'right') {
       if (targetIdx < allConcerts.length - 1) {
         dispatch(setTargetIdx(targetIdx + 1));
         dispatch(setTarget(allConcerts[targetIdx + 1]));
+        dispatch(setPageNum(1));
       }
     }
     dispatch(setMainToConcert(false)); // 콘서트 -> 메인 페이지 상태 false
@@ -47,6 +48,7 @@ function Jumbotron() {
     dispatch(setTargetIdx(0));
     dispatch(setTarget({}));
     dispatch(setOrder(clickValue));
+    dispatch(setPageNum(1));
   };
 
   const ballList = allConcerts.map(el => {

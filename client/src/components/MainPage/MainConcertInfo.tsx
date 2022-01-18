@@ -46,11 +46,8 @@ function MainConcertInfo() {
     emailClick,
     smsClick,
   } = useSelector((state: RootState) => state.main);
-  const { pageAllComments } = useSelector(
-    (state: RootState) => state.concertComments,
-  );
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-
+  const { pageAllComments } = useSelector((state: RootState) => state.concertComments)
   const [alarmType, setAlarmType] = useState('');
   // const [emailClick, setEmailClick] = useState(false);
   // const [smsClick, setSmsClick] = useState(false);
@@ -66,30 +63,11 @@ function MainConcertInfo() {
   };
   const [allAlarms, setAllAlarms] = useState<maincon[]>([]);
 
-  //유저가 각 콘서트 (target)별로 email,sms알람을 받는지 확인
-
-  useEffect(() => {
-    getPosterInfo();
-  }, [order, targetIdx, pageAllComments]);
-
   useEffect(() => {
     // 로그인 상태인 경우, 나의 알람 리스트를 조회한다
-    // if(isLogin) getAllAlarms();
+    if(isLogin) getAllAlarms();
   }, [target]);
 
-  const getPosterInfo = async () => {
-    try {
-      const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}`,
-        { withCredentials: true },
-      );
-      if (res.data.data) {
-        dispatch(setDetail(res.data.data.concertInfo));
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
   const getAllAlarms = async () => {
     try {
       if (isLogin === false) {
@@ -173,7 +151,7 @@ function MainConcertInfo() {
       const year = strOpenDate.substring(0, 4);
       const month = strOpenDate.substring(5, 7);
       const date = strOpenDate.substring(8, 10);
-      const hour = Number(strOpenDate.substring(11, 13)) + 9; // 9시간 더해주기
+      const hour = Number(strOpenDate.substring(11, 13));
       const minute = strOpenDate.substring(14, 16);
 
       return String(

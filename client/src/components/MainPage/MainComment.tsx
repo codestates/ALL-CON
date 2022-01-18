@@ -23,7 +23,7 @@ import { useSelector, useDispatch } from 'react-redux';
 function MainComment() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { targetIdx, target } = useSelector(
+  const { targetIdx, target, order } = useSelector(
     (state: RootState) => state.main,
   );
   const { pageNum, pageAllComments, comment } = useSelector(
@@ -38,7 +38,7 @@ function MainComment() {
 
   useEffect(() => {
     getAllComments();
-  }, [targetIdx, isClick, pageNum]);
+  }, [targetIdx, isClick, pageNum, order]);
   
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
