@@ -1,7 +1,7 @@
 /* Config import */
 /* CSS import */
 /* Store import */
-import { getMyConcertCommentInfo, getMyConcertCommentTotalPage, getMyArticleCommentInfo, getMyArticleCommentTotalPage } from '../../store/MySlice';
+import { getMyConcertCommentInfo, getMyConcertCommentTotalPage, getMyArticleCommentInfo, getMyArticleCommentTotalPage, getMyConcertCommentCurrentPage } from '../../store/MySlice';
 /* Library import */
 import { RootState } from '../../index';
 import axios from 'axios';
@@ -14,7 +14,7 @@ function MyCommentPagination() {
   const navigate = useNavigate();
   
   /* useSelector */
-  const { myConcertCommentTotalPage, myArticleCommentTotalPage, commentBtnType } = useSelector((state: RootState) => state.my);
+  const { myConcertCommentTotalPage, myArticleCommentTotalPage, commentBtnType, myConcertCommentCurrentPage } = useSelector((state: RootState) => state.my);
 
   /* 지역상태 - useState */
   let concertPageArr: number[] = [];
@@ -42,6 +42,8 @@ function MyCommentPagination() {
     dispatch(getMyConcertCommentInfo(response.data.data))
     dispatch(getMyConcertCommentTotalPage(response.data.data.totalPage))
     /* 내가 쓴 댓글(콘서트 게시물) axios 테스트 */
+    // 현재 (내가 쓴 콘서트 댓글) 페이지 업데이트
+    dispatch(getMyConcertCommentCurrentPage(pageNum))
   } 
 
   // 내가 쓴 (콘친) 게시물 페이지를 클릭헀을 때, 다음을 실행한다
@@ -66,7 +68,7 @@ function MyCommentPagination() {
           (concertPageArr.length > 0
           ? concertPageArr.map((el: number) => {
             return (
-            <ul className='page' onClick={() => handleConcertPageClick(el)}>
+            <ul className={ el === myConcertCommentCurrentPage ? 'pageChosen' : 'page' } onClick={() => handleConcertPageClick(el)}>
               <p className='text'> {el} </p>
             </ul>
             )
@@ -75,7 +77,7 @@ function MyCommentPagination() {
         : (articlePageArr.length > 0
           ? articlePageArr.map((el: number) => {
             return (
-            <ul className='page' onClick={() => handleArticlePageClick(el)}>
+            <ul className={ el === myConcertCommentCurrentPage ? 'pageChosen' : 'page' } onClick={() => handleArticlePageClick(el)}>
               <p className='text'> {el} </p>
             </ul>
             )

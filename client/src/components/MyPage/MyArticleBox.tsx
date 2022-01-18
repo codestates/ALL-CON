@@ -104,7 +104,7 @@ function MyArticleBox() {
                       <div className='title'>
                         <img className='icon' src={viewImage} alt='viewImage' />
                         <p className='count'>{el.view}</p>
-                        <p className='date'>{el.updatedAt}</p>
+                        <p className='date'>{el.updatedAt.substring(0, 10)}</p>
                         <p className='text'>{el.content}</p>
                       </div>
                     </ul>

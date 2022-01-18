@@ -613,6 +613,7 @@ a {
           #commentBox .box .dateBox .nickNameAndDate {
             font-size: 2rem; } }
       #commentBox .box .dateBox .optionWrapper {
+        z-index: 100;
         position: absolute;
         display: flex;
         align-items: center;
@@ -2799,7 +2800,7 @@ a {
     @media (min-width: 1200px) {
       #myPageContainer #myCommentWrapper {
         height: 25%;
-        top: 85%; } }
+        top: 63%; } }
   #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
@@ -4805,7 +4806,7 @@ a {
     @media (min-width: 1200px) {
       #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
         width: 75%;
-        top: 11%;
+        top: 5%;
         height: 90%; } }
     #myArticleBox #articleWrapper #myMemberBoxWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen #myMemberBoxWrapper, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen #myMemberBoxWrapper {
       position: absolute; }
@@ -4835,7 +4836,7 @@ a {
         height: 45%; } }
     @media (min-width: 1200px) {
       #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
-        top: 65%;
+        top: 57%;
         height: 45%; } }
 
 #myCommentBox {
@@ -4933,6 +4934,54 @@ a {
       color: white;
       cursor: pointer;
       transition: 0.15s all; }
+  #myCommentBox .myOptionBtn {
+    z-index: 999;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-right: 1.0%;
+    width: 50%;
+    height: 70%;
+    cursor: pointer; }
+  #myCommentBox .myCommentOptionBtnWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 11.2%;
+    height: 100%;
+    margin-right: 0.5%; }
+  #myCommentBox .myCommentOptionBtn {
+    border-radius: 5px;
+    margin-right: 0.5%;
+    text-align: center;
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #myCommentBox .myCommentOptionBtn {
+        width: 19%;
+        height: 50%;
+        font-size: 1.6rem; } }
+    @media (min-width: 768px) {
+      #myCommentBox .myCommentOptionBtn {
+        width: 12%;
+        height: 50%;
+        font-size: 1.8rem; } }
+    @media (min-width: 1200px) {
+      #myCommentBox .myCommentOptionBtn {
+        width: 45%;
+        height: 50%;
+        font-size: 1.8rem; } }
+    #myCommentBox .myCommentOptionBtn:hover {
+      background-color: #ffce63;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s all; }
+  #myCommentBox .hidden {
+    display: none; }
   #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
     position: absolute;
     display: flex;
@@ -4950,8 +4999,8 @@ a {
         height: 45%; } }
     @media (min-width: 1200px) {
       #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
-        top: 86%;
-        height: 45%; } }
+        top: 84%;
+        height: 30%; } }
 
 #myEditPage {
   position: absolute;

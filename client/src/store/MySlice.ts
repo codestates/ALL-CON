@@ -13,11 +13,16 @@ export interface my {
   commentBtnType: string;
 
   myArticleTotalPage: number;
-  myConcertCommentTotalPage: number;
-  myTotalConcertComment: number;
+  myArticleCommentCurrentPage: number;
   myArticleCommentTotalPage: number;
+
+  myConcertCommentTotalPage: number;
+  myConcertCommentCurrentPage: number;
+  myConcertCommentCurrentComment: number;
+  myTotalConcertComment: number;
+  
   myTotalArticleComment: number;
-  articleInfo: {
+  articleInfo?: {
     id?: number;
     title?: string;
     content?: string;
@@ -31,12 +36,12 @@ export interface my {
     createdAt?: Date;
     updatedAt?: Date;
   }
-  concertCommentInfo: {
-    Article?: object,
+  concertCommentInfo?: {
+    // Article?: object,
     id?: number;
     content?: string;
     user_id?: number;
-    article_id?: number;
+    concert_id?: number;
     createdAt?: Date;
     updatedAt?: Date;
   }
@@ -55,14 +60,20 @@ const initialState: my = {
   myIntroductionState: false, 
   myIntroduction: '', 
   commentBtnType: '콘서트',
+
   articleInfo: {}, 
   myArticleTotalPage: 0, 
-  myConcertCommentTotalPage: 0, 
-  myTotalConcertComment: 0, 
-  concertCommentInfo: {},
+  myArticleCommentCurrentPage: 1,
   myArticleCommentTotalPage: 0,
   myTotalArticleComment: 0,
-  articleCommentInfo: {}
+  articleCommentInfo: {},
+
+  myConcertCommentTotalPage: 0, 
+  myConcertCommentCurrentPage: 1,
+  myConcertCommentCurrentComment: 0, 
+  myTotalConcertComment: 0, 
+  concertCommentInfo: {},
+
 };
 
 const mySlice = createSlice({
@@ -84,6 +95,15 @@ const mySlice = createSlice({
     },    
     getMyTotalConcertComment: (state: my, { payload }: PayloadAction<number>) => { 
       state.myTotalConcertComment = payload;
+    },  
+    getMyArticleCommentCurrentPage: (state: my, { payload }: PayloadAction<number>) => { 
+      state.myArticleCommentCurrentPage = payload;
+    }, 
+    getMyConcertCommentCurrentPage: (state: my, { payload }: PayloadAction<number>) => { 
+      state.myConcertCommentCurrentPage = payload;
+    },  
+    getMyConcertCommentCurrentComment: (state: my, { payload }: PayloadAction<number>) => { 
+      state.myConcertCommentCurrentComment = payload;
     },  
     getMyConcertCommentTotalPage: (state: my, { payload }: PayloadAction<number>) => { 
       state.myConcertCommentTotalPage = payload;
@@ -113,7 +133,11 @@ export const {
   getCommentBtnType,
   getArticleInfo, 
   getMyArticleTotalPage, 
+  getMyArticleCommentCurrentPage,
+
   getMyConcertCommentTotalPage, 
+  getMyConcertCommentCurrentPage,
+  getMyConcertCommentCurrentComment,
   getMyTotalConcertComment,
   getMyConcertCommentInfo,
   getMyTotalArticleComment,

@@ -675,6 +675,7 @@
         // border:1px solid blue;
       }
       .optionWrapper {
+        z-index: 100;
         position: absolute;
         display: flex;
         align-items: center;
