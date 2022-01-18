@@ -14,6 +14,10 @@ module.exports = {
       /* 페이지네이션 */
 
       const articleCommentInfo = await ArticleComments.findAndCountAll({
+        include: [{
+          model: Users,
+          attributes: ['username', 'image', 'role']
+        }],
         where: { article_id: articleid },
         order: [['createdAt','DESC']],
         offset: offset,
