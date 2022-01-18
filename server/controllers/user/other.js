@@ -5,9 +5,6 @@ const { Users } = require('../../models');
 module.exports = {
   get: async (req, res) => {
     try {
-      // 로그인 인증 검사
-      const userInfo = await userAuth(req, res);
-
       // 요청 params로 userid를 받는다.
       const { userid } = req.params;
       const today = new Date();

@@ -15,6 +15,12 @@ import {
   setArticleRendered,
   setArticleCurPage,
 } from '../../store/ConChinSlice';
+import {
+  setConChinPageAllComments,
+  setConChinTotalNum,
+  setConChinComment,
+  setConChinPageNum,
+} from '../../store/ConChinCommentSlice';
 import { setTarget } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -27,6 +33,8 @@ function ConChinArticleBox() {
   const { allArticles, targetArticle, articleOrder } = useSelector(
     (state: RootState) => state.conChin,
   );
+  const { conChinPageNum, conChinPageAllComments, conChinComment } =
+    useSelector((state: RootState) => state.conChinComments);
 
   /* 게시물에 관련된 콘서트 정보 조회 핸들러 */
   const getTargetArticlesConcert = async (id: number) => {
@@ -108,6 +116,29 @@ function ConChinArticleBox() {
     }
   };
 
+  /* 모든 댓글 가져오기 함수 */
+  const getAllComments = async (id: number) => {
+    try {
+      /* response 변수에 서버 응답결과를 담는다 */
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${id}/comment?pageNum=${conChinPageNum}`,
+        { withCredentials: true },
+      );
+      /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
+      if (response.data) {
+        /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
+        console.log('ConChinArticleCommentBox=> 가져와지니?');
+        // setIsClick(false);
+        // setInputComment('');
+        dispatch(setConChinPageAllComments([]));
+        dispatch(setConChinTotalNum(response.data.data.totalPage));
+        dispatch(
+          setConChinPageAllComments(response.data.data.articleCommentInfo),
+        );
+      }
+    } catch (err) {}
+  };
+
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
   useEffect(() => {
     getAllArticles();
@@ -139,6 +170,8 @@ function ConChinArticleBox() {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
                       getTargetArticlesUserInfo(article.user_id);
+                      getAllComments(article.id);
+                      dispatch(setConChinPageNum(1));
                     }}
                   >
                     <img
@@ -158,7 +191,9 @@ function ConChinArticleBox() {
                     <div className='title'>
                       <img className='icon' src={viewImage} />
                       <p className='count'>{article.view}</p>
-                      <p className='date'>{article.createdAt}</p>
+                      <p className='date'>
+                        {article.createdAt.substring(0, 10)}
+                      </p>
                       <p className='text'>{article.title}</p>
                     </div>
                   </ul>
@@ -184,6 +219,7 @@ function ConChinArticleBox() {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
                       getTargetArticlesUserInfo(article.user_id);
+                      getAllComments(article.id);
                       console.log(article.concert_id);
                     }}
                   >
@@ -208,7 +244,9 @@ function ConChinArticleBox() {
                     <div className='title'>
                       <img className='icon' src={viewImage} />
                       <p className='count'>{article.view}</p>
-                      <p className='date'>{article.createdAt}</p>
+                      <p className='date'>
+                        {article.createdAt.substring(0, 10)}
+                      </p>
                       <p className='text'>{article.title}</p>
                     </div>
                   </ul>

@@ -70,6 +70,7 @@
     width: 100%;
     bottom: 100%;
     align-items: center;
+
     // border: 3px solid blue;
   }
   .myOrder {
@@ -103,6 +104,71 @@
       transition: 0.15s all;
     }
   }
+  .myOptionBtn {
+    z-index: 999;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-right: 1.0%;
+    width: 50%;
+    height: 70%;
+    cursor: pointer;
+
+    // border: 3px solid red;
+  }
+  .myCommentOptionBtnWrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 11.2%;
+    height: 100%;
+    margin-right: 0.5%;
+    // margin-right: 10%;
+
+    // border: 2px solid green;
+  }
+  .myCommentOptionBtn {
+    
+    // align-items: center;
+    // justify-content: center;
+    border-radius: 5px;
+    margin-right: 0.5%;
+    text-align: center;
+    // left: 74.2%;
+    
+    font-weight: bold;
+    @include mobile-only() {
+      width: 19%;
+      height: 50%;
+      font-size: 1.6rem;
+    }
+    @include md() {
+      width: 12%;
+      height: 50%;
+      font-size: 1.8rem;
+    }
+    @include lg() {
+      width: 45%;
+      height: 50%;
+      font-size: 1.8rem;
+    }
+    &:hover {
+      background-color: #ffce63;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s all;
+    }
+
+    // border: 2px solid blue;
+  }
+  .hidden {
+    display: none;
+  }
   #paginationWrapper {
     position: absolute;
     display: flex;
@@ -119,8 +185,8 @@
       height: 45%;
     }
     @include lg() {
-      top: 86%;
-      height: 45%;
+      top: 84%;
+      height: 30%;
     }
     // border: 3px solid green;
   }  

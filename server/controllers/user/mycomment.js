@@ -27,7 +27,8 @@ module.exports = {
           limit: limit
         });
         
-        if(commentInfo.count === 0) return res.status(200).json({ message: 'Empty My Concert Comments!' });
+        if(commentInfo.count === 0) return res.status(200).json({ data: { concertCommentInfo: [], totalPage: 0, totalConcertComment: 0, commentType: 'concert' }, message: 'Empty Article Comments!' });
+        // if(commentInfo.count === 0) return res.status(200).json({ message: 'Empty My Concert Comments!' });
         // 총 페이지 수
         const totalPage = Math.ceil(commentInfo.count / limit);
         res.status(200).json({ data: { concertCommentInfo: commentInfo.rows, totalPage: totalPage, totalConcertComment: commentInfo.count, commentType: 'concert' }, message: 'My Articles!' });

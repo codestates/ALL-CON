@@ -63,6 +63,7 @@ function ConChinArticlePagination() {
       dispatch(setArticleTotalPage(0));
     }
   };
+
   useEffect(() => {
     getPageArticles(articleCurPage);
   }, [articleCurPage]);

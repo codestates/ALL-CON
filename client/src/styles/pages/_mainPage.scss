@@ -58,12 +58,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
     // border: 1px solid green;
     @include mobile-only() {
       top: 112.5%;
       width: 100%;
-      height: 55%;
+      height: 60%;
     }
     @include md() {
       top: 137%;
@@ -73,7 +72,7 @@
     @include lg() {
       top: 172.5%;
       width: 65%;
-      height: 70%;
+      height: 90%;
     }
   }
   #mainPaginationWrapper {
@@ -86,13 +85,13 @@
     height: 5%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 160%;
+      top: 165%;
     }
     @include md() {
       top: 185%;
     }
     @include lg() {
-      top: 225%;
+      top: 245%;
     }
   }
   #mainFindConchinWrapper {
@@ -100,7 +99,7 @@
     width: 100%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 165%;
+      top: 170%;
       height: 40%;
     }
     @include md() {
@@ -108,7 +107,7 @@
       height: 60%;
     }
     @include lg() {
-      top: 230%;
+      top: 250%;
       height: 80%;
     }
   }
@@ -120,7 +119,7 @@
     @include mobile-only() {
       width: 100%;
       height: 30%;
-      top: 201%;
+      top: 210%;
     }
     @include md() {
       width: 100%;
@@ -130,7 +129,7 @@
     @include lg() {
       width: 100%;
       height: 38%;
-      top: 315%;
+      top: 340%;
     }
     // border: 1px solid red;
     #mainFooterWrapper {

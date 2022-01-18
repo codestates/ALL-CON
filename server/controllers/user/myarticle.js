@@ -27,7 +27,7 @@ module.exports = {
       const totalPage = Math.ceil(articleInfo.count / limit);
       res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage }, message: 'My Articles!' });
     } catch (err) {
-      return res.status(500).json({ message: 'Server Error!' });
+    return res.status(500).json({ message: 'Server Error!' });
     }
   }
 };
