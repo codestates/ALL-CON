@@ -191,7 +191,9 @@ function ConChinArticleBox() {
                     <div className='title'>
                       <img className='icon' src={viewImage} />
                       <p className='count'>{article.view}</p>
-                      <p className='date'>{article.createdAt}</p>
+                      <p className='date'>
+                        {article.createdAt.substring(0, 10)}
+                      </p>
                       <p className='text'>{article.title}</p>
                     </div>
                   </ul>
