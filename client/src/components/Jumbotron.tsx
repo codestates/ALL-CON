@@ -22,6 +22,9 @@ function Jumbotron() {
   const { order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
+  
+  useEffect(() => {
+  }, [order]);
 
   /* 포스터 이동 핸들러 */
   const moveHandler = (move: string) => {

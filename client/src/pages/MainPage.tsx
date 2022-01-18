@@ -30,17 +30,19 @@ function MainPage() {
 
   const { isLogin } = useSelector((state: RootState) => state.auth);
 
-  /* order가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {
     getAllConcerts(); // 전체 콘서트 목록
     getDetailInfo(); // 상세 콘서트 정보
-    getAllComments();
+    getAllComments(); // 전체 댓글 목록
   }, [isRendering]);
 
-  /* targetIdx가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {
     getDetailInfo(); // 상세 콘서트 정보
   }, [targetIdx, order, pageAllComments]);
+
+  useEffect(() => {
+    getAllComments(); // 전체 댓글 목록
+  }, [targetIdx, order, pageNum]);
 
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
