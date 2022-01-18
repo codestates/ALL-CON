@@ -9,11 +9,10 @@ import {
   setTargetIdx,
   setOrder,
   setIsRendering,
+  setMainToConcert,
 } from '../store/MainSlice';
-import { showAlertModal, insertAlertText } from '../store/ModalSlice';
 /* Library import */
-import axios, { AxiosError } from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Jumbotron() {
@@ -22,8 +21,13 @@ function Jumbotron() {
     (state: RootState) => state.main,
   );
 
+  useEffect(() => {
+    
+  }, [order]);
+
   const leftClickHandler = () => {
     if (targetIdx > 0) {
+      dispatch(setMainToConcert(false));
       dispatch(setTargetIdx(targetIdx - 1));
       dispatch(setTarget(allConcerts[targetIdx - 1]));
     }
@@ -31,17 +35,18 @@ function Jumbotron() {
 
   const rigthClickHandler = () => {
     if (targetIdx < allConcerts.length - 1) {
+      dispatch(setMainToConcert(false));
       dispatch(setTargetIdx(targetIdx + 1));
       dispatch(setTarget(allConcerts[targetIdx + 1]));
     }
   };
 
-  const orderClickHandler = (clickOrder: string) => {
+  const orderClickHandler = (clickValue: string) => {
     /* 정렬 버튼 클릭시 렌더링: false, 타겟값 초기화, order 갱신 */
     dispatch(setIsRendering(false));
     dispatch(setTargetIdx(0));
     dispatch(setTarget({}));
-    dispatch(setOrder(clickOrder));
+    dispatch(setOrder(clickValue));
   };
 
   return (
@@ -53,13 +58,13 @@ function Jumbotron() {
           {/*WHAT'S HOT 문구*/}
           <div className='jumboTextBox'>
             <h1 id='jumboWhat'>WHAT'S</h1>
-            {order === 'hot' && <h1 id='jumboClassify'>HOT</h1>}
+            {order === 'view' && <h1 id='jumboClassify'>HOT</h1>}
             {order === 'near' && <h1 id='jumboClassify'>NEAR</h1>}
             {order === 'new' && <h1 id='jumboClassify'>NEW</h1>}
           </div>
           {/*오른쪽 상단 탭 바*/}
           <div id='tabBar'>
-            <p id={order === 'hot' ? 'hot' : undefined} onMouseUp={() => { orderClickHandler('hot') }} onMouseDown={() => { orderClickHandler('hot') }}>
+            <p id={order === 'view' ? 'hot' : undefined} onMouseUp={() => { orderClickHandler('view') }} onMouseDown={() => { orderClickHandler('view') }}>
               HOT
             </p>
             <p id={order === 'near' ? 'near' : undefined} onMouseUp={() => { orderClickHandler('near') }} onMouseDown={() => { orderClickHandler('near') }}>

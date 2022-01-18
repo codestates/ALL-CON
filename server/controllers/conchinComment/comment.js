@@ -20,7 +20,7 @@ module.exports = {
         limit: limit
       });
       // 댓글이 없을 경우, 다음을 실행한다
-      if(articleCommentInfo.count===0) return res.status(200).json({ message: 'Empty ArticleComments!' })
+      if(articleCommentInfo.count===0) return res.status(200).json({ data: { articleCommentInfo: [] }, message: 'Empty ArticleComments!' })
 
       await Articles.update(
         { total_comment: articleCommentInfo.count },
