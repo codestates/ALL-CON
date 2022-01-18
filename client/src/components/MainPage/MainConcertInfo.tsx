@@ -75,7 +75,7 @@ function MainConcertInfo() {
       console.log(err);
     }
   };
-
+  console.log(allAlarms);
   const getAllAlarms = async () => {
     try {
       if (isLogin === false) {
