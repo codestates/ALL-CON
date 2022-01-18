@@ -13,7 +13,7 @@ import {
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPageNum } from '../store/ConcertCommentSlice';
 
@@ -22,9 +22,6 @@ function Jumbotron() {
   const { order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
-  
-  useEffect(() => {
-  }, [order]);
 
   /* 포스터 이동 핸들러 */
   const moveHandler = (move: string) => {

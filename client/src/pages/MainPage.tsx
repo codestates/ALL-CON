@@ -21,7 +21,7 @@ import { useEffect } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
-  const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
+  const { isRendering, order, target, targetIdx, allConcerts, detail } = useSelector(
     (state: RootState) => state.main,
   );
   const { pageAllComments, pageNum } = useSelector(
@@ -33,7 +33,6 @@ function MainPage() {
   useEffect(() => {
     getAllConcerts(); // 전체 콘서트 목록
     getDetailInfo(); // 상세 콘서트 정보
-    getAllComments(); // 전체 댓글 목록
   }, [isRendering]);
 
   useEffect(() => {
@@ -42,7 +41,7 @@ function MainPage() {
 
   useEffect(() => {
     getAllComments(); // 전체 댓글 목록
-  }, [targetIdx, order, pageNum]);
+  }, [targetIdx, order]);
 
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
