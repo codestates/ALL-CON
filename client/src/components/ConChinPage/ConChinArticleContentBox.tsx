@@ -30,6 +30,7 @@ function ConChinArticleContentBox() {
   const { articleOrder, targetArticle, targetArticlesUserInfo } = useSelector(
     (state: RootState) => state.conChin,
   );
+
   const { target } = useSelector((state: RootState) => state.main);
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
@@ -95,6 +96,7 @@ function ConChinArticleContentBox() {
       if (response.data) {
         // dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
+
         dispatch(setArticleCurPage(1));
         dispatch(setTargetArticle({}));
       } else {

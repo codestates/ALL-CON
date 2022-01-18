@@ -38,18 +38,11 @@ function ConChinPostingBox() {
             dispatch(setArticleTotalPage(response.data.data.totalPage));
             dispatch(setArticleCurPage(1));
             dispatch(setArticleRendered(true));
-            console.log(articleRendered);
-            console.log(
-              ' ConChinPostingBox=> 타겟에 종속된 게시물들을 가져옵니다.',
-            );
-            console.log('allArticles: ');
-            console.log(allArticles);
           } else {
             console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
           }
         }
       } else {
-        console.log('true인데 누르셨네요?');
         if (
           Object.keys(target).length > 0 &&
           Object.keys(targetArticle).length === 0
@@ -59,9 +52,7 @@ function ConChinPostingBox() {
           Object.keys(target).length > 0 &&
           Object.keys(targetArticle).length > 0
         ) {
-          console.log('이제 reset안됩니다.');
         } else if (Object.keys(target).length > 0 && allArticles.length === 0) {
-          console.log('들어오긴 함?');
           // resetAllTarget();
         }
       }

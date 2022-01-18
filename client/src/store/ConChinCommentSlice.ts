@@ -16,6 +16,7 @@ export interface conChinComments {
     createdAt?: Date;
     updatedAt?: Date;
   };
+  conChinTotalComments: number;
 }
 
 /* State 초기값 설정 */
@@ -24,6 +25,7 @@ const initialState: conChinComments = {
   conChinTotalNum: 1,
   conChinPageAllComments: [],
   conChinComment: {},
+  conChinTotalComments: 0,
 };
 
 const conChinCommentsSlice = createSlice({
@@ -55,6 +57,12 @@ const conChinCommentsSlice = createSlice({
     ) => {
       state.conChinComment = payload;
     },
+    setConChinTotalComments: (
+      state: conChinComments,
+      { payload }: PayloadAction<number>,
+    ) => {
+      state.conChinTotalComments = payload;
+    },
   },
 });
 
@@ -63,6 +71,7 @@ export const {
   setConChinTotalNum,
   setConChinPageAllComments,
   setConChinComment,
+  setConChinTotalComments,
 } = conChinCommentsSlice.actions;
 
 export default conChinCommentsSlice.reducer;

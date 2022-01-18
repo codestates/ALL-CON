@@ -13,8 +13,15 @@ import {
   setConChinPageAllComments,
   setConChinTotalNum,
   setConChinComment,
+  setConChinTotalComments,
 } from '../../store/ConChinCommentSlice';
-import { setTargetArticlesUserInfo } from '../../store/ConChinSlice';
+import {
+  setTargetArticlesUserInfo,
+  setAllArticles,
+  setArticleCurPage,
+  setArticleTotalPage,
+  setTargetArticle,
+} from '../../store/ConChinSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import { useState, useEffect } from 'react';
@@ -24,12 +31,15 @@ function ConChinArticleCommentBox() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { target } = useSelector((state: RootState) => state.main);
-  const { targetArticle } = useSelector((state: RootState) => state.conChin);
+  const { targetArticle, articleOrder } = useSelector(
+    (state: RootState) => state.conChin,
+  );
   const {
     conChinPageNum,
     conChinPageAllComments,
     conChinComment,
     conChinTotalNum,
+    conChinTotalComments,
   } = useSelector((state: RootState) => state.conChinComments);
   /* 댓글 인풋 && 버튼 클릭 */
   const [inputComment, setInputComment] = useState<string>('');
@@ -147,7 +157,8 @@ function ConChinArticleCommentBox() {
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
       if (response.data) {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-        console.log('ConChinArticleCommentBox=> 가져와지니?');
+        console.log('ConChinArticleCommentBox=> 옮길때마다 접근?');
+        // getTargetArticles();
         setIsClick(false);
         setInputComment('');
         dispatch(setConChinPageAllComments([]));
@@ -194,6 +205,30 @@ function ConChinArticleCommentBox() {
     }
   };
 
+  /* 타겟 게시물 받아오기 */
+  const getTargetArticles = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setAllArticles(response.data.data.articleInfo));
+        dispatch(setTargetArticle(response.data.data.articleInfo));
+        dispatch(
+          setConChinTotalComments(response.data.data.articleInfo.total_comment),
+        );
+        dispatch(setArticleTotalPage(response.data.data.totalPage));
+        dispatch(setArticleCurPage(1));
+      } else {
+        console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
+      }
+    } catch (err) {
+      console.log(err);
+      console.log('에러가 났나봐요.');
+    }
+  };
+
   return (
     <div id='commentBox'>
       {/* 로그인시 보일 댓글 작성 영역 */}
@@ -229,9 +264,9 @@ function ConChinArticleCommentBox() {
       )}
       <div id='conChinCountWrapper'>
         <h1 className='count'>
-          {conChinPageAllComments.length > 0
-            ? conChinPageAllComments.length + '개의 댓글'
-            : null}
+          {targetArticle.total_comment !== 0
+            ? targetArticle.total_comment + ' 개의 댓글'
+            : null}{' '}
         </h1>
       </div>
       {/* 댓글 목록 map */}

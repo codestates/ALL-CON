@@ -60,7 +60,6 @@ function ConChinArticleBox() {
       );
       if (response.data) {
         dispatch(setTargetArticle(response.data.data.articleInfo));
-        console.log(response.data.data.articleInfo);
       }
     } catch (err) {
       console.log(err);
@@ -70,7 +69,6 @@ function ConChinArticleBox() {
   /* 게시물 작성자 유저정보 조회 핸들러 */
   const getTargetArticlesUserInfo = async (id: number) => {
     try {
-      console.log('targetUserInfo: ' + id);
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/user/other/${id}`,
         { withCredentials: true },
@@ -127,9 +125,9 @@ function ConChinArticleBox() {
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
       if (response.data) {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-        console.log('ConChinArticleCommentBox=> 가져와지니?');
         // setIsClick(false);
         // setInputComment('');
+        console.log(id);
         dispatch(setConChinPageAllComments([]));
         dispatch(setConChinTotalNum(response.data.data.totalPage));
         dispatch(
@@ -171,7 +169,7 @@ function ConChinArticleBox() {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
                       getTargetArticlesUserInfo(article.user_id);
-                      getAllComments(article.id);
+                      getAllComments(article);
                       dispatch(setConChinPageNum(1));
                     }}
                   >
@@ -220,8 +218,7 @@ function ConChinArticleBox() {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
                       getTargetArticlesUserInfo(article.user_id);
-                      getAllComments(article.id);
-                      console.log(article.concert_id);
+                      getAllComments(article);
                     }}
                   >
                     <img
