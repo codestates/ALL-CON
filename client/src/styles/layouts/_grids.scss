@@ -855,7 +855,7 @@
       }
     }
   }
-  .emptyBox{
+  .emptyBox {
     position: relative;
     display: flex;
     align-items: center;
@@ -1001,7 +1001,7 @@
     display: block;
     margin: auto;
     border-radius: 100%;
-    border: solid #ffce63;
+    border: 3px solid $yellow;
     cursor: pointer;
     object-fit: cover;
     right: 0%;

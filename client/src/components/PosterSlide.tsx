@@ -6,7 +6,7 @@ import { RootState } from '../index';
 import { useSelector } from 'react-redux';
 
 function PosterSlide() {
-  const { targetIdx, allConcerts } = useSelector(
+  const { target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
 
@@ -57,6 +57,11 @@ function PosterSlide() {
             className='posterImg'
             id='poster'
           />
+          <div id='alignDay'>
+            <div id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}>
+              {dayCalculator(target.open_date)}
+            </div>
+          </div>
         </div>
       )}
       {allConcerts[targetIdx + 1] && (

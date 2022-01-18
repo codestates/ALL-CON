@@ -9,7 +9,7 @@ import {
   setTargetIdx,
   setOrder,
   setIsRendering,
-  setMainToConcert
+  setMainToConcert,
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -18,21 +18,20 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Jumbotron() {
   const dispatch = useDispatch();
-  const { order, targetIdx, allConcerts } = useSelector(
+  const { order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
 
-  useEffect(() => {
-  }, [order]);
+  useEffect(() => {}, [order]);
 
   /* 포스터 이동 핸들러 */
   const moveHandler = (move: string) => {
-    if(move === 'left'){
+    if (move === 'left') {
       if (targetIdx > 0) {
         dispatch(setTargetIdx(targetIdx - 1));
         dispatch(setTarget(allConcerts[targetIdx - 1]));
       }
-    } else if(move === 'right') {
+    } else if (move === 'right') {
       if (targetIdx < allConcerts.length - 1) {
         dispatch(setTargetIdx(targetIdx + 1));
         dispatch(setTarget(allConcerts[targetIdx + 1]));
@@ -50,6 +49,12 @@ function Jumbotron() {
     dispatch(setOrder(clickValue));
   };
 
+  const ballList = allConcerts.map(el => {
+    if (el.id === target.id)
+      return <div className='balls' id='targetBall'></div>;
+    return <div className='balls'></div>;
+  });
+
   return (
     <div id='jumboContainer'>
       <div id='jumboMiniContainer'></div>
@@ -65,13 +70,28 @@ function Jumbotron() {
           </div>
           {/*오른쪽 상단 탭 바*/}
           <div id='tabBar'>
-            <p id={order === 'view' ? 'hot' : undefined} onClick={() => { orderClickHandler('view') }}>
+            <p
+              id={order === 'view' ? 'hot' : undefined}
+              onClick={() => {
+                orderClickHandler('view');
+              }}
+            >
               HOT
             </p>
-            <p id={order === 'near' ? 'near' : undefined} onClick={() => { orderClickHandler('near') }}>
+            <p
+              id={order === 'near' ? 'near' : undefined}
+              onClick={() => {
+                orderClickHandler('near');
+              }}
+            >
               NEAR
             </p>
-            <p id={order === 'new' ? 'new' : undefined} onClick={() => { orderClickHandler('new') }}>
+            <p
+              id={order === 'new' ? 'new' : undefined}
+              onClick={() => {
+                orderClickHandler('new');
+              }}
+            >
               NEW
             </p>
           </div>
@@ -92,6 +112,8 @@ function Jumbotron() {
               onClick={() => moveHandler('right')}
             ></img>
           </div>
+          <div id='ballsWrapper'>{ballList}</div>
+          <div id='posterCover'></div>
           <PosterSlide />
         </div>
       </div>

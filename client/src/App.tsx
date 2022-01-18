@@ -8,6 +8,7 @@ import EmailAlarmModal from './components/Modals/MainPage/EmailAlarmModal';
 import FindPasswordModal from './components/Modals/FindPasswordModal';
 import Header from './components/Header';
 import LoginModal from './components/Modals/LoginModal';
+import MainKakaoModal from './components/Modals/MainPage/MainKakaoModal';
 import MyProfileImageModal from './components/Modals/MyPage/MyProfileImageModal';
 import MyProfileResignMembershipModal from './components/Modals/MyPage/MyProfileResignMembershipModal';
 import MyDropDown from './components/Modals/MyPage/MyDropDown';
@@ -54,6 +55,7 @@ function App() {
     conChinProfileModal,
     emailAlarmModal,
     smsAlarmModal,
+    mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
 
   return (
@@ -76,6 +78,7 @@ function App() {
       {conChinProfileModal && <ConChinProfileModal />}
       {emailAlarmModal && <EmailAlarmModal />}
       {smsAlarmModal && <SmsAlarmModal />}
+      {mainKakaoModal && <MainKakaoModal />}
       {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
       {/* <MyEditPage /> */}

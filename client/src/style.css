@@ -901,7 +901,7 @@ a {
     display: block;
     margin: auto;
     border-radius: 100%;
-    border: solid #ffce63;
+    border: 3px solid #ffce63;
     cursor: pointer;
     object-fit: cover;
     right: 0%; }
@@ -5669,7 +5669,7 @@ a {
     align-items: center; }
     @media (max-width: 767px) {
       #mainContainer #mainCommentWrapper {
-        top: 112.5%;
+        top: 120%;
         width: 100%;
         height: 60%; } }
     @media (min-width: 768px) {
@@ -5931,13 +5931,13 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 20%; }
+    height: 15%; }
     @media (max-width: 767px) {
       #jumboPosterSlideWrapper #arrows {
-        width: 120%; } }
+        width: 118%; } }
     @media (min-width: 768px) {
       #jumboPosterSlideWrapper #arrows {
-        width: 120%; } }
+        width: 115%; } }
     @media (min-width: 1200px) {
       #jumboPosterSlideWrapper #arrows {
         width: 90%; } }
@@ -5946,13 +5946,13 @@ a {
       cursor: pointer; }
       @media (max-width: 767px) {
         #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
-          width: 35px; } }
+          width: 30px; } }
       @media (min-width: 768px) {
         #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
           width: 50px; } }
       @media (min-width: 1200px) {
         #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
-          width: 80px; } }
+          width: 60px; } }
     #jumboPosterSlideWrapper #arrows :active {
       border: solid rgba(0, 0, 0, 0); }
       @media (max-width: 767px) {
@@ -5964,6 +5964,42 @@ a {
       @media (min-width: 1200px) {
         #jumboPosterSlideWrapper #arrows :active {
           border-width: 8px; } }
+  #jumboPosterSlideWrapper #ballsWrapper {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    height: 7%; }
+    @media (max-width: 767px) {
+      #jumboPosterSlideWrapper #ballsWrapper {
+        bottom: -12%; } }
+    @media (min-width: 768px) {
+      #jumboPosterSlideWrapper #ballsWrapper {
+        bottom: -8%; } }
+    @media (min-width: 1200px) {
+      #jumboPosterSlideWrapper #ballsWrapper {
+        bottom: -8%; } }
+    #jumboPosterSlideWrapper #ballsWrapper .balls {
+      background-color: #fff;
+      border-radius: 50%;
+      margin-right: 2%; }
+      @media (max-width: 767px) {
+        #jumboPosterSlideWrapper #ballsWrapper .balls {
+          width: 3%;
+          height: 40%; } }
+      @media (min-width: 768px) {
+        #jumboPosterSlideWrapper #ballsWrapper .balls {
+          width: 2%;
+          height: 40%; } }
+      @media (min-width: 1200px) {
+        #jumboPosterSlideWrapper #ballsWrapper .balls {
+          width: 1.5%;
+          height: 40%; } }
+    #jumboPosterSlideWrapper #ballsWrapper #targetBall {
+      background-color: #ffce63; }
 
 .posterContainer {
   width: 100%;
@@ -6039,22 +6075,22 @@ a {
   @media (max-width: 767px) {
     #posterWrapper1 {
       width: 29%;
-      height: 60%;
-      top: 70%;
+      height: 55%;
+      top: 60%;
       left: 15%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper1 {
       width: 25%;
-      height: 70%;
-      top: 60%;
+      height: 65%;
+      top: 50%;
       left: 20%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper1 {
-      width: 17.5%;
-      height: 65%;
-      top: 57.5%;
+      width: 20%;
+      height: 70%;
+      top: 50%;
       left: 30%;
       padding-bottom: 20%; } }
 
@@ -6092,28 +6128,67 @@ a {
   z-index: 10;
   left: 50%;
   transform: translate(-50%, -50%);
-  cursor: pointer; }
+  /*posterWrapper3*/ }
+  #posterWrapper3:hover {
+    box-shadow: 3px 3px 14px 1px #606060;
+    cursor: pointer;
+    transition: all 1s ease; }
+    #posterWrapper3:hover #alignDay {
+      width: 100%;
+      height: 100%; }
+      #posterWrapper3:hover #alignDay #dDay {
+        z-index: 50;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: #fff;
+        font-weight: bold; }
+        @media (max-width: 767px) {
+          #posterWrapper3:hover #alignDay #dDay {
+            width: 75%;
+            height: 45%;
+            border: 4px solid #ffce63;
+            font-size: 2.5rem; } }
+        @media (min-width: 768px) {
+          #posterWrapper3:hover #alignDay #dDay {
+            width: 75%;
+            height: 50%;
+            border: 5px solid #ffce63;
+            font-size: 4rem; } }
+        @media (min-width: 1200px) {
+          #posterWrapper3:hover #alignDay #dDay {
+            width: 75%;
+            height: 58%;
+            border: 6px solid #ffce63;
+            font-size: 5rem; } }
+  #posterWrapper3 #alignDay {
+    width: 100%;
+    height: 100%; }
+    #posterWrapper3 #alignDay #dDay {
+      display: none; }
   @media (max-width: 767px) {
     #posterWrapper3 {
-      width: 29%;
-      height: 66%;
-      top: 57%;
+      width: 33%;
+      height: 70%;
+      top: 60%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper3 {
-      width: 25%;
-      height: 74%;
+      width: 28%;
+      height: 80%;
       top: 48%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper3 {
-      width: 24%;
-      height: 97.5%;
-      top: 57%;
+      width: 20%;
+      height: 85%;
+      top: 50%;
       padding-bottom: 20%; } }
-
-#posterWrapper3 :hover {
-  border: 4px solid blue; }
 
 #posterWrapper4 {
   position: absolute;
@@ -6150,22 +6225,22 @@ a {
   @media (max-width: 767px) {
     #posterWrapper5 {
       width: 29%;
-      height: 60%;
-      top: 70%;
+      height: 55%;
+      top: 60%;
       left: 85%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper5 {
-      width: 25%;
-      height: 70%;
-      top: 60%;
+      width: 20%;
+      height: 65%;
+      top: 50%;
       left: 80%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper5 {
-      width: 17.5%;
-      height: 65%;
-      top: 57.5%;
+      width: 20%;
+      height: 70%;
+      top: 50%;
       left: 70%;
       padding-bottom: 20%; } }
 
@@ -6314,7 +6389,7 @@ a {
         #mainConcertInfoBox #topBox #date {
           position: relative;
           left: 5%;
-          font: 1.3rem; } }
+          font-size: 1.5rem; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #topBox #date {
           width: 100%;
@@ -6333,7 +6408,7 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #mainConcertInfoBox #middleBox {
-        height: 65%; } }
+        height: 70%; } }
     @media (min-width: 768px) {
       #mainConcertInfoBox #middleBox {
         height: 70%; } }
@@ -6347,7 +6422,7 @@ a {
       @media (max-width: 767px) {
         #mainConcertInfoBox #middleBox #concertInfoBox {
           width: 90%;
-          height: 75%; } }
+          height: 70%; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #middleBox #concertInfoBox {
           width: 93%;
@@ -6434,9 +6509,22 @@ a {
               display: flex;
               justify-content: flex-start;
               height: 10%; }
+              @media (min-width: 768px) {
+                #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
+                  width: 120%; } }
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img {
                 width: 30px;
                 height: 30px; }
+                @media (min-width: 768px) {
+                  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img {
+                    position: relative;
+                    top: -10%;
+                    margin-left: 2%; } }
+                @media (min-width: 1200px) {
+                  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img {
+                    position: relative;
+                    top: 0%;
+                    margin-left: 2%; } }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
               height: 25%; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
@@ -6456,7 +6544,7 @@ a {
                 @media (min-width: 768px) {
                   #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2, #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
                     left: 5%;
-                    width: 40px; } }
+                    width: 35px; } }
                 @media (min-width: 1200px) {
                   #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2, #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
                     left: 5%;
@@ -6471,11 +6559,11 @@ a {
       @media (max-width: 767px) {
         #mainConcertInfoBox #middleBox #buttonsWrapper {
           width: 90%;
-          height: 15%; } }
+          height: 20%; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #middleBox #buttonsWrapper {
           position: absolute;
-          bottom: 9%;
+          bottom: 7.5%;
           left: 40.5%;
           width: 56%;
           height: 11%; } }
@@ -6506,11 +6594,12 @@ a {
           @media (max-width: 767px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
               margin-right: 2%;
-              width: 20px; } }
+              width: 20px;
+              height: 20px; } }
           @media (min-width: 768px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
               width: 30px;
-              height: 80%;
+              height: 75%;
               padding-right: 2%; } }
           @media (min-width: 1200px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
@@ -6574,7 +6663,6 @@ a {
     #mainConcertInfoBox #bottomBox div {
       display: flex;
       justify-content: left;
-      width: 90%;
       height: 100%;
       font-weight: bold; }
       @media (max-width: 767px) {
@@ -6611,24 +6699,25 @@ a {
         font-size: 3rem; } }
   #mainGoConchin #goConchin {
     position: absolute;
-    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%); }
     @media (max-width: 767px) {
       #mainGoConchin #goConchin {
+        top: 70%;
         width: 70%;
-        height: 60%; } }
+        height: 70%; } }
     @media (min-width: 768px) {
       #mainGoConchin #goConchin {
+        top: 60%;
         width: 60%;
         height: 68%; } }
     @media (min-width: 1200px) {
       #mainGoConchin #goConchin {
+        top: 60%;
         width: 45%;
         height: 68%; } }
   #mainGoConchin button {
     position: absolute;
-    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffce63;
@@ -6639,14 +6728,17 @@ a {
     cursor: pointer; }
     @media (max-width: 767px) {
       #mainGoConchin button {
+        bottom: -1%;
         width: 25%;
         font-size: 1.6rem; } }
     @media (min-width: 768px) {
       #mainGoConchin button {
+        top: 80%;
         width: 20%;
         font-size: 1.8rem; } }
     @media (min-width: 1200px) {
       #mainGoConchin button {
+        top: 80%;
         width: 15%;
         font-size: 2rem; } }
 
@@ -8741,6 +8833,187 @@ a {
             cursor: pointer; }
           #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox #back2 {
             background-color: #000; }
+
+#MainKakaoModalContainer {
+  z-index: 999;
+  width: 100%; }
+  @media (max-width: 767px) {
+    #MainKakaoModalContainer {
+      top: 10%;
+      position: fixed;
+      height: 90%; } }
+  @media (min-width: 768px) {
+    #MainKakaoModalContainer {
+      position: fixed;
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    #MainKakaoModalContainer {
+      position: fixed;
+      height: 100%; } }
+  #MainKakaoModalContainer #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); }
+  #MainKakaoModalContainer #alertBackground {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); }
+    @media (max-width: 767px) {
+      #MainKakaoModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 768px) {
+      #MainKakaoModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 1200px) {
+      #MainKakaoModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    #MainKakaoModalContainer #alertBackground #alertModal {
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff; }
+      @media (max-width: 767px) {
+        #MainKakaoModalContainer #alertBackground #alertModal {
+          width: 100%;
+          height: 100%; } }
+      @media (min-width: 768px) {
+        #MainKakaoModalContainer #alertBackground #alertModal {
+          width: 25%;
+          height: 30%;
+          border-radius: 20px; } }
+      @media (min-width: 1200px) {
+        #MainKakaoModalContainer #alertBackground #alertModal {
+          width: 30%;
+          height: 70%;
+          border-radius: 20px; } }
+      #MainKakaoModalContainer #alertBackground #alertModal #alignContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between; }
+        @media (max-width: 767px) {
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer {
+            position: absolute;
+            top: 0%;
+            width: 90%;
+            height: 85%; } }
+        @media (min-width: 768px) {
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer {
+            width: 90%;
+            height: 85%; } }
+        @media (min-width: 1200px) {
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer {
+            width: 90%;
+            height: 85%; } }
+        #MainKakaoModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.3rem; } }
+          @media (min-width: 1200px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+        #MainKakaoModalContainer #alertBackground #alertModal #alignContainer .textBoxMatch {
+          display: flex;
+          width: 70%;
+          height: 5%;
+          border: 1px solid #a0a0a0;
+          border-radius: 5px; }
+        #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          align-items: center;
+          width: 90%;
+          height: 8%; }
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            text-align: center; }
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop img {
+              margin-right: 2%; }
+              @media (max-width: 767px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop img {
+                  height: 90%; } }
+              @media (min-width: 768px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop img {
+                  height: 100%; } }
+              @media (min-width: 1200px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop img {
+                  height: 100%; } }
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop .fontMatch2 {
+              font-weight: bold; }
+              @media (max-width: 767px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop .fontMatch2 {
+                  font-size: 1.7rem; } }
+              @media (min-width: 768px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop .fontMatch2 {
+                  font-size: 1.3rem; } }
+              @media (min-width: 1200px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop .fontMatch2 {
+                  font-size: 2rem; } }
+        #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #midBox {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 90%;
+          height: 65%;
+          border: 2px solid #ffce63; }
+          @media (max-width: 767px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #midBox {
+              height: 75%; } }
+          @media (min-width: 768px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #midBox {
+              height: 65%; } }
+          @media (min-width: 1200px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #midBox {
+              height: 65%; } }
+        #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          border-radius: 10px; }
+          @media (max-width: 767px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+              height: 8%; } }
+          @media (min-width: 768px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+              height: 10%; } }
+          @media (min-width: 1200px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+              height: 10%; } }
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox .textBoxMatch3 {
+            display: flex;
+            width: 100%;
+            height: 20%;
+            border: 1px solid #a0a0a0;
+            border-radius: 5px; }
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox #back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: #ffce63;
+            color: #fff;
+            border: 0;
+            cursor: pointer; }
 
 /*------------선영------------*/
 /*------------정현------------*/

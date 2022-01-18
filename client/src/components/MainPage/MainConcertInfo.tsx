@@ -26,6 +26,7 @@ import {
   showSmsAlarmModal,
   insertAlarmText,
   showConcertModal,
+  showMainKakaoModal,
 } from '../../store/ModalSlice';
 /* Library import */
 import axios from 'axios';
@@ -89,7 +90,6 @@ function MainConcertInfo() {
       console.log(err);
     }
   };
-  
   const getAllAlarms = async () => {
     try {
       if (isLogin === false) {
@@ -167,19 +167,21 @@ function MainConcertInfo() {
 
   /* Date 객체 형변환 */
   const dayFormatter = (openDate?: Date): string => {
-    if(openDate){
+    if (openDate) {
       const strOpenDate = String(openDate);
 
-      const year = strOpenDate.substring(0,4);
-      const month = strOpenDate.substring(5,7);
-      const date = strOpenDate.substring(8,10);
-      const hour = Number(strOpenDate.substring(11,13))+9;  // 9시간 더해주기
-      const minute = strOpenDate.substring(14,16);
+      const year = strOpenDate.substring(0, 4);
+      const month = strOpenDate.substring(5, 7);
+      const date = strOpenDate.substring(8, 10);
+      const hour = Number(strOpenDate.substring(11, 13)) + 9; // 9시간 더해주기
+      const minute = strOpenDate.substring(14, 16);
 
-      return String(year+'년 '+month+'월 '+date+'일 '+hour+' : '+minute);
+      return String(
+        year + '년 ' + month + '월 ' + date + '일 ' + hour + ' : ' + minute,
+      );
     }
     return '';
-  }
+  };
 
   const emailClickHandler = () => {
     if (isLogin === false) {
@@ -320,7 +322,10 @@ function MainConcertInfo() {
                 {detail.place && (
                   <p className='right' id='place_r'>
                     <p>{detail.place}</p>
-                    <img src={map}></img>
+                    <img
+                      src={map}
+                      onClick={() => dispatch(showMainKakaoModal(true))}
+                    ></img>
                   </p>
                 )}
                 {detail.period && (
@@ -384,7 +389,7 @@ function MainConcertInfo() {
         </div>
       </div>
       <div id='bottomBox'>
-        <img src={comment} alt='commentImg'/>
+        <img src={comment} alt='commentImg' />
         <div>{detail.total_comment}개의 댓글</div>
       </div>
     </div>

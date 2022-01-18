@@ -23,6 +23,7 @@ export interface modal {
   emailAlarmModal: boolean;
   smsAlarmModal: boolean;
   alarmText: string;
+  mainKakaoModal: boolean;
 }
 
 /* State 초기값 설정 */
@@ -48,6 +49,7 @@ const initialState: modal = {
   emailAlarmModal: false,
   smsAlarmModal: false,
   alarmText: '',
+  mainKakaoModal: false,
 };
 
 const modalSlice = createSlice({
@@ -139,6 +141,9 @@ const modalSlice = createSlice({
     insertAlarmText: (state: modal, { payload }: PayloadAction<string>) => {
       state.alarmText = payload;
     },
+    showMainKakaoModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.mainKakaoModal = payload;
+    },
   },
 });
 
@@ -164,5 +169,6 @@ export const {
   showEmailAlarmModal,
   showSmsAlarmModal,
   insertAlarmText,
+  showMainKakaoModal,
 } = modalSlice.actions;
 export default modalSlice.reducer;
