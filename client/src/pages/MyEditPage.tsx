@@ -7,7 +7,7 @@ import camera from '../../../images/camera.png';
 import { RootState } from '../index';
 import { logout, getUserInfo } from '../store/AuthSlice';
 import { showLoginModal, showPrivacyModal, showSignupModal, showTosModal, showAlertModal, insertAlertText, insertBtnText, showSuccessModal } from '../store/ModalSlice';
-import { setMyIntroductionState } from '../store/MySlice';
+import { setMyIntroductionState, getBtnSwitchState } from '../store/MySlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -259,6 +259,8 @@ function MyEditPage() {
     navigate('/mypage')
     // 자기소개는 비활성화로 전환
     dispatch(setMyIntroductionState(false))
+    // 모든 버튼 SWITCH OFF
+    dispatch(getBtnSwitchState({ profileEdit: false, conchinCertification: false }))
   }
 
   return (

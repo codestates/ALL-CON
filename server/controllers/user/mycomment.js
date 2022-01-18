@@ -1,5 +1,5 @@
 const { userAuth } = require('../../middlewares/authorized/userAuth')
-const { Articles, ConcertComments, ArticleComments } = require('../../models');
+const { Articles, Concerts, ConcertComments, ArticleComments } = require('../../models');
 
 module.exports = {
   get: async (req, res) => {
@@ -21,6 +21,10 @@ module.exports = {
         
         /* 페이지 네이션 */ 
         const commentInfo = await ConcertComments.findAndCountAll({ 
+          include: [{
+            model: Concerts,
+            attributes: ['image_concert', 'title']
+          }],
           where: { user_id: userInfo.dataValues.id },
           order: [['createdAt','DESC']],
           offset: offset,
@@ -45,7 +49,7 @@ module.exports = {
         const commentInfo = await ArticleComments.findAndCountAll({ 
           include: [{
             model: Articles,
-            attributes: ['concert_id']
+            attributes: ['concert_id', 'image', 'title']
           }],
           where: { user_id: userInfo.dataValues.id },
           order: [['createdAt','DESC']],

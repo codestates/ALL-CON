@@ -58,9 +58,11 @@ function MyProfileImageModal({
           'Content-Type' : 'multipart/form-data'
         }
       })
+
       // AWS 버킷 주소 + 객체 키 값
-      let imageFullUrl = `${process.env.REACT_APP_IMAGE_URL}${response.data.imagePath}`
+      let imageFullUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.imagePath}`
       // 미리보기 기능
+
       setPreview(imageFullUrl);
       setPreviewHandle(true);
     }
@@ -102,9 +104,11 @@ function MyProfileImageModal({
           <div id='imgBox'>
             <div id='imgWrapper'>
               {previewHandle ? (
-                <img className='img' src={`${preview}`} alt='profileImage' />
+                // <img className='img' src={`${preview}`} alt='profileImage' />
+                <img className='img' src={preview} alt='profileImage' />
               ) : (
-                <img className='img' src={`${userInfo.image}`} />
+                // <img className='img' src={`${userInfo.image}`} />
+                <img className='img' src={userInfo.image} />
               )}
             </div>
             <div id='cameraWrapper'>

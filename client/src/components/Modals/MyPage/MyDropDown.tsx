@@ -70,10 +70,6 @@ function MyDropDown() {
   // 마이페이지 버튼을 누르면, 다음이 실행된다
   const handleMypageBtn = async () => {
 
-    console.log('---------------------------------')
-    console.log('---- handleMypageBtn 확인 ----')
-    console.log('---------------------------------')
-
     // 내가 쓴 게시물 axios 테스트
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=1`,
@@ -89,6 +85,9 @@ function MyDropDown() {
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
       { withCredentials: true },
     );
+
+    console.log('---- 내가 쓴 댓글(콘서트 게시물) 이미지 데이터 확인 ----', responseMyConcertComment.data.data.concertCommentInfo[0].Concert.image_concert)
+    // console.log('---- 내가 쓴 댓글(콘서트 게시물) 이미지 데이터 확인 ----', responseMyConcertComment.data.data[0].Concert.image_concert)
 
     dispatch(getMyConcertCommentInfo(responseMyConcertComment.data.data));
     dispatch(
@@ -109,10 +108,9 @@ function MyDropDown() {
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
       { withCredentials: true },
     );
-    
-    console.log('---------------------------------')
-    console.log(responseMyArticleComment.data.data)
-    console.log('---------------------------------')
+
+    console.log('---- 내가 쓴 댓글(콘친 게시물) 이미지 데이터 확인 ----', responseMyArticleComment.data.data.articleCommentInfo[0].Article.image)
+    // console.log('---- 내가 쓴 댓글(콘친 게시물) 이미지 데이터 확인 ----', responseMyArticleComment.data.data[0].Article.image)
 
     dispatch(getMyArticleCommentInfo(responseMyArticleComment.data.data));
     dispatch(
