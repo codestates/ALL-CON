@@ -495,48 +495,55 @@ a {
         align-items: center;
         justify-content: center;
         margin-left: 1%;
-        width: 10%; }
-        @media (max-width: 767px) {
-          #commentBox .writeBox .commentBodyBox .imgWrapper {
-            height: 50%; } }
-        @media (min-width: 768px) {
-          #commentBox .writeBox .commentBodyBox .imgWrapper {
-            height: 50%; } }
-        @media (min-width: 1200px) {
-          #commentBox .writeBox .commentBodyBox .imgWrapper {
-            height: 75%; } }
+        width: 10%;
+        height: 75%; }
         #commentBox .writeBox .commentBodyBox .imgWrapper .img {
           position: absolute;
           display: flex;
-          height: 100%;
-          object-fit: 100%;
+          align-items: center;
+          object-fit: cover;
           border-radius: 100%; }
+          @media (max-width: 767px) {
+            #commentBox .writeBox .commentBodyBox .imgWrapper .img {
+              width: 70%;
+              height: 60%; } }
+          @media (min-width: 768px) {
+            #commentBox .writeBox .commentBodyBox .imgWrapper .img {
+              width: 70%;
+              height: 80%; } }
+          @media (min-width: 1200px) {
+            #commentBox .writeBox .commentBodyBox .imgWrapper .img {
+              width: 70%;
+              height: 80%; } }
         #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
           position: absolute;
-          display: flex;
-          object-fit: 100%;
-          bottom: 0%;
-          right: 15%; }
+          display: flex; }
           @media (max-width: 767px) {
             #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
-              width: 16px;
-              height: 16px; } }
+              width: 15px;
+              height: 15px;
+              bottom: 5%;
+              right: 10%; } }
           @media (min-width: 768px) {
             #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
-              width: 20px;
-              height: 20px; } }
+              width: 22.5px;
+              height: 22.5px;
+              bottom: 0%;
+              right: 7.5%; } }
           @media (min-width: 1200px) {
             #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
-              width: 25px;
-              height: 25px; } }
+              width: 28px;
+              height: 28px;
+              bottom: 5%;
+              right: 10%; } }
       #commentBox .writeBox .commentBodyBox .bodyWrapper {
         position: absolute;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-left: 1%;
+        margin-left: 2.5%;
         left: 10%;
-        width: 89%;
+        width: 87.5%;
         height: 80%; }
         #commentBox .writeBox .commentBodyBox .bodyWrapper #input {
           position: relative;
@@ -577,7 +584,7 @@ a {
           @media (min-width: 768px) {
             #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
               border-radius: 10px;
-              font-size: 1.5rem; } }
+              font-size: 1.3rem; } }
           @media (min-width: 1200px) {
             #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
               border-radius: 15px;
@@ -592,15 +599,14 @@ a {
     height: 21.5%;
     top: 0%;
     margin-top: 1.5%;
-    border: 1px solid #c4c4c4;
     border-radius: 5px; }
     #commentBox .box .dateBox {
       position: absolute;
       display: flex;
-      width: 100%;
-      height: 40%;
-      top: 1.5%;
-      left: 1.5%; }
+      align-items: center;
+      width: 89%;
+      height: 30%;
+      left: 11%; }
       #commentBox .box .dateBox .nickNameAndDate {
         color: #a0a0a0; }
         @media (max-width: 767px) {
@@ -608,10 +614,10 @@ a {
             font-size: 1rem; } }
         @media (min-width: 768px) {
           #commentBox .box .dateBox .nickNameAndDate {
-            font-size: 1.5rem; } }
+            font-size: 1.3rem; } }
         @media (min-width: 1200px) {
           #commentBox .box .dateBox .nickNameAndDate {
-            font-size: 2rem; } }
+            font-size: 1.5rem; } }
       #commentBox .box .dateBox .optionWrapper {
         z-index: 100;
         position: absolute;
@@ -619,9 +625,17 @@ a {
         align-items: center;
         justify-content: space-between;
         height: 100%;
-        width: 10%;
         top: 0%;
         right: 2%; }
+        @media (max-width: 767px) {
+          #commentBox .box .dateBox .optionWrapper {
+            width: 25%; } }
+        @media (min-width: 768px) {
+          #commentBox .box .dateBox .optionWrapper {
+            width: 20%; } }
+        @media (min-width: 1200px) {
+          #commentBox .box .dateBox .optionWrapper {
+            width: 15%; } }
         #commentBox .box .dateBox .optionWrapper .optionBtn {
           position: relative;
           display: flex;
@@ -631,82 +645,106 @@ a {
           font-weight: bold;
           width: 45%;
           height: 100%;
-          cursor: pointer; }
+          cursor: pointer;
+          border: 1px solid #c4c4c4; }
+          @media (max-width: 767px) {
+            #commentBox .box .dateBox .optionWrapper .optionBtn {
+              border-radius: 3px;
+              font-size: 0.15rem; } }
+          @media (min-width: 768px) {
+            #commentBox .box .dateBox .optionWrapper .optionBtn {
+              border-radius: 3px;
+              font-size: 0.3rem; } }
+          @media (min-width: 1200px) {
+            #commentBox .box .dateBox .optionWrapper .optionBtn {
+              border-radius: 5px;
+              font-size: 1rem; } }
+        #commentBox .box .dateBox .optionWrapper :hover {
+          color: white;
+          font-weight: bold;
+          background-color: #ffce63;
+          transition: 0.25s all;
+          border: 0px solid #ffce63; }
     #commentBox .box #imgAndText {
       position: relative;
       display: flex;
       align-items: center;
       width: 100%;
-      height: 60%;
-      top: 40%; }
+      height: 100%; }
       #commentBox .box #imgAndText .imgWrapper {
-        position: absolute;
-        display: flex; }
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer; }
         @media (max-width: 767px) {
           #commentBox .box #imgAndText .imgWrapper {
-            position: absolute;
-            display: flex;
-            height: 27px;
-            width: 27px;
-            left: 3%; } }
+            width: 8%;
+            height: 50%;
+            left: 2%; } }
         @media (min-width: 768px) {
           #commentBox .box #imgAndText .imgWrapper {
-            height: 35px;
-            width: 35px;
-            left: 2%; } }
+            width: 8%;
+            height: 75%;
+            left: 1.5%; } }
         @media (min-width: 1200px) {
           #commentBox .box #imgAndText .imgWrapper {
-            height: 45px;
-            width: 45px;
+            width: 7.5%;
+            height: 75%;
             left: 2%; } }
         #commentBox .box #imgAndText .imgWrapper .img {
           position: absolute;
-          display: flex;
-          width: 100%;
-          height: 100%;
-          object-fit: 100%;
-          border-radius: 100%; }
+          border-radius: 100%;
+          width: 80%;
+          height: 82.5%;
+          object-fit: cover; }
         #commentBox .box #imgAndText .imgWrapper .shield {
           position: absolute;
           display: flex;
-          object-fit: 100%;
-          bottom: 0%;
-          right: 0%; }
+          right: 7.5%; }
           @media (max-width: 767px) {
             #commentBox .box #imgAndText .imgWrapper .shield {
               width: 13px;
-              height: 13px; } }
+              height: 13px;
+              bottom: 5%; } }
           @media (min-width: 768px) {
             #commentBox .box #imgAndText .imgWrapper .shield {
-              width: 15px;
-              height: 15px; } }
+              width: 20px;
+              height: 20px;
+              bottom: 5%; } }
           @media (min-width: 1200px) {
             #commentBox .box #imgAndText .imgWrapper .shield {
-              width: 20px;
-              height: 20px; } }
+              width: 25px;
+              height: 25px;
+              bottom: 10%; } }
+      #commentBox .box #imgAndText :hover .img {
+        border: 2px solid #ffce63;
+        outline: 2px solid #ffce63; }
       #commentBox .box #imgAndText .textWrapper {
         position: absolute;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 90%;
-        height: 100%;
-        left: 10%; }
+        width: 89%;
+        height: 70%;
+        top: 30%;
+        left: 11%; }
         #commentBox .box #imgAndText .textWrapper #text {
           position: relative;
           display: flex;
           width: 85%;
           height: 100%;
-          margin-right: 0.5%; }
+          margin-right: 0.5%;
+          resize: none; }
           @media (max-width: 767px) {
             #commentBox .box #imgAndText .textWrapper #text {
-              font-size: 1.3rem; } }
+              font-size: 1.1rem; } }
           @media (min-width: 768px) {
             #commentBox .box #imgAndText .textWrapper #text {
-              font-size: 1.5rem; } }
+              font-size: 1.1rem; } }
           @media (min-width: 1200px) {
             #commentBox .box #imgAndText .textWrapper #text {
-              font-size: 1.5rem; } }
+              font-size: 1.4rem; } }
         #commentBox .box #imgAndText .textWrapper .textBtn {
           position: relative;
           display: flex;
@@ -726,7 +764,7 @@ a {
           @media (min-width: 768px) {
             #commentBox .box #imgAndText .textWrapper .textBtn {
               border-radius: 8px;
-              font-size: 1.3rem; } }
+              font-size: 1.25rem; } }
           @media (min-width: 1200px) {
             #commentBox .box #imgAndText .textWrapper .textBtn {
               border-radius: 12px;
@@ -5628,13 +5666,12 @@ a {
     position: absolute;
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: absolute; }
+    align-items: center; }
     @media (max-width: 767px) {
       #mainContainer #mainCommentWrapper {
         top: 112.5%;
         width: 100%;
-        height: 55%; } }
+        height: 60%; } }
     @media (min-width: 768px) {
       #mainContainer #mainCommentWrapper {
         top: 137%;
@@ -5644,7 +5681,7 @@ a {
       #mainContainer #mainCommentWrapper {
         top: 172.5%;
         width: 65%;
-        height: 70%; } }
+        height: 90%; } }
   #mainContainer #mainPaginationWrapper {
     z-index: 7;
     position: absolute;
@@ -5655,19 +5692,19 @@ a {
     height: 5%; }
     @media (max-width: 767px) {
       #mainContainer #mainPaginationWrapper {
-        top: 160%; } }
+        top: 165%; } }
     @media (min-width: 768px) {
       #mainContainer #mainPaginationWrapper {
         top: 185%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainPaginationWrapper {
-        top: 225%; } }
+        top: 245%; } }
   #mainContainer #mainFindConchinWrapper {
     position: absolute;
     width: 100%; }
     @media (max-width: 767px) {
       #mainContainer #mainFindConchinWrapper {
-        top: 165%;
+        top: 170%;
         height: 40%; } }
     @media (min-width: 768px) {
       #mainContainer #mainFindConchinWrapper {
@@ -5675,7 +5712,7 @@ a {
         height: 60%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainFindConchinWrapper {
-        top: 230%;
+        top: 250%;
         height: 80%; } }
   #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
     position: absolute;
@@ -5686,7 +5723,7 @@ a {
       #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
-        top: 201%; } }
+        top: 210%; } }
     @media (min-width: 768px) {
       #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
@@ -5696,7 +5733,7 @@ a {
       #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 38%;
-        top: 315%; } }
+        top: 340%; } }
     #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterArticleNotChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterArticleNotChosen #mainFooterWrapper {
       position: absolute;
       display: flex;
@@ -5886,7 +5923,7 @@ a {
     #jumboPosterSlideWrapper {
       bottom: -6%; } }
   #jumboPosterSlideWrapper #arrows {
-    z-index: 44;
+    z-index: 10;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -5905,7 +5942,8 @@ a {
       #jumboPosterSlideWrapper #arrows {
         width: 90%; } }
     #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
-      opacity: 40%; }
+      opacity: 40%;
+      cursor: pointer; }
       @media (max-width: 767px) {
         #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
           width: 35px; } }
@@ -5915,6 +5953,17 @@ a {
       @media (min-width: 1200px) {
         #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
           width: 80px; } }
+    #jumboPosterSlideWrapper #arrows :active {
+      border: solid rgba(0, 0, 0, 0); }
+      @media (max-width: 767px) {
+        #jumboPosterSlideWrapper #arrows :active {
+          width: 5px; } }
+      @media (min-width: 768px) {
+        #jumboPosterSlideWrapper #arrows :active {
+          width: 7.5px; } }
+      @media (min-width: 1200px) {
+        #jumboPosterSlideWrapper #arrows :active {
+          border-width: 8px; } }
 
 .posterContainer {
   width: 100%;
@@ -5980,7 +6029,7 @@ a {
   width: 100%;
   height: 100%;
   top: 0%;
-  background-color: rgba(0, 0, 0, 0.7); }
+  background-color: rgba(0, 0, 0, 0.8); }
 
 #posterWrapper1 {
   position: absolute;
@@ -6003,9 +6052,9 @@ a {
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper1 {
-      width: 20%;
-      height: 75%;
-      top: 60%;
+      width: 17.5%;
+      height: 65%;
+      top: 57.5%;
       left: 30%;
       padding-bottom: 20%; } }
 
@@ -6033,7 +6082,7 @@ a {
       width: 20%;
       height: 75%;
       padding-bottom: 20%;
-      top: 50%;
+      top: 57.5%;
       left: 40%; } }
 
 /*가운데*/
@@ -6043,56 +6092,7 @@ a {
   z-index: 10;
   left: 50%;
   transform: translate(-50%, -50%);
-  /*posterWrapper3*/ }
-  #posterWrapper3:hover {
-    box-shadow: 3px 3px 14px 1px #606060;
-    cursor: pointer;
-    transition: all 1s ease; }
-    #posterWrapper3:hover #alignDay {
-      width: 100%;
-      height: 100%; }
-      #posterWrapper3:hover #alignDay #dDay {
-        z-index: 50;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%; }
-        @media (max-width: 767px) {
-          #posterWrapper3:hover #alignDay #dDay {
-            width: 75%;
-            height: 45%;
-            border: 4px solid #ffce63; } }
-        @media (min-width: 768px) {
-          #posterWrapper3:hover #alignDay #dDay {
-            width: 75%;
-            height: 50%;
-            border: 5px solid #ffce63; } }
-        @media (min-width: 1200px) {
-          #posterWrapper3:hover #alignDay #dDay {
-            width: 75%;
-            height: 58%;
-            border: 6px solid #ffce63; } }
-        #posterWrapper3:hover #alignDay #dDay p {
-          color: #fff;
-          font-weight: bold; }
-          @media (max-width: 767px) {
-            #posterWrapper3:hover #alignDay #dDay p {
-              font-size: 2.5rem; } }
-          @media (min-width: 768px) {
-            #posterWrapper3:hover #alignDay #dDay p {
-              font-size: 4rem; } }
-          @media (min-width: 1200px) {
-            #posterWrapper3:hover #alignDay #dDay p {
-              font-size: 5rem; } }
-  #posterWrapper3 #alignDay {
-    width: 100%;
-    height: 100%; }
-    #posterWrapper3 #alignDay #dDay {
-      display: none; }
+  cursor: pointer; }
   @media (max-width: 767px) {
     #posterWrapper3 {
       width: 29%;
@@ -6107,10 +6107,13 @@ a {
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper3 {
-      width: 20%;
-      height: 80%;
-      top: 47.5%;
+      width: 24%;
+      height: 97.5%;
+      top: 57%;
       padding-bottom: 20%; } }
+
+#posterWrapper3 :hover {
+  border: 4px solid blue; }
 
 #posterWrapper4 {
   position: absolute;
@@ -6135,7 +6138,7 @@ a {
     #posterWrapper4 {
       width: 20%;
       height: 75%;
-      top: 50%;
+      top: 57.5%;
       left: 60%;
       padding-bottom: 20%; } }
 
@@ -6160,9 +6163,9 @@ a {
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper5 {
-      width: 20%;
-      height: 75%;
-      top: 60%;
+      width: 17.5%;
+      height: 65%;
+      top: 57.5%;
       left: 70%;
       padding-bottom: 20%; } }
 
@@ -6545,28 +6548,44 @@ a {
             font-size: 2rem; } }
   #mainConcertInfoBox #bottomBox {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
     bottom: 0%;
     height: 5%; }
+    #mainConcertInfoBox #bottomBox img {
+      display: flex;
+      height: 100%; }
+      @media (max-width: 767px) {
+        #mainConcertInfoBox #bottomBox img {
+          width: 6%;
+          margin-left: 3%;
+          margin-right: 1.5%; } }
+      @media (min-width: 768px) {
+        #mainConcertInfoBox #bottomBox img {
+          width: 4%;
+          margin-left: 2%;
+          margin-right: 1.5%; } }
+      @media (min-width: 1200px) {
+        #mainConcertInfoBox #bottomBox img {
+          width: 3.5%;
+          margin: 1%; } }
     #mainConcertInfoBox #bottomBox div {
       display: flex;
-      align-items: flex-end;
       justify-content: left;
       width: 90%;
       height: 100%;
       font-weight: bold; }
       @media (max-width: 767px) {
         #mainConcertInfoBox #bottomBox div {
-          font-size: 1.2rem; } }
+          font-size: 1.5rem; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #bottomBox div {
-          font-size: 1.5rem; } }
+          font-size: 1.8rem; } }
       @media (min-width: 1200px) {
         #mainConcertInfoBox #bottomBox div {
-          font-size: 1.75rem; } }
+          font-size: 2.2rem; } }
 
 #mainGoConchin {
   position: relative;
@@ -6727,7 +6746,7 @@ a {
       margin-top: 1.5%;
       margin-bottom: 1.5%;
       width: 90%;
-      height: 20%; }
+      max-height: 17.5%; }
     #concertContainer #concertsBoard #concertBoxWrapper:hover {
       box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.1);
       transition: 0.25s all; }
@@ -6952,36 +6971,34 @@ a {
               #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
                 font-size: 1.2rem; } }
 
-#concertBoxOuterContainer :hover {
-  /* 마우스 호버시 D-day */ }
-  #concertBoxOuterContainer :hover #poster {
-    filter: brightness(30%);
-    transition: 0.25s; }
-  #concertBoxOuterContainer :hover #round {
-    overflow: hidden;
-    transition: 0.5s;
-    position: relative;
-    top: -50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    border-radius: 50%;
-    text-align: center;
-    font-weight: bold;
-    color: #fff; }
-    @media (max-width: 767px) {
-      #concertBoxOuterContainer :hover #round {
-        font-size: 1.5rem;
-        border: 2.5px solid #ffce63; } }
-    @media (min-width: 768px) {
-      #concertBoxOuterContainer :hover #round {
-        font-size: 2.5rem;
-        border: 5px solid #ffce63; } }
-    @media (min-width: 1200px) {
-      #concertBoxOuterContainer :hover #round {
-        font-size: 2.5rem;
-        border: 5px solid #ffce63; } }
+#concertBoxOuterContainer :hover #poster {
+  filter: brightness(30%);
+  transition: 0.25s; }
+
+#concertBoxOuterContainer :hover #round {
+  transition: 0.5s;
+  position: relative;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 50%; }
+  @media (max-width: 767px) {
+    #concertBoxOuterContainer :hover #round {
+      font-size: 1.5rem;
+      border: 2.5px solid #ffce63; } }
+  @media (min-width: 768px) {
+    #concertBoxOuterContainer :hover #round {
+      font-size: 2.5rem;
+      border: 5px solid #ffce63; } }
+  @media (min-width: 1200px) {
+    #concertBoxOuterContainer :hover #round {
+      font-size: 2.5rem;
+      border: 5px solid #ffce63; } }
 
 /* 클릭시 */
 #concertChosenBoxOuterContainer {
@@ -7000,8 +7017,7 @@ a {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 100%;
-    overflow: hidden; }
+    height: 100%; }
     #concertChosenBoxOuterContainer #concertBoxContainer .imgWrapper {
       align-items: center;
       width: 20%;

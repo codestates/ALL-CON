@@ -7,7 +7,6 @@ import search from '../images/search.png';
 import user from '../images/user.png';
 /* Store import */
 import { RootState } from '../index';
-import { logout } from '../store/AuthSlice';
 import {
   showLoginModal,
   showSideMenuModal,

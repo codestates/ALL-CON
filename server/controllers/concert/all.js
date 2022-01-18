@@ -14,7 +14,6 @@ module.exports = {
       const myAllAlarmInfo = await Alarms.findAll({
         where: { user_id: userInfo.dataValues.id },
       });
-      console.log('확인2');
       return res.status(200).json({
         data: { myAllAlarmInfo: myAllAlarmInfo },
         message: 'Success Get My All Alarm List!',
