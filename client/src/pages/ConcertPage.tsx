@@ -4,7 +4,7 @@ import ConcertBox from '../components/ConcertPage/ConcertBox';
 import Footer from '../components/Footer';
 /* Store import */
 import { RootState } from '../index';
-import { setAllConcerts, setTarget } from '../store/MainSlice';
+import { setAllConcerts, setMainToConcert, setOrder, setTarget } from '../store/MainSlice';
 import {
   showConcertModal,
   showAlertModal,
@@ -17,24 +17,23 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function ConcertPage() {
   const dispatch = useDispatch();
-  const { allConcerts } = useSelector((state: RootState) => state.main);
-  /* 정렬순 상태 */
-  const [concertOrder, setConcertOrder] = useState<string>('view');
+  const { allConcerts, order, mainToConcert } = useSelector((state: RootState) => state.main);
 
   useEffect(() => {
-    orderByHandler(concertOrder);
-  }, [concertOrder]);
+    if(!mainToConcert) orderByHandler(order);
+  }, [order]);
 
   /* 정렬 핸들러 */
   const orderByHandler = async (order: string) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert?order=${concertOrder}`,
+        `${process.env.REACT_APP_API_URL}/concert?order=${order}`,
         { withCredentials: true },
       );
       if (response.data) {
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setTarget({}));
+        dispatch(setMainToConcert(false));
         dispatch(showConcertModal(false));
       }
     } catch (err) {
@@ -55,6 +54,7 @@ function ConcertPage() {
       );
       if (response.data) {
         dispatch(setTarget(response.data.data.concertInfo));
+        dispatch(setMainToConcert(false));
         dispatch(showConcertModal(true));
       }
     } catch (err) {
@@ -71,18 +71,18 @@ function ConcertPage() {
       <div id='lineOrderWrapper'>
         <div id='bottomLineOrderBox'>
           <h1>
-            {(concertOrder === 'view' && '조회수') ||
-              (concertOrder === 'near' && '임박예정') ||
-              (concertOrder === 'new' && '등록일')}{' '}
+            {(order === 'view' && '조회수') ||
+              (order === 'near' && '임박예정') ||
+              (order === 'new' && '등록일')}{' '}
             순
           </h1>
-          <p className='orderBy' onClick={() => setConcertOrder('view')}>
+          <p className='orderBy' onClick={() => dispatch(setOrder('view'))}>
             조회수
           </p>
-          <p className='orderBy' onClick={() => setConcertOrder('near')}>
+          <p className='orderBy' onClick={() => dispatch(setOrder('near'))}>
             임박예정
           </p>
-          <p className='orderBy' onClick={() => setConcertOrder('new')}>
+          <p className='orderBy' onClick={() => dispatch(setOrder('new'))}>
             등록일
           </p>
         </div>

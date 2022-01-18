@@ -228,7 +228,7 @@ function ConChinArticleCommentBox() {
             <div className='box'>
               <div className='dateBox'>
                 <p className='nickNameAndDate'>
-                  {el.username} |{' '}
+                  {el.User.username} |{' '}
                   {el.createdAt !== undefined && el.createdAt !== null
                     ? el.createdAt.substring(0, 10)
                     : null}
@@ -268,12 +268,8 @@ function ConChinArticleCommentBox() {
                   className='imgWrapper'
                   onClick={() => getTargetArticlesUserInfo(el.user_id)}
                 >
-                  <img
-                    className='img'
-                    src={el.profile_image}
-                    alt='프로필 사진'
-                  />
-                  {el.role !== 3 && (
+                  <img className='img' src={el.User.image} alt='프로필 사진' />
+                  {el.User.role !== 3 && (
                     <img className='shield' src={shield} alt='인증 뱃지' />
                   )}
                 </div>

@@ -3,7 +3,16 @@ import xButton from '../../../images/xWhiteButton.png';
 /* Store import */
 import { RootState } from '../../../index';
 import { getPhoneCertificatePassInfo } from '../../../store/AuthSlice';
-import { showFindPasswordModal, showConfirmNumberModal, showPhoneConfirmNumberModal, showResetPasswordModal, showAlertModal, insertAlertText } from '../../../store/ModalSlice';
+import { 
+  showFindPasswordModal, 
+  showConfirmNumberModal, 
+  showPhoneConfirmNumberModal, 
+  showResetPasswordModal, 
+  showAlertModal, 
+  insertAlertText,
+  insertBtnText,
+  showSuccessModal
+ } from '../../../store/ModalSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -56,11 +65,13 @@ function PhoneConfirmNumberModal() {
 
       // 모달 상태 변경
       dispatch(insertAlertText('인증되었습니다! 🙂'));
-      dispatch(showAlertModal(true));
+      dispatch(insertBtnText('확인'));
+      dispatch(showSuccessModal(true));
+
       dispatch(getPhoneCertificatePassInfo(true));
       // 인증 성공을 체크 이미지로 표시
       dispatch(showPhoneConfirmNumberModal(false));
-      // dispatch(showResetPasswordModal(true));
+
     } catch(err) {
       const error = err as AxiosError;
 

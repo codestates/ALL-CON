@@ -48,16 +48,19 @@ export interface main {
   targetIdx: number;
   /* 전체 페이지 렌더링 여부 상태 */
   isRendering : boolean;
+  /* 전체 페이지 <-> 콘서트 페이지 이동 여부 상태 */
+  mainToConcert : boolean;
 }
 
 /* State 초기값 설정 */
 const initialState: main = {
-  order: 'hot',
+  order: 'view',
   target: {},
   detail: {},
   allConcerts: [],
   targetIdx: 0,
-  isRendering : false
+  isRendering : false,
+  mainToConcert: false
 };
 
 const mainSlice = createSlice({
@@ -83,6 +86,9 @@ const mainSlice = createSlice({
     setIsRendering: (state: main, { payload }: PayloadAction<boolean>) => {
       state.isRendering = payload;
     },
+    setMainToConcert: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.mainToConcert = payload;
+    },
   },
 });
 
@@ -92,6 +98,7 @@ export const {
   setTargetIdx,
   setDetail,
   setAllConcerts,
-  setIsRendering
+  setIsRendering,
+  setMainToConcert
 } = mainSlice.actions;
 export default mainSlice.reducer;
