@@ -9,13 +9,14 @@ import emailOff from '../../images/email3.png';
 import returnImg from '../../images/return.png';
 /* Store import */
 import { RootState } from '../../index';
-import { setTarget } from '../../store/MainSlice';
+import { setDetail, setTarget } from '../../store/MainSlice';
 import {
   showAlertModal,
   insertAlertText,
   insertBtnText,
   showSuccessModal,
   showLoginModal,
+  showConcertModal,
 } from '../../store/ModalSlice';
 /* Library import */
 import axios from 'axios';
@@ -26,22 +27,21 @@ import { useState, useEffect } from 'react';
 function MainConcertInfo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isRendering, targetIdx, target, detail } = useSelector(
+  const { mainToConcert, targetIdx, target, detail } = useSelector(
     (state: RootState) => state.main,
   );
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { order } = useSelector((state: RootState) => state.main);
+  const { pageAllComments } = useSelector((state: RootState) => state.concertComments);
 
   const [alarmType, setAlarmType] = useState('');
   const [emailClick, setEmailClick] = useState(false);
   const [smsClick, setSmsClick] = useState(false);
   const [openDate, setOpenDate] = useState('');
-
-  //유저가 각 콘서트 (target)별로 email,sms알람을 받는지 확인
-
+  
   useEffect(() => {
     getPosterInfo();
-  }, [order, targetIdx]);
+  }, [order, targetIdx, pageAllComments]);
 
   const getPosterInfo = async () => {
     try {
@@ -50,8 +50,7 @@ function MainConcertInfo() {
         { withCredentials: true },
       );
       if (res.data.data) {
-        dispatch(setTarget(res.data.data.concertInfo));
-        handleOpenDate(target.open_date!);
+        dispatch(setDetail(res.data.data.concertInfo));
       }
     } catch (err) {
       console.log(err);
@@ -173,12 +172,14 @@ function MainConcertInfo() {
     <div id='mainConcertInfoBox'>
       <div id='topBox'>
         <div id='roofArea'>
-          <img
+          {mainToConcert && <img
             id='backBtn'
             src={returnImg}
             alt='콘서트페이지 돌아가기 버튼'
-            onClick={() => navigate('/concert')}
-          />
+            onClick={() => {
+              dispatch(showConcertModal(true));
+              navigate('/concert')
+            }}/>}
         </div>
         <div id='fromWhereBox'>
           {detail.exclusive === '인터파크' && (
@@ -299,11 +300,14 @@ function MainConcertInfo() {
             </button>
           )}
           {detail && (
-            <a id='yellow-btn' href={detail.link}>
+            <a id='yellow-btn' href={detail.link} target='_blank'>
               예매하기
             </a>
           )}
         </div>
+      </div>
+      <div id='bottomBox'>
+          <div>{detail.total_comment}개의 댓글</div>
       </div>
     </div>
   );

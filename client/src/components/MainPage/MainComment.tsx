@@ -15,13 +15,13 @@ import {
 } from '../../store/ConcertCommentSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function MainComment() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { detail } = useSelector(
+  const { targetIdx, target } = useSelector(
     (state: RootState) => state.main,
   );
   const { pageNum, pageAllComments, comment } = useSelector(
@@ -30,17 +30,19 @@ function MainComment() {
   /* 댓글 인풋 && 버튼 클릭 */
   const [inputComment, setInputComment] = useState<string>('');
   const [isClick, setIsClick] = useState<boolean>(false);
-  /* 특정 댓글 클릭 && 댓글 수정 모드 상태  */
-  const [clickId, setClickId] = useState<number>(0);
+  /* 특정 댓글 수정 모드 && 수정할 댓글 원본 상태  */
+  const [clickIdEditMode, setClickIdEditMode] = useState<number>(0);
   const [editComment, setEditComment] = useState<string>('');
+  /* 삭제 ID */
+  const [delId, setDelId] = useState<number>(0);
 
   useEffect(() => {
     getAllComments();
-  }, [detail, isClick, pageNum]);
+  }, [targetIdx, isClick, pageNum, delId]);
 
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (clickId > 0) setEditComment(e.target.value);
+    if (clickIdEditMode > 0) setEditComment(e.target.value);
     else setInputComment(e.target.value);
   };
 
@@ -49,7 +51,7 @@ function MainComment() {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/comment`,
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment`,
         { content: inputComment },
         { withCredentials: true },
       );
@@ -77,7 +79,7 @@ function MainComment() {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.patch(
-        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/comment/${comment.id}`,
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment/${comment.id}`,
         { content: editComment },
         { withCredentials: true },
       );
@@ -85,7 +87,7 @@ function MainComment() {
       if (response.data) {
         /* 클릭 상태 변경 후 알람창 생성 */
         setIsClick(true);
-        setClickId(0);
+        setClickIdEditMode(0);
         dispatch(insertAlertText('댓글이 수정되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
@@ -95,25 +97,25 @@ function MainComment() {
       if (error.response?.status === 400)
         dispatch(insertAlertText('잘못된 요청입니다! 😖'));
       else if (error.response?.status === 401)
-        dispatch(insertAlertText('댓글 삭제 권한이 없습니다! 😖'));
+        dispatch(insertAlertText('댓글 수정 권한이 없습니다! 😖'));
       else dispatch(insertAlertText('Server Error! 😖'));
       dispatch(showAlertModal(true));
     }
   };
 
   /* 댓글 삭제 핸들러 */
-  const commentDelHandler = async () => {
-    console.log('삭제하려는 댓글 concert id: ', comment.id);
+  const commentDelHandler = async (e:React.MouseEvent<HTMLDivElement>) => {
     try {
+      // setDelId(Number(e.currentTarget.id))
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.delete(
-        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/comment/${comment.id}`,
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment/${e.currentTarget.id}`,
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 삭제 성공 */
       if (response.data) {
         /* 클릭 상태 변경 후 알람창 생성 */
-        setIsClick(true);
+        getAllComments();
         dispatch(insertAlertText('댓글이 삭제되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
@@ -135,7 +137,7 @@ function MainComment() {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/comment?pageNum=${pageNum}`,
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment?pageNum=${pageNum}`,
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
@@ -184,7 +186,7 @@ function MainComment() {
       )}
 
       {/* 댓글 목록 map */}
-      {pageAllComments.map(el => (
+      {pageAllComments.length!==0 && pageAllComments.map(el => (
         <div className='box'>
           <div className='dateBox'>
             <p className='nickNameAndDate'>
@@ -193,9 +195,11 @@ function MainComment() {
             <div className='optionWrapper'>
               {userInfo.id === el.user_id && (
                 <div
+                  id={String(el.id)}
                   className='optionBtn'
                   onClick={() => {
-                    setClickId(el.id);
+                    setClickIdEditMode(el.id);
+                    setIsClick(true);
                     dispatch(setComment(el));
                     setEditComment(el.content);
                   }}
@@ -205,14 +209,10 @@ function MainComment() {
               )}
               {userInfo.id === el.user_id && (
                 <div
+                  id={String(el.id)}
                   className='optionBtn'
-                  onMouseDown={() => {
-                    dispatch(setComment(el));
-                    commentDelHandler();
-                  }}
-                  onMouseUp={() => {
-                    dispatch(setComment(el));
-                    commentDelHandler();
+                  onClick={(e) => {
+                    commentDelHandler(e);
                   }}
                 >
                   삭제하기
@@ -228,7 +228,7 @@ function MainComment() {
               )}
             </div>
             <div className='textWrapper'>
-              {el.id === clickId ? (
+              {el.id === clickIdEditMode ? (
                 <textarea
                   id='text'
                   value={editComment}
@@ -237,13 +237,13 @@ function MainComment() {
               ) : (
                 <p id='text'>{el.content}</p>
               )}
-              {el.id === clickId && (
+              {el.id === clickIdEditMode && (
                 <div className='textBtn' onClick={commentEditHandler}>
                   수정
                 </div>
               )}
-              {el.id === clickId && (
-                <div className='textBtn' onClick={() => setClickId(0)}>
+              {el.id === clickIdEditMode && (
+                <div className='textBtn' onClick={() => setClickIdEditMode(0)}>
                   취소
                 </div>
               )}
@@ -251,6 +251,7 @@ function MainComment() {
           </div>
         </div>
       ))}
+      {pageAllComments.length===0 && <div className='emptyBox'>댓글이 없습니다.</div>}
     </div>
   );
 }

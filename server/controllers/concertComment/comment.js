@@ -24,7 +24,7 @@ module.exports = {
         limit: limit
       });
 
-      if(concertCommentInfo.count===0) return res.status(200).json({ message: 'Empty Concert Comments!' });
+      if(concertCommentInfo.count===0) return res.status(200).json({ data: { concertCommentInfo: [] }, message: 'Empty Concert Comments!' });
 
       // 총 페이지 수
       const totalPage = Math.ceil(concertCommentInfo.count / limit);

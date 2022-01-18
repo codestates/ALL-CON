@@ -175,7 +175,7 @@ function MyCommentBox() {
                       <div
                       className='myCommentOptionBtn'
                       onClick={() => {
-                        // setClickId(el.id);
+                        // setClickIdEditMode(el.id);
                         // dispatch(setComment(el));
                         // setEditComment(el.content);
                       }}
