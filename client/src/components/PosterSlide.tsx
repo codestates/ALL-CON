@@ -19,7 +19,7 @@ function PosterSlide() {
       const gap = targetDay.getTime() - today.getTime();
       const count = Math.ceil(gap / (1000 * 60 * 60 * 24));
       /* 남은 일수에 따라 디데이 리턴 */
-      if (count === 1) return 'D';
+      if (count === 1) return 'D-0';
       else if (count < 1) return '';
       else return 'D-' + (count - 1);
     }
@@ -58,7 +58,11 @@ function PosterSlide() {
             className='posterImg'
             id='poster'
           />
-          <div className='posterCover2'></div>
+          <div id='alignDay'>
+            <div id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}>
+              {dayCalculator(target.open_date)}
+            </div>
+          </div>
         </div>
       )}
       {allConcerts[targetIdx + 1] && (

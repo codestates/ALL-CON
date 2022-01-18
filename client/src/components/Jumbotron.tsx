@@ -17,13 +17,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Jumbotron() {
   const dispatch = useDispatch();
-  const { order, targetIdx, allConcerts } = useSelector(
+  const { order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
 
-  useEffect(() => {
-    
-  }, [order]);
+  useEffect(() => {}, [order]);
 
   const leftClickHandler = () => {
     if (targetIdx > 0) {
@@ -49,6 +47,12 @@ function Jumbotron() {
     dispatch(setOrder(clickValue));
   };
 
+  const ballList = allConcerts.map(el => {
+    if (el.id === target.id)
+      return <div className='balls' id='targetBall'></div>;
+    return <div className='balls'></div>;
+  });
+
   return (
     <div id='jumboContainer'>
       <div id='jumboMiniContainer'></div>
@@ -64,13 +68,37 @@ function Jumbotron() {
           </div>
           {/*오른쪽 상단 탭 바*/}
           <div id='tabBar'>
-            <p id={order === 'view' ? 'hot' : undefined} onMouseUp={() => { orderClickHandler('view') }} onMouseDown={() => { orderClickHandler('view') }}>
+            <p
+              id={order === 'view' ? 'hot' : undefined}
+              onMouseUp={() => {
+                orderClickHandler('view');
+              }}
+              onMouseDown={() => {
+                orderClickHandler('view');
+              }}
+            >
               HOT
             </p>
-            <p id={order === 'near' ? 'near' : undefined} onMouseUp={() => { orderClickHandler('near') }} onMouseDown={() => { orderClickHandler('near') }}>
+            <p
+              id={order === 'near' ? 'near' : undefined}
+              onMouseUp={() => {
+                orderClickHandler('near');
+              }}
+              onMouseDown={() => {
+                orderClickHandler('near');
+              }}
+            >
               NEAR
             </p>
-            <p id={order === 'new' ? 'new' : undefined} onMouseUp={() => { orderClickHandler('new') }} onMouseDown={() => { orderClickHandler('new') }}>
+            <p
+              id={order === 'new' ? 'new' : undefined}
+              onMouseUp={() => {
+                orderClickHandler('new');
+              }}
+              onMouseDown={() => {
+                orderClickHandler('new');
+              }}
+            >
               NEW
             </p>
           </div>
@@ -91,6 +119,8 @@ function Jumbotron() {
               onClick={rigthClickHandler}
             ></img>
           </div>
+          <div id='ballsWrapper'>{ballList}</div>
+          <div id='posterCover'></div>
           <PosterSlide />
         </div>
       </div>

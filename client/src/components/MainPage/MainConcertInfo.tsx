@@ -25,6 +25,7 @@ import {
   showSmsAlarmModal,
   insertAlarmText,
   showConcertModal,
+  showMainKakaoModal,
 } from '../../store/ModalSlice';
 /* Library import */
 import axios from 'axios';
@@ -87,7 +88,7 @@ function MainConcertInfo() {
       console.log(err);
     }
   };
-  console.log(allAlarms);
+
   const getAllAlarms = async () => {
     try {
       if (isLogin === false) {
@@ -319,7 +320,10 @@ function MainConcertInfo() {
                 {detail.place && (
                   <p className='right' id='place_r'>
                     <p>{detail.place}</p>
-                    <img src={map}></img>
+                    <img
+                      src={map}
+                      onClick={() => dispatch(showMainKakaoModal(true))}
+                    ></img>
                   </p>
                 )}
                 {detail.period && (

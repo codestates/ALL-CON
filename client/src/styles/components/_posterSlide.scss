@@ -79,22 +79,22 @@
   transform: translate(-50%, -50%);
   @include mobile-only() {
     width: 29%;
-    height: 60%;
-    top: 70%;
+    height: 55%;
+    top: 60%;
     left: 15%;
     padding-bottom: 30%;
   }
   @include md() {
     width: 25%;
-    height: 70%;
-    top: 60%;
+    height: 65%;
+    top: 50%;
     left: 20%;
     padding-bottom: 20%;
   }
   @include lg() {
     width: 20%;
-    height: 75%;
-    top: 60%;
+    height: 70%;
+    top: 50%;
     left: 30%;
     padding-bottom: 20%;
   }
@@ -154,34 +154,25 @@
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-
+        color: #fff;
+        font-weight: bold;
         @include mobile-only() {
           width: 75%;
           height: 45%;
           border: 4px solid $yellow;
+          font-size: 2.5rem;
         }
         @include md() {
           width: 75%;
           height: 50%;
           border: 5px solid $yellow;
+          font-size: 4rem;
         }
         @include lg() {
           width: 75%;
           height: 58%;
           border: 6px solid $yellow;
-        }
-        p {
-          color: #fff;
-          font-weight: bold;
-          @include mobile-only() {
-            font-size: 2.5rem;
-          }
-          @include md() {
-            font-size: 4rem;
-          }
-          @include lg() {
-            font-size: 5rem;
-          }
+          font-size: 5rem;
         }
       }
     }
@@ -198,21 +189,21 @@
 
   /*posterWrapper3*/
   @include mobile-only() {
-    width: 29%;
-    height: 66%;
-    top: 57%;
+    width: 33%;
+    height: 70%;
+    top: 60%;
     padding-bottom: 30%;
   }
   @include md() {
-    width: 25%;
-    height: 74%;
+    width: 28%;
+    height: 80%;
     top: 48%;
     padding-bottom: 20%;
   }
   @include lg() {
     width: 20%;
-    height: 80%;
-    top: 47.5%;
+    height: 85%;
+    top: 50%;
     padding-bottom: 20%;
   }
 }
@@ -252,22 +243,22 @@
   transform: translate(-50%, -50%);
   @include mobile-only() {
     width: 29%;
-    height: 60%;
-    top: 70%;
+    height: 55%;
+    top: 60%;
     left: 85%;
     padding-bottom: 30%;
   }
   @include md() {
-    width: 25%;
-    height: 70%;
-    top: 60%;
+    width: 20%;
+    height: 65%;
+    top: 50%;
     left: 80%;
     padding-bottom: 20%;
   }
   @include lg() {
     width: 20%;
-    height: 75%;
-    top: 60%;
+    height: 70%;
+    top: 50%;
     left: 70%;
     padding-bottom: 20%;
   }

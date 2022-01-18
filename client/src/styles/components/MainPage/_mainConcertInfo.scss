@@ -156,7 +156,7 @@
       @include mobile-only() {
         position: relative;
         left: 5%;
-        font: 1.3rem;
+        font-size: 1.5rem;
       }
       @include md() {
         width: 100%;
@@ -179,7 +179,7 @@
     width: 100%;
     // border: 3px solid green;
     @include mobile-only() {
-      height: 65%;
+      height: 70%;
     }
     @include md() {
       height: 70%;
@@ -195,7 +195,7 @@
       // border: 2px solid blue;
       @include mobile-only() {
         width: 90%;
-        height: 75%;
+        height: 70%;
       }
       @include md() {
         width: 93%;
@@ -300,9 +300,22 @@
               display: flex;
               justify-content: flex-start;
               height: 10%;
+              @include md() {
+                width: 120%;
+              }
               img {
                 width: 30px;
                 height: 30px;
+                @include md() {
+                  position: relative;
+                  top: -10%;
+                  margin-left: 2%;
+                }
+                @include lg() {
+                  position: relative;
+                  top: 0%;
+                  margin-left: 2%;
+                }
               }
             }
             #date_r {
@@ -327,7 +340,7 @@
                 }
                 @include md() {
                   left: 5%;
-                  width: 40px;
+                  width: 35px;
                 }
                 @include lg() {
                   left: 5%;
@@ -351,11 +364,11 @@
       // border: 1px solid red;
       @include mobile-only() {
         width: 90%;
-        height: 15%;
+        height: 20%;
       }
       @include md() {
         position: absolute;
-        bottom: 9%;
+        bottom: 7.5%;
         left: 40.5%;
         width: 56%;
         height: 11%;
@@ -389,10 +402,11 @@
             @include mobile-only() {
               margin-right: 2%;
               width: 20px;
+              height: 20px;
             }
             @include md() {
               width: 30px;
-              height: 80%;
+              height: 75%;
               padding-right: 2%;
             }
             @include lg() {
@@ -448,21 +462,27 @@
     bottom: 0%;
     height: 5%;
     // border: 1px solid red;
+    @include mobile-only() {
+      position: relative;
+      top: 7%;
+    }
     div {
       display: flex;
       align-items: flex-end;
       justify-content: left;
-      width: 90%;
       height: 100%;
       font-weight: bold;
-      // border: 1px solid purple;
+
       @include mobile-only() {
+        width: 95%;
         font-size: 1.2rem;
       }
       @include md() {
+        width: 90%;
         font-size: 1.5rem;
       }
       @include lg() {
+        width: 90%;
         font-size: 1.75rem;
       }
     }

@@ -27,7 +27,13 @@ import {
   setTimerMessage,
 } from '../store/HeaderSlice';
 import { setPageNum } from '../store/ConcertCommentSlice';
-import { setIsRendering, setMainToConcert, setOrder, setTarget, setTargetIdx } from '../store/MainSlice';
+import {
+  setIsRendering,
+  setMainToConcert,
+  setOrder,
+  setTarget,
+  setTargetIdx,
+} from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -44,6 +50,7 @@ function Header() {
     sideMenuModal,
     myDropDown,
     conChinProfileModal,
+    mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
   const { isScrolled, scrollCount, timerMessage } = useSelector(
     (state: RootState) => state.header,
@@ -103,7 +110,7 @@ function Header() {
   });
   /* 해당 모달 띄워져있을 시 스크롤바 제거 useEffect */
   useEffect(() => {
-    if (loginModal || signupModal || conChinProfileModal)
+    if (loginModal || signupModal || conChinProfileModal || mainKakaoModal)
       document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'unset';
   });
@@ -203,7 +210,7 @@ function Header() {
     /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */
     <div
       id={
-        loginModal || signupModal || conChinProfileModal
+        loginModal || signupModal || conChinProfileModal || mainKakaoModal
           ? 'headerSecondContainer'
           : 'headerContainer'
       }

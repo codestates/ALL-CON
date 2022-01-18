@@ -188,7 +188,7 @@
     bottom: -6%;
   }
   #arrows {
-    z-index: 44;
+    z-index: 10;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -196,13 +196,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 20%;
+    height: 15%;
     // border: 2px solid yellowgreen;
     @include mobile-only() {
-      width: 120%;
+      width: 118%;
     }
     @include md() {
-      width: 120%;
+      width: 115%;
     }
     @include lg() {
       width: 90%;
@@ -210,17 +210,57 @@
     #left {
       opacity: 40%;
       @include mobile-only() {
-        width: 35px;
+        width: 30px;
       }
       @include md() {
         width: 50px;
       }
       @include lg() {
-        width: 80px;
+        width: 60px;
       }
     }
     #right {
       @extend #left;
+    }
+  }
+  #ballsWrapper {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    height: 7%;
+    // border: 1px solid pink;
+    @include mobile-only() {
+      bottom: -12%;
+    }
+    @include md() {
+      bottom: -8%;
+    }
+    @include lg() {
+      bottom: -8%;
+    }
+    .balls {
+      background-color: #fff;
+      border-radius: 50%;
+      margin-right: 2%;
+      @include mobile-only() {
+        width: 3%;
+        height: 40%;
+      }
+      @include md() {
+        width: 2%;
+        height: 40%;
+      }
+      @include lg() {
+        width: 1.5%;
+        height: 40%;
+      }
+    }
+    #targetBall {
+      background-color: $yellow;
     }
   }
 }
