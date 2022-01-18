@@ -2,7 +2,13 @@
 import defaultImg from '../../../images/default_image.jpg';
 /* Store import */
 import { RootState } from '../../../index';
-import { showConChinWritingModal } from '../../../store/ModalSlice';
+import {
+  showAlertModal,
+  insertAlertText,
+  insertBtnText,
+  showSuccessModal,
+  showConChinWritingModal,
+} from '../../../store/ModalSlice';
 import { setTarget } from '../../../store/MainSlice';
 import {
   setAllArticles,
@@ -148,9 +154,12 @@ function ConChinWritingModal() {
       { withCredentials: true },
     );
     console.log(response.data);
-    alert('글 작성 성공! 😖');
-    getAllArticles();
+    dispatch(insertAlertText('글 작성에 성공했습니다! 🙂'));
+    dispatch(insertBtnText('확인'));
     dispatch(showConChinWritingModal(false));
+    dispatch(showSuccessModal(true));
+    getAllArticles();
+
     // 주의: 글 작성 성공 알림 모달 필요함!
     // 게시글 작성 모달도 닫는다
   };
@@ -168,10 +177,12 @@ function ConChinWritingModal() {
       },
       { withCredentials: true },
     );
-    alert('글 수정 성공! 😖');
-    console.log(response.data);
-    getTargetArticlesInfo();
+    dispatch(insertAlertText('글 수정에 성공했습니다! 🙂'));
+    dispatch(insertBtnText('확인'));
+    dispatch(showSuccessModal(true));
     dispatch(showConChinWritingModal(false));
+    getTargetArticlesInfo();
+
     // 주의: 글 수정 성공 알림 모달 필요함!
     // 게시글 수정 모달도 닫는다
   };

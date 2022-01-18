@@ -135,6 +135,7 @@ function ConChinArticleBox() {
         dispatch(
           setConChinPageAllComments(response.data.data.articleCommentInfo),
         );
+        dispatch(setConChinPageNum(1));
       }
     } catch (err) {}
   };

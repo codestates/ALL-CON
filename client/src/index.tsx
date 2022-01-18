@@ -1,3 +1,5 @@
+/* Module import */
+import ScrollToTop from './components/ScrollToTop';
 /* CSS import */
 import './style.css';
 /* Component import */
@@ -80,6 +82,7 @@ ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <Router>
+        <ScrollToTop />
         <App />
       </Router>
     </PersistGate>

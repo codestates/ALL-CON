@@ -42,12 +42,6 @@ function ConChinArticleCommentBox() {
     getAllComments();
   }, [targetArticle, isClick, conChinPageNum]);
 
-  /* 유저정보 보기 핸들러 */
-  const showUserProfile = () => {
-    console.log('실행됨?');
-    dispatch(showConChinProfileModal(true));
-  };
-
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (clickId > 0) setEditComment(e.target.value);
@@ -165,17 +159,35 @@ function ConChinArticleCommentBox() {
     } catch (err) {}
   };
 
-  /* 게시물 작성자 유저정보 조회 핸들러 */
-  const getTargetArticlesUserInfo = async (id: number) => {
+  /* 유저정보 보기 핸들러 */
+  const showUserProfile = (userRole: number) => {
+    console.log('받아온 userRole: ' + userRole);
+    if (userRole === 2) {
+      dispatch(showConChinProfileModal(true));
+    } else if (userRole === 3) {
+      dispatch(
+        insertAlertText('콘친인증을 하지 않은 회원의 정보를 볼 수 없어요! 😖'),
+      );
+      dispatch(showAlertModal(true));
+    }
+  };
+
+  /* 댓글 작성자 유저정보 조회 핸들러 */
+  const getTargetArticlesUserInfo = async (el?: any) => {
     try {
-      console.log('targetUserInfo: ' + id);
+      console.log('targetUserInfo: ' + el.user_id);
+      console.log('targetUserRole ' + el.User.role);
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/user/other/${id}`,
+        `${process.env.REACT_APP_API_URL}/user/other/${el.user_id}`,
         { withCredentials: true },
       );
       if (response.data) {
-        dispatch(setTargetArticlesUserInfo(response.data.data.userInfo));
-        showUserProfile();
+        if (el.User.role === 2) {
+          dispatch(setTargetArticlesUserInfo(response.data.data.userInfo));
+          showUserProfile(el.User.role);
+        } else if (el.User.role === 3) {
+          showUserProfile(el.User.role);
+        }
       }
     } catch (err) {
       console.log(err);
@@ -223,81 +235,83 @@ function ConChinArticleCommentBox() {
         </h1>
       </div>
       {/* 댓글 목록 map */}
-      {conChinPageAllComments.length > 0
-        ? conChinPageAllComments.map(el => (
-            <div className='box'>
-              <div className='dateBox'>
-                <p className='nickNameAndDate'>
-                  {el.User.username} |{' '}
-                  {el.createdAt !== undefined && el.createdAt !== null
-                    ? el.createdAt.substring(0, 10)
-                    : null}
-                </p>
-                <div className='optionWrapper'>
-                  {userInfo.id === el.user_id && (
-                    <div
-                      className='optionBtn'
-                      onClick={() => {
-                        setClickId(el.id);
-                        dispatch(setConChinComment(el));
-                        setEditComment(el.content);
-                      }}
-                    >
-                      수정하기
-                    </div>
-                  )}
-                  {userInfo.id === el.user_id && (
-                    <div
-                      className='optionBtn'
-                      onMouseDown={() => {
-                        dispatch(setConChinComment(el));
-                        commentDelHandler();
-                      }}
-                      onMouseUp={() => {
-                        dispatch(setConChinComment(el));
-                        commentDelHandler();
-                      }}
-                    >
-                      삭제하기
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div id='imgAndText'>
-                <div
-                  className='imgWrapper'
-                  onClick={() => getTargetArticlesUserInfo(el.user_id)}
-                >
-                  <img className='img' src={el.User.image} alt='프로필 사진' />
-                  {el.User.role !== 3 && (
-                    <img className='shield' src={shield} alt='인증 뱃지' />
-                  )}
-                </div>
-                <div className='textWrapper'>
-                  {el.id === clickId ? (
-                    <textarea
-                      id='text'
-                      value={editComment}
-                      onChange={inputChangeHandler}
-                    />
-                  ) : (
-                    <p id='text'>{el.content}</p>
-                  )}
-                  {el.id === clickId && (
-                    <div className='textBtn' onClick={commentEditHandler}>
-                      수정
-                    </div>
-                  )}
-                  {el.id === clickId && (
-                    <div className='textBtn' onClick={() => setClickId(0)}>
-                      취소
-                    </div>
-                  )}
-                </div>
+      {conChinPageAllComments.length > 0 ? (
+        conChinPageAllComments.map(el => (
+          <div className='box'>
+            <div className='dateBox'>
+              <p className='nickNameAndDate'>
+                {el.User.username} |{' '}
+                {el.createdAt !== undefined && el.createdAt !== null
+                  ? el.createdAt.substring(0, 10)
+                  : null}
+              </p>
+              <div className='optionWrapper'>
+                {userInfo.id === el.user_id && (
+                  <div
+                    className='optionBtn'
+                    onClick={() => {
+                      setClickId(el.id);
+                      dispatch(setConChinComment(el));
+                      setEditComment(el.content);
+                    }}
+                  >
+                    수정하기
+                  </div>
+                )}
+                {userInfo.id === el.user_id && (
+                  <div
+                    className='optionBtn'
+                    onMouseDown={() => {
+                      dispatch(setConChinComment(el));
+                      commentDelHandler();
+                    }}
+                    onMouseUp={() => {
+                      dispatch(setConChinComment(el));
+                      commentDelHandler();
+                    }}
+                  >
+                    삭제하기
+                  </div>
+                )}
               </div>
             </div>
-          ))
-        : null}
+            <div id='imgAndText'>
+              <div
+                className='imgWrapper'
+                onClick={() => getTargetArticlesUserInfo(el)}
+              >
+                <img className='img' src={el.User.image} alt='프로필 사진' />
+                {el.User.role !== 3 && (
+                  <img className='shield' src={shield} alt='인증 뱃지' />
+                )}
+              </div>
+              <div className='textWrapper'>
+                {el.id === clickId ? (
+                  <textarea
+                    id='text'
+                    value={editComment}
+                    onChange={inputChangeHandler}
+                  />
+                ) : (
+                  <p id='text'>{el.content}</p>
+                )}
+                {el.id === clickId && (
+                  <div className='textBtn' onClick={commentEditHandler}>
+                    수정
+                  </div>
+                )}
+                {el.id === clickId && (
+                  <div className='textBtn' onClick={() => setClickId(0)}>
+                    취소
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))
+      ) : (
+        <div className='emptyBox'>댓글이 없습니다.</div>
+      )}
     </div>
   );
 }
