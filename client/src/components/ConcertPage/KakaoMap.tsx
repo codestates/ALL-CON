@@ -17,7 +17,6 @@ const KakaoMap = ( { place }: placeProps ) => {
   useEffect(() => {
     mapHandler();
   }, [place]);
-  console.log(place);
 
   /* kakao 지도 api 핸들러 */
   const mapHandler = async () => {

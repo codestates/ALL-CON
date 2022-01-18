@@ -47,7 +47,7 @@ function MainPage() {
       if (response.data) {
         /* 서버 응답값이 있다면 & target 상태 변경 */
         dispatch(setAllConcerts(response.data.data.concertInfo));
-        dispatch(setTargetIdx(0));
+        // dispatch(setTargetIdx(0));
         dispatch(setTarget(allConcerts[targetIdx]));
       }
       /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */

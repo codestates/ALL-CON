@@ -733,6 +733,25 @@ a {
         #commentBox .box #imgAndText .textWrapper .textBtn:hover {
           transition: 0.25s all;
           background-color: #ffce63; }
+  #commentBox .emptyBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #ffce63;
+    width: 100%;
+    height: 50%;
+    top: 20%; }
+    @media (max-width: 767px) {
+      #commentBox .emptyBox {
+        font-size: 1rem; } }
+    @media (min-width: 768px) {
+      #commentBox .emptyBox {
+        font-size: 1.3rem; } }
+    @media (min-width: 1200px) {
+      #commentBox .emptyBox {
+        font-size: 3rem; } }
 
 /***** commentBox *****/
 /***** headerMenu *****/
@@ -5538,18 +5557,18 @@ a {
     position: absolute; }
     @media (max-width: 767px) {
       #mainContainer #mainCommentWrapper {
-        top: 115%;
+        top: 112.5%;
         width: 100%;
         height: 55%; } }
     @media (min-width: 768px) {
       #mainContainer #mainCommentWrapper {
         top: 137%;
-        width: 90%;
+        width: 80%;
         height: 45%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainCommentWrapper {
-        top: 175%;
-        width: 60%;
+        top: 172.5%;
+        width: 65%;
         height: 70%; } }
   #mainContainer #mainPaginationWrapper {
     z-index: 7;
@@ -5561,27 +5580,27 @@ a {
     height: 5%; }
     @media (max-width: 767px) {
       #mainContainer #mainPaginationWrapper {
-        top: 163%; } }
+        top: 160%; } }
     @media (min-width: 768px) {
       #mainContainer #mainPaginationWrapper {
-        top: 190%; } }
+        top: 185%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainPaginationWrapper {
-        top: 235%; } }
+        top: 225%; } }
   #mainContainer #mainFindConchinWrapper {
     position: absolute;
     width: 100%; }
     @media (max-width: 767px) {
       #mainContainer #mainFindConchinWrapper {
-        top: 170%;
+        top: 165%;
         height: 40%; } }
     @media (min-width: 768px) {
       #mainContainer #mainFindConchinWrapper {
-        top: 200%;
+        top: 190%;
         height: 60%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainFindConchinWrapper {
-        top: 250%;
+        top: 230%;
         height: 80%; } }
   #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
     position: absolute;
@@ -5592,17 +5611,17 @@ a {
       #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
-        top: 210%; } }
+        top: 201%; } }
     @media (min-width: 768px) {
       #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
-        top: 270%; } }
+        top: 260%; } }
     @media (min-width: 1200px) {
       #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 38%;
-        top: 335%; } }
+        top: 315%; } }
     #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterArticleNotChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterArticleNotChosen #mainFooterWrapper {
       position: absolute;
       display: flex;
@@ -6075,7 +6094,8 @@ a {
 #mainConcertInfoBox {
   position: absolute;
   height: 100%;
-  /*중간 박스*/ }
+  /*중간 박스*/
+  /*하단 박스*/ }
   @media (max-width: 767px) {
     #mainConcertInfoBox {
       width: 100%; } }
@@ -6108,7 +6128,8 @@ a {
       #mainConcertInfoBox #topBox #roofArea #backBtn {
         position: absolute;
         bottom: -65%;
-        opacity: 80%; }
+        opacity: 80%;
+        cursor: pointer; }
         @media (max-width: 767px) {
           #mainConcertInfoBox #topBox #roofArea #backBtn {
             right: 5%;
@@ -6237,7 +6258,7 @@ a {
         height: 65%; } }
     @media (min-width: 768px) {
       #mainConcertInfoBox #middleBox {
-        height: 68%; } }
+        height: 70%; } }
     @media (min-width: 1200px) {
       #mainConcertInfoBox #middleBox {
         height: 72%; } }
@@ -6447,6 +6468,30 @@ a {
         @media (min-width: 1200px) {
           #mainConcertInfoBox #middleBox #buttonsWrapper #yellow-btn {
             font-size: 2rem; } }
+  #mainConcertInfoBox #bottomBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0%;
+    height: 5%; }
+    #mainConcertInfoBox #bottomBox div {
+      display: flex;
+      align-items: flex-end;
+      justify-content: left;
+      width: 90%;
+      height: 100%;
+      font-weight: bold; }
+      @media (max-width: 767px) {
+        #mainConcertInfoBox #bottomBox div {
+          font-size: 1.2rem; } }
+      @media (min-width: 768px) {
+        #mainConcertInfoBox #bottomBox div {
+          font-size: 1.5rem; } }
+      @media (min-width: 1200px) {
+        #mainConcertInfoBox #bottomBox div {
+          font-size: 1.75rem; } }
 
 #mainGoConchin {
   position: relative;

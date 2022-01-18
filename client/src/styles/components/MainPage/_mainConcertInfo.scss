@@ -37,6 +37,7 @@
         position: absolute;
         bottom: -65%;
         opacity: 80%;
+        cursor: pointer;
         @include mobile-only() {
           right: 5%;
           width: 20px;
@@ -181,7 +182,7 @@
       height: 65%;
     }
     @include md() {
-      height: 68%;
+      height: 70%;
     }
     @include lg() {
       height: 72%;
@@ -434,6 +435,35 @@
         @include lg() {
           font-size: 2rem;
         }
+      }
+    }
+  }
+  /*하단 박스*/
+  #bottomBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0%;
+    height: 5%;
+    // border: 1px solid red;
+    div {
+      display: flex;
+      align-items: flex-end;
+      justify-content: left;
+      width: 90%;
+      height: 100%;
+      font-weight: bold;
+      // border: 1px solid purple;
+      @include mobile-only() {
+        font-size: 1.2rem;
+      }
+      @include md() {
+        font-size: 1.5rem;
+      }
+      @include lg() {
+        font-size: 1.75rem;
       }
     }
   }
