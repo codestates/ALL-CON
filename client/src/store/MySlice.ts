@@ -14,6 +14,7 @@ export interface my {
 
   myArticleTotalPage: number;
   myArticleCommentCurrentPage: number;
+  myArticleCommentCurrentComment: number;
   myArticleCommentTotalPage: number;
 
   myConcertCommentTotalPage: number;
@@ -22,6 +23,13 @@ export interface my {
   myTotalConcertComment: number;
   
   myTotalArticleComment: number;
+
+  // 버튼 ON/OFF 관리
+  btnSwitchState?: {
+    profileEdit?: boolean;
+    conchinCertification?: boolean;
+  }
+
   articleInfo?: {
     id?: number;
     title?: string;
@@ -37,7 +45,6 @@ export interface my {
     updatedAt?: Date;
   }
   concertCommentInfo?: {
-    // Article?: object,
     id?: number;
     content?: string;
     user_id?: number;
@@ -65,8 +72,11 @@ const initialState: my = {
   myArticleTotalPage: 0, 
   myArticleCommentCurrentPage: 1,
   myArticleCommentTotalPage: 0,
+  myArticleCommentCurrentComment: 0,
   myTotalArticleComment: 0,
   articleCommentInfo: {},
+
+  btnSwitchState: {},
 
   myConcertCommentTotalPage: 0, 
   myConcertCommentCurrentPage: 1,
@@ -117,11 +127,17 @@ const mySlice = createSlice({
     getArticleInfo: (state: my, { payload }: PayloadAction<my>) => { 
       state.articleInfo = payload.articleInfo;
     },
+    getMyArticleCommentCurrentComment: (state: my, { payload }: PayloadAction<number>) => { 
+      state.myArticleCommentCurrentComment = payload;
+    }, 
     getMyConcertCommentInfo: (state: my, { payload }: PayloadAction<my>) => { 
       state.concertCommentInfo = payload.concertCommentInfo;
     },  
     getMyArticleCommentInfo: (state: my, { payload }: PayloadAction<my>) => { 
       state.articleCommentInfo = payload.articleCommentInfo;
+    }, 
+    getBtnSwitchState: (state: my, { payload }: PayloadAction<object>) => { 
+      state.btnSwitchState = payload;
     }, 
   }
 });
@@ -134,6 +150,7 @@ export const {
   getArticleInfo, 
   getMyArticleTotalPage, 
   getMyArticleCommentCurrentPage,
+  getMyArticleCommentCurrentComment,
 
   getMyConcertCommentTotalPage, 
   getMyConcertCommentCurrentPage,
@@ -142,7 +159,9 @@ export const {
   getMyConcertCommentInfo,
   getMyTotalArticleComment,
   getMyArticleCommentTotalPage,
-  getMyArticleCommentInfo 
+  getMyArticleCommentInfo,
+
+  getBtnSwitchState
 } = mySlice.actions;
 
 export default mySlice.reducer;
