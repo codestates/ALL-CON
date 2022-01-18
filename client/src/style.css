@@ -2155,6 +2155,12 @@ a {
       #contentBox #commentWrapper {
         top: 40%;
         height: 55%; } }
+    #contentBox #commentWrapper #conChinCountWrapper {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -3%; }
   #contentBox #paginationWrapper, #contentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #contentBox #paginationWrapperChosen, #contentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #contentBox #paginationWrapperChosen {
     position: absolute;
     display: flex;
@@ -2171,7 +2177,7 @@ a {
         height: 22.5%; } }
     @media (min-width: 1200px) {
       #contentBox #paginationWrapper, #contentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #contentBox #paginationWrapperChosen, #contentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #contentBox #paginationWrapperChosen {
-        top: 80%;
+        top: 70%;
         height: 25%; } }
 
 /****** conChinPostingBox ******/
