@@ -8473,6 +8473,139 @@ a {
           height: 70%;
           width: 79%; } }
 
+#AlarmModalContainer {
+  z-index: 999;
+  width: 100%; }
+  @media (max-width: 767px) {
+    #AlarmModalContainer {
+      position: fixed;
+      height: 90%; } }
+  @media (min-width: 768px) {
+    #AlarmModalContainer {
+      position: fixed;
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    #AlarmModalContainer {
+      position: fixed;
+      height: 100%; } }
+  #AlarmModalContainer #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); }
+  #AlarmModalContainer #alertBackground {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); }
+    @media (max-width: 767px) {
+      #AlarmModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 768px) {
+      #AlarmModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 1200px) {
+      #AlarmModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    #AlarmModalContainer #alertBackground #alertModal {
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff; }
+      @media (max-width: 767px) {
+        #AlarmModalContainer #alertBackground #alertModal {
+          width: 60%;
+          height: 50%;
+          border-radius: 20px; } }
+      @media (min-width: 768px) {
+        #AlarmModalContainer #alertBackground #alertModal {
+          width: 25%;
+          height: 30%;
+          border-radius: 20px; } }
+      @media (min-width: 1200px) {
+        #AlarmModalContainer #alertBackground #alertModal {
+          width: 25%;
+          height: 30%;
+          border-radius: 20px; } }
+      #AlarmModalContainer #alertBackground #alertModal #alignContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        height: 85%; }
+        #AlarmModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.3rem; } }
+          @media (min-width: 1200px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+        #AlarmModalContainer #alertBackground #alertModal #alignContainer .textBoxMatch {
+          display: flex;
+          width: 70%;
+          height: 5%;
+          border: 1px solid #a0a0a0;
+          border-radius: 5px; }
+        #AlarmModalContainer #alertBackground #alertModal #alignContainer #topBox {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          width: 90%;
+          height: 40%; }
+          @media (max-width: 767px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer #topBox img {
+              height: 100%; } }
+          @media (min-width: 768px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer #topBox img {
+              height: 100%; } }
+          @media (min-width: 1200px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer #topBox img {
+              height: 100%; } }
+        #AlarmModalContainer #alertBackground #alertModal #alignContainer #midBox {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 90%;
+          height: 40%;
+          white-space: pre-wrap; }
+        #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          height: 15%; }
+          #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox .textBoxMatch3 {
+            display: flex;
+            width: 100%;
+            height: 20%;
+            border: 1px solid #a0a0a0;
+            border-radius: 5px; }
+          #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox #back1, #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox #back2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45%;
+            height: 100%;
+            background-color: #ffce63;
+            color: #fff;
+            border: 0;
+            cursor: pointer; }
+          #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox #back2 {
+            background-color: #000; }
+
 /*------------선영------------*/
 /*------------정현------------*/
 #PrivacyModalContainer {

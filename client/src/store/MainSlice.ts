@@ -47,7 +47,11 @@ export interface main {
   /* 가운데 포스터의 인덱스*/
   targetIdx: number;
   /* 전체 페이지 렌더링 여부 상태 */
-  isRendering : boolean;
+  isRendering: boolean;
+  /*email 아이콘 클릭 여부 상태 */
+  emailClick: boolean;
+  /*문자 아이콘 클릭 여부 상태 */
+  smsClick: boolean;
 }
 
 /* State 초기값 설정 */
@@ -57,7 +61,9 @@ const initialState: main = {
   detail: {},
   allConcerts: [],
   targetIdx: 0,
-  isRendering : false
+  isRendering: false,
+  emailClick: false,
+  smsClick: false,
 };
 
 const mainSlice = createSlice({
@@ -83,6 +89,12 @@ const mainSlice = createSlice({
     setIsRendering: (state: main, { payload }: PayloadAction<boolean>) => {
       state.isRendering = payload;
     },
+    setEmailClick: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.emailClick = payload;
+    },
+    setSmsClick: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.smsClick = payload;
+    },
   },
 });
 
@@ -92,6 +104,8 @@ export const {
   setTargetIdx,
   setDetail,
   setAllConcerts,
-  setIsRendering
+  setIsRendering,
+  setEmailClick,
+  setSmsClick,
 } = mainSlice.actions;
 export default mainSlice.reducer;

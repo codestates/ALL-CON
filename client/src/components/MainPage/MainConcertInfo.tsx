@@ -9,13 +9,16 @@ import emailOff from '../../images/email3.png';
 import returnImg from '../../images/return.png';
 /* Store import */
 import { RootState } from '../../index';
-import { setTarget } from '../../store/MainSlice';
+import { setTarget, setEmailClick, setSmsClick } from '../../store/MainSlice';
 import {
   showAlertModal,
   insertAlertText,
   insertBtnText,
   showSuccessModal,
   showLoginModal,
+  showEmailAlarmModal,
+  showSmsAlarmModal,
+  insertAlarmText,
 } from '../../store/ModalSlice';
 /* Library import */
 import axios from 'axios';
@@ -26,22 +29,38 @@ import { useState, useEffect } from 'react';
 function MainConcertInfo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isRendering, targetIdx, target, detail } = useSelector(
+  const { targetIdx, target, detail } = useSelector(
     (state: RootState) => state.main,
   );
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { order } = useSelector((state: RootState) => state.main);
+  const { emailClick } = useSelector((state: RootState) => state.main);
+  const { smsClick } = useSelector((state: RootState) => state.main);
 
   const [alarmType, setAlarmType] = useState('');
-  const [emailClick, setEmailClick] = useState(false);
-  const [smsClick, setSmsClick] = useState(false);
-  const [openDate, setOpenDate] = useState('');
+  // const [emailClick, setEmailClick] = useState(false);
+  // const [smsClick, setSmsClick] = useState(false);
+
+  type maincon = {
+    concert_id?: number;
+    createdAt?: Date;
+    email_alarm?: boolean;
+    id: number;
+    phone_alarm?: boolean;
+    updatedAt?: Date;
+    user_id?: number;
+  };
+  const [allAlarms, setAllAlarms] = useState<maincon[]>([]);
 
   //유저가 각 콘서트 (target)별로 email,sms알람을 받는지 확인
 
   useEffect(() => {
     getPosterInfo();
   }, [order, targetIdx]);
+
+  useEffect(() => {
+    getAllAlarms();
+  }, [target]);
 
   const getPosterInfo = async () => {
     try {
@@ -51,52 +70,89 @@ function MainConcertInfo() {
       );
       if (res.data.data) {
         dispatch(setTarget(res.data.data.concertInfo));
-        handleOpenDate(target.open_date!);
       }
     } catch (err) {
       console.log(err);
     }
   };
-  //내가 보낸 모든 알람 리스트 가져온 후에
-  //detail의 id(콘서트 아이디) 알람봤는데 내 알람이 존재한다.
-  //그러면 emailClick이 true인거임.
-  const getAllAlarm = async () => {
+
+  const getAllAlarms = async () => {
+    try {
+      if (isLogin === false) {
+        dispatch(setEmailClick(false));
+        dispatch(setSmsClick(false));
+      } else {
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/concert/alarm`,
+          { withCredentials: true },
+        );
+        if (res.data.data.myAllAlarmInfo) {
+          const all = res.data.data.myAllAlarmInfo;
+          //모든 알람 allAlarms에 배열로 저장
+          setAllAlarms(all);
+          console.log(allAlarms);
+          if (allAlarms) {
+            let flag = 1;
+            let check = () => {
+              for (let i = 0; i < allAlarms.length; i++) {
+                //이메일 알림이 이미 설정되어있는 경우
+                if (
+                  allAlarms[i].concert_id === target.id &&
+                  allAlarms[i].email_alarm === true
+                ) {
+                  dispatch(setEmailClick(true));
+                  console.log('emailClick상태', emailClick);
+                  flag = 2;
+                }
+                if (
+                  //sms 알림이 이미 설정되어있는 경우
+                  allAlarms[i].concert_id === target.id &&
+                  allAlarms[i].phone_alarm === true
+                ) {
+                  dispatch(setSmsClick(true));
+                  console.log('smsClick의 상태', smsClick);
+                  flag = 3;
+                }
+              }
+            };
+            check();
+            if (flag === 1) {
+              //이메일도 sms도 알림설정 한적이 없는 경우
+              dispatch(setEmailClick(false));
+              dispatch(setSmsClick(false));
+            }
+          }
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  //해당 콘서트에서 한번도 알람 설정한적 없을때 알람
+  const getAlarm = async () => {
     try {
       console.log('알람타입>>>', alarmType);
-      const res = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/alarm`,
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${alarmType}`,
+        {},
         { withCredentials: true },
       );
-      if (res.data) {
-        console.log(res.data);
+      if (res.data.data.alarmInfo) {
+        console.log(res.data.data.alarmInfo);
+        if (res.data.data.alarmInfo.email_alarm === true) {
+          dispatch(setEmailClick(true));
+        }
+        if (res.data.data.alarmInfo.phone_alarm === true) {
+          dispatch(setSmsClick(true));
+        }
       }
     } catch (err) {
       console.log(err);
     }
   };
-  // const getAlarm = async () => {
-  //   try {
-  //     console.log('알람타입>>>', alarmType);
-  //     const res = await axios.post(
-  //       `${process.env.REACT_APP_API_URL}/concert/${detail.id}/alarm?alarm_type=${alarmType}`,
-  //       {},
-  //       { withCredentials: true },
-  //     );
-  //     if (res.data.data.alarmInfo) {
-  //       console.log(res.data.data.alarmInfo);
-  //       if (res.data.data.alarmInfo.email_alarm === true) {
-  //         setEmailClick(true);
-  //       }
-  //       if (res.data.data.alarmInfo.phone_alarm === true) {
-  //         setSmsClick(true);
-  //       }
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
-  const handleOpenDate = (opendate?: Date): any => {
+  const handleOpenDate = (opendate?: Date): string => {
     const day = String(opendate);
     const setDay =
       day.substr(0, 4) +
@@ -109,21 +165,7 @@ function MainConcertInfo() {
       '시' +
       day.substr(14, 2) +
       '분';
-    setOpenDate(setDay);
-  };
-
-  const cancelAlarm = async () => {
-    try {
-      const res = await axios.delete(
-        `${process.env.REACT_APP_API_URL}/concert/${detail.id}/alarm?alarm_type=${alarmType}`,
-        { withCredentials: true },
-      );
-      if (res.data) {
-        console.log(res.data);
-      }
-    } catch (err) {
-      console.log(err);
-    }
+    return setDay;
   };
 
   const emailClickHandler = () => {
@@ -131,14 +173,22 @@ function MainConcertInfo() {
       alert('로그인 먼저 해주세요! 😖');
       dispatch(showLoginModal(true));
     } else {
-      setAlarmType('email');
-      // getAlarm(); //emailClick 상태도 true로 바꿔줌
-      console.log('emailClick상태', emailClick);
-      if (emailClick && detail) {
+      if (emailClick) {
         dispatch(
-          insertAlertText(`${detail.title} 이메일 알림이 설정되었습니다! 🙂`),
+          insertAlarmText(
+            `이메일 알림이 이미 등록되어있어요.\n
+            알림 취소하시겠어요? 😖`,
+          ),
         );
+        dispatch(showEmailAlarmModal(true));
+      } else {
+        setAlarmType('email');
+        //알람 새로 요청함
+        getAlarm();
         dispatch(insertBtnText('확인'));
+        dispatch(
+          insertAlertText(`${target.title} 이메일 알림이 설정되었습니다! 🙂`),
+        );
         dispatch(showSuccessModal(true));
       }
     }
@@ -151,18 +201,27 @@ function MainConcertInfo() {
     } else {
       //로그인을 했는데 콘친인증 안한 경우(핸드폰 번호x)
       //관리자 role=1 콘친인증 유저 role=2 콘친 인증안된 유저 role=3
-      if (userInfo.role === 3) alert('콘친 인증을 해주세요! 😖');
-      else {
-        setAlarmType('phone');
-        // getAlarm();
-        console.log('smsClick의 상태', smsClick);
-        if (smsClick && detail) {
+      if (userInfo.role === 3) {
+        alert('콘친 인증을 해주세요! 😖');
+        navigate('/mypage');
+      } else {
+        //콘친인증을 했다.
+        if (smsClick) {
           dispatch(
-            insertAlertText(
-              `${detail.title} 문자 메시지 알림이 설정되었습니다! 🙂`,
+            insertAlarmText(
+              `sms 알림이 이미 등록되어있어요.\n
+              알림 취소하시겠어요? 😖`,
             ),
           );
+          dispatch(showSmsAlarmModal(true));
+        } else {
+          //알람 설정을 이전에 한 적이 없다. 이번에 처음 알람 등록한다.
+          setAlarmType('phone');
+          getAlarm();
           dispatch(insertBtnText('확인'));
+          dispatch(
+            insertAlertText(`${target.title} sms 알림이 설정되었습니다! 🙂`),
+          );
           dispatch(showSuccessModal(true));
         }
       }
@@ -272,8 +331,7 @@ function MainConcertInfo() {
                     alt='이메일아이콘'
                     id='mailIcon2'
                     onClick={() => {
-                      // emailClickHandler();
-                      getAllAlarm();
+                      emailClickHandler();
                     }}
                   ></img>
                   <img
@@ -294,7 +352,9 @@ function MainConcertInfo() {
             <button id='black-btn'>
               <div id='imgAndOpen'>
                 <img src={smsClick || emailClick ? bellOn : bellOff} />
-                <p id='open'>티켓 오픈일 &nbsp; {detail.open_date}</p>
+                <p id='open'>
+                  티켓 오픈일 &nbsp; {handleOpenDate(detail.open_date)}
+                </p>
               </div>
             </button>
           )}
