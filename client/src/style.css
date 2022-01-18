@@ -4751,6 +4751,26 @@ a {
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #modifyBtnWrapper .btn {
             font-size: 2rem; } }
+      #myProfileBox #introductionBox #modifyBtnWrapper .btnChosen {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45%;
+        height: 100%;
+        background-color: #ffce63;
+        border: none;
+        border-radius: 5px;
+        color: white; }
+        @media (max-width: 767px) {
+          #myProfileBox #introductionBox #modifyBtnWrapper .btnChosen {
+            font-size: 1.5rem; } }
+        @media (min-width: 768px) {
+          #myProfileBox #introductionBox #modifyBtnWrapper .btnChosen {
+            font-size: 1.8rem; } }
+        @media (min-width: 1200px) {
+          #myProfileBox #introductionBox #modifyBtnWrapper .btnChosen {
+            font-size: 2rem; } }
     #myProfileBox #introductionBox #resignBtnWrapper {
       position: absolute;
       display: flex;

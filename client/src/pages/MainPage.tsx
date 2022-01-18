@@ -24,6 +24,8 @@ function MainPage() {
     (state: RootState) => state.main,
   );
 
+  const { isLogin } = useSelector((state: RootState) => state.auth);
+
   /* order가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {
     getAllConcerts(); // 전체 콘서트 목록

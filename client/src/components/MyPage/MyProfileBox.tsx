@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 import { getYearList, getMonthList, getDateList } from '../../store/AuthSlice';
-import { setMyIntroductionState, getMyIntroduction } from '../../store/MySlice';
+import { setMyIntroductionState, getMyIntroduction, getBtnSwitchState } from '../../store/MySlice';
 /* Library import */
 
 function MyProfileBox() {
@@ -24,8 +24,10 @@ function MyProfileBox() {
   
   /* useSelector */
   const { userInfo, yearList, monthList, dateList } = useSelector((state: RootState) => state.auth);
-  const { myIntroductionState } = useSelector((state: RootState) => state.my);
+  const { myIntroductionState, btnSwitchState } = useSelector((state: RootState) => state.my);
   
+  console.log(btnSwitchState)
+
   /* 지역상태 - useState */
   // 프로필 수정 버튼 모니터링 상태
   const [profileChangeBtn, setProfileChangeBtn] = useState<boolean>(false)
@@ -45,8 +47,8 @@ function MyProfileBox() {
 
   // 프로필 수정 버튼
   const handleProfileEdit = async () => {
-    console.log('프로필 수정 버튼을 클릭하셨습니다!')
-
+    
+    dispatch(getBtnSwitchState({ profileEdit: true, conchinCertification: false, userResign: false }))
     // 프로필 수정 버튼 클릭 상태 갱신
     setProfileChangeBtn(true)
     dispatch(setMyIntroductionState(true))
@@ -55,6 +57,8 @@ function MyProfileBox() {
 
   // 콘친 인증 버튼
   const handleConchinCertificate = async () => {
+
+    dispatch(getBtnSwitchState({ profileEdit: false, conchinCertification: true }))
     // (생년월일) 년 계산
     if(yearList.length === 0) {
       let year = 1920;
@@ -111,6 +115,7 @@ function MyProfileBox() {
 
   // 회원탈퇴취소 클릭
   const handleAccountDeleteBackground = async () => {
+    dispatch(getBtnSwitchState({ profileEdit: false, conchinCertification: false }))
     setResignMembership(false)
   }
   
@@ -153,7 +158,7 @@ function MyProfileBox() {
             }
           </div>
         </div>
-        {/* 자기소개, 주의! null일 때 처리해줘야됨! */}
+        {/* 자기소개 */}
         <div id='textWrapper'>
           {
             myIntroductionState
@@ -162,8 +167,8 @@ function MyProfileBox() {
           }
         </div>
         <div id='modifyBtnWrapper'>
-          <button className='btn' onClick={() => {handleProfileEdit()}}>프로필 수정</button>
-          <button className='btn' onClick={() => {handleConchinCertificate()}}>콘친 인증</button>
+          <button className={btnSwitchState?.profileEdit ? 'btnChosen' : 'btn' } onClick={() => {handleProfileEdit()}}>프로필 수정</button>
+          <button className={btnSwitchState?.conchinCertification ? 'btnChosen' : 'btn' } onClick={() => {handleConchinCertificate()}}>콘친 인증</button>
         </div>
         <div id='resignBtnWrapper'>
           <button className='btn' onClick={() => {handleAccountDelete()}}>회원 탈퇴</button>

@@ -14,14 +14,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 
 function MyPage() {
-  
+
   /* dispatch / navigate */
   const dispatch = useDispatch();
   const navigate = useNavigate();
   /* useSelector */
   const { userInfo } = useSelector((state: RootState) => state.auth);
-  const { myIntroduction } = useSelector((state: RootState) => state.my);
-
+  const { myConcertCommentCurrentPage } = useSelector((state: RootState) => state.my);
+  
   return (
     <div id='myPageContainer'>
       <div id='myProfileBoxWrapper'>
