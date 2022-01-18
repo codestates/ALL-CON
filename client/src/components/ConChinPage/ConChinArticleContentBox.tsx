@@ -30,6 +30,7 @@ function ConChinArticleContentBox() {
   const { articleOrder, targetArticle, targetArticlesUserInfo } = useSelector(
     (state: RootState) => state.conChin,
   );
+
   const { target } = useSelector((state: RootState) => state.main);
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
@@ -74,7 +75,7 @@ function ConChinArticleContentBox() {
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
         { withCredentials: true },
       );
-      getAllArticles();
+      getTargetArticles();
     } catch (err) {
       console.log(err);
     }
@@ -95,6 +96,7 @@ function ConChinArticleContentBox() {
       if (response.data) {
         // dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
+
         dispatch(setArticleCurPage(1));
         dispatch(setTargetArticle({}));
       } else {
@@ -124,6 +126,22 @@ function ConChinArticleContentBox() {
       console.log(err);
       console.log('에러가 났나봐요.');
     }
+  };
+
+  const handlePostedDate = (postedDate?: Date): string => {
+    const day = String(postedDate);
+    const setDay =
+      day.substr(0, 4) +
+      '년 ' +
+      day.substr(5, 2) +
+      '월 ' +
+      day.substr(8, 2) +
+      '일 ' +
+      day.substr(11, 2) +
+      '시 ' +
+      day.substr(14, 2) +
+      '분 ';
+    return setDay;
   };
 
   return (
@@ -158,7 +176,7 @@ function ConChinArticleContentBox() {
           <div id='contentBox'>
             <div id='viewBox'>
               <p className='view'>
-                등록일 : {targetArticle.createdAt} | 조회수 :
+                등록일 : {handlePostedDate(targetArticle.createdAt)} | 조회수 :
                 {targetArticle.view}
               </p>
             </div>
