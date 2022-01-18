@@ -455,35 +455,47 @@
   /*하단 박스*/
   #bottomBox {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
     bottom: 0%;
     height: 5%;
     // border: 1px solid red;
-    @include mobile-only() {
-      position: relative;
-      top: 7%;
+    img {
+      display: flex;
+
+      height: 100%;
+
+      @include mobile-only() {
+        width: 6%;
+        margin-left: 3%;
+        margin-right: 1.5%;
+      }
+      @include md() {
+        width: 4%;
+        margin-left: 2%;
+        margin-right: 1.5%;
+      }
+      @include lg() {
+        width: 3.5%;
+        margin: 1%;
+      }
     }
     div {
       display: flex;
-      align-items: flex-end;
       justify-content: left;
       height: 100%;
       font-weight: bold;
 
       @include mobile-only() {
-        width: 95%;
-        font-size: 1.2rem;
-      }
-      @include md() {
-        width: 90%;
         font-size: 1.5rem;
       }
+      @include md() {
+        font-size: 1.8rem;
+      }
       @include lg() {
-        width: 90%;
-        font-size: 1.75rem;
+        font-size: 2.2rem;
       }
     }
   }

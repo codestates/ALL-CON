@@ -12,7 +12,7 @@ import {
 } from '../store/ModalSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConcertPage() {
@@ -73,8 +73,7 @@ function ConcertPage() {
           <h1>
             {(order === 'view' && '조회수') ||
               (order === 'near' && '임박예정') ||
-              (order === 'new' && '등록일')}{' '}
-            순
+              (order === 'new' && '등록일')} 순
           </h1>
           <p className='orderBy' onClick={() => dispatch(setOrder('view'))}>
             조회수

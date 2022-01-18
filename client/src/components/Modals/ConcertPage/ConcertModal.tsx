@@ -6,7 +6,7 @@ import KakaoMap from '../../ConcertPage/KakaoMap';
 /* Store import */
 import { RootState } from '../../../index';
 import { showConcertModal } from '../../../store/ModalSlice';
-import { setIsRendering, setMainToConcert, setOrder, setTarget, setTargetIdx } from '../../../store/MainSlice';
+import { setIsRendering, setMainToConcert, setTargetIdx } from '../../../store/MainSlice';
 import { setPageNum } from '../../../store/ConcertCommentSlice';
 /* Library import */
 import { useEffect } from 'react';
@@ -45,7 +45,7 @@ function ConcertModal() {
       const year = strOpenDate.substring(0,4);
       const month = strOpenDate.substring(5,7);
       const date = strOpenDate.substring(8,10);
-      const hour = strOpenDate.substring(11,13);
+      const hour = Number(strOpenDate.substring(11,13))+9;
       const minute = strOpenDate.substring(14,16);
 
       return String(year+'년 '+month+'월 '+date+'일 '+hour+' : '+minute);

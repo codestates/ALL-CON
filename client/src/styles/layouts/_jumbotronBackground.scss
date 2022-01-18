@@ -218,6 +218,19 @@
       @include lg() {
         width: 60px;
       }
+      cursor: pointer
+    }
+    & :active{
+      border: solid rgba(0,0,0,0);
+      @include mobile-only() {
+        width: 5px;
+      }
+      @include md() {
+        width: 7.5px;
+      }
+      @include lg() {
+        border-width: 8px;
+      }
     }
     #right {
       @extend #left;

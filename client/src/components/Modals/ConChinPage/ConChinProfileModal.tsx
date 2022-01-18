@@ -50,7 +50,7 @@ function ConChinProfileModal() {
             </div>
             <div id='genderAndAgeWrapper'>
               <p className='title'>성별</p>
-              <span className='gender'>{targetArticlesUserInfo.username}</span>
+              <span className='gender'>{targetArticlesUserInfo.gender}</span>
               <p className='title2'>나이</p>
               <span className='age'>{targetArticlesUserInfo.birth}</span>
             </div>

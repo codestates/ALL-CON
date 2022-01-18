@@ -9,14 +9,12 @@ import MainPagination from '../components/MainPage/MainPagination';
 import { RootState } from '../index';
 import {
   setTarget,
-  setTargetIdx,
   setAllConcerts,
   setDetail,
   setIsRendering,
 } from '../store/MainSlice';
-import { showAlertModal, insertAlertText } from '../store/ModalSlice';
 /* Library import */
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -25,6 +23,8 @@ function MainPage() {
   const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
+
+  const { isLogin } = useSelector((state: RootState) => state.auth);
 
   /* order가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {

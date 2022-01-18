@@ -4,7 +4,6 @@ import crown from '../images/crown.png';
 import { RootState } from '../index';
 /* Library import */
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 
 function PosterSlide() {
   const { target, targetIdx, allConcerts } = useSelector(
@@ -47,7 +46,7 @@ function PosterSlide() {
             className='posterImg'
             id='poster'
           />
-          <div className='posterCover2'></div>
+          <div className='posterCover'></div>
         </div>
       )}
       {allConcerts[targetIdx] && (
@@ -73,7 +72,7 @@ function PosterSlide() {
             className='posterImg'
             id='poster'
           />
-          <div className='posterCover2'></div>
+          <div className='posterCover'></div>
         </div>
       )}
       {allConcerts[targetIdx + 2] && (

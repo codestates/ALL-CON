@@ -4,7 +4,22 @@ import shield from '../../images/shield.png';
 import tripleDot from '../../images/tripleDot.png';
 /* Store import */
 import { RootState } from '../../index';
-import { getCommentBtnType, getMyConcertCommentInfo, getMyConcertCommentCurrentComment, getMyTotalConcertComment } from '../../store/MySlice';
+import { 
+  getCommentBtnType, 
+
+  getMyConcertCommentInfo, 
+  getMyConcertCommentCurrentComment, 
+  getMyTotalConcertComment, 
+  getMyConcertCommentTotalPage,
+  getMyConcertCommentCurrentPage,
+
+  getMyArticleCommentInfo, 
+  getMyArticleCommentCurrentComment, 
+  getMyTotalArticleComment,
+  getMyArticleCommentTotalPage,
+ 
+
+} from '../../store/MySlice';
 import { showAlertModal, insertAlertText, insertBtnText, showSuccessModal } from '../../store/ModalSlice';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
 import { setTargetArticle } from '../../store/ConChinSlice';
@@ -17,18 +32,33 @@ import { useSelector, useDispatch } from 'react-redux';
 import MyCommentPagination from './MyCommentPagination';
 
 function MyCommentBox() {
+
+  
+
   /* dispatch / navigate */
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   /* useSelector */
   const { userInfo } = useSelector((state: RootState) => state.auth);
-  const {concertCommentInfo, myTotalConcertComment, commentBtnType, articleCommentInfo, myConcertCommentCurrentPage, myConcertCommentCurrentComment } = useSelector((state: RootState) => state.my);
+  const {
+    concertCommentInfo, 
+    myTotalConcertComment, 
+    commentBtnType, 
+    articleCommentInfo, 
+    myConcertCommentCurrentPage, 
+    myConcertCommentCurrentComment, 
+    myTotalArticleComment, 
+    myArticleCommentCurrentPage,
+    myArticleCommentCurrentComment
+  } = useSelector((state: RootState) => state.my);
   
+  console.log('(콘친 게시글 댓글) 총 댓글수', myTotalArticleComment)
+
    /* 지역상태 - useState */
    /* useEffect */
    const [commentClick, setCommentClick] = useState<boolean>(false)
-   const [editComment, SetEditComment] = useState<string>('')
+   const [editComment, setEditComment] = useState<string>('')
 
   /* handler 함수 (기능별 정렬) */
   // 콘서트 및 콘친 게시물 버튼 핸들러
@@ -89,87 +119,126 @@ function MyCommentBox() {
   // 댓글 수정창 핸들러
   const handleEditComment = async (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     // 수정 textarea에 입력되는 문자들을 editComment 상태에 저장한다
-    SetEditComment(e.target.value)
+    setEditComment(e.target.value)
   }
 
-  // 댓글 수정창 확인 버튼 핸들러
-  const handleEditCommentConfirm = async (commentId: number, concertId: number, currentContent: string) => {
-    // [PATCH] 댓글 수정
-    // /concert/:concertid/comment/:commentid, { content } = req.body
-    await axios.patch(
-      `${process.env.REACT_APP_API_URL}/concert/${concertId}/comment/${commentId}`,
-      { content: editComment || currentContent },
-      { withCredentials: true },
-      );
+  // [PATCH] 댓글 수정창 확인 버튼 핸들러
+  const handleEditCommentConfirm = async (commentType: string, commentId: number, concertId: number, currentContent: string, articleId?: number) => {
+    
+    if(commentType === '콘서트') {
+      // [PATCH] 댓글 수정
+      // /concert/:concertid/comment/:commentid, { content } = req.body
+      await axios.patch(
+        `${process.env.REACT_APP_API_URL}/concert/${concertId}/comment/${commentId}`,
+        { content: editComment || currentContent },
+        { withCredentials: true },
+        );
+        
+        // 주의! 비효율적인 코드... 리팩토링이 필요함
+        // 내가 쓴 댓글(콘서트 게시물) axios 테스트
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myConcertCommentCurrentPage}`,
+          { withCredentials: true },
+          );
+          
+          // 수정후 총 댓글 (현재 페이지) 업데이트
+          dispatch(getMyConcertCommentInfo(response.data.data));
+          
+          // 댓글 수정란 초기화
+          setEditComment('')
+          // 댓글 수정 textarea 비활성화
+          setCommentClick(false)
+        }
+        else if(commentType === '콘친') {
 
-    // 주의! 비효율적인 코드... 리팩토링이 필요함
-    // 내가 쓴 댓글(콘서트 게시물) axios 테스트
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myConcertCommentCurrentPage}`,
-      { withCredentials: true },
-    );
+          // [PATCH] 댓글 수정
+          // /concert/:concertid/comment/:commentid, { content } = req.body
+          await axios.patch(
+            `${process.env.REACT_APP_API_URL}/concert/${concertId}/article/${articleId}/comment/${commentId}`,
+            { content: editComment || currentContent },
+            { withCredentials: true },
+            );
+            
+            console.log('---- 콘친 게시물 댓글 수정 확인 확인!!! 11111--- ', myArticleCommentCurrentPage)
 
-    // 수정후 총 댓글 (현재 페이지) 업데이트
-    dispatch(getMyConcertCommentInfo(response.data.data));
-
-    // 댓글 수정 textarea 비활성화
-    setCommentClick(false)
-  }
+            // 주의! 비효율적인 코드... 리팩토링이 필요함
+            // 내가 쓴 댓글(콘서트 게시물) axios 테스트
+            const response = await axios.get(
+              `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myArticleCommentCurrentPage}&comment_type=article`,
+              { withCredentials: true },
+            );
+            
+            // 수정후 총 댓글 (현재 페이지) 업데이트
+            dispatch(getMyArticleCommentInfo(response.data.data));
+            // 댓글 수정란 초기화
+            setEditComment('')
+            // 댓글 수정 textarea 비활성화
+            setCommentClick(false)
+        }
+    }
 
   // 댓글 수정창 취소 버튼 핸들러
   const handleEditCommentClose = async () => {
+    // 댓글 수정란 초기화
+    setEditComment('')
     // 댓글 수정 textarea 비활성화
     setCommentClick(false)
   }
 
-  // 댓글 삭제 버튼 핸들러
-  const handleCommentDelete = async (commentId: number, concertId: number) => {
+  // [DELETE] 댓글 삭제 버튼 핸들러
+  const handleCommentDelete = async (commentType: string, commentId: number, concertId: number, articleId?: number) => {
 
-    // [DELETE] 댓글 수정
-    // /concert/:concertid/comment/:commentid, { content } = req.body
-    await axios.delete(
-      `${process.env.REACT_APP_API_URL}/concert/${concertId}/comment/${commentId}`,
-      { withCredentials: true },
+    if(commentType === '콘서트') {
+      // (콘서트) [DELETE] 댓글 삭제
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/concert/${concertId}/comment/${commentId}`,
+        { withCredentials: true },
+      );
+      
+      // 주의! 비효율적인 코드... 리팩토링이 필요함
+      // (콘서트) 내가 쓴 댓글(콘서트 게시물) axios 테스트
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myConcertCommentCurrentPage}`,
+        { withCredentials: true },
       );
 
-    // 주의! 비효율적인 코드... 리팩토링이 필요함
-    // 내가 쓴 댓글(콘서트 게시물) axios 테스트
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myConcertCommentCurrentPage}`,
-      { withCredentials: true },
-    );
+      // (콘서트) 삭제후 총 댓글 (현재 페이지) 업데이트
+      dispatch(getMyConcertCommentInfo(response.data.data));  
+      // 만약 현재 페이지가 삭제후 총 페이지보다 크다면, 현재페이지 총페이지로 이동
+      // if(myConcertCommentCurrentPage > response.data.data.totalPage) dispatch(getMyConcertCommentCurrentPage(response.data.data.totalPage))
+      // (콘서트) 삭제후 총 페이지 수 업데이트
+      dispatch(getMyConcertCommentTotalPage(response.data.data.totalPage))
+      // (콘서트) 삭제후 총 댓글 수 업데이트
+      dispatch(getMyTotalConcertComment(response.data.data.totalConcertComment))
+    } 
+    /********************************************************************************/
+    // 콘친 게시물 댓글 삭제
+    else if(commentType === '콘친') {
+      // [DELETE] 댓글 삭제
+      // /concert/:concertid/article/:articleid/comment/:commentid
+      await axios.delete(
+        `${process.env.REACT_APP_API_URL}/concert/${concertId}/article/${articleId}/comment/${commentId}`,
+        { withCredentials: true },
+      );
+      
+      // 주의! 비효율적인 코드... 리팩토링이 필요함
+      // 내가 쓴 댓글(콘서트 게시물) axios 테스트
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myArticleCommentCurrentPage}&comment_type=article`,
+        { withCredentials: true },
+      );
 
-    // 삭제후 총 댓글 (현재 페이지) 업데이트
-    dispatch(getMyConcertCommentInfo(response.data.data));  
-    // 현재 총 댓글 수 업데이트
-    // if(response.data.data.concertCommentInfo.length === 0) dispatch(getMyTotalConcertComment(0))
-    dispatch(getMyTotalConcertComment(response.data.data.totalConcertComment))
-    
+      // 삭제후 총 댓글 (현재 페이지) 업데이트
+      dispatch(getMyArticleCommentInfo(response.data.data));  
+       // (콘서트) 삭제후 총 페이지 수 업데이트
+       dispatch(getMyArticleCommentTotalPage(response.data.data.totalPage))
+      // 현재 총 댓글 수 업데이트
+      dispatch(getMyTotalArticleComment(response.data.data.totalArticleComment))
+    }
+
     dispatch(insertAlertText('댓글이 삭제되었습니다! 🙂'));
     dispatch(insertBtnText('확인'));
     dispatch(showSuccessModal(true));
-
-    // if(response.data.data.concertCommentInfo.length === 0) {
-    //   // 삭제후 총 댓글 (현재 페이지) 업데이트
-    //   dispatch(getMyConcertCommentInfo(response.data.data));  
-    //   // 현재 총 댓글 수 업데이트
-    //   dispatch(getMyTotalConcertComment(0))
-      
-    //   dispatch(insertAlertText('댓글이 삭제되었습니다! 🙂'));
-    //   dispatch(insertBtnText('확인'));
-    //   dispatch(showSuccessModal(true));
-
-    // } else {
-    //   // 삭제후 총 댓글 (현재 페이지) 업데이트
-    //   dispatch(getMyConcertCommentInfo(response.data.data));  
-    //   // 현재 총 댓글 수 업데이트
-    //   dispatch(getMyTotalConcertComment(response.data.data.totalConcertComment))
-      
-    //   dispatch(insertAlertText('댓글이 삭제되었습니다! 🙂'));
-    //   dispatch(insertBtnText('확인'));
-    //   dispatch(showSuccessModal(true));
-
-    // }
   }
 
   return (
@@ -180,7 +249,8 @@ function MyCommentBox() {
       <div id='commentWrapper'>
         <div id='commentBox'>
           <div id='myCountWrapper'>
-            <h1 className='count'>{myTotalConcertComment}개의 댓글</h1>
+            <h1 className='count'>{commentBtnType === '콘서트' ? myTotalConcertComment : myTotalArticleComment}개의 댓글</h1>
+            {/* <h1 className='count'>{myTotalArticleComment}개의 댓글</h1> */}
             {/* <div id='bottomLineOrderBox'> */}
               <p className='myOrder' onClick={() => handleCommentSelectionBtn('콘서트')}> 콘서트 </p>
               <p className='myOrder' onClick={() => handleCommentSelectionBtn('콘친')}> 콘친 게시물 </p>
@@ -201,28 +271,31 @@ function MyCommentBox() {
                       }
                     >
                       <div className='dateBox'>
+                        {/* 날짜와 작성자 */}
                         <p className='nickNameAndDate'>
                           {' '}
                           {userInfo.username} | {el.updatedAt.substring(0, 10)}{' '}
                         </p>
-                <div className='optionWrapper'>
+                        <div className='optionWrapper'>
+                          {/* 콘서트 댓글 수정하기 */}
                         <div
-                       className='myOptionBtn'
-                      onClick={() => {
-                        handleEditBtn(el.id)
-                        dispatch(getMyConcertCommentCurrentComment(el.id))
-                      }
-                      }>
-                       수정하기
-                     </div>
-                     <div
-                       className='myOptionBtn'
-                      onClick={() => {handleCommentDelete(el.id, el.concert_id)}}>
-                       삭제하기
-                     </div>
-                </div>
+                          className='myOptionBtn'
+                          onClick={() => {
+                          handleEditBtn(el.id)
+                          dispatch(getMyConcertCommentCurrentComment(el.id))
+                           }
+                        }>
+                          수정하기
+                        </div>
+                        {/* 콘서트 댓글 삭제하기 */}
+                        <div
+                          className='myOptionBtn'
+                          onClick={() => {handleCommentDelete( '콘서트', el.id, el.concert_id)}}>
+                          삭제하기
+                        </div>
+                        </div>
                       </div>
-                      <div id='imgAndText'>
+                  <div id='imgAndText'>
                         <div className='imgWrapper'>
                           <img
                             className='img'
@@ -233,7 +306,7 @@ function MyCommentBox() {
                             <img className='shield' src={shield} alt='shield' />
                           ) : null}
                         </div >
-                        <div className='textWrapper'>
+                     <div className='textWrapper'>
                         {/* 수정버튼 유무에 따른... */}
                         { myConcertCommentCurrentComment === el.id && commentClick 
                           ? 
@@ -242,20 +315,19 @@ function MyCommentBox() {
                              placeholder={el.content}
                              onChange={handleEditComment}
                              />
-                             
                           : <p id='text'> {el.content} </p>
                         } 
                         <div className='myCommentOptionBtnWrapper'>
                           {/* [PATCH] 댓글 수정 확인 */}
                           <div className={myConcertCommentCurrentComment === el.id && commentClick  ? 'myCommentOptionBtn' : 'hidden'} 
-                           onClick={() => handleEditCommentConfirm(el.id, el.concert_id, el.content)}>
+                           onClick={() => handleEditCommentConfirm('콘서트', el.id, el.concert_id, el.content)}>
                             확인
                           </div>
                          <div className={myConcertCommentCurrentComment === el.id && commentClick  ? 'myCommentOptionBtn' : 'hidden'}  onClick={handleEditCommentClose}>
                             취소
                          </div>
-                        </div>
-                        </div>
+                      </div>
+                    </div>
                       </div>
                     </div>
                   );
@@ -276,46 +348,65 @@ function MyCommentBox() {
                     }
                   >
                     <div className='dateBox'>
-                      <p className='nickNameAndDate'>
-                        {' '}
-                        {userInfo.username} | {el.updatedAt}{' '}
-                      </p>
-                      {/* <div className='dotWrapper'>
-                        <img className='dot' src={tripleDot} alt='tripleDot' />
-                      </div> */}
-                      <div
-                      className='myCommentOptionBtn'
-                      onClick={() => {
-                        // setClickIdEditMode(el.id);
-                        // dispatch(setComment(el));
-                        // setEditComment(el.content);
-                      }}
-                      >
-                       수정하기
-                     </div>
-                    </div>
-                    <div id='imgAndText'>
-                      <div className='imgWrapper'>
-                        <img
-                          className='img'
-                          src={userInfo.image}
-                          alt='profileImage'
-                        />
-                        {userInfo.role === 2 ? (
-                          <img className='shield' src={shield} alt='shield' />
-                        ) : null}
+                        {/* 날짜와 작성자 */}
+                        <p className='nickNameAndDate'>
+                          {' '}
+                          {userInfo.username} | {el.updatedAt.substring(0, 10)}{' '}
+                        </p>
+                        <div className='optionWrapper'>
+                          {/* 콘친 게시물 댓글 수정하기 */}
+                        <div
+                          className='myOptionBtn'
+                          onClick={() => {
+                          handleEditBtn(el.id)
+                          dispatch(getMyArticleCommentCurrentComment(el.id))
+                           }
+                        }>
+                          수정하기
+                        </div>
+                        {/* 콘친 게시물 댓글 삭제하기 */}
+                        <div
+                          className='myOptionBtn'
+                          onClick={() => {handleCommentDelete('콘친', el.id, el.Article.concert_id, el.article_id)}}>
+                          삭제하기
+                        </div>
+                        </div>
                       </div>
-                      {/* 수정버튼 유무에 따른... */}
-                      { commentClick 
-                          ? <textarea
+                      <div id='imgAndText'>
+                        <div className='imgWrapper'>
+                          <img
+                            className='img'
+                            src={userInfo.image}
+                            alt='profileImage'
+                          />
+                          {userInfo.role === 2 ? (
+                            <img className='shield' src={shield} alt='shield' />
+                          ) : null}
+                        </div >
+                     <div className='textWrapper'>
+                        {/* 수정버튼 유무에 따른... */}
+                        { myArticleCommentCurrentComment === el.id && commentClick 
+                          ? 
+                          <textarea
                              id='text'
-                             placeholder='수정확인'
-                            //  onChange={handleEditBtn}
+                             placeholder={el.content}
+                             onChange={handleEditComment}
                              />
                           : <p id='text'> {el.content} </p>
-                      }
+                        } 
+                        <div className='myCommentOptionBtnWrapper'>
+                          {/* [PATCH] 댓글 수정 확인 */}
+                          <div className={myArticleCommentCurrentComment === el.id && commentClick  ? 'myCommentOptionBtn' : 'hidden'} 
+                           onClick={() => handleEditCommentConfirm('콘친',  el.id, el.Article.concert_id, el.content, el.article_id)}>
+                            확인
+                          </div>
+                         <div className={myArticleCommentCurrentComment === el.id && commentClick  ? 'myCommentOptionBtn' : 'hidden'}  onClick={handleEditCommentClose}>
+                            취소
+                         </div>
+                      </div>
                     </div>
                   </div>
+                </div>
                 );
               })
             : null}

@@ -8,7 +8,10 @@ import { logout, getUserInfo } from '../../store/AuthSlice';
 import {
   showConChinWritingModal,
   showLoginModal,
+  showAlertModal,
+  insertAlertText,
 } from '../../store/ModalSlice';
+
 /* Library import */
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -35,15 +38,21 @@ function ConChinFindBox() {
     console.log('--- 글쓰기 모달 확인 ---', userInfo.role);
 
     // 만약 유저가 일반회원(role=2)이라면, (가칭) 인증하러가기 모달을 띄어준다
-    if (userInfo.role === 3)
-      alert('ALL-CON\n 게시글을 작성하고 싶으면 콘친 인증해주세요! 😖');
-    // 이외의 경우, 글작성 모달을 띄어준다
-    else if (isLogin === false) {
-      alert('ALL-CON\n 로그인부터 해주세요! 😖');
-      dispatch(showLoginModal(true));
+    if (userInfo.role === 3) {
+      dispatch(
+        insertAlertText('마이페이지에서 콘친 인증을 해야 작성할 수 있어요! 😖'),
+      );
+      dispatch(showAlertModal(true));
+      // 이외의 경우, 글작성 모달을 띄어준다
+    } else if (isLogin === false) {
+      dispatch(
+        insertAlertText('게시글을 작성하기 위해선 로그인을 해야해요! 😖'),
+      );
+      dispatch(showAlertModal(true));
     } else {
       if (Object.keys(target).length === 0) {
-        alert('ALL-CON\n 콘서트를 먼저 선택해주세요! 😖');
+        dispatch(insertAlertText('콘서트를 먼저 선택해주세요! 😖'));
+        dispatch(showAlertModal(true));
       } else {
         dispatch(showConChinWritingModal(true));
       }
