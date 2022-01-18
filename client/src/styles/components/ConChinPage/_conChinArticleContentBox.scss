@@ -329,6 +329,13 @@
       top: 40%;
       height: 55%;
     }
+    #conChinCountWrapper {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -3%;
+    }
     // border: 3px solid green;
   }
   #paginationWrapper {

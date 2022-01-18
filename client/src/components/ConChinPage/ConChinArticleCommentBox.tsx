@@ -25,8 +25,12 @@ function ConChinArticleCommentBox() {
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { target } = useSelector((state: RootState) => state.main);
   const { targetArticle } = useSelector((state: RootState) => state.conChin);
-  const { conChinPageNum, conChinPageAllComments, conChinComment } =
-    useSelector((state: RootState) => state.conChinComments);
+  const {
+    conChinPageNum,
+    conChinPageAllComments,
+    conChinComment,
+    conChinTotalNum,
+  } = useSelector((state: RootState) => state.conChinComments);
   /* 댓글 인풋 && 버튼 클릭 */
   const [inputComment, setInputComment] = useState<string>('');
   const [isClick, setIsClick] = useState<boolean>(false);
@@ -66,6 +70,7 @@ function ConChinArticleCommentBox() {
         dispatch(insertAlertText('댓글이 작성되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
+        getAllComments();
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -123,6 +128,7 @@ function ConChinArticleCommentBox() {
         dispatch(insertAlertText('댓글이 삭제되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
+        getAllComments();
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -209,7 +215,13 @@ function ConChinArticleCommentBox() {
           </div>
         </div>
       )}
-
+      <div id='conChinCountWrapper'>
+        <h1 className='count'>
+          {conChinPageAllComments.length > 0
+            ? conChinPageAllComments.length + '개의 댓글'
+            : null}
+        </h1>
+      </div>
       {/* 댓글 목록 map */}
       {conChinPageAllComments.length > 0
         ? conChinPageAllComments.map(el => (
