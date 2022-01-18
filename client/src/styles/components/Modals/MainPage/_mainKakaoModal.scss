@@ -1,0 +1,201 @@
+#MainKakaoModalContainer {
+  z-index: 999;
+  width: 100%;
+  @include mobile-only() {
+    top: 10%;
+    position: fixed;
+    height: 90%;
+  }
+  @include md() {
+    position: fixed;
+    height: 100%;
+  }
+  @include lg() {
+    position: fixed;
+    height: 100%;
+  }
+  #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+  #alertBackground {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    @include mobile-only() {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @include md() {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @include lg() {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #alertModal {
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      // border: 1px solid red;
+      @include mobile-only() {
+        // position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      @include md() {
+        width: 25%;
+        height: 30%;
+        border-radius: 20px;
+      }
+      @include lg() {
+        width: 30%;
+        height: 70%;
+        border-radius: 20px;
+      }
+      #alignContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        // border: 1px solid aqua;
+        @include mobile-only() {
+          position: absolute;
+          top: 0%;
+          width: 90%;
+          height: 85%;
+        }
+        @include md() {
+          width: 90%;
+          height: 85%;
+        }
+        @include lg() {
+          width: 90%;
+          height: 85%;
+        }
+        .fontMatch {
+          font-weight: bold;
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.3rem;
+          }
+          @include lg() {
+            font-size: 1.5rem;
+          }
+        }
+        .textBoxMatch {
+          display: flex;
+          width: 70%;
+          height: 5%;
+          border: 1px solid $gray;
+          border-radius: 5px;
+        }
+        #topBox {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          align-items: center;
+          width: 90%;
+          height: 8%;
+          // border: 1px solid green;
+          #alignTop {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            // border: 1px solid orange;
+            img {
+              margin-right: 2%;
+              @include mobile-only() {
+                height: 90%;
+              }
+              @include md() {
+                height: 100%;
+              }
+              @include lg() {
+                height: 100%;
+              }
+            }
+            .fontMatch2 {
+              font-weight: bold;
+              @include mobile-only() {
+                font-size: 1.7rem;
+              }
+              @include md() {
+                font-size: 1.3rem;
+              }
+              @include lg() {
+                font-size: 2rem;
+              }
+            }
+          }
+        }
+        #midBox {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 90%;
+          height: 65%;
+          border: 2px solid $yellow;
+          @include mobile-only() {
+            height: 75%;
+          }
+          @include md() {
+            height: 65%;
+          }
+          @include lg() {
+            height: 65%;
+          }
+        }
+        #bottomBox {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          border-radius: 10px;
+          // border: 1px solid blue;
+          @include mobile-only() {
+            height: 8%;
+          }
+          @include md() {
+            height: 10%;
+          }
+          @include lg() {
+            height: 10%;
+          }
+          .textBoxMatch3 {
+            display: flex;
+            width: 100%;
+            height: 20%;
+            border: 1px solid $gray;
+            border-radius: 5px;
+          }
+          #back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: $yellow;
+            color: #fff;
+            border: 0;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

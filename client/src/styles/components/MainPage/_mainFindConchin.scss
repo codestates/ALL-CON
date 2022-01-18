@@ -23,25 +23,26 @@
   }
   #goConchin {
     position: absolute;
-    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     @include mobile-only() {
+      top: 70%;
       width: 70%;
-      height: 60%;
+      height: 70%;
     }
     @include md() {
+      top: 60%;
       width: 60%;
       height: 68%;
     }
     @include lg() {
+      top: 60%;
       width: 45%;
       height: 68%;
     }
   }
   button {
     position: absolute;
-    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: $yellow;
@@ -51,14 +52,17 @@
     border-radius: 5px;
     cursor: pointer;
     @include mobile-only() {
+      bottom: -1%;
       width: 25%;
       font-size: 1.6rem;
     }
     @include md() {
+      top: 80%;
       width: 20%;
       font-size: 1.8rem;
     }
     @include lg() {
+      top: 80%;
       width: 15%;
       font-size: 2rem;
     }

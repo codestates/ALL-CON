@@ -27,8 +27,10 @@ import {
 
 function ConChinArticleContentBox() {
   const dispatch = useDispatch();
-  const { articleOrder, targetArticle, targetArticlesUserInfo, allArticles } =
-    useSelector((state: RootState) => state.conChin);
+  const { articleOrder, targetArticle, targetArticlesUserInfo } = useSelector(
+    (state: RootState) => state.conChin,
+  );
+
   const { target } = useSelector((state: RootState) => state.main);
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
@@ -58,8 +60,9 @@ function ConChinArticleContentBox() {
       dispatch(insertAlertText('글을 삭제합니다. 😖'));
       dispatch(showAlertModal(true));
       deleteArticle();
-      getAllArticles();
       dispatch(setTargetArticle({}));
+      dispatch(setArticleCurPage(1));
+      getTargetArticles();
     } else {
       console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
     }
@@ -72,6 +75,7 @@ function ConChinArticleContentBox() {
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
         { withCredentials: true },
       );
+      getTargetArticles();
     } catch (err) {
       console.log(err);
     }
@@ -90,9 +94,11 @@ function ConChinArticleContentBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        dispatch(setAllArticles(response.data.data.articleInfo));
+        // dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
-        // dispatch(setArticleCurPage(1));
+
+        dispatch(setArticleCurPage(1));
+        dispatch(setTargetArticle({}));
       } else {
         console.log('없거나 실수로 못가져왔어요.');
       }
@@ -100,6 +106,42 @@ function ConChinArticleContentBox() {
       console.log(err);
       console.log('에러가 났나봐요.');
     }
+  };
+
+  /* 타겟 게시물 받아오기 */
+  const getTargetArticles = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setAllArticles(response.data.data.articleInfo));
+        dispatch(setArticleTotalPage(response.data.data.totalPage));
+        dispatch(setArticleCurPage(1));
+      } else {
+        console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
+      }
+    } catch (err) {
+      console.log(err);
+      console.log('에러가 났나봐요.');
+    }
+  };
+
+  const handlePostedDate = (postedDate?: Date): string => {
+    const day = String(postedDate);
+    const setDay =
+      day.substr(0, 4) +
+      '년 ' +
+      day.substr(5, 2) +
+      '월 ' +
+      day.substr(8, 2) +
+      '일 ' +
+      day.substr(11, 2) +
+      '시 ' +
+      day.substr(14, 2) +
+      '분 ';
+    return setDay;
   };
 
   return (
@@ -134,7 +176,7 @@ function ConChinArticleContentBox() {
           <div id='contentBox'>
             <div id='viewBox'>
               <p className='view'>
-                등록일 : {targetArticle.createdAt} | 조회수 :
+                등록일 : {handlePostedDate(targetArticle.createdAt)} | 조회수 :
                 {targetArticle.view}
               </p>
             </div>

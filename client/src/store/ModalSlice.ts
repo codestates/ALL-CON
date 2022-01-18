@@ -20,6 +20,10 @@ export interface modal {
   deliverText: string;
   conChinWritingModal: boolean;
   conChinProfileModal: boolean;
+  emailAlarmModal: boolean;
+  smsAlarmModal: boolean;
+  alarmText: string;
+  mainKakaoModal: boolean;
 }
 
 /* State 초기값 설정 */
@@ -42,6 +46,10 @@ const initialState: modal = {
   deliverText: '',
   conChinWritingModal: false,
   conChinProfileModal: false,
+  emailAlarmModal: false,
+  smsAlarmModal: false,
+  alarmText: '',
+  mainKakaoModal: false,
 };
 
 const modalSlice = createSlice({
@@ -121,6 +129,21 @@ const modalSlice = createSlice({
     ) => {
       state.conChinProfileModal = payload;
     },
+    showEmailAlarmModal: (
+      state: modal,
+      { payload }: PayloadAction<boolean>,
+    ) => {
+      state.emailAlarmModal = payload;
+    },
+    showSmsAlarmModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.smsAlarmModal = payload;
+    },
+    insertAlarmText: (state: modal, { payload }: PayloadAction<string>) => {
+      state.alarmText = payload;
+    },
+    showMainKakaoModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.mainKakaoModal = payload;
+    },
   },
 });
 
@@ -143,5 +166,9 @@ export const {
   insertDeliverText,
   showConChinWritingModal,
   showConChinProfileModal,
+  showEmailAlarmModal,
+  showSmsAlarmModal,
+  insertAlarmText,
+  showMainKakaoModal,
 } = modalSlice.actions;
 export default modalSlice.reducer;

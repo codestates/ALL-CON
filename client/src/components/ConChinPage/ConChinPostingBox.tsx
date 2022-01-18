@@ -38,31 +38,22 @@ function ConChinPostingBox() {
             dispatch(setArticleTotalPage(response.data.data.totalPage));
             dispatch(setArticleCurPage(1));
             dispatch(setArticleRendered(true));
-            console.log(articleRendered);
-            console.log(
-              ' ConChinPostingBox=> 타겟에 종속된 게시물들을 가져옵니다.',
-            );
-            console.log('allArticles: ');
-            console.log(allArticles);
           } else {
             console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
           }
         }
       } else {
-        console.log('true인데 누르셨네요?');
         if (
           Object.keys(target).length > 0 &&
           Object.keys(targetArticle).length === 0
         ) {
-          resetAllTarget();
+          // resetAllTarget();
         } else if (
           Object.keys(target).length > 0 &&
           Object.keys(targetArticle).length > 0
         ) {
-          console.log('이제 reset안됩니다.');
         } else if (Object.keys(target).length > 0 && allArticles.length === 0) {
-          console.log('들어오긴 함?');
-          resetAllTarget();
+          // resetAllTarget();
         }
       }
     } catch (err) {
@@ -74,26 +65,26 @@ function ConChinPostingBox() {
   };
 
   /* 전체 게시물 받아오기(무조건) */
-  const getAllArticles = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
-        { withCredentials: true },
-      );
-      if (response.data) {
-        // dispatch(setTarget({}));
-        dispatch(setAllArticles(response.data.data.articleInfo));
-        dispatch(setArticleTotalPage(response.data.data.totalPage));
-        dispatch(setArticleCurPage(1));
-        console.log('ConChinPostingBox => 전체 콘서트를 가져왔습니다.');
-      } else {
-        console.log('없거나 실수로 못가져왔어요..');
-      }
-    } catch (err) {
-      console.log(err);
-      console.log('에러가 났나봐요.');
-    }
-  };
+  // const getAllArticles = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
+  //       { withCredentials: true },
+  //     );
+  //     if (response.data) {
+  //       // dispatch(setTarget({}));
+  //       dispatch(setAllArticles(response.data.data.articleInfo));
+  //       dispatch(setArticleTotalPage(response.data.data.totalPage));
+  //       dispatch(setArticleCurPage(1));
+  //       console.log('ConChinPostingBox => 전체 콘서트를 가져왔습니다.');
+  //     } else {
+  //       console.log('없거나 실수로 못가져왔어요..');
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //     console.log('에러가 났나봐요.');
+  //   }
+  // };
 
   /* 조건부 게시물 받아오기 & 타겟 교체 */
   function changeTarget(concert: any[]) {

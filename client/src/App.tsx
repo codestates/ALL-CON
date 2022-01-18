@@ -4,15 +4,18 @@ import ConcertModal from './components/Modals/ConcertPage/ConcertModal';
 import ConChinWritingModal from './components/Modals/ConChinPage/ConChinWritingModal';
 import ConChinProfileModal from './components/Modals/ConChinPage/ConChinProfileModal';
 import ConfirmNumberModal from './components/Modals/ConfirmNumberModal';
+import EmailAlarmModal from './components/Modals/MainPage/EmailAlarmModal';
 import FindPasswordModal from './components/Modals/FindPasswordModal';
 import Header from './components/Header';
 import LoginModal from './components/Modals/LoginModal';
+import MainKakaoModal from './components/Modals/MainPage/MainKakaoModal';
 import MyProfileImageModal from './components/Modals/MyPage/MyProfileImageModal';
 import MyProfileResignMembershipModal from './components/Modals/MyPage/MyProfileResignMembershipModal';
 import MyDropDown from './components/Modals/MyPage/MyDropDown';
 import PrivacyModal from './components/Modals/PrivacyModal';
 import PhoneConfirmNumberModal from './components/Modals/MyPage/PhoneConfirmNumberModal';
 import ResetPasswordModal from './components/Modals/ResetPasswordModal';
+import SmsAlarmModal from './components/Modals/MainPage/SmsAlarmModal';
 import SuccessModal from './components/Modals/SuccessModal';
 import SignUpModal from './components/Modals/SignUpModal';
 import SideMenuModal from './components/Modals/SideMenuModal';
@@ -50,6 +53,9 @@ function App() {
     myDropDown,
     conChinWritingModal,
     conChinProfileModal,
+    emailAlarmModal,
+    smsAlarmModal,
+    mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
 
   return (
@@ -70,6 +76,9 @@ function App() {
       {concertModal && <ConcertModal />}
       {conChinWritingModal && <ConChinWritingModal />}
       {conChinProfileModal && <ConChinProfileModal />}
+      {emailAlarmModal && <EmailAlarmModal />}
+      {smsAlarmModal && <SmsAlarmModal />}
+      {mainKakaoModal && <MainKakaoModal />}
       {/* <MyProfileImageModal /> */}
       {/* <MyProfileResignMembershipModal /> */}
       {/* <MyEditPage /> */}

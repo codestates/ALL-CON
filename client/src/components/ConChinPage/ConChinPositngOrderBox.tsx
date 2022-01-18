@@ -4,7 +4,6 @@ import refreshBtn from '../../images/refresh.png';
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
 import {
-  setArticleOrder,
   setAllArticles,
   setArticleTotalPage,
   setTargetArticle,
@@ -21,24 +20,26 @@ function ConChinPostingOrderBox() {
   const dispatch = useDispatch();
   const { postingOrder } = useSelector((state: RootState) => state.conChin);
   const { target } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles, articleRendered } = useSelector(
-    (state: RootState) => state.conChin,
-  );
+  const { articleOrder, allArticles, articleRendered, targetArticle } =
+    useSelector((state: RootState) => state.conChin);
+
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert?order=${postingOrder}`,
-        { withCredentials: true },
-      );
-      if (response.data) {
-        // resetTarget();
-        dispatch(setAllConcerts(response.data.data.concertInfo));
+    if (Object.keys(targetArticle).length === 0) {
+      try {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/concert?order=${postingOrder}`,
+          { withCredentials: true },
+        );
+        if (response.data) {
+          dispatch(setAllConcerts(response.data.data.concertInfo));
+        }
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
+
   /* 전체 게시물 받아오기 */
   const getAllArticles = async () => {
     try {
@@ -49,9 +50,9 @@ function ConChinPostingOrderBox() {
       if (response.data) {
         console.log('PostingOrderBox=> 전체 게시물을 받아왔습니다.');
         // resetTarget();
+
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
-        dispatch(setArticleCurPage(1));
       } else {
         console.log('없거나 실수로 못가져왔어요..');
       }
@@ -63,8 +64,23 @@ function ConChinPostingOrderBox() {
 
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
   useEffect(() => {
-    getAllConcerts();
-    // getAllArticles();
+    /* 타겟이 없을 때 모든 콘서트 보여주기 */
+    if (Object.keys(target).length === 0) {
+      getAllConcerts();
+      dispatch(setTarget({}));
+      dispatch(setArticleRendered(false));
+      dispatch(setTargetArticle({}));
+      dispatch(setArticleCurPage(1));
+
+      /* 타겟이 있고 타겟 게시물이 없을 때 타겟에 대한 게시물만 보여주기*/
+    } else if (
+      Object.keys(target).length > 0 &&
+      Object.keys(targetArticle).length === 0
+    ) {
+      dispatch(setTargetArticle({}));
+      dispatch(setArticleRendered(true));
+      dispatch(setArticleCurPage(1));
+    }
   }, [postingOrder]);
 
   /* 타겟 초기화 핸들러 */
@@ -73,7 +89,9 @@ function ConChinPostingOrderBox() {
     dispatch(setArticleRendered(false));
     dispatch(setTargetArticle({}));
     dispatch(setArticleCurPage(1));
+    getAllArticles();
   };
+
   return (
     <div
       id={

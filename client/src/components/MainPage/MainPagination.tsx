@@ -2,6 +2,7 @@
 import { RootState } from '../../index';
 import { setPageNum } from '../../store/ConcertCommentSlice';
 /* Library import */
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function MainPagination() {
@@ -10,6 +11,10 @@ function MainPagination() {
 
   /* totalNum 페이지 배열 선언 */
   const pageArr = Array.from({length: totalNum}, (v, i) => i+1);
+
+  useEffect(() => {
+
+  }, [totalNum, pageNum]);
 
   return (
     <div id='paginationWrapper'>

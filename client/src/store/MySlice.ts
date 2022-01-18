@@ -13,11 +13,24 @@ export interface my {
   commentBtnType: string;
 
   myArticleTotalPage: number;
-  myConcertCommentTotalPage: number;
-  myTotalConcertComment: number;
+  myArticleCommentCurrentPage: number;
+  myArticleCommentCurrentComment: number;
   myArticleCommentTotalPage: number;
+
+  myConcertCommentTotalPage: number;
+  myConcertCommentCurrentPage: number;
+  myConcertCommentCurrentComment: number;
+  myTotalConcertComment: number;
+  
   myTotalArticleComment: number;
-  articleInfo: {
+
+  // 버튼 ON/OFF 관리
+  btnSwitchState?: {
+    profileEdit?: boolean;
+    conchinCertification?: boolean;
+  }
+
+  articleInfo?: {
     id?: number;
     title?: string;
     content?: string;
@@ -31,12 +44,11 @@ export interface my {
     createdAt?: Date;
     updatedAt?: Date;
   }
-  concertCommentInfo: {
-    Article?: object,
+  concertCommentInfo?: {
     id?: number;
     content?: string;
     user_id?: number;
-    article_id?: number;
+    concert_id?: number;
     createdAt?: Date;
     updatedAt?: Date;
   }
@@ -55,14 +67,23 @@ const initialState: my = {
   myIntroductionState: false, 
   myIntroduction: '', 
   commentBtnType: '콘서트',
+
   articleInfo: {}, 
   myArticleTotalPage: 0, 
+  myArticleCommentCurrentPage: 1,
+  myArticleCommentTotalPage: 0,
+  myArticleCommentCurrentComment: 0,
+  myTotalArticleComment: 0,
+  articleCommentInfo: {},
+
+  btnSwitchState: {},
+
   myConcertCommentTotalPage: 0, 
+  myConcertCommentCurrentPage: 1,
+  myConcertCommentCurrentComment: 0, 
   myTotalConcertComment: 0, 
   concertCommentInfo: {},
-  myArticleCommentTotalPage: 0,
-  myTotalArticleComment: 0,
-  articleCommentInfo: {}
+
 };
 
 const mySlice = createSlice({
@@ -85,6 +106,15 @@ const mySlice = createSlice({
     getMyTotalConcertComment: (state: my, { payload }: PayloadAction<number>) => { 
       state.myTotalConcertComment = payload;
     },  
+    getMyArticleCommentCurrentPage: (state: my, { payload }: PayloadAction<number>) => { 
+      state.myArticleCommentCurrentPage = payload;
+    }, 
+    getMyConcertCommentCurrentPage: (state: my, { payload }: PayloadAction<number>) => { 
+      state.myConcertCommentCurrentPage = payload;
+    },  
+    getMyConcertCommentCurrentComment: (state: my, { payload }: PayloadAction<number>) => { 
+      state.myConcertCommentCurrentComment = payload;
+    },  
     getMyConcertCommentTotalPage: (state: my, { payload }: PayloadAction<number>) => { 
       state.myConcertCommentTotalPage = payload;
     }, 
@@ -97,11 +127,17 @@ const mySlice = createSlice({
     getArticleInfo: (state: my, { payload }: PayloadAction<my>) => { 
       state.articleInfo = payload.articleInfo;
     },
+    getMyArticleCommentCurrentComment: (state: my, { payload }: PayloadAction<number>) => { 
+      state.myArticleCommentCurrentComment = payload;
+    }, 
     getMyConcertCommentInfo: (state: my, { payload }: PayloadAction<my>) => { 
       state.concertCommentInfo = payload.concertCommentInfo;
     },  
     getMyArticleCommentInfo: (state: my, { payload }: PayloadAction<my>) => { 
       state.articleCommentInfo = payload.articleCommentInfo;
+    }, 
+    getBtnSwitchState: (state: my, { payload }: PayloadAction<object>) => { 
+      state.btnSwitchState = payload;
     }, 
   }
 });
@@ -113,12 +149,19 @@ export const {
   getCommentBtnType,
   getArticleInfo, 
   getMyArticleTotalPage, 
+  getMyArticleCommentCurrentPage,
+  getMyArticleCommentCurrentComment,
+
   getMyConcertCommentTotalPage, 
+  getMyConcertCommentCurrentPage,
+  getMyConcertCommentCurrentComment,
   getMyTotalConcertComment,
   getMyConcertCommentInfo,
   getMyTotalArticleComment,
   getMyArticleCommentTotalPage,
-  getMyArticleCommentInfo 
+  getMyArticleCommentInfo,
+
+  getBtnSwitchState
 } = mySlice.actions;
 
 export default mySlice.reducer;

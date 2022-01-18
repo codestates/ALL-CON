@@ -29,7 +29,7 @@ module.exports = {
         });
         // 게시글이 없다면 다음 메시지를 반환한다.
         if (articleInfo.count === 0)
-          return res.status(200).json({ message: 'Article Is Empty!' });
+          return res.status(200).json({ data: { articleInfo: [] }, message: 'Article Is Empty!' });
         // 총 페이지 수
         const totalPage = Math.ceil(articleInfo.count / limit);
         res
@@ -61,7 +61,7 @@ module.exports = {
 
         // 게시글이 없다면 다음 메시지를 반환한다.
         if (articleInfo.count === 0)
-          return res.status(200).json({ message: 'Article Is Empty!' });
+          return res.status(200).json({ data: { articleInfo: [] }, message: 'Article Is Empty!' });
         // 총 페이지 수
         const totalPage = Math.ceil(articleInfo.count / limit);
         res

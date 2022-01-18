@@ -34,6 +34,7 @@ export interface conChin {
     introduction?: string;
     birth?: string;
     createdAt?: string;
+    gender?: string;
   };
   /* 게시물 렌더 상태 */
   articleRendered?: boolean;

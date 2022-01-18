@@ -495,48 +495,55 @@ a {
         align-items: center;
         justify-content: center;
         margin-left: 1%;
-        width: 10%; }
-        @media (max-width: 767px) {
-          #commentBox .writeBox .commentBodyBox .imgWrapper {
-            height: 50%; } }
-        @media (min-width: 768px) {
-          #commentBox .writeBox .commentBodyBox .imgWrapper {
-            height: 50%; } }
-        @media (min-width: 1200px) {
-          #commentBox .writeBox .commentBodyBox .imgWrapper {
-            height: 75%; } }
+        width: 10%;
+        height: 75%; }
         #commentBox .writeBox .commentBodyBox .imgWrapper .img {
           position: absolute;
           display: flex;
-          height: 100%;
-          object-fit: 100%;
+          align-items: center;
+          object-fit: cover;
           border-radius: 100%; }
+          @media (max-width: 767px) {
+            #commentBox .writeBox .commentBodyBox .imgWrapper .img {
+              width: 70%;
+              height: 60%; } }
+          @media (min-width: 768px) {
+            #commentBox .writeBox .commentBodyBox .imgWrapper .img {
+              width: 70%;
+              height: 80%; } }
+          @media (min-width: 1200px) {
+            #commentBox .writeBox .commentBodyBox .imgWrapper .img {
+              width: 70%;
+              height: 80%; } }
         #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
           position: absolute;
-          display: flex;
-          object-fit: 100%;
-          bottom: 0%;
-          right: 15%; }
+          display: flex; }
           @media (max-width: 767px) {
             #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
-              width: 16px;
-              height: 16px; } }
+              width: 15px;
+              height: 15px;
+              bottom: 5%;
+              right: 10%; } }
           @media (min-width: 768px) {
             #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
-              width: 20px;
-              height: 20px; } }
+              width: 22.5px;
+              height: 22.5px;
+              bottom: 0%;
+              right: 7.5%; } }
           @media (min-width: 1200px) {
             #commentBox .writeBox .commentBodyBox .imgWrapper .shield {
-              width: 25px;
-              height: 25px; } }
+              width: 28px;
+              height: 28px;
+              bottom: 5%;
+              right: 10%; } }
       #commentBox .writeBox .commentBodyBox .bodyWrapper {
         position: absolute;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-left: 1%;
+        margin-left: 2.5%;
         left: 10%;
-        width: 89%;
+        width: 87.5%;
         height: 80%; }
         #commentBox .writeBox .commentBodyBox .bodyWrapper #input {
           position: relative;
@@ -577,7 +584,7 @@ a {
           @media (min-width: 768px) {
             #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
               border-radius: 10px;
-              font-size: 1.5rem; } }
+              font-size: 1.3rem; } }
           @media (min-width: 1200px) {
             #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
               border-radius: 15px;
@@ -592,15 +599,14 @@ a {
     height: 21.5%;
     top: 0%;
     margin-top: 1.5%;
-    border: 1px solid #c4c4c4;
     border-radius: 5px; }
     #commentBox .box .dateBox {
       position: absolute;
       display: flex;
-      width: 100%;
-      height: 40%;
-      top: 1.5%;
-      left: 1.5%; }
+      align-items: center;
+      width: 89%;
+      height: 30%;
+      left: 11%; }
       #commentBox .box .dateBox .nickNameAndDate {
         color: #a0a0a0; }
         @media (max-width: 767px) {
@@ -608,19 +614,28 @@ a {
             font-size: 1rem; } }
         @media (min-width: 768px) {
           #commentBox .box .dateBox .nickNameAndDate {
-            font-size: 1.5rem; } }
+            font-size: 1.3rem; } }
         @media (min-width: 1200px) {
           #commentBox .box .dateBox .nickNameAndDate {
-            font-size: 2rem; } }
+            font-size: 1.5rem; } }
       #commentBox .box .dateBox .optionWrapper {
+        z-index: 100;
         position: absolute;
         display: flex;
         align-items: center;
         justify-content: space-between;
         height: 100%;
-        width: 10%;
         top: 0%;
         right: 2%; }
+        @media (max-width: 767px) {
+          #commentBox .box .dateBox .optionWrapper {
+            width: 25%; } }
+        @media (min-width: 768px) {
+          #commentBox .box .dateBox .optionWrapper {
+            width: 20%; } }
+        @media (min-width: 1200px) {
+          #commentBox .box .dateBox .optionWrapper {
+            width: 15%; } }
         #commentBox .box .dateBox .optionWrapper .optionBtn {
           position: relative;
           display: flex;
@@ -630,82 +645,106 @@ a {
           font-weight: bold;
           width: 45%;
           height: 100%;
-          cursor: pointer; }
+          cursor: pointer;
+          border: 1px solid #c4c4c4; }
+          @media (max-width: 767px) {
+            #commentBox .box .dateBox .optionWrapper .optionBtn {
+              border-radius: 3px;
+              font-size: 0.15rem; } }
+          @media (min-width: 768px) {
+            #commentBox .box .dateBox .optionWrapper .optionBtn {
+              border-radius: 3px;
+              font-size: 0.3rem; } }
+          @media (min-width: 1200px) {
+            #commentBox .box .dateBox .optionWrapper .optionBtn {
+              border-radius: 5px;
+              font-size: 1rem; } }
+        #commentBox .box .dateBox .optionWrapper :hover {
+          color: white;
+          font-weight: bold;
+          background-color: #ffce63;
+          transition: 0.25s all;
+          border: 0px solid #ffce63; }
     #commentBox .box #imgAndText {
       position: relative;
       display: flex;
       align-items: center;
       width: 100%;
-      height: 60%;
-      top: 40%; }
+      height: 100%; }
       #commentBox .box #imgAndText .imgWrapper {
-        position: absolute;
-        display: flex; }
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer; }
         @media (max-width: 767px) {
           #commentBox .box #imgAndText .imgWrapper {
-            position: absolute;
-            display: flex;
-            height: 27px;
-            width: 27px;
-            left: 3%; } }
+            width: 8%;
+            height: 50%;
+            left: 2%; } }
         @media (min-width: 768px) {
           #commentBox .box #imgAndText .imgWrapper {
-            height: 35px;
-            width: 35px;
-            left: 2%; } }
+            width: 8%;
+            height: 75%;
+            left: 1.5%; } }
         @media (min-width: 1200px) {
           #commentBox .box #imgAndText .imgWrapper {
-            height: 45px;
-            width: 45px;
+            width: 7.5%;
+            height: 75%;
             left: 2%; } }
         #commentBox .box #imgAndText .imgWrapper .img {
           position: absolute;
-          display: flex;
-          width: 100%;
-          height: 100%;
-          object-fit: 100%;
-          border-radius: 100%; }
+          border-radius: 100%;
+          width: 80%;
+          height: 82.5%;
+          object-fit: cover; }
         #commentBox .box #imgAndText .imgWrapper .shield {
           position: absolute;
           display: flex;
-          object-fit: 100%;
-          bottom: 0%;
-          right: 0%; }
+          right: 7.5%; }
           @media (max-width: 767px) {
             #commentBox .box #imgAndText .imgWrapper .shield {
               width: 13px;
-              height: 13px; } }
+              height: 13px;
+              bottom: 5%; } }
           @media (min-width: 768px) {
             #commentBox .box #imgAndText .imgWrapper .shield {
-              width: 15px;
-              height: 15px; } }
+              width: 20px;
+              height: 20px;
+              bottom: 5%; } }
           @media (min-width: 1200px) {
             #commentBox .box #imgAndText .imgWrapper .shield {
-              width: 20px;
-              height: 20px; } }
+              width: 25px;
+              height: 25px;
+              bottom: 10%; } }
+      #commentBox .box #imgAndText :hover .img {
+        border: 2px solid #ffce63;
+        outline: 2px solid #ffce63; }
       #commentBox .box #imgAndText .textWrapper {
         position: absolute;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 90%;
-        height: 100%;
-        left: 10%; }
+        width: 89%;
+        height: 70%;
+        top: 30%;
+        left: 11%; }
         #commentBox .box #imgAndText .textWrapper #text {
           position: relative;
           display: flex;
           width: 85%;
           height: 100%;
-          margin-right: 0.5%; }
+          margin-right: 0.5%;
+          resize: none; }
           @media (max-width: 767px) {
             #commentBox .box #imgAndText .textWrapper #text {
-              font-size: 1.3rem; } }
+              font-size: 1.1rem; } }
           @media (min-width: 768px) {
             #commentBox .box #imgAndText .textWrapper #text {
-              font-size: 1.5rem; } }
+              font-size: 1.1rem; } }
           @media (min-width: 1200px) {
             #commentBox .box #imgAndText .textWrapper #text {
-              font-size: 1.5rem; } }
+              font-size: 1.4rem; } }
         #commentBox .box #imgAndText .textWrapper .textBtn {
           position: relative;
           display: flex;
@@ -725,7 +764,7 @@ a {
           @media (min-width: 768px) {
             #commentBox .box #imgAndText .textWrapper .textBtn {
               border-radius: 8px;
-              font-size: 1.3rem; } }
+              font-size: 1.25rem; } }
           @media (min-width: 1200px) {
             #commentBox .box #imgAndText .textWrapper .textBtn {
               border-radius: 12px;
@@ -733,6 +772,25 @@ a {
         #commentBox .box #imgAndText .textWrapper .textBtn:hover {
           transition: 0.25s all;
           background-color: #ffce63; }
+  #commentBox .emptyBox {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #ffce63;
+    width: 100%;
+    height: 50%;
+    top: 20%; }
+    @media (max-width: 767px) {
+      #commentBox .emptyBox {
+        font-size: 1rem; } }
+    @media (min-width: 768px) {
+      #commentBox .emptyBox {
+        font-size: 1.3rem; } }
+    @media (min-width: 1200px) {
+      #commentBox .emptyBox {
+        font-size: 3rem; } }
 
 /***** commentBox *****/
 /***** headerMenu *****/
@@ -843,7 +901,7 @@ a {
     display: block;
     margin: auto;
     border-radius: 100%;
-    border: solid #ffce63;
+    border: 3px solid #ffce63;
     cursor: pointer;
     object-fit: cover;
     right: 0%; }
@@ -2135,6 +2193,12 @@ a {
       #contentBox #commentWrapper {
         top: 40%;
         height: 55%; } }
+    #contentBox #commentWrapper #conChinCountWrapper {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: -3%; }
   #contentBox #paginationWrapper, #contentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #contentBox #paginationWrapperChosen, #contentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #contentBox #paginationWrapperChosen {
     position: absolute;
     display: flex;
@@ -2151,7 +2215,7 @@ a {
         height: 22.5%; } }
     @media (min-width: 1200px) {
       #contentBox #paginationWrapper, #contentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #contentBox #paginationWrapperChosen, #contentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #contentBox #paginationWrapperChosen {
-        top: 80%;
+        top: 70%;
         height: 25%; } }
 
 /****** conChinPostingBox ******/
@@ -2780,7 +2844,7 @@ a {
     @media (min-width: 1200px) {
       #myPageContainer #myCommentWrapper {
         height: 25%;
-        top: 85%; } }
+        top: 63%; } }
   #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
@@ -4687,6 +4751,26 @@ a {
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #modifyBtnWrapper .btn {
             font-size: 2rem; } }
+      #myProfileBox #introductionBox #modifyBtnWrapper .btnChosen {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45%;
+        height: 100%;
+        background-color: #ffce63;
+        border: none;
+        border-radius: 5px;
+        color: white; }
+        @media (max-width: 767px) {
+          #myProfileBox #introductionBox #modifyBtnWrapper .btnChosen {
+            font-size: 1.5rem; } }
+        @media (min-width: 768px) {
+          #myProfileBox #introductionBox #modifyBtnWrapper .btnChosen {
+            font-size: 1.8rem; } }
+        @media (min-width: 1200px) {
+          #myProfileBox #introductionBox #modifyBtnWrapper .btnChosen {
+            font-size: 2rem; } }
     #myProfileBox #introductionBox #resignBtnWrapper {
       position: absolute;
       display: flex;
@@ -4786,7 +4870,7 @@ a {
     @media (min-width: 1200px) {
       #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
         width: 75%;
-        top: 11%;
+        top: 5%;
         height: 90%; } }
     #myArticleBox #articleWrapper #myMemberBoxWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen #myMemberBoxWrapper, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen #myMemberBoxWrapper {
       position: absolute; }
@@ -4816,7 +4900,7 @@ a {
         height: 45%; } }
     @media (min-width: 1200px) {
       #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
-        top: 65%;
+        top: 57%;
         height: 45%; } }
 
 #myCommentBox {
@@ -4914,6 +4998,54 @@ a {
       color: white;
       cursor: pointer;
       transition: 0.15s all; }
+  #myCommentBox .myOptionBtn {
+    z-index: 999;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-right: 1.0%;
+    width: 50%;
+    height: 70%;
+    cursor: pointer; }
+  #myCommentBox .myCommentOptionBtnWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 11.2%;
+    height: 100%;
+    margin-right: 0.5%; }
+  #myCommentBox .myCommentOptionBtn {
+    border-radius: 5px;
+    margin-right: 0.5%;
+    text-align: center;
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #myCommentBox .myCommentOptionBtn {
+        width: 19%;
+        height: 50%;
+        font-size: 1.6rem; } }
+    @media (min-width: 768px) {
+      #myCommentBox .myCommentOptionBtn {
+        width: 12%;
+        height: 50%;
+        font-size: 1.8rem; } }
+    @media (min-width: 1200px) {
+      #myCommentBox .myCommentOptionBtn {
+        width: 45%;
+        height: 50%;
+        font-size: 1.8rem; } }
+    #myCommentBox .myCommentOptionBtn:hover {
+      background-color: #ffce63;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s all; }
+  #myCommentBox .hidden {
+    display: none; }
   #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
     position: absolute;
     display: flex;
@@ -4931,8 +5063,8 @@ a {
         height: 45%; } }
     @media (min-width: 1200px) {
       #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
-        top: 86%;
-        height: 45%; } }
+        top: 84%;
+        height: 30%; } }
 
 #myEditPage {
   position: absolute;
@@ -5534,23 +5666,22 @@ a {
     position: absolute;
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: absolute; }
+    align-items: center; }
     @media (max-width: 767px) {
       #mainContainer #mainCommentWrapper {
-        top: 115%;
+        top: 120%;
         width: 100%;
-        height: 55%; } }
+        height: 60%; } }
     @media (min-width: 768px) {
       #mainContainer #mainCommentWrapper {
         top: 137%;
-        width: 90%;
+        width: 80%;
         height: 45%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainCommentWrapper {
-        top: 175%;
-        width: 60%;
-        height: 70%; } }
+        top: 172.5%;
+        width: 65%;
+        height: 90%; } }
   #mainContainer #mainPaginationWrapper {
     z-index: 7;
     position: absolute;
@@ -5561,13 +5692,13 @@ a {
     height: 5%; }
     @media (max-width: 767px) {
       #mainContainer #mainPaginationWrapper {
-        top: 163%; } }
+        top: 165%; } }
     @media (min-width: 768px) {
       #mainContainer #mainPaginationWrapper {
-        top: 190%; } }
+        top: 185%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainPaginationWrapper {
-        top: 235%; } }
+        top: 245%; } }
   #mainContainer #mainFindConchinWrapper {
     position: absolute;
     width: 100%; }
@@ -5577,7 +5708,7 @@ a {
         height: 40%; } }
     @media (min-width: 768px) {
       #mainContainer #mainFindConchinWrapper {
-        top: 200%;
+        top: 190%;
         height: 60%; } }
     @media (min-width: 1200px) {
       #mainContainer #mainFindConchinWrapper {
@@ -5597,12 +5728,12 @@ a {
       #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
-        top: 270%; } }
+        top: 260%; } }
     @media (min-width: 1200px) {
       #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 38%;
-        top: 335%; } }
+        top: 340%; } }
     #mainContainer #fullFooter #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterChosen #mainFooterWrapper, #mainContainer #conChinContainer #fullFooterArticleNotChosen #mainFooterWrapper, #conChinContainer #mainContainer #fullFooterArticleNotChosen #mainFooterWrapper {
       position: absolute;
       display: flex;
@@ -5792,7 +5923,7 @@ a {
     #jumboPosterSlideWrapper {
       bottom: -6%; } }
   #jumboPosterSlideWrapper #arrows {
-    z-index: 44;
+    z-index: 10;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -5800,27 +5931,75 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 20%; }
+    height: 15%; }
     @media (max-width: 767px) {
       #jumboPosterSlideWrapper #arrows {
-        width: 120%; } }
+        width: 118%; } }
     @media (min-width: 768px) {
       #jumboPosterSlideWrapper #arrows {
-        width: 120%; } }
+        width: 115%; } }
     @media (min-width: 1200px) {
       #jumboPosterSlideWrapper #arrows {
         width: 90%; } }
     #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
-      opacity: 40%; }
+      opacity: 40%;
+      cursor: pointer; }
       @media (max-width: 767px) {
         #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
-          width: 35px; } }
+          width: 30px; } }
       @media (min-width: 768px) {
         #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
           width: 50px; } }
       @media (min-width: 1200px) {
         #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
-          width: 80px; } }
+          width: 60px; } }
+    #jumboPosterSlideWrapper #arrows :active {
+      border: solid rgba(0, 0, 0, 0); }
+      @media (max-width: 767px) {
+        #jumboPosterSlideWrapper #arrows :active {
+          width: 5px; } }
+      @media (min-width: 768px) {
+        #jumboPosterSlideWrapper #arrows :active {
+          width: 7.5px; } }
+      @media (min-width: 1200px) {
+        #jumboPosterSlideWrapper #arrows :active {
+          border-width: 8px; } }
+  #jumboPosterSlideWrapper #ballsWrapper {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 65%;
+    height: 7%; }
+    @media (max-width: 767px) {
+      #jumboPosterSlideWrapper #ballsWrapper {
+        bottom: -12%; } }
+    @media (min-width: 768px) {
+      #jumboPosterSlideWrapper #ballsWrapper {
+        bottom: -8%; } }
+    @media (min-width: 1200px) {
+      #jumboPosterSlideWrapper #ballsWrapper {
+        bottom: -8%; } }
+    #jumboPosterSlideWrapper #ballsWrapper .balls {
+      background-color: #fff;
+      border-radius: 50%;
+      margin-right: 2%; }
+      @media (max-width: 767px) {
+        #jumboPosterSlideWrapper #ballsWrapper .balls {
+          width: 3%;
+          height: 40%; } }
+      @media (min-width: 768px) {
+        #jumboPosterSlideWrapper #ballsWrapper .balls {
+          width: 2%;
+          height: 40%; } }
+      @media (min-width: 1200px) {
+        #jumboPosterSlideWrapper #ballsWrapper .balls {
+          width: 1.5%;
+          height: 40%; } }
+    #jumboPosterSlideWrapper #ballsWrapper #targetBall {
+      background-color: #ffce63; }
 
 .posterContainer {
   width: 100%;
@@ -5886,7 +6065,7 @@ a {
   width: 100%;
   height: 100%;
   top: 0%;
-  background-color: rgba(0, 0, 0, 0.7); }
+  background-color: rgba(0, 0, 0, 0.8); }
 
 #posterWrapper1 {
   position: absolute;
@@ -5896,22 +6075,22 @@ a {
   @media (max-width: 767px) {
     #posterWrapper1 {
       width: 29%;
-      height: 60%;
-      top: 70%;
+      height: 55%;
+      top: 60%;
       left: 15%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper1 {
       width: 25%;
-      height: 70%;
-      top: 60%;
+      height: 65%;
+      top: 50%;
       left: 20%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper1 {
       width: 20%;
-      height: 75%;
-      top: 60%;
+      height: 70%;
+      top: 50%;
       left: 30%;
       padding-bottom: 20%; } }
 
@@ -5939,7 +6118,7 @@ a {
       width: 20%;
       height: 75%;
       padding-bottom: 20%;
-      top: 50%;
+      top: 57.5%;
       left: 40%; } }
 
 /*가운데*/
@@ -5966,34 +6145,27 @@ a {
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50%; }
+        border-radius: 50%;
+        color: #fff;
+        font-weight: bold; }
         @media (max-width: 767px) {
           #posterWrapper3:hover #alignDay #dDay {
             width: 75%;
             height: 45%;
-            border: 4px solid #ffce63; } }
+            border: 4px solid #ffce63;
+            font-size: 2.5rem; } }
         @media (min-width: 768px) {
           #posterWrapper3:hover #alignDay #dDay {
             width: 75%;
             height: 50%;
-            border: 5px solid #ffce63; } }
+            border: 5px solid #ffce63;
+            font-size: 4rem; } }
         @media (min-width: 1200px) {
           #posterWrapper3:hover #alignDay #dDay {
             width: 75%;
             height: 58%;
-            border: 6px solid #ffce63; } }
-        #posterWrapper3:hover #alignDay #dDay p {
-          color: #fff;
-          font-weight: bold; }
-          @media (max-width: 767px) {
-            #posterWrapper3:hover #alignDay #dDay p {
-              font-size: 2.5rem; } }
-          @media (min-width: 768px) {
-            #posterWrapper3:hover #alignDay #dDay p {
-              font-size: 4rem; } }
-          @media (min-width: 1200px) {
-            #posterWrapper3:hover #alignDay #dDay p {
-              font-size: 5rem; } }
+            border: 6px solid #ffce63;
+            font-size: 5rem; } }
   #posterWrapper3 #alignDay {
     width: 100%;
     height: 100%; }
@@ -6001,21 +6173,21 @@ a {
       display: none; }
   @media (max-width: 767px) {
     #posterWrapper3 {
-      width: 29%;
-      height: 66%;
-      top: 57%;
+      width: 33%;
+      height: 70%;
+      top: 60%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper3 {
-      width: 25%;
-      height: 74%;
+      width: 28%;
+      height: 80%;
       top: 48%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper3 {
       width: 20%;
-      height: 80%;
-      top: 47.5%;
+      height: 85%;
+      top: 50%;
       padding-bottom: 20%; } }
 
 #posterWrapper4 {
@@ -6041,7 +6213,7 @@ a {
     #posterWrapper4 {
       width: 20%;
       height: 75%;
-      top: 50%;
+      top: 57.5%;
       left: 60%;
       padding-bottom: 20%; } }
 
@@ -6053,29 +6225,30 @@ a {
   @media (max-width: 767px) {
     #posterWrapper5 {
       width: 29%;
-      height: 60%;
-      top: 70%;
+      height: 55%;
+      top: 60%;
       left: 85%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper5 {
-      width: 25%;
-      height: 70%;
-      top: 60%;
+      width: 20%;
+      height: 65%;
+      top: 50%;
       left: 80%;
       padding-bottom: 20%; } }
   @media (min-width: 1200px) {
     #posterWrapper5 {
       width: 20%;
-      height: 75%;
-      top: 60%;
+      height: 70%;
+      top: 50%;
       left: 70%;
       padding-bottom: 20%; } }
 
 #mainConcertInfoBox {
   position: absolute;
   height: 100%;
-  /*중간 박스*/ }
+  /*중간 박스*/
+  /*하단 박스*/ }
   @media (max-width: 767px) {
     #mainConcertInfoBox {
       width: 100%; } }
@@ -6108,7 +6281,8 @@ a {
       #mainConcertInfoBox #topBox #roofArea #backBtn {
         position: absolute;
         bottom: -65%;
-        opacity: 80%; }
+        opacity: 80%;
+        cursor: pointer; }
         @media (max-width: 767px) {
           #mainConcertInfoBox #topBox #roofArea #backBtn {
             right: 5%;
@@ -6215,7 +6389,7 @@ a {
         #mainConcertInfoBox #topBox #date {
           position: relative;
           left: 5%;
-          font: 1.3rem; } }
+          font-size: 1.5rem; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #topBox #date {
           width: 100%;
@@ -6234,10 +6408,10 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #mainConcertInfoBox #middleBox {
-        height: 65%; } }
+        height: 70%; } }
     @media (min-width: 768px) {
       #mainConcertInfoBox #middleBox {
-        height: 68%; } }
+        height: 70%; } }
     @media (min-width: 1200px) {
       #mainConcertInfoBox #middleBox {
         height: 72%; } }
@@ -6248,7 +6422,7 @@ a {
       @media (max-width: 767px) {
         #mainConcertInfoBox #middleBox #concertInfoBox {
           width: 90%;
-          height: 75%; } }
+          height: 70%; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #middleBox #concertInfoBox {
           width: 93%;
@@ -6335,9 +6509,22 @@ a {
               display: flex;
               justify-content: flex-start;
               height: 10%; }
+              @media (min-width: 768px) {
+                #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
+                  width: 120%; } }
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img {
                 width: 30px;
                 height: 30px; }
+                @media (min-width: 768px) {
+                  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img {
+                    position: relative;
+                    top: -10%;
+                    margin-left: 2%; } }
+                @media (min-width: 1200px) {
+                  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img {
+                    position: relative;
+                    top: 0%;
+                    margin-left: 2%; } }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
               height: 25%; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
@@ -6357,7 +6544,7 @@ a {
                 @media (min-width: 768px) {
                   #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2, #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
                     left: 5%;
-                    width: 40px; } }
+                    width: 35px; } }
                 @media (min-width: 1200px) {
                   #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2, #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
                     left: 5%;
@@ -6372,11 +6559,11 @@ a {
       @media (max-width: 767px) {
         #mainConcertInfoBox #middleBox #buttonsWrapper {
           width: 90%;
-          height: 15%; } }
+          height: 20%; } }
       @media (min-width: 768px) {
         #mainConcertInfoBox #middleBox #buttonsWrapper {
           position: absolute;
-          bottom: 9%;
+          bottom: 7.5%;
           left: 40.5%;
           width: 56%;
           height: 11%; } }
@@ -6407,11 +6594,12 @@ a {
           @media (max-width: 767px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
               margin-right: 2%;
-              width: 20px; } }
+              width: 20px;
+              height: 20px; } }
           @media (min-width: 768px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
               width: 30px;
-              height: 80%;
+              height: 75%;
               padding-right: 2%; } }
           @media (min-width: 1200px) {
             #mainConcertInfoBox #middleBox #buttonsWrapper #black-btn #imgAndOpen img {
@@ -6447,6 +6635,45 @@ a {
         @media (min-width: 1200px) {
           #mainConcertInfoBox #middleBox #buttonsWrapper #yellow-btn {
             font-size: 2rem; } }
+  #mainConcertInfoBox #bottomBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    bottom: 0%;
+    height: 5%; }
+    #mainConcertInfoBox #bottomBox img {
+      display: flex;
+      height: 100%; }
+      @media (max-width: 767px) {
+        #mainConcertInfoBox #bottomBox img {
+          width: 6%;
+          margin-left: 3%;
+          margin-right: 1.5%; } }
+      @media (min-width: 768px) {
+        #mainConcertInfoBox #bottomBox img {
+          width: 4%;
+          margin-left: 2%;
+          margin-right: 1.5%; } }
+      @media (min-width: 1200px) {
+        #mainConcertInfoBox #bottomBox img {
+          width: 3.5%;
+          margin: 1%; } }
+    #mainConcertInfoBox #bottomBox div {
+      display: flex;
+      justify-content: left;
+      height: 100%;
+      font-weight: bold; }
+      @media (max-width: 767px) {
+        #mainConcertInfoBox #bottomBox div {
+          font-size: 1.5rem; } }
+      @media (min-width: 768px) {
+        #mainConcertInfoBox #bottomBox div {
+          font-size: 1.8rem; } }
+      @media (min-width: 1200px) {
+        #mainConcertInfoBox #bottomBox div {
+          font-size: 2.2rem; } }
 
 #mainGoConchin {
   position: relative;
@@ -6472,24 +6699,25 @@ a {
         font-size: 3rem; } }
   #mainGoConchin #goConchin {
     position: absolute;
-    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%); }
     @media (max-width: 767px) {
       #mainGoConchin #goConchin {
+        top: 70%;
         width: 70%;
-        height: 60%; } }
+        height: 70%; } }
     @media (min-width: 768px) {
       #mainGoConchin #goConchin {
+        top: 60%;
         width: 60%;
         height: 68%; } }
     @media (min-width: 1200px) {
       #mainGoConchin #goConchin {
+        top: 60%;
         width: 45%;
         height: 68%; } }
   #mainGoConchin button {
     position: absolute;
-    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffce63;
@@ -6500,14 +6728,17 @@ a {
     cursor: pointer; }
     @media (max-width: 767px) {
       #mainGoConchin button {
+        bottom: -1%;
         width: 25%;
         font-size: 1.6rem; } }
     @media (min-width: 768px) {
       #mainGoConchin button {
+        top: 80%;
         width: 20%;
         font-size: 1.8rem; } }
     @media (min-width: 1200px) {
       #mainGoConchin button {
+        top: 80%;
         width: 15%;
         font-size: 2rem; } }
 
@@ -6607,7 +6838,7 @@ a {
       margin-top: 1.5%;
       margin-bottom: 1.5%;
       width: 90%;
-      height: 20%; }
+      max-height: 17.5%; }
     #concertContainer #concertsBoard #concertBoxWrapper:hover {
       box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.1);
       transition: 0.25s all; }
@@ -6832,36 +7063,34 @@ a {
               #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
                 font-size: 1.2rem; } }
 
-#concertBoxOuterContainer :hover {
-  /* 마우스 호버시 D-day */ }
-  #concertBoxOuterContainer :hover #poster {
-    filter: brightness(30%);
-    transition: 0.25s; }
-  #concertBoxOuterContainer :hover #round {
-    overflow: hidden;
-    transition: 0.5s;
-    position: relative;
-    top: -50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    border-radius: 50%;
-    text-align: center;
-    font-weight: bold;
-    color: #fff; }
-    @media (max-width: 767px) {
-      #concertBoxOuterContainer :hover #round {
-        font-size: 1.5rem;
-        border: 2.5px solid #ffce63; } }
-    @media (min-width: 768px) {
-      #concertBoxOuterContainer :hover #round {
-        font-size: 2.5rem;
-        border: 5px solid #ffce63; } }
-    @media (min-width: 1200px) {
-      #concertBoxOuterContainer :hover #round {
-        font-size: 2.5rem;
-        border: 5px solid #ffce63; } }
+#concertBoxOuterContainer :hover #poster {
+  filter: brightness(30%);
+  transition: 0.25s; }
+
+#concertBoxOuterContainer :hover #round {
+  transition: 0.5s;
+  position: relative;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 50%; }
+  @media (max-width: 767px) {
+    #concertBoxOuterContainer :hover #round {
+      font-size: 1.5rem;
+      border: 2.5px solid #ffce63; } }
+  @media (min-width: 768px) {
+    #concertBoxOuterContainer :hover #round {
+      font-size: 2.5rem;
+      border: 5px solid #ffce63; } }
+  @media (min-width: 1200px) {
+    #concertBoxOuterContainer :hover #round {
+      font-size: 2.5rem;
+      border: 5px solid #ffce63; } }
 
 /* 클릭시 */
 #concertChosenBoxOuterContainer {
@@ -6880,8 +7109,7 @@ a {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 100%;
-    overflow: hidden; }
+    height: 100%; }
     #concertChosenBoxOuterContainer #concertBoxContainer .imgWrapper {
       align-items: center;
       width: 20%;
@@ -8472,6 +8700,320 @@ a {
         #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterArticleNotChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterArticleNotChosen #landingFooterWrapper {
           height: 70%;
           width: 79%; } }
+
+#AlarmModalContainer {
+  z-index: 999;
+  width: 100%; }
+  @media (max-width: 767px) {
+    #AlarmModalContainer {
+      position: fixed;
+      height: 90%; } }
+  @media (min-width: 768px) {
+    #AlarmModalContainer {
+      position: fixed;
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    #AlarmModalContainer {
+      position: fixed;
+      height: 100%; } }
+  #AlarmModalContainer #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); }
+  #AlarmModalContainer #alertBackground {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); }
+    @media (max-width: 767px) {
+      #AlarmModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 768px) {
+      #AlarmModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 1200px) {
+      #AlarmModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    #AlarmModalContainer #alertBackground #alertModal {
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff; }
+      @media (max-width: 767px) {
+        #AlarmModalContainer #alertBackground #alertModal {
+          width: 60%;
+          height: 50%;
+          border-radius: 20px; } }
+      @media (min-width: 768px) {
+        #AlarmModalContainer #alertBackground #alertModal {
+          width: 25%;
+          height: 30%;
+          border-radius: 20px; } }
+      @media (min-width: 1200px) {
+        #AlarmModalContainer #alertBackground #alertModal {
+          width: 25%;
+          height: 30%;
+          border-radius: 20px; } }
+      #AlarmModalContainer #alertBackground #alertModal #alignContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        height: 85%; }
+        #AlarmModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.3rem; } }
+          @media (min-width: 1200px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+        #AlarmModalContainer #alertBackground #alertModal #alignContainer .textBoxMatch {
+          display: flex;
+          width: 70%;
+          height: 5%;
+          border: 1px solid #a0a0a0;
+          border-radius: 5px; }
+        #AlarmModalContainer #alertBackground #alertModal #alignContainer #topBox {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          width: 90%;
+          height: 40%; }
+          @media (max-width: 767px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer #topBox img {
+              height: 100%; } }
+          @media (min-width: 768px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer #topBox img {
+              height: 100%; } }
+          @media (min-width: 1200px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer #topBox img {
+              height: 100%; } }
+        #AlarmModalContainer #alertBackground #alertModal #alignContainer #midBox {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 90%;
+          height: 40%;
+          white-space: pre-wrap; }
+        #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          height: 15%; }
+          #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox .textBoxMatch3 {
+            display: flex;
+            width: 100%;
+            height: 20%;
+            border: 1px solid #a0a0a0;
+            border-radius: 5px; }
+          #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox #back1, #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox #back2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 45%;
+            height: 100%;
+            background-color: #ffce63;
+            color: #fff;
+            border: 0;
+            cursor: pointer; }
+          #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox #back2 {
+            background-color: #000; }
+
+#MainKakaoModalContainer {
+  z-index: 999;
+  width: 100%; }
+  @media (max-width: 767px) {
+    #MainKakaoModalContainer {
+      top: 10%;
+      position: fixed;
+      height: 90%; } }
+  @media (min-width: 768px) {
+    #MainKakaoModalContainer {
+      position: fixed;
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    #MainKakaoModalContainer {
+      position: fixed;
+      height: 100%; } }
+  #MainKakaoModalContainer #outside {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25); }
+  #MainKakaoModalContainer #alertBackground {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); }
+    @media (max-width: 767px) {
+      #MainKakaoModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 768px) {
+      #MainKakaoModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    @media (min-width: 1200px) {
+      #MainKakaoModalContainer #alertBackground {
+        display: flex;
+        align-items: center;
+        justify-content: center; } }
+    #MainKakaoModalContainer #alertBackground #alertModal {
+      z-index: 999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff; }
+      @media (max-width: 767px) {
+        #MainKakaoModalContainer #alertBackground #alertModal {
+          width: 100%;
+          height: 100%; } }
+      @media (min-width: 768px) {
+        #MainKakaoModalContainer #alertBackground #alertModal {
+          width: 25%;
+          height: 30%;
+          border-radius: 20px; } }
+      @media (min-width: 1200px) {
+        #MainKakaoModalContainer #alertBackground #alertModal {
+          width: 30%;
+          height: 70%;
+          border-radius: 20px; } }
+      #MainKakaoModalContainer #alertBackground #alertModal #alignContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between; }
+        @media (max-width: 767px) {
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer {
+            position: absolute;
+            top: 0%;
+            width: 90%;
+            height: 85%; } }
+        @media (min-width: 768px) {
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer {
+            width: 90%;
+            height: 85%; } }
+        @media (min-width: 1200px) {
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer {
+            width: 90%;
+            height: 85%; } }
+        #MainKakaoModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.3rem; } }
+          @media (min-width: 1200px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer .fontMatch {
+              font-size: 1.5rem; } }
+        #MainKakaoModalContainer #alertBackground #alertModal #alignContainer .textBoxMatch {
+          display: flex;
+          width: 70%;
+          height: 5%;
+          border: 1px solid #a0a0a0;
+          border-radius: 5px; }
+        #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          align-items: center;
+          width: 90%;
+          height: 8%; }
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            text-align: center; }
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop img {
+              margin-right: 2%; }
+              @media (max-width: 767px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop img {
+                  height: 90%; } }
+              @media (min-width: 768px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop img {
+                  height: 100%; } }
+              @media (min-width: 1200px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop img {
+                  height: 100%; } }
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop .fontMatch2 {
+              font-weight: bold; }
+              @media (max-width: 767px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop .fontMatch2 {
+                  font-size: 1.7rem; } }
+              @media (min-width: 768px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop .fontMatch2 {
+                  font-size: 1.3rem; } }
+              @media (min-width: 1200px) {
+                #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop .fontMatch2 {
+                  font-size: 2rem; } }
+        #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #midBox {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 90%;
+          height: 65%;
+          border: 2px solid #ffce63; }
+          @media (max-width: 767px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #midBox {
+              height: 75%; } }
+          @media (min-width: 768px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #midBox {
+              height: 65%; } }
+          @media (min-width: 1200px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #midBox {
+              height: 65%; } }
+        #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          border-radius: 10px; }
+          @media (max-width: 767px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+              height: 8%; } }
+          @media (min-width: 768px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+              height: 10%; } }
+          @media (min-width: 1200px) {
+            #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
+              height: 10%; } }
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox .textBoxMatch3 {
+            display: flex;
+            width: 100%;
+            height: 20%;
+            border: 1px solid #a0a0a0;
+            border-radius: 5px; }
+          #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #bottomBox #back {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            background-color: #ffce63;
+            color: #fff;
+            border: 0;
+            cursor: pointer; }
 
 /*------------선영------------*/
 /*------------정현------------*/

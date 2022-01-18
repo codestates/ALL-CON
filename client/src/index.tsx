@@ -1,3 +1,5 @@
+/* Module import */
+import ScrollToTop from './components/ScrollToTop';
 /* CSS import */
 import './style.css';
 /* Component import */
@@ -13,6 +15,9 @@ import conChinSlice, { conChin } from './store/ConChinSlice';
 import ConcertCommentSlice, {
   concertComments,
 } from './store/ConcertCommentSlice';
+import ConChinCommentSlice, {
+  conChinComments,
+} from './store/ConChinCommentSlice';
 /* Library import */
 import { BrowserRouter as Router } from 'react-router-dom';
 import { combineReducers } from 'redux';
@@ -40,6 +45,7 @@ const reducers = combineReducers({
   my: mySlice,
   conChin: conChinSlice,
   concertComments: ConcertCommentSlice,
+  conChinComments: ConChinCommentSlice,
 });
 
 /* persist reducer 세팅 (persistConfig가 추가된 reducer) */
@@ -65,6 +71,7 @@ export interface RootState {
   conChin: conChin;
   my: my;
   concertComments: concertComments;
+  conChinComments: conChinComments;
 }
 
 /* persist store 세팅 (새로고침, 종료해도 지속될 store) */
@@ -75,6 +82,7 @@ ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <Router>
+        <ScrollToTop />
         <App />
       </Router>
     </PersistGate>

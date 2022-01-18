@@ -7,7 +7,6 @@ import search from '../images/search.png';
 import user from '../images/user.png';
 /* Store import */
 import { RootState } from '../index';
-import { logout } from '../store/AuthSlice';
 import {
   showLoginModal,
   showSideMenuModal,
@@ -26,7 +25,14 @@ import {
   setScrollCount,
   setTimerMessage,
 } from '../store/HeaderSlice';
-import { setTarget, setTargetIdx } from '../store/MainSlice';
+import { setPageNum } from '../store/ConcertCommentSlice';
+import {
+  setIsRendering,
+  setMainToConcert,
+  setOrder,
+  setTarget,
+  setTargetIdx,
+} from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -43,6 +49,7 @@ function Header() {
     sideMenuModal,
     myDropDown,
     conChinProfileModal,
+    mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
   const { isScrolled, scrollCount, timerMessage } = useSelector(
     (state: RootState) => state.header,
@@ -102,7 +109,7 @@ function Header() {
   });
   /* 해당 모달 띄워져있을 시 스크롤바 제거 useEffect */
   useEffect(() => {
-    if (loginModal || signupModal || conChinProfileModal)
+    if (loginModal || signupModal || conChinProfileModal || mainKakaoModal)
       document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'unset';
   });
@@ -181,6 +188,13 @@ function Header() {
   };
   /* 메뉴 이동시 상태 초기화 핸들러 */
   const resetHandler = () => {
+    /* MainPage */
+    dispatch(setTargetIdx(0));
+    dispatch(setIsRendering(false));
+    dispatch(setOrder('view'));
+    dispatch(setTargetIdx(0));
+    dispatch(setPageNum(0));
+    dispatch(setMainToConcert(false));
     /* ConChinPage */
     dispatch(setTarget({}));
     dispatch(setTargetArticle({}));
@@ -191,20 +205,11 @@ function Header() {
     dispatch(showConcertModal(false));
   };
 
-  const resetHandlerMain = () => {
-    // dispatch(logout());
-    // dispatch(setTarget(allConcerts[0]));
-    dispatch(setTargetIdx(0));
-    getAllArticles();
-    dispatch(showConcertModal(false));
-    dispatch(setArticleCurPage(1));
-  };
-
   return (
     /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */
     <div
       id={
-        loginModal || signupModal || conChinProfileModal
+        loginModal || signupModal || conChinProfileModal || mainKakaoModal
           ? 'headerSecondContainer'
           : 'headerContainer'
       }
@@ -252,7 +257,7 @@ function Header() {
           )}
         </div>
         <div id='hiddenMenuBox'>
-          <Link to='/main' onClick={resetHandlerMain}>
+          <Link to='/main' onClick={resetHandler}>
             <p className='menu'>홈</p>
           </Link>
           <Link to='/concert' onClick={resetHandler}>

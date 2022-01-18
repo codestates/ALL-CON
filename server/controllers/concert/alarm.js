@@ -13,7 +13,6 @@ module.exports = {
       // 유저확인 및 알람종류 확인
       const { alarm_type } = req.query;
       const concertInfo = await Concerts.findOne({ where: { id: concertid } });
-      console.log('확인확인2');
       // 존재하지 않는다면, 다음을 실행한다
       if (!concertInfo)
         res.status(400).json({ message: '콘서트가 존재하지 않습니다!' });

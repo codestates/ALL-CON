@@ -12,7 +12,7 @@ module.exports = {
       // accessToken이 유효한 토큰인지 판별
       const accessTokenData = isAuthorized(accessToken);
       if(!accessTokenData) return res.status(401).json({ message: 'AccessToken Is Not Authorized!' });
-      
+
       // accessToken에 담긴 정보가 유효한 정보인지 판별
       const { email } = accessTokenData;
       const userInfo = await Users.findOne({ where: { email: email }});

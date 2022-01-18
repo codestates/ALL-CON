@@ -9,14 +9,12 @@ import MainPagination from '../components/MainPage/MainPagination';
 import { RootState } from '../index';
 import {
   setTarget,
-  setTargetIdx,
   setAllConcerts,
   setDetail,
   setIsRendering,
 } from '../store/MainSlice';
-import { showAlertModal, insertAlertText } from '../store/ModalSlice';
 /* Library import */
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -25,6 +23,8 @@ function MainPage() {
   const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
+
+  const { isLogin } = useSelector((state: RootState) => state.auth);
 
   /* order가 바뀔때 마다 렌더링될 useEffect */
   useEffect(() => {
@@ -47,7 +47,7 @@ function MainPage() {
       if (response.data) {
         /* 서버 응답값이 있다면 & target 상태 변경 */
         dispatch(setAllConcerts(response.data.data.concertInfo));
-        dispatch(setTargetIdx(0));
+        // dispatch(setTargetIdx(0));
         dispatch(setTarget(allConcerts[targetIdx]));
       }
       /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
