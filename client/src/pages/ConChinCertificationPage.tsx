@@ -15,7 +15,9 @@ import {
   showConfirmNumberModal,
   showPhoneConfirmNumberModal,
   insertAlertText,
+  insertBtnText,
   showAlertModal,
+  showSuccessModal,
   insertDeliverText,
 } from '../store/ModalSlice';
 /* Library import */
@@ -151,20 +153,35 @@ function ConChinCertificationPage() {
         },
         { withCredentials: true },
       );
-
-      dispatch(
-        insertAlertText(
-          `(${userInfo.username})님의 프로필이 변경되었습니다! 🙂`,
-        ),
-      );
-      dispatch(showAlertModal(true));
+      
+      // 콘친 인증 성공 모달 OPEN
+      dispatch(insertAlertText(`(${userInfo.username})님의 콘친 인증이 완료되었습니다! 🙂`));
+      dispatch(insertBtnText('확인'));
+      dispatch(showSuccessModal(true));
       // 프로필 정보 업데이트
       dispatch(getUserInfo(response.data.data));
       navigate('/mypage');
     } else {
-      console.log('문제가 있음.......');
-      dispatch(insertAlertText(`문제가 있음! 🙂`));
-      dispatch(showAlertModal(true));
+      // 생년월일이 입력되지 않은 경우, 다음을 실행한다
+      if(!conchinCertificateInfo.birthYear || !conchinCertificateInfo.birthMonth || !conchinCertificateInfo.birthDate) {
+        dispatch(insertAlertText(`생년월일을 정확하게 입력해주세요! 🙂`));
+        dispatch(showAlertModal(true));
+      } 
+      // 성별을 선택하지 않은 경우, 다음을 실행한다
+      else if(!conchinCertificateInfo.gender) {
+        dispatch(insertAlertText(`성별을 선택해주세요! 🙂`));
+        dispatch(showAlertModal(true));
+      }
+      // 휴대전화를 입력하지 않은 경우, 다음을 실행한다
+      else if(!conchinCertificateInfo.phoneNumber) {
+        dispatch(insertAlertText(`휴대전화를 정확하게 입력해주세요! 🙂`));
+        dispatch(showAlertModal(true));
+      } 
+      // 휴대전화를 인증하지 않은 경우, 다음을 실행한다
+      else if(!isPhoneCertificatePass) {
+        dispatch(insertAlertText(`휴대폰 본인 인증이 되지 않았습니다! 🙂`));
+        dispatch(showAlertModal(true));
+      }
     }
   };
 
@@ -199,7 +216,7 @@ function ConChinCertificationPage() {
                 className='short'
                 onChange={inputDropdownValueHandler('birthYear')}
               >
-                <option> 년 </option>
+                <option> 년 (4자) </option>
                 {yearList.map((year, idx) => {
                   return <option value={year}> {year} </option>;
                 })}
@@ -248,7 +265,7 @@ function ConChinCertificationPage() {
               <div className='recieveWrapper'>
                 <input
                   className='number'
-                  placeholder='전화번호 입력'
+                  placeholder='전화번호는 숫자만 입력해주세요.'
                   onChange={inputValueHandler('phoneNumber')}
                 />
                 <img

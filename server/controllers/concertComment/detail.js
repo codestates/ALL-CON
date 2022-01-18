@@ -43,9 +43,6 @@ module.exports = {
       // 일반 유저일 경우, 다음을 실행한다
       else {
         // 타인이 작성한 댓글 삭제 불가
-        console.log('진입성공---');
-        console.log('콘서트 id---: ', concertCommentInfo.user_id)
-        console.log('유저 id---: ', userInfo.dataValues.id)
         if(concertCommentInfo.user_id !== userInfo.dataValues.id) return res.status(401).json({ message: 'Not Authroized!' });
         // concertInfo의 total_comment - 1
         const minusTotalComment = concertInfo.total_comment - 1;
