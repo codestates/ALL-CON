@@ -67,18 +67,12 @@ const KakaoMap = ( { place }: placeProps ) => {
 
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
         map.setCenter(coords);
-      } 
-      /* 키워드가 검색이 안되는 경우 */
-      else {
-
       }
     });
   }
 
   return (
-    <>
-      <div id="map" style={{ width: "100%", height: "100%" }}></div>
-    </>
+    <div id="map" style={{ width: "100%", height: "100%" }}></div>
   );
 }
 

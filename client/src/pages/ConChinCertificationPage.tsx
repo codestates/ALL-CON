@@ -64,13 +64,6 @@ function ConChinCertificationPage() {
   }, []);
 
   /* handler 함수 (기능별 정렬) */
-
-  // 인풋 입력 핸들러
-  // const inputValueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const info = { ...conchinCertificateInfo, [key]: e.target.value };
-  //   setConchinCertificateInfo(info);
-  // };
-
   // (생년월일) 년 / 월 / 일, (성별) 남자 / 여자 인풋 입력 핸들러
   const inputDropdownValueHandler =
     (key: string) => (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -113,7 +106,7 @@ function ConChinCertificationPage() {
 
   // 인증번호 받기 버튼 핸들러
   const handleGetConfirmNumber = async () => {
-    // 인증번호 받기 눌렀다!
+    // 인증번호 받기 버튼을 눌렀다!
     setCheckImg(true);
     dispatch(getPhoneCertificatePassInfo(false));
 

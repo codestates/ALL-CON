@@ -1,7 +1,7 @@
 /* Config import */
 /* CSS import */
 /* Store import */
-import { getMyConcertCommentInfo, getMyConcertCommentTotalPage, getMyArticleCommentInfo, getMyArticleCommentTotalPage, getMyConcertCommentCurrentPage } from '../../store/MySlice';
+import { getMyConcertCommentInfo, getMyConcertCommentTotalPage, getMyArticleCommentInfo, getMyArticleCommentTotalPage, getMyConcertCommentCurrentPage, getMyArticleCommentCurrentPage } from '../../store/MySlice';
 /* Library import */
 import { RootState } from '../../index';
 import axios from 'axios';
@@ -14,7 +14,7 @@ function MyCommentPagination() {
   const navigate = useNavigate();
   
   /* useSelector */
-  const { myConcertCommentTotalPage, myArticleCommentTotalPage, commentBtnType, myConcertCommentCurrentPage } = useSelector((state: RootState) => state.my);
+  const { myConcertCommentTotalPage, myArticleCommentTotalPage, commentBtnType, myConcertCommentCurrentPage, myArticleCommentCurrentPage } = useSelector((state: RootState) => state.my);
 
   /* 지역상태 - useState */
   let concertPageArr: number[] = [];
@@ -58,6 +58,8 @@ function MyCommentPagination() {
     dispatch(getMyArticleCommentInfo(response.data.data))
     dispatch(getMyArticleCommentTotalPage(response.data.data.totalPage))
     /* 내가 쓴 댓글(콘친 게시물) axios 테스트 */
+    // 현재 (내가 쓴 콘서트 댓글) 페이지 업데이트
+    dispatch(getMyArticleCommentCurrentPage(pageNum))
   } 
 
   return (
@@ -77,7 +79,7 @@ function MyCommentPagination() {
         : (articlePageArr.length > 0
           ? articlePageArr.map((el: number) => {
             return (
-            <ul className={ el === myConcertCommentCurrentPage ? 'pageChosen' : 'page' } onClick={() => handleArticlePageClick(el)}>
+            <ul className={ el === myArticleCommentCurrentPage ? 'pageChosen' : 'page' } onClick={() => handleArticlePageClick(el)}>
               <p className='text'> {el} </p>
             </ul>
             )

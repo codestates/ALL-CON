@@ -7,12 +7,14 @@ import {
   insertAlertText,
   insertBtnText,
   showSuccessModal,
+  showConChinProfileModal
 } from '../../store/ModalSlice';
 import {
   setPageAllComments,
   setTotalNum,
   setComment,
 } from '../../store/ConcertCommentSlice';
+import { setTargetArticlesUserInfo } from '../../store/ConChinSlice'
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
@@ -33,13 +35,11 @@ function MainComment() {
   /* 특정 댓글 수정 모드 && 수정할 댓글 원본 상태  */
   const [clickIdEditMode, setClickIdEditMode] = useState<number>(0);
   const [editComment, setEditComment] = useState<string>('');
-  /* 삭제 ID */
-  const [delId, setDelId] = useState<number>(0);
 
   useEffect(() => {
     getAllComments();
-  }, [targetIdx, isClick, pageNum, delId]);
-
+  }, [targetIdx, isClick, pageNum]);
+  
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (clickIdEditMode > 0) setEditComment(e.target.value);
@@ -148,8 +148,42 @@ function MainComment() {
         dispatch(setTotalNum(response.data.data.totalPage));
         dispatch(setPageAllComments(response.data.data.concertCommentInfo));
       }
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  /* 댓글 유저정보 조회 핸들러 */
+  const getTargetCommentsUserInfo = async (id: number) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/user/other/${id}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setTargetArticlesUserInfo(response.data.data.userInfo));
+        dispatch(showConChinProfileModal(true));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* Date 객체 형변환 */
+  const dayFormatter = (openDate?: Date): string => {
+    if(openDate){
+      const strOpenDate = String(openDate);
+
+      const year = strOpenDate.substring(0,4);
+      const month = strOpenDate.substring(5,7);
+      const date = strOpenDate.substring(8,10);
+      const hour = Number(strOpenDate.substring(11,13))+9;  // 9시간 더해주기
+      const minute = strOpenDate.substring(14,16);
+
+      return String(year+'-'+month+'-'+date+'-'+hour+' : '+minute);
+    }
+    return '';
+  }
 
   return (
     <div id='commentBox'>
@@ -190,7 +224,7 @@ function MainComment() {
         <div className='box'>
           <div className='dateBox'>
             <p className='nickNameAndDate'>
-              {el.User.username} | {el.createdAt.substring(0, 10)}
+              {el.User.username} | {dayFormatter(el.createdAt).substring(0, 10)}
             </p>
             <div className='optionWrapper'>
               {userInfo.id === el.user_id && (
@@ -221,7 +255,7 @@ function MainComment() {
             </div>
           </div>
           <div id='imgAndText'>
-            <div className='imgWrapper'>
+            <div className='imgWrapper' onClick={()=> getTargetCommentsUserInfo(el.user_id)}>
               <img className='img' src={el.User.image} alt='프로필 사진' />
               {el.User.role !== 3 && (
                 <img className='shield' src={shield} alt='인증 뱃지' />

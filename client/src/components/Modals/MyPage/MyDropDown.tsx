@@ -15,6 +15,9 @@ import {
   getMyArticleCommentInfo,
   getMyArticleCommentTotalPage,
   getMyTotalArticleComment,
+  getBtnSwitchState,
+
+  getMyConcertCommentCurrentPage
 } from '../../../store/MySlice';
 /* Library import */
 import axios from 'axios';
@@ -44,9 +47,10 @@ function MyDropDown() {
       );
       /* 로그인 상태 변경 & main 페이지로 이동 */
       dispatch(logout());
-      navigate('/main');
+      // navigate('/main');
       dispatch(setScrollCount(0));
       resetTarget();
+      navigate('/main');
       console.log(target);
     } catch (err) {
       console.log(err);
@@ -60,9 +64,17 @@ function MyDropDown() {
     dispatch(setTargetArticle({}));
     dispatch(setArticleRendered(false));
     dispatch(setArticleCurPage(1));
-    console.log(target);
-    
-    /* 내가 쓴 게시물 axios 테스트 */
+    console.log(target);    
+  };
+
+  // 마이페이지 버튼을 누르면, 다음이 실행된다
+  const handleMypageBtn = async () => {
+
+    console.log('---------------------------------')
+    console.log('---- handleMypageBtn 확인 ----')
+    console.log('---------------------------------')
+
+    // 내가 쓴 게시물 axios 테스트
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=1`,
       { withCredentials: true },
@@ -71,6 +83,7 @@ function MyDropDown() {
     dispatch(getArticleInfo(response.data.data));
     dispatch(getMyArticleTotalPage(response.data.data.totalPage));
 
+    /**********************************************************/
     // 내가 쓴 댓글(콘서트 게시물) axios 테스트
     const responseMyConcertComment = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
@@ -88,12 +101,18 @@ function MyDropDown() {
         responseMyConcertComment.data.data.totalConcertComment,
       ),
     );
+    // 전체 페이지가 0이 아니라면, 항상 마이페이지에 진입했을 때 내가 쓴 댓글의 현재페이지는 1이다
+    if(responseMyConcertComment.data.data.totalPage !== 0) dispatch(getMyConcertCommentCurrentPage(1))
 
     // 내가 쓴 댓글(콘친 게시물) axios 테스트
     const responseMyArticleComment = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
       { withCredentials: true },
     );
+    
+    console.log('---------------------------------')
+    console.log(responseMyArticleComment.data.data)
+    console.log('---------------------------------')
 
     dispatch(getMyArticleCommentInfo(responseMyArticleComment.data.data));
     dispatch(
@@ -107,6 +126,12 @@ function MyDropDown() {
       ),
     );
     dispatch(getCommentBtnType('콘서트'));
+
+    dispatch(getBtnSwitchState({
+      profileEdit: false,
+      conchinCertification: false,
+      userResign: false
+    }))
   };
 
   return (
@@ -119,7 +144,7 @@ function MyDropDown() {
         <div id={scrollCount < 0.5 ? 'modal' : 'downedModal'}>
           <div id='myMenuWrapper'>
             <Link to='/mypage' className='menus' onClick={resetTarget}>
-              <p>마이페이지</p>
+              <p onClick={() => handleMypageBtn()}>마이페이지</p>
             </Link>
             <Link to='/main' className='menus' onClick={() => logoutHandler()}>
               <p>로그아웃</p>
