@@ -6,11 +6,11 @@ import { RootState } from '../../index';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { getArticleInfo, getMyArticleTotalPage } from '../../store/MySlice';
+import { getArticleInfo, getMyArticleTotalPage, getMyArticleCommentCurrentPage } from '../../store/MySlice';
 
 function MyArticlePagination() {
 
-  const { articleInfo, myArticleTotalPage } = useSelector((state: RootState) => state.my);
+  const { articleInfo, myArticleTotalPage, myArticleCommentCurrentPage } = useSelector((state: RootState) => state.my);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,6 +37,9 @@ function MyArticlePagination() {
     dispatch(getArticleInfo(response.data.data))
     dispatch(getMyArticleTotalPage(response.data.data.totalPage))
     /* 내가 쓴 게시물 axios 테스트 */
+    
+    // (나의 게시글) 현재 선택된 페이지 업데이트
+    dispatch(getMyArticleCommentCurrentPage(pageNum))
   } 
 
   return (
@@ -45,7 +48,7 @@ function MyArticlePagination() {
         pageArr.length > 0
         ? pageArr.map((el: number) => {
           return (
-          <ul className='page' onClick={() => handlePageClick(el)}>
+          <ul className={ myArticleCommentCurrentPage === el ? 'pageChosen' : 'page' } onClick={() => handlePageClick(el)}>
             <p className='text'> {el} </p>
           </ul>
           )

@@ -48,7 +48,7 @@ function ConcertBox( { concert }: concertProps ) {
       const gap = targetDay.getTime() - today.getTime();
       const count = Math.ceil(gap / (1000 * 60 * 60 * 24));
       /* 남은 일수에 따라 디데이 리턴 */
-      if(count === 1) return 'D';
+      if(count === 1) return 'D-0';
       else if(count < 1) return '';
       else return 'D-'+(count-1);
     }

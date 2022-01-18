@@ -6,20 +6,21 @@ import KakaoMap from '../../ConcertPage/KakaoMap';
 /* Store import */
 import { RootState } from '../../../index';
 import { showConcertModal } from '../../../store/ModalSlice';
+import { setIsRendering, setMainToConcert, setOrder, setTarget, setTargetIdx } from '../../../store/MainSlice';
+import { setPageNum } from '../../../store/ConcertCommentSlice';
 /* Library import */
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setTarget } from '../../../store/MainSlice';
+
 
 function ConcertModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { target } = useSelector((state: RootState) => state.main);
+  const { target, allConcerts } = useSelector((state: RootState) => state.main);
   
   useEffect(() => {
   }, [target]);
-  console.log(target);
 
   /* D-DAY 계산기 */
   const dayCalculator = (openDate?: Date): string => {
@@ -52,8 +53,12 @@ function ConcertModal() {
     return '';
   }
 
-  /* 자세히 보기 버튼 클릭 핸들러 */
+  /* 자세히 보기 버튼 클릭 핸들러 (현재 target Concert 상태로 mainPage 이동) */
   const moveMainHandler = () => {
+    dispatch(setMainToConcert(true));
+    dispatch(setIsRendering(false));
+    dispatch(setPageNum(0));
+    dispatch(setTargetIdx(allConcerts.findIndex(concert => concert.id === target.id)));
     dispatch(showConcertModal(false));
     navigate('/main');
   }

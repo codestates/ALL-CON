@@ -9,7 +9,12 @@ import emailOff from '../../images/email3.png';
 import returnImg from '../../images/return.png';
 /* Store import */
 import { RootState } from '../../index';
-import { setTarget, setEmailClick, setSmsClick } from '../../store/MainSlice';
+import {
+  setEmailClick,
+  setSmsClick,
+  setDetail,
+  setTarget,
+} from '../../store/MainSlice';
 import {
   showAlertModal,
   insertAlertText,
@@ -19,6 +24,7 @@ import {
   showEmailAlarmModal,
   showSmsAlarmModal,
   insertAlarmText,
+  showConcertModal,
 } from '../../store/ModalSlice';
 /* Library import */
 import axios from 'axios';
@@ -29,13 +35,19 @@ import { useState, useEffect } from 'react';
 function MainConcertInfo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { targetIdx, target, detail } = useSelector(
-    (state: RootState) => state.main,
+  const {
+    mainToConcert,
+    targetIdx,
+    target,
+    detail,
+    order,
+    emailClick,
+    smsClick,
+  } = useSelector((state: RootState) => state.main);
+  const { pageAllComments } = useSelector(
+    (state: RootState) => state.concertComments,
   );
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { order } = useSelector((state: RootState) => state.main);
-  const { emailClick } = useSelector((state: RootState) => state.main);
-  const { smsClick } = useSelector((state: RootState) => state.main);
 
   const [alarmType, setAlarmType] = useState('');
   // const [emailClick, setEmailClick] = useState(false);
@@ -56,7 +68,7 @@ function MainConcertInfo() {
 
   useEffect(() => {
     getPosterInfo();
-  }, [order, targetIdx]);
+  }, [order, targetIdx, pageAllComments]);
 
   useEffect(() => {
     getAllAlarms();
@@ -69,7 +81,7 @@ function MainConcertInfo() {
         { withCredentials: true },
       );
       if (res.data.data) {
-        dispatch(setTarget(res.data.data.concertInfo));
+        dispatch(setDetail(res.data.data.concertInfo));
       }
     } catch (err) {
       console.log(err);
@@ -130,11 +142,11 @@ function MainConcertInfo() {
   };
 
   //해당 콘서트에서 한번도 알람 설정한적 없을때 알람
-  const getAlarm = async () => {
+  const getAlarm = async (test: string) => {
     try {
-      console.log('알람타입>>>', alarmType);
+      console.log('알람타입>>>', test);
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${alarmType}`,
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${test}`,
         {},
         { withCredentials: true },
       );
@@ -184,7 +196,7 @@ function MainConcertInfo() {
       } else {
         setAlarmType('email');
         //알람 새로 요청함
-        getAlarm();
+        getAlarm('email');
         dispatch(insertBtnText('확인'));
         dispatch(
           insertAlertText(`${target.title} 이메일 알림이 설정되었습니다! 🙂`),
@@ -217,7 +229,7 @@ function MainConcertInfo() {
         } else {
           //알람 설정을 이전에 한 적이 없다. 이번에 처음 알람 등록한다.
           setAlarmType('phone');
-          getAlarm();
+          getAlarm('phone');
           dispatch(insertBtnText('확인'));
           dispatch(
             insertAlertText(`${target.title} sms 알림이 설정되었습니다! 🙂`),
@@ -232,12 +244,17 @@ function MainConcertInfo() {
     <div id='mainConcertInfoBox'>
       <div id='topBox'>
         <div id='roofArea'>
-          <img
-            id='backBtn'
-            src={returnImg}
-            alt='콘서트페이지 돌아가기 버튼'
-            onClick={() => navigate('/concert')}
-          />
+          {mainToConcert && (
+            <img
+              id='backBtn'
+              src={returnImg}
+              alt='콘서트페이지 돌아가기 버튼'
+              onClick={() => {
+                dispatch(showConcertModal(true));
+                navigate('/concert');
+              }}
+            />
+          )}
         </div>
         <div id='fromWhereBox'>
           {detail.exclusive === '인터파크' && (
@@ -359,11 +376,14 @@ function MainConcertInfo() {
             </button>
           )}
           {detail && (
-            <a id='yellow-btn' href={detail.link}>
+            <a id='yellow-btn' href={detail.link} target='_blank'>
               예매하기
             </a>
           )}
         </div>
+      </div>
+      <div id='bottomBox'>
+        <div>{detail.total_comment}개의 댓글</div>
       </div>
     </div>
   );
