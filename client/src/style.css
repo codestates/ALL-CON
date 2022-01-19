@@ -652,20 +652,22 @@ a {
           justify-content: center;
           color: #a0a0a0;
           font-weight: bold;
-          width: 45%;
           height: 100%;
           cursor: pointer;
           border: 1px solid #c4c4c4; }
           @media (max-width: 767px) {
             #commentBox .box .dateBox .optionWrapper .optionBtn {
+              width: 50%;
               border-radius: 3px;
               font-size: 0.15rem; } }
           @media (min-width: 768px) {
             #commentBox .box .dateBox .optionWrapper .optionBtn {
+              width: 45%;
               border-radius: 3px;
               font-size: 0.3rem; } }
           @media (min-width: 1200px) {
             #commentBox .box .dateBox .optionWrapper .optionBtn {
+              width: 45%;
               border-radius: 5px;
               font-size: 1rem; } }
         #commentBox .box .dateBox .optionWrapper :hover {
@@ -5682,7 +5684,7 @@ a {
     align-items: center; }
     @media (max-width: 767px) {
       #mainContainer #mainCommentWrapper {
-        top: 120%;
+        top: 135%;
         width: 100%;
         height: 60%; } }
     @media (min-width: 768px) {
@@ -5705,7 +5707,7 @@ a {
     height: 5%; }
     @media (max-width: 767px) {
       #mainContainer #mainPaginationWrapper {
-        top: 165%; } }
+        top: 175%; } }
     @media (min-width: 768px) {
       #mainContainer #mainPaginationWrapper {
         top: 185%; } }
@@ -5717,7 +5719,7 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #mainContainer #mainFindConchinWrapper {
-        top: 170%;
+        top: 190%;
         height: 40%; } }
     @media (min-width: 768px) {
       #mainContainer #mainFindConchinWrapper {
@@ -5736,7 +5738,7 @@ a {
       #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 30%;
-        top: 210%; } }
+        top: 240%; } }
     @media (min-width: 768px) {
       #mainContainer #fullFooter, #mainContainer #conChinContainer #fullFooterChosen, #conChinContainer #mainContainer #fullFooterChosen, #mainContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #mainContainer #fullFooterArticleNotChosen {
         width: 100%;
@@ -5780,28 +5782,6 @@ a {
       height: 85%;
       padding-bottom: 20%; } }
 
-#jumboMiniContainer {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.9); }
-  @media (max-width: 767px) {
-    #jumboMiniContainer {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center; } }
-  @media (min-width: 768px) {
-    #jumboMiniContainer {
-      position: absolute;
-      width: 100%;
-      height: 100%; } }
-  @media (min-width: 1200px) {
-    #jumboMiniContainer {
-      position: absolute;
-      width: 100%;
-      height: 100%; } }
-
 .jumboTopBox {
   position: absolute;
   top: 0;
@@ -5809,7 +5789,24 @@ a {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); }
+  @media (max-width: 767px) {
+    .jumboTopBox {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; } }
+  @media (min-width: 768px) {
+    .jumboTopBox {
+      position: absolute;
+      width: 100%;
+      height: 100%; } }
+  @media (min-width: 1200px) {
+    .jumboTopBox {
+      position: absolute;
+      width: 100%;
+      height: 100%; } }
   .jumboTopBox #jumboTextsAlignBox {
     position: relative;
     width: 100%;
@@ -5827,10 +5824,10 @@ a {
       justify-content: space-between; }
       @media (max-width: 767px) {
         .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
-          width: 200px; } }
+          width: 210px; } }
       @media (min-width: 768px) {
         .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
-          width: 380px; } }
+          width: 400px; } }
       @media (min-width: 1200px) {
         .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
           width: 600px; } }
@@ -6018,47 +6015,6 @@ a {
   width: 100%;
   height: 100%; }
 
-#crownWrapper {
-  z-index: 11;
-  position: absolute;
-  transform: translate(-50%, -50%); }
-  @media (max-width: 767px) {
-    #crownWrapper {
-      width: 40px;
-      height: 40px;
-      top: 24%;
-      left: 38%;
-      padding-bottom: 2%; } }
-  @media (min-width: 768px) {
-    #crownWrapper {
-      width: 65px;
-      height: 65px;
-      top: 8%;
-      left: 40%;
-      padding-bottom: 2%; } }
-  @media (min-width: 1200px) {
-    #crownWrapper {
-      width: 70px;
-      height: 70px;
-      top: 8%;
-      left: 41%;
-      padding-bottom: 2%; } }
-  @media (max-width: 767px) {
-    #crownWrapper #posterCrown {
-      width: 100%;
-      height: 100%; } }
-  @media (min-width: 768px) {
-    #crownWrapper #posterCrown {
-      width: 55px;
-      height: 55px; } }
-  @media (min-width: 1200px) {
-    #crownWrapper #posterCrown {
-      width: 65px;
-      height: 65px; } }
-  #crownWrapper #posterCrownDown {
-    width: 0;
-    height: 0; }
-
 .posterImg {
   position: absolute;
   width: 100%;
@@ -6089,7 +6045,7 @@ a {
     #posterWrapper1 {
       width: 29%;
       height: 55%;
-      top: 60%;
+      top: 55%;
       left: 15%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
@@ -6117,7 +6073,7 @@ a {
       width: 29%;
       height: 60%;
       padding-bottom: 30%;
-      top: 60%;
+      top: 55%;
       left: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper2 {
@@ -6131,7 +6087,7 @@ a {
       width: 20%;
       height: 75%;
       padding-bottom: 20%;
-      top: 57.5%;
+      top: 50%;
       left: 40%; } }
 
 /*가운데*/
@@ -6188,7 +6144,7 @@ a {
     #posterWrapper3 {
       width: 33%;
       height: 70%;
-      top: 60%;
+      top: 55%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper3 {
@@ -6212,7 +6168,7 @@ a {
     #posterWrapper4 {
       width: 29%;
       height: 60%;
-      top: 60%;
+      top: 55%;
       left: 70%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
@@ -6226,7 +6182,7 @@ a {
     #posterWrapper4 {
       width: 20%;
       height: 75%;
-      top: 57.5%;
+      top: 50%;
       left: 60%;
       padding-bottom: 20%; } }
 
@@ -6239,7 +6195,7 @@ a {
     #posterWrapper5 {
       width: 29%;
       height: 55%;
-      top: 60%;
+      top: 55%;
       left: 85%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
@@ -6277,6 +6233,8 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #mainConcertInfoBox #topBox {
+        position: relative;
+        top: 8%;
         justify-content: space-between;
         height: 35%; } }
     @media (min-width: 768px) {
@@ -6421,6 +6379,8 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #mainConcertInfoBox #middleBox {
+        position: relative;
+        top: 13%;
         height: 70%; } }
     @media (min-width: 768px) {
       #mainConcertInfoBox #middleBox {
@@ -6492,6 +6452,9 @@ a {
                   font-size: 2rem; } }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
               height: 10%; }
+              @media (max-width: 767px) {
+                #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #place {
+                  height: 15%; } }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #date {
               height: 25%; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #time {
@@ -6502,6 +6465,15 @@ a {
               height: 25%; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #alarm {
               height: 20%; }
+            @media (max-width: 767px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #showPlace {
+                height: 10%; } }
+            @media (min-width: 768px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #showPlace {
+                display: none; } }
+            @media (min-width: 1200px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #showPlace {
+                display: none; } }
           #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side {
             position: absolute;
             top: 0;
@@ -6522,12 +6494,18 @@ a {
               display: flex;
               justify-content: flex-start;
               height: 10%; }
+              @media (max-width: 767px) {
+                #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
+                  height: 15%; } }
               @media (min-width: 768px) {
                 #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
                   width: 120%; } }
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img {
                 width: 30px;
                 height: 30px; }
+                @media (max-width: 767px) {
+                  #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img {
+                    display: none; } }
                 @media (min-width: 768px) {
                   #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img {
                     position: relative;
@@ -6538,6 +6516,8 @@ a {
                     position: relative;
                     top: 0%;
                     margin-left: 2%; } }
+                #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r img:hover {
+                  cursor: pointer; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #date_r {
               height: 25%; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #time_r {
@@ -6562,9 +6542,27 @@ a {
                   #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2, #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
                     left: 5%;
                     width: 40px; } }
+                #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #mailIcon2:hover, #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2:hover {
+                  cursor: pointer; }
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2 {
                 left: 10%;
                 top: 3%; }
+                #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2:hover {
+                  cursor: pointer; }
+            @media (max-width: 767px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #showPlace_r {
+                height: 10%; } }
+            @media (min-width: 768px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #showPlace_r {
+                display: none; } }
+            @media (min-width: 1200px) {
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #showPlace_r {
+                display: none; } }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #showPlace_r img {
+              width: 30px;
+              height: 30px; }
+              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #showPlace_r img:hover {
+                cursor: pointer; }
     #mainConcertInfoBox #middleBox #buttonsWrapper {
       display: flex;
       flex-direction: column;
@@ -6656,6 +6654,10 @@ a {
     width: 100%;
     bottom: 0%;
     height: 5%; }
+    @media (max-width: 767px) {
+      #mainConcertInfoBox #bottomBox {
+        position: relative;
+        top: 26%; } }
     #mainConcertInfoBox #bottomBox img {
       display: flex;
       height: 100%; }
@@ -8763,12 +8765,12 @@ a {
       background-color: #fff; }
       @media (max-width: 767px) {
         #AlarmModalContainer #alertBackground #alertModal {
-          width: 60%;
-          height: 50%;
+          width: 70%;
+          height: 30%;
           border-radius: 20px; } }
       @media (min-width: 768px) {
         #AlarmModalContainer #alertBackground #alertModal {
-          width: 25%;
+          width: 40%;
           height: 30%;
           border-radius: 20px; } }
       @media (min-width: 1200px) {
@@ -8823,6 +8825,9 @@ a {
           width: 90%;
           height: 40%;
           white-space: pre-wrap; }
+          @media (max-width: 767px) {
+            #AlarmModalContainer #alertBackground #alertModal #alignContainer #midBox p {
+              font-size: 1.3rem; } }
         #AlarmModalContainer #alertBackground #alertModal #alignContainer #bottomBox {
           display: flex;
           justify-content: space-between;
@@ -8901,8 +8906,8 @@ a {
           height: 100%; } }
       @media (min-width: 768px) {
         #MainKakaoModalContainer #alertBackground #alertModal {
-          width: 25%;
-          height: 30%;
+          width: 60%;
+          height: 70%;
           border-radius: 20px; } }
       @media (min-width: 1200px) {
         #MainKakaoModalContainer #alertBackground #alertModal {
@@ -8977,7 +8982,7 @@ a {
                   font-size: 1.7rem; } }
               @media (min-width: 768px) {
                 #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop .fontMatch2 {
-                  font-size: 1.3rem; } }
+                  font-size: 2rem; } }
               @media (min-width: 1200px) {
                 #MainKakaoModalContainer #alertBackground #alertModal #alignContainer #topBox #alignTop .fontMatch2 {
                   font-size: 2rem; } }

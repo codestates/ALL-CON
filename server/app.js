@@ -29,7 +29,7 @@ const autoConcertCleaner = schedule.scheduleJob(
 
 /* Auto Crawling */
 const autoCrawling = schedule.scheduleJob(
-  '00 21 6 * * *',
+  '00 16 23 * * *',
   async () => {
     console.log('ec2 테스트')
     await crawler()
