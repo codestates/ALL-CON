@@ -9,44 +9,28 @@ import couple from '../images/couple.png';
 function LandingPosterSlide() {
   return (
     <div className='posterContainer'>
-      <div id='crownWrapper'>
-        <img id='posterCrown' src={crown} alt='왕관아이콘'></img>
+      <div id='posterWrapper1'>
+        <img alt='포스터' src={jh2} className='posterImg' id='poster'></img>
+        <div className='posterCover2'></div>
       </div>
-
-      <>
-        <div id='posterWrapper1'>
-          <img alt='포스터' src={jh2} className='posterImg' id='poster'></img>
-          <div className='posterCover2'></div>
+      <div id='posterWrapper2'>
+        <img alt='포스터' src={chris} className='posterImg' id='poster'></img>
+        <div className='posterCover'></div>
+      </div>
+      <div id='posterWrapper3'>
+        <img alt='포스터' src={jiyoung} className='posterImg' id='poster'></img>
+        <div className='dDay'>
+          <p>D-5</p>
         </div>
-        <div id='posterWrapper2'>
-          <img alt='포스터' src={chris} className='posterImg' id='poster'></img>
-          <div className='posterCover'></div>
-        </div>
-        <div id='posterWrapper3'>
-          <img
-            alt='포스터'
-            src={jiyoung}
-            className='posterImg'
-            id='poster'
-          ></img>
-          <div className='dDay'>
-            <p>D-5</p>
-          </div>
-        </div>
-        <div id='posterWrapper4'>
-          <img alt='포스터' src={yoo} className='posterImg' id='poster'></img>
-          <div className='posterCover'></div>
-        </div>
-        <div id='posterWrapper5'>
-          <img
-            alt='포스터'
-            src={couple}
-            className='posterImg'
-            id='poster'
-          ></img>
-          <div className='posterCover2'></div>
-        </div>
-      </>
+      </div>
+      <div id='posterWrapper4'>
+        <img alt='포스터' src={yoo} className='posterImg' id='poster'></img>
+        <div className='posterCover'></div>
+      </div>
+      <div id='posterWrapper5'>
+        <img alt='포스터' src={couple} className='posterImg' id='poster'></img>
+        <div className='posterCover2'></div>
+      </div>
     </div>
   );
 }

@@ -14,9 +14,12 @@
     padding-bottom: 20%;
   }
 }
-
-#jumboMiniContainer {
+.jumboTopBox {
   position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
@@ -36,16 +39,6 @@
     width: 100%;
     height: 100%;
   }
-}
-
-.jumboTopBox {
-  position: absolute;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  height: 100%;
   #jumboTextsAlignBox {
     position: relative;
     width: 100%;
@@ -64,10 +57,10 @@
       justify-content: space-between;
       // border: 1px solid yellow;
       @include mobile-only() {
-        width: 200px;
+        width: 210px;
       }
       @include md() {
-        width: 380px;
+        width: 400px;
       }
       @include lg() {
         width: 600px;
@@ -218,10 +211,10 @@
       @include lg() {
         width: 60px;
       }
-      cursor: pointer
+      cursor: pointer;
     }
-    & :active{
-      border: solid rgba(0,0,0,0);
+    & :active {
+      border: solid rgba(0, 0, 0, 0);
       @include mobile-only() {
         width: 5px;
       }

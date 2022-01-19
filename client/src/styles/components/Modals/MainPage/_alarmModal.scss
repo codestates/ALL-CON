@@ -49,12 +49,12 @@
       // border: 1px solid red;
       @include mobile-only() {
         // position: absolute;
-        width: 60%;
-        height: 50%;
+        width: 70%;
+        height: 30%;
         border-radius: 20px;
       }
       @include md() {
-        width: 25%;
+        width: 40%;
         height: 30%;
         border-radius: 20px;
       }
@@ -118,6 +118,11 @@
           height: 40%;
           white-space: pre-wrap;
           // border: 1px solid red;
+          p {
+            @include mobile-only() {
+              font-size: 1.3rem;
+            }
+          }
         }
         #bottomBox {
           display: flex;

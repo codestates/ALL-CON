@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: center;
     width: 72%;
+    // border: 1px solid red;
     @include mobile-only() {
       font-size: 1.6rem;
     }
