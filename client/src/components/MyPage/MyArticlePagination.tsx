@@ -23,17 +23,12 @@ function MyArticlePagination() {
   // 내가 쓴 게시물 페이지를 클릭헀을 때, 다음을 실행한다
   const handlePageClick = async (pageNum: number) => {
 
-    console.log('페이지를 클릭했습니다!', pageNum)
-
     /* 내가 쓴 게시물 axios 테스트 */
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=${pageNum}`,
       { withCredentials: true },
       );
 
-    
-    console.log(response.data.data)
-    
     dispatch(getArticleInfo(response.data.data))
     dispatch(getMyArticleTotalPage(response.data.data.totalPage))
     /* 내가 쓴 게시물 axios 테스트 */

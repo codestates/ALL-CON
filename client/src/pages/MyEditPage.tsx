@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 /* CSS import */
 import profileImage from '../../../images/taeyang.png';
 import camera from '../../../images/camera.png';
+import check from '../images/check.png';
 /* Store import */
 import { RootState } from '../index';
 import { logout, getUserInfo } from '../store/AuthSlice';
@@ -43,9 +44,11 @@ function MyEditPage() {
 
    // 닉네임 중복 여부 판단 상태
    const [isPassDuplication, setIsPassDuplication] = useState<boolean>(false);
+   // 중복확인 버튼 클릭 유무 판단 상태
+   const [duplicationBtn, setDuplicationBtn] = useState<boolean>(false);
 
    // 유효성 검사 상태
-   const [nameErr, setNameErr] = useState<boolean>(false);
+   const [nameErr, setNameErr] = useState<boolean>(true);
    const [passwordErr, setPasswordErr] = useState<boolean>(false);
    const [confirmPasswordErr, setConfirmPasswordErr] = useState<boolean>(false);
    
@@ -59,12 +62,15 @@ function MyEditPage() {
     if(userInfo.sign_method !== 'allcon') {
       setActivationPasswrd(false);
     }
+    setActivationPasswrd(true);
   }, [])
 
   /* handler 함수 (기능별 정렬) */
 
   // 인풋 입력 핸들러
   const inputValueHandler = (key: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+
+    if(key === 'username') setDuplicationBtn(false)
 
     const info = { ...changeUserInfo, [key]: e.target.value };
     setChangeUserInfo(info);
@@ -75,22 +81,16 @@ function MyEditPage() {
 
   // 입력값 유효성 검사 핸들러
   const isAllValid = (changeUserInfo: ChangeUserInfo): boolean => {
-    // const { username, password, confirmPassword } = changeUserInfo;
     // allcon으로 회원가입한 경우, 닉네임, 비밀번호 변경, 비밀번호 확인을 check
     if(activationPassword) {
-      // nameErrCheck(username);
-      // passwordErrCheck(password);
-      // confirmPasswordErrCheck(password, confirmPassword);
-
+      if(changeUserInfo.username === '') return nameErr && passwordErr && confirmPasswordErr ? true : false;
       // 닉네임 유효성, 닉네임 중복여부, 비밀번호 유효성, 비밀번호 확인 유효성
-      return nameErr && isPassDuplication && passwordErr && confirmPasswordErr ? true : false;
+      else return nameErr && isPassDuplication && passwordErr && confirmPasswordErr ? true : false;
     } 
     // 구글 혹은 카카오톡으로 로그인 한 경우, 다음을 실행한다
     else {
-      // 닉네임 유효성검사
-      // nameErrCheck(username);
-      
-      return nameErr && isPassDuplication ? true : false;
+      if(changeUserInfo.username === '') return nameErr    
+      else return nameErr && isPassDuplication ? true : false;
     }
   };
 
@@ -98,7 +98,7 @@ function MyEditPage() {
   const resetInput = () => {
     setChangeUserInfo({
       introduction: '',
-      username: '',
+      username: `${userInfo.username}`,
       password: '',
       confirmPassword: ''
     });
@@ -116,14 +116,17 @@ function MyEditPage() {
     // 닉네임 유효성검사 정규식
     const usernameExp = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{1,10}$/;
     if (username === ''){
+      console.log('여기인가?#1', username)
       setNameErr(false);
       return
     }
     // 닉네임 유효성검사를 통과한 경우, nameErr 상태를 true로 변경
     if (usernameExp.test(username)){
+      console.log('여기인가?#2', username)
       setNameErr(true);
       return 
     }
+    console.log('여기인가?#3', username)
     setNameErr(false);
     return
   };
@@ -162,9 +165,12 @@ function MyEditPage() {
   // 닉네임 중복확인 핸들러
   const duplicationHandler = async () => {
     try {
+      setDuplicationBtn(true)
+      setActivationPasswrd(true)
+
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/username`,
-        { username: changeUserInfo.username },
+        `${process.env.REACT_APP_API_URL}/user/username`,
+        { username: changeUserInfo.username || userInfo.username },
         { withCredentials: true }
       );
 
@@ -199,6 +205,7 @@ function MyEditPage() {
   // [PATCH] 변경 완료 버튼 핸들러
   const changeUserProfileHandler = async () => {
     try {
+      console.log('----- 중복확인 버튼 체크 ------')
       let finalIntroduction = myIntroduction.replace(' ', '')
       // 만약 변경된 유저의 정보가 모두 유효하다면, 다음을 실행한다
       if (isAllValid(changeUserInfo)) {
@@ -206,7 +213,7 @@ function MyEditPage() {
               `${process.env.REACT_APP_API_URL}/user/me`,
               { 
                 introduction: finalIntroduction,
-                username: changeUserInfo.username, 
+                username: changeUserInfo.username || userInfo.username, 
                 password: changeUserInfo.password 
               },
               { withCredentials: true }
@@ -284,11 +291,23 @@ function MyEditPage() {
               <p className='title'>닉네임</p>
             </div>
             <div id='nickNameBox'>
-              <input type='text' id='nickName' value={changeUserInfo.username} onChange={inputValueHandler('username')} onKeyPress={onKeyPress}/>
-              <div>
-                <button onClick={duplicationHandler}> 중복확인 </button>
-              </div>
+              <input type='text' id='nickName' placeholder={userInfo.username} value={changeUserInfo.username} onChange={inputValueHandler('username')} onKeyPress={onKeyPress}/>
+              <img
+                  id={isPassDuplication ? 'checkImg' : 'hidden'}
+                  src={check}
+                />
+              <div id='duplicationCheck' onClick={duplicationHandler}> 중복확인 </div>
             </div>
+            {changeUserInfo.username === '' || changeUserInfo.username === userInfo.username
+              ? null
+              : nameErr
+                ? duplicationBtn
+                  ? isPassDuplication
+                    ? <div id='nicknamePass'>사용가능한 닉네임입니다.</div> 
+                    : <div id='nicknameErr'>이미 사용중인 닉네임입니다.</div> 
+                  : <div id='nicknameErr'>닉네임 중복확인을 눌러주세요.</div> 
+                : <div id='nicknameErr'>사용할 수 없는 닉네임입니다.</div>
+            }
           </div>
           <div id='resetBox'>
             <div id='titleWrapper'>
@@ -296,8 +315,12 @@ function MyEditPage() {
             </div>
             {
               activationPassword
-              ? <input type='password' className='reset' value={changeUserInfo.password} onChange={inputValueHandler('password')} />
-              : <input type='password' className='reset' placeholder='비밀번호 변경 구글 확인' disabled />
+              ? <input type='password' placeholder='비밀번호를 입력해주세요.' className='reset' value={changeUserInfo.password} onChange={inputValueHandler('password')} />
+              : <input type='password' className='reset' placeholder='비밀번호를 변경할 수 없습니다.' disabled />
+            }
+            {passwordErr
+              ? <div id='passwordPass'> 사용가능한 비밀번호입니다. </div>
+              : <div id='passwordErr'> 비밀번호는 영문, 숫자만 가능하며 6~12자리로 입력해야 합니다. </div>
             }
           </div>
           <div id='confirmBox'>
@@ -306,14 +329,18 @@ function MyEditPage() {
             </div>
             {
               activationPassword
-              ? <input type='password' className='confirm' value={changeUserInfo.confirmPassword} onChange={inputValueHandler('confirmPassword')} />
-              : <input type='password' className='confirm' placeholder='비밀번호 확인 구글 확인' disabled />
+              ? <input type='password' placeholder='비밀번호를 확인해주세요.' className='confirm' value={changeUserInfo.confirmPassword} onChange={inputValueHandler('confirmPassword')} />
+              : <input type='password' className='confirm' placeholder='비밀번호를 변경할 수 없습니다.' disabled />
+            }
+            {confirmPasswordErr
+              ? <div id='confirmPasswordPass'> 비밀번호가 일치합니다. </div>
+              : <div id='confirmPasswordErr'> 비밀번호가 일치하지 않습니다. </div>
             }
           </div>
           <div id='btnBox'>
             <div id='btnWrapper'>
-              <button className='completeBtn' onClick={changeUserProfileHandler} >변경 완료</button>
-              <button className='cancelBtn' onClick={() => {handleCloseBtn()}} >취소</button>
+              <button className='completeBtn' onClick={changeUserProfileHandler}>변경 완료</button>
+              <button className='cancelBtn' onClick={() => {handleCloseBtn()}}>취소</button>
             </div>
           </div>
         </div>

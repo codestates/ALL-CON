@@ -17,8 +17,6 @@ import {
   getMyArticleCommentCurrentComment, 
   getMyTotalArticleComment,
   getMyArticleCommentTotalPage,
- 
-
 } from '../../store/MySlice';
 import { showAlertModal, insertAlertText, insertBtnText, showSuccessModal } from '../../store/ModalSlice';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
@@ -53,8 +51,6 @@ function MyCommentBox() {
     myArticleCommentCurrentComment
   } = useSelector((state: RootState) => state.my);
   
-  console.log('(콘친 게시글 댓글) 총 댓글수', myTotalArticleComment)
-
    /* 지역상태 - useState */
    /* useEffect */
    const [commentClick, setCommentClick] = useState<boolean>(false)
@@ -158,8 +154,6 @@ function MyCommentBox() {
             { content: editComment || currentContent },
             { withCredentials: true },
             );
-            
-            console.log('---- 콘친 게시물 댓글 수정 확인 확인!!! 11111--- ', myArticleCommentCurrentPage)
 
             // 주의! 비효율적인 코드... 리팩토링이 필요함
             // 내가 쓴 댓글(콘서트 게시물) axios 테스트

@@ -157,6 +157,7 @@
             position: relative;
             height: 60%;
             width: 30%;
+            background-color: white;
             border: 1px solid $gray2;
             border-radius: 5px;
             padding-left: 2%;
@@ -320,8 +321,8 @@
             .checkImg {
               position: absolute;
               right: 31%;
-              height: 46%;
-              width: 6%;
+              height: 39%;
+              width: 5%;
               // border: 3px solid blue;
             }
             .hidden {

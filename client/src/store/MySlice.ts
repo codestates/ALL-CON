@@ -10,6 +10,10 @@ export interface my {
   myIntroductionState: boolean;
   myIntroduction: string;
   /* 자기소개 */
+
+  /* 프로필 미리보기 이미지 */
+  previewImage?: string;
+  /* 프로필 미리보기 이미지 */
   commentBtnType: string;
 
   myArticleTotalPage: number;
@@ -66,6 +70,9 @@ export interface my {
 const initialState: my = { 
   myIntroductionState: false, 
   myIntroduction: '', 
+
+  previewImage: '',
+
   commentBtnType: '콘서트',
 
   articleInfo: {}, 
@@ -97,6 +104,9 @@ const mySlice = createSlice({
     getMyIntroduction: (state: my, { payload }: PayloadAction<string>) => { 
       state.myIntroduction = payload;
     },  
+    getPreviewImage: (state: my, { payload }: PayloadAction<string | undefined>) => { 
+      state.previewImage = payload;
+    },
     getCommentBtnType: (state: my, { payload }: PayloadAction<string>) => { 
       state.commentBtnType = payload;
     },
@@ -145,6 +155,8 @@ const mySlice = createSlice({
 export const { 
   setMyIntroductionState, 
   getMyIntroduction, 
+
+  getPreviewImage,
 
   getCommentBtnType,
   getArticleInfo, 

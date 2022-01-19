@@ -212,6 +212,8 @@
           .input {
             width: 80%;
             height: 50%;
+            font-size: 1.8rem;
+            font-weight: bold;
             padding-left: 2%;
             border: 1px solid $gray;
             border-radius: 5px;
@@ -221,7 +223,8 @@
             display: flex;
             font-weight: bold;
             color: red;
-            right: 13%;
+            right: 12.5%;
+            top:33.5%;
             @include mobile-only() {
               font-size: 1.3rem;
             }
