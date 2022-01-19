@@ -204,7 +204,7 @@
       }
       .title {
         position: absolute;
-        display: none;
+        display: flex;
         flex-wrap: wrap;
         width: 100%;
         height: 40%;
@@ -322,6 +322,7 @@
         transition: 0.15s all;
         .title {
           @extend .title;
+
           display: flex;
         }
         .thumbNail {
