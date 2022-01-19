@@ -29,6 +29,7 @@ function AutoComplete() {
     if (inputValue === '') {
       setHasText(false);
       setOptions([]);
+      setSelected(-1);
     }
 
     if (inputValue !== '') {

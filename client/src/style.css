@@ -855,7 +855,11 @@ a {
     #searchWrapper {
       display: none; } }
   #searchWrapper .search {
-    position: relative; }
+    position: relative;
+    z-index: 7;
+    border: 1px solid green; }
+    #searchWrapper .search:hover {
+      cursor: pointer; }
     @media (max-width: 767px) {
       #searchWrapper .search {
         display: flex;
@@ -990,7 +994,7 @@ a {
       width: 20rem;
       left: 2rem;
       background-color: #eaeaea;
-      border-radius: 50px; }
+      border-radius: 0px; }
     #hiddenSearchBox #searchWrapper .deleteButton, #hiddenSearchBoxhiddenSearchBoxShow #searchWrapper .deleteButton, #hiddenSearchBox #searchWrapper .deleteButtonUnShow, #hiddenSearchBoxhiddenSearchBoxShow #searchWrapper .deleteButtonUnShow {
       position: absolute;
       display: flex;
@@ -1001,10 +1005,10 @@ a {
       width: 3rem;
       height: 3rem;
       font-size: 2.5rem; }
-      #hiddenSearchBox #searchWrapper .deleteButtonUnShow, #hiddenSearchBoxhiddenSearchBoxShow #searchWrapper .deleteButtonUnShow {
-        display: none; }
       #hiddenSearchBox #searchWrapper .deleteButton:hover, #hiddenSearchBoxhiddenSearchBoxShow #searchWrapper .deleteButton:hover, #hiddenSearchBox #searchWrapper .deleteButtonUnShow:hover, #hiddenSearchBoxhiddenSearchBoxShow #searchWrapper .deleteButtonUnShow:hover {
         cursor: pointer; }
+      #hiddenSearchBox #searchWrapper .deleteButtonUnShow, #hiddenSearchBoxhiddenSearchBoxShow #searchWrapper .deleteButtonUnShow {
+        display: none; }
   #hiddenSearchBox #imgWrapper, #hiddenSearchBoxhiddenSearchBoxShow #imgWrapper {
     position: absolute;
     height: 18px;
@@ -1024,7 +1028,10 @@ a {
       height: 100%; }
   #hiddenSearchBox #dropDownWrapper, #hiddenSearchBoxhiddenSearchBoxShow #dropDownWrapper, #hiddenSearchBox #dropDownWrapperHide, #hiddenSearchBoxhiddenSearchBoxShow #dropDownWrapperHide {
     position: absolute;
-    width: 100%;
+    width: 120%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    height: 500%;
     top: 87%;
     border: 1px solid blue;
     background-color: #ffffff;
@@ -1042,7 +1049,8 @@ a {
     border-radius: 0.3rem;
     box-shadow: 2px 3px 16px 0.1px rgba(0, 0, 0, 0.1);
     transition: all 0.5px;
-    z-index: 3; }
+    z-index: 3;
+    overflow-y: scroll; }
     #hiddenSearchBox #dropDownWrapperHide, #hiddenSearchBoxhiddenSearchBoxShow #dropDownWrapperHide {
       width: 0%;
       height: 0%;
@@ -1052,9 +1060,10 @@ a {
       cursor: pointer; }
     #hiddenSearchBox #dropDownWrapper > li, #hiddenSearchBoxhiddenSearchBoxShow #dropDownWrapper > li, #hiddenSearchBox #dropDownWrapperHide > li, #hiddenSearchBoxhiddenSearchBoxShow #dropDownWrapperHide > li {
       padding: 0 0rem;
-      font-size: 1.3rem;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem; }
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 0.8rem;
+      margin-bottom: 0.8rem; }
       #hiddenSearchBox #dropDownWrapper > li.selected, #hiddenSearchBoxhiddenSearchBoxShow #dropDownWrapper > li.selected, #hiddenSearchBox #dropDownWrapperHide > li.selected, #hiddenSearchBoxhiddenSearchBoxShow #dropDownWrapperHide > li.selected {
         background-color: #ffce63; }
 

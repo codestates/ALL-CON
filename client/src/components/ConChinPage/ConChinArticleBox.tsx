@@ -116,6 +116,7 @@ function ConChinArticleBox() {
 
   /* 모든 댓글 가져오기 함수 */
   const getAllComments = async (id: number) => {
+    window.scrollTo(0, 1750);
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.get(
