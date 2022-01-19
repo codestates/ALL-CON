@@ -5,6 +5,8 @@ import logo from '../images/allConLogo.png';
 import menu from '../images/menu.png';
 import search from '../images/search.png';
 import user from '../images/user.png';
+/* Component import */
+import AutoComplete from './AutoComplete';
 /* Store import */
 import { RootState } from '../index';
 import {
@@ -36,7 +38,7 @@ import {
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Header() {
@@ -255,6 +257,7 @@ function Header() {
         >
           <img className='menu' alt='menuImg' src={menu} />
         </div>
+        <AutoComplete />
         <div id='searchWrapper'>
           <img className='search' alt='searchImg' src={search} />
         </div>
@@ -277,17 +280,6 @@ function Header() {
           <p className='menu' onClick={() => resetHandler('main')}>홈</p>
           <p className='menu' onClick={() => resetHandler('concert')}>콘서트</p>
           <p className='menu' onClick={() => resetHandler('conchin')}>콘친 찾기</p>
-        </div>
-        <div id='hiddenSearchBox'>
-          <div id='searchWrapper'>
-            <input
-              className='searchBar'
-              placeholder='검색어를 입력해주세요.'
-            ></input>
-          </div>
-          <div id='imgWrapper'>
-            <img className='img' alt='searchImg' src={search} />
-          </div>
         </div>
       </div>
     </div>

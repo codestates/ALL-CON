@@ -9,6 +9,7 @@ import {
   setTargetArticle,
   setTargetArticlesUserInfo,
 } from '../../store/ConChinSlice';
+import { setConChinPageNum } from '../../store/ConChinCommentSlice';
 import MyArticlePagination from './MyArticlePagination';
 /* Library import */
 import axios from 'axios';
@@ -62,6 +63,7 @@ function MyArticleBox() {
 
     // 현재 선택한 게시물 업데이트 (target)
     dispatch(setTargetArticle(responseArticle.data.data.articleInfo));
+    dispatch(setConChinPageNum(1));
     navigate('/conchin');
   };
 
