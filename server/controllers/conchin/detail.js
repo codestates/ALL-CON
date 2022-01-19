@@ -40,14 +40,27 @@ module.exports = {
       if (articleInfo.user_id !== userInfo.dataValues.id)
         return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
 
-      // 클라이언트로부터 전달받은 정보로 게시물 데이터를 변경한다
-      articleInfo.update({
-        title: title,
-        content: content,
-        image: image,
-        member_count: member_count,
-        total_member: total_member,
-      });
+      // 이미지가 새롭게 선택되지 않았다면, 기존 이미지를 그대로 사용한다
+      if(!image) {
+        // 클라이언트로부터 전달받은 정보로 게시물 데이터를 변경한다
+        articleInfo.update({
+          title: title,
+          content: content,
+          member_count: member_count,
+          total_member: total_member,
+        });
+      }
+      // 만약 새로운 이미지를 선택했다면, 해당 이미지로 변경한다
+      else {
+        articleInfo.update({
+          title: title,
+          content: content,
+          image: image,
+          member_count: member_count,
+          total_member: total_member,
+        });
+      }
+
       res.status(200).json({
         data: { articleInfo: articleInfo },
         message: 'Success Edit Article!',
