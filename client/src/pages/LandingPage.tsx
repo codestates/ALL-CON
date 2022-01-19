@@ -2,21 +2,23 @@
 import img1 from '../images/landingImage1.png';
 import img2 from '../images/landingImage2.png';
 import img3 from '../images/landingImage3.png';
-import jiyoung from '../images/jiyoung.jpg';
 import Footer from '../components/Footer';
 import LandingPosterSlide from '../components/LandingPosterSlide';
 /* Store import */
 import { RootState } from '../index';
-import { setAllConcerts, setTargetIdx, setTarget } from '../store/MainSlice'
+import { setAllConcerts, setTargetIdx, setTarget } from '../store/MainSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 function LandingPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { targetIdx, allConcerts } = useSelector(
-    (state: RootState, ) => state.main, 
+    (state: RootState) => state.main,
   );
 
   /* 1회만 렌더링 */
@@ -48,9 +50,6 @@ function LandingPage() {
       <div id='landingJumboWrapper'>
         {/*jumbotronBackground */}
         <div id='jumboContainer'>
-          <div id='jumboMiniContainer'>
-            <img src={jiyoung} alt='선택된 포스터' id='jumboChosen' />
-          </div>
           <div className='jumboTopBox'>
             <div className='jumboTextBox'>
               <h1 id='jumboWhat'>국내 모든 콘서트 정보를 한눈에!</h1>
@@ -132,10 +131,11 @@ function LandingPage() {
       <div id='bottomBox'>
         <div id='bottomAlignBox'>
           <div id='bottomTextBox'>
-            <p>음악 취향이 맞는 콘친과 함께</p>
-            <p>콘서트를 즐겨요!</p>
+            <p>ALL-CON에서</p>
+            <p>예매부터 동료찾기까지</p>
+            <p>한번에 해결해요!</p>
           </div>
-          <button>시작하기</button>
+          <button onClick={() => navigate('/main')}>시작하기</button>
         </div>
       </div>
       {/*바닥글*/}
