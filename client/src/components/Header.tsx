@@ -5,6 +5,8 @@ import logo from '../images/allConLogo.png';
 import menu from '../images/menu.png';
 import search from '../images/search.png';
 import user from '../images/user.png';
+/* Component import */
+import AutoComplete from '../components/Header/AutoComplete';
 /* Store import */
 import { RootState } from '../index';
 import {
@@ -240,6 +242,7 @@ function Header() {
         </div>
         <div id='searchWrapper'>
           <img className='search' alt='searchImg' src={search} />
+          <AutoComplete />
         </div>
         <div id='loginWrapper'>
           {/* 로그인 여부에 따라 프로필 이미지 혹은 로그인 버튼 출력 */}
@@ -266,17 +269,6 @@ function Header() {
           <Link to='/conchin' onClick={resetHandler}>
             <p className='menu'>콘친 찾기</p>
           </Link>
-        </div>
-        <div id='hiddenSearchBox'>
-          <div id='searchWrapper'>
-            <input
-              className='searchBar'
-              placeholder='검색어를 입력해주세요.'
-            ></input>
-          </div>
-          <div id='imgWrapper'>
-            <img className='img' alt='searchImg' src={search} />
-          </div>
         </div>
       </div>
     </div>
