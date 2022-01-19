@@ -143,7 +143,27 @@ function MainConcertInfo() {
     }
   };
 
-  /* Date 객체 형변환 */
+  /* 티켓 오픈일 마감 여부 함수 */
+  const ticketOpenCheck = (openDate?: Date): boolean => {
+    if (openDate) {
+      const strOpenDate = String(openDate);
+
+      const year = Number(strOpenDate.substring(0, 4));
+      const month = Number(strOpenDate.substring(5, 7))-1;
+      const date = Number(strOpenDate.substring(8, 10));
+      const hour = Number(strOpenDate.substring(11, 13)); // 알람 24시간전 발송
+      const minute = Number(strOpenDate.substring(14, 16));
+
+      const today = new Date();
+      const openDay = new Date(year, month, date, hour, minute);
+      const gap = (openDay.getTime() - today.getTime()) / 1000 / 60 / 60; // 시간차이
+      
+      return gap > 24
+    }
+    return false;
+  };
+
+  /* Date 객체 형변환 함수 */
   const dayFormatter = (openDate?: Date): string => {
     if (openDate) {
       const strOpenDate = String(openDate);
@@ -151,7 +171,7 @@ function MainConcertInfo() {
       const year = strOpenDate.substring(0, 4);
       const month = strOpenDate.substring(5, 7);
       const date = strOpenDate.substring(8, 10);
-      const hour = Number(strOpenDate.substring(11, 13));
+      const hour = strOpenDate.substring(11, 13);
       const minute = strOpenDate.substring(14, 16);
 
       return String(
@@ -331,23 +351,28 @@ function MainConcertInfo() {
                 )}
 
                 <p className='right' id='alarm_r'>
-                  <img
-                    src={emailClick ? emailOn : emailOff}
-                    alt='이메일아이콘'
-                    id='mailIcon2'
-                    onClick={() => {
-                      emailClickHandler();
-                    }}
-                  ></img>
-                  <img
-                    src={smsClick ? smsOn : smsOff}
-                    alt='문자아이콘'
-                    id='kakaoIcon2'
-                    onClick={() => {
-                      smsClickHandler();
-                    }}
-                  ></img>
-                </p>
+                  {ticketOpenCheck(detail.open_date) ?
+                    <>
+                      <img
+                        src={emailClick ? emailOn : emailOff}
+                        alt='이메일아이콘'
+                        id='mailIcon2'
+                        onClick={() => {
+                          emailClickHandler();
+                        }}
+                      ></img>
+                      <img
+                        src={smsClick ? smsOn : smsOff}
+                        alt='문자아이콘'
+                        id='kakaoIcon2'
+                        onClick={() => {
+                          smsClickHandler();
+                        }}
+                      ></img>
+                    </>
+                    : <p className='right' id='alarm_text'>티켓 오픈 알람시간이 지났습니다.</p>
+                  }
+                {ticketOpenCheck(detail.open_date)}</p>
                 <p className='right' id='showPlace_r'>
                   <img src={map}></img>
                 </p>

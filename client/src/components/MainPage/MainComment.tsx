@@ -177,7 +177,7 @@ function MainComment() {
       const year = strOpenDate.substring(0,4);
       const month = strOpenDate.substring(5,7);
       const date = strOpenDate.substring(8,10);
-      const hour = Number(strOpenDate.substring(11,13))+9;  // 9시간 더해주기
+      const hour = Number(strOpenDate.substring(11,13));
       const minute = strOpenDate.substring(14,16);
 
       return String(year+'-'+month+'-'+date+'-'+hour+' : '+minute);

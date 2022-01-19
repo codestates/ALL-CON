@@ -1,10 +1,10 @@
 /* Store import */
 import { RootState } from '../../../index';
 import { setScrollCount } from '../../../store/HeaderSlice';
-import { showMyDropDown } from '../../../store/ModalSlice';
-import { setTarget } from '../../../store/MainSlice';
+import { setIsHeaderClick, setTarget, setTargetIdx, setOrder } from '../../../store/MainSlice';
 import { setTargetArticle, setArticleRendered, setArticleCurPage } from '../../../store/ConChinSlice';
-import { logout } from '../../../store/AuthSlice';
+import { login, logout, getUserInfo } from '../../../store/AuthSlice';
+import { setPageNum } from '../../../store/ConcertCommentSlice';
 import {
   getCommentBtnType,
   getArticleInfo,
@@ -19,6 +19,16 @@ import {
 
   getMyConcertCommentCurrentPage
 } from '../../../store/MySlice';
+import {
+  showMyDropDown,
+  showLoginModal,
+  showSignupModal,
+  showFindPasswordModal,
+  showConcertModal,
+  showSuccessModal,
+  showAlertModal,
+  insertAlertText,
+} from '../../../store/ModalSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -37,6 +47,22 @@ function MyDropDown() {
   /* useEffect */
   
   /* handler 함수 (기능별 정렬) */
+  // 로그아웃 후 메인페이지 리다이렉트 핸들러
+  const goHomeHandler = () => {
+    /* 외부 -> 홈 이동 상태 초기화 */
+    dispatch(setIsHeaderClick(true));
+    /* 메인페이지 상태 초기화 */
+    dispatch(setTarget({}));
+    dispatch(setTargetIdx(0));
+    dispatch(setOrder('view')); 
+    dispatch(setPageNum(1));
+    /* 켜져있는 모달창 모두 종료 */
+    dispatch(showConcertModal(false)); // concertPage 모달창    
+    dispatch(showLoginModal(false));
+    /* 홈으로 이동 */
+    navigate('/main');
+  };
+
   // 로그아웃 핸들러
   const logoutHandler = async () => {
     try {
@@ -45,15 +71,15 @@ function MyDropDown() {
         {},
         { withCredentials: true },
       );
-      /* 로그인 상태 변경 & main 페이지로 이동 */
+      /* 로그인 상태 변경 & main 페이지로 이동 & 로그아웃 성공 모달 생성 */
       dispatch(logout());
-      // navigate('/main');
-      dispatch(setScrollCount(0));
-      resetTarget();
-      navigate('/main');
-      console.log(target);
+      dispatch(showAlertModal(true));
+      dispatch(insertAlertText(`로그아웃 되었습니다!`));
+      goHomeHandler();
     } catch (err) {
       console.log(err);
+      dispatch(showAlertModal(true));
+      dispatch(insertAlertText(`로그아웃에 실패했습니다!`));
     }
   };
 
@@ -64,7 +90,6 @@ function MyDropDown() {
     dispatch(setTargetArticle({}));
     dispatch(setArticleRendered(false));
     dispatch(setArticleCurPage(1));
-    console.log(target);    
   };
 
   // 마이페이지 버튼을 누르면, 다음이 실행된다
@@ -144,7 +169,7 @@ function MyDropDown() {
             <Link to='/mypage' className='menus' onClick={resetTarget}>
               <p onClick={() => handleMypageBtn()}>마이페이지</p>
             </Link>
-            <Link to='/main' className='menus' onClick={() => logoutHandler()}>
+            <Link to='/main' className='menus' onClick={logoutHandler}>
               <p>로그아웃</p>
             </Link>
           </div>
