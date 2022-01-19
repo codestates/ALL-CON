@@ -36,7 +36,7 @@
   @include mobile-only() {
     width: 29%;
     height: 55%;
-    top: 55%;
+    top: 50%;
     left: 15%;
     padding-bottom: 30%;
   }
@@ -65,7 +65,7 @@
     width: 29%;
     height: 60%;
     padding-bottom: 30%;
-    top: 55%;
+    top: 50%;
     left: 30%;
   }
   @include md() {
@@ -147,7 +147,7 @@
   @include mobile-only() {
     width: 33%;
     height: 70%;
-    top: 55%;
+    top: 50%;
     padding-bottom: 30%;
   }
   @include md() {
@@ -172,7 +172,7 @@
   @include mobile-only() {
     width: 29%;
     height: 60%;
-    top: 55%;
+    top: 50%;
     left: 70%;
     padding-bottom: 30%;
   }
@@ -200,7 +200,7 @@
   @include mobile-only() {
     width: 29%;
     height: 55%;
-    top: 55%;
+    top: 50%;
     left: 85%;
     padding-bottom: 30%;
   }

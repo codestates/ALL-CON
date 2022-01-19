@@ -43,7 +43,7 @@
     position: relative;
     width: 100%;
     height: 10%;
-    top: 5%;
+    top: 0%;
     // border: 1px solid red;
     .jumboTextBox {
       position: relative;
@@ -240,7 +240,7 @@
     height: 7%;
     // border: 1px solid pink;
     @include mobile-only() {
-      bottom: -12%;
+      bottom: -2%;
     }
     @include md() {
       bottom: -8%;

@@ -5811,7 +5811,7 @@ a {
     position: relative;
     width: 100%;
     height: 10%;
-    top: 5%; }
+    top: 0%; }
     .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
       position: relative;
       top: 50%;
@@ -5985,7 +5985,7 @@ a {
     height: 7%; }
     @media (max-width: 767px) {
       #jumboPosterSlideWrapper #ballsWrapper {
-        bottom: -12%; } }
+        bottom: -2%; } }
     @media (min-width: 768px) {
       #jumboPosterSlideWrapper #ballsWrapper {
         bottom: -8%; } }
@@ -6045,7 +6045,7 @@ a {
     #posterWrapper1 {
       width: 29%;
       height: 55%;
-      top: 55%;
+      top: 50%;
       left: 15%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
@@ -6073,7 +6073,7 @@ a {
       width: 29%;
       height: 60%;
       padding-bottom: 30%;
-      top: 55%;
+      top: 50%;
       left: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper2 {
@@ -6144,7 +6144,7 @@ a {
     #posterWrapper3 {
       width: 33%;
       height: 70%;
-      top: 55%;
+      top: 50%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper3 {
@@ -6168,7 +6168,7 @@ a {
     #posterWrapper4 {
       width: 29%;
       height: 60%;
-      top: 55%;
+      top: 50%;
       left: 70%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
@@ -6195,7 +6195,7 @@ a {
     #posterWrapper5 {
       width: 29%;
       height: 55%;
-      top: 55%;
+      top: 50%;
       left: 85%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
@@ -8661,22 +8661,23 @@ a {
         @media (min-width: 1200px) {
           #landingContainer #bottomBox #bottomAlignBox #bottomTextBox {
             font-size: 2.5rem; } }
-      #landingContainer #bottomBox #bottomAlignBox button {
+      #landingContainer #bottomBox #bottomAlignBox #goBtn {
         height: 25%;
         border: 0;
         background-color: #fff;
+        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         font-weight: bold; }
         @media (max-width: 767px) {
-          #landingContainer #bottomBox #bottomAlignBox button {
+          #landingContainer #bottomBox #bottomAlignBox #goBtn {
             width: 40%;
             font-size: 1.2rem; } }
         @media (min-width: 768px) {
-          #landingContainer #bottomBox #bottomAlignBox button {
+          #landingContainer #bottomBox #bottomAlignBox #goBtn {
             width: 30%;
             font-size: 2rem; } }
         @media (min-width: 1200px) {
-          #landingContainer #bottomBox #bottomAlignBox button {
+          #landingContainer #bottomBox #bottomAlignBox #goBtn {
             width: 30%;
             font-size: 2rem; } }
   #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen, #landingContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #landingContainer #fullFooterArticleNotChosen {

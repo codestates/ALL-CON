@@ -135,7 +135,9 @@ function LandingPage() {
             <p>예매부터 동료찾기까지</p>
             <p>한번에 해결해요!</p>
           </div>
-          <button onClick={() => navigate('/main')}>시작하기</button>
+          <button id='goBtn' onClick={() => navigate('/main')}>
+            시작하기
+          </button>
         </div>
       </div>
       {/*바닥글*/}

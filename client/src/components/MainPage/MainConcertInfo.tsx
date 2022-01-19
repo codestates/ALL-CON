@@ -74,7 +74,7 @@ function MainConcertInfo() {
 
   useEffect(() => {
     // 로그인 상태인 경우, 나의 알람 리스트를 조회한다
-    // if(isLogin) getAllAlarms();
+    // if (isLogin) getAllAlarms();
   }, [target]);
 
   const getPosterInfo = async () => {
@@ -141,7 +141,6 @@ function MainConcertInfo() {
       console.log(err);
     }
   };
-
   //해당 콘서트에서 한번도 알람 설정한적 없을때 알람
   const getAlarm = async (test: string) => {
     try {

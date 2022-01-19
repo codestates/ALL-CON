@@ -208,6 +208,8 @@
       align-items: center;
       justify-content: space-between;
       // border: 1px solid pink;
+      @mixin animation {
+      }
       @include mobile-only() {
         width: 80%;
         height: 6%;
@@ -413,10 +415,11 @@
           font-size: 2.5rem;
         }
       }
-      button {
+      #goBtn {
         height: 25%;
         border: 0;
         background-color: #fff;
+        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         font-weight: bold;
         @include mobile-only() {
