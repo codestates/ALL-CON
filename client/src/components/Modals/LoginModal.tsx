@@ -4,29 +4,46 @@ import kakao from '../../images/kakaoOAuth.png';
 import originalLock from '../../images/originalPadlock.png';
 import xButton from '../../images/xButton.png';
 /* Store import */
-import { setScrollCount } from '../../store/HeaderSlice';
+import { setIsHeaderClick, setTarget, setTargetIdx, setOrder } from '../../store/MainSlice';
+import { setPageNum } from '../../store/ConcertCommentSlice';
 import { login, getUserInfo } from '../../store/AuthSlice';
 import {
   showLoginModal,
   showSignupModal,
   showFindPasswordModal,
+  showConcertModal,
+  showSuccessModal,
   showAlertModal,
   insertAlertText,
 } from '../../store/ModalSlice';
-import { RootState } from '../../index';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 function LoginModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   /* 인풋 정보 상태 */
   const [inputEmail, setInputEmail] = useState<string>('');
   const [inputPassword, setInputPassword] = useState<string>('');
+
+  /* 로그인 후 홈화면 리다이렉트 핸들러 */
+  const goHomeHandler = () => {
+    /* 외부 -> 홈 이동 상태 초기화 */
+    dispatch(setIsHeaderClick(true));
+    /* 메인페이지 상태 초기화 */
+    dispatch(setTarget({}));
+    dispatch(setTargetIdx(0));
+    dispatch(setOrder('view')); 
+    dispatch(setPageNum(1));
+    /* 켜져있는 모달창 모두 종료 */
+    dispatch(showConcertModal(false)); // concertPage 모달창    
+    dispatch(showLoginModal(false));
+    /* 홈으로 이동 */
+    navigate('/main');
+  };
 
   /* 로그인 핸들러 */
   const loginHandler = async () => {
@@ -39,12 +56,13 @@ function LoginModal() {
       );
       /* 서버의 응답결과에 유저 정보가 담겨있다면 로그인 성공*/
       if (response.data.data) {
-        /* 유효성 & 로그인 & 유저 상태 변경 후 메인페이지 리다이렉트 */
-        dispatch(login());
+        /* 로그인 & 유저 상태 변경 후 메인페이지 리다이렉트 */
         dispatch(getUserInfo(response.data.data));
-        dispatch(showLoginModal(false));
-        dispatch(setScrollCount(0));
-        navigate('/main');
+        dispatch(login());
+        /* 로그인 성공 알람 */
+        dispatch(showSuccessModal(true));
+        dispatch(insertAlertText(`${response.data.data.userInfo.username} 님 안녕하세요!`));
+        goHomeHandler();
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -74,7 +92,6 @@ function LoginModal() {
     }
     /* LoginModal 종료 */
     dispatch(showLoginModal(false));
-    dispatch(setScrollCount(0));
   };
 
   /* 인풋 체인지 핸들러 */

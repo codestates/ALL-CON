@@ -312,6 +312,10 @@
               @include lg() {
                 font-size: 2rem;
               }
+              #alarm_text {
+                color: $yellow;
+                font-weight: bold;
+              }
             }
             #place_r {
               position: relative;
