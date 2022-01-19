@@ -27,11 +27,11 @@ import {
 } from '../store/HeaderSlice';
 import { setPageNum } from '../store/ConcertCommentSlice';
 import {
-  setIsRendering,
   setMainToConcert,
   setOrder,
   setTarget,
   setTargetIdx,
+  setIsHeaderClick
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -43,6 +43,7 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
+  const { allConcerts, targetIdx, target, order } = useSelector((state: RootState) => state.main);
   const {
     loginModal,
     signupModal,
@@ -57,8 +58,6 @@ function Header() {
   const { articleOrder, allArticles } = useSelector(
     (state: RootState) => state.conChin,
   );
-  const { target } = useSelector((state: RootState) => state.main);
-  const { allConcerts } = useSelector((state: RootState) => state.main);
 
   /* 타이머 변수 설정: 현재 시간 */
   let now = new Date();
@@ -162,11 +161,12 @@ function Header() {
     );
     if (scrollCount > 0.5) dispatch(setIsScrolled(true));
   };
+
   /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
   const showTimer = () => {
     dispatch(setIsScrolled(false));
-    resetHandler();
   };
+
   /* 전체 게시물 받아오기 */
   const getAllArticles = async () => {
     try {
@@ -186,23 +186,40 @@ function Header() {
       console.log('에러가 났나봐요.');
     }
   };
-  /* 메뉴 이동시 상태 초기화 핸들러 */
-  const resetHandler = () => {
+
+  /* 메뉴별 이동시 상태 초기화 핸들러 */
+  const resetHandler = (menu: string) => {
+    /* Common */
+    dispatch(showConcertModal(false)); // concertPage 모달창
+    /* LandingPage */
+    if(menu === 'logo'){
+      showTimer();
+    }
     /* MainPage */
-    dispatch(setTargetIdx(0));
-    dispatch(setIsRendering(false));
-    dispatch(setOrder('view'));
-    dispatch(setTargetIdx(0));
-    dispatch(setPageNum(0));
-    dispatch(setMainToConcert(false));
-    /* ConChinPage */
-    dispatch(setTarget({}));
-    dispatch(setTargetArticle({}));
-    dispatch(setArticleRendered(false));
-    dispatch(setArticleCurPage(1));
-    getAllArticles();
+    else if(menu === 'main'){
+      dispatch(setTarget({}));
+      dispatch(setTargetIdx(0));
+      dispatch(setOrder('view')); 
+      dispatch(setPageNum(1));
+      dispatch(setMainToConcert(false));
+      dispatch(setIsHeaderClick(true));
+      navigate('/main');
+    } 
     /* ConcertPage */
-    dispatch(showConcertModal(false));
+    else if(menu === 'concert'){
+      dispatch(setTarget({}));
+      dispatch(setOrder('view')); 
+      navigate('/concert');
+    }
+    /* ConChinPage */
+    else if(menu === 'conchin'){
+      dispatch(setTarget({}));
+      dispatch(setTargetArticle({}));
+      dispatch(setArticleRendered(false));
+      dispatch(setArticleCurPage(1));
+      getAllArticles();
+      navigate('/conchin');
+    }
   };
 
   return (
@@ -220,7 +237,7 @@ function Header() {
       </div>
 
       <div id='logoBar'>
-        <Link to='/' onClick={showTimer}>
+        <Link to='/' onClick={() => resetHandler('logo')}>
           {/* 스크롤 후 로고 호출*/}
           <img
             className={isScrolled === false ? 'logohide' : 'logo'}
@@ -257,15 +274,9 @@ function Header() {
           )}
         </div>
         <div id='hiddenMenuBox'>
-          <Link to='/main' onClick={resetHandler}>
-            <p className='menu'>홈</p>
-          </Link>
-          <Link to='/concert' onClick={resetHandler}>
-            <p className='menu'>콘서트</p>
-          </Link>
-          <Link to='/conchin' onClick={resetHandler}>
-            <p className='menu'>콘친 찾기</p>
-          </Link>
+          <p className='menu' onClick={() => resetHandler('main')}>홈</p>
+          <p className='menu' onClick={() => resetHandler('concert')}>콘서트</p>
+          <p className='menu' onClick={() => resetHandler('conchin')}>콘친 찾기</p>
         </div>
         <div id='hiddenSearchBox'>
           <div id='searchWrapper'>

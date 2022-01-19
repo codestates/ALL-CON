@@ -13,8 +13,9 @@ import {
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setPageNum } from '../store/ConcertCommentSlice';
 
 function Jumbotron() {
   const dispatch = useDispatch();
@@ -22,19 +23,19 @@ function Jumbotron() {
     (state: RootState) => state.main,
   );
 
-  useEffect(() => {}, [order]);
-
   /* 포스터 이동 핸들러 */
   const moveHandler = (move: string) => {
     if (move === 'left') {
       if (targetIdx > 0) {
         dispatch(setTargetIdx(targetIdx - 1));
         dispatch(setTarget(allConcerts[targetIdx - 1]));
+        dispatch(setPageNum(1));
       }
     } else if (move === 'right') {
       if (targetIdx < allConcerts.length - 1) {
         dispatch(setTargetIdx(targetIdx + 1));
         dispatch(setTarget(allConcerts[targetIdx + 1]));
+        dispatch(setPageNum(1));
       }
     }
     dispatch(setMainToConcert(false)); // 콘서트 -> 메인 페이지 상태 false
@@ -45,8 +46,9 @@ function Jumbotron() {
     /* 정렬 버튼 클릭시 렌더링: false, 타겟값 초기화, order 갱신 */
     dispatch(setIsRendering(false));
     dispatch(setTargetIdx(0));
-    dispatch(setTarget({}));
+    dispatch(setTarget(allConcerts[targetIdx]));
     dispatch(setOrder(clickValue));
+    dispatch(setPageNum(1));
   };
 
   const ballList = allConcerts.map(el => {

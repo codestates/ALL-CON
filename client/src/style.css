@@ -6489,6 +6489,9 @@ a {
             @media (min-width: 1200px) {
               #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side .right {
                 font-size: 2rem; } }
+            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side .right #alarm_text {
+              color: #ffce63;
+              font-weight: bold; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
               position: relative;
               display: flex;
