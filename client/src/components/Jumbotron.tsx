@@ -46,7 +46,7 @@ function Jumbotron() {
     /* 정렬 버튼 클릭시 렌더링: false, 타겟값 초기화, order 갱신 */
     dispatch(setIsRendering(false));
     dispatch(setTargetIdx(0));
-    dispatch(setTarget({}));
+    dispatch(setTarget(allConcerts[targetIdx]));
     dispatch(setOrder(clickValue));
     dispatch(setPageNum(1));
   };

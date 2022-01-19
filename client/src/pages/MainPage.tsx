@@ -17,7 +17,7 @@ import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice'
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -27,9 +27,8 @@ function MainPage() {
   const { pageAllComments, pageNum } = useSelector(
     (state: RootState) => state.concertComments,
   );
-
   const { isLogin } = useSelector((state: RootState) => state.auth);
-
+  
   useEffect(() => {
     getAllConcerts(); // 전체 콘서트 목록
     getDetailInfo(); // 상세 콘서트 정보
@@ -41,7 +40,7 @@ function MainPage() {
 
   useEffect(() => {
     getAllComments(); // 전체 댓글 목록
-  }, [targetIdx, order]);
+  }, [targetIdx, order, target]);
 
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
