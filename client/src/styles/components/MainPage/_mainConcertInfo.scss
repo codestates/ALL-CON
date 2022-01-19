@@ -17,6 +17,8 @@
     width: 100%;
     // border: 1px solid blue;
     @include mobile-only() {
+      position: relative;
+      top: 8%;
       justify-content: space-between;
       height: 35%;
     }
@@ -179,6 +181,8 @@
     width: 100%;
     // border: 3px solid green;
     @include mobile-only() {
+      position: relative;
+      top: 13%;
       height: 70%;
     }
     @include md() {
@@ -260,6 +264,9 @@
             }
             #place {
               height: 10%;
+              @include mobile-only() {
+                height: 15%;
+              }
             }
             #date {
               height: 25%;
@@ -275,6 +282,17 @@
             }
             #alarm {
               height: 20%;
+            }
+            #showPlace {
+              @include mobile-only() {
+                height: 10%;
+              }
+              @include md() {
+                display: none;
+              }
+              @include lg() {
+                display: none;
+              }
             }
           }
           .right-side {
@@ -300,12 +318,18 @@
               display: flex;
               justify-content: flex-start;
               height: 10%;
+              @include mobile-only() {
+                height: 15%;
+              }
               @include md() {
                 width: 120%;
               }
               img {
                 width: 30px;
                 height: 30px;
+                @include mobile-only() {
+                  display: none;
+                }
                 @include md() {
                   position: relative;
                   top: -10%;
@@ -315,6 +339,9 @@
                   position: relative;
                   top: 0%;
                   margin-left: 2%;
+                }
+                &:hover {
+                  cursor: pointer;
                 }
               }
             }
@@ -346,11 +373,35 @@
                   left: 5%;
                   width: 40px;
                 }
+                &:hover {
+                  cursor: pointer;
+                }
               }
               #kakaoIcon2 {
                 left: 10%;
                 top: 3%;
                 @extend #mailIcon2;
+                &:hover {
+                  cursor: pointer;
+                }
+              }
+            }
+            #showPlace_r {
+              @include mobile-only() {
+                height: 10%;
+              }
+              @include md() {
+                display: none;
+              }
+              @include lg() {
+                display: none;
+              }
+              img {
+                width: 30px;
+                height: 30px;
+                &:hover {
+                  cursor: pointer;
+                }
               }
             }
           }
@@ -462,6 +513,10 @@
     bottom: 0%;
     height: 5%;
     // border: 1px solid red;
+    @include mobile-only() {
+      position: relative;
+      top: 26%;
+    }
     img {
       display: flex;
 

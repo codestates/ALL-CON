@@ -20,6 +20,7 @@ import {
   showSuccessModal,
   insertDeliverText,
 } from '../store/ModalSlice';
+import { getBtnSwitchState } from '../store/MySlice';
 /* Library import */
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -182,6 +183,8 @@ function ConChinCertificationPage() {
   const handleCloseBtn = async () => {
     // 취소 버튼을 클릭하면 마이페이지로 이동
     navigate('/mypage');
+    // 모든 버튼 SWITCHOFF
+    dispatch(getBtnSwitchState({ profileEdit: false, conchinCertification: false }))
   };
 
   return (
@@ -276,13 +279,6 @@ function ConChinCertificationPage() {
                   인증번호 받기
                 </button>
               </div>
-              {/* <div className='confirmWrapper'>
-                <input
-                  className='number'
-                  placeholder='인증번호를 입력하세요.'
-                />
-                <button className='confirmBtn' onClick={() => {handleCheckConfirmNumber()}} >인증번호 확인</button>
-              </div> */}
             </div>
           </div>
           <div id='btnBox'>

@@ -26,8 +26,6 @@ function MyProfileBox() {
   const { userInfo, yearList, monthList, dateList } = useSelector((state: RootState) => state.auth);
   const { myIntroductionState, btnSwitchState } = useSelector((state: RootState) => state.my);
   
-  console.log(btnSwitchState)
-
   /* 지역상태 - useState */
   // 프로필 수정 버튼 모니터링 상태
   const [profileChangeBtn, setProfileChangeBtn] = useState<boolean>(false)

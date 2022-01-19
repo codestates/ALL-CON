@@ -295,6 +295,9 @@ function MainConcertInfo() {
                 <p className='left' id='alarm'>
                   알림 받기
                 </p>
+                <p className='left' id='showPlace'>
+                  장소 보기
+                </p>
               </div>
               <div className='right-side'>
                 {detail.place && (
@@ -326,6 +329,7 @@ function MainConcertInfo() {
                     {detail.price}
                   </p>
                 )}
+
                 <p className='right' id='alarm_r'>
                   <img
                     src={emailClick ? emailOn : emailOff}
@@ -343,6 +347,9 @@ function MainConcertInfo() {
                       smsClickHandler();
                     }}
                   ></img>
+                </p>
+                <p className='right' id='showPlace_r'>
+                  <img src={map}></img>
                 </p>
               </div>
             </div>
