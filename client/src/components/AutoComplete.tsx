@@ -2,7 +2,7 @@
 import search from '../images/search.png';
 /* Store import */
 import { RootState } from '../index';
-import { setTarget, setOrder } from '../store/MainSlice';
+import { setTarget, setOrder, setPassToConcert } from '../store/MainSlice';
 import { showConcertModal, showSuccessModal } from '../store/ModalSlice';
 import { insertAlertText, insertBtnText } from '../store/ModalSlice';
 /* Library import */
@@ -66,6 +66,7 @@ function AutoComplete() {
     dispatch(showSuccessModal(true));
     dispatch(setOrder('view'));
     dispatch(setTarget(allConcerts[clickedIdx]));
+    dispatch(setPassToConcert(true));
   };
 
   //x버튼 핸들러 => 인풋 지우고 드랍다운 해제

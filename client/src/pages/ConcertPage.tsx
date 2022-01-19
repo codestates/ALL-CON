@@ -4,7 +4,7 @@ import ConcertBox from '../components/ConcertPage/ConcertBox';
 import Footer from '../components/Footer';
 /* Store import */
 import { RootState } from '../index';
-import { setAllConcerts, setMainToConcert, setOrder, setTarget } from '../store/MainSlice';
+import { setAllConcerts, setPassToConcert, setOrder, setTarget } from '../store/MainSlice';
 import {
   showConcertModal,
   showAlertModal,
@@ -17,10 +17,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function ConcertPage() {
   const dispatch = useDispatch();
-  const { allConcerts, order, mainToConcert } = useSelector((state: RootState) => state.main);
+  const { allConcerts, order, passToConcert } = useSelector((state: RootState) => state.main);
 
   useEffect(() => {
-    if(!mainToConcert) orderByHandler(order);
+    if(!passToConcert) orderByHandler(order);
   }, [order]);
 
   /* 정렬 핸들러 */
@@ -33,7 +33,7 @@ function ConcertPage() {
       if (response.data) {
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setTarget({}));
-        dispatch(setMainToConcert(false));
+        dispatch(setPassToConcert(false));
         dispatch(showConcertModal(false));
       }
     } catch (err) {
@@ -54,7 +54,7 @@ function ConcertPage() {
       );
       if (response.data) {
         dispatch(setTarget(response.data.data.concertInfo));
-        dispatch(setMainToConcert(false));
+        dispatch(setPassToConcert(false));
         dispatch(showConcertModal(true));
       }
     } catch (err) {

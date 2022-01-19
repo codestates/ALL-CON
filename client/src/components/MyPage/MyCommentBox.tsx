@@ -17,13 +17,14 @@ import {
   getMyArticleCommentTotalPage,
 } from '../../store/MySlice';
 import { setConChinPageNum } from '../../store/ConChinCommentSlice';
+import { setPageNum } from '../../store/ConcertCommentSlice';
 import {
   showAlertModal,
   insertAlertText,
   insertBtnText,
   showSuccessModal,
 } from '../../store/ModalSlice';
-import { setTarget, setAllConcerts } from '../../store/MainSlice';
+import { setTarget, setTargetIdx, setIsRendering, setOrder } from '../../store/MainSlice';
 import { setTargetArticle } from '../../store/ConChinSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
@@ -51,6 +52,7 @@ function MyCommentBox() {
     myArticleCommentCurrentPage,
     myArticleCommentCurrentComment,
   } = useSelector((state: RootState) => state.my);
+  const { allConcerts, target, targetIdx } = useSelector((state: RootState) => state.main)
 
   /* 지역상태 - useState */
   /* useEffect */
@@ -81,6 +83,11 @@ function MyCommentBox() {
 
       // 현재 선택한 콘서트 업데이트 (target)
       dispatch(setTarget(responseConcert.data.data.concertInfo));
+      /* 마이페이지로 가기위한 상태 설정 */
+      dispatch(setIsRendering(false));
+      dispatch(setOrder('view'));
+      dispatch(setPageNum(1));
+      dispatch(setTargetIdx(allConcerts.findIndex(concert => concert.id === responseConcert.data.data.concertInfo.id)));
       // 메인페이지로 이동
       navigate('/main');
     }
