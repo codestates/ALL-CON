@@ -6,7 +6,7 @@ import menu from '../images/menu.png';
 import search from '../images/search.png';
 import user from '../images/user.png';
 /* Component import */
-import AutoComplete from '../components/Header/AutoComplete';
+import AutoComplete from './AutoComplete';
 /* Store import */
 import { RootState } from '../index';
 import {
@@ -240,9 +240,9 @@ function Header() {
         >
           <img className='menu' alt='menuImg' src={menu} />
         </div>
+        <AutoComplete />
         <div id='searchWrapper'>
           <img className='search' alt='searchImg' src={search} />
-          <AutoComplete />
         </div>
         <div id='loginWrapper'>
           {/* 로그인 여부에 따라 프로필 이미지 혹은 로그인 버튼 출력 */}
