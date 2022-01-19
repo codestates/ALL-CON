@@ -75,8 +75,6 @@ function PhoneConfirmNumberModal() {
     } catch(err) {
       const error = err as AxiosError;
 
-      console.log(error.response?.status)
-
       if(error.response?.status === 400) dispatch(insertAlertText('인증번호를 입력해주세요! 😖'));
       else if(error.response?.status === 401) dispatch(insertAlertText('잘못된 인증번호입니다! 😖'));
       else dispatch(insertAlertText('Server Error! 😖'));
@@ -87,8 +85,7 @@ function PhoneConfirmNumberModal() {
   // 재전송(인증번호) 버튼 핸들러
   const requestHandler = async () => {
     try {
-      console.log('--- 재전송(인증번호) 버튼 확인! ---')
-      
+
       await axios.post(
         `${process.env.REACT_APP_API_URL}/user/safe`,
         { phone_number: certificateInfo },

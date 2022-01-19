@@ -3498,6 +3498,7 @@ a {
             position: relative;
             height: 60%;
             width: 30%;
+            background-color: white;
             border: 1px solid #c4c4c4;
             border-radius: 5px;
             padding-left: 2%; }
@@ -3644,8 +3645,8 @@ a {
             #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .checkImg, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .checkImg {
               position: absolute;
               right: 31%;
-              height: 46%;
-              width: 6%; }
+              height: 39%;
+              width: 5%; }
             #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .recieveWrapper .hidden, #conChinCertificationPage #userInfoWrapper #userInfoBox #phoneBox .certificationWrapper .confirmWrapper .hidden {
               position: absolute;
               right: 31%;
@@ -4227,6 +4228,8 @@ a {
           #confirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .input {
             width: 80%;
             height: 50%;
+            font-size: 1.8rem;
+            font-weight: bold;
             padding-left: 2%;
             border: 1px solid #a0a0a0;
             border-radius: 5px; }
@@ -4235,7 +4238,8 @@ a {
             display: flex;
             font-weight: bold;
             color: red;
-            right: 13%; }
+            right: 12.5%;
+            top: 33.5%; }
             @media (max-width: 767px) {
               #confirmNumberModal #modalBox #modal #exceptTitleBox #inputWrapper .timer {
                 font-size: 1.3rem; } }
@@ -4725,7 +4729,8 @@ a {
         outline: none;
         resize: none;
         overflow: hidden;
-        text-align: center; }
+        text-align: center;
+        top: 42%; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #textWrapper #introduction {
             font-size: 1.5rem; } }
@@ -5217,7 +5222,7 @@ a {
           height: 50%;
           top: 50%; }
           #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #nickName {
-            position: relative;
+            position: absolute;
             height: 60%;
             width: 100%;
             border: 1px solid #c4c4c4;
@@ -5232,6 +5237,59 @@ a {
             @media (min-width: 1200px) {
               #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #nickName {
                 font-size: 2rem; } }
+          #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #duplicationCheck {
+            z-index: 100;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 12%;
+            height: 33%;
+            right: 2%;
+            color: white;
+            font-size: 1.7rem;
+            border-radius: 5px;
+            font-weight: bold;
+            background-color: black; }
+            #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #duplicationCheck:hover {
+              cursor: pointer; }
+          #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #checkImg {
+            position: absolute;
+            right: 15.7%;
+            width: 4%;
+            height: 28%; }
+          #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #hidden {
+            display: none; }
+        #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nicknameErr {
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: red; }
+          @media (max-width: 767px) {
+            #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nicknameErr {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nicknameErr {
+              font-size: 1.8rem; } }
+          @media (min-width: 1200px) {
+            #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nicknameErr {
+              font-size: 1.5rem; } }
+        #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nicknameErrHidden {
+          display: none; }
+        #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nicknamePass {
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: blue; }
+          @media (max-width: 767px) {
+            #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nicknamePass {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nicknamePass {
+              font-size: 1.8rem; } }
+          @media (min-width: 1200px) {
+            #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nicknamePass {
+              font-size: 1.5rem; } }
       #myEditPage #userInfoWrapper #userInfoBox #resetBox {
         position: absolute;
         display: flex;
@@ -5260,6 +5318,34 @@ a {
           @media (min-width: 1200px) {
             #myEditPage #userInfoWrapper #userInfoBox #resetBox .reset {
               font-size: 2rem; } }
+        #myEditPage #userInfoWrapper #userInfoBox #resetBox #passwordErr {
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: red; }
+          @media (max-width: 767px) {
+            #myEditPage #userInfoWrapper #userInfoBox #resetBox #passwordErr {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #myEditPage #userInfoWrapper #userInfoBox #resetBox #passwordErr {
+              font-size: 1.8rem; } }
+          @media (min-width: 1200px) {
+            #myEditPage #userInfoWrapper #userInfoBox #resetBox #passwordErr {
+              font-size: 1.5rem; } }
+        #myEditPage #userInfoWrapper #userInfoBox #resetBox #passwordPass {
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: blue; }
+          @media (max-width: 767px) {
+            #myEditPage #userInfoWrapper #userInfoBox #resetBox #passwordPass {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #myEditPage #userInfoWrapper #userInfoBox #resetBox #passwordPass {
+              font-size: 1.8rem; } }
+          @media (min-width: 1200px) {
+            #myEditPage #userInfoWrapper #userInfoBox #resetBox #passwordPass {
+              font-size: 1.5rem; } }
       #myEditPage #userInfoWrapper #userInfoBox #confirmBox {
         position: absolute;
         display: flex;
@@ -5288,6 +5374,34 @@ a {
           @media (min-width: 1200px) {
             #myEditPage #userInfoWrapper #userInfoBox #confirmBox .confirm {
               font-size: 2rem; } }
+        #myEditPage #userInfoWrapper #userInfoBox #confirmBox #confirmPasswordErr {
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: red; }
+          @media (max-width: 767px) {
+            #myEditPage #userInfoWrapper #userInfoBox #confirmBox #confirmPasswordErr {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #myEditPage #userInfoWrapper #userInfoBox #confirmBox #confirmPasswordErr {
+              font-size: 1.8rem; } }
+          @media (min-width: 1200px) {
+            #myEditPage #userInfoWrapper #userInfoBox #confirmBox #confirmPasswordErr {
+              font-size: 1.5rem; } }
+        #myEditPage #userInfoWrapper #userInfoBox #confirmBox #confirmPasswordPass {
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: blue; }
+          @media (max-width: 767px) {
+            #myEditPage #userInfoWrapper #userInfoBox #confirmBox #confirmPasswordPass {
+              font-size: 1.5rem; } }
+          @media (min-width: 768px) {
+            #myEditPage #userInfoWrapper #userInfoBox #confirmBox #confirmPasswordPass {
+              font-size: 1.8rem; } }
+          @media (min-width: 1200px) {
+            #myEditPage #userInfoWrapper #userInfoBox #confirmBox #confirmPasswordPass {
+              font-size: 1.5rem; } }
       #myEditPage #userInfoWrapper #userInfoBox #btnBox {
         position: absolute;
         display: flex;

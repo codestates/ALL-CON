@@ -6,13 +6,9 @@ import { logout } from '../../../store/AuthSlice';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { showMyProfileResignMembershipModal, insertAlertText, insertBtnText, showSuccessModal } from '../../../store/ModalSlice';
 
-/* 타입 스크립트 */
-type MyProfileResignMembershipModalProps = {
-  handleAccountDeleteBackground: () => void;
-}
-
-function MyProfileResignMembershipModal({ handleAccountDeleteBackground }: MyProfileResignMembershipModalProps) {
+  function MyProfileResignMembershipModal() {
 
   /* dispatch / navigate */
   const dispatch = useDispatch();
@@ -25,11 +21,6 @@ function MyProfileResignMembershipModal({ handleAccountDeleteBackground }: MyPro
   // 회원탈퇴 모달 상태
 
   /* handler 함수 (기능별 정렬) */
-  // 취소 버튼
-  const handleCancelBtn = async () => {
-    console.log('취소 버튼을 클릭하셨습니다!')
-    handleAccountDeleteBackground();
-  }
   // 회원탈퇴 버튼
   const handleResignMembership = async () => {
     console.log('회원탈퇴 버튼을 클릭하셨습니다!')
@@ -39,7 +30,13 @@ function MyProfileResignMembershipModal({ handleAccountDeleteBackground }: MyPro
         `${process.env.REACT_APP_API_URL}/user/me`,
         { withCredentials: true }
       );
-      alert('ALL-CON\nGoodbye! 😖') 
+      // ------------------- 주의!!! 수정이 필요!
+      dispatch(showMyProfileResignMembershipModal(false))
+      
+      dispatch(insertAlertText('GoodBye! 🙂'));
+      dispatch(insertBtnText('확인'));
+      dispatch(showSuccessModal(true));
+      // ------------------- 주의!!! 수정이 필요!
       /* 로그인 상태 변경 & main 페이지로 이동 */
       dispatch(logout());
       navigate('/main')
@@ -48,10 +45,9 @@ function MyProfileResignMembershipModal({ handleAccountDeleteBackground }: MyPro
     }
   }
   
-
   return (
     <div id='myProfileResignMembershipModal' >
-      <div id='bg' onClick={() => {handleCancelBtn()}}/>
+      <div id='bg' onClick={() => {dispatch(showMyProfileResignMembershipModal(false))}}/>
       <div id='modalBox'>
         <div id='modal'>
           <div id='titleWrapper'>
@@ -70,7 +66,7 @@ function MyProfileResignMembershipModal({ handleAccountDeleteBackground }: MyPro
             </p>
           </div>
           <div id='resignBtnWrapper'>
-            <button className='resignBtn' onClick={() => {handleCancelBtn()}}>취소</button>
+            <button className='resignBtn' onClick={() => {dispatch(showMyProfileResignMembershipModal(false))}}>취소</button>
             <button className='cancleBtn' onClick={() => {handleResignMembership()}}>회원 탈퇴</button>
           </div>
         </div>

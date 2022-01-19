@@ -95,6 +95,17 @@ function MyDropDown() {
   // 마이페이지 버튼을 누르면, 다음이 실행된다
   const handleMypageBtn = async () => {
 
+    // 프로필 수정 / 콘친인증 버튼 SWITCH OFF
+    dispatch(getBtnSwitchState({
+      profileEdit: false,
+      conchinCertification: false,
+      userResign: false
+    }))
+
+    // 내간 쓴 댓글 기본값을 '콘서트'로 설정
+    dispatch(getCommentBtnType('콘서트'));
+    
+    /****************************************************************************************************/
     // 내가 쓴 게시물 axios 테스트
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=1`,
@@ -104,15 +115,12 @@ function MyDropDown() {
     dispatch(getArticleInfo(response.data.data));
     dispatch(getMyArticleTotalPage(response.data.data.totalPage));
 
-    /**********************************************************/
+    /****************************************************************************************************/
     // 내가 쓴 댓글(콘서트 게시물) axios 테스트
     const responseMyConcertComment = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
       { withCredentials: true },
     );
-
-    console.log('---- 내가 쓴 댓글(콘서트 게시물) 이미지 데이터 확인 ----', responseMyConcertComment.data.data.concertCommentInfo[0].Concert.image_concert)
-    // console.log('---- 내가 쓴 댓글(콘서트 게시물) 이미지 데이터 확인 ----', responseMyConcertComment.data.data[0].Concert.image_concert)
 
     dispatch(getMyConcertCommentInfo(responseMyConcertComment.data.data));
     dispatch(
@@ -127,15 +135,13 @@ function MyDropDown() {
     );
     // 전체 페이지가 0이 아니라면, 항상 마이페이지에 진입했을 때 내가 쓴 댓글의 현재페이지는 1이다
     if(responseMyConcertComment.data.data.totalPage !== 0) dispatch(getMyConcertCommentCurrentPage(1))
-
+    
+    /****************************************************************************************************/
     // 내가 쓴 댓글(콘친 게시물) axios 테스트
     const responseMyArticleComment = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
       { withCredentials: true },
     );
-
-    console.log('---- 내가 쓴 댓글(콘친 게시물) 이미지 데이터 확인 ----', responseMyArticleComment.data.data.articleCommentInfo[0].Article.image)
-    // console.log('---- 내가 쓴 댓글(콘친 게시물) 이미지 데이터 확인 ----', responseMyArticleComment.data.data[0].Article.image)
 
     dispatch(getMyArticleCommentInfo(responseMyArticleComment.data.data));
     dispatch(
@@ -148,13 +154,7 @@ function MyDropDown() {
         responseMyArticleComment.data.data.totalArticleComment,
       ),
     );
-    dispatch(getCommentBtnType('콘서트'));
-
-    dispatch(getBtnSwitchState({
-      profileEdit: false,
-      conchinCertification: false,
-      userResign: false
-    }))
+    
   };
 
   return (
