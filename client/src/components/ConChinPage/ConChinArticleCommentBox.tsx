@@ -1,5 +1,6 @@
 /* CSS import */
 import shield from '../../images/shield.png';
+import comment from '../../images/comment.png';
 /* Store import */
 import { RootState } from '../../index';
 import {
@@ -34,23 +35,24 @@ function ConChinArticleCommentBox() {
   const { targetArticle, articleOrder } = useSelector(
     (state: RootState) => state.conChin,
   );
-  const {
-    conChinPageNum,
-    conChinPageAllComments,
-    conChinComment,
-    conChinTotalNum,
-    conChinTotalComments,
-  } = useSelector((state: RootState) => state.conChinComments);
+  const { conChinPageNum, conChinPageAllComments, conChinComment } =
+    useSelector((state: RootState) => state.conChinComments);
   /* 댓글 인풋 && 버튼 클릭 */
   const [inputComment, setInputComment] = useState<string>('');
   const [isClick, setIsClick] = useState<boolean>(false);
   /* 특정 댓글 클릭 && 댓글 수정 모드 상태  */
   const [clickId, setClickId] = useState<number>(0);
   const [editComment, setEditComment] = useState<string>('');
+  /* 수정된 상태 */
+  const [commentChanged, setCommentChanged] = useState<boolean>(false);
 
   useEffect(() => {
     getAllComments();
-  }, [targetArticle, isClick, conChinPageNum]);
+  }, [targetArticle, conChinPageNum]);
+
+  useEffect(() => {
+    getTargetArticles();
+  }, [isClick]);
 
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -74,7 +76,8 @@ function ConChinArticleCommentBox() {
         dispatch(insertAlertText('댓글이 작성되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
-        getAllComments();
+        setCommentChanged(!commentChanged);
+        getTargetArticles();
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -132,7 +135,7 @@ function ConChinArticleCommentBox() {
         dispatch(insertAlertText('댓글이 삭제되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
-        getAllComments();
+        setCommentChanged(!commentChanged);
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -157,8 +160,6 @@ function ConChinArticleCommentBox() {
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
       if (response.data) {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-        console.log('ConChinArticleCommentBox=> 옮길때마다 접근?');
-        // getTargetArticles();
         setIsClick(false);
         setInputComment('');
         dispatch(setConChinPageAllComments([]));
@@ -213,7 +214,6 @@ function ConChinArticleCommentBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setTargetArticle(response.data.data.articleInfo));
         dispatch(
           setConChinTotalComments(response.data.data.articleInfo.total_comment),
@@ -262,12 +262,12 @@ function ConChinArticleCommentBox() {
           </div>
         </div>
       )}
+
       <div id='conChinCountWrapper'>
-        <h1 className='count'>
-          {targetArticle.total_comment !== 0
-            ? targetArticle.total_comment + ' 개의 댓글'
-            : null}{' '}
-        </h1>
+        <div id='imgWrapper'>
+          <img className='img' src={comment} alt='commentImg' />
+        </div>
+        <h1 className='count'>{targetArticle.total_comment + ' 개의 댓글'}</h1>
       </div>
       {/* 댓글 목록 map */}
       {conChinPageAllComments.length > 0 ? (
