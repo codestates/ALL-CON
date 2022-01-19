@@ -153,7 +153,7 @@
           height: 50%;
           top: 50%;
           #nickName {
-            position: relative;
+            position: absolute;
             height: 60%;
             width: 100%;
             border: 1px solid $gray2;
@@ -168,6 +168,74 @@
             @include lg() {
               font-size: 2rem;
             }
+          }
+          #duplicationCheck {
+            z-index: 100;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 12%;
+            height: 33%;
+            right: 2%;
+            // color: gray;
+            color: white;
+            font-size: 1.7rem;
+            border-radius: 5px;
+            font-weight: bold;
+            background-color: black;
+            // border: 0.1px solid grey;
+            &:hover {
+              // background-color: #ffce63;
+              // color: white;
+              cursor: pointer;
+              // transition: 0.15s all;
+              // border: none;
+            }
+          }
+          #checkImg {
+            position: absolute;
+            right: 15.7%;
+            width: 4%;
+            height: 28%;
+          }
+          #hidden {
+            display: none;
+          }
+        }
+        #nicknameErr{
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: red;
+          // font-weight: bold;
+          
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 1.5rem;
+          }
+        }
+        #nicknameErrHidden {
+          display: none;
+        }
+        #nicknamePass {
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: blue;
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 1.5rem;
           }
         }
       }
@@ -201,6 +269,38 @@
             font-size: 2rem;
           }
         }
+        #passwordErr{
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: red;
+          // font-weight: bold;
+          
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 1.5rem;
+          }
+        }
+        #passwordPass {
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: blue;
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 1.5rem;
+          }
+        }
       }
       #confirmBox {
         position: absolute;
@@ -231,6 +331,38 @@
           }
           @include lg() {
             font-size: 2rem;
+          }
+        }
+        #confirmPasswordErr{
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: red;
+          // font-weight: bold;
+          
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 1.5rem;
+          }
+        }
+        #confirmPasswordPass {
+          position: absolute;
+          left: 2%;
+          top: 92%;
+          color: blue;
+          @include mobile-only() {
+            font-size: 1.5rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 1.5rem;
           }
         }
       }

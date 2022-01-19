@@ -68,15 +68,7 @@
     #myMemberBoxWrapper {
       position: absolute;
       // border: 2px solid blue;
-      @include mobile-only() {
-        top: 40%;
-      }
-      @include md() {
-        top: 45%;
-      }
-      @include lg() {
-        top: 48%;
-      }
+      top: 0%;
     }
   }
   #paginationWrapper {

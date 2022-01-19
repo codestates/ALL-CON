@@ -75,7 +75,7 @@ function ConChinArticleContentBox() {
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
         { withCredentials: true },
       );
-      getTargetArticles();
+      getAllArticles();
     } catch (err) {
       console.log(err);
     }
@@ -116,6 +116,7 @@ function ConChinArticleContentBox() {
         { withCredentials: true },
       );
       if (response.data) {
+        dispatch(setTargetArticle({}));
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));

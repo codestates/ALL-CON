@@ -16,7 +16,12 @@ module.exports = {
       
       // 만약 신청한 email이 존재하지 않는다면, DB users 테이블에 유저 정보 추가한 후 다음을 응답한다
       else {
-        Users.create({ email, password, username, sign_method: 'allcon' });
+        Users.create({ 
+          email: email, 
+          password: password, 
+          username: username, 
+          image: process.env.USER_DEFAULT_IMAGE,
+          sign_method: 'allcon' });
         res.status(201).json({ message: 'Signup Success!' });
       }
     } catch (err) {

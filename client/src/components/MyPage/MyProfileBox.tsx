@@ -13,7 +13,8 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 import { getYearList, getMonthList, getDateList } from '../../store/AuthSlice';
-import { setMyIntroductionState, getMyIntroduction, getBtnSwitchState } from '../../store/MySlice';
+import { showMyProfileImageModal, showMyProfileResignMembershipModal } from '../../store/ModalSlice';
+import { setMyIntroductionState, getMyIntroduction, getPreviewImage, getBtnSwitchState } from '../../store/MySlice';
 /* Library import */
 
 function MyProfileBox() {
@@ -26,8 +27,6 @@ function MyProfileBox() {
   const { userInfo, yearList, monthList, dateList } = useSelector((state: RootState) => state.auth);
   const { myIntroductionState, btnSwitchState } = useSelector((state: RootState) => state.my);
   
-  console.log(btnSwitchState)
-
   /* 지역상태 - useState */
   // 프로필 수정 버튼 모니터링 상태
   const [profileChangeBtn, setProfileChangeBtn] = useState<boolean>(false)
@@ -39,11 +38,6 @@ function MyProfileBox() {
   /* useEffect */
   
   /* handler 함수 (기능별 정렬) */
-
-  // 프로필 이미지 수정 버튼 (카메라 사진)
-  const handleProfileImageEdit = async () => {
-    setProfileEdit(true)
-  }
 
   // 프로필 수정 버튼
   const handleProfileEdit = async () => {
@@ -103,38 +97,20 @@ function MyProfileBox() {
     navigate('/conchinCert')
   }
 
-  // 프로필 수정 변경안함 버튼
-  const handleProfileEditBackground = async () => {
-    setProfileEdit(false)
-  }
-
-  // 회원탈퇴 버튼
-  const handleAccountDelete = async () => {
-    setResignMembership(true)
-  }
-
-  // 회원탈퇴취소 클릭
-  const handleAccountDeleteBackground = async () => {
-    dispatch(getBtnSwitchState({ profileEdit: false, conchinCertification: false }))
-    setResignMembership(false)
-  }
-  
   // 자기소개 글을 수정할 경우
   const inputIntroduction = async (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     dispatch(getMyIntroduction(e.target.value))
   }
 
   return (
-    <div id='myProfileBox'>
-      {/* 회원탈퇴 모달 */}
-      { resignMembership ? <MyProfileResignMembershipModal handleAccountDeleteBackground={handleAccountDeleteBackground}/> : null}
-      { profileEdit ? <MyProfileImageModal handleProfileEditBackground={handleProfileEditBackground}/> : null}
+    <div id='myProfileBox'  >
       <div id='imgBox'>
         <div id='imgWrapper'>
           <img className='img' src={`${userInfo.image}`} alt='profileImage' />
         </div>
+        {/* 프로필 변경 모달 OPEN */}
         <div id='cameraWrapper'>
-          <img className='camera' src={camera} alt='camera' onClick={() => {handleProfileImageEdit()}} />
+          <img className='camera' src={camera} alt='camera' onClick={() => {dispatch(showMyProfileImageModal(true))}} />
         </div>
       </div>
       <div id='introductionBox'>
@@ -171,7 +147,7 @@ function MyProfileBox() {
           <button className={btnSwitchState?.conchinCertification ? 'btnChosen' : 'btn' } onClick={() => {handleConchinCertificate()}}>콘친 인증</button>
         </div>
         <div id='resignBtnWrapper'>
-          <button className='btn' onClick={() => {handleAccountDelete()}}>회원 탈퇴</button>
+          <button className='btn' onClick={() => {dispatch(showMyProfileResignMembershipModal(true))}}>회원 탈퇴</button>
         </div>
       </div>
     </div>

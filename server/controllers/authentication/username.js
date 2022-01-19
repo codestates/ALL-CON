@@ -6,6 +6,8 @@ module.exports = {
       // username 요청바디
       const { username } = req.body;
 
+      console.log('----- 서버에서 username 중복확인 ----', username)
+
       // 요청 바디에 username이 없다면, 에러메시지 반환
       if(!username) return res.status(400).json({ message: 'Bad Request!' });
       
