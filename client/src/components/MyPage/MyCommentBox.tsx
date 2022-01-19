@@ -52,8 +52,6 @@ function MyCommentBox() {
     myArticleCommentCurrentComment,
   } = useSelector((state: RootState) => state.my);
 
-  console.log('(콘친 게시글 댓글) 총 댓글수', myTotalArticleComment);
-
   /* 지역상태 - useState */
   /* useEffect */
   const [commentClick, setCommentClick] = useState<boolean>(false);
@@ -178,10 +176,11 @@ function MyCommentBox() {
         myArticleCommentCurrentPage,
       );
 
-      // 주의! 비효율적인 코드... 리팩토링이 필요함
-      // 내가 쓴 댓글(콘서트 게시물) axios 테스트
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myArticleCommentCurrentPage}&comment_type=article`,
+      // [PATCH] 댓글 수정
+      // /concert/:concertid/comment/:commentid, { content } = req.body
+      const response = await axios.patch(
+        `${process.env.REACT_APP_API_URL}/concert/${concertId}/article/${articleId}/comment/${commentId}`,
+        { content: editComment || currentContent },
         { withCredentials: true },
       );
 

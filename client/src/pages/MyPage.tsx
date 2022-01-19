@@ -12,6 +12,7 @@ import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
+import { showMyProfileImageModal } from '../store/ModalSlice';
 
 function MyPage() {
 
@@ -23,7 +24,7 @@ function MyPage() {
   const { myConcertCommentCurrentPage } = useSelector((state: RootState) => state.my);
   
   return (
-    <div id='myPageContainer'>
+    <div id='myPageContainer' >
       <div id='myProfileBoxWrapper'>
         {/* 프로필 */}
         <MyProfileBox />

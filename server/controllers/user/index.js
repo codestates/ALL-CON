@@ -6,5 +6,6 @@ module.exports = {
   mycomment: require('./mycomment'),
   safe: require('./safe'),
   confirm: require('./confirm'),
-  other: require('./other')
+  other: require('./other'),
+  username: require('./username')
 };
