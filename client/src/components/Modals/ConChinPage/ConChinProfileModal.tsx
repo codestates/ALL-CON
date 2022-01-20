@@ -42,6 +42,9 @@ function ConChinProfileModal() {
                 <img className='shield' src={shield} />
               </div>
             </div>
+            <div id='createdAtWrapper'>
+                <div id='date'>가입일 : {targetArticlesUserInfo.createdAt}</div>
+            </div>
           </div>
           <div id='introductionBox'>
             <div id='emailWrapper'>

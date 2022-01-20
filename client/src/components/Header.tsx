@@ -33,7 +33,7 @@ import {
   setOrder,
   setTarget,
   setTargetIdx,
-  setIsHeaderClick,
+  setIsRendering,
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -158,12 +158,12 @@ function Header() {
       showTimer();
     } else if (menu === 'main') {
       /* MainPage */
+      dispatch(setPassToConcert(false));
       dispatch(setTarget({}));
       dispatch(setTargetIdx(0));
       dispatch(setOrder('view'));
       dispatch(setPageNum(1));
-      dispatch(setPassToConcert(false));
-      dispatch(setIsHeaderClick(true));
+      dispatch(setIsRendering(false));
       navigate('/main');
     } else if (menu === 'concert') {
       /* ConcertPage */

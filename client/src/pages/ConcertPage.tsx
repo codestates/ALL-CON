@@ -21,7 +21,7 @@ function ConcertPage() {
 
   useEffect(() => {
     if(!passToConcert) orderByHandler(order);
-  }, [order]);
+  }, [order, passToConcert]);
 
   /* 정렬 핸들러 */
   const orderByHandler = async (order: string) => {
@@ -33,7 +33,6 @@ function ConcertPage() {
       if (response.data) {
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setTarget({}));
-        dispatch(setPassToConcert(false));
         dispatch(showConcertModal(false));
       }
     } catch (err) {
@@ -75,13 +74,22 @@ function ConcertPage() {
               (order === 'near' && '임박예정') ||
               (order === 'new' && '등록일')} 순
           </h1>
-          <p className={order === 'view' ? 'click' : 'orderBy'} onClick={() => dispatch(setOrder('view'))}>
+          <p className={order === 'view' ? 'click' : 'orderBy'} onClick={() => {
+            dispatch(setOrder('view'));
+            dispatch(setPassToConcert(false));
+          }}>
             조회수
           </p>
-          <p className={order === 'near' ? 'click' : 'orderBy'}  onClick={() => dispatch(setOrder('near'))}>
+          <p className={order === 'near' ? 'click' : 'orderBy'}  onClick={() => {
+            dispatch(setOrder('near'));
+            dispatch(setPassToConcert(false));
+          }}>
             임박예정
           </p>
-          <p className={order === 'new' ? 'click' : 'orderBy'}  onClick={() => dispatch(setOrder('new'))}>
+          <p className={order === 'new' ? 'click' : 'orderBy'}  onClick={() => {
+            dispatch(setOrder('new'));
+            dispatch(setPassToConcert(false));
+          }}>
             등록일
           </p>
         </div>
