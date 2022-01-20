@@ -15,7 +15,16 @@ import { useSelector, useDispatch } from 'react-redux';
 function AutoComplete() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { headerAllConcerts } = useSelector((state: RootState) => state.header);
+  const { allConcerts } = useSelector((state: RootState) => state.main);
+  const { headerAllConcerts, headerIsRendered } = useSelector(
+    (state: RootState) => state.header,
+  );
+
+  if (headerIsRendered === false) {
+    let deselectedOptions = allConcerts.map(el => {
+      return el.title;
+    });
+  }
 
   /*전체 콘서트 받아오기(정렬순:view) */
   const getAllConcerts = async () => {
@@ -35,6 +44,7 @@ function AutoComplete() {
   useEffect(() => {
     getAllConcerts();
   }, []);
+
   let deselectedOptions = headerAllConcerts.map(el => {
     return el.title;
   });
