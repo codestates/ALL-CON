@@ -64,41 +64,41 @@ function Header() {
   );
 
   /* Header Timer => 잘 돌아가긴 하지만 고도화 필요.. */
-  let tid = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
+  // let tid = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
 
-  let stDate = new Date().getTime();
-  let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
-  let RemainDate = edDate - stDate;
+  // let stDate = new Date().getTime();
+  // let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
+  // let RemainDate = edDate - stDate;
 
-  function msg_time() {
-    let hours: string | number = Math.floor(
-      (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-    );
-    let miniutes: string | number = Math.floor(
-      (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
-    );
-    let seconds: string | number = Math.floor(
-      (RemainDate % (1000 * 60)) / 1000,
-    );
-    if (String(hours).length === 1) {
-      miniutes = `0${hours}`;
-    }
-    if (String(miniutes).length === 1) {
-      miniutes = `0${miniutes}`;
-    }
-    if (String(seconds).length === 1) {
-      seconds = `0${seconds}`;
-    }
+  // function msg_time() {
+  //   let hours: string | number = Math.floor(
+  //     (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+  //   );
+  //   let miniutes: string | number = Math.floor(
+  //     (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
+  //   );
+  //   let seconds: string | number = Math.floor(
+  //     (RemainDate % (1000 * 60)) / 1000,
+  //   );
+  //   if (String(hours).length === 1) {
+  //     miniutes = `0${hours}`;
+  //   }
+  //   if (String(miniutes).length === 1) {
+  //     miniutes = `0${miniutes}`;
+  //   }
+  //   if (String(seconds).length === 1) {
+  //     seconds = `0${seconds}`;
+  //   }
 
-    let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
-    dispatch(setTimerMessage(m));
-    if (RemainDate < 0) {
-      // 시간이 종료 되면
-      clearInterval(tid); // 타이머 해제
-    } else {
-      RemainDate = RemainDate - 1000; // 남은시간 -1초
-    }
-  }
+  //   let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
+  //   dispatch(setTimerMessage(m));
+  //   if (RemainDate < 0) {
+  //     // 시간이 종료 되면
+  //     clearInterval(tid); // 타이머 해제
+  //   } else {
+  //     RemainDate = RemainDate - 1000; // 남은시간 -1초
+  //   }
+  // }
   /* Header Timer */
 
   /* 스크롤 위치 저장 useEffect */
