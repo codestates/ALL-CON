@@ -12,9 +12,9 @@ import {
   setAllConcerts,
   setDetail,
   setIsRendering,
-  setIsHeaderClick
+  setIsHeaderClick,
 } from '../store/MainSlice';
-import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice'
+import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,15 +22,14 @@ import { useEffect } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
-  const { isRendering, isHeaderClick, order, target, targetIdx, allConcerts } = useSelector(
-    (state: RootState) => state.main,
-  );
+  const { isRendering, isHeaderClick, order, target, targetIdx, allConcerts } =
+    useSelector((state: RootState) => state.main);
   const { pageAllComments, pageNum } = useSelector(
     (state: RootState) => state.concertComments,
   );
-  
-  console.log('메인페이지 진입시 target : ', target);
-  console.log('메인페이지 진입시 targetIdx : ', targetIdx);
+
+  // console.log('메인페이지 진입시 target : ', target);
+  // console.log('메인페이지 진입시 targetIdx : ', targetIdx);
 
   /* 홈 진입시 isHeaderClick=false 1회 초기화 */
   useEffect(() => {

@@ -6160,8 +6160,16 @@ a {
   .jumboTopBox #jumboTextsAlignBox {
     position: relative;
     width: 100%;
-    height: 10%;
-    top: 0%; }
+    height: 10%; }
+    @media (max-width: 767px) {
+      .jumboTopBox #jumboTextsAlignBox {
+        top: 0%; } }
+    @media (min-width: 768px) {
+      .jumboTopBox #jumboTextsAlignBox {
+        top: 5%; } }
+    @media (min-width: 1200px) {
+      .jumboTopBox #jumboTextsAlignBox {
+        top: 5%; } }
     .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
       position: relative;
       top: 50%;
@@ -6820,15 +6828,6 @@ a {
               height: 25%; }
             #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #alarm {
               height: 20%; }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #showPlace {
-                height: 10%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #showPlace {
-                display: none; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .left-side #showPlace {
-                display: none; } }
           #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side {
             position: absolute;
             top: 0;
@@ -6854,7 +6853,9 @@ a {
               height: 10%; }
               @media (max-width: 767px) {
                 #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
-                  height: 15%; } }
+                  height: 15%;
+                  text-decoration: underline;
+                  cursor: pointer; } }
               @media (min-width: 768px) {
                 #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #place_r {
                   width: 120%; } }
@@ -6907,20 +6908,6 @@ a {
                 top: 3%; }
                 #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #alarm_r #kakaoIcon2:hover {
                   cursor: pointer; }
-            @media (max-width: 767px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #showPlace_r {
-                height: 10%; } }
-            @media (min-width: 768px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #showPlace_r {
-                display: none; } }
-            @media (min-width: 1200px) {
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #showPlace_r {
-                display: none; } }
-            #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #showPlace_r img {
-              width: 30px;
-              height: 30px; }
-              #mainConcertInfoBox #middleBox #concertInfoBox #concertInfo .table .right-side #showPlace_r img:hover {
-                cursor: pointer; }
     #mainConcertInfoBox #middleBox #buttonsWrapper {
       display: flex;
       flex-direction: column;
@@ -8876,30 +8863,50 @@ a {
       /* Safari and Chrome */
       -o-animation: moveToLeft 2s;
       /* Opera */ }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper #firstImgAnimated {
+          width: 85%;
+          height: 14%; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper #firstImgAnimated {
+          width: 80%;
+          height: 14%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper #firstImgAnimated {
+          width: 53%;
+          height: 13%; } }
 
 @keyframes moveToLeft {
   from {
-    transform: translate(100%, 0); }
+    transform: translate(100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-moz-keyframes moveToLeft {
   from {
-    transform: translate(100%, 0); }
+    transform: translate(100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-webkit-keyframes moveToLeft {
   from {
-    transform: translate(100%, 0); }
+    transform: translate(100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-o-keyframes moveToLeft {
   from {
-    transform: translate(100%, 0); }
+    transform: translate(100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
     @media (max-width: 767px) {
       #landingContainer #middleWrapper #firstImg, #landingContainer #middleWrapper #firstImgAnimated {
         width: 85%;
@@ -9056,27 +9063,35 @@ a {
 
 @keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-moz-keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-webkit-keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-o-keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
     #landingContainer #middleWrapper #paddingBox31 {
       position: relative; }
       @media (max-width: 767px) {
@@ -9158,27 +9173,35 @@ a {
 
 @keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-moz-keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-webkit-keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-o-keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
     #landingContainer #middleWrapper #thirdImgAnimated {
       animation: moveToLeft 2s;
       -moz-animation: moveToLeft 2s;
@@ -9190,27 +9213,35 @@ a {
 
 @keyframes moveToLeft {
   from {
-    transform: translate(100%, 0); }
+    transform: translate(100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-moz-keyframes moveToLeft {
   from {
-    transform: translate(100%, 0); }
+    transform: translate(100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-webkit-keyframes moveToLeft {
   from {
-    transform: translate(100%, 0); }
+    transform: translate(100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-o-keyframes moveToLeft {
   from {
-    transform: translate(100%, 0); }
+    transform: translate(100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
     @media (max-width: 767px) {
       #landingContainer #middleWrapper #thirdImg, #landingContainer #middleWrapper #thirdImgAnimated {
         width: 85%;
@@ -9234,27 +9265,35 @@ a {
 
 @keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-moz-keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-webkit-keyframes moveToRight {
-  from {
-    transform: translate(-100%, 0); }
+  ffrom {
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
 
 @-o-keyframes moveToRight {
   from {
-    transform: translate(-100%, 0); }
+    transform: translate(-100%, 0);
+    opacity: 20%; }
   to {
-    transform: translate(0, 0); } }
+    transform: translate(0, 0);
+    opacity: 100%; } }
   #landingContainer #bottomBox {
     position: absolute;
     display: flex;
