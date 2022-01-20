@@ -13,8 +13,6 @@ import { RootState } from '../../index';
 import {
   setEmailClick,
   setSmsClick,
-  setDetail,
-  setTarget,
 } from '../../store/MainSlice';
 import {
   showAlertModal,
@@ -39,20 +37,12 @@ function MainConcertInfo() {
   const navigate = useNavigate();
   const {
     passToConcert,
-    targetIdx,
     target,
     detail,
-    order,
     emailClick,
     smsClick,
   } = useSelector((state: RootState) => state.main);
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { pageAllComments } = useSelector(
-    (state: RootState) => state.concertComments,
-  );
-
-  // const [emailClick, setEmailClick] = useState(false);
-  // const [smsClick, setSmsClick] = useState(false);
 
   type maincon = {
     concert_id?: number;
@@ -63,6 +53,7 @@ function MainConcertInfo() {
     updatedAt?: Date;
     user_id?: number;
   };
+  
   const [allAlarms, setAllAlarms] = useState<maincon[]>([]);
 
   useEffect(() => {
@@ -204,8 +195,7 @@ function MainConcertInfo() {
 
   const emailClickHandler = () => {
     if (isLogin === false) {
-      alert('로그인 먼저 해주세요! 😖');
-      dispatch(showLoginModal(true));
+      dispatch(insertAlarmText('로그인 먼저 해주세요! 😖'));
     } else {
       if (emailClick) {
         dispatch(

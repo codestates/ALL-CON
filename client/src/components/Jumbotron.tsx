@@ -114,7 +114,7 @@ function Jumbotron() {
               onClick={() => moveHandler('right')}
             ></img>
           </div>
-          <div id='ballsWrapper'>{ballList}</div>
+          {ballList && <div id='ballsWrapper'>{ballList}</div>}
           <div id='posterCover'></div>
           <PosterSlide />
         </div>

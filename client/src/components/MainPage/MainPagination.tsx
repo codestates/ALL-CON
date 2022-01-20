@@ -21,8 +21,8 @@ function MainPagination() {
       <div id='pagination'>
         {/* 페이지 map */}
         {pageArr.map((num, idx)=>(
-          <ul className={ num===pageNum ? 'pageChosen' : 'page' } onClick={() => dispatch(setPageNum(num))}>
-            <p className='text' key={idx}>{num}</p>
+          <ul className={ num===pageNum ? 'pageChosen' : 'page' } key={idx} onClick={() => dispatch(setPageNum(num))}>
+            <p className='text'>{num}</p>
           </ul>
         ))}
       </div>
