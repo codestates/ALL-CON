@@ -969,6 +969,7 @@
     position: relative;
     width: 30px;
     height: 30px;
+    cursor: pointer;
     &:hover {
       cursor: pointer;
       color: $yellow;
@@ -1120,6 +1121,10 @@
     position: relative;
     font-size: 2.5rem;
     font-weight: bold;
+    &:hover {
+      cursor: pointer;
+      color: $yellow;
+    }
   }
 }
 #autoCompleteWrapper {

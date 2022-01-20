@@ -869,7 +869,8 @@ a {
   #menuWrapper .menu {
     position: relative;
     width: 30px;
-    height: 30px; }
+    height: 30px;
+    cursor: pointer; }
     #menuWrapper .menu:hover {
       cursor: pointer;
       color: #ffce63;
@@ -1004,6 +1005,9 @@ a {
     position: relative;
     font-size: 2.5rem;
     font-weight: bold; }
+    #hiddenMenuBox .menu:hover {
+      cursor: pointer;
+      color: #ffce63; }
 
 #autoCompleteWrapper, #autoCompleteWrapperHide {
   position: absolute;
