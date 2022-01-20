@@ -7,31 +7,52 @@
   border-radius: 5px;
   #concertBoxContainer {
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 100%;
     .imgWrapper {
+      position: relative;
       align-items: center;
+      justify-content: center;
       width: 20%;
-      height: 100%;
+      @include mobile-only() {
+        height: 75px;
+      }
+      @include md() {
+        height: 150px;
+      }
+      @include lg() {
+        height: 150px;
+      }
       overflow: hidden;
+      // border: 1px solid red;
       #poster {
         z-index: 5;
+        position: absolute;
         width: 100%;
         height: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         border-radius: 5px;
       }
       #round {
-        // display: flex;
-        z-index: 0;
-        top: -50%;
+        z-index: 6;
+        position: absolute;
+        display: flex;
+        top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
         align-items: center;
-        width: 70%;
-        height: 50%;
+        text-align: center;
+        justify-content: center;
+        height: 60%;
+        width: 80%;
+        color: white;
+        transform: translate( -50%, -50% );
         border-radius: 50%;
+        // border: 5px solid red;
       }
     }
     .infos {
@@ -40,9 +61,10 @@
       justify-content: space-between;
       width: 75%;
       height: 90%;
+      // border: 1px solid red;
       h2 {
         @include mobile-only() {
-          font-size: 1.4rem;
+          font-size: 1.3rem;
         }
         @include md() {
           font-size: 2rem;
@@ -56,7 +78,6 @@
         justify-content: space-between;
         width: 100%;
         height: 70%;
-        font-size: 1.2rem;
         // border: 1px solid green;
         #left {
           display: flex;
@@ -97,7 +118,7 @@
           #date {
             font-weight: bold;
             @include mobile-only() {
-              font-size: 1.3rem;
+              font-size: 1.2rem;
             }
             @include md {
               font-size: 1.8rem;
@@ -131,10 +152,10 @@
             #view {
               font-weight: bold;
               @include mobile-only() {
-                font-size: 1.2rem;
+                font-size: 1rem;
               }
               @include md() {
-                font-size: 1.6rem;
+                font-size: 1.3rem;
               }
               @include lg() {
                 font-size: 1.6rem;
@@ -145,13 +166,13 @@
           #place {
             font-weight: bold;
             @include mobile-only() {
-              font-size: 1.6rem;
+              font-size: 1.12rem;
             }
             @include md() {
-              font-size: 1.2rem;
+              font-size: 1.45rem;
             }
             @include lg() {
-              font-size: 1.2rem;
+              font-size: 1.45rem;
             }
           }
         }
@@ -161,24 +182,17 @@
 }
 #concertBoxOuterContainer :hover {
   // border: 1px solid red;
+  
   #poster {
     filter: brightness(30%);
     transition: 0.25s;
   }
   #round {
     transition: 0.5s;
-    position: relative;
-    top: -50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    text-align: center;
     font-weight: bold;
-    color: #fff;
-    border-radius: 50%;
+    color: white;
     @include mobile-only() {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       border: 2.5px solid $yellow;
     }
     @include md() {
@@ -213,24 +227,28 @@
     .imgWrapper {
       align-items: center;
       width: 20%;
-      height: 100%;
-      // border: 1px solid red;
+      @include mobile-only() {
+        height: 75px;
+      }
+      @include md() {
+        height: 150px;
+      }
+      @include lg() {
+        height: 150px;
+      }
       overflow: hidden;
       #poster {
         z-index: 5;
         width: 100%;
         height: 100%;
-        border-radius: 5px;
+        border-radius: 10px;
       }
       #round {
-        // display: flex;
-        z-index: 0;
+        z-index: 4;
         top: -50%;
         left: 50%;
         transform: translate(-50%, -50%);
         align-items: center;
-        width: 70%;
-        height: 50%;
         border-radius: 50%;
       }
     }
@@ -243,7 +261,7 @@
       height: 90%;
       h2 {
         @include mobile-only() {
-          font-size: 1.4rem;
+          font-size: 1.3rem;
         }
         @include md() {
           font-size: 2rem;
@@ -298,7 +316,7 @@
           #date {
             font-weight: bold;
             @include mobile-only() {
-              font-size: 1.3rem;
+              font-size: 1.2rem;
             }
             @include md {
               font-size: 1.8rem;
@@ -331,10 +349,10 @@
             #view {
               font-weight: bold;
               @include mobile-only() {
-                font-size: 1.2rem;
+                font-size: 1rem;
               }
               @include md() {
-                font-size: 1.6rem;
+                font-size: 1.3rem;
               }
               @include lg() {
                 font-size: 1.6rem;
@@ -344,13 +362,13 @@
           #place {
             font-weight: bold;
             @include mobile-only() {
-              font-size: 1.6rem;
+              font-size: 1.12rem;
             }
             @include md() {
-              font-size: 1.2rem;
+              font-size: 1.45rem;
             }
             @include lg() {
-              font-size: 1.2rem;
+              font-size: 1.45rem;
             }
           }
         }

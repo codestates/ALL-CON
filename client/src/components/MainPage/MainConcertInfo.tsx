@@ -387,7 +387,7 @@ function MainConcertInfo() {
           {detail && (
             <button id='black-btn'>
               <div id='imgAndOpen'>
-                <img src={smsClick || emailClick ? bellOn : bellOff} />
+                <img src={(smsClick || emailClick) &&  ticketOpenCheck(detail.open_date) ? bellOn : bellOff} />
                 <p id='open'>
                   티켓 오픈일 &nbsp; {dayFormatter(detail.open_date)}
                 </p>
