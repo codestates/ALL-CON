@@ -47,7 +47,9 @@ function MainConcertInfo() {
     smsClick,
   } = useSelector((state: RootState) => state.main);
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { pageAllComments } = useSelector((state: RootState) => state.concertComments)
+  const { pageAllComments } = useSelector(
+    (state: RootState) => state.concertComments,
+  );
   const [alarmType, setAlarmType] = useState('');
   // const [emailClick, setEmailClick] = useState(false);
   // const [smsClick, setSmsClick] = useState(false);
@@ -119,7 +121,6 @@ function MainConcertInfo() {
       console.log(err);
     }
   };
-
   //해당 콘서트에서 한번도 알람 설정한적 없을때 알람
   const getAlarm = async (test: string) => {
     try {
@@ -147,7 +148,7 @@ function MainConcertInfo() {
       const strOpenDate = String(openDate);
 
       const year = Number(strOpenDate.substring(0, 4));
-      const month = Number(strOpenDate.substring(5, 7))-1;
+      const month = Number(strOpenDate.substring(5, 7)) - 1;
       const date = Number(strOpenDate.substring(8, 10));
       const hour = Number(strOpenDate.substring(11, 13)); // 알람 24시간전 발송
       const minute = Number(strOpenDate.substring(14, 16));
@@ -354,7 +355,7 @@ function MainConcertInfo() {
                 )}
 
                 <p className='right' id='alarm_r'>
-                  {ticketOpenCheck(detail.open_date) ?
+                  {ticketOpenCheck(detail.open_date) ? (
                     <>
                       <img
                         src={emailClick ? emailOn : emailOff}
@@ -373,9 +374,13 @@ function MainConcertInfo() {
                         }}
                       ></img>
                     </>
-                    : <p className='right' id='alarm_text'>티켓 오픈 알람시간이 지났습니다.</p>
-                  }
-                {ticketOpenCheck(detail.open_date)}</p>
+                  ) : (
+                    <p className='right' id='alarm_text'>
+                      티켓 오픈 알람시간이 지났습니다.
+                    </p>
+                  )}
+                  {ticketOpenCheck(detail.open_date)}
+                </p>
                 <p className='right' id='showPlace_r'>
                   <img src={map}></img>
                 </p>

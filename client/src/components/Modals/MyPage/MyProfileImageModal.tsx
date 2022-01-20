@@ -101,11 +101,13 @@ import React, { useState, useEffect } from 'react';
               <img className='camera' src={camera} alt='camera' />
             </div>
             <div className='imgSelectionWrapper'>
+            <label id='imgSelectionLabel' htmlFor='imgSelection'></label>
               <input
                 type='file'
                 id='imgSelection'
                 onChange={handleImageUpload}
               />
+              
             </div>
           </div>
           <div id='modifyBtnWrapper'>

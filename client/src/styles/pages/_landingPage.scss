@@ -174,7 +174,7 @@
     align-items: center;
     position: absolute;
     width: 100%;
-    // border: 1px solid red;
+    // border: 3px solid red;
     @include mobile-only() {
       height: 250%;
       top: 45%;
@@ -184,12 +184,52 @@
       top: 60%;
     }
     @include lg() {
-      height: 480%;
-      top: 70%;
+      height: 520%;
+      top: 78%;
     }
 
+    #firstImgAnimated {
+      // border: 1px solid green;
+      @extend #firstImg;
+      animation: moveToLeft 2s;
+      -moz-animation: moveToLeft 2s; /* Firefox */
+      -webkit-animation: moveToLeft 2s; /* Safari and Chrome */
+      -o-animation: moveToLeft 2s; /* Opera */
+      @keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-moz-keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-webkit-keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-o-keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+    }
     #firstImg {
-      // border: 1px solid orange;
+      // border: 1px solid red;
       @include mobile-only() {
         width: 85%;
         height: 14%;
@@ -200,7 +240,7 @@
       }
       @include lg() {
         width: 53%;
-        height: 14%;
+        height: 13%;
       }
     }
     .alignBox {
@@ -217,8 +257,8 @@
         height: 6%;
       }
       @include lg() {
-        width: 45%;
-        height: 5%;
+        width: 60%;
+        height: 10%;
       }
       #paddingBox {
         position: relative;
@@ -232,7 +272,7 @@
           font-size: 1.5rem;
         }
         @include lg() {
-          width: 30%;
+          width: 48%;
           height: 100%;
           font-size: 2rem;
           padding-bottom: 10%;
@@ -241,14 +281,11 @@
           position: absolute;
           width: 100%;
           height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: $gray;
-          border-radius: 5px;
-          font-weight: bold;
-          div {
-            position: absolute;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
           }
         }
       }
@@ -282,6 +319,118 @@
       }
     }
 
+    .alignBoxAnimated {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      // border: 1px solid pink;
+      @include mobile-only() {
+        width: 80%;
+        height: 6%;
+      }
+      @include md() {
+        width: 70%;
+        height: 6%;
+      }
+      @include lg() {
+        width: 60%;
+        height: 10%;
+      }
+      #paddingBox {
+        position: relative;
+        @include mobile-only() {
+          width: 32%;
+          height: 100%;
+        }
+        @include md() {
+          width: 32%;
+          height: 100%;
+          font-size: 1.5rem;
+        }
+        @include lg() {
+          width: 48%;
+          height: 100%;
+          font-size: 2rem;
+          padding-bottom: 10%;
+        }
+        .grayGif {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+      #textBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90%;
+        // border: 1px solid green;
+        @include mobile-only() {
+          width: 70%;
+        }
+        @include md() {
+          width: 60%;
+        }
+        @include lg() {
+          width: 60%;
+        }
+        #texts {
+          font-weight: bold;
+          @include mobile-only() {
+            font-size: 1.2rem;
+          }
+          @include md() {
+            font-size: 1.8rem;
+          }
+          @include lg() {
+            font-size: 2.5rem;
+          }
+        }
+      }
+      animation: moveToRight 2s;
+      -moz-animation: moveToRight 2s; /* Firefox */
+      -webkit-animation: moveToRight 2s; /* Safari and Chrome */
+      -o-animation: moveToRight 2s; /* Opera */
+      @keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-moz-keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-webkit-keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-o-keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+    }
+
     #paddingBox31 {
       position: relative;
       // border: 2px solid green;
@@ -300,18 +449,15 @@
         font-size: 2rem;
         padding-bottom: 10%;
       }
-      .grayGif2 {
+      .grayGif {
         position: absolute;
         width: 100%;
         height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: $gray;
-        border-radius: 5px;
-        font-weight: bold;
-        div {
-          position: absolute;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 5px;
+          box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
         }
       }
     }
@@ -327,15 +473,140 @@
         height: 20%;
       }
       @include lg() {
-        width: 48%;
-        height: 18%;
+        width: 44%;
+        height: 15%;
       }
     }
+
+    #secondImgAnimated {
+      // border: 1px solid orange;
+      @extend #secondImg;
+      animation: moveToLeft 2s;
+      -moz-animation: moveToLeft 2s; /* Firefox */
+      -webkit-animation: moveToLeft 2s; /* Safari and Chrome */
+      -o-animation: moveToLeft 2s; /* Opera */
+      @keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-moz-keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-webkit-keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-o-keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+    }
+
+    .alignBox2Animated {
+      // border: 1px solid blue;
+      @extend .alignBox;
+      animation: moveToRight 2s;
+      -moz-animation: moveToRight 2s; /* Firefox */
+      -webkit-animation: moveToRight 2s; /* Safari and Chrome */
+      -o-animation: moveToRight 2s; /* Opera */
+      @keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-moz-keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-webkit-keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-o-keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+    }
+
     .alignBox2 {
       @extend .alignBox;
     }
-    #thirdImg {
+
+    #thirdImgAnimated {
       // border: 1px solid orange;
+      @extend #thirdImg;
+      animation: moveToLeft 2s;
+      -moz-animation: moveToLeft 2s; /* Firefox */
+      -webkit-animation: moveToLeft 2s; /* Safari and Chrome */
+      -o-animation: moveToLeft 2s; /* Opera */
+      @keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-moz-keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-webkit-keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-o-keyframes moveToLeft {
+        from {
+          transform: translate(100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+    }
+
+    #thirdImg {
+      // border: 1px solid blue;
       @include mobile-only() {
         width: 85%;
         height: 20%;
@@ -345,19 +616,54 @@
         height: 20%;
       }
       @include lg() {
-        width: 50%;
-        height: 18%;
+        width: 44%;
+        height: 15%;
+      }
+    }
+
+    .alignBox3Animated {
+      // border: 3px solid purple;
+      @extend .alignBox;
+      animation: moveToRight 2s;
+      -moz-animation: moveToRight 2s; /* Firefox */
+      -webkit-animation: moveToRight 2s; /* Safari and Chrome */
+      -o-animation: moveToRight 2s; /* Opera */
+      @keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-moz-keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-webkit-keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
+      }
+      @-o-keyframes moveToRight {
+        from {
+          transform: translate(-100%, 0);
+        }
+        to {
+          transform: translate(0, 0);
+        }
       }
     }
 
     .alignBox3 {
       @extend .alignBox;
-    }
-    #paddingBox32 {
-      @extend #paddingBox31;
-      .grayGif3 {
-        @extend .grayGif2;
-      }
     }
   }
 
@@ -379,7 +685,7 @@
     }
     @include lg() {
       height: 40%;
-      top: 570%;
+      top: 610%;
     }
     #bottomAlignBox {
       display: flex;
@@ -413,12 +719,62 @@
           font-size: 2.5rem;
         }
       }
-      button {
+      #goBtn {
         height: 25%;
         border: 0;
         background-color: #fff;
+        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
         border-radius: 5px;
         font-weight: bold;
+        animation: moveRightLeft 2s;
+        -moz-animation: moveRightLeft 2s; /* Firefox */
+        -webkit-animation: moveRightLeft 2s; /* Safari and Chrome */
+        -o-animation: moveRightLeft 2s; /* Opera */
+        animation-iteration-count: infinite;
+        @keyframes moveRightLeft {
+          0% {
+            transform: translate(-2%, 0);
+          }
+          50% {
+            transform: translate(2%, 0);
+          }
+          100% {
+            transform: translate(-2%, 0);
+          }
+        }
+        @-moz-keyframes moveRightLeft {
+          0% {
+            transform: translate(-2%, 0);
+          }
+          50% {
+            transform: translate(2%, 0);
+          }
+          100% {
+            transform: translate(-2%, 0);
+          }
+        }
+        @-webkit-keyframes moveRightLeft {
+          0% {
+            transform: translate(-2%, 0);
+          }
+          50% {
+            transform: translate(2%, 0);
+          }
+          100% {
+            transform: translate(-2%, 0);
+          }
+        }
+        @-o-keyframes moveRightLeft {
+          0% {
+            transform: translate(-2%, 0);
+          }
+          50% {
+            transform: translate(2%, 0);
+          }
+          100% {
+            transform: translate(-2%, 0);
+          }
+        }
         @include mobile-only() {
           width: 40%;
           font-size: 1.2rem;
@@ -452,7 +808,7 @@
     @include lg() {
       width: 100%;
       height: 38%;
-      top: 610%;
+      top: 650%;
     }
     // border: 1px solid red;
     #landingFooterWrapper {
