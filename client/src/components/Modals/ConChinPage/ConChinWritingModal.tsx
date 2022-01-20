@@ -20,7 +20,7 @@ import {
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ConChinWritingModal() {
   /* dispatch / navigate */
@@ -97,7 +97,7 @@ function ConChinWritingModal() {
 
   // (input) 게시글 내용
   const handleArticleContent = async (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLTextAreaElement>,
   ): Promise<void> => {
     setContent(e.target.value);
   };
@@ -140,25 +140,54 @@ function ConChinWritingModal() {
     }
   };
 
+  // // 모집중인 콘친수
+  // const [numTotalConchin, setNumTotalConchin] = useState<string>('2');
+  // // 현재 모인 콘친 수
+  // const [numPresentConchin, setNumPresentConchin] = useState<string>('1');
+
   // 작성하기 버튼
   const handleWriteBtn = async () => {
     // [POST] 서버로 게시물 작성 요청, ex) concert/:concertid/article => concertid는 변수 처리해야됨!
-    console.log(target.id);
-    const response = await axios.post(
-      `${process.env.REACT_APP_API_URL}/concert/${target.id}/article`,
-      {
-        title: title,
-        content: content,
-        image: preview,
-      },
-      { withCredentials: true },
-    );
-    console.log(response.data);
-    dispatch(insertAlertText('글 작성에 성공했습니다! 🙂'));
-    dispatch(insertBtnText('확인'));
-    dispatch(showConChinWritingModal(false));
-    dispatch(showSuccessModal(true));
-    getAllArticles();
+    if (title.length === 0 || title === undefined) {
+      dispatch(insertAlertText('제목을 입력해 주세요! 😖'));
+      dispatch(showAlertModal(true));
+    } else if (Number(numPresentConchin) > Number(numTotalConchin)) {
+      dispatch(
+        insertAlertText('현재 모인 콘친 수가 모집 중인 콘친수보다 높아요! 😖'),
+      );
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
+    } else if (Number(numPresentConchin) > 9 || Number(numTotalConchin) > 9) {
+      dispatch(insertAlertText('모집인원은 9명을 넘을 수 없어요! 😖'));
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
+    } else {
+      if (content !== undefined) {
+        // 글 작성할 때 enter 개행문자로 치환
+        let result: any = content.replace(/(\n|\r\n)/g, '\n');
+
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_URL}/concert/${target.id}/article`,
+          {
+            title: title,
+            content: result,
+            image: preview,
+            member_count: String(numPresentConchin),
+            total_member: String(numTotalConchin),
+          },
+          { withCredentials: true },
+        );
+        console.log(response.data);
+
+        dispatch(insertAlertText('글 작성에 성공했습니다! 🙂'));
+        dispatch(insertBtnText('확인'));
+        dispatch(showConChinWritingModal(false));
+        dispatch(showSuccessModal(true));
+        getAllArticles();
+      }
+    }
 
     // 주의: 글 작성 성공 알림 모달 필요함!
     // 게시글 작성 모달도 닫는다
@@ -168,23 +197,46 @@ function ConChinWritingModal() {
   const handleModifyBtn = async () => {
     // [POST] 서버로 게시물 작성 요청, ex) concert/:concertid/article => concertid는 변수 처리해야됨!
     console.log(target.id);
-    const response = await axios.patch(
-      `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
-      {
-        title: title,
-        content: content,
-        image: preview,
-      },
-      { withCredentials: true },
-    );
-    dispatch(insertAlertText('글 수정에 성공했습니다! 🙂'));
-    dispatch(insertBtnText('확인'));
-    dispatch(showSuccessModal(true));
-    dispatch(showConChinWritingModal(false));
-    getTargetArticlesInfo();
-
-    // 주의: 글 수정 성공 알림 모달 필요함!
-    // 게시글 수정 모달도 닫는다
+    if (title.length === 0 || title === undefined) {
+      dispatch(insertAlertText('제목을 입력해 주세요! 😖'));
+      dispatch(showAlertModal(true));
+    } else if (Number(numPresentConchin) > Number(numTotalConchin)) {
+      dispatch(
+        insertAlertText('현재 모인 콘친 수가 모집 중인 콘친수보다 높아요! 😖'),
+      );
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
+    } else if (Number(numPresentConchin) > 9 || Number(numTotalConchin) > 9) {
+      dispatch(insertAlertText('모집인원은 9명을 넘을 수 없어요! 😖'));
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
+    } else {
+      if (content !== undefined) {
+        // 글 작성할 때 enter 개행문자로 치환
+        let result: any = content.replace(/(\n|\r\n)/g, '\n');
+        const response = await axios.patch(
+          `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
+          {
+            title: title,
+            content: result,
+            image: preview,
+            member_count: String(numPresentConchin),
+            total_member: String(numTotalConchin),
+          },
+          { withCredentials: true },
+        );
+        dispatch(insertAlertText('글 수정에 성공했습니다! 🙂'));
+        getTargetArticlesInfo();
+        dispatch(insertBtnText('확인'));
+        dispatch(showSuccessModal(true));
+        dispatch(showConChinWritingModal(false));
+        getTargetArticlesInfo();
+      }
+      // 주의: 글 수정 성공 알림 모달 필요함!
+      // 게시글 수정 모달도 닫는다
+    }
   };
 
   /* 게시물 정보 조회 핸들러 */
@@ -201,6 +253,24 @@ function ConChinWritingModal() {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    if (targetArticle.title !== undefined) {
+      setTitle(targetArticle.title);
+    }
+    if (targetArticle.total_member !== undefined) {
+      setNumTotalConchin(String(targetArticle.total_member));
+    }
+    if (targetArticle.total_member !== undefined) {
+      setNumTotalConchin(String(targetArticle.total_member));
+    }
+    if (targetArticle.member_count !== undefined) {
+      setNumPresentConchin(String(targetArticle.member_count));
+    }
+    if (targetArticle.content !== undefined) {
+      setContent(targetArticle.content);
+    }
+  }, []);
 
   return (
     <div id='conChinWritingContainer'>
@@ -237,13 +307,13 @@ function ConChinWritingModal() {
           </div>
           <input
             className='box'
+            type='text'
             id='write'
-            placeholder={
-              targetArticle.title
-                ? targetArticle.title
-                : '글 제목을 입력해주세요'
-            }
             onChange={handleArticleTitle}
+            placeholder={
+              targetArticle.title ? targetArticle.title : '제목을 입력해주세요.'
+            }
+            value={title}
           ></input>
           <div id='peopleNum' className='box'>
             <input
@@ -256,6 +326,7 @@ function ConChinWritingModal() {
                   : '모집중인 콘친 수'
               }
               onChange={handleTotalNumConchin}
+              value={numTotalConchin}
             ></input>
             <input
               type='number'
@@ -267,17 +338,20 @@ function ConChinWritingModal() {
                   : '현재 모인 콘친 수'
               }
               onChange={handlePresentNumConchin}
+              value={numPresentConchin}
             ></input>
           </div>
-          <input
+          <textarea
             id='board'
             placeholder={
               targetArticle.content
                 ? targetArticle.content
-                : '글 내용을 입력해주세요'
+                : '글 내용을 입력해주세요.'
             }
             onChange={handleArticleContent}
-          ></input>
+            value={content}
+            wrap='soft'
+          ></textarea>
           <div className='box' id='btnBox'>
             <button
               id='no1'
