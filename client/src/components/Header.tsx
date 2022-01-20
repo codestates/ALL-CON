@@ -80,6 +80,9 @@ function Header() {
     let seconds: string | number = Math.floor(
       (RemainDate % (1000 * 60)) / 1000,
     );
+    if (String(hours).length === 1) {
+      miniutes = `0${hours}`;
+    }
     if (String(miniutes).length === 1) {
       miniutes = `0${miniutes}`;
     }
