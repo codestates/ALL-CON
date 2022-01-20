@@ -26,7 +26,6 @@ function ConChinPage() {
   const { articleOrder, postingOrder, targetArticle, allArticles } =
     useSelector((state: RootState) => state.conChin);
 
-  console.log(allConcerts);
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
     try {
