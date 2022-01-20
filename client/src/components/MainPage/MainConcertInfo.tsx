@@ -50,7 +50,7 @@ function MainConcertInfo() {
   const { pageAllComments } = useSelector(
     (state: RootState) => state.concertComments,
   );
-  const [alarmType, setAlarmType] = useState('');
+
   // const [emailClick, setEmailClick] = useState(false);
   // const [smsClick, setSmsClick] = useState(false);
 
@@ -67,8 +67,13 @@ function MainConcertInfo() {
 
   useEffect(() => {
     // 로그인 상태인 경우, 나의 알람 리스트를 조회한다
-    if(isLogin) {
-      // getAllAlarms();
+    if (isLogin) {
+      console.log('getAllAlarms 렌더링');
+      getAllAlarms();
+    } else {
+      //로그 아웃하면 불이 꺼진다
+      dispatch(setEmailClick(false));
+      dispatch(setSmsClick(false));
     }
   }, [target, isLogin]);
 
@@ -86,6 +91,7 @@ function MainConcertInfo() {
           const all = res.data.data.myAllAlarmInfo;
           //모든 알람 allAlarms에 배열로 저장
           setAllAlarms(all);
+          console.log(allAlarms);
           if (allAlarms) {
             let flag = 1;
             let check = () => {
@@ -95,7 +101,14 @@ function MainConcertInfo() {
                   allAlarms[i].concert_id === target.id &&
                   allAlarms[i].email_alarm === true
                 ) {
+                  console.log('emailClick', emailClick);
+                  console.log('이메일 알림을 찾았어요');
                   dispatch(setEmailClick(true));
+                  //여기서 true로 잘 만들었는데 렌더링 여러번되면서 false로 풀림
+                  //타겟이 바뀔 때 렌더링이 엄청 많이 되면서 풀리는 거 같다
+                  //getAllAlarms는 1번 렌더링되는걸 보니 내부의 문제
+                  console.log('이메일 알림 dispatch로 바꿨어요');
+                  console.log('emailClick', emailClick);
                   flag = 2;
                 }
                 if (
@@ -103,7 +116,9 @@ function MainConcertInfo() {
                   allAlarms[i].concert_id === target.id &&
                   allAlarms[i].phone_alarm === true
                 ) {
+                  console.log('문자 알림을 찾았어요');
                   dispatch(setSmsClick(true));
+                  console.log('문자 알림 dispatch로 바꿨어요');
                   flag = 3;
                 }
               }
@@ -111,6 +126,7 @@ function MainConcertInfo() {
             check();
             if (flag === 1) {
               //이메일도 sms도 알림설정 한적이 없는 경우
+              console.log('여길 처음에 왜와..? check돌린후인데');
               dispatch(setEmailClick(false));
               dispatch(setSmsClick(false));
             }
@@ -121,6 +137,7 @@ function MainConcertInfo() {
       console.log(err);
     }
   };
+
   //해당 콘서트에서 한번도 알람 설정한적 없을때 알람
   const getAlarm = async (test: string) => {
     try {
@@ -156,12 +173,12 @@ function MainConcertInfo() {
       const today = new Date();
       const openDay = new Date(year, month, date, hour, minute);
       const gap = (openDay.getTime() - today.getTime()) / 1000 / 60 / 60; // 시간차이
-      
-      if(gap > 24) return true
+
+      if (gap > 24) return true;
       else {
         dispatch(setEmailClick(false));
         dispatch(setSmsClick(false));
-        return false
+        return false;
       }
     }
     return false;
@@ -199,7 +216,6 @@ function MainConcertInfo() {
         );
         dispatch(showEmailAlarmModal(true));
       } else {
-        setAlarmType('email');
         //알람 새로 요청함
         getAlarm('email');
         dispatch(insertBtnText('확인'));
@@ -233,7 +249,6 @@ function MainConcertInfo() {
           dispatch(showSmsAlarmModal(true));
         } else {
           //알람 설정을 이전에 한 적이 없다. 이번에 처음 알람 등록한다.
-          setAlarmType('phone');
           getAlarm('phone');
           dispatch(insertBtnText('확인'));
           dispatch(
@@ -319,14 +334,13 @@ function MainConcertInfo() {
                 <p className='left' id='alarm'>
                   알림 받기
                 </p>
-                <p className='left' id='showPlace'>
-                  장소 보기
-                </p>
               </div>
               <div className='right-side'>
                 {detail.place && (
                   <p className='right' id='place_r'>
-                    <p>{detail.place}</p>
+                    <p onClick={() => dispatch(showMainKakaoModal(true))}>
+                      {detail.place}
+                    </p>
                     <img
                       src={map}
                       onClick={() => dispatch(showMainKakaoModal(true))}
@@ -381,9 +395,6 @@ function MainConcertInfo() {
                   )}
                   {ticketOpenCheck(detail.open_date)}
                 </p>
-                <p className='right' id='showPlace_r'>
-                  <img src={map}></img>
-                </p>
               </div>
             </div>
           </div>
@@ -392,7 +403,14 @@ function MainConcertInfo() {
           {detail && (
             <button id='black-btn'>
               <div id='imgAndOpen'>
-                <img src={(smsClick || emailClick) &&  ticketOpenCheck(detail.open_date) ? bellOn : bellOff} />
+                <img
+                  src={
+                    (smsClick || emailClick) &&
+                    ticketOpenCheck(detail.open_date)
+                      ? bellOn
+                      : bellOff
+                  }
+                />
                 <p id='open'>
                   티켓 오픈일 &nbsp; {dayFormatter(detail.open_date)}
                 </p>
