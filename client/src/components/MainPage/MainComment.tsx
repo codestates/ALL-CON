@@ -160,9 +160,13 @@ function MainComment() {
         `${process.env.REACT_APP_API_URL}/user/other/${id}`,
         { withCredentials: true },
       );
-      if (response.data) {
+      if (response.data.data) {
+        console.log(response.data);
         dispatch(setTargetArticlesUserInfo(response.data.data.userInfo));
         dispatch(showConChinProfileModal(true));
+      } else {
+        dispatch(insertAlertText('콘친인증을 하지 않은 회원의 정보를 볼 수 없어요! 😖'));
+        dispatch(showAlertModal(true));
       }
     } catch (err) {
       console.log(err);
@@ -227,7 +231,7 @@ function MainComment() {
               {el.User.username} | {dayFormatter(el.createdAt).substring(0, 10)}
             </p>
             <div className='optionWrapper'>
-              {userInfo.id === el.user_id && (
+              {(userInfo.id === el.user_id) && (el.id !== clickIdEditMode) &&  (
                 <div
                   id={String(el.id)}
                   className='optionBtn'
@@ -241,7 +245,7 @@ function MainComment() {
                   수정하기
                 </div>
               )}
-              {userInfo.id === el.user_id && (
+              {(userInfo.id === el.user_id) && (el.id !== clickIdEditMode) && 
                 <div
                   id={String(el.id)}
                   className='optionBtn'
@@ -250,6 +254,16 @@ function MainComment() {
                   }}
                 >
                   삭제하기
+                </div>
+              }
+              {el.id === clickIdEditMode && (
+                <div className='optionBtn' onClick={commentEditHandler}>
+                  수정
+                </div>
+              )}
+              {el.id === clickIdEditMode && (
+                <div className='optionBtn' onClick={() => setClickIdEditMode(0)}>
+                  취소
                 </div>
               )}
             </div>
@@ -271,16 +285,7 @@ function MainComment() {
               ) : (
                 <p id='text'>{el.content}</p>
               )}
-              {el.id === clickIdEditMode && (
-                <div className='textBtn' onClick={commentEditHandler}>
-                  수정
-                </div>
-              )}
-              {el.id === clickIdEditMode && (
-                <div className='textBtn' onClick={() => setClickIdEditMode(0)}>
-                  취소
-                </div>
-              )}
+              
             </div>
           </div>
         </div>

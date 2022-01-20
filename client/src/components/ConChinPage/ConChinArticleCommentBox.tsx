@@ -281,7 +281,7 @@ function ConChinArticleCommentBox() {
                   : null}
               </p>
               <div className='optionWrapper'>
-                {userInfo.id === el.user_id && (
+                {(userInfo.id === el.user_id) && (el.id !== clickId) && (
                   <div
                     className='optionBtn'
                     onClick={() => {
@@ -293,7 +293,7 @@ function ConChinArticleCommentBox() {
                     수정하기
                   </div>
                 )}
-                {userInfo.id === el.user_id && (
+                {(userInfo.id === el.user_id) && (el.id !== clickId) && (
                   <div
                     className='optionBtn'
                     onMouseDown={() => {
@@ -306,6 +306,16 @@ function ConChinArticleCommentBox() {
                     }}
                   >
                     삭제하기
+                  </div>
+                )}
+                {el.id === clickId && (
+                  <div className='optionBtn' onClick={commentEditHandler}>
+                    수정
+                  </div>
+                )}
+                {el.id === clickId && (
+                  <div className='optionBtn' onClick={() => setClickId(0)}>
+                    취소
                   </div>
                 )}
               </div>
@@ -329,16 +339,6 @@ function ConChinArticleCommentBox() {
                   />
                 ) : (
                   <p id='text'>{el.content}</p>
-                )}
-                {el.id === clickId && (
-                  <div className='textBtn' onClick={commentEditHandler}>
-                    수정
-                  </div>
-                )}
-                {el.id === clickId && (
-                  <div className='textBtn' onClick={() => setClickId(0)}>
-                    취소
-                  </div>
                 )}
               </div>
             </div>

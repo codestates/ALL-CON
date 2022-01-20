@@ -189,7 +189,18 @@
     }
 
     #firstImgAnimated {
-      // border: 1px solid green;
+      @include mobile-only() {
+        width: 85%;
+        height: 14%;
+      }
+      @include md() {
+        width: 80%;
+        height: 14%;
+      }
+      @include lg() {
+        width: 53%;
+        height: 13%;
+      }
       @extend #firstImg;
       animation: moveToLeft 2s;
       -moz-animation: moveToLeft 2s; /* Firefox */
@@ -198,33 +209,41 @@
       @keyframes moveToLeft {
         from {
           transform: translate(100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-moz-keyframes moveToLeft {
         from {
           transform: translate(100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-webkit-keyframes moveToLeft {
         from {
           transform: translate(100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-o-keyframes moveToLeft {
         from {
           transform: translate(100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
     }
@@ -400,33 +419,41 @@
       @keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-moz-keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-webkit-keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-o-keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
     }
@@ -529,33 +556,41 @@
       @keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-moz-keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-webkit-keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-o-keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
     }
@@ -574,33 +609,41 @@
       @keyframes moveToLeft {
         from {
           transform: translate(100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-moz-keyframes moveToLeft {
         from {
           transform: translate(100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-webkit-keyframes moveToLeft {
         from {
           transform: translate(100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-o-keyframes moveToLeft {
         from {
           transform: translate(100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
     }
@@ -631,33 +674,41 @@
       @keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-moz-keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-webkit-keyframes moveToRight {
-        from {
+        ffrom {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
       @-o-keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
+          opacity: 20%;
         }
         to {
           transform: translate(0, 0);
+          opacity: 100%;
         }
       }
     }

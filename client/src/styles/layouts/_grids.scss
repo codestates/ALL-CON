@@ -683,18 +683,21 @@
           font-weight: bold;
           background-color: $yellow;
           margin-right: 1.5%;
-          width: 10%;
+          
           height: 80%;
           cursor: pointer;
           @include mobile-only() {
+            width: 15%;
             border-radius: 7.5px;
             font-size: 1rem;
           }
           @include md() {
+            width: 10%;
             border-radius: 10px;
             font-size: 1.3rem;
           }
           @include lg() {
+            width: 10%;
             border-radius: 15px;
             font-size: 1.5rem;
           }
@@ -770,12 +773,12 @@
           @include mobile-only() {
             width: 50%;
             border-radius: 3px;
-            font-size: 0.15rem;
+            font-size: 1rem;
           }
           @include md() {
             width: 45%;
             border-radius: 3px;
-            font-size: 0.3rem;
+            font-size: 1rem;
           }
           @include lg() {
             width: 45%;
@@ -868,8 +871,8 @@
         #text {
           position: relative;
           display: flex;
-          width: 85%;
-          height: 100%;
+          width: 98%;
+          height: 95%;
           margin-right: 0.5%;
           resize: none;
           // border: 1px solid red;
@@ -883,35 +886,35 @@
             font-size: 1.4rem;
           }
         }
-        .textBtn {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-weight: bold;
-          background-color: black;
-          margin-right: 1%;
-          width: 7.5%;
-          height: 80%;
-          cursor: pointer;
-          @include mobile-only() {
-            border-radius: 5px;
-            font-size: 1rem;
-          }
-          @include md() {
-            border-radius: 8px;
-            font-size: 1.25rem;
-          }
-          @include lg() {
-            border-radius: 12px;
-            font-size: 1.5rem;
-          }
-        }
-        .textBtn:hover {
-          transition: 0.25s all;
-          background-color: $yellow;
-        }
+        // .textBtn {
+        //   position: relative;
+        //   display: flex;
+        //   align-items: center;
+        //   justify-content: center;
+        //   color: white;
+        //   font-weight: bold;
+        //   background-color: black;
+        //   margin-right: 1%;
+        //   width: 7.5%;
+        //   height: 80%;
+        //   cursor: pointer;
+        //   @include mobile-only() {
+        //     border-radius: 5px;
+        //     font-size: 1rem;
+        //   }
+        //   @include md() {
+        //     border-radius: 8px;
+        //     font-size: 1.25rem;
+        //   }
+        //   @include lg() {
+        //     border-radius: 12px;
+        //     font-size: 1.5rem;
+        //   }
+        // }
+        // .textBtn:hover {
+        //   transition: 0.25s all;
+        //   background-color: $yellow;
+        // }
       }
     }
   }

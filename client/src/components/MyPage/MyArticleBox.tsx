@@ -23,7 +23,7 @@ function MyArticleBox() {
   const navigate = useNavigate();
 
   /* useSelector */
-  const { articleInfo } = useSelector((state: RootState) => state.my);
+  const { articleInfo, myTotalArticle } = useSelector((state: RootState) => state.my);
 
   /* 지역상태 - useState */
 
@@ -72,7 +72,7 @@ function MyArticleBox() {
       <div id='titleWrapper'>
         <p className='title'>내가 쓴 게시물</p>
       </div>
-      <h1 id='myArticleCount'>개의 게시글</h1>
+      <h1 id='myArticleCount'>{myTotalArticle}개의 게시글</h1>
       <div id='articleWrapper'>
         <div id='articleBox'>
           <div id='box'>

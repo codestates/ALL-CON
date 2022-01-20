@@ -167,27 +167,6 @@
   .hidden {
     display: none;
   }
-  #paginationWrapper {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    @include mobile-only() {
-      top: 66%;
-      height: 25%;
-    }
-    @include md() {
-      top: 67%;
-      height: 45%;
-    }
-    @include lg() {
-      top: 82%;
-      height: 30%;
-    }
-    // border: 3px solid green;
-  }  
   // 댓글수 
   .myCount {
     // font-size:2.0rem;
@@ -232,6 +211,36 @@
       color: white;
       cursor: pointer;
       transition: 0.15s all;
+    }
+  }
+  //
+  .myOrderChosen {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    background-color: #ffce63;
+    color: white;
+
+    margin-right: 0.5%;
+    font-weight: bold;
+    @include mobile-only() {
+      left: 45%;
+      width: 19%;
+      height: 50%;
+    }
+    @include md() {
+      width: 12%;
+      height: 50%;
+      font-size: 1.2rem;
+    }
+    @include lg() {
+      left: 72.5%;
+      width: 9%;
+      height: 50%;
+      font-size: 2.0rem;
     }
   }
   // 수정하기 / 삭제하기 버튼
@@ -287,7 +296,7 @@
       // border: 1px solid purple;
       @include mobile-only() {
         width: 9%;
-        height: 60%;
+        height: 70%;
         top: -12%;
         left: -0.5%;
       }
@@ -298,8 +307,8 @@
       }
       @include lg() {
         width: 7.5%;
-        height: 75%;
-        top: -9%;
+        height: 88%;
+        top: 7%;
         left: 2%;
       }
       .myImg {
@@ -323,7 +332,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      width: 88%;
+      width: 102.5%;
       height: 70%;
       top: 30%;
       left: 11%;
@@ -348,4 +357,25 @@
       }
     }
   }
+  #paginationWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    @include mobile-only() {
+      top: 66%;
+      height: 25%;
+    }
+    @include md() {
+      top: 67%;
+      height: 45%;
+    }
+    @include lg() {
+      top: 92%;
+      height: 30%;
+    }
+    // border: 3px solid green;
+  }  
 }

@@ -4,7 +4,7 @@ import kakao from '../../images/kakaoOAuth.png';
 import originalLock from '../../images/originalPadlock.png';
 import xButton from '../../images/xButton.png';
 /* Store import */
-import { setIsHeaderClick, setTarget, setTargetIdx, setOrder } from '../../store/MainSlice';
+import {  setTarget, setTargetIdx, setOrder, setIsRendering } from '../../store/MainSlice';
 import { setPageNum } from '../../store/ConcertCommentSlice';
 import { login, getUserInfo } from '../../store/AuthSlice';
 import {
@@ -31,13 +31,12 @@ function LoginModal() {
 
   /* 로그인 후 홈화면 리다이렉트 핸들러 */
   const goHomeHandler = () => {
-    /* 외부 -> 홈 이동 상태 초기화 */
-    dispatch(setIsHeaderClick(true));
     /* 메인페이지 상태 초기화 */
     dispatch(setTarget({}));
     dispatch(setTargetIdx(0));
     dispatch(setOrder('view')); 
     dispatch(setPageNum(1));
+    dispatch(setIsRendering(false));
     /* 켜져있는 모달창 모두 종료 */
     dispatch(showConcertModal(false)); // concertPage 모달창    
     dispatch(showLoginModal(false));
