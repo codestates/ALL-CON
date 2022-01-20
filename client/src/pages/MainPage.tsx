@@ -11,8 +11,7 @@ import {
   setTarget,
   setAllConcerts,
   setDetail,
-  setIsRendering,
-  setIsHeaderClick
+  setIsRendering
 } from '../store/MainSlice';
 import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice'
 /* Library import */
@@ -22,22 +21,14 @@ import { useEffect } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
-  const { isRendering, isHeaderClick, order, target, targetIdx, allConcerts } = useSelector(
+  const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
   const { pageAllComments, pageNum } = useSelector(
     (state: RootState) => state.concertComments,
   );
-  
-  console.log('메인페이지 진입시 target : ', target);
-  console.log('메인페이지 진입시 targetIdx : ', targetIdx);
 
-  /* 홈 진입시 isHeaderClick=false 1회 초기화 */
-  useEffect(() => {
-    dispatch(setIsHeaderClick(false));
-  }, []);
-
-  /* 헤더에서 홈버튼이 눌리거나 콘서트 목록이 바뀔때마다 전체 콘서트 렌더링 */
+  /* 전체 콘서트 렌더링 */
   useEffect(() => {
     getAllConcerts(); // 전체 콘서트 목록
   }, [isRendering]);

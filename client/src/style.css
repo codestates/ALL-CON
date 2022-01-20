@@ -583,19 +583,21 @@ a {
           font-weight: bold;
           background-color: #ffce63;
           margin-right: 1.5%;
-          width: 10%;
           height: 80%;
           cursor: pointer; }
           @media (max-width: 767px) {
             #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
+              width: 15%;
               border-radius: 7.5px;
               font-size: 1rem; } }
           @media (min-width: 768px) {
             #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
+              width: 10%;
               border-radius: 10px;
               font-size: 1.3rem; } }
           @media (min-width: 1200px) {
             #commentBox .writeBox .commentBodyBox .bodyWrapper #inputBtn, #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
+              width: 10%;
               border-radius: 15px;
               font-size: 1.5rem; } }
         #commentBox .writeBox .commentBodyBox .bodyWrapper #hiddenBtn {
@@ -659,12 +661,12 @@ a {
             #commentBox .box .dateBox .optionWrapper .optionBtn {
               width: 50%;
               border-radius: 3px;
-              font-size: 0.15rem; } }
+              font-size: 1rem; } }
           @media (min-width: 768px) {
             #commentBox .box .dateBox .optionWrapper .optionBtn {
               width: 45%;
               border-radius: 3px;
-              font-size: 0.3rem; } }
+              font-size: 1rem; } }
           @media (min-width: 1200px) {
             #commentBox .box .dateBox .optionWrapper .optionBtn {
               width: 45%;
@@ -743,8 +745,8 @@ a {
         #commentBox .box #imgAndText .textWrapper #text {
           position: relative;
           display: flex;
-          width: 85%;
-          height: 100%;
+          width: 98%;
+          height: 95%;
           margin-right: 0.5%;
           resize: none; }
           @media (max-width: 767px) {
@@ -756,33 +758,6 @@ a {
           @media (min-width: 1200px) {
             #commentBox .box #imgAndText .textWrapper #text {
               font-size: 1.4rem; } }
-        #commentBox .box #imgAndText .textWrapper .textBtn {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-weight: bold;
-          background-color: black;
-          margin-right: 1%;
-          width: 7.5%;
-          height: 80%;
-          cursor: pointer; }
-          @media (max-width: 767px) {
-            #commentBox .box #imgAndText .textWrapper .textBtn {
-              border-radius: 5px;
-              font-size: 1rem; } }
-          @media (min-width: 768px) {
-            #commentBox .box #imgAndText .textWrapper .textBtn {
-              border-radius: 8px;
-              font-size: 1.25rem; } }
-          @media (min-width: 1200px) {
-            #commentBox .box #imgAndText .textWrapper .textBtn {
-              border-radius: 12px;
-              font-size: 1.5rem; } }
-        #commentBox .box #imgAndText .textWrapper .textBtn:hover {
-          transition: 0.25s all;
-          background-color: #ffce63; }
   #commentBox .emptyBox {
     position: relative;
     display: flex;
@@ -2676,7 +2651,7 @@ a {
           align-items: center;
           justify-content: center;
           width: 100%;
-          height: 20%;
+          height: 17.5%;
           top: 13.4rem; }
           #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper .nickName {
             position: relative;
@@ -2700,6 +2675,34 @@ a {
             #conChinProfileModal #modalBox #modal #profileBox #nickNameWrapper #shieldWrapper .shield {
               width: 100%;
               height: 100%; }
+        #conChinProfileModal #modalBox #modal #profileBox #createdAtWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%; }
+          @media (max-width: 767px) {
+            #conChinProfileModal #modalBox #modal #profileBox #createdAtWrapper {
+              top: 16.5rem; } }
+          @media (min-width: 768px) {
+            #conChinProfileModal #modalBox #modal #profileBox #createdAtWrapper {
+              top: 17.5rem; } }
+          @media (min-width: 1200px) {
+            #conChinProfileModal #modalBox #modal #profileBox #createdAtWrapper {
+              top: 17.5rem; } }
+          #conChinProfileModal #modalBox #modal #profileBox #createdAtWrapper #date {
+            position: relative;
+            font-weight: bold;
+            color: #404040; }
+            @media (max-width: 767px) {
+              #conChinProfileModal #modalBox #modal #profileBox #createdAtWrapper #date {
+                font-size: 1rem; } }
+            @media (min-width: 768px) {
+              #conChinProfileModal #modalBox #modal #profileBox #createdAtWrapper #date {
+                font-size: 1.2rem; } }
+            @media (min-width: 1200px) {
+              #conChinProfileModal #modalBox #modal #profileBox #createdAtWrapper #date {
+                font-size: 1.2rem; } }
       #conChinProfileModal #modalBox #modal #introductionBox {
         position: absolute;
         display: flex;
@@ -7328,13 +7331,14 @@ a {
       position: relative;
       align-items: center;
       justify-content: center;
-      width: 20%;
       overflow: hidden; }
       @media (max-width: 767px) {
         #concertBoxOuterContainer #concertBoxContainer .imgWrapper {
-          height: 75px; } }
+          width: 20%;
+          height: 80px; } }
       @media (min-width: 768px) {
         #concertBoxOuterContainer #concertBoxContainer .imgWrapper {
+          width: 20%;
           height: 150px; } }
       @media (min-width: 1200px) {
         #concertBoxOuterContainer #concertBoxContainer .imgWrapper {
@@ -7368,20 +7372,23 @@ a {
       justify-content: space-between;
       width: 75%;
       height: 90%; }
-      @media (max-width: 767px) {
-        #concertBoxOuterContainer #concertBoxContainer .infos h2 {
-          font-size: 1.3rem; } }
-      @media (min-width: 768px) {
-        #concertBoxOuterContainer #concertBoxContainer .infos h2 {
-          font-size: 2rem; } }
-      @media (min-width: 1200px) {
-        #concertBoxOuterContainer #concertBoxContainer .infos h2 {
-          font-size: 2rem; } }
+      #concertBoxOuterContainer #concertBoxContainer .infos h2 {
+        width: 100%;
+        height: 50%; }
+        @media (max-width: 767px) {
+          #concertBoxOuterContainer #concertBoxContainer .infos h2 {
+            font-size: 1.1rem; } }
+        @media (min-width: 768px) {
+          #concertBoxOuterContainer #concertBoxContainer .infos h2 {
+            font-size: 2rem; } }
+        @media (min-width: 1200px) {
+          #concertBoxOuterContainer #concertBoxContainer .infos h2 {
+            font-size: 2rem; } }
       #concertBoxOuterContainer #concertBoxContainer .infos .miniBox {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        height: 70%; }
+        height: 50%; }
         #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
           display: flex;
           flex-direction: column;
@@ -7392,7 +7399,7 @@ a {
             display: flex;
             flex-direction: rows;
             justify-content: flex-start;
-            height: 30%;
+            height: 40%;
             width: 100%; }
             #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
               display: flex;
@@ -7430,17 +7437,17 @@ a {
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-end;
-          width: 45%;
+          width: 50%;
           height: 100%; }
           #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .viewWrapper {
             display: flex;
             flex-direction: rows;
             justify-content: flex-end;
             align-items: center;
-            width: 50%;
-            height: 50%; }
+            width: 100%;
+            height: 15%; }
             #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .viewWrapper img {
-              width: 20%;
+              width: 10%;
               margin-right: 5%;
               opacity: 70%; }
             #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .viewWrapper #view {
@@ -7455,10 +7462,15 @@ a {
                 #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .viewWrapper #view {
                   font-size: 1.6rem; } }
           #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
+            display: flex;
+            width: 100%;
+            height: 70%;
+            align-items: center;
+            justify-self: right;
             font-weight: bold; }
             @media (max-width: 767px) {
               #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
-                font-size: 1.12rem; } }
+                font-size: 1.1rem; } }
             @media (min-width: 768px) {
               #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
                 font-size: 1.45rem; } }
@@ -7536,21 +7548,23 @@ a {
       justify-content: space-between;
       width: 75%;
       height: 90%; }
-      @media (max-width: 767px) {
-        #concertChosenBoxOuterContainer #concertBoxContainer .infos h2 {
-          font-size: 1.3rem; } }
-      @media (min-width: 768px) {
-        #concertChosenBoxOuterContainer #concertBoxContainer .infos h2 {
-          font-size: 2rem; } }
-      @media (min-width: 1200px) {
-        #concertChosenBoxOuterContainer #concertBoxContainer .infos h2 {
-          font-size: 2rem; } }
+      #concertChosenBoxOuterContainer #concertBoxContainer .infos h2 {
+        width: 100%;
+        height: 50%; }
+        @media (max-width: 767px) {
+          #concertChosenBoxOuterContainer #concertBoxContainer .infos h2 {
+            font-size: 1.1rem; } }
+        @media (min-width: 768px) {
+          #concertChosenBoxOuterContainer #concertBoxContainer .infos h2 {
+            font-size: 2rem; } }
+        @media (min-width: 1200px) {
+          #concertChosenBoxOuterContainer #concertBoxContainer .infos h2 {
+            font-size: 2rem; } }
       #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox {
         display: flex;
         justify-content: space-between;
         width: 100%;
-        height: 70%;
-        font-size: 1.2rem; }
+        height: 50%; }
         #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
           display: flex;
           flex-direction: column;
@@ -7561,7 +7575,7 @@ a {
             display: flex;
             flex-direction: rows;
             justify-content: flex-start;
-            height: 30%;
+            height: 40%;
             width: 100%; }
             #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
               display: flex;
@@ -7599,18 +7613,19 @@ a {
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-end;
-          width: 45%;
+          width: 50%;
           height: 100%; }
           #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right .viewWrapper {
             display: flex;
             flex-direction: rows;
             justify-content: flex-end;
             align-items: center;
-            width: 50%;
-            height: 50%; }
+            width: 100%;
+            height: 15%; }
             #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right .viewWrapper img {
-              width: 20%;
-              margin-right: 5%; }
+              width: 10%;
+              margin-right: 5%;
+              opacity: 70%; }
             #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right .viewWrapper #view {
               font-weight: bold; }
               @media (max-width: 767px) {
@@ -7623,10 +7638,15 @@ a {
                 #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right .viewWrapper #view {
                   font-size: 1.6rem; } }
           #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
+            display: flex;
+            width: 100%;
+            height: 70%;
+            align-items: center;
+            justify-self: right;
             font-weight: bold; }
             @media (max-width: 767px) {
               #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
-                font-size: 1.12rem; } }
+                font-size: 1.1rem; } }
             @media (min-width: 768px) {
               #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #place {
                 font-size: 1.45rem; } }

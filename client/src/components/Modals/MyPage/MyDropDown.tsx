@@ -1,7 +1,7 @@
 /* Store import */
 import { RootState } from '../../../index';
 import { setScrollCount } from '../../../store/HeaderSlice';
-import { setIsHeaderClick, setTarget, setTargetIdx, setOrder, setAllConcerts } from '../../../store/MainSlice';
+import { setTarget, setTargetIdx, setOrder, setAllConcerts, setIsRendering } from '../../../store/MainSlice';
 import { setTargetArticle, setArticleRendered, setArticleCurPage } from '../../../store/ConChinSlice';
 import { login, logout, getUserInfo } from '../../../store/AuthSlice';
 import { setPageNum } from '../../../store/ConcertCommentSlice';
@@ -49,13 +49,12 @@ function MyDropDown() {
   /* handler 함수 (기능별 정렬) */
   // 로그아웃 후 메인페이지 리다이렉트 핸들러
   const goHomeHandler = () => {
-    /* 외부 -> 홈 이동 상태 초기화 */
-    dispatch(setIsHeaderClick(true));
     /* 메인페이지 상태 초기화 */
     dispatch(setTarget({}));
     dispatch(setTargetIdx(0));
     dispatch(setOrder('view')); 
     dispatch(setPageNum(1));
+    dispatch(setIsRendering(false));
     /* 켜져있는 모달창 모두 종료 */
     dispatch(showConcertModal(false)); // concertPage 모달창    
     dispatch(showLoginModal(false));
