@@ -283,17 +283,6 @@
             #alarm {
               height: 20%;
             }
-            #showPlace {
-              @include mobile-only() {
-                height: 10%;
-              }
-              @include md() {
-                display: none;
-              }
-              @include lg() {
-                display: none;
-              }
-            }
           }
           .right-side {
             position: absolute;
@@ -324,6 +313,8 @@
               height: 10%;
               @include mobile-only() {
                 height: 15%;
+                text-decoration: underline;
+                cursor: pointer;
               }
               @include md() {
                 width: 120%;
@@ -385,24 +376,6 @@
                 left: 10%;
                 top: 3%;
                 @extend #mailIcon2;
-                &:hover {
-                  cursor: pointer;
-                }
-              }
-            }
-            #showPlace_r {
-              @include mobile-only() {
-                height: 10%;
-              }
-              @include md() {
-                display: none;
-              }
-              @include lg() {
-                display: none;
-              }
-              img {
-                width: 30px;
-                height: 30px;
                 &:hover {
                   cursor: pointer;
                 }

@@ -154,6 +154,9 @@ function ConChinCertificationPage() {
       dispatch(showSuccessModal(true));
       // 프로필 정보 업데이트
       dispatch(getUserInfo(response.data.data));
+      // 모든 버튼 SWITCHOFF
+      dispatch(getBtnSwitchState({ profileEdit: false, conchinCertification: false }))
+      // 마이페이지로 이동
       navigate('/mypage');
     } else {
       // 생년월일이 입력되지 않은 경우, 다음을 실행한다

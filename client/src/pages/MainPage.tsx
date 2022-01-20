@@ -13,7 +13,7 @@ import {
   setDetail,
   setIsRendering
 } from '../store/MainSlice';
-import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice'
+import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
