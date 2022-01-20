@@ -143,8 +143,6 @@ function ConChinArticleBox() {
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
   useEffect(() => {
     getAllArticles();
-    console.log('targetArticle: ');
-    console.log(targetArticle);
   }, [targetArticle]);
 
   return (
@@ -195,7 +193,7 @@ function ConChinArticleBox() {
                     <div className='title'>
                       <img className='icon' src={viewImage} />
                       <p className='count'>
-                        {article.view > 0 ? article.view : null}
+                        {article.view > 0 ? article.view : '종료된 콘서트'}
                       </p>
                       <p className='date'>
                         {article.createdAt.substring(0, 10)}
@@ -248,7 +246,9 @@ function ConChinArticleBox() {
                     </div>
                     <div className='title'>
                       <img className='icon' src={viewImage} />
-                      <p className='count'>{article.view}</p>
+                      <p className='count'>
+                        {article.view > 0 ? article.view : '종료된 콘서트'}
+                      </p>
                       <p className='date'>
                         {article.createdAt.substring(0, 10)}
                       </p>

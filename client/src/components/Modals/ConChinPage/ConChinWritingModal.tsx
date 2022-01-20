@@ -213,6 +213,7 @@ function ConChinWritingModal() {
       <div id='backGround'>
         <div id='writingModal'>
           <div className='imgSelectionWrapper'>
+            <label id='imgSelectionLabel' htmlFor='imgSelection'></label>
             <input type='file' id='imgSelection' onChange={handleImageUpload} />
           </div>
           {/* id를 className으로 바꿔야한다! */}

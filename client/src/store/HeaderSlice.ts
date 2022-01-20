@@ -5,6 +5,7 @@ export interface header {
   isScrolled: boolean;
   scrollCount: number;
   timerMessage: string | number;
+  headerAllConcerts: any[];
 }
 
 /* State 초기값 설정 */
@@ -12,6 +13,7 @@ const initialState: header = {
   isScrolled: false,
   scrollCount: 0,
   timerMessage: '',
+  headerAllConcerts: [],
 };
 
 const headerSlice = createSlice({
@@ -31,9 +33,19 @@ const headerSlice = createSlice({
     ) => {
       state.timerMessage = payload;
     },
+    setHeaderAllConcerts: (
+      state: header,
+      { payload }: PayloadAction<Array<any>>,
+    ) => {
+      state.headerAllConcerts = payload;
+    },
   },
 });
 
-export const { setIsScrolled, setScrollCount, setTimerMessage } =
-  headerSlice.actions;
+export const {
+  setIsScrolled,
+  setScrollCount,
+  setTimerMessage,
+  setHeaderAllConcerts,
+} = headerSlice.actions;
 export default headerSlice.reducer;

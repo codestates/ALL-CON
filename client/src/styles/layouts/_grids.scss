@@ -25,11 +25,11 @@
     // border: 1px solid blue;
     @include mobile-only() {
       width: 93%;
-      height: 21%;
+      height: 35%;
     }
     @include md() {
       width: 93%;
-      height: 15%;
+      height: 35%;
     }
     @include lg() {
       width: 93%;
@@ -125,7 +125,19 @@
     justify-content: center;
     font-size: 5rem;
     width: 100%;
-    height: 50%;
+
+    @include mobile-only() {
+      font-size: 1.5rem;
+      height: 50%;
+    }
+    @include md() {
+      height: 70%;
+      font-size: 2rem;
+    }
+    @include lg() {
+      height: 50%;
+      font-size: 2.5rem;
+    }
     // border: 1px solid red;
   }
   #box {
@@ -136,12 +148,12 @@
     @include mobile-only() {
       border-radius: 5px;
       width: 100%;
-      height: 30%;
+      height: 96%;
     }
     @include md() {
       border-radius: 10px;
       width: 100%;
-      height: 40%;
+      height: 96%;
     }
     @include lg() {
       border-radius: 10px;
@@ -164,12 +176,12 @@
       @include mobile-only() {
         border-radius: 5px;
         width: 100%;
-        height: 30%;
+        height: 90%;
       }
       @include md() {
         border-radius: 10px;
         width: 100%;
-        height: 40%;
+        height: 90%;
       }
       @include lg() {
         border-radius: 10px;
@@ -199,8 +211,17 @@
       }
       &Chosen {
         @extend .article;
-        border: 1rem solid $yellow;
+
         transition: 0.15s all;
+        @include mobile-only() {
+          border: 0.4rem solid $yellow;
+        }
+        @include md() {
+          border: 0.8rem solid $yellow;
+        }
+        @include lg() {
+          border: 1rem solid $yellow;
+        }
       }
       .title {
         position: absolute;
@@ -332,6 +353,29 @@
       }
     }
   }
+  /* 스크롤바 CSS */
+  #box::-webkit-scrollbar {
+    @include mobile-only() {
+      width: 5px;
+    }
+    @include md() {
+      width: 10px;
+    }
+    @include lg() {
+      width: 10px;
+    }
+  }
+  /* 스크롤바 막대 설정*/
+  #box::-webkit-scrollbar-thumb {
+    height: 5%;
+    background-color: $yellow;
+    border-radius: 10px;
+  }
+  /* 스크롤바 뒷 배경 투명도 설정 */
+  #box::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  /* 스크롤바 CSS */
 }
 /****** articleBox ******/
 
@@ -928,6 +972,7 @@
     position: relative;
     width: 30px;
     height: 30px;
+    cursor: pointer;
     &:hover {
       cursor: pointer;
       color: $yellow;
@@ -951,13 +996,15 @@
     right: 9%;
   }
   @include lg() {
-    // display: none;
+    display: flex;
+    width: 5%;
+    right: 9%;
   }
 
   .search {
     position: relative;
-    z-index: 7;
-    border: 1px solid green;
+    z-index: 20;
+    // border: 1px solid green;
     &:hover {
       cursor: pointer;
     }
@@ -972,7 +1019,11 @@
       height: 25px;
     }
     @include lg() {
-      display: none;
+      display: flex;
+      position: absolute;
+      right: 190%;
+      width: 25px;
+      height: 25px;
     }
     &:hover {
       cursor: pointer;
@@ -998,7 +1049,7 @@
   }
   @include lg() {
     width: 5%;
-    right: 10%;
+    right: 12%;
   }
   .login {
     position: relative;
@@ -1073,35 +1124,75 @@
     position: relative;
     font-size: 2.5rem;
     font-weight: bold;
+    &:hover {
+      cursor: pointer;
+      color: $yellow;
+    }
   }
 }
+#autoCompleteWrapper {
+  position: absolute;
+  display: flex;
+  // border: 1px solid red;
+  height: 100%;
+  transition: all 0.3s;
+  @include mobile-only() {
+    width: 50%;
+    height: 100%;
+    right: 14.5%;
+  }
+  @include md() {
+    width: 30%;
+    height: 100%;
+    right: 9%;
+  }
+  @include lg() {
+    width: 15%;
+    height: 100%;
+    right: 18%;
+  }
+  &Hide {
+    @extend #autoCompleteWrapper;
+    transition: all 0.2s;
+    opacity: 0%;
+    width: 0%;
 
+    @include mobile-only() {
+      right: 17.5%;
+    }
+    @include md() {
+      right: 10.5%;
+    }
+    @include lg() {
+      right: 19%;
+    }
+  }
+}
 #hiddenSearchBox {
   position: absolute;
   display: flex;
+
   justify-content: right;
   align-items: center;
-  width: 15%;
+  width: 100%;
   height: 100%;
-  right: 16%;
   // border: 1px solid red;
-  &hiddenSearchBoxShow {
-    @extend #hiddenSearchBox;
-  }
+
   #searchWrapper {
     position: absolute;
     height: 3rem;
     width: 100%;
     right: 0%;
     background-color: #eaeaea;
-    // border: 1px solid blue;
     border-radius: 50px;
 
     @include mobile-only() {
-      display: none;
+      display: flex;
+      justify-content: left;
     }
     @include md() {
-      display: none;
+      display: flex;
+      justify-content: left;
     }
     @include lg() {
       display: flex;
@@ -1112,7 +1203,7 @@
       outline: none;
       resize: none;
       border: none;
-      width: 20rem;
+      width: 80%;
       left: 2rem;
       background-color: #eaeaea;
       border-radius: 0px;
@@ -1139,10 +1230,11 @@
   }
   #imgWrapper {
     position: absolute;
+
     height: 18px;
     width: 18px;
     right: 5%;
-    // border: 1px solid red;
+
     @include mobile-only() {
       display: none;
     }
@@ -1153,6 +1245,7 @@
       display: flex;
     }
     .img {
+      display: none;
       width: 100%;
       height: 100%;
     }
@@ -1165,7 +1258,6 @@
     height: 500%;
     // left: 0%;
     top: 87%;
-    border: 1px solid blue;
     background-color: #ffffff;
     display: block;
     margin-left: auto;
@@ -1190,6 +1282,7 @@
       height: 0%;
       display: none;
     }
+
     > li:hover {
       background-color: $yellow;
       cursor: pointer;
@@ -1206,6 +1299,29 @@
       }
     }
   }
+  /* 스크롤바 CSS */
+  #dropDownWrapper::-webkit-scrollbar {
+    @include mobile-only() {
+      width: 5px;
+    }
+    @include md() {
+      width: 10px;
+    }
+    @include lg() {
+      width: 10px;
+    }
+  }
+  /* 스크롤바 막대 설정*/
+  #dropDownWrapper::-webkit-scrollbar-thumb {
+    height: 5%;
+    background-color: $yellow;
+    border-radius: 10px;
+  }
+  /* 스크롤바 뒷 배경 투명도 설정 */
+  #dropDownWrapper::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  /* 스크롤바 CSS */
 }
 
 /***** headerMenu *****/

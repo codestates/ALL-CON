@@ -26,6 +26,7 @@ import {
   setIsScrolled,
   setScrollCount,
   setTimerMessage,
+  setHeaderAllConcerts,
 } from '../store/HeaderSlice';
 import { setPageNum } from '../store/ConcertCommentSlice';
 import {
@@ -56,49 +57,49 @@ function Header() {
     conChinProfileModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
-  const { isScrolled, scrollCount, timerMessage } = useSelector(
-    (state: RootState) => state.header,
-  );
+  const { isScrolled, scrollCount, timerMessage, headerAllConcerts } =
+    useSelector((state: RootState) => state.header);
   const { articleOrder, allArticles } = useSelector(
     (state: RootState) => state.conChin,
   );
+  const [searchClicked, setSearchClicked] = useState<boolean>(false);
 
   /* Header Timer => 잘 돌아가긴 하지만 고도화 필요.. */
-  // let tid = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
+  let tid = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
 
-  // let stDate = new Date().getTime();
-  // let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
-  // let RemainDate = edDate - stDate;
+  let stDate = new Date().getTime();
+  let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
+  let RemainDate = edDate - stDate;
 
-  // function msg_time() {
-  //   let hours: string | number = Math.floor(
-  //     (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-  //   );
-  //   let miniutes: string | number = Math.floor(
-  //     (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
-  //   );
-  //   let seconds: string | number = Math.floor(
-  //     (RemainDate % (1000 * 60)) / 1000,
-  //   );
-  //   if (String(hours).length === 1) {
-  //     miniutes = `0${hours}`;
-  //   }
-  //   if (String(miniutes).length === 1) {
-  //     miniutes = `0${miniutes}`;
-  //   }
-  //   if (String(seconds).length === 1) {
-  //     seconds = `0${seconds}`;
-  //   }
+  function msg_time() {
+    let hours: string | number = Math.floor(
+      (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+    );
+    let miniutes: string | number = Math.floor(
+      (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
+    );
+    let seconds: string | number = Math.floor(
+      (RemainDate % (1000 * 60)) / 1000,
+    );
+    if (String(hours).length === 1) {
+      miniutes = `0${hours}`;
+    }
+    if (String(miniutes).length === 1) {
+      miniutes = `0${miniutes}`;
+    }
+    if (String(seconds).length === 1) {
+      seconds = `0${seconds}`;
+    }
 
-  //   let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
-  //   dispatch(setTimerMessage(m));
-  //   if (RemainDate < 0) {
-  //     // 시간이 종료 되면
-  //     clearInterval(tid); // 타이머 해제
-  //   } else {
-  //     RemainDate = RemainDate - 1000; // 남은시간 -1초
-  //   }
-  // }
+    let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
+    dispatch(setTimerMessage(m));
+    if (RemainDate < 0) {
+      // 시간이 종료 되면
+      clearInterval(tid); // 타이머 해제
+    } else {
+      RemainDate = RemainDate - 1000; // 남은시간 -1초
+    }
+  }
   /* Header Timer */
 
   /* 스크롤 위치 저장 useEffect */
@@ -121,6 +122,7 @@ function Header() {
     dispatch(
       setScrollCount(window.scrollY || document.documentElement.scrollTop),
     );
+    setSearchClicked(false);
     if (scrollCount > 0.5) dispatch(setIsScrolled(true));
   };
 
@@ -146,6 +148,23 @@ function Header() {
     } catch (err) {
       console.log(err);
       console.log('에러가 났나봐요.');
+    }
+  };
+
+  /*전체 콘서트 받아오기(정렬순:view) */
+  const getAllConcerts = async () => {
+    try {
+      setSearchClicked(!searchClicked);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert?order=view`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        /* 서버 응답값이 있다면 & target 상태 변경 */
+        dispatch(setHeaderAllConcerts(response.data.data.concertInfo));
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -198,8 +217,11 @@ function Header() {
       <div id='logoBar'>
         <Link to='/' onClick={() => resetHandler('logo')}>
           {/* 스크롤 후 로고 호출*/}
+
           <img
-            className={isScrolled === false ? 'logohide' : 'logo'}
+            className={
+              isScrolled === false || searchClicked ? 'logohide' : 'logo'
+            }
             alt='logoImg'
             src={logo}
           />
@@ -214,9 +236,19 @@ function Header() {
         >
           <img className='menu' alt='menuImg' src={menu} />
         </div>
-        <AutoComplete />
+        <div
+          id={searchClicked ? 'autoCompleteWrapper' : 'autoCompleteWrapperHide'}
+        >
+          <AutoComplete />
+        </div>
+
         <div id='searchWrapper'>
-          <img className='search' alt='searchImg' src={search} />
+          <img
+            className='search'
+            alt='searchImg'
+            src={search}
+            onClick={getAllConcerts}
+          />
         </div>
         <div id='loginWrapper'>
           {/* 로그인 여부에 따라 프로필 이미지 혹은 로그인 버튼 출력 */}

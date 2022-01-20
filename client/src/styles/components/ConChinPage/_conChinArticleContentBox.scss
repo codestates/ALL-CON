@@ -321,11 +321,11 @@
     flex-wrap: wrap;
     width: 100%;
     @include mobile-only() {
-      top: 40%;
+      top: 45%;
       height: 65%;
     }
     @include md() {
-      top: 42%;
+      top: 45%;
       height: 45%;
     }
     @include lg() {
@@ -361,11 +361,11 @@
     height: 20%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 82.5%;
+      top: 52.5%;
       height: 20%;
     }
     @include md() {
-      top: 115%;
+      top: 80%;
       height: 22.5%;
     }
     @include lg() {
