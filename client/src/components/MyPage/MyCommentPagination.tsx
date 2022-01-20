@@ -8,7 +8,13 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-function MyCommentPagination() {
+/* Props 선언 */
+interface MyCommentPaginationProps {
+  deactivateEditTextarea(key?: string): void
+}
+
+
+function MyCommentPagination( { deactivateEditTextarea }: MyCommentPaginationProps ) {
   /* dispatch / navigate */
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -70,7 +76,12 @@ function MyCommentPagination() {
           (concertPageArr.length > 0
           ? concertPageArr.map((el: number) => {
             return (
-            <ul className={ el === myConcertCommentCurrentPage ? 'pageChosen' : 'page' } onClick={() => handleConcertPageClick(el)}>
+            <ul className={ el === myConcertCommentCurrentPage ? 'pageChosen' : 'page' } 
+              onClick={() => {
+              handleConcertPageClick(el)
+              deactivateEditTextarea('콘서트')
+              }
+            }>
               <p className='text'> {el} </p>
             </ul>
             )
@@ -79,7 +90,12 @@ function MyCommentPagination() {
         : (articlePageArr.length > 0
           ? articlePageArr.map((el: number) => {
             return (
-            <ul className={ el === myArticleCommentCurrentPage ? 'pageChosen' : 'page' } onClick={() => handleArticlePageClick(el)}>
+            <ul className={ el === myArticleCommentCurrentPage ? 'pageChosen' : 'page' } 
+                onClick={() => {
+                  handleArticlePageClick(el)
+                  deactivateEditTextarea('콘친')
+                }
+              }>
               <p className='text'> {el} </p>
             </ul>
             )
