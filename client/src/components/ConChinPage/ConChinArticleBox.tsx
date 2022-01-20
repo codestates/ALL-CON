@@ -187,13 +187,16 @@ function ConChinArticleBox() {
                       <div className='memberBox'>
                         <img className='icon' src={groupImage} />
                         <div className='count'>
-                          {article.member_count}/{article.total_member}
+                          {article.view > 0 ? article.member_count : 0}/
+                          {article.view > 0 ? article.total_member : 0}
                         </div>
                       </div>
                     </div>
                     <div className='title'>
                       <img className='icon' src={viewImage} />
-                      <p className='count'>{article.view}</p>
+                      <p className='count'>
+                        {article.view > 0 ? article.view : null}
+                      </p>
                       <p className='date'>
                         {article.createdAt.substring(0, 10)}
                       </p>

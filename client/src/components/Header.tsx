@@ -71,22 +71,32 @@ function Header() {
   let RemainDate = edDate - stDate;
 
   function msg_time() {
-    var hours = Math.floor(
+    let hours: string | number = Math.floor(
       (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
     );
-    var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+    let miniutes: string | number = Math.floor(
+      (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
+    );
+    let seconds: string | number = Math.floor(
+      (RemainDate % (1000 * 60)) / 1000,
+    );
+    if (String(miniutes).length === 1) {
+      miniutes = `0${miniutes}`;
+    }
+    if (String(seconds).length === 1) {
+      seconds = `0${seconds}`;
+    }
 
-    let m = `다음 콘서트를 업데이트하기까지 ${hours}시간 ${miniutes}분 ${seconds}초`; // 남은 시간 text형태로 변경
+    let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
     dispatch(setTimerMessage(m));
-
     if (RemainDate < 0) {
-      // 시간이 종료 되었으면..
+      // 시간이 종료 되면
       clearInterval(tid); // 타이머 해제
     } else {
       RemainDate = RemainDate - 1000; // 남은시간 -1초
     }
   }
+  /* Header Timer */
 
   /* 스크롤 위치 저장 useEffect */
   useEffect(() => {
