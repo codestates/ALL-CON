@@ -68,7 +68,7 @@ function MainConcertInfo() {
   useEffect(() => {
     // 로그인 상태인 경우, 나의 알람 리스트를 조회한다
     if(isLogin) {
-      getAllAlarms();
+      // getAllAlarms();
     }
   }, [target, isLogin]);
 

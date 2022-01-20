@@ -21,11 +21,14 @@ export interface my {
   myArticleCommentCurrentComment: number;
   myArticleCommentTotalPage: number;
 
+  // 총 게시글 수
+  myTotalArticle: number;
+  
   myConcertCommentTotalPage: number;
   myConcertCommentCurrentPage: number;
   myConcertCommentCurrentComment: number;
+  // 총 댓글수
   myTotalConcertComment: number;
-  
   myTotalArticleComment: number;
 
   // 버튼 ON/OFF 관리
@@ -80,6 +83,9 @@ const initialState: my = {
   myArticleCommentCurrentPage: 1,
   myArticleCommentTotalPage: 0,
   myArticleCommentCurrentComment: 0,
+  myTotalArticle: 0,
+
+
   myTotalArticleComment: 0,
   articleCommentInfo: {},
 
@@ -128,6 +134,9 @@ const mySlice = createSlice({
     getMyConcertCommentTotalPage: (state: my, { payload }: PayloadAction<number>) => { 
       state.myConcertCommentTotalPage = payload;
     }, 
+    getMyTotalArticle: (state: my, { payload }: PayloadAction<number>) => { 
+      state.myTotalArticle = payload;
+    },  
     getMyTotalArticleComment: (state: my, { payload }: PayloadAction<number>) => { 
       state.myTotalArticleComment = payload;
     },  
@@ -163,6 +172,7 @@ export const {
   getMyArticleTotalPage, 
   getMyArticleCommentCurrentPage,
   getMyArticleCommentCurrentComment,
+  getMyTotalArticle,
 
   getMyConcertCommentTotalPage, 
   getMyConcertCommentCurrentPage,

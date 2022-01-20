@@ -16,6 +16,7 @@ import {
   getMyArticleCommentTotalPage,
   getMyTotalArticleComment,
   getBtnSwitchState,
+  getMyTotalArticle,
 
   getMyConcertCommentCurrentPage
 } from '../../../store/MySlice';
@@ -121,6 +122,8 @@ function MyDropDown() {
 
     dispatch(getArticleInfo(response.data.data));
     dispatch(getMyArticleTotalPage(response.data.data.totalPage));
+
+    dispatch(getMyTotalArticle(response.data.data.totalArticle))
 
     /****************************************************************************************************/
     // 내가 쓴 댓글(콘서트 게시물) axios 테스트
