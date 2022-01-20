@@ -72,6 +72,7 @@ function MyArticleBox() {
       <div id='titleWrapper'>
         <p className='title'>내가 쓴 게시물</p>
       </div>
+      <h1 id='myArticleCount'>개의 게시글</h1>
       <div id='articleWrapper'>
         <div id='articleBox'>
           <div id='box'>
@@ -105,9 +106,9 @@ function MyArticleBox() {
                       </div>
                       <div className='title'>
                         <img className='icon' src={viewImage} alt='viewImage' />
-                        <p className='count'>{el.view}</p>
+                        <p className='count'>{el.view < 0 ? null : el.view}</p>
                         <p className='date'>{el.updatedAt.substring(0, 10)}</p>
-                        <p className='text'>{el.content}</p>
+                        <p className='text'>{el.title}</p>
                       </div>
                     </ul>
                   );

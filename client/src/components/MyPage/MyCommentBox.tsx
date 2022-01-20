@@ -17,13 +17,14 @@ import {
   getMyArticleCommentTotalPage,
 } from '../../store/MySlice';
 import { setConChinPageNum } from '../../store/ConChinCommentSlice';
+import { setPageNum } from '../../store/ConcertCommentSlice';
 import {
   showAlertModal,
   insertAlertText,
   insertBtnText,
   showSuccessModal,
 } from '../../store/ModalSlice';
-import { setTarget, setAllConcerts } from '../../store/MainSlice';
+import { setTarget, setTargetIdx, setIsRendering, setOrder } from '../../store/MainSlice';
 import { setTargetArticle } from '../../store/ConChinSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
@@ -51,6 +52,7 @@ function MyCommentBox() {
     myArticleCommentCurrentPage,
     myArticleCommentCurrentComment,
   } = useSelector((state: RootState) => state.my);
+  const { allConcerts, target, targetIdx } = useSelector((state: RootState) => state.main)
 
   /* 지역상태 - useState */
   /* useEffect */
@@ -81,6 +83,11 @@ function MyCommentBox() {
 
       // 현재 선택한 콘서트 업데이트 (target)
       dispatch(setTarget(responseConcert.data.data.concertInfo));
+      /* 마이페이지로 가기위한 상태 설정 */
+      dispatch(setIsRendering(false));
+      dispatch(setOrder('view'));
+      dispatch(setPageNum(1));
+      dispatch(setTargetIdx(allConcerts.findIndex(concert => concert.id === responseConcert.data.data.concertInfo.id)));
       // 메인페이지로 이동
       navigate('/main');
     }
@@ -273,14 +280,13 @@ function MyCommentBox() {
       <div id='commentWrapper'>
         <div id='commentBox'>
           <div id='myCountWrapper'>
-            <h1 className='count'>
+            <h1 className='myCount'>
               {commentBtnType === '콘서트'
                 ? myTotalConcertComment
                 : myTotalArticleComment}
               개의 댓글
             </h1>
-            {/* <h1 className='count'>{myTotalArticleComment}개의 댓글</h1> */}
-            {/* <div id='bottomLineOrderBox'> */}
+
             <p
               className='myOrder'
               onClick={() => handleCommentSelectionBtn('콘서트')}
@@ -303,22 +309,14 @@ function MyCommentBox() {
                   return (
                     <div
                       className='box'
-                      // onClick={() =>
-                      //   handleConcertCommentSelected(
-                      //     el.id,
-                      //     el.concert_id,
-                      //     el.user_id,
-                      //   )
-                      // }
                     >
                       <div className='dateBox'>
                         {/* 날짜와 작성자 */}
                         <p className='nickNameAndDate'>
                           {' '}
-                          {/* {userInfo.username} | {el.updatedAt.substring(0, 10)}{' '} */}
-                          {el.Concert.title} | {el.updatedAt.substring(0, 10)}{' '}
+                          <b>{el.Concert.title}</b> | {el.updatedAt.substring(0, 10)}{' '}
                         </p>
-                        <div className='optionWrapper'>
+                        <div className='myOptionWrapper'>
                           {/* 콘서트 댓글 수정하기 */}
                           <div
                             className='myOptionBtn'
@@ -346,10 +344,10 @@ function MyCommentBox() {
                           </div>
                         </div>
                       </div>
-                      <div id='imgAndText'>
-                        <div className='imgWrapper'>
+                      <div id='myImgAndText'>
+                        <div className='myImgWrapper'>
                           <img
-                            className='img'
+                            className='myImg'
                             src={el.Concert.image_concert}
                             alt='profileImage'
                             onClick={() =>
@@ -360,21 +358,18 @@ function MyCommentBox() {
                               )
                             }
                           />
-                          {/* {userInfo.role === 2 ? (
-                            <img className='shield' src={shield} alt='shield' />
-                          ) : null} */}
                         </div>
-                        <div className='textWrapper'>
+                        <div className='myTextWrapper'>
                           {/* 수정버튼 유무에 따른... */}
                           {myConcertCommentCurrentComment === el.id &&
                           commentClick ? (
                             <textarea
-                              id='text'
+                              id='myText'
                               placeholder={el.content}
                               onChange={handleEditComment}
                             />
                           ) : (
-                            <p id='text'> {el.content} </p>
+                            <p id='myText'> {el.content} </p>
                           )}
                           <div className='myCommentOptionBtnWrapper'>
                             {/* [PATCH] 댓글 수정 확인 */}
@@ -418,16 +413,7 @@ function MyCommentBox() {
             ? articleCommentInfo.map((el: any, idx: number) => {
                 return (
                   <div
-                    className='box'
-                    // onClick={() =>
-                    //   handleArticleCommentSelected(
-                    //     idx,
-                    //     el.id,
-                    //     el.article_id,
-                    //     el.user_id,
-                    //   )
-                    // }
-                  >
+                    className='box'>
                     <div className='dateBox'>
                       {/* 날짜와 작성자 */}
                       <p className='nickNameAndDate'>
@@ -462,10 +448,10 @@ function MyCommentBox() {
                         </div>
                       </div>
                     </div>
-                    <div id='imgAndText'>
-                      <div className='imgWrapper'>
+                    <div id='myImgAndText'>
+                      <div className='myImgWrapper'>
                         <img
-                          className='img'
+                          className='myImg'
                           src={el.Article.image}
                           alt='profileImage'
                           onClick={() =>
@@ -477,21 +463,18 @@ function MyCommentBox() {
                             )
                           }
                         />
-                        {/* {userInfo.role === 2 ? (
-                            <img className='shield' src={shield} alt='shield' />
-                          ) : null} */}
                       </div>
-                      <div className='textWrapper'>
+                      <div className='myTextWrapper'>
                         {/* 수정버튼 유무에 따른... */}
                         {myArticleCommentCurrentComment === el.id &&
                         commentClick ? (
                           <textarea
-                            id='text'
+                            id='myText'
                             placeholder={el.content}
                             onChange={handleEditComment}
                           />
                         ) : (
-                          <p id='text'> {el.content} </p>
+                          <p id='myText'> {el.content} </p>
                         )}
                         <div className='myCommentOptionBtnWrapper'>
                           {/* [PATCH] 댓글 수정 확인 */}

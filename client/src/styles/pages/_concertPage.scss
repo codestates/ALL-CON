@@ -38,7 +38,15 @@
       h1 {
         position: absolute;
         left: 1%;
-        font-size: 2rem;
+        @include mobile-only() {
+          font-size: 1.8rem;
+        }
+        @include md() {
+          font-size: 2.3rem;
+        }
+        @include lg() {
+          font-size: 2.3rem;
+        }
       }
       .orderBy {
         position: relative;
@@ -51,17 +59,17 @@
         @include mobile-only() {
           width: 19%;
           height: 50%;
-          font-size: 1.6rem;
+          font-size: 1.4rem;
         }
         @include md() {
           width: 12%;
           height: 50%;
-          font-size: 1.8rem;
+          font-size: 1.5rem;
         }
         @include lg() {
           width: 13%;
           height: 50%;
-          font-size: 1.5rem;
+          font-size: 1.6rem;
         }
         &:hover {
           background-color: #ffce63;
@@ -69,6 +77,11 @@
           cursor: pointer;
           transition: 0.15s all;
         }
+      }
+      .click {
+        @extend .orderBy;
+        background-color: #ffce63;
+        color: white;
       }
     }
   }

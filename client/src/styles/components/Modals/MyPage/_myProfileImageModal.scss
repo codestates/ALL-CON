@@ -151,6 +151,7 @@
           }
           // border: 1px solid blue;
           .img {
+            z-index: 999;
             position: absolute;
             width: 100%;
             height: 100%;
@@ -172,17 +173,41 @@
           }
           // border: 1px solid blue;
           .camera {
+            z-index: 999;
             position: absolute;
+            top: -10%;
+            right: 20%;
             width: 100%;
             height: 100%;
           }
         }
         #imgSelection {
-          z-index: 999;
+          z-index: 900;
           position: absolute;
           display: flex;
-          width: 50%;
-          border: solid 3px red;
+          top: 50%;
+          width: 10%;
+        }
+        #imgSelectionLabel {
+          z-index: 999;
+          position: absolute;
+          align-items: center;
+          justify-content: center;
+          top: 80%;
+          right: 3.5%;
+          display: flex;
+          width: 19.5%;
+          height: 15%;
+          background-color: white;
+          opacity: 0%;
+          border-radius: 10%;
+          &:hover {
+            cursor: pointer;
+            // width: 16%;
+            // height: 16%;
+            // background-color: yellow;
+            // transition: 0.25s all;
+          }
         }
       }
       #modifyBtnWrapper {

@@ -55,7 +55,7 @@ export interface main {
   /* 헤더 홈 클릭 여부 상태 */
   isHeaderClick: boolean;
   /* 전체 페이지 <-> 콘서트 페이지 이동 여부 상태 */
-  mainToConcert: boolean;
+  passToConcert: boolean;
 }
 
 /* State 초기값 설정 */
@@ -69,7 +69,7 @@ const initialState: main = {
   isHeaderClick: false,
   emailClick: false,
   smsClick: false,
-  mainToConcert: false,
+  passToConcert: false,
 };
 
 const mainSlice = createSlice({
@@ -104,8 +104,8 @@ const mainSlice = createSlice({
     setSmsClick: (state: main, { payload }: PayloadAction<boolean>) => {
       state.smsClick = payload;
     },
-    setMainToConcert: (state: main, { payload }: PayloadAction<boolean>) => {
-      state.mainToConcert = payload;
+    setPassToConcert: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.passToConcert = payload;
     },
   },
 });
@@ -120,6 +120,6 @@ export const {
   setIsHeaderClick,
   setEmailClick,
   setSmsClick,
-  setMainToConcert,
+  setPassToConcert,
 } = mainSlice.actions;
 export default mainSlice.reducer;

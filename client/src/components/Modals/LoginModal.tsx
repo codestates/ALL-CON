@@ -59,11 +59,8 @@ function LoginModal() {
         /* 로그인 & 유저 상태 변경 후 메인페이지 리다이렉트 */
         dispatch(getUserInfo(response.data.data));
         dispatch(login());
-        /* 로그인 성공 알람 */
-        dispatch(showSuccessModal(true));
-        dispatch(insertAlertText(`${response.data.data.userInfo.username} 님 안녕하세요!`));
-        goHomeHandler();
       }
+      goHomeHandler();
     } catch (err) {
       const error = err as AxiosError;
       if (error.response?.status === 400)

@@ -21,6 +21,7 @@ function SmsAlarmModal() {
       );
       if (res.data) {
         dispatch(setSmsClick(false));
+        dispatch(showSmsAlarmModal(false));
         console.log(res.data);
       }
     } catch (err) {

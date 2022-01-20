@@ -29,7 +29,7 @@ import {
 } from '../store/HeaderSlice';
 import { setPageNum } from '../store/ConcertCommentSlice';
 import {
-  setMainToConcert,
+  setPassToConcert,
   setOrder,
   setTarget,
   setTargetIdx,
@@ -162,7 +162,7 @@ function Header() {
       dispatch(setTargetIdx(0));
       dispatch(setOrder('view'));
       dispatch(setPageNum(1));
-      dispatch(setMainToConcert(false));
+      dispatch(setPassToConcert(false));
       dispatch(setIsHeaderClick(true));
       navigate('/main');
     } else if (menu === 'concert') {

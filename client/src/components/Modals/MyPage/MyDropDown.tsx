@@ -1,7 +1,7 @@
 /* Store import */
 import { RootState } from '../../../index';
 import { setScrollCount } from '../../../store/HeaderSlice';
-import { setIsHeaderClick, setTarget, setTargetIdx, setOrder } from '../../../store/MainSlice';
+import { setIsHeaderClick, setTarget, setTargetIdx, setOrder, setAllConcerts } from '../../../store/MainSlice';
 import { setTargetArticle, setArticleRendered, setArticleCurPage } from '../../../store/ConChinSlice';
 import { login, logout, getUserInfo } from '../../../store/AuthSlice';
 import { setPageNum } from '../../../store/ConcertCommentSlice';
@@ -84,9 +84,16 @@ function MyDropDown() {
   };
 
   // 이동 시 타겟 초기화 핸들러
-  const resetTarget = async () => {
-    /* ConChinPage */
+  const resetHandler = async () => {
+    /* Common */
     dispatch(setTarget({}));
+    /* MainPage */
+    dispatch(setTargetIdx(0));
+    dispatch(setPageNum(1));
+    dispatch(setOrder('view'));
+    /* ConcertPage */
+    dispatch(showConcertModal(false));
+    /* ConchinPage */
     dispatch(setTargetArticle({}));
     dispatch(setArticleRendered(false));
     dispatch(setArticleCurPage(1));
@@ -102,7 +109,7 @@ function MyDropDown() {
       userResign: false
     }))
 
-    // 내간 쓴 댓글 기본값을 '콘서트'로 설정
+    // 내가 쓴 댓글 기본값을 '콘서트'로 설정
     dispatch(getCommentBtnType('콘서트'));
     
     /****************************************************************************************************/
@@ -143,6 +150,12 @@ function MyDropDown() {
       { withCredentials: true },
     );
 
+    /* 마이페이지 -> 메인페이지 이동시 가져갈 전체 콘서트 목록(조회수 고정) */
+    const responseAllConcerts = await axios.get(
+      `${process.env.REACT_APP_API_URL}/concert`,
+      { withCredentials: true },
+    );
+
     dispatch(getMyArticleCommentInfo(responseMyArticleComment.data.data));
     dispatch(
       getMyArticleCommentTotalPage(
@@ -154,7 +167,8 @@ function MyDropDown() {
         responseMyArticleComment.data.data.totalArticleComment,
       ),
     );
-    
+    dispatch(setAllConcerts(responseAllConcerts.data.data.concertInfo));
+    resetHandler();
   };
 
   return (
@@ -166,8 +180,8 @@ function MyDropDown() {
       >
         <div id={scrollCount < 0.5 ? 'modal' : 'downedModal'}>
           <div id='myMenuWrapper'>
-            <Link to='/mypage' className='menus' onClick={resetTarget}>
-              <p onClick={() => handleMypageBtn()}>마이페이지</p>
+            <Link to='/mypage' className='menus' onClick={handleMypageBtn}>
+              <p>마이페이지</p>
             </Link>
             <Link to='/main' className='menus' onClick={logoutHandler}>
               <p>로그아웃</p>

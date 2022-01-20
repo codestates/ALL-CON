@@ -38,7 +38,7 @@ function MainConcertInfo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
-    mainToConcert,
+    passToConcert,
     targetIdx,
     target,
     detail,
@@ -47,7 +47,9 @@ function MainConcertInfo() {
     smsClick,
   } = useSelector((state: RootState) => state.main);
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { pageAllComments } = useSelector((state: RootState) => state.concertComments)
+  const { pageAllComments } = useSelector(
+    (state: RootState) => state.concertComments,
+  );
   const [alarmType, setAlarmType] = useState('');
   // const [emailClick, setEmailClick] = useState(false);
   // const [smsClick, setSmsClick] = useState(false);
@@ -65,8 +67,10 @@ function MainConcertInfo() {
 
   useEffect(() => {
     // 로그인 상태인 경우, 나의 알람 리스트를 조회한다
-    if(isLogin) getAllAlarms();
-  }, [target]);
+    if(isLogin) {
+      getAllAlarms();
+    }
+  }, [target, isLogin]);
 
   const getAllAlarms = async () => {
     try {
@@ -92,7 +96,6 @@ function MainConcertInfo() {
                   allAlarms[i].email_alarm === true
                 ) {
                   dispatch(setEmailClick(true));
-                  console.log('emailClick상태', emailClick);
                   flag = 2;
                 }
                 if (
@@ -101,7 +104,6 @@ function MainConcertInfo() {
                   allAlarms[i].phone_alarm === true
                 ) {
                   dispatch(setSmsClick(true));
-                  console.log('smsClick의 상태', smsClick);
                   flag = 3;
                 }
               }
@@ -119,18 +121,15 @@ function MainConcertInfo() {
       console.log(err);
     }
   };
-
   //해당 콘서트에서 한번도 알람 설정한적 없을때 알람
   const getAlarm = async (test: string) => {
     try {
-      console.log('알람타입>>>', test);
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${test}`,
         {},
         { withCredentials: true },
       );
       if (res.data.data.alarmInfo) {
-        console.log(res.data.data.alarmInfo);
         if (res.data.data.alarmInfo.email_alarm === true) {
           dispatch(setEmailClick(true));
         }
@@ -149,7 +148,7 @@ function MainConcertInfo() {
       const strOpenDate = String(openDate);
 
       const year = Number(strOpenDate.substring(0, 4));
-      const month = Number(strOpenDate.substring(5, 7))-1;
+      const month = Number(strOpenDate.substring(5, 7)) - 1;
       const date = Number(strOpenDate.substring(8, 10));
       const hour = Number(strOpenDate.substring(11, 13)); // 알람 24시간전 발송
       const minute = Number(strOpenDate.substring(14, 16));
@@ -158,7 +157,12 @@ function MainConcertInfo() {
       const openDay = new Date(year, month, date, hour, minute);
       const gap = (openDay.getTime() - today.getTime()) / 1000 / 60 / 60; // 시간차이
       
-      return gap > 24
+      if(gap > 24) return true
+      else {
+        dispatch(setEmailClick(false));
+        dispatch(setSmsClick(false));
+        return false
+      }
     }
     return false;
   };
@@ -245,7 +249,7 @@ function MainConcertInfo() {
     <div id='mainConcertInfoBox'>
       <div id='topBox'>
         <div id='roofArea'>
-          {mainToConcert && (
+          {passToConcert && (
             <img
               id='backBtn'
               src={returnImg}
@@ -351,7 +355,7 @@ function MainConcertInfo() {
                 )}
 
                 <p className='right' id='alarm_r'>
-                  {ticketOpenCheck(detail.open_date) ?
+                  {ticketOpenCheck(detail.open_date) ? (
                     <>
                       <img
                         src={emailClick ? emailOn : emailOff}
@@ -370,9 +374,13 @@ function MainConcertInfo() {
                         }}
                       ></img>
                     </>
-                    : <p className='right' id='alarm_text'>티켓 오픈 알람시간이 지났습니다.</p>
-                  }
-                {ticketOpenCheck(detail.open_date)}</p>
+                  ) : (
+                    <p className='right' id='alarm_text'>
+                      티켓 오픈 알람시간이 지났습니다.
+                    </p>
+                  )}
+                  {ticketOpenCheck(detail.open_date)}
+                </p>
                 <p className='right' id='showPlace_r'>
                   <img src={map}></img>
                 </p>
@@ -384,7 +392,7 @@ function MainConcertInfo() {
           {detail && (
             <button id='black-btn'>
               <div id='imgAndOpen'>
-                <img src={smsClick || emailClick ? bellOn : bellOff} />
+                <img src={(smsClick || emailClick) &&  ticketOpenCheck(detail.open_date) ? bellOn : bellOff} />
                 <p id='open'>
                   티켓 오픈일 &nbsp; {dayFormatter(detail.open_date)}
                 </p>

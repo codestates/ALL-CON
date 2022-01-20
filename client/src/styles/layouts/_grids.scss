@@ -948,7 +948,7 @@
     right: 9%;
   }
   @include lg() {
-    display: none;
+    // display: none;
   }
 
   .search {
@@ -995,7 +995,7 @@
   }
   @include lg() {
     width: 5%;
-    right: 12%;
+    right: 10%;
   }
   .login {
     position: relative;

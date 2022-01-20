@@ -62,8 +62,19 @@
       // border: 1px solid blue;
       .camera {
         position: absolute;
-        width: 100%;
-        height: 100%;
+
+        @include mobile-only() {
+          width: 90%;
+          height: 90%;
+
+        }
+        @include md() {
+
+        }
+        @include lg() {
+          width: 100%;
+          height: 100%;
+        }
       }
     }
   }
@@ -94,8 +105,11 @@
         // border: 1px solid red;
         .oauth {
           @include mobile-only() {
+            position: absolute;
             width: 80%;
             height: 80%;
+            left: 23%;
+            top: -16.5%;
           }
           @include md() {
             width: 90%;
@@ -116,6 +130,7 @@
         // border: 1px solid red;
         height: 100%;
         @include mobile-only() {
+          top: -30%;
           font-size: 1.5rem;
         }
         @include md() {
@@ -161,6 +176,13 @@
       top: 15%;
       border: 1px solid #c4c4c4;
       border-radius: 5px;
+      @include mobile-only() {
+        top: 12%;
+      }
+      @include md() {
+      }
+      @include lg() {
+      }
       #introduction {
         position: absolute;
         border: none;
@@ -170,7 +192,8 @@
         text-align: center;
         top: 42%;
         @include mobile-only() {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
+          top: 37%;
         }
         @include md() {
           font-size: 1.8rem;
@@ -188,6 +211,7 @@
       bottom: 20%;
       @include mobile-only() {
         height: 13%;
+        bottom: 25.0%;
       }
       @include md() {
         height: 11.5%;
@@ -212,7 +236,12 @@
           transition: all 0.15s;
         }
         @include mobile-only() {
-          font-size: 1.5rem;
+          align-items: center;
+          justify-content: center;
+          width: 30%;
+          height: 90%;
+          font-size: 1.2rem;
+
         }
         @include md() {
           font-size: 1.8rem;
@@ -253,7 +282,9 @@
       bottom: 0%;
       // border: 1px solid red;
       @include mobile-only() {
+        bottom: 50%;
         height: 13%;
+        bottom: 25%;
       }
       @include md() {
         height: 11.5%;
@@ -278,7 +309,9 @@
           transition: all 0.15s;
         }
         @include mobile-only() {
-          font-size: 1.5rem;
+          width: 30%;
+          height: 90%;
+          font-size: 1.2rem;
         }
         @include md() {
           font-size: 1.8rem;
