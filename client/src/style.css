@@ -2905,7 +2905,7 @@ a {
     top: 24%; }
     @media (max-width: 767px) {
       #myPageContainer #myArticleBoxWrapper {
-        height: 33.33%; } }
+        height: 26.5%; } }
     @media (min-width: 768px) {
       #myPageContainer #myArticleBoxWrapper {
         height: 33.33%; } }
@@ -2916,11 +2916,11 @@ a {
     position: absolute;
     display: flex;
     justify-content: center;
-    width: 100%;
-    top: 65%; }
+    width: 100%; }
     @media (max-width: 767px) {
       #myPageContainer #myCommentWrapper {
-        height: 33.33%; } }
+        height: 33.33%;
+        top: 63%; } }
     @media (min-width: 768px) {
       #myPageContainer #myCommentWrapper {
         height: 33.33%; } }
@@ -2936,13 +2936,13 @@ a {
     @media (max-width: 767px) {
       #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
         width: 100%;
-        height: 15.3%;
-        top: 103%; } }
+        height: 18.5%;
+        top: 90%; } }
     @media (min-width: 768px) {
       #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 15.9%;
-        top: 104%; } }
+        top: 100%; } }
     @media (min-width: 1200px) {
       #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
         width: 100%;
@@ -3103,6 +3103,7 @@ a {
               width: 90%;
               padding-bottom: 90%; } }
           #myProfileImageModal #modalBox #modal #imgBox #imgWrapper .img {
+            z-index: 999;
             position: absolute;
             width: 100%;
             height: 100%;
@@ -3120,15 +3121,33 @@ a {
           #myProfileImageModal #modalBox #modal #imgBox #cameraWrapper:hover {
             cursor: pointer; }
           #myProfileImageModal #modalBox #modal #imgBox #cameraWrapper .camera {
+            z-index: 999;
             position: absolute;
+            top: -10%;
+            right: 20%;
             width: 100%;
             height: 100%; }
         #myProfileImageModal #modalBox #modal #imgBox #imgSelection {
-          z-index: 999;
+          z-index: 900;
           position: absolute;
           display: flex;
-          width: 50%;
-          border: solid 3px red; }
+          top: 50%;
+          width: 10%; }
+        #myProfileImageModal #modalBox #modal #imgBox #imgSelectionLabel {
+          z-index: 999;
+          position: absolute;
+          align-items: center;
+          justify-content: center;
+          top: 80%;
+          right: 3.5%;
+          display: flex;
+          width: 19.5%;
+          height: 15%;
+          background-color: white;
+          opacity: 0%;
+          border-radius: 10%; }
+          #myProfileImageModal #modalBox #modal #imgBox #imgSelectionLabel:hover {
+            cursor: pointer; }
       #myProfileImageModal #modalBox #modal #modifyBtnWrapper {
         position: absolute;
         display: flex;
@@ -4699,9 +4718,15 @@ a {
       width: 20%;
       padding-bottom: 20%; }
       #myProfileBox #imgBox #cameraWrapper .camera {
-        position: absolute;
-        width: 100%;
-        height: 100%; }
+        position: absolute; }
+        @media (max-width: 767px) {
+          #myProfileBox #imgBox #cameraWrapper .camera {
+            width: 90%;
+            height: 90%; } }
+        @media (min-width: 1200px) {
+          #myProfileBox #imgBox #cameraWrapper .camera {
+            width: 100%;
+            height: 100%; } }
   #myProfileBox #introductionBox {
     position: absolute;
     display: flex;
@@ -4726,8 +4751,11 @@ a {
         width: 30px; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #nickNameWrapper #oauthWrapper .oauth {
+            position: absolute;
             width: 80%;
-            height: 80%; } }
+            height: 80%;
+            left: 23%;
+            top: -16.5%; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #nickNameWrapper #oauthWrapper .oauth {
             width: 90%;
@@ -4745,6 +4773,7 @@ a {
         height: 100%; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #nickNameWrapper .nickName {
+            top: -30%;
             font-size: 1.5rem; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #nickNameWrapper .nickName {
@@ -4783,6 +4812,9 @@ a {
       top: 15%;
       border: 1px solid #c4c4c4;
       border-radius: 5px; }
+      @media (max-width: 767px) {
+        #myProfileBox #introductionBox #textWrapper {
+          top: 12%; } }
       #myProfileBox #introductionBox #textWrapper #introduction {
         position: absolute;
         border: none;
@@ -4793,7 +4825,8 @@ a {
         top: 42%; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #textWrapper #introduction {
-            font-size: 1.5rem; } }
+            font-size: 1.3rem;
+            top: 37%; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #textWrapper #introduction {
             font-size: 1.8rem; } }
@@ -4808,7 +4841,8 @@ a {
       bottom: 20%; }
       @media (max-width: 767px) {
         #myProfileBox #introductionBox #modifyBtnWrapper {
-          height: 13%; } }
+          height: 13%;
+          bottom: 25.0%; } }
       @media (min-width: 768px) {
         #myProfileBox #introductionBox #modifyBtnWrapper {
           height: 11.5%; } }
@@ -4832,7 +4866,11 @@ a {
           transition: all 0.15s; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #modifyBtnWrapper .btn {
-            font-size: 1.5rem; } }
+            align-items: center;
+            justify-content: center;
+            width: 30%;
+            height: 90%;
+            font-size: 1.2rem; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #modifyBtnWrapper .btn {
             font-size: 1.8rem; } }
@@ -4867,7 +4905,9 @@ a {
       bottom: 0%; }
       @media (max-width: 767px) {
         #myProfileBox #introductionBox #resignBtnWrapper {
-          height: 13%; } }
+          bottom: 50%;
+          height: 13%;
+          bottom: 25%; } }
       @media (min-width: 768px) {
         #myProfileBox #introductionBox #resignBtnWrapper {
           height: 11.5%; } }
@@ -4891,7 +4931,9 @@ a {
           transition: all 0.15s; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #resignBtnWrapper .btn {
-            font-size: 1.5rem; } }
+            width: 30%;
+            height: 90%;
+            font-size: 1.2rem; } }
         @media (min-width: 768px) {
           #myProfileBox #introductionBox #resignBtnWrapper .btn {
             font-size: 1.8rem; } }
@@ -4921,7 +4963,8 @@ a {
     height: 10%; }
     @media (max-width: 767px) {
       #myArticleBox #titleWrapper {
-        width: 80%; } }
+        width: 80%;
+        top: 21%; } }
     @media (min-width: 768px) {
       #myArticleBox #titleWrapper {
         width: 71%; } }
@@ -4933,7 +4976,7 @@ a {
       @media (max-width: 767px) {
         #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #box .article:hover .title, #articleBox #box .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #box .article:hover .title, #articleBoxChosen #box .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #boxChosen .article:hover .title, #articleBox #boxChosen .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #boxChosen .article:hover .title, #articleBoxChosen #boxChosen .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #box .articleChosen:hover .title, #articleBox #box .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #box .articleChosen:hover .title, #articleBoxChosen #box .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #boxChosen .articleChosen:hover .title, #articleBox #boxChosen .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #boxChosen .articleChosen:hover .title, #articleBoxChosen #boxChosen .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myArticleBox #titleWrapper .title2 {
           width: 90%;
-          font-size: 2rem; } }
+          font-size: 1.5rem; } }
       @media (min-width: 768px) {
         #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #box .article:hover .title, #articleBox #box .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #box .article:hover .title, #articleBoxChosen #box .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #boxChosen .article:hover .title, #articleBox #boxChosen .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #boxChosen .article:hover .title, #articleBoxChosen #boxChosen .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #box .articleChosen:hover .title, #articleBox #box .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #box .articleChosen:hover .title, #articleBoxChosen #box .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #boxChosen .articleChosen:hover .title, #articleBox #boxChosen .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #boxChosen .articleChosen:hover .title, #articleBoxChosen #boxChosen .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myArticleBox #titleWrapper .title2 {
           width: 85%;
@@ -4948,7 +4991,7 @@ a {
     @media (max-width: 767px) {
       #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
         width: 90%;
-        top: 15%;
+        top: 16.5%;
         height: 90%; } }
     @media (min-width: 768px) {
       #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
@@ -4958,7 +5001,7 @@ a {
     @media (min-width: 1200px) {
       #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
         width: 75%;
-        top: 5%;
+        top: 9%;
         height: 90%; } }
     #myArticleBox #articleWrapper #myMemberBoxWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen #myMemberBoxWrapper, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen #myMemberBoxWrapper {
       position: absolute;
@@ -4972,7 +5015,7 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
-        top: 75%;
+        top: 120%;
         height: 25%; } }
     @media (min-width: 768px) {
       #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
@@ -4982,6 +5025,19 @@ a {
       #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
         top: 57%;
         height: 45%; } }
+  #myArticleBox #myArticleCount {
+    position: absolute;
+    top: 10%;
+    left: 19%; }
+    @media (max-width: 767px) {
+      #myArticleBox #myArticleCount {
+        top: 35%;
+        left: 13%;
+        font-size: 1.0rem; } }
+    @media (min-width: 1200px) {
+      #myArticleBox #myArticleCount {
+        top: 10%;
+        left: 19%; } }
 
 #myCommentBox {
   position: absolute;
@@ -4990,8 +5046,8 @@ a {
   height: 100%; }
   @media (max-width: 767px) {
     #myCommentBox {
-      width: 100%;
-      top: 0%; } }
+      width: 90%;
+      top: -20%; } }
   @media (min-width: 768px) {
     #myCommentBox {
       width: 85%;
@@ -5018,7 +5074,7 @@ a {
       font-weight: bold; }
       @media (max-width: 767px) {
         #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #box .article:hover .title, #articleBox #box .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #box .article:hover .title, #articleBoxChosen #box .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #boxChosen .article:hover .title, #articleBox #boxChosen .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #boxChosen .article:hover .title, #articleBoxChosen #boxChosen .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #box .articleChosen:hover .title, #articleBox #box .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #box .articleChosen:hover .title, #articleBoxChosen #box .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #boxChosen .articleChosen:hover .title, #articleBox #boxChosen .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #boxChosen .articleChosen:hover .title, #articleBoxChosen #boxChosen .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myCommentBox #titleWrapper .title2 {
-          font-size: 2rem; } }
+          font-size: 1.5rem; } }
       @media (min-width: 768px) {
         #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #box .article:hover .title, #articleBox #box .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #box .article:hover .title, #articleBoxChosen #box .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #boxChosen .article:hover .title, #articleBox #boxChosen .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #boxChosen .article:hover .title, #articleBoxChosen #boxChosen .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #box .articleChosen:hover .title, #articleBox #box .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #box .articleChosen:hover .title, #articleBoxChosen #box .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #boxChosen .articleChosen:hover .title, #articleBox #boxChosen .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #boxChosen .articleChosen:hover .title, #articleBoxChosen #boxChosen .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myCommentBox #titleWrapper .title2 {
           font-size: 3rem; } }
@@ -5047,59 +5103,53 @@ a {
     position: absolute;
     display: flex;
     width: 100%;
-    bottom: 100%;
+    bottom: 102%;
     align-items: center; }
-  #myCommentBox .myOrder {
-    position: relative;
+    @media (min-width: 1200px) {
+      #myCommentBox #myCountWrapper {
+        bottom: 102%; } }
+  #myCommentBox .myOptionWrapper {
+    z-index: 100;
+    position: absolute;
     display: flex;
     align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    left: 74.2%;
+    justify-content: space-between;
+    height: 100%;
+    top: 0%;
+    right: 2%; }
+    @media (max-width: 767px) {
+      #myCommentBox .myOptionWrapper {
+        width: 35%; } }
+    @media (min-width: 768px) {
+      #myCommentBox .myOptionWrapper {
+        width: 20%; } }
+    @media (min-width: 1200px) {
+      #myCommentBox .myOptionWrapper {
+        width: 15%; } }
+  #myCommentBox .myCommentOptionBtnWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 13.2%;
+    height: 100%;
     margin-right: 0.5%;
     font-weight: bold; }
     @media (max-width: 767px) {
-      #myCommentBox .myOrder {
+      #myCommentBox .myCommentOptionBtnWrapper {
         width: 19%;
-        height: 50%;
-        font-size: 1.6rem; } }
+        height: 10%;
+        font-size: 1.2rem; } }
     @media (min-width: 768px) {
-      #myCommentBox .myOrder {
+      #myCommentBox .myCommentOptionBtnWrapper {
         width: 12%;
         height: 50%;
         font-size: 1.8rem; } }
     @media (min-width: 1200px) {
-      #myCommentBox .myOrder {
-        width: 9%;
-        height: 50%;
-        font-size: 2.0rem; } }
-    #myCommentBox .myOrder:hover {
-      background-color: #ffce63;
-      color: white;
-      cursor: pointer;
-      transition: 0.15s all; }
-  #myCommentBox .myOptionBtn {
-    z-index: 999;
-    position: relative;
-    display: flex;
+      #myCommentBox .myCommentOptionBtnWrapper {
+        right: 1%; } }
+  #myCommentBox .myCommentOptionBtn {
     align-items: center;
     justify-content: center;
-    color: gray;
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-right: 1.0%;
-    width: 50%;
-    height: 70%;
-    cursor: pointer; }
-  #myCommentBox .myCommentOptionBtnWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 11.2%;
-    height: 100%;
-    margin-right: 0.5%; }
-  #myCommentBox .myCommentOptionBtn {
     border-radius: 5px;
     margin-right: 0.5%;
     text-align: center;
@@ -5107,8 +5157,8 @@ a {
     @media (max-width: 767px) {
       #myCommentBox .myCommentOptionBtn {
         width: 19%;
-        height: 50%;
-        font-size: 1.6rem; } }
+        height: 10%;
+        font-size: 1.2rem; } }
     @media (min-width: 768px) {
       #myCommentBox .myCommentOptionBtn {
         width: 12%;
@@ -5116,9 +5166,9 @@ a {
         font-size: 1.8rem; } }
     @media (min-width: 1200px) {
       #myCommentBox .myCommentOptionBtn {
-        width: 45%;
-        height: 50%;
-        font-size: 1.8rem; } }
+        width: 35%;
+        height: 60%;
+        font-size: 1.5rem; } }
     #myCommentBox .myCommentOptionBtn:hover {
       background-color: #ffce63;
       color: white;
@@ -5135,7 +5185,7 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
-        top: 75%;
+        top: 66%;
         height: 25%; } }
     @media (min-width: 768px) {
       #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
@@ -5143,8 +5193,137 @@ a {
         height: 45%; } }
     @media (min-width: 1200px) {
       #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
-        top: 84%;
+        top: 82%;
         height: 30%; } }
+  @media (max-width: 767px) {
+    #myCommentBox .myCount {
+      font-size: 1.0rem; } }
+  @media (min-width: 768px) {
+    #myCommentBox .myCount {
+      font-size: 1.1rem; } }
+  @media (min-width: 1200px) {
+    #myCommentBox .myCount {
+      font-size: 2.0rem; } }
+  #myCommentBox .myOrder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-right: 0.5%;
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #myCommentBox .myOrder {
+        left: 45%;
+        width: 19%;
+        height: 50%; } }
+    @media (min-width: 768px) {
+      #myCommentBox .myOrder {
+        width: 12%;
+        height: 50%;
+        font-size: 1.2rem; } }
+    @media (min-width: 1200px) {
+      #myCommentBox .myOrder {
+        left: 72.5%;
+        width: 9%;
+        height: 50%;
+        font-size: 2.0rem; } }
+    #myCommentBox .myOrder:hover {
+      background-color: #ffce63;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s all; }
+  #myCommentBox .myOptionBtn {
+    z-index: 999;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    font-weight: bold; }
+    @media (max-width: 767px) {
+      #myCommentBox .myOptionBtn {
+        display: none; } }
+    @media (min-width: 768px) {
+      #myCommentBox .myOptionBtn {
+        width: 12%;
+        height: 50%;
+        font-size: 1.2rem; } }
+    @media (min-width: 1200px) {
+      #myCommentBox .myOptionBtn {
+        margin-right: 1.0%;
+        right: 1%;
+        width: 50%;
+        height: 70%;
+        font-size: 1.3rem; } }
+    #myCommentBox .myOptionBtn:hover {
+      background-color: #ffce63;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s all; }
+  #myCommentBox #myImgAndText {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%; }
+    #myCommentBox #myImgAndText .myImgWrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer; }
+      @media (max-width: 767px) {
+        #myCommentBox #myImgAndText .myImgWrapper {
+          width: 9%;
+          height: 60%;
+          top: -12%;
+          left: -0.5%; } }
+      @media (min-width: 768px) {
+        #myCommentBox #myImgAndText .myImgWrapper {
+          width: 8%;
+          height: 75%;
+          left: 1.5%; } }
+      @media (min-width: 1200px) {
+        #myCommentBox #myImgAndText .myImgWrapper {
+          width: 7.5%;
+          height: 75%;
+          top: -9%;
+          left: 2%; } }
+      #myCommentBox #myImgAndText .myImgWrapper .myImg {
+        position: absolute;
+        border-radius: 5px;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+    #myCommentBox #myImgAndText :hover .myImg {
+      border: 2px solid #ffce63;
+      outline: 2px solid #ffce63; }
+    #myCommentBox #myImgAndText .myTextWrapper {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 88%;
+      height: 70%;
+      top: 30%;
+      left: 11%; }
+      #myCommentBox #myImgAndText .myTextWrapper #myText {
+        position: relative;
+        display: flex;
+        width: 85%;
+        height: 100%;
+        margin-right: 0.5%;
+        resize: none; }
+        @media (max-width: 767px) {
+          #myCommentBox #myImgAndText .myTextWrapper #myText {
+            font-size: 1.1rem; } }
+        @media (min-width: 768px) {
+          #myCommentBox #myImgAndText .myTextWrapper #myText {
+            font-size: 1.1rem; } }
+        @media (min-width: 1200px) {
+          #myCommentBox #myImgAndText .myTextWrapper #myText {
+            font-size: 1.6rem; } }
 
 #myEditPage {
   position: absolute;
