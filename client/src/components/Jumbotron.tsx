@@ -52,7 +52,7 @@ function Jumbotron() {
   };
 
   const ballList = allConcerts.map(el => {
-    if (el.id === target.id)
+    if (el.id === target.id && target)
       return <div className='balls' id='targetBall'></div>;
     return <div className='balls'></div>;
   });
