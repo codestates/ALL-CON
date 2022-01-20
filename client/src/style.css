@@ -851,9 +851,6 @@ a {
       display: flex;
       width: 5%;
       right: 9%; } }
-  @media (min-width: 1200px) {
-    #searchWrapper {
-      display: none; } }
   #searchWrapper .search {
     position: relative;
     z-index: 7;
@@ -894,7 +891,7 @@ a {
   @media (min-width: 1200px) {
     #loginWrapper {
       width: 5%;
-      right: 12%; } }
+      right: 10%; } }
   #loginWrapper .login {
     position: relative;
     font-weight: bold; }
@@ -6164,7 +6161,7 @@ a {
     position: relative;
     width: 100%;
     height: 10%;
-    top: 5%; }
+    top: 0%; }
     .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
       position: relative;
       top: 50%;
@@ -6174,27 +6171,30 @@ a {
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between; }
+      justify-content: flex-start; }
       @media (max-width: 767px) {
         .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
           width: 210px; } }
       @media (min-width: 768px) {
         .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
-          width: 400px; } }
+          width: 390px; } }
       @media (min-width: 1200px) {
         .jumboTopBox #jumboTextsAlignBox .jumboTextBox {
-          width: 600px; } }
+          width: 580px; } }
       .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboWhat {
         color: #fff; }
         @media (max-width: 767px) {
           .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboWhat {
-            font-size: 30px; } }
+            font-size: 30px;
+            margin-right: 5%; } }
         @media (min-width: 768px) {
           .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboWhat {
-            font-size: 60px; } }
+            font-size: 60px;
+            margin-right: 5%; } }
         @media (min-width: 1200px) {
           .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboWhat {
-            font-size: 90px; } }
+            font-size: 90px;
+            margin-right: 5%; } }
       .jumboTopBox #jumboTextsAlignBox .jumboTextBox #jumboClassify {
         color: #ffce63; }
         @media (max-width: 767px) {
@@ -6338,7 +6338,7 @@ a {
     height: 7%; }
     @media (max-width: 767px) {
       #jumboPosterSlideWrapper #ballsWrapper {
-        bottom: -12%; } }
+        bottom: -2%; } }
     @media (min-width: 768px) {
       #jumboPosterSlideWrapper #ballsWrapper {
         bottom: -8%; } }
@@ -6346,7 +6346,8 @@ a {
       #jumboPosterSlideWrapper #ballsWrapper {
         bottom: -8%; } }
     #jumboPosterSlideWrapper #ballsWrapper .balls {
-      background-color: #fff;
+      background-color: #999;
+      opacity: 30%;
       border-radius: 50%;
       margin-right: 2%; }
       @media (max-width: 767px) {
@@ -6362,7 +6363,8 @@ a {
           width: 1.5%;
           height: 40%; } }
     #jumboPosterSlideWrapper #ballsWrapper #targetBall {
-      background-color: #ffce63; }
+      background-color: #ffce63;
+      opacity: 80%; }
 
 .posterContainer {
   width: 100%;
@@ -6398,7 +6400,7 @@ a {
     #posterWrapper1 {
       width: 29%;
       height: 55%;
-      top: 55%;
+      top: 50%;
       left: 15%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
@@ -6426,7 +6428,7 @@ a {
       width: 29%;
       height: 60%;
       padding-bottom: 30%;
-      top: 55%;
+      top: 50%;
       left: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper2 {
@@ -6497,7 +6499,7 @@ a {
     #posterWrapper3 {
       width: 33%;
       height: 70%;
-      top: 55%;
+      top: 50%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
     #posterWrapper3 {
@@ -6521,7 +6523,7 @@ a {
     #posterWrapper4 {
       width: 29%;
       height: 60%;
-      top: 55%;
+      top: 50%;
       left: 70%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
@@ -6548,7 +6550,7 @@ a {
     #posterWrapper5 {
       width: 29%;
       height: 55%;
-      top: 55%;
+      top: 50%;
       left: 85%;
       padding-bottom: 30%; } }
   @media (min-width: 768px) {
@@ -8831,143 +8833,395 @@ a {
         top: 60%; } }
     @media (min-width: 1200px) {
       #landingContainer #middleWrapper {
-        height: 480%;
-        top: 70%; } }
+        height: 520%;
+        top: 78%; } }
+    #landingContainer #middleWrapper #firstImgAnimated {
+      animation: moveToLeft 2s;
+      -moz-animation: moveToLeft 2s;
+      /* Firefox */
+      -webkit-animation: moveToLeft 2s;
+      /* Safari and Chrome */
+      -o-animation: moveToLeft 2s;
+      /* Opera */ }
+
+@keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-moz-keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-webkit-keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-o-keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
     @media (max-width: 767px) {
-      #landingContainer #middleWrapper #firstImg {
+      #landingContainer #middleWrapper #firstImg, #landingContainer #middleWrapper #firstImgAnimated {
         width: 85%;
         height: 14%; } }
     @media (min-width: 768px) {
-      #landingContainer #middleWrapper #firstImg {
+      #landingContainer #middleWrapper #firstImg, #landingContainer #middleWrapper #firstImgAnimated {
         width: 80%;
         height: 14%; } }
     @media (min-width: 1200px) {
-      #landingContainer #middleWrapper #firstImg {
+      #landingContainer #middleWrapper #firstImg, #landingContainer #middleWrapper #firstImgAnimated {
         width: 53%;
-        height: 14%; } }
-    #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3 {
+        height: 13%; } }
+    #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2Animated, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3Animated, #landingContainer #middleWrapper .alignBox3 {
       display: flex;
       align-items: center;
       justify-content: space-between; }
       @media (max-width: 767px) {
-        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3 {
+        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2Animated, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3Animated, #landingContainer #middleWrapper .alignBox3 {
           width: 80%;
           height: 6%; } }
       @media (min-width: 768px) {
-        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3 {
+        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2Animated, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3Animated, #landingContainer #middleWrapper .alignBox3 {
           width: 70%;
           height: 6%; } }
       @media (min-width: 1200px) {
-        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3 {
-          width: 45%;
-          height: 5%; } }
-      #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2Animated, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3Animated, #landingContainer #middleWrapper .alignBox3 {
+          width: 60%;
+          height: 10%; } }
+      #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2Animated #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3Animated #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
         position: relative; }
         @media (max-width: 767px) {
-          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2Animated #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3Animated #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
             width: 32%;
             height: 100%; } }
         @media (min-width: 768px) {
-          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2Animated #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3Animated #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
             width: 32%;
             height: 100%;
             font-size: 1.5rem; } }
         @media (min-width: 1200px) {
-          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
-            width: 30%;
+          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2Animated #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3Animated #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+            width: 48%;
             height: 100%;
             font-size: 2rem;
             padding-bottom: 10%; } }
-        #landingContainer #middleWrapper .alignBox #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox2 #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox3 #paddingBox .grayGif {
+        #landingContainer #middleWrapper .alignBox #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox2Animated #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox2 #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox3Animated #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox3 #paddingBox .grayGif {
           position: absolute;
           width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background-color: #a0a0a0;
-          border-radius: 5px;
-          font-weight: bold; }
-          #landingContainer #middleWrapper .alignBox #paddingBox .grayGif div, #landingContainer #middleWrapper .alignBox2 #paddingBox .grayGif div, #landingContainer #middleWrapper .alignBox3 #paddingBox .grayGif div {
-            position: absolute; }
-      #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+          height: 100%; }
+          #landingContainer #middleWrapper .alignBox #paddingBox .grayGif img, #landingContainer #middleWrapper .alignBox2Animated #paddingBox .grayGif img, #landingContainer #middleWrapper .alignBox2 #paddingBox .grayGif img, #landingContainer #middleWrapper .alignBox3Animated #paddingBox .grayGif img, #landingContainer #middleWrapper .alignBox3 #paddingBox .grayGif img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1); }
+      #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2Animated #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3Animated #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 90%; }
         @media (max-width: 767px) {
-          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2Animated #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3Animated #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
             width: 70%; } }
         @media (min-width: 768px) {
-          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2Animated #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3Animated #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
             width: 60%; } }
         @media (min-width: 1200px) {
-          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2Animated #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3Animated #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
             width: 60%; } }
-        #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+        #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2Animated #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3Animated #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
           font-weight: bold; }
           @media (max-width: 767px) {
-            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2Animated #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3Animated #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
               font-size: 1.2rem; } }
           @media (min-width: 768px) {
-            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2Animated #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3Animated #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
               font-size: 1.8rem; } }
           @media (min-width: 1200px) {
-            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2Animated #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3Animated #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
               font-size: 2.5rem; } }
-    #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #paddingBox32 {
+    #landingContainer #middleWrapper .alignBoxAnimated {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      animation: moveToRight 2s;
+      -moz-animation: moveToRight 2s;
+      /* Firefox */
+      -webkit-animation: moveToRight 2s;
+      /* Safari and Chrome */
+      -o-animation: moveToRight 2s;
+      /* Opera */ }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper .alignBoxAnimated {
+          width: 80%;
+          height: 6%; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper .alignBoxAnimated {
+          width: 70%;
+          height: 6%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper .alignBoxAnimated {
+          width: 60%;
+          height: 10%; } }
+      #landingContainer #middleWrapper .alignBoxAnimated #paddingBox {
+        position: relative; }
+        @media (max-width: 767px) {
+          #landingContainer #middleWrapper .alignBoxAnimated #paddingBox {
+            width: 32%;
+            height: 100%; } }
+        @media (min-width: 768px) {
+          #landingContainer #middleWrapper .alignBoxAnimated #paddingBox {
+            width: 32%;
+            height: 100%;
+            font-size: 1.5rem; } }
+        @media (min-width: 1200px) {
+          #landingContainer #middleWrapper .alignBoxAnimated #paddingBox {
+            width: 48%;
+            height: 100%;
+            font-size: 2rem;
+            padding-bottom: 10%; } }
+        #landingContainer #middleWrapper .alignBoxAnimated #paddingBox .grayGif {
+          position: absolute;
+          width: 100%;
+          height: 100%; }
+          #landingContainer #middleWrapper .alignBoxAnimated #paddingBox .grayGif img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1); }
+      #landingContainer #middleWrapper .alignBoxAnimated #textBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90%; }
+        @media (max-width: 767px) {
+          #landingContainer #middleWrapper .alignBoxAnimated #textBox {
+            width: 70%; } }
+        @media (min-width: 768px) {
+          #landingContainer #middleWrapper .alignBoxAnimated #textBox {
+            width: 60%; } }
+        @media (min-width: 1200px) {
+          #landingContainer #middleWrapper .alignBoxAnimated #textBox {
+            width: 60%; } }
+        #landingContainer #middleWrapper .alignBoxAnimated #textBox #texts {
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #landingContainer #middleWrapper .alignBoxAnimated #textBox #texts {
+              font-size: 1.2rem; } }
+          @media (min-width: 768px) {
+            #landingContainer #middleWrapper .alignBoxAnimated #textBox #texts {
+              font-size: 1.8rem; } }
+          @media (min-width: 1200px) {
+            #landingContainer #middleWrapper .alignBoxAnimated #textBox #texts {
+              font-size: 2.5rem; } }
+
+@keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-moz-keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-webkit-keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-o-keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+    #landingContainer #middleWrapper #paddingBox31 {
       position: relative; }
       @media (max-width: 767px) {
-        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #paddingBox32 {
+        #landingContainer #middleWrapper #paddingBox31 {
           width: 30%;
           height: 100%; } }
       @media (min-width: 768px) {
-        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #paddingBox32 {
+        #landingContainer #middleWrapper #paddingBox31 {
           width: 32%;
           height: 100%;
           font-size: 1.5rem; } }
       @media (min-width: 1200px) {
-        #landingContainer #middleWrapper #paddingBox31, #landingContainer #middleWrapper #paddingBox32 {
+        #landingContainer #middleWrapper #paddingBox31 {
           width: 30%;
           height: 100%;
           font-size: 2rem;
           padding-bottom: 10%; } }
-      #landingContainer #middleWrapper #paddingBox31 .grayGif2, #landingContainer #middleWrapper #paddingBox32 .grayGif2, #landingContainer #middleWrapper #paddingBox32 .grayGif3 {
+      #landingContainer #middleWrapper #paddingBox31 .grayGif {
         position: absolute;
         width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #a0a0a0;
-        border-radius: 5px;
-        font-weight: bold; }
-        #landingContainer #middleWrapper #paddingBox31 .grayGif2 div, #landingContainer #middleWrapper #paddingBox32 .grayGif2 div, #landingContainer #middleWrapper #paddingBox32 .grayGif3 div {
-          position: absolute; }
+        height: 100%; }
+        #landingContainer #middleWrapper #paddingBox31 .grayGif img {
+          width: 100%;
+          height: 100%;
+          border-radius: 5px;
+          box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1); }
     @media (max-width: 767px) {
-      #landingContainer #middleWrapper #secondImg {
+      #landingContainer #middleWrapper #secondImg, #landingContainer #middleWrapper #secondImgAnimated {
         width: 85%;
         height: 20%; } }
     @media (min-width: 768px) {
-      #landingContainer #middleWrapper #secondImg {
+      #landingContainer #middleWrapper #secondImg, #landingContainer #middleWrapper #secondImgAnimated {
         width: 75%;
         height: 20%; } }
     @media (min-width: 1200px) {
-      #landingContainer #middleWrapper #secondImg {
-        width: 48%;
-        height: 18%; } }
+      #landingContainer #middleWrapper #secondImg, #landingContainer #middleWrapper #secondImgAnimated {
+        width: 44%;
+        height: 15%; } }
+    #landingContainer #middleWrapper #secondImgAnimated {
+      animation: moveToLeft 2s;
+      -moz-animation: moveToLeft 2s;
+      /* Firefox */
+      -webkit-animation: moveToLeft 2s;
+      /* Safari and Chrome */
+      -o-animation: moveToLeft 2s;
+      /* Opera */ }
+
+@keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-moz-keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-webkit-keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-o-keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+    #landingContainer #middleWrapper .alignBox2Animated {
+      animation: moveToRight 2s;
+      -moz-animation: moveToRight 2s;
+      /* Firefox */
+      -webkit-animation: moveToRight 2s;
+      /* Safari and Chrome */
+      -o-animation: moveToRight 2s;
+      /* Opera */ }
+
+@keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-moz-keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-webkit-keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-o-keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+    #landingContainer #middleWrapper #thirdImgAnimated {
+      animation: moveToLeft 2s;
+      -moz-animation: moveToLeft 2s;
+      /* Firefox */
+      -webkit-animation: moveToLeft 2s;
+      /* Safari and Chrome */
+      -o-animation: moveToLeft 2s;
+      /* Opera */ }
+
+@keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-moz-keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-webkit-keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-o-keyframes moveToLeft {
+  from {
+    transform: translate(100%, 0); }
+  to {
+    transform: translate(0, 0); } }
     @media (max-width: 767px) {
-      #landingContainer #middleWrapper #thirdImg {
+      #landingContainer #middleWrapper #thirdImg, #landingContainer #middleWrapper #thirdImgAnimated {
         width: 85%;
         height: 20%; } }
     @media (min-width: 768px) {
-      #landingContainer #middleWrapper #thirdImg {
+      #landingContainer #middleWrapper #thirdImg, #landingContainer #middleWrapper #thirdImgAnimated {
         width: 75%;
         height: 20%; } }
     @media (min-width: 1200px) {
-      #landingContainer #middleWrapper #thirdImg {
-        width: 50%;
-        height: 18%; } }
+      #landingContainer #middleWrapper #thirdImg, #landingContainer #middleWrapper #thirdImgAnimated {
+        width: 44%;
+        height: 15%; } }
+    #landingContainer #middleWrapper .alignBox3Animated {
+      animation: moveToRight 2s;
+      -moz-animation: moveToRight 2s;
+      /* Firefox */
+      -webkit-animation: moveToRight 2s;
+      /* Safari and Chrome */
+      -o-animation: moveToRight 2s;
+      /* Opera */ }
+
+@keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-moz-keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-webkit-keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
+
+@-o-keyframes moveToRight {
+  from {
+    transform: translate(-100%, 0); }
+  to {
+    transform: translate(0, 0); } }
   #landingContainer #bottomBox {
     position: absolute;
     display: flex;
@@ -8986,7 +9240,7 @@ a {
     @media (min-width: 1200px) {
       #landingContainer #bottomBox {
         height: 40%;
-        top: 570%; } }
+        top: 610%; } }
     #landingContainer #bottomBox #bottomAlignBox {
       display: flex;
       flex-direction: column;
@@ -9017,22 +9271,63 @@ a {
         @media (min-width: 1200px) {
           #landingContainer #bottomBox #bottomAlignBox #bottomTextBox {
             font-size: 2.5rem; } }
-      #landingContainer #bottomBox #bottomAlignBox button {
+      #landingContainer #bottomBox #bottomAlignBox #goBtn {
         height: 25%;
         border: 0;
         background-color: #fff;
+        box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1);
         border-radius: 5px;
-        font-weight: bold; }
+        font-weight: bold;
+        animation: moveRightLeft 2s;
+        -moz-animation: moveRightLeft 2s;
+        /* Firefox */
+        -webkit-animation: moveRightLeft 2s;
+        /* Safari and Chrome */
+        -o-animation: moveRightLeft 2s;
+        /* Opera */
+        animation-iteration-count: infinite; }
+
+@keyframes moveRightLeft {
+  0% {
+    transform: translate(-2%, 0); }
+  50% {
+    transform: translate(2%, 0); }
+  100% {
+    transform: translate(-2%, 0); } }
+
+@-moz-keyframes moveRightLeft {
+  0% {
+    transform: translate(-2%, 0); }
+  50% {
+    transform: translate(2%, 0); }
+  100% {
+    transform: translate(-2%, 0); } }
+
+@-webkit-keyframes moveRightLeft {
+  0% {
+    transform: translate(-2%, 0); }
+  50% {
+    transform: translate(2%, 0); }
+  100% {
+    transform: translate(-2%, 0); } }
+
+@-o-keyframes moveRightLeft {
+  0% {
+    transform: translate(-2%, 0); }
+  50% {
+    transform: translate(2%, 0); }
+  100% {
+    transform: translate(-2%, 0); } }
         @media (max-width: 767px) {
-          #landingContainer #bottomBox #bottomAlignBox button {
+          #landingContainer #bottomBox #bottomAlignBox #goBtn {
             width: 40%;
             font-size: 1.2rem; } }
         @media (min-width: 768px) {
-          #landingContainer #bottomBox #bottomAlignBox button {
+          #landingContainer #bottomBox #bottomAlignBox #goBtn {
             width: 30%;
             font-size: 2rem; } }
         @media (min-width: 1200px) {
-          #landingContainer #bottomBox #bottomAlignBox button {
+          #landingContainer #bottomBox #bottomAlignBox #goBtn {
             width: 30%;
             font-size: 2rem; } }
   #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen, #landingContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #landingContainer #fullFooterArticleNotChosen {
@@ -9054,7 +9349,7 @@ a {
       #landingContainer #fullFooter, #landingContainer #conChinContainer #fullFooterChosen, #conChinContainer #landingContainer #fullFooterChosen, #landingContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #landingContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 38%;
-        top: 610%; } }
+        top: 650%; } }
     #landingContainer #fullFooter #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterChosen #landingFooterWrapper, #landingContainer #conChinContainer #fullFooterArticleNotChosen #landingFooterWrapper, #conChinContainer #landingContainer #fullFooterArticleNotChosen #landingFooterWrapper {
       position: absolute;
       display: flex;
