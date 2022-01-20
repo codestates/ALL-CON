@@ -56,6 +56,8 @@ function App() {
     emailAlarmModal,
     smsAlarmModal,
     mainKakaoModal,
+    myProfileImageModal,
+    myProfileResignMembershipModal,
   } = useSelector((state: RootState) => state.modal);
 
   return (
@@ -79,8 +81,8 @@ function App() {
       {emailAlarmModal && <EmailAlarmModal />}
       {smsAlarmModal && <SmsAlarmModal />}
       {mainKakaoModal && <MainKakaoModal />}
-      {/* <MyProfileImageModal /> */}
-      {/* <MyProfileResignMembershipModal /> */}
+      {myProfileImageModal && <MyProfileImageModal />}
+      {myProfileResignMembershipModal && <MyProfileResignMembershipModal />}
       {/* <MyEditPage /> */}
       {/* <ConChinCertificationPage /> */}
       <Routes>

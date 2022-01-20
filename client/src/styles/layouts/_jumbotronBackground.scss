@@ -54,27 +54,30 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       // border: 1px solid yellow;
       @include mobile-only() {
         width: 210px;
       }
       @include md() {
-        width: 400px;
+        width: 390px;
       }
       @include lg() {
-        width: 600px;
+        width: 580px;
       }
       #jumboWhat {
         color: #fff;
         @include mobile-only() {
           font-size: 30px;
+          margin-right: 5%;
         }
         @include md() {
           font-size: 60px;
+          margin-right: 5%;
         }
         @include lg() {
           font-size: 90px;
+          margin-right: 5%;
         }
       }
 
@@ -249,7 +252,8 @@
       bottom: -8%;
     }
     .balls {
-      background-color: #fff;
+      background-color: #999;
+      opacity: 30%;
       border-radius: 50%;
       margin-right: 2%;
       @include mobile-only() {
@@ -267,6 +271,7 @@
     }
     #targetBall {
       background-color: $yellow;
+      opacity: 80%;
     }
   }
 }

@@ -46,11 +46,14 @@ export interface main {
   allConcerts: any[];
   /* 가운데 포스터의 인덱스*/
   targetIdx: number;
-  /*email 아이콘 클릭 여부 상태 */
+  /* email 아이콘 클릭 여부 상태 */
   emailClick: boolean;
-  /*문자 아이콘 클릭 여부 상태 */
+  /* 문자 아이콘 클릭 여부 상태 */
   smsClick: boolean;
+  /* 첫 렌더링 여부 상태 */
   isRendering: boolean;
+  /* 헤더 홈 클릭 여부 상태 */
+  isHeaderClick: boolean;
   /* 전체 페이지 <-> 콘서트 페이지 이동 여부 상태 */
   mainToConcert: boolean;
 }
@@ -63,6 +66,7 @@ const initialState: main = {
   allConcerts: [],
   targetIdx: 0,
   isRendering: false,
+  isHeaderClick: false,
   emailClick: false,
   smsClick: false,
   mainToConcert: false,
@@ -91,6 +95,9 @@ const mainSlice = createSlice({
     setIsRendering: (state: main, { payload }: PayloadAction<boolean>) => {
       state.isRendering = payload;
     },
+    setIsHeaderClick: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.isRendering = payload;
+    },
     setEmailClick: (state: main, { payload }: PayloadAction<boolean>) => {
       state.emailClick = payload;
     },
@@ -110,6 +117,7 @@ export const {
   setDetail,
   setAllConcerts,
   setIsRendering,
+  setIsHeaderClick,
   setEmailClick,
   setSmsClick,
   setMainToConcert,

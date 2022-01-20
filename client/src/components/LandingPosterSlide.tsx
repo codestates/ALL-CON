@@ -6,18 +6,9 @@ import jh2 from '../images/jh2.png';
 import yoo from '../images/yoosu.png';
 import couple from '../images/couple.png';
 /* Library import */
-import { gsap } from 'gsap';
-import { useRef, useEffect } from 'react';
+import { useEffect } from 'react';
 
 function LandingPosterSlide() {
-  const boxRef = useRef<HTMLDivElement>(null);
-  const el = useRef();
-  const q = gsap.utils.selector(el);
-
-  useEffect(() => {
-    // gsap.to(boxRef.current, { rotation: '+=360' });
-  });
-
   return (
     <div className='posterContainer'>
       <div id='posterWrapper1'>
@@ -28,7 +19,7 @@ function LandingPosterSlide() {
         <img alt='포스터' src={chris} className='posterImg' id='poster'></img>
         <div className='posterCover'></div>
       </div>
-      <div id='posterWrapper3' ref={boxRef}>
+      <div id='posterWrapper3'>
         <img alt='포스터' src={jiyoung} className='posterImg' id='poster'></img>
         <div className='dDay'>
           <p>D-5</p>

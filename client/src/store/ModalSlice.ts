@@ -24,6 +24,8 @@ export interface modal {
   smsAlarmModal: boolean;
   alarmText: string;
   mainKakaoModal: boolean;
+  myProfileImageModal: boolean; 
+  myProfileResignMembershipModal: boolean;
 }
 
 /* State 초기값 설정 */
@@ -50,6 +52,8 @@ const initialState: modal = {
   smsAlarmModal: false,
   alarmText: '',
   mainKakaoModal: false,
+  myProfileImageModal: false,
+  myProfileResignMembershipModal: false,
 };
 
 const modalSlice = createSlice({
@@ -144,6 +148,12 @@ const modalSlice = createSlice({
     showMainKakaoModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.mainKakaoModal = payload;
     },
+    showMyProfileImageModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.myProfileImageModal = payload;
+    },
+    showMyProfileResignMembershipModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.myProfileResignMembershipModal = payload;
+    },
   },
 });
 
@@ -170,5 +180,7 @@ export const {
   showSmsAlarmModal,
   insertAlarmText,
   showMainKakaoModal,
+  showMyProfileImageModal,
+  showMyProfileResignMembershipModal,
 } = modalSlice.actions;
 export default modalSlice.reducer;

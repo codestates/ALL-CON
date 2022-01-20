@@ -2,6 +2,9 @@
 import img1 from '../images/landingImage1.png';
 import img2 from '../images/landingImage2.png';
 import img3 from '../images/landingImage3.png';
+import findConchin from '../images/findConchin.png';
+import chanwon from '../images/chanwon.png';
+import concert from '../images/concertss.png';
 import Footer from '../components/Footer';
 import LandingPosterSlide from '../components/LandingPosterSlide';
 /* Store import */
@@ -11,7 +14,7 @@ import { setAllConcerts, setTargetIdx, setTarget } from '../store/MainSlice';
 import axios, { AxiosError } from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function LandingPage() {
   const dispatch = useDispatch();
@@ -20,6 +23,14 @@ function LandingPage() {
   const { targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
+  /* 스크롤 바 위치 */
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', updateScroll);
+  });
 
   /* 1회만 렌더링 */
   useEffect(() => {
@@ -64,15 +75,26 @@ function LandingPage() {
 
       {/*중간 박스 */}
       <div id='middleWrapper'>
-        <img id='firstImg' src={img1} alt='밴드 일러스트'></img>
+        <img
+          id={
+            scrollPosition > 30 && scrollPosition < 1700
+              ? 'firstImgAnimated'
+              : 'firstImg'
+          }
+          src={img1}
+          alt='밴드 일러스트'
+        ></img>
 
-        <div className='alignBox'>
+        <div
+          className={
+            scrollPosition > 340 && scrollPosition < 2400
+              ? 'alignBoxAnimated'
+              : 'alignBox'
+          }
+        >
           <div id='paddingBox'>
             <div className='grayGif'>
-              <div>
-                <p>정보를 검색 및</p>
-                <p> 확인하는 시연 영상</p>
-              </div>
+              <img src={concert}></img>
             </div>
           </div>
           <div id='textBox'>
@@ -86,15 +108,26 @@ function LandingPage() {
           </div>
         </div>
 
-        <img id='secondImg' src={img2} alt='콘친찾기 일러스트'></img>
+        <img
+          id={
+            scrollPosition > 1300 && scrollPosition < 3800
+              ? 'secondImgAnimated'
+              : 'secondImg'
+          }
+          src={img2}
+          alt='콘친찾기 일러스트'
+        ></img>
 
-        <div className='alignBox2'>
-          <div id='paddingBox31'>
-            <div className='grayGif2'>
-              <div>
-                <p>콘친을 찾는</p>
-                <p> 시연 영상</p>
-              </div>
+        <div
+          className={
+            scrollPosition > 2700 && scrollPosition < 4200
+              ? 'alignBox2Animated'
+              : 'alignBox2'
+          }
+        >
+          <div id='paddingBox'>
+            <div className='grayGif'>
+              <img src={findConchin}></img>
             </div>
           </div>
           <div id='textBox'>
@@ -106,15 +139,26 @@ function LandingPage() {
           </div>
         </div>
 
-        <img id='thirdImg' src={img3} alt='알림 일러스트'></img>
+        <img
+          id={
+            scrollPosition > 3300 && scrollPosition < 5200
+              ? 'thirdImgAnimated'
+              : 'thirdImg'
+          }
+          src={img3}
+          alt='알림 일러스트'
+        ></img>
 
-        <div className='alignBox3'>
-          <div id='paddingBox32'>
-            <div className='grayGif3'>
-              <div>
-                <p>알림을 설정하는</p>
-                <p> 시연 영상</p>
-              </div>
+        <div
+          className={
+            scrollPosition > 4600 && scrollPosition < 6800
+              ? 'alignBox3Animated'
+              : 'alignBox3'
+          }
+        >
+          <div id='paddingBox'>
+            <div className='grayGif'>
+              <img src={chanwon}></img>
             </div>
           </div>
           <div id='textBox'>
