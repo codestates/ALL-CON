@@ -117,10 +117,10 @@
             width: 85%;
             height: 100%;
             @include mobile-only() {
-              font-size: 1.6rem;
+              font-size: 1.3rem;
             }
             @include md() {
-              font-size: 2rem;
+              font-size: 1.8rem;
             }
             @include lg() {
               font-size: 2rem;
@@ -136,7 +136,7 @@
             font-weight: bold;
             color: $gray;
             @include mobile-only() {
-              font-size: 2rem;
+              font-size: 1.8rem;
             }
             @include md() {
               font-size: 2.5rem;
@@ -169,10 +169,10 @@
               color: #fff;
               font-weight: bold;
               @include mobile-only() {
-                font-size: 1.1rem;
+                font-size: 1rem;
               }
               @include md() {
-                font-size: 1.5rem;
+                font-size: 1.25rem;
               }
               @include lg() {
                 font-size: 1.5rem;
@@ -192,10 +192,10 @@
               // border: 1px solid red;
               // padding-left: 1%;
               @include mobile-only() {
-                font-size: 1.2rem;
+                font-size: 1rem;
               }
               @include md() {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
               }
               @include lg() {
                 font-size: 1.5rem;
@@ -245,7 +245,7 @@
               height: 100%;
               font-weight: bold;
               @include mobile-only() {
-                font-size: 1.4rem;
+                font-size: 1.15rem;
               }
               @include md() {
                 font-size: 1.4rem;
@@ -269,10 +269,10 @@
               height: 100%;
               // border: 1px solid red;
               @include mobile-only() {
-                font-size: 1.2rem;
+                font-size: 1.05rem;
               }
               @include md() {
-                font-size: 1.6rem;
+                font-size: 1.3rem;
               }
               @include lg() {
                 font-size: 1.6rem;
@@ -286,17 +286,22 @@
             }
           }
           #more {
+            display: flex;
             width: 100%;
             background-color: $yellow;
             border: 0;
             border-radius: 5px;
+            align-items: center;
+            justify-content: center;
             color: #fff;
             font-weight: bold;
             cursor: pointer;
             @include mobile-only() {
+              font-size: 1.2rem;
               height: 13%;
             }
             @include md() {
+              font-size: 1.5rem;
               height: 14%;
             }
             @include lg() {

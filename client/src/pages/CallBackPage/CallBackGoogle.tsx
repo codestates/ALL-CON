@@ -57,9 +57,6 @@ function CallbackGooglePage() {
         /* 로그인 & 유저 상태 변경 */
         dispatch(login());
         dispatch(getUserInfo(response.data.data));
-        /* 로그인 성공 알람 */
-        dispatch(showSuccessModal(true));
-        dispatch(insertAlertText(`${response.data.data.userInfo.username} 님 안녕하세요!`));
       }
       goHomeHandler();
     } catch(err) {
