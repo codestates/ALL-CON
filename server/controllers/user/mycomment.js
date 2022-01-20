@@ -4,15 +4,13 @@ const { Articles, Concerts, ConcertComments, ArticleComments } = require('../../
 module.exports = {
   get: async (req, res) => {
     try {
-
-      console.log('진입.....#1')
       // 로그인 인증 검사
       const userInfo = await userAuth(req, res);
 
       const { pageNum, comment_type } = req.query;
 
       if(!comment_type || comment_type === 'concert') {
-        console.log('진입.....#2 (콘서트)')
+
         // 콘서트 게시물인 경우
         /* 페이지 네이션 한 페이지당 3개의 댓글 */ 
         const limit = 3;
@@ -38,7 +36,7 @@ module.exports = {
         res.status(200).json({ data: { concertCommentInfo: commentInfo.rows, totalPage: totalPage, totalConcertComment: commentInfo.count, commentType: 'concert' }, message: 'My Articles!' });
 
       } else if(comment_type === 'article') {
-        console.log('진입.....#2 (콘친)')
+
          // 콘친 게시물인 경우
         /* 페이지 네이션 한 페이지당 3개의 댓글 */ 
         const limit = 3;
@@ -56,7 +54,7 @@ module.exports = {
           offset: offset,
           limit: limit
         });
-        console.log('진입.....#3 (콘친)')
+
         // if(commentInfo.count === 0) return res.status(200).json({ message: 'Empty My Article Comments!' });
         if(commentInfo.count === 0) return res.status(200).json({ data: { articleCommentInfo: [], totalPage: 0, totalArticleComment: 0, commentType: 'article' }, message: 'Empty Article Comments!' });
         // 총 페이지 수

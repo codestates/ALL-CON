@@ -22,10 +22,10 @@ module.exports = {
         limit: limit
       });
       
-      if(articleInfo.count === 0) return res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: 0 }, message: 'Empty My Articles!' });
+      if(articleInfo.count === 0) return res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: 0, totalArticle: 0 }, message: 'Empty My Articles!' });
       // 총 페이지 수
       const totalPage = Math.ceil(articleInfo.count / limit);
-      res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage }, message: 'My Articles!' });
+      res.status(200).json({ data: { articleInfo: articleInfo.rows, totalPage: totalPage, totalArticle: articleInfo.count }, message: 'My Articles!' });
     } catch (err) {
     return res.status(500).json({ message: 'Server Error!' });
     }

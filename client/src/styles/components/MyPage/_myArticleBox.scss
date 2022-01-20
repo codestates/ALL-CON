@@ -29,6 +29,7 @@
     }
     @include lg() {
       width: 66%;
+      
     }
     .title {
       font-weight: bold;
@@ -44,6 +45,23 @@
         width: 85%;
         font-size: 4rem;
       }
+    }
+  }
+  #myArticleCount {
+    position: absolute;
+    top: 10%;
+    left: 19%;
+    @include mobile-only() {
+      top: 35%;
+      left: 13%;
+      font-size: 1.0rem;
+    }
+    @include md() {
+
+    }
+    @include lg() {
+      top: 12%;
+      left: 18.2%;
     }
   }
   #articleWrapper {
@@ -63,7 +81,7 @@
     }
     @include lg() {
       width: 75%;
-      top: 9%;
+      top: 13%;
       height: 90%;
     }
     #myMemberBoxWrapper {
@@ -88,26 +106,9 @@
       height: 45%;
     }
     @include lg() {
-      top: 57%;
+      top: 72%;
       height: 45%;
     }
     // border: 3px solid green;
-  }
-  #myArticleCount {
-    position: absolute;
-    top: 10%;
-    left: 19%;
-    @include mobile-only() {
-      top: 35%;
-      left: 13%;
-      font-size: 1.0rem;
-    }
-    @include md() {
-
-    }
-    @include lg() {
-      top: 10%;
-      left: 19%;
-    }
   }
 }
