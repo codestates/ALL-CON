@@ -66,7 +66,7 @@
       transition: 0.5s all;
       @include mobile-only() {
         width: 95%;
-        height: 80%;
+        height: 33%;
         top: 12%;
         padding-top: 6%;
       }
@@ -88,13 +88,13 @@
 
         @include mobile-only() {
           width: 95%;
-          height: 80%;
+          height: 15%;
           top: 12%;
           padding-top: 6%;
         }
         @include md() {
           width: 85%;
-          height: 35%;
+          height: 15%;
           top: 17%;
           padding-top: 4%;
         }
@@ -113,13 +113,13 @@
       transition: 0.5s all;
       @include mobile-only() {
         width: 95%;
-        height: 40.5%;
+        height: 45%;
         top: 45.5%;
       }
       @include md() {
         width: 85%;
         height: 50%;
-        top: 57%;
+        top: 3%;
       }
       @include lg() {
         width: 85%;
@@ -132,13 +132,13 @@
 
         @include mobile-only() {
           width: 95%;
-          height: 40.5%;
-          top: 45.5%;
+          height: 35.5%;
+          top: 30%;
         }
         @include md() {
           width: 85%;
           height: 50%;
-          top: 57%;
+          top: 33%;
         }
         @include lg() {
           width: 85%;
@@ -178,12 +178,12 @@
       @include mobile-only() {
         width: 93.5%;
         height: 60%;
-        top: 106%;
+        top: 75%;
       }
       @include md() {
         width: 85%;
         height: 65%;
-        top: 118%;
+        top: 80%;
       }
       @include lg() {
         width: 75%;
@@ -225,12 +225,12 @@
     @include mobile-only() {
       width: 100%;
       height: 22%;
-      top: 175%;
+      top: 105%;
     }
     @include md() {
       width: 100%;
       height: 19.5%;
-      top: 190%;
+      top: 110%;
     }
     @include lg() {
       width: 100%;
@@ -240,10 +240,10 @@
     &Chosen {
       @extend #fullFooter;
       @include mobile-only() {
-        top: 175%;
+        top: 135%;
       }
       @include md() {
-        top: 190%;
+        top: 150%;
       }
       @include lg() {
         top: 150%;
@@ -252,10 +252,10 @@
     &ArticleNotChosen {
       @extend #fullFooter;
       @include mobile-only() {
-        top: 175%;
+        top: 86%;
       }
       @include md() {
-        top: 190%;
+        top: 87%;
       }
       @include lg() {
         top: 88%;

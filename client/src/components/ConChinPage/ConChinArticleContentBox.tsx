@@ -178,7 +178,9 @@ function ConChinArticleContentBox() {
             <div id='viewBox'>
               <p className='view'>
                 등록일 : {handlePostedDate(targetArticle.createdAt)} | 조회수 :
-                {targetArticle.view}
+                {targetArticle.view !== undefined && targetArticle.view > 0
+                  ? targetArticle.view
+                  : ' 종료된 콘서트'}
               </p>
             </div>
             <div id='modifyBox'>

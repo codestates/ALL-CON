@@ -48,7 +48,7 @@ function ConChinPostingOrderBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        console.log('PostingOrderBox=> 전체 게시물을 받아왔습니다.');
+        // console.log('PostingOrderBox=> 전체 게시물을 받아왔습니다.');
         // resetTarget();
 
         dispatch(setAllArticles(response.data.data.articleInfo));
@@ -106,9 +106,10 @@ function ConChinPostingOrderBox() {
       <p
         className='order'
         onClick={() => {
-          dispatch(setPostingOrder('view'));
-          getAllConcerts();
-          // getAllArticles();
+          if (Object.keys(target).length === 0) {
+            dispatch(setPostingOrder('view'));
+            getAllConcerts();
+          }
         }}
         style={
           postingOrder === 'view'
@@ -121,9 +122,10 @@ function ConChinPostingOrderBox() {
       <p
         className='order'
         onClick={() => {
-          dispatch(setPostingOrder('near'));
-          getAllConcerts();
-          // getAllArticles();
+          if (Object.keys(target).length === 0) {
+            dispatch(setPostingOrder('near'));
+            getAllConcerts();
+          }
         }}
         style={
           postingOrder === 'near'
@@ -136,9 +138,10 @@ function ConChinPostingOrderBox() {
       <p
         className='order'
         onClick={() => {
-          dispatch(setPostingOrder('new'));
-          getAllConcerts();
-          // getAllArticles();
+          if (Object.keys(target).length === 0) {
+            dispatch(setPostingOrder('new'));
+            getAllConcerts();
+          }
         }}
         style={
           postingOrder === 'new'

@@ -60,6 +60,36 @@
       height: 85%;
       border-radius: 10px;
     }
+    #imgSelection {
+      z-index: -99;
+      position: absolute;
+      display: flex;
+      top: 30%;
+      left: 45%;
+      width: 10%;
+    }
+    #imgSelectionLabel {
+      z-index: 999;
+      position: fixed;
+      align-items: center;
+      justify-content: center;
+      top: 10%;
+      right: 42.5%;
+      display: flex;
+      width: 15%;
+      padding-bottom: 15%;
+      background-color: white;
+      opacity: 0%;
+      border: 1px solid red;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+        // width: 16%;
+        // height: 16%;
+        // background-color: yellow;
+        // transition: 0.25s all;
+      }
+    }
     #image {
       width: 50%;
       border-radius: 20px;

@@ -5,6 +5,7 @@ import { RootState } from '../index';
 import { setTarget, setOrder, setPassToConcert } from '../store/MainSlice';
 import { showConcertModal, showSuccessModal } from '../store/ModalSlice';
 import { insertAlertText, insertBtnText } from '../store/ModalSlice';
+import { setHeaderAllConcerts } from '../store/HeaderSlice';
 /* Library import */
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -14,9 +15,27 @@ import { useSelector, useDispatch } from 'react-redux';
 function AutoComplete() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { allConcerts } = useSelector((state: RootState) => state.main);
+  const { headerAllConcerts } = useSelector((state: RootState) => state.header);
 
-  const deselectedOptions = allConcerts.map(el => {
+  /*전체 콘서트 받아오기(정렬순:view) */
+  const getAllConcerts = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert?order=view`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        /* 서버 응답값이 있다면 & target 상태 변경 */
+        dispatch(setHeaderAllConcerts(response.data.data.concertInfo));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getAllConcerts();
+  }, []);
+  let deselectedOptions = headerAllConcerts.map(el => {
     return el.title;
   });
 
@@ -59,13 +78,12 @@ function AutoComplete() {
     setInputValue('');
     //조회수순으로 변경
 
-    //allConcerts에 clickedIdx로 접근하여 target 변경
+    //headerAllConcerts에 clickedIdx로 접근하여 target 변경
 
     dispatch(insertAlertText('관련 콘서트 페이지로 이동합니다! 🙂'));
     dispatch(insertBtnText('확인'));
     dispatch(showSuccessModal(true));
-    dispatch(setOrder('view'));
-    dispatch(setTarget(allConcerts[clickedIdx]));
+    dispatch(setTarget(headerAllConcerts[clickedIdx]));
     dispatch(setPassToConcert(true));
   };
 
@@ -104,6 +122,7 @@ function AutoComplete() {
           defaultValue={inputValue}
           onChange={handleInputChange}
           onKeyUp={handleKeyUp}
+          onClick={getAllConcerts}
         ></input>
         <div
           className={

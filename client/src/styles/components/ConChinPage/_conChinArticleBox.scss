@@ -13,7 +13,7 @@
   }
   @include md() {
     border-top: 10px solid $yellow;
-    height: 139%;
+    height: 110%;
     top: 14%;
   }
   @include lg() {
@@ -47,12 +47,12 @@
     width: 100%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 78%;
+      top: 65%;
       height: 20%;
     }
     @include md() {
-      top: 79%;
-      height: 25%;
+      top: 105%;
+      height: 20%;
     }
     @include lg() {
       top: 83%;
@@ -61,7 +61,7 @@
     &Chosen {
       @extend #paginationWrapper;
       @include mobile-only() {
-        top: 78%;
+        top: 58%;
         height: 20%;
       }
       @include md() {
@@ -80,10 +80,10 @@
   position: absolute;
   display: flex;
   @include mobile-only() {
-    top: 40.1%;
+    top: 0%;
   }
   @include md() {
-    top: 45%;
+    top: 0%;
   }
   @include lg() {
     top: 0%;
