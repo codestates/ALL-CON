@@ -52,10 +52,8 @@ export interface main {
   smsClick: boolean;
   /* 첫 렌더링 여부 상태 */
   isRendering: boolean;
-  /* 헤더 홈 클릭 여부 상태 */
-  isHeaderClick: boolean;
   /* 전체 페이지 <-> 콘서트 페이지 이동 여부 상태 */
-  mainToConcert: boolean;
+  passToConcert: boolean;
 }
 
 /* State 초기값 설정 */
@@ -66,10 +64,9 @@ const initialState: main = {
   allConcerts: [],
   targetIdx: 0,
   isRendering: false,
-  isHeaderClick: false,
   emailClick: false,
   smsClick: false,
-  mainToConcert: false,
+  passToConcert: false,
 };
 
 const mainSlice = createSlice({
@@ -95,17 +92,14 @@ const mainSlice = createSlice({
     setIsRendering: (state: main, { payload }: PayloadAction<boolean>) => {
       state.isRendering = payload;
     },
-    setIsHeaderClick: (state: main, { payload }: PayloadAction<boolean>) => {
-      state.isRendering = payload;
-    },
     setEmailClick: (state: main, { payload }: PayloadAction<boolean>) => {
       state.emailClick = payload;
     },
     setSmsClick: (state: main, { payload }: PayloadAction<boolean>) => {
       state.smsClick = payload;
     },
-    setMainToConcert: (state: main, { payload }: PayloadAction<boolean>) => {
-      state.mainToConcert = payload;
+    setPassToConcert: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.passToConcert = payload;
     },
   },
 });
@@ -117,9 +111,8 @@ export const {
   setDetail,
   setAllConcerts,
   setIsRendering,
-  setIsHeaderClick,
   setEmailClick,
   setSmsClick,
-  setMainToConcert,
+  setPassToConcert,
 } = mainSlice.actions;
 export default mainSlice.reducer;

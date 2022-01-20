@@ -5,8 +5,8 @@
   height: 100%;
   // border: 4px solid green;
   @include mobile-only() {
-    width: 100%;
-    top: 0%;
+    width: 90%;
+    top: -20%;
   }
   @include md() {
     width: 85%;
@@ -34,7 +34,7 @@
     .title {
       font-weight: bold;
       @include mobile-only() {
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
       @include md() {
         font-size: 3rem;
@@ -50,6 +50,7 @@
     align-items: center;
     justify-content: center;
     top: 20%;
+    
     @include mobile-only() {
       width: 95%;
       height: 80%;
@@ -62,90 +63,62 @@
       width: 90%;
       height: 110%;
     }
-    // border: 2px solid red;
+    // border: 2px solid yellowgreen;
   }
   #myCountWrapper {
     position: absolute;
     display: flex;
     width: 100%;
-    bottom: 100%;
+    bottom: 102%;
+
     align-items: center;
 
     // border: 3px solid blue;
-  }
-  .myOrder {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    left: 74.2%;
-    margin-right: 0.5%;
-    font-weight: bold;
     @include mobile-only() {
-      width: 19%;
-      height: 50%;
-      font-size: 1.6rem;
     }
     @include md() {
-      width: 12%;
-      height: 50%;
-      font-size: 1.8rem;
     }
     @include lg() {
-      width: 9%;
-      height: 50%;
-      font-size: 2.0rem;
-    }
-    &:hover {
-      background-color: #ffce63;
-      color: white;
-      cursor: pointer;
-      transition: 0.15s all;
+      bottom: 102%;
     }
   }
-  .myOptionBtn {
-    z-index: 999;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: gray;
-    font-size: 1.3rem;
-    font-weight: bold;
-    margin-right: 1.0%;
-    width: 50%;
-    height: 70%;
-    cursor: pointer;
-
-    // border: 3px solid red;
-  }
-  .myCommentOptionBtnWrapper{
-    position: relative;
+  
+  .myOptionWrapper {
+    z-index: 100;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 11.2%;
+    height: 100%;
+    top: 0%;
+    right: 2%;
+    // border: 1px solid red;
+    @include mobile-only() {
+      width: 35%;
+    }
+    @include md() {
+      width: 20%;
+    }
+    @include lg() {
+      width: 15%;
+    }
+  }
+  
+  .myCommentOptionBtnWrapper{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    // justify-content: space-between;
+    width: 13.2%;
     height: 100%;
     margin-right: 0.5%;
-    // margin-right: 10%;
 
     // border: 2px solid green;
-  }
-  .myCommentOptionBtn {
-    
-    // align-items: center;
-    // justify-content: center;
-    border-radius: 5px;
-    margin-right: 0.5%;
-    text-align: center;
-    // left: 74.2%;
-    
     font-weight: bold;
     @include mobile-only() {
       width: 19%;
-      height: 50%;
-      font-size: 1.6rem;
+      height: 10%;
+      font-size: 1.2rem;
     }
     @include md() {
       width: 12%;
@@ -153,11 +126,36 @@
       font-size: 1.8rem;
     }
     @include lg() {
-      width: 45%;
+      right: 1%;
+    }
+  }
+  .myCommentOptionBtn {
+    
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-right: 0.5%;
+    text-align: center;
+
+    
+    font-weight: bold;
+    @include mobile-only() {
+      width: 19%;
+      height: 10%;
+      font-size: 1.2rem;
+    }
+    @include md() {
+      width: 12%;
       height: 50%;
       font-size: 1.8rem;
     }
+    @include lg() {
+      width: 35%;
+      height: 60%;
+      font-size: 1.5rem;
+    }
     &:hover {
+      // background-color: #ffce63;
       background-color: #ffce63;
       color: white;
       cursor: pointer;
@@ -169,6 +167,196 @@
   .hidden {
     display: none;
   }
+  // 댓글수 
+  .myCount {
+    // font-size:2.0rem;
+    @include mobile-only() {
+      font-size: 1.0rem;
+    }
+    @include md() {
+      font-size: 1.1rem;
+    }
+    @include lg() {
+      font-size: 2.0rem;
+    }
+  }
+  // 콘서트 / 콘친 게시물 버튼
+  .myOrder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    margin-right: 0.5%;
+    font-weight: bold;
+    @include mobile-only() {
+      left: 45%;
+      width: 19%;
+      height: 50%;
+    }
+    @include md() {
+      width: 12%;
+      height: 50%;
+      font-size: 1.2rem;
+    }
+    @include lg() {
+      left: 72.5%;
+      width: 9%;
+      height: 50%;
+      font-size: 2.0rem;
+    }
+    &:hover {
+      background-color: #ffce63;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s all;
+    }
+  }
+  //
+  .myOrderChosen {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    background-color: #ffce63;
+    color: white;
+
+    margin-right: 0.5%;
+    font-weight: bold;
+    @include mobile-only() {
+      left: 45%;
+      width: 19%;
+      height: 50%;
+    }
+    @include md() {
+      width: 12%;
+      height: 50%;
+      font-size: 1.2rem;
+    }
+    @include lg() {
+      left: 72.5%;
+      width: 9%;
+      height: 50%;
+      font-size: 2.0rem;
+    }
+  }
+  // 수정하기 / 삭제하기 버튼
+  .myOptionBtn {
+    z-index: 999;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    font-weight: bold;
+    
+    @include mobile-only() {
+      display: none;
+      // width: 45%;
+      // height: 70%;
+      // font-size: 0.5rem;
+    }
+    @include md() {
+      width: 12%;
+      height: 50%;
+      font-size: 1.2rem;
+    }
+    @include lg() {
+      margin-right: 1.0%;
+      right: 1%;
+      width: 50%;
+      height: 70%;
+      font-size: 1.3rem;
+    }
+    &:hover {
+      // background-color: #ffce63;
+      background-color: #ffce63;
+      color: white;
+      cursor: pointer;
+      transition: 0.15s all;
+    }
+  }
+  //
+  #myImgAndText {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    // border: 1px solid purple;
+    .myImgWrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      // border: 1px solid purple;
+      @include mobile-only() {
+        width: 9%;
+        height: 70%;
+        top: -12%;
+        left: -0.5%;
+      }
+      @include md() {
+        width: 8%;
+        height: 75%;
+        left: 1.5%;
+      }
+      @include lg() {
+        width: 7.5%;
+        height: 88%;
+        top: 7%;
+        left: 2%;
+      }
+      .myImg {
+        position: absolute;
+        border-radius: 5px;
+        width: 100%;
+        // height: 82.5%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    & :hover {
+      .myImg {
+        border: 2px solid $yellow;
+        outline: 2px solid $yellow;
+      }
+    }
+    //
+    .myTextWrapper {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 102.5%;
+      height: 70%;
+      top: 30%;
+      left: 11%;
+      // border: 1px solid red;
+      #myText {
+        position: relative;
+        display: flex;
+        width: 85%;
+        height: 100%;
+        margin-right: 0.5%;
+        resize: none;
+        // border: 1px solid red;
+        @include mobile-only() {
+          font-size: 1.1rem;
+        }
+        @include md() {
+          font-size: 1.1rem;
+        }
+        @include lg() {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
   #paginationWrapper {
     position: absolute;
     display: flex;
@@ -177,7 +365,7 @@
     flex-wrap: wrap;
     width: 100%;
     @include mobile-only() {
-      top: 75%;
+      top: 66%;
       height: 25%;
     }
     @include md() {
@@ -185,7 +373,7 @@
       height: 45%;
     }
     @include lg() {
-      top: 84%;
+      top: 92%;
       height: 30%;
     }
     // border: 3px solid green;

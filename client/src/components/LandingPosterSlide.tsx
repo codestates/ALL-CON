@@ -5,6 +5,8 @@ import chris from '../images/chris.jpg';
 import jh2 from '../images/jh2.png';
 import yoo from '../images/yoosu.png';
 import couple from '../images/couple.png';
+/* Library import */
+import { useEffect } from 'react';
 
 function LandingPosterSlide() {
   return (

@@ -11,10 +11,9 @@ import {
   setTarget,
   setAllConcerts,
   setDetail,
-  setIsRendering,
-  setIsHeaderClick
+  setIsRendering
 } from '../store/MainSlice';
-import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice'
+import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,33 +21,27 @@ import { useEffect } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
-  const { isRendering, isHeaderClick, order, target, targetIdx, allConcerts } = useSelector(
+  const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
   const { pageAllComments, pageNum } = useSelector(
     (state: RootState) => state.concertComments,
   );
-  
-  /* 홈 진입시 isHeaderClick=false 1회 초기화 */
-  useEffect(() => {
-    dispatch(setIsHeaderClick(false));
-  }, []);
 
-  /* 헤더에서 홈버튼이 눌리거나 콘서트 목록이 바뀔때마다 렌더링 */
+  /* 전체 콘서트 렌더링 */
   useEffect(() => {
     getAllConcerts(); // 전체 콘서트 목록
-    getDetailInfo(); // 상세 콘서트 정보
-  }, [isRendering ,isHeaderClick]);
+  }, [isRendering]);
 
   /* 상세 콘서트 정보 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 댓글 갱신시) */
   useEffect(() => {
     getDetailInfo(); // 상세 콘서트 정보
-  }, [targetIdx, order, pageAllComments]);
+  }, [target, order, pageAllComments]);
 
   /* 전체 댓글 목록 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 현재 포스터정보 변경시) */
   useEffect(() => {
     getAllComments(); // 전체 댓글 목록
-  }, [targetIdx, order, target]);
+  }, [target, order]);
 
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {

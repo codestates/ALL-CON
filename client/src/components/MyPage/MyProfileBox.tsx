@@ -108,9 +108,31 @@ function MyProfileBox() {
         <div id='imgWrapper'>
           <img className='img' src={`${userInfo.image}`} alt='profileImage' />
         </div>
-        {/* 프로필 변경 모달 OPEN */}
+        {/* 프로필 변경 모달 OPEN & 카메라 아이콘 */}
         <div id='cameraWrapper'>
-          <img className='camera' src={camera} alt='camera' onClick={() => {dispatch(showMyProfileImageModal(true))}} />
+          {/* {userInfo.sign_method === 'allcon'
+            ? null
+            : btnSwitchState?.profileEdit 
+              ?  <img className='camera' src={camera} onClick={() => {
+              dispatch(getPreviewImage(userInfo.image))
+              dispatch(showMyProfileImageModal(true))
+              }} />
+              : <img className='camera' src={shield}/>
+          } */}
+          {/* 콘친 인증이 되어있다면, 방패 아이콘 */}
+          {userInfo.role === 2
+            ? btnSwitchState?.profileEdit 
+              ? <img className='camera' src={camera} onClick={() => {
+                dispatch(getPreviewImage(userInfo.image))
+                dispatch(showMyProfileImageModal(true))}}/>
+              : <img className='camera' src={shield} />
+            : btnSwitchState?.profileEdit 
+              ?  <img className='camera' src={camera} onClick={() => {
+              dispatch(getPreviewImage(userInfo.image))
+              dispatch(showMyProfileImageModal(true))
+              }} />
+              : null
+          }
         </div>
       </div>
       <div id='introductionBox'>
@@ -127,11 +149,11 @@ function MyProfileBox() {
           <p className='nickName'> {`${userInfo.username}`} </p>
           <div id='shieldWrapper'>
             {/* 콘친 인증 상태에 따른 아이콘 표시 (방패 아이콘) */}
-            {
+            {/* {
               userInfo.role === 3
               ? null
               : <img className='shield' src={shield} alt='shield' />
-            }
+            } */}
           </div>
         </div>
         {/* 자기소개 */}

@@ -9,7 +9,7 @@ import {
   setTargetIdx,
   setOrder,
   setIsRendering,
-  setMainToConcert,
+  setPassToConcert,
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -38,7 +38,7 @@ function Jumbotron() {
         dispatch(setPageNum(1));
       }
     }
-    dispatch(setMainToConcert(false)); // 콘서트 -> 메인 페이지 상태 false
+    dispatch(setPassToConcert(false)); // 콘서트 -> 메인 페이지 상태 false
   };
 
   /* orderClick 핸들러 */
@@ -52,7 +52,7 @@ function Jumbotron() {
   };
 
   const ballList = allConcerts.map(el => {
-    if (el.id === target.id)
+    if (el.id === target.id && target)
       return <div className='balls' id='targetBall'></div>;
     return <div className='balls'></div>;
   });

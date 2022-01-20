@@ -1,7 +1,7 @@
 /* Store import */
 import { RootState } from '../../../index';
 import { setScrollCount } from '../../../store/HeaderSlice';
-import { setIsHeaderClick, setTarget, setTargetIdx, setOrder } from '../../../store/MainSlice';
+import { setTarget, setTargetIdx, setOrder, setAllConcerts, setIsRendering } from '../../../store/MainSlice';
 import { setTargetArticle, setArticleRendered, setArticleCurPage } from '../../../store/ConChinSlice';
 import { login, logout, getUserInfo } from '../../../store/AuthSlice';
 import { setPageNum } from '../../../store/ConcertCommentSlice';
@@ -16,6 +16,7 @@ import {
   getMyArticleCommentTotalPage,
   getMyTotalArticleComment,
   getBtnSwitchState,
+  getMyTotalArticle,
 
   getMyConcertCommentCurrentPage
 } from '../../../store/MySlice';
@@ -49,13 +50,12 @@ function MyDropDown() {
   /* handler 함수 (기능별 정렬) */
   // 로그아웃 후 메인페이지 리다이렉트 핸들러
   const goHomeHandler = () => {
-    /* 외부 -> 홈 이동 상태 초기화 */
-    dispatch(setIsHeaderClick(true));
     /* 메인페이지 상태 초기화 */
     dispatch(setTarget({}));
     dispatch(setTargetIdx(0));
     dispatch(setOrder('view')); 
     dispatch(setPageNum(1));
+    dispatch(setIsRendering(false));
     /* 켜져있는 모달창 모두 종료 */
     dispatch(showConcertModal(false)); // concertPage 모달창    
     dispatch(showLoginModal(false));
@@ -84,9 +84,16 @@ function MyDropDown() {
   };
 
   // 이동 시 타겟 초기화 핸들러
-  const resetTarget = async () => {
-    /* ConChinPage */
+  const resetHandler = async () => {
+    /* Common */
     dispatch(setTarget({}));
+    /* MainPage */
+    dispatch(setTargetIdx(0));
+    dispatch(setPageNum(1));
+    dispatch(setOrder('view'));
+    /* ConcertPage */
+    dispatch(showConcertModal(false));
+    /* ConchinPage */
     dispatch(setTargetArticle({}));
     dispatch(setArticleRendered(false));
     dispatch(setArticleCurPage(1));
@@ -102,7 +109,7 @@ function MyDropDown() {
       userResign: false
     }))
 
-    // 내간 쓴 댓글 기본값을 '콘서트'로 설정
+    // 내가 쓴 댓글 기본값을 '콘서트'로 설정
     dispatch(getCommentBtnType('콘서트'));
     
     /****************************************************************************************************/
@@ -114,6 +121,8 @@ function MyDropDown() {
 
     dispatch(getArticleInfo(response.data.data));
     dispatch(getMyArticleTotalPage(response.data.data.totalPage));
+
+    dispatch(getMyTotalArticle(response.data.data.totalArticle))
 
     /****************************************************************************************************/
     // 내가 쓴 댓글(콘서트 게시물) axios 테스트
@@ -143,6 +152,12 @@ function MyDropDown() {
       { withCredentials: true },
     );
 
+    /* 마이페이지 -> 메인페이지 이동시 가져갈 전체 콘서트 목록(조회수 고정) */
+    const responseAllConcerts = await axios.get(
+      `${process.env.REACT_APP_API_URL}/concert`,
+      { withCredentials: true },
+    );
+
     dispatch(getMyArticleCommentInfo(responseMyArticleComment.data.data));
     dispatch(
       getMyArticleCommentTotalPage(
@@ -154,7 +169,8 @@ function MyDropDown() {
         responseMyArticleComment.data.data.totalArticleComment,
       ),
     );
-    
+    dispatch(setAllConcerts(responseAllConcerts.data.data.concertInfo));
+    resetHandler();
   };
 
   return (
@@ -166,8 +182,8 @@ function MyDropDown() {
       >
         <div id={scrollCount < 0.5 ? 'modal' : 'downedModal'}>
           <div id='myMenuWrapper'>
-            <Link to='/mypage' className='menus' onClick={resetTarget}>
-              <p onClick={() => handleMypageBtn()}>마이페이지</p>
+            <Link to='/mypage' className='menus' onClick={handleMypageBtn}>
+              <p>마이페이지</p>
             </Link>
             <Link to='/main' className='menus' onClick={logoutHandler}>
               <p>로그아웃</p>

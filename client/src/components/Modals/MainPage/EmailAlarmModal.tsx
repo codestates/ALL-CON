@@ -24,6 +24,7 @@ function EmailAlarmModal() {
       );
       if (res.data) {
         dispatch(setEmailClick(false));
+        dispatch(showEmailAlarmModal(false));
         console.log(res.data);
       }
     } catch (err) {

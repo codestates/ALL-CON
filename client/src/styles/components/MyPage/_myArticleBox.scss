@@ -22,18 +22,20 @@
     // border: 2px solid red;
     @include mobile-only() {
       width: 80%;
+      top: 21%;
     }
     @include md() {
       width: 71%;
     }
     @include lg() {
       width: 66%;
+      
     }
     .title {
       font-weight: bold;
       @include mobile-only() {
         width: 90%;
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
       @include md() {
         width: 85%;
@@ -45,6 +47,23 @@
       }
     }
   }
+  #myArticleCount {
+    position: absolute;
+    top: 10%;
+    left: 19%;
+    @include mobile-only() {
+      top: 35%;
+      left: 13%;
+      font-size: 1.0rem;
+    }
+    @include md() {
+
+    }
+    @include lg() {
+      top: 12%;
+      left: 18.2%;
+    }
+  }
   #articleWrapper {
     position: absolute;
     display: flex;
@@ -52,7 +71,7 @@
     // border: 2px solid yellow;
     @include mobile-only() {
       width: 90%;
-      top: 15%;
+      top: 16.5%;
       height: 90%;
     }
     @include md() {
@@ -62,7 +81,7 @@
     }
     @include lg() {
       width: 75%;
-      top: 5%;
+      top: 13%;
       height: 90%;
     }
     #myMemberBoxWrapper {
@@ -79,7 +98,7 @@
     flex-wrap: wrap;
     width: 100%;
     @include mobile-only() {
-      top: 75%;
+      top: 120%;
       height: 25%;
     }
     @include md() {
@@ -87,7 +106,7 @@
       height: 45%;
     }
     @include lg() {
-      top: 57%;
+      top: 72%;
       height: 45%;
     }
     // border: 3px solid green;

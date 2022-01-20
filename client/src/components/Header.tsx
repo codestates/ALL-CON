@@ -26,14 +26,15 @@ import {
   setIsScrolled,
   setScrollCount,
   setTimerMessage,
+  setHeaderAllConcerts,
 } from '../store/HeaderSlice';
 import { setPageNum } from '../store/ConcertCommentSlice';
 import {
-  setMainToConcert,
+  setPassToConcert,
   setOrder,
   setTarget,
   setTargetIdx,
-  setIsHeaderClick
+  setIsRendering,
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -45,7 +46,9 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { allConcerts, targetIdx, target, order } = useSelector((state: RootState) => state.main);
+  const { allConcerts, targetIdx, target, order } = useSelector(
+    (state: RootState) => state.main,
+  );
   const {
     loginModal,
     signupModal,
@@ -54,55 +57,50 @@ function Header() {
     conChinProfileModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
-  const { isScrolled, scrollCount, timerMessage } = useSelector(
-    (state: RootState) => state.header,
-  );
+  const { isScrolled, scrollCount, timerMessage, headerAllConcerts } =
+    useSelector((state: RootState) => state.header);
   const { articleOrder, allArticles } = useSelector(
     (state: RootState) => state.conChin,
   );
+  const [searchClicked, setSearchClicked] = useState<boolean>(false);
 
-  /* 타이머 변수 설정: 현재 시간 */
-  let now = new Date();
-  const sc = 1000;
-  const mt = sc * 60;
-  const hr = mt * 60;
-  let nowHours = now.getHours() * hr;
-  let nowMinutes = now.getMinutes() * mt;
-  let nowSeconds = now.getSeconds() * sc;
+  /* Header Timer => 잘 돌아가긴 하지만 고도화 필요.. */
+  let tid = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
 
-  /* 타이머 변수 설정: 오픈 시간 */
-  let openHours = 65;
+  let stDate = new Date().getTime();
+  let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
+  let RemainDate = edDate - stDate;
 
-  if (now.getHours() >= 9) {
-    openHours -= now.getHours();
-  } else {
-    openHours = (13 - now.getHours()) * 2;
+  function msg_time() {
+    let hours: string | number = Math.floor(
+      (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+    );
+    let miniutes: string | number = Math.floor(
+      (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
+    );
+    let seconds: string | number = Math.floor(
+      (RemainDate % (1000 * 60)) / 1000,
+    );
+    if (String(hours).length === 1) {
+      miniutes = `0${hours}`;
+    }
+    if (String(miniutes).length === 1) {
+      miniutes = `0${miniutes}`;
+    }
+    if (String(seconds).length === 1) {
+      seconds = `0${seconds}`;
+    }
+
+    let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
+    dispatch(setTimerMessage(m));
+    if (RemainDate < 0) {
+      // 시간이 종료 되면
+      clearInterval(tid); // 타이머 해제
+    } else {
+      RemainDate = RemainDate - 1000; // 남은시간 -1초
+    }
   }
-  let openTime = openHours * hr;
-  let nowTime = nowHours + nowMinutes + nowSeconds;
-  let distance = openTime - nowTime;
-
-  /* 타이머 변수 설정: 남은 시간 */
-  let dHours: string | number = Math.floor(distance / hr / 2);
-  let dMinutes: string | number = Math.floor((distance % hr) / mt);
-  let dSeconds: string | number = Math.floor((distance % mt) / sc);
-
-  /* 한자리 수일경우 옆에 0 붙이기 */
-  if (String(dHours).length === 1) {
-    dHours = `0${String(dHours)}`;
-  }
-  if (String(dMinutes).length === 1) {
-    dMinutes = `0${String(dMinutes)}`;
-  }
-  if (String(dSeconds).length === 1) {
-    dSeconds = `0${String(dSeconds)}`;
-  }
-
-  dispatch(
-    setTimerMessage(
-      `다음 콘서트를 업데이트하기까지 ${dHours}:${dMinutes}:${dSeconds}`,
-    ),
-  );
+  /* Header Timer */
 
   /* 스크롤 위치 저장 useEffect */
   useEffect(() => {
@@ -115,43 +113,6 @@ function Header() {
     else document.body.style.overflow = 'unset';
   });
 
-  /* 현재시간 타이머 useEffect */
-  // useEffect(() => {
-  //   const countdown = setInterval(
-  //     () => {
-  //       /* 현재 시간 */
-  //       now = new Date();
-  //       nowHours = now.getHours() * hr;
-  //       nowMinutes = now.getMinutes() * mt;
-  //       nowSeconds = now.getSeconds() * sc;
-  //       nowTime = nowHours + nowMinutes + nowSeconds;
-  //       distance = openTime - nowTime;
-
-  //       /* 남은 시, 초, 분 */
-  //       dHours = Math.floor(distance / hr / 2);
-  //       dMinutes = Math.floor((distance % hr) / mt);
-  //       dSeconds = Math.floor((distance % mt) / sc);
-  //       /* 한자리 수일 경우 0 붙이기 */
-  //       if (String(dHours).length === 1) {
-  //         dHours = `0${String(dHours)}`;
-  //       }
-  //       if (String(dMinutes).length === 1) {
-  //         dMinutes = `0${String(dMinutes)}`;
-  //       }
-  //       if (String(dSeconds).length === 1) {
-  //         dSeconds = `0${String(dSeconds)}`;
-  //       }
-  //       dispatch(
-  //         setTimerMessage(
-  //           `다음 콘서트를 업데이트하기까지 ${dHours}:${dMinutes}:${dSeconds}`,
-  //         ),
-  //       );
-  //     },
-  //     1000,
-  //     timerMessage,
-  //   );
-  // }, [now]);
-
   /* 드랍다운 오픈 상태 변경 핸들러 */
   const displayMyDropDown = () => {
     dispatch(showMyDropDown(!myDropDown));
@@ -161,6 +122,7 @@ function Header() {
     dispatch(
       setScrollCount(window.scrollY || document.documentElement.scrollTop),
     );
+    setSearchClicked(false);
     if (scrollCount > 0.5) dispatch(setIsScrolled(true));
   };
 
@@ -189,32 +151,46 @@ function Header() {
     }
   };
 
+  /*전체 콘서트 받아오기(정렬순:view) */
+  const getAllConcerts = async () => {
+    try {
+      setSearchClicked(!searchClicked);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert?order=view`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        /* 서버 응답값이 있다면 & target 상태 변경 */
+        dispatch(setHeaderAllConcerts(response.data.data.concertInfo));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   /* 메뉴별 이동시 상태 초기화 핸들러 */
   const resetHandler = (menu: string) => {
     /* Common */
     dispatch(showConcertModal(false)); // concertPage 모달창
     /* LandingPage */
-    if(menu === 'logo'){
+    if (menu === 'logo') {
       showTimer();
-    }
-    /* MainPage */
-    else if(menu === 'main'){
+    } else if (menu === 'main') {
+      /* MainPage */
+      dispatch(setPassToConcert(false));
       dispatch(setTarget({}));
       dispatch(setTargetIdx(0));
-      dispatch(setOrder('view')); 
+      dispatch(setOrder('view'));
       dispatch(setPageNum(1));
-      dispatch(setMainToConcert(false));
-      dispatch(setIsHeaderClick(true));
+      dispatch(setIsRendering(false));
       navigate('/main');
-    } 
-    /* ConcertPage */
-    else if(menu === 'concert'){
+    } else if (menu === 'concert') {
+      /* ConcertPage */
       dispatch(setTarget({}));
-      dispatch(setOrder('view')); 
+      dispatch(setOrder('view'));
       navigate('/concert');
-    }
-    /* ConChinPage */
-    else if(menu === 'conchin'){
+    } else if (menu === 'conchin') {
+      /* ConChinPage */
       dispatch(setTarget({}));
       dispatch(setTargetArticle({}));
       dispatch(setArticleRendered(false));
@@ -241,8 +217,11 @@ function Header() {
       <div id='logoBar'>
         <Link to='/' onClick={() => resetHandler('logo')}>
           {/* 스크롤 후 로고 호출*/}
+
           <img
-            className={isScrolled === false ? 'logohide' : 'logo'}
+            className={
+              isScrolled === false || searchClicked ? 'logohide' : 'logo'
+            }
             alt='logoImg'
             src={logo}
           />
@@ -257,9 +236,19 @@ function Header() {
         >
           <img className='menu' alt='menuImg' src={menu} />
         </div>
-        <AutoComplete />
+        <div
+          id={searchClicked ? 'autoCompleteWrapper' : 'autoCompleteWrapperHide'}
+        >
+          <AutoComplete />
+        </div>
+
         <div id='searchWrapper'>
-          <img className='search' alt='searchImg' src={search} />
+          <img
+            className='search'
+            alt='searchImg'
+            src={search}
+            onClick={getAllConcerts}
+          />
         </div>
         <div id='loginWrapper'>
           {/* 로그인 여부에 따라 프로필 이미지 혹은 로그인 버튼 출력 */}
@@ -277,9 +266,15 @@ function Header() {
           )}
         </div>
         <div id='hiddenMenuBox'>
-          <p className='menu' onClick={() => resetHandler('main')}>홈</p>
-          <p className='menu' onClick={() => resetHandler('concert')}>콘서트</p>
-          <p className='menu' onClick={() => resetHandler('conchin')}>콘친 찾기</p>
+          <p className='menu' onClick={() => resetHandler('main')}>
+            홈
+          </p>
+          <p className='menu' onClick={() => resetHandler('concert')}>
+            콘서트
+          </p>
+          <p className='menu' onClick={() => resetHandler('conchin')}>
+            콘친 찾기
+          </p>
         </div>
       </div>
     </div>

@@ -62,7 +62,7 @@ function MyEditPage() {
     if(userInfo.sign_method !== 'allcon') {
       setActivationPasswrd(false);
     }
-    setActivationPasswrd(true);
+    else setActivationPasswrd(true);
   }, [])
 
   /* handler 함수 (기능별 정렬) */
@@ -320,7 +320,9 @@ function MyEditPage() {
             }
             {passwordErr
               ? <div id='passwordPass'> 사용가능한 비밀번호입니다. </div>
-              : <div id='passwordErr'> 비밀번호는 영문, 숫자만 가능하며 6~12자리로 입력해야 합니다. </div>
+              : changeUserInfo.password === '' 
+                ? null
+                : <div id='passwordErr'> 비밀번호는 영문, 숫자만 가능하며 6~12자리로 입력해야 합니다. </div>
             }
           </div>
           <div id='confirmBox'>
@@ -334,7 +336,9 @@ function MyEditPage() {
             }
             {confirmPasswordErr
               ? <div id='confirmPasswordPass'> 비밀번호가 일치합니다. </div>
-              : <div id='confirmPasswordErr'> 비밀번호가 일치하지 않습니다. </div>
+              : changeUserInfo.confirmPassword === '' 
+                ? null
+                : <div id='confirmPasswordErr'> 비밀번호가 일치하지 않습니다. </div>
             }
           </div>
           <div id='btnBox'>

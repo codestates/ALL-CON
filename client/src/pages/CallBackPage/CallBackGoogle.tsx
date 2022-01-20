@@ -1,5 +1,5 @@
 /* Store import */
-import { setIsHeaderClick, setTarget, setTargetIdx, setOrder } from '../../store/MainSlice';
+import { setTarget, setTargetIdx, setOrder, setIsRendering } from '../../store/MainSlice';
 import { setPageNum } from '../../store/ConcertCommentSlice';
 import { login, getUserInfo } from '../../store/AuthSlice';
 import {
@@ -30,13 +30,12 @@ function CallbackGooglePage() {
 
   /* 로그인 후 홈화면 리다이렉트 핸들러 */
   const goHomeHandler = () => {
-    /* 외부 -> 홈 이동 상태 초기화 */
-    dispatch(setIsHeaderClick(true));
     /* 메인페이지 상태 초기화 */
     dispatch(setTarget({}));
     dispatch(setTargetIdx(0));
     dispatch(setOrder('view')); 
     dispatch(setPageNum(1));
+    dispatch(setIsRendering(false));
     /* 켜져있는 모달창 모두 종료 */
     dispatch(showConcertModal(false)); // concertPage 모달창    
     dispatch(showLoginModal(false));
@@ -57,9 +56,6 @@ function CallbackGooglePage() {
         /* 로그인 & 유저 상태 변경 */
         dispatch(login());
         dispatch(getUserInfo(response.data.data));
-        /* 로그인 성공 알람 */
-        dispatch(showSuccessModal(true));
-        dispatch(insertAlertText(`${response.data.data.userInfo.username} 님 안녕하세요!`));
       }
       goHomeHandler();
     } catch(err) {
