@@ -49,12 +49,6 @@ function Jumbotron() {
     dispatch(setPageNum(1));
   };
 
-  const ballList = allConcerts.map(el => {
-    if (el.id === target.id && target)
-      return <div className='balls' id='targetBall'></div>;
-    return <div className='balls'></div>;
-  });
-
   return (
     <div id='jumboContainer'>
       <div id='jumboMiniContainer'></div>
