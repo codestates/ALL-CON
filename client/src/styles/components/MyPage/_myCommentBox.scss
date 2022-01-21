@@ -21,13 +21,20 @@
     display: flex;
     align-items: center;
     height: 20%;
+    
     @include mobile-only() {
+      height: 12%;
+      top: 6%;
       width: 90%;
     }
     @include md() {
-      width: 90%;
+      top: 4%;
+      height: 8%;
+      left: 5%;
+      width: 92%;
     }
     @include lg() {
+      top: 6%;
       width: 88%;
     }
     // border: 2px solid red;
@@ -52,6 +59,7 @@
     top: 20%;
     
     @include mobile-only() {
+      
       width: 95%;
       height: 80%;
     }
@@ -77,6 +85,7 @@
     @include mobile-only() {
     }
     @include md() {
+      width: 102%;
     }
     @include lg() {
       bottom: 102%;
@@ -92,12 +101,12 @@
     height: 100%;
     top: 0%;
     right: 2%;
-    // border: 1px solid red;
+    // border: 4px solid red;
     @include mobile-only() {
       width: 35%;
     }
     @include md() {
-      width: 20%;
+      width: 25%;
     }
     @include lg() {
       width: 15%;
@@ -121,7 +130,7 @@
       font-size: 1.2rem;
     }
     @include md() {
-      width: 12%;
+      width: 16%;
       height: 50%;
       font-size: 1.8rem;
     }
@@ -130,7 +139,6 @@
     }
   }
   .myCommentOptionBtn {
-    
     align-items: center;
     justify-content: center;
     border-radius: 5px;
@@ -139,6 +147,8 @@
 
     
     font-weight: bold;
+
+    
     @include mobile-only() {
       width: 19%;
       height: 10%;
@@ -167,18 +177,20 @@
   .hidden {
     display: none;
   }
-  // 댓글수 
+  // 댓글수 (ex. 3개의 댓글)
   .myCount {
-    // font-size:2.0rem;
+    position: relative;
+    display: flex;
     @include mobile-only() {
       font-size: 1.0rem;
     }
     @include md() {
-      font-size: 1.1rem;
+      font-size: 1.6rem;
     }
     @include lg() {
       font-size: 2.0rem;
     }
+    // border: 2px solid blue;
   }
   // 콘서트 / 콘친 게시물 버튼
   .myOrder {
@@ -188,16 +200,20 @@
     justify-content: center;
     border-radius: 5px;
 
+    // border: 2px solid pink;
+
     margin-right: 0.5%;
     font-weight: bold;
     @include mobile-only() {
-      left: 45%;
+      left: 50.5%;
       width: 19%;
       height: 50%;
+      font-size: 1.0rem;
     }
     @include md() {
+      left: 68%;
       width: 12%;
-      height: 50%;
+      height: 20%;
       font-size: 1.2rem;
     }
     @include lg() {
@@ -227,11 +243,13 @@
     margin-right: 0.5%;
     font-weight: bold;
     @include mobile-only() {
-      left: 45%;
+      left: 50.5%;
       width: 19%;
       height: 50%;
+      font-size: 1.0rem;
     }
     @include md() {
+      left: 68%;
       width: 12%;
       height: 50%;
       font-size: 1.2rem;
@@ -255,24 +273,22 @@
     
     @include mobile-only() {
       display: none;
-      // width: 45%;
-      // height: 70%;
-      // font-size: 0.5rem;
     }
     @include md() {
-      width: 12%;
-      height: 50%;
-      font-size: 1.2rem;
+      margin-right: 0.2%;
+      right: -38%;
+      width: 45%;
+      height: 70%;
+      font-size: 1.0rem;
     }
     @include lg() {
       margin-right: 1.0%;
-      right: 1%;
+      right: -11%;
       width: 50%;
       height: 70%;
       font-size: 1.3rem;
     }
     &:hover {
-      // background-color: #ffce63;
       background-color: #ffce63;
       color: white;
       cursor: pointer;
@@ -295,14 +311,15 @@
       cursor: pointer;
       // border: 1px solid purple;
       @include mobile-only() {
-        width: 9%;
-        height: 70%;
-        top: -12%;
+        width: 9.5%;
+        height: 80%;
+        top: 5.5%;
         left: -0.5%;
       }
       @include md() {
         width: 8%;
-        height: 75%;
+        height: 86%;
+        top: 6.5%;
         left: 1.5%;
       }
       @include lg() {
@@ -315,7 +332,6 @@
         position: absolute;
         border-radius: 5px;
         width: 100%;
-        // height: 82.5%;
         height: 100%;
         object-fit: cover;
       }
@@ -326,7 +342,7 @@
         outline: 2px solid $yellow;
       }
     }
-    //
+    // 댓글창
     .myTextWrapper {
       position: absolute;
       display: flex;
@@ -336,17 +352,33 @@
       height: 70%;
       top: 30%;
       left: 11%;
-      // border: 1px solid red;
+      border: 1px solid black;
+      @include mobile-only() {
+        width: 92%;
+        height: 64%;
+        font-size: 1.0rem;
+        text-overflow: ellipsis;
+      }
+      @include md() {
+        width: 96%;
+        font-size: 1.1rem;
+      }
+      @include lg() {
+        width: 89%;
+        font-size: 1.6rem;
+      }
+      // (textarea) 댓글 수정창
       #myText {
         position: relative;
         display: flex;
-        width: 85%;
+        width: 100%;
         height: 100%;
         margin-right: 0.5%;
         resize: none;
-        // border: 1px solid red;
+
         @include mobile-only() {
-          font-size: 1.1rem;
+          font-size: 1.0rem;
+          text-overflow: ellipsis;
         }
         @include md() {
           font-size: 1.1rem;
@@ -357,6 +389,36 @@
       }
     }
   }
+  // 게시글 제목 / 날짜 (ex. 2am Concert 22 S/S | 2022-01-20)
+  .myDateBox {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 89%;
+    height: 30%;
+    left: 11%;
+    
+    .myNickNameAndDate {
+      color: $gray;
+      @include mobile-only() {
+        font-size: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      @include md() {
+        font-size: 1.1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      @include lg() {
+        font-size: 1.5rem;
+      }
+      // border:1px solid blue;
+    }
+  }
+  // 페이지 번호
   #paginationWrapper {
     position: absolute;
     display: flex;
@@ -365,11 +427,11 @@
     flex-wrap: wrap;
     width: 100%;
     @include mobile-only() {
-      top: 66%;
+      top: 70%;
       height: 25%;
     }
     @include md() {
-      top: 67%;
+      top: 70%;
       height: 45%;
     }
     @include lg() {
@@ -378,4 +440,28 @@
     }
     // border: 3px solid green;
   }  
+  #noCommentImgWrapper{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    // border: 3px solid blue;
+    font-size: 3rem;
+    color: yellowgreen;
+    font-weight: bold;
+    bottom: 15%;
+  }
+  #noCommentImg{
+    position: absolute;
+    width: 55%;
+    height: 70%;
+    opacity: 30%;
+  }
+  #noCommentMessage{
+    position: absolute;
+    bottom: 2%;
+    opacity: 80%;
+  }
 }

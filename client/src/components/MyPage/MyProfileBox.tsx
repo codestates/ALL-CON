@@ -1,8 +1,5 @@
 /* Config import */
-import MyProfileResignMembershipModal from '../Modals/MyPage/MyProfileResignMembershipModal';
-import MyProfileImageModal from '../Modals/MyPage/MyProfileImageModal';
 /* CSS import */
-import profileImage from '../../images/taeyang.png';
 import camera from '../../images/camera.png';
 import kakao from '../../images/kakaoOAuth.png';
 import google from '../../images/googleOAuth.png';
@@ -110,15 +107,6 @@ function MyProfileBox() {
         </div>
         {/* 프로필 변경 모달 OPEN & 카메라 아이콘 */}
         <div id='cameraWrapper'>
-          {/* {userInfo.sign_method === 'allcon'
-            ? null
-            : btnSwitchState?.profileEdit 
-              ?  <img className='camera' src={camera} onClick={() => {
-              dispatch(getPreviewImage(userInfo.image))
-              dispatch(showMyProfileImageModal(true))
-              }} />
-              : <img className='camera' src={shield}/>
-          } */}
           {/* 콘친 인증이 되어있다면, 방패 아이콘 */}
           {userInfo.role === 2
             ? btnSwitchState?.profileEdit 
@@ -148,19 +136,13 @@ function MyProfileBox() {
           {/* 유저네임 (username) */}
           <p className='nickName'> {`${userInfo.username}`} </p>
           <div id='shieldWrapper'>
-            {/* 콘친 인증 상태에 따른 아이콘 표시 (방패 아이콘) */}
-            {/* {
-              userInfo.role === 3
-              ? null
-              : <img className='shield' src={shield} alt='shield' />
-            } */}
           </div>
         </div>
         {/* 자기소개 */}
         <div id='textWrapper'>
           {
             myIntroductionState
-            ? <textarea id='introduction' placeholder={userInfo.introduction} onChange={inputIntroduction}></textarea>
+            ? <textarea id='introduction' maxLength={40} placeholder={ userInfo.introduction ? userInfo.introduction : '자기소개를 입력해주세요.'} onChange={inputIntroduction}></textarea>
             : <div id='introduction'>{userInfo.introduction}</div> 
           }
         </div>
