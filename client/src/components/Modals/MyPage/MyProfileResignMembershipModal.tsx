@@ -4,8 +4,9 @@ import ticket from '../../../images/resignTicket.png';
 import { logout } from '../../../store/AuthSlice';
 /* Library import */
 import axios from 'axios';
+import { RootState } from '../../../index';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { showMyProfileResignMembershipModal, insertAlertText, insertBtnText, showSuccessModal } from '../../../store/ModalSlice';
 
   function MyProfileResignMembershipModal() {
@@ -14,6 +15,7 @@ import { showMyProfileResignMembershipModal, insertAlertText, insertBtnText, sho
   const dispatch = useDispatch();
   const navigate = useNavigate();
   /* useSelector */
+  const { userInfo } = useSelector((state: RootState) => state.auth);
 
   /* 지역상태 - useState */
 
@@ -60,14 +62,14 @@ import { showMyProfileResignMembershipModal, insertAlertText, insertBtnText, sho
           </div>
           <div id='explainWrapper'>
             <p className='explain' >
-              유태양발닦개 (님)
+              {userInfo.username} (님)
               <br />
               정말 탈퇴하시겠습니까?
             </p>
           </div>
           <div id='resignBtnWrapper'>
-            <button className='resignBtn' onClick={() => {dispatch(showMyProfileResignMembershipModal(false))}}>취소</button>
-            <button className='cancleBtn' onClick={() => {handleResignMembership()}}>회원 탈퇴</button>
+            <button className='cancleBtn' onClick={() => {dispatch(showMyProfileResignMembershipModal(false))}}>취소</button>
+            <button className='resignBtn' onClick={() => {handleResignMembership()}}>회원 탈퇴</button>
           </div>
         </div>
       </div>

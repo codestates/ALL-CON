@@ -23,7 +23,6 @@
     display: flex;
     // background-color: white;
     background-color: #404040;
-    border: 3px solid blue;
     opacity: 50%;
     @include mobile-only() {
       width: 0%;
@@ -213,12 +212,16 @@
           justify-content: center;
           width: 45%;
           height: 100%;
-          background-color: $yellow;
+          background-color: black;
           border: none;
           border-radius: 5px;
           color: white;
           &:hover {
+            background-color: #ffce63;
+            color: white;
             cursor: pointer;
+            transition: 0.15s all;
+            border: none;
           }
           @include mobile-only() {
             font-size: 2rem;
@@ -237,7 +240,7 @@
           justify-content: center;
           width: 45%;
           height: 100%;
-          background-color: black;
+          background-color: $yellow;
           border: none;
           border-radius: 5px;
           color: white;

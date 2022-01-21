@@ -80,7 +80,7 @@
       height: 70%;
     }
     @include lg() {
-      top: 29%;
+      top: 26%;
       height: 66.67%;
     }
     #userInfoBox {
@@ -178,19 +178,17 @@
             width: 12%;
             height: 33%;
             right: 2%;
-            // color: gray;
             color: white;
             font-size: 1.7rem;
             border-radius: 5px;
             font-weight: bold;
             background-color: black;
-            // border: 0.1px solid grey;
             &:hover {
-              // background-color: #ffce63;
-              // color: white;
+              background-color: #ffce63;
+              color: white;
               cursor: pointer;
-              // transition: 0.15s all;
-              // border: none;
+              transition: 0.15s all;
+              border: none;
             }
           }
           #checkImg {
@@ -411,6 +409,13 @@
           .cancelBtn {
             @extend .completeBtn;
             background-color: $black;
+            &:hover {
+              background-color: #ffce63;
+              color: white;
+              cursor: pointer;
+              transition: 0.15s all;
+              border: none;
+            }
           }
         }
       }
@@ -458,5 +463,42 @@
         width: 73%;
       }
     }
+  }
+
+  #resignBtn{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 26%;
+    text-align: center;
+    font-size: 2.0rem;
+    // border: 3px solid blue;
+    
+    background: linear-gradient(currentColor 0 0)
+    0 100% /var(--d, 0) 3px
+    no-repeat;
+    transition: 0.5s;
+
+    #resignArrowImg{
+      margin-left: 0.5%;
+      width: 1.5%;
+      height: 1.5%;
+    }
+    &:hover{
+      cursor: pointer;
+      --d: 100%;
+    }
+
+    @include mobile-only() {
+    }
+    @include md() {
+    }
+    @include lg() {
+      bottom: 5.5%;
+    }
+
+    
   }
 }
