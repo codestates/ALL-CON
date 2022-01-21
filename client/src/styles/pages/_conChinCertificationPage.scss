@@ -33,7 +33,7 @@
 
       font-weight: bold;
       @include mobile-only() {
-        font-size: 1.8rem;
+        font-size: 1.5rem;
       }
       @include md() {
         font-size: 2rem;
@@ -72,11 +72,11 @@
 
     // border: 2px solid blue;
     @include mobile-only() {
-      top: 32.33%;
+      top: 28%;
       height: 60%;
     }
     @include md() {
-      top: 30%;
+      top: 26%;
       height: 75%;
     }
     @include lg() {
@@ -126,10 +126,10 @@
           border: none;
           border-radius: 5px;
           @include mobile-only() {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
           }
           @include md() {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
           }
           @include lg() {
             font-size: 2rem;
@@ -162,10 +162,10 @@
             border-radius: 5px;
             padding-left: 2%;
             @include mobile-only() {
-              font-size: 1.5rem;
+              font-size: 1.3rem;
             }
             @include md() {
-              font-size: 1.8rem;
+              font-size: 1.6rem;
             }
             @include lg() {
               font-size: 2rem;
@@ -195,10 +195,10 @@
           border-radius: 5px;
           background-color: white;
           @include mobile-only() {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
           }
           @include md() {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
           }
           @include lg() {
             font-size: 2rem;
@@ -231,7 +231,7 @@
             height: 100%;
             font-weight: bold;
             @include mobile-only() {
-              font-size: 1.8rem;
+              font-size: 1.5rem;
             }
             @include md() {
               font-size: 2rem;
@@ -253,10 +253,10 @@
           border: 1px solid $gray2;
           border-radius: 5px;
           @include mobile-only() {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
           }
           @include md() {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
           }
           @include lg() {
             font-size: 2rem;
@@ -288,10 +288,10 @@
               border-radius: 5px;
               padding-left: 2%;
               @include mobile-only() {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
               }
               @include md() {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
               }
               @include lg() {
                 font-size: 2rem;
@@ -304,15 +304,21 @@
               background-color: $black;
               border: none;
               border-radius: 5px;
+              font-weight: bold;
               color: white;
               &:hover {
+                background-color: #ffce63;
+                color: white;
+                cursor: pointer;
+                transition: 0.15s all;
+                border: none;
                 cursor: pointer;
               }
               @include mobile-only() {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
               }
               @include md() {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
               }
               @include lg() {
                 font-size: 2rem;
@@ -406,6 +412,14 @@
           .cancelBtn {
             @extend .completeBtn;
             background-color: $black;
+            &:hover {
+              background-color: #ffce63;
+              color: white;
+              cursor: pointer;
+              transition: 0.15s all;
+              border: none;
+              cursor: pointer;
+            }
           }
         }
       }

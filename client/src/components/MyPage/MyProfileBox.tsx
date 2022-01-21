@@ -147,8 +147,8 @@ function MyProfileBox() {
           }
         </div>
         <div id='modifyBtnWrapper'>
-          <button className={btnSwitchState?.profileEdit ? 'btnChosen' : 'btn' } onClick={() => {handleProfileEdit()}}>프로필 수정</button>
-          <button className={btnSwitchState?.conchinCertification ? 'btnChosen' : 'btn' } onClick={() => {handleConchinCertificate()}}>콘친 인증</button>
+          <button className={btnSwitchState?.profileEdit ? 'btnChosen' : 'btn' } onClick={() => {handleProfileEdit()}}><b>프로필 수정</b></button>
+          <button className={btnSwitchState?.conchinCertification ? 'btnChosen' : 'btn' } onClick={() => {handleConchinCertificate()}}><b>콘친 인증</b></button>
         </div>
         <div id='resignBtnWrapper'>
           <button className='btn' onClick={() => {dispatch(showMyProfileResignMembershipModal(true))}}>회원 탈퇴</button>

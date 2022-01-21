@@ -106,7 +106,7 @@ function PhoneConfirmNumberModal() {
   };
 
   return (
-    <div id='confirmNumberModal'>
+    <div id='phoneConfirmNumberModal'>
       <div id='bg' onClick={() => {dispatch(showPhoneConfirmNumberModal(false))}}/>
       <div id='modalBox'>
         <div id='modal'>
