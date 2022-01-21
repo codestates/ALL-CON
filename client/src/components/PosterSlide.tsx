@@ -1,22 +1,14 @@
 /* CSS import */
-import left from '../images/left_arrow.png';
-import right from '../images/right_arrow.png';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import crown from '../images/crown.png';
 /* Store import */
 import { RootState } from '../index';
 /* Library import */
-import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import Slider, { Settings } from 'react-slick';
-import { setTarget, setTargetIdx } from '../store/MainSlice';
-function PosterSlide() {
-  const dispatch = useDispatch();
+import { useSelector } from 'react-redux';
 
+function PosterSlide() {
   const { target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
-  const [imageIndex, setImageIndex] = useState(0);
 
   /* D-DAY 계산기 */
   const dayCalculator = (openDate?: Date): string => {
@@ -33,49 +25,9 @@ function PosterSlide() {
     return '';
   };
 
-  const NextArrow = ({ onClick }: any) => {
-    return (
-      <div className='arrow next' onClick={onClick}>
-        <img src={right} />
-      </div>
-    );
-  };
-
-  const PrevArrow = ({ onClick }: any) => {
-    return (
-      <div className='arrow prev' onClick={onClick}>
-        <img src={left} />
-      </div>
-    );
-  };
-
-  const settings: Settings = {
-    infinite: true,
-    lazyLoad: 'progressive', //ondemand랑 뭐가 다른지 체크해보기
-    speed: 500,
-    dots: true,
-    // dotsClass: 'dots',
-    slidesToShow: 5,
-    centerMode: true,
-    centerPadding: '10px',
-    swipeToSlide: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    beforeChange: (current: any, next: any) => {
-      setImageIndex(next);
-      dispatch(setTargetIdx(next));
-      // console.log('타겟', target);
-      // console.log('타겟인덱스', targetIdx);
-    },
-  };
-
-  useEffect(() => {
-    dispatch(setTarget(allConcerts[imageIndex]));
-  }, [imageIndex]);
-
   return (
     <div className='posterContainer'>
-      {/* {allConcerts[targetIdx - 2] && (
+      {allConcerts[targetIdx - 2] && (
         <div id='posterWrapper1'>
           <img
             alt='포스터'
@@ -133,16 +85,7 @@ function PosterSlide() {
           />
           <div className='posterCover2'></div>
         </div>
-      )} */}
-      <Slider {...settings} className='sliderWrapper'>
-        {allConcerts.map((el, idx) => (
-          <div className={idx === imageIndex ? 'center' : 'side'}>
-            <img src={el.image_concert} alt='콘서트 이미지' />
-          </div>
-          //인덱스가 targetIdx+2또는 targetIdx-2라면
-          //width,height값을 줄인다. (targetIdx가 0일때랑 lastIdx일때 예외처리)
-        ))}
-      </Slider>
+      )}
     </div>
   );
 }

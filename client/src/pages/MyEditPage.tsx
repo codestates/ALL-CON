@@ -226,7 +226,7 @@ function MyEditPage() {
             dispatch(showSuccessModal(true));
 
             // userInfo 상태 업데이트
-            dispatch(getUserInfo(response.data.data));
+            dispatch(getUserInfo(response.data.data.userInfo));
             // 프로필 수정 / 콘친 인증 버튼 비활성화
             dispatch(getBtnSwitchState({ profileEdit: false, conchinCertification: false }))
             // 자기소개는 비활성화로 전환

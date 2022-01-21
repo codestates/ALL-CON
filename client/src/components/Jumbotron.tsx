@@ -1,5 +1,7 @@
 /* CSS import */
 import PosterSlide from './PosterSlide';
+import left from '../images/left_arrow.png';
+import right from '../images/right_arrow.png';
 /* Store import */
 import { RootState } from '../index';
 import {
@@ -98,6 +100,22 @@ function Jumbotron() {
         </div>
         {/*포스터 wrapper*/}
         <div id='jumboPosterSlideWrapper'>
+          <div id='arrows'>
+            <img
+              id='left'
+              src={left}
+              alt='왼쪽 화살표'
+              onClick={() => moveHandler('left')}
+            ></img>
+            <img
+              id='right'
+              src={right}
+              alt='오른쪽 화살표'
+              onClick={() => moveHandler('right')}
+            ></img>
+          </div>
+          {ballList && <div id='ballsWrapper'>{ballList}</div>}
+          <div id='posterCover'></div>
           <PosterSlide />
         </div>
       </div>

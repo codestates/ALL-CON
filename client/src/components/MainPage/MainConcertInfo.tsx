@@ -311,11 +311,11 @@ function MainConcertInfo() {
               <div id='imgAndOpen'>
                 <img
                   src={
-                    (smsClick || emailClick) &&
-                    ticketOpenCheck(detail.open_date)
+                    (smsClick && ticketOpenCheck(detail.open_date)) || (emailClick && ticketOpenCheck(detail.open_date))
                       ? bellOn
                       : bellOff
                   }
+                  alt='bellImg'
                 />
                 <p id='open'>
                   티켓 오픈일 &nbsp; {dayFormatter(detail.open_date)}

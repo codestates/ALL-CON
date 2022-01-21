@@ -37,7 +37,7 @@ const concertAlarmSlice = createSlice({
       state.emailClick = payload;
     },
     setSmsClick: (state: concertAlarm, { payload }: PayloadAction<boolean>) => {
-      state.emailClick = payload;
+      state.smsClick = payload;
     },
     setAlarm: (state: concertAlarm, { payload }: PayloadAction<object>) => {
       state.alarm = payload;

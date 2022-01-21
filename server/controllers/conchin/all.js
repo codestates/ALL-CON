@@ -41,7 +41,6 @@ module.exports = {
       }
       // 만약 그외의 경우엔 조회수 순 정렬 (Default)
       else {
-        console.log('--- 여기가 맞나? ---');
         const articleInfo = await Articles.findAndCountAll({
           include: [
             {
