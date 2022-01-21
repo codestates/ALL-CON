@@ -6,6 +6,7 @@ export interface header {
   scrollCount: number;
   timerMessage: string | number;
   headerAllConcerts: any[];
+  headerIsRendered: boolean;
 }
 
 /* State 초기값 설정 */
@@ -14,6 +15,7 @@ const initialState: header = {
   scrollCount: 0,
   timerMessage: '',
   headerAllConcerts: [],
+  headerIsRendered: false,
 };
 
 const headerSlice = createSlice({
@@ -39,6 +41,12 @@ const headerSlice = createSlice({
     ) => {
       state.headerAllConcerts = payload;
     },
+    setHeaderIsRendered: (
+      state: header,
+      { payload }: PayloadAction<boolean>,
+    ) => {
+      state.headerIsRendered = payload;
+    },
   },
 });
 
@@ -47,5 +55,6 @@ export const {
   setScrollCount,
   setTimerMessage,
   setHeaderAllConcerts,
+  setHeaderIsRendered,
 } = headerSlice.actions;
 export default headerSlice.reducer;
