@@ -62,42 +62,64 @@ function Header() {
   const { articleOrder, allArticles } = useSelector(
     (state: RootState) => state.conChin,
   );
+
+  /* search 버튼 클릭 상태 */
   const [searchClicked, setSearchClicked] = useState<boolean>(false);
 
-  /* Header Timer => 잘 돌아가긴 하지만 고도화 필요.. */
-  let tid = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
-
+  /* Header Timer */
+  const [isPause, setIsPause] = useState<boolean>(false);
+  let timer: any;
   let stDate = new Date().getTime();
   let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
   let RemainDate = edDate - stDate;
 
-  function msg_time() {
-    let hours: string | number = Math.floor(
-      (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-    );
-    let miniutes: string | number = Math.floor(
-      (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
-    );
-    let seconds: string | number = Math.floor(
-      (RemainDate % (1000 * 60)) / 1000,
-    );
-    if (String(hours).length === 1) {
-      miniutes = `0${hours}`;
-    }
-    if (String(miniutes).length === 1) {
-      miniutes = `0${miniutes}`;
-    }
-    if (String(seconds).length === 1) {
-      seconds = `0${seconds}`;
-    }
+  /* 헤더 타이머 시작 핸들러 */
+  const startTimer = () => {
+    stopTimer();
+    setIsPause(false);
+    timer = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
+  };
+  /* 헤더 타이머 멈춤 핸들러 */
+  const stopTimer = () => {
+    setIsPause(true);
+    clearInterval(timer);
+  };
 
-    let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
-    dispatch(setTimerMessage(m));
-    if (RemainDate < 0) {
-      // 시간이 종료 되면
-      clearInterval(tid); // 타이머 해제
-    } else {
-      RemainDate = RemainDate - 1000; // 남은시간 -1초
+  /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
+  const showTimer = () => {
+    dispatch(setIsScrolled(false));
+  };
+
+  function msg_time() {
+    if (!isPause) {
+      let hours: string | number = Math.floor(
+        (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      );
+      let miniutes: string | number = Math.floor(
+        (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
+      );
+      let seconds: string | number = Math.floor(
+        (RemainDate % (1000 * 60)) / 1000,
+      );
+      if (String(hours).length === 1) {
+        miniutes = `0${hours}`;
+      }
+      if (String(miniutes).length === 1) {
+        miniutes = `0${miniutes}`;
+      }
+      if (String(seconds).length === 1) {
+        seconds = `0${seconds}`;
+      }
+
+      let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
+      dispatch(setTimerMessage(m));
+
+      if (RemainDate < 0) {
+        // 시간이 종료 되면
+        clearInterval(timer); // 타이머 해제
+      } else {
+        RemainDate = RemainDate - 1000; // 남은시간 -1초
+      }
     }
   }
   /* Header Timer */
@@ -124,11 +146,6 @@ function Header() {
     );
     setSearchClicked(false);
     if (scrollCount > 0.5) dispatch(setIsScrolled(true));
-  };
-
-  /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
-  const showTimer = () => {
-    dispatch(setIsScrolled(false));
   };
 
   /* 전체 게시물 받아오기 */
@@ -210,7 +227,11 @@ function Header() {
       }
     >
       {/* 스크롤 후 히든타이머 제거 */}
-      <div id={isScrolled === false ? 'firstHiddenBar' : 'hiddenBar'}>
+      <div
+        id={isScrolled === false ? 'firstHiddenBar' : 'hiddenBar'}
+        onMouseOver={startTimer}
+        onMouseOut={stopTimer}
+      >
         {timerMessage}
       </div>
 
@@ -224,6 +245,7 @@ function Header() {
             }
             alt='logoImg'
             src={logo}
+            onClick={showTimer}
           />
         </Link>
       </div>

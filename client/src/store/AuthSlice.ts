@@ -2,7 +2,6 @@
 import { persistor } from '../index';
 /* Library import */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { setTarget } from './MainSlice';
 /* State Type 설정 */
 export interface auth {
   isLogin: boolean;

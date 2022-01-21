@@ -1,5 +1,5 @@
 #conChinWritingContainer {
-  z-index: 999;
+  z-index: 100;
   width: 100%;
   @include mobile-only() {
     position: absolute;
@@ -134,11 +134,17 @@
     #board {
       width: 75%;
       height: 30%;
-      text-align: center;
+      white-space: pre-line;
+      text-align: left;
+      resize: none;
       border: 0;
       border-radius: 5px;
       background-color: #ccc;
-      font-weight: bold;
+
+      word-wrap: break-word;
+      font-family: sans-serif;
+      font-size: 1.5rem;
+      padding: 1%;
     }
     #btnBox {
       display: flex;

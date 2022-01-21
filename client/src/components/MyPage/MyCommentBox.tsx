@@ -2,6 +2,7 @@
 /* CSS import */
 import shield from '../../images/shield.png';
 import tripleDot from '../../images/tripleDot.png';
+import noCommentImg from '../../images/no_comment_img.png'
 /* Store import */
 import { RootState } from '../../index';
 import {
@@ -322,9 +323,9 @@ function MyCommentBox() {
                     <div
                       className='box'
                     >
-                      <div className='dateBox'>
+                      <div className='myDateBox'>
                         {/* 날짜와 작성자 */}
-                        <p className='nickNameAndDate'>
+                        <p className='myNickNameAndDate'>
                           {' '}
                           <b>{el.Concert.title}</b> | {el.updatedAt.substring(0, 10)}{' '}
                         </p>
@@ -415,13 +416,13 @@ function MyCommentBox() {
                 return (
                   <div
                     className='box'>
-                    <div className='dateBox'>
+                    <div className='myDateBox'>
                       {/* 날짜와 작성자 */}
-                      <p className='nickNameAndDate'>
+                      <p className='myNickNameAndDate'>
                         {' '}
-                        {el.Article.title} | {el.updatedAt.substring(0, 10)}{' '}
+                        <b>{el.Article.title} </b> | {el.updatedAt.substring(0, 10)}{' '}
                       </p>
-                      <div className='optionWrapper'>
+                      <div className='myOptionWrapper'>
                         {/* 콘친 게시물 댓글 수정하기 */}
                         { conchinCommentClick && myArticleCommentCurrentComment === el.id
                           ? <div
@@ -510,6 +511,16 @@ function MyCommentBox() {
       <div id='paginationWrapper'>
         <MyCommentPagination deactivateEditTextarea={deactivateEditTextarea}/>
       </div>
+      
+      {/* 댓글이 없다면 display */}
+      { commentBtnType === '콘서트' && myTotalConcertComment === 0 || commentBtnType === '콘친' && myTotalArticleComment === 0
+        ? <div id='noCommentImgWrapper'> 
+            <img id='noCommentImg' src={noCommentImg}/>
+            <p id='noCommentMessage' >작성한 댓글이 없습니다!</p> 
+          </div>
+        : null
+      }
+
     </div>
   );
 }
