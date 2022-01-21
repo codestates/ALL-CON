@@ -15,7 +15,7 @@ import {
 import { setTarget } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   setAllArticles,
@@ -33,7 +33,6 @@ function ConChinArticleContentBox() {
 
   const { target } = useSelector((state: RootState) => state.main);
   const { userInfo } = useSelector((state: RootState) => state.auth);
-
   /* 유저정보 보기 핸들러 */
   const showUserProfile = () => {
     console.log('실행됨?');
@@ -210,7 +209,7 @@ function ConChinArticleContentBox() {
                   }
                 />
               </div>
-              <p className='text'>{targetArticle.content}</p>
+              <div className='text'>{targetArticle.content}</div>
             </div>
             <div id='commentWrapper'>
               <ConChinArticleCommentBox />

@@ -15,7 +15,15 @@ import { useSelector, useDispatch } from 'react-redux';
 function AutoComplete() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { headerAllConcerts } = useSelector((state: RootState) => state.header);
+  const { allConcerts } = useSelector((state: RootState) => state.main);
+  const { headerAllConcerts, headerIsRendered } = useSelector(
+    (state: RootState) => state.header,
+  );
+
+  const [hasText, setHasText] = useState<boolean>(false);
+  const [inputValue, setInputValue] = useState<string>('');
+  const [options, setOptions] = useState<string[]>([]);
+  const [selected, setSelected] = useState<number>(-1);
 
   /*전체 콘서트 받아오기(정렬순:view) */
   const getAllConcerts = async () => {
@@ -26,23 +34,22 @@ function AutoComplete() {
       );
       if (response.data) {
         /* 서버 응답값이 있다면 & target 상태 변경 */
-        dispatch(setHeaderAllConcerts(response.data.data.concertInfo));
+        deselectedOptions = headerAllConcerts.map(el => {
+          return el.title;
+        });
       }
     } catch (err) {
       console.log(err);
     }
   };
-  useEffect(() => {
-    getAllConcerts();
-  }, []);
+
   let deselectedOptions = headerAllConcerts.map(el => {
     return el.title;
   });
 
-  const [hasText, setHasText] = useState<boolean>(false);
-  const [inputValue, setInputValue] = useState<string>('');
-  const [options, setOptions] = useState<string[]>(deselectedOptions);
-  const [selected, setSelected] = useState<number>(-1);
+  useEffect(() => {
+    getAllConcerts();
+  }, []);
 
   useEffect(() => {
     if (inputValue === '') {
@@ -119,7 +126,7 @@ function AutoComplete() {
           placeholder='검색어를 입력해주세요.'
           type='text'
           value={inputValue}
-          defaultValue={inputValue}
+          // defaultValue={inputValue}
           onChange={handleInputChange}
           onKeyUp={handleKeyUp}
           onClick={getAllConcerts}

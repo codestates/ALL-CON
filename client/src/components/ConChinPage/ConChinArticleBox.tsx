@@ -190,10 +190,16 @@ function ConChinArticleBox() {
                         </div>
                       </div>
                     </div>
-                    <div className='title'>
+                    <div
+                      className={
+                        Object.keys(target).length === 0
+                          ? 'title'
+                          : 'titleChosen'
+                      }
+                    >
                       <img className='icon' src={viewImage} />
                       <p className='count'>
-                        {article.view > 0 ? article.view : '종료된 콘서트'}
+                        {article.view >= 0 ? article.view : '종료된 콘서트'}
                       </p>
                       <p className='date'>
                         {article.createdAt.substring(0, 10)}
@@ -244,10 +250,16 @@ function ConChinArticleBox() {
                         </div>
                       </div>
                     </div>
-                    <div className='title'>
+                    <div
+                      className={
+                        Object.keys(target).length === 0
+                          ? 'title'
+                          : 'titleChosen'
+                      }
+                    >
                       <img className='icon' src={viewImage} />
                       <p className='count'>
-                        {article.view > 0 ? article.view : '종료된 콘서트'}
+                        {article.view >= 0 ? article.view : '종료된 콘서트'}
                       </p>
                       <p className='date'>
                         {article.createdAt.substring(0, 10)}
