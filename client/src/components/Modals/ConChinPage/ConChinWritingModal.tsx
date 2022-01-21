@@ -158,6 +158,16 @@ function ConChinWritingModal() {
       dispatch(showAlertModal(true));
       setNumPresentConchin('1');
       setNumTotalConchin('2');
+    } else if (Number(numTotalConchin) <= 1) {
+      dispatch(insertAlertText('모집인원은 2명이상이어야 해요! 😖'));
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
+    } else if (Number(numPresentConchin) < 0 || Number(numTotalConchin) < 0) {
+      dispatch(insertAlertText('콘친 수를 음수로 설정할 수 없어요! 😖'));
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
     } else if (Number(numPresentConchin) > 9 || Number(numTotalConchin) > 9) {
       dispatch(insertAlertText('모집인원은 9명을 넘을 수 없어요! 😖'));
       dispatch(showAlertModal(true));
@@ -205,6 +215,16 @@ function ConChinWritingModal() {
       dispatch(
         insertAlertText('현재 모인 콘친 수가 모집 중인 콘친수보다 높아요! 😖'),
       );
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
+    } else if (Number(numTotalConchin) <= 1) {
+      dispatch(insertAlertText('모집인원은 2명이상이어야 해요! 😖'));
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
+    } else if (Number(numPresentConchin) < 0 || Number(numTotalConchin) < 0) {
+      dispatch(insertAlertText('콘친 수를 음수로 설정할 수 없어요! 😖'));
       dispatch(showAlertModal(true));
       setNumPresentConchin('1');
       setNumTotalConchin('2');
@@ -342,7 +362,7 @@ function ConChinWritingModal() {
           <div id='peopleNum' className='box'>
             <input
               type='number'
-              min='2'
+              min='1'
               className='want'
               placeholder={
                 targetArticle.member_count
@@ -354,7 +374,7 @@ function ConChinWritingModal() {
             ></input>
             <input
               type='number'
-              min='1'
+              min='2'
               className='want'
               placeholder={
                 targetArticle.total_member

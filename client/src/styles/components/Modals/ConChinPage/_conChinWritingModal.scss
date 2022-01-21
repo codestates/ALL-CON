@@ -114,7 +114,7 @@
       height: 5%;
       background-color: $gray;
       border-radius: 5px;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: bold;
     }
     #concertWrapper {
@@ -132,14 +132,13 @@
       display: block;
       position: absolute;
       width: 100%;
-      font-size: 1.8rem;
       overflow: hidden;
       padding: 0 0rem;
       text-align: center;
       text-overflow: ellipsis;
-
       white-space: nowrap;
       font-weight: bold;
+      font-size: 1.5rem;
     }
     #write {
       position: absolute;
@@ -150,8 +149,8 @@
       border: 0;
       background-color: #ccc;
       outline-color: $yellow;
-      font-size: 1.8rem;
       font-weight: bold;
+      font-size: 1.5rem;
     }
     #peopleNum {
       position: absolute;
@@ -165,6 +164,9 @@
 
       // border: 1px solid blue;
       .want {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 45%;
         height: 100%;
         text-align: center;
@@ -172,8 +174,8 @@
         border-radius: 5px;
         background-color: #ccc;
         outline-color: $yellow;
-        font-size: 1.8rem;
         font-weight: bold;
+        font-size: 1.5rem;
       }
     }
     #board {
@@ -181,6 +183,7 @@
       top: 61%;
       width: 22.5%;
       height: 24%;
+      padding: 1%;
       white-space: pre-line;
       text-align: left;
       resize: none;
@@ -190,9 +193,8 @@
       outline-color: $yellow;
       word-wrap: break-word;
       font-family: sans-serif;
-      font-size: 1.8rem;
       font-weight: bold;
-      padding: 1%;
+      font-size: 1.5rem;
     }
     #btnBox {
       position: absolute;
@@ -206,24 +208,24 @@
       #no1 {
         color: #fff;
         background-color: $yellow;
+        cursor: pointer;
         width: 45%;
         height: 100%;
         border: 0;
         border-radius: 5px;
-        font-size: 1.8rem;
         font-weight: bold;
-        cursor: pointer;
+        font-size: 1.5rem;
       }
       #no2 {
-        color: #fff;
         background-color: #000;
+        color: #fff;
+        cursor: pointer;
         width: 45%;
         height: 100%;
         border: 0;
         border-radius: 5px;
         font-weight: bold;
-        font-size: 1.8rem;
-        cursor: pointer;
+        font-size: 1.5rem;
       }
     }
   }

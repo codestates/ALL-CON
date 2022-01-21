@@ -199,11 +199,11 @@ function ConChinArticleContentBox() {
                   <div className='count'>
                     {targetArticle.view !== undefined && targetArticle.view >= 0
                       ? targetArticle.member_count
-                      : '0'}
+                      : '-'}
                     /
                     {targetArticle.view !== undefined && targetArticle.view >= 0
                       ? targetArticle.total_member
-                      : '0'}
+                      : '-'}
                   </div>
                 </div>
               </div>
@@ -219,7 +219,9 @@ function ConChinArticleContentBox() {
                   }
                 />
               </div>
-              <div className='text'>{targetArticle.content}</div>
+              <div className='textWrapper'>
+                <p className='text'>{targetArticle.content}</p>
+              </div>
             </div>
             <div id='commentWrapper'>
               <ConChinArticleCommentBox />
