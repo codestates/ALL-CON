@@ -1,9 +1,8 @@
 /* Store import */
 import { RootState } from '../../../index';
-import { setScrollCount } from '../../../store/HeaderSlice';
 import { setTarget, setTargetIdx, setOrder, setAllConcerts, setIsRendering } from '../../../store/MainSlice';
 import { setTargetArticle, setArticleRendered, setArticleCurPage } from '../../../store/ConChinSlice';
-import { login, logout, getUserInfo } from '../../../store/AuthSlice';
+import { logout, getUserInfo } from '../../../store/AuthSlice';
 import { setPageNum } from '../../../store/ConcertCommentSlice';
 import {
   getCommentBtnType,
@@ -17,16 +16,13 @@ import {
   getMyTotalArticleComment,
   getBtnSwitchState,
   getMyTotalArticle,
-
   getMyConcertCommentCurrentPage
 } from '../../../store/MySlice';
+import { setAlarm, setEmailClick, setSmsClick } from '../../../store/ConcertAlarmSlice';
 import {
   showMyDropDown,
   showLoginModal,
-  showSignupModal,
-  showFindPasswordModal,
   showConcertModal,
-  showSuccessModal,
   showAlertModal,
   insertAlertText,
 } from '../../../store/ModalSlice';
@@ -42,7 +38,6 @@ function MyDropDown() {
   
   /* useSelector */
   const { scrollCount } = useSelector((state: RootState) => state.header);
-  const { target } = useSelector((state: RootState) => state.main);
   
   /* 지역상태 - useState */
   /* useEffect */
@@ -56,6 +51,9 @@ function MyDropDown() {
     dispatch(setOrder('view')); 
     dispatch(setPageNum(1));
     dispatch(setIsRendering(false));
+    dispatch(setAlarm({}));
+    dispatch(setEmailClick(false));
+    dispatch(setSmsClick(false));
     /* 켜져있는 모달창 모두 종료 */
     dispatch(showConcertModal(false)); // concertPage 모달창    
     dispatch(showLoginModal(false));
@@ -73,6 +71,7 @@ function MyDropDown() {
       );
       /* 로그인 상태 변경 & main 페이지로 이동 & 로그아웃 성공 모달 생성 */
       dispatch(logout());
+      dispatch(getUserInfo({}));
       dispatch(showAlertModal(true));
       dispatch(insertAlertText(`로그아웃 되었습니다!`));
       goHomeHandler();

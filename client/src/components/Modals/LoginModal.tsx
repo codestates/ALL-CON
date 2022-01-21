@@ -56,7 +56,7 @@ function LoginModal() {
       /* 서버의 응답결과에 유저 정보가 담겨있다면 로그인 성공*/
       if (response.data.data) {
         /* 로그인 & 유저 상태 변경 후 메인페이지 리다이렉트 */
-        dispatch(getUserInfo(response.data.data));
+        dispatch(getUserInfo(response.data.data.userInfo));
         dispatch(login());
       }
       goHomeHandler();

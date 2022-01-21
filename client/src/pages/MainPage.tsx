@@ -35,6 +35,10 @@ function MainPage() {
     (state: RootState) => state.concertComments,
   );
 
+  console.log('---------------')
+  console.log('emailClick: ', emailClick);
+  console.log('smsClick: ', smsClick);
+
   /* 전체 콘서트 렌더링 */
   useEffect(() => {
     getAllConcerts(); // 전체 콘서트 목록
@@ -44,16 +48,16 @@ function MainPage() {
   useEffect(() => {
     getDetailInfo(); // 상세 콘서트 정보
     getDetailAlarmInfo();
-  }, [target, order, pageAllComments]);
+  }, [target, pageAllComments]);
 
   /* 전체 알람 렌더링 */
   useEffect(() => {
     if(isLogin) getAllAlarms(); // 전체 알람 목록
-  }, [isRendering, emailClick, smsClick]);
+  }, [isRendering, emailClick, smsClick, isLogin]);
   /* 전체 댓글 목록 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 현재 포스터정보 변경시) */
   useEffect(() => {
     getAllComments(); // 전체 댓글 목록
-  }, [target, order, pageNum]);
+  }, [target, pageNum, isLogin]);
 
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {

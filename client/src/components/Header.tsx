@@ -194,12 +194,12 @@ function Header() {
       showTimer();
     } else if (menu === 'main') {
       /* MainPage */
-      dispatch(setPassToConcert(false));
       dispatch(setTarget({}));
       dispatch(setTargetIdx(0));
       dispatch(setOrder('view'));
       dispatch(setPageNum(1));
       dispatch(setIsRendering(false));
+      dispatch(setPassToConcert(false));
       navigate('/main');
     } else if (menu === 'concert') {
       /* ConcertPage */

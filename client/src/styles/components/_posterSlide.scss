@@ -2,71 +2,8 @@
   width: 100%;
   height: 100%;
   // border: 1px solid pink;
-  .sliderWrapper {
-    width: 100%;
-    height: 100%;
-    // border: 1px solid yellow;
-    .center {
-      width: 15%;
-      height: 52vh;
-      // border: 1px solid blue;
-      img {
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
-        height: 90%;
-      }
-    }
-
-    .side {
-      width: 15%;
-      height: 52vh;
-      // border: 2px solid #fff;
-      img {
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 75%;
-        height: 75%;
-      }
-    }
-
-    .arrow {
-      z-index: 10;
-      position: absolute;
-      top: 40%;
-      width: 8vh;
-      height: 8vh;
-      cursor: pointer;
-      //border: 1px solid red;
-      img {
-        width: 90%;
-        height: 90%;
-      }
-    }
-
-    .next {
-      right: -5%;
-    }
-
-    .prev {
-      left: -5%;
-    }
-    .slick-dots {
-      .slick-active {
-        button::before {
-          opacity: 75%;
-          color: $yellow;
-        }
-      }
-    }
-  }
 }
 
-/*--------전에 만든 css----------*/
 .posterImg {
   position: absolute;
   width: 100%;

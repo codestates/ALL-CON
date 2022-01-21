@@ -153,7 +153,7 @@ function ConChinCertificationPage() {
       dispatch(insertBtnText('확인'));
       dispatch(showSuccessModal(true));
       // 프로필 정보 업데이트
-      dispatch(getUserInfo(response.data.data));
+      dispatch(getUserInfo(response.data.data.userInfo));
       // 모든 버튼 SWITCHOFF
       dispatch(getBtnSwitchState({ profileEdit: false, conchinCertification: false }))
       // 마이페이지로 이동

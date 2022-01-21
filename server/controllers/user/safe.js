@@ -6,9 +6,6 @@ const twilio = require("twilio")(process.env.TWILIO_SID, process.env.TWILIO_TOKE
 module.exports = {
   post: async (req, res) => {
     try {
-
-      console.log('[POST] 핸드폰 인증 번호 진입완료!')
-
       // 로그인 인증 검사
       const userInfo = await userAuth(req, res);
 
