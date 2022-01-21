@@ -182,6 +182,7 @@ function ConChinWritingModal() {
         console.log(response.data);
 
         dispatch(insertAlertText('글 작성에 성공했습니다! 🙂'));
+        getTargetArticles();
         dispatch(insertBtnText('확인'));
         dispatch(showConChinWritingModal(false));
         dispatch(showSuccessModal(true));
@@ -227,15 +228,38 @@ function ConChinWritingModal() {
           },
           { withCredentials: true },
         );
+        getTargetArticles();
         dispatch(insertAlertText('글 수정에 성공했습니다! 🙂'));
         getTargetArticlesInfo();
+
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
         dispatch(showConChinWritingModal(false));
+        getTargetArticles();
         getTargetArticlesInfo();
       }
       // 주의: 글 수정 성공 알림 모달 필요함!
       // 게시글 수정 모달도 닫는다
+    }
+  };
+
+  /* 타겟 게시물 받아오기 */
+  const getTargetArticles = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setAllArticles(response.data.data.articleInfo));
+        dispatch(setArticleTotalPage(response.data.data.totalPage));
+        dispatch(setArticleCurPage(1));
+      } else {
+        console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
+      }
+    } catch (err) {
+      console.log(err);
+      console.log('에러가 났나봐요.');
     }
   };
 
