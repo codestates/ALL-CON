@@ -110,7 +110,7 @@ function LandingPage() {
 
         <img
           id={
-            scrollPosition > 1300 && scrollPosition < 3800
+            scrollPosition > 1300 && scrollPosition < 4200
               ? 'secondImgAnimated'
               : 'secondImg'
           }
@@ -141,7 +141,7 @@ function LandingPage() {
 
         <img
           id={
-            scrollPosition > 3300 && scrollPosition < 5200
+            scrollPosition > 3300 && scrollPosition < 5400
               ? 'thirdImgAnimated'
               : 'thirdImg'
           }
@@ -151,7 +151,7 @@ function LandingPage() {
 
         <div
           className={
-            scrollPosition > 4600 && scrollPosition < 6800
+            scrollPosition > 4300 && scrollPosition < 7300
               ? 'alignBox3Animated'
               : 'alignBox3'
           }

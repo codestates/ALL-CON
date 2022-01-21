@@ -6431,91 +6431,52 @@ a {
   @media (min-width: 1200px) {
     #jumboPosterSlideWrapper {
       bottom: -6%; } }
-  #jumboPosterSlideWrapper #arrows {
-    z-index: 10;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 15%; }
-    @media (max-width: 767px) {
-      #jumboPosterSlideWrapper #arrows {
-        width: 118%; } }
-    @media (min-width: 768px) {
-      #jumboPosterSlideWrapper #arrows {
-        width: 115%; } }
-    @media (min-width: 1200px) {
-      #jumboPosterSlideWrapper #arrows {
-        width: 90%; } }
-    #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
-      opacity: 40%;
-      cursor: pointer; }
-      @media (max-width: 767px) {
-        #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
-          width: 30px; } }
-      @media (min-width: 768px) {
-        #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
-          width: 50px; } }
-      @media (min-width: 1200px) {
-        #jumboPosterSlideWrapper #arrows #left, #jumboPosterSlideWrapper #arrows #right {
-          width: 60px; } }
-    #jumboPosterSlideWrapper #arrows :active {
-      border: solid rgba(0, 0, 0, 0); }
-      @media (max-width: 767px) {
-        #jumboPosterSlideWrapper #arrows :active {
-          width: 5px; } }
-      @media (min-width: 768px) {
-        #jumboPosterSlideWrapper #arrows :active {
-          width: 7.5px; } }
-      @media (min-width: 1200px) {
-        #jumboPosterSlideWrapper #arrows :active {
-          border-width: 8px; } }
-  #jumboPosterSlideWrapper #ballsWrapper {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 65%;
-    height: 7%; }
-    @media (max-width: 767px) {
-      #jumboPosterSlideWrapper #ballsWrapper {
-        bottom: -2%; } }
-    @media (min-width: 768px) {
-      #jumboPosterSlideWrapper #ballsWrapper {
-        bottom: -8%; } }
-    @media (min-width: 1200px) {
-      #jumboPosterSlideWrapper #ballsWrapper {
-        bottom: -8%; } }
-    #jumboPosterSlideWrapper #ballsWrapper .balls {
-      background-color: #999;
-      opacity: 30%;
-      border-radius: 50%;
-      margin-right: 2%; }
-      @media (max-width: 767px) {
-        #jumboPosterSlideWrapper #ballsWrapper .balls {
-          width: 3%;
-          height: 40%; } }
-      @media (min-width: 768px) {
-        #jumboPosterSlideWrapper #ballsWrapper .balls {
-          width: 2%;
-          height: 40%; } }
-      @media (min-width: 1200px) {
-        #jumboPosterSlideWrapper #ballsWrapper .balls {
-          width: 1.5%;
-          height: 40%; } }
-    #jumboPosterSlideWrapper #ballsWrapper #targetBall {
-      background-color: #ffce63;
-      opacity: 80%; }
 
 .posterContainer {
   width: 100%;
   height: 100%; }
+  .posterContainer .sliderWrapper {
+    width: 100%;
+    height: 100%; }
+    .posterContainer .sliderWrapper .center {
+      width: 15%;
+      height: 52vh; }
+      .posterContainer .sliderWrapper .center img {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: 90%; }
+    .posterContainer .sliderWrapper .side {
+      width: 15%;
+      height: 52vh; }
+      .posterContainer .sliderWrapper .side img {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 75%;
+        height: 75%; }
+    .posterContainer .sliderWrapper .arrow {
+      z-index: 10;
+      position: absolute;
+      top: 40%;
+      width: 8vh;
+      height: 8vh;
+      cursor: pointer; }
+      .posterContainer .sliderWrapper .arrow img {
+        width: 90%;
+        height: 90%; }
+    .posterContainer .sliderWrapper .next {
+      right: -5%; }
+    .posterContainer .sliderWrapper .prev {
+      left: -5%; }
+    .posterContainer .sliderWrapper .slick-dots .slick-active button::before {
+      opacity: 75%;
+      color: #ffce63; }
 
+/*--------전에 만든 css----------*/
 .posterImg {
   position: absolute;
   width: 100%;
@@ -7511,19 +7472,19 @@ a {
         justify-content: space-between;
         width: 100%;
         height: 50%; }
-        #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
+        #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           width: 50%;
           height: 100%; }
-          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper {
+          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper {
             display: flex;
             flex-direction: rows;
             justify-content: flex-start;
             height: 40%;
             width: 100%; }
-            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+            #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag {
               display: flex;
               align-items: center;
               justify-content: center;
@@ -7535,24 +7496,24 @@ a {
               font-weight: bold;
               border-radius: 5px; }
               @media (max-width: 767px) {
-                #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+                #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag {
                   font-size: 1rem; } }
               @media (min-width: 768px) {
-                #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+                #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag {
                   font-size: 1.5rem; } }
               @media (min-width: 1200px) {
-                #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+                #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag {
                   font-size: 1.3rem; } }
-          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
+          #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
             font-weight: bold; }
             @media (max-width: 767px) {
-              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
                 font-size: 1.2rem; } }
             @media (min-width: 768px) {
-              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
                 font-size: 1.8rem; } }
             @media (min-width: 1200px) {
-              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
+              #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
                 font-size: 1.8rem; } }
         #concertBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
           display: flex;
@@ -7687,19 +7648,19 @@ a {
         justify-content: space-between;
         width: 100%;
         height: 50%; }
-        #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
+        #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           width: 50%;
           height: 100%; }
-          #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper {
+          #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper {
             display: flex;
             flex-direction: rows;
             justify-content: flex-start;
             height: 40%;
             width: 100%; }
-            #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+            #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag {
               display: flex;
               align-items: center;
               justify-content: center;
@@ -7711,24 +7672,24 @@ a {
               font-weight: bold;
               border-radius: 5px; }
               @media (max-width: 767px) {
-                #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+                #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag {
                   font-size: 1rem; } }
               @media (min-width: 768px) {
-                #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+                #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag {
                   font-size: 1.5rem; } }
               @media (min-width: 1200px) {
-                #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right .tagWrapper #whereTag, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right .tagWrapper #whereTag {
+                #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left .tagWrapper #whereTag {
                   font-size: 1.3rem; } }
-          #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
+          #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
             font-weight: bold; }
             @media (max-width: 767px) {
-              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
+              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
                 font-size: 1.2rem; } }
             @media (min-width: 768px) {
-              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
+              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
                 font-size: 1.8rem; } }
             @media (min-width: 1200px) {
-              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date, #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #jumboPosterSlideWrapper #arrows #right #date, #jumboPosterSlideWrapper #arrows #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right #date {
+              #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #left #date {
                 font-size: 1.8rem; } }
         #concertChosenBoxOuterContainer #concertBoxContainer .infos .miniBox #right {
           display: flex;
@@ -9057,7 +9018,7 @@ a {
 @keyframes moveToLeft {
   from {
     transform: translate(100%, 0);
-    opacity: 20%; }
+    opacity: 0%; }
   to {
     transform: translate(0, 0);
     opacity: 100%; } }
@@ -9065,7 +9026,7 @@ a {
 @-moz-keyframes moveToLeft {
   from {
     transform: translate(100%, 0);
-    opacity: 20%; }
+    opacity: 0%; }
   to {
     transform: translate(0, 0);
     opacity: 100%; } }
@@ -9073,7 +9034,7 @@ a {
 @-webkit-keyframes moveToLeft {
   from {
     transform: translate(100%, 0);
-    opacity: 20%; }
+    opacity: 0%; }
   to {
     transform: translate(0, 0);
     opacity: 100%; } }
@@ -9081,88 +9042,91 @@ a {
 @-o-keyframes moveToLeft {
   from {
     transform: translate(100%, 0);
-    opacity: 20%; }
+    opacity: 0%; }
   to {
     transform: translate(0, 0);
     opacity: 100%; } }
-    @media (max-width: 767px) {
-      #landingContainer #middleWrapper #firstImg, #landingContainer #middleWrapper #firstImgAnimated {
-        width: 85%;
-        height: 14%; } }
-    @media (min-width: 768px) {
-      #landingContainer #middleWrapper #firstImg, #landingContainer #middleWrapper #firstImgAnimated {
-        width: 80%;
-        height: 14%; } }
-    @media (min-width: 1200px) {
-      #landingContainer #middleWrapper #firstImg, #landingContainer #middleWrapper #firstImgAnimated {
-        width: 53%;
-        height: 13%; } }
-    #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2Animated, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3Animated, #landingContainer #middleWrapper .alignBox3 {
+    #landingContainer #middleWrapper #firstImg {
+      opacity: 0%; }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper #firstImg {
+          width: 85%;
+          height: 14%; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper #firstImg {
+          width: 80%;
+          height: 14%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper #firstImg {
+          width: 53%;
+          height: 13%; } }
+    #landingContainer #middleWrapper .alignBox {
       display: flex;
       align-items: center;
-      justify-content: space-between; }
+      justify-content: space-between;
+      opacity: 0; }
       @media (max-width: 767px) {
-        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2Animated, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3Animated, #landingContainer #middleWrapper .alignBox3 {
+        #landingContainer #middleWrapper .alignBox {
           width: 80%;
           height: 6%; } }
       @media (min-width: 768px) {
-        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2Animated, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3Animated, #landingContainer #middleWrapper .alignBox3 {
+        #landingContainer #middleWrapper .alignBox {
           width: 70%;
           height: 6%; } }
       @media (min-width: 1200px) {
-        #landingContainer #middleWrapper .alignBox, #landingContainer #middleWrapper .alignBox2Animated, #landingContainer #middleWrapper .alignBox2, #landingContainer #middleWrapper .alignBox3Animated, #landingContainer #middleWrapper .alignBox3 {
+        #landingContainer #middleWrapper .alignBox {
           width: 60%;
           height: 10%; } }
-      #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2Animated #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3Animated #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+      #landingContainer #middleWrapper .alignBox #paddingBox {
         position: relative; }
         @media (max-width: 767px) {
-          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2Animated #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3Animated #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+          #landingContainer #middleWrapper .alignBox #paddingBox {
             width: 32%;
             height: 100%; } }
         @media (min-width: 768px) {
-          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2Animated #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3Animated #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+          #landingContainer #middleWrapper .alignBox #paddingBox {
             width: 32%;
             height: 100%;
             font-size: 1.5rem; } }
         @media (min-width: 1200px) {
-          #landingContainer #middleWrapper .alignBox #paddingBox, #landingContainer #middleWrapper .alignBox2Animated #paddingBox, #landingContainer #middleWrapper .alignBox2 #paddingBox, #landingContainer #middleWrapper .alignBox3Animated #paddingBox, #landingContainer #middleWrapper .alignBox3 #paddingBox {
+          #landingContainer #middleWrapper .alignBox #paddingBox {
             width: 48%;
             height: 100%;
             font-size: 2rem;
             padding-bottom: 10%; } }
-        #landingContainer #middleWrapper .alignBox #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox2Animated #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox2 #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox3Animated #paddingBox .grayGif, #landingContainer #middleWrapper .alignBox3 #paddingBox .grayGif {
+        #landingContainer #middleWrapper .alignBox #paddingBox .grayGif {
           position: absolute;
           width: 100%;
           height: 100%; }
-          #landingContainer #middleWrapper .alignBox #paddingBox .grayGif img, #landingContainer #middleWrapper .alignBox2Animated #paddingBox .grayGif img, #landingContainer #middleWrapper .alignBox2 #paddingBox .grayGif img, #landingContainer #middleWrapper .alignBox3Animated #paddingBox .grayGif img, #landingContainer #middleWrapper .alignBox3 #paddingBox .grayGif img {
+          #landingContainer #middleWrapper .alignBox #paddingBox .grayGif img {
             width: 100%;
             height: 100%;
             border-radius: 5px;
             box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1); }
-      #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2Animated #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3Animated #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+      #landingContainer #middleWrapper .alignBox #textBox {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 90%; }
         @media (max-width: 767px) {
-          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2Animated #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3Animated #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+          #landingContainer #middleWrapper .alignBox #textBox {
             width: 70%; } }
         @media (min-width: 768px) {
-          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2Animated #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3Animated #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+          #landingContainer #middleWrapper .alignBox #textBox {
             width: 60%; } }
         @media (min-width: 1200px) {
-          #landingContainer #middleWrapper .alignBox #textBox, #landingContainer #middleWrapper .alignBox2Animated #textBox, #landingContainer #middleWrapper .alignBox2 #textBox, #landingContainer #middleWrapper .alignBox3Animated #textBox, #landingContainer #middleWrapper .alignBox3 #textBox {
+          #landingContainer #middleWrapper .alignBox #textBox {
             width: 60%; } }
-        #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2Animated #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3Animated #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+        #landingContainer #middleWrapper .alignBox #textBox #texts {
           font-weight: bold; }
           @media (max-width: 767px) {
-            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2Animated #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3Animated #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+            #landingContainer #middleWrapper .alignBox #textBox #texts {
               font-size: 1.2rem; } }
           @media (min-width: 768px) {
-            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2Animated #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3Animated #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+            #landingContainer #middleWrapper .alignBox #textBox #texts {
               font-size: 1.8rem; } }
           @media (min-width: 1200px) {
-            #landingContainer #middleWrapper .alignBox #textBox #texts, #landingContainer #middleWrapper .alignBox2Animated #textBox #texts, #landingContainer #middleWrapper .alignBox2 #textBox #texts, #landingContainer #middleWrapper .alignBox3Animated #textBox #texts, #landingContainer #middleWrapper .alignBox3 #textBox #texts {
+            #landingContainer #middleWrapper .alignBox #textBox #texts {
               font-size: 2.5rem; } }
     #landingContainer #middleWrapper .alignBoxAnimated {
       display: flex;
@@ -9296,18 +9260,20 @@ a {
           height: 100%;
           border-radius: 5px;
           box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1); }
-    @media (max-width: 767px) {
-      #landingContainer #middleWrapper #secondImg, #landingContainer #middleWrapper #secondImgAnimated {
-        width: 85%;
-        height: 20%; } }
-    @media (min-width: 768px) {
-      #landingContainer #middleWrapper #secondImg, #landingContainer #middleWrapper #secondImgAnimated {
-        width: 75%;
-        height: 20%; } }
-    @media (min-width: 1200px) {
-      #landingContainer #middleWrapper #secondImg, #landingContainer #middleWrapper #secondImgAnimated {
-        width: 44%;
-        height: 15%; } }
+    #landingContainer #middleWrapper #secondImg {
+      opacity: 0; }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper #secondImg {
+          width: 85%;
+          height: 20%; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper #secondImg {
+          width: 75%;
+          height: 20%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper #secondImg {
+          width: 44%;
+          height: 15%; } }
     #landingContainer #middleWrapper #secondImgAnimated {
       animation: moveToLeft 2s;
       -moz-animation: moveToLeft 2s;
@@ -9316,6 +9282,18 @@ a {
       /* Safari and Chrome */
       -o-animation: moveToLeft 2s;
       /* Opera */ }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper #secondImgAnimated {
+          width: 85%;
+          height: 20%; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper #secondImgAnimated {
+          width: 75%;
+          height: 20%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper #secondImgAnimated {
+          width: 44%;
+          height: 15%; } }
 
 @keyframes moveToLeft {
   from {
@@ -9341,6 +9319,9 @@ a {
   to {
     transform: translate(0, 0); } }
     #landingContainer #middleWrapper .alignBox2Animated {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       animation: moveToRight 2s;
       -moz-animation: moveToRight 2s;
       /* Firefox */
@@ -9348,6 +9329,69 @@ a {
       /* Safari and Chrome */
       -o-animation: moveToRight 2s;
       /* Opera */ }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper .alignBox2Animated {
+          width: 80%;
+          height: 6%; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper .alignBox2Animated {
+          width: 70%;
+          height: 6%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper .alignBox2Animated {
+          width: 60%;
+          height: 10%; } }
+      #landingContainer #middleWrapper .alignBox2Animated #paddingBox {
+        position: relative; }
+        @media (max-width: 767px) {
+          #landingContainer #middleWrapper .alignBox2Animated #paddingBox {
+            width: 32%;
+            height: 100%; } }
+        @media (min-width: 768px) {
+          #landingContainer #middleWrapper .alignBox2Animated #paddingBox {
+            width: 32%;
+            height: 100%;
+            font-size: 1.5rem; } }
+        @media (min-width: 1200px) {
+          #landingContainer #middleWrapper .alignBox2Animated #paddingBox {
+            width: 48%;
+            height: 100%;
+            font-size: 2rem;
+            padding-bottom: 10%; } }
+        #landingContainer #middleWrapper .alignBox2Animated #paddingBox .grayGif {
+          position: absolute;
+          width: 100%;
+          height: 100%; }
+          #landingContainer #middleWrapper .alignBox2Animated #paddingBox .grayGif img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1); }
+      #landingContainer #middleWrapper .alignBox2Animated #textBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90%; }
+        @media (max-width: 767px) {
+          #landingContainer #middleWrapper .alignBox2Animated #textBox {
+            width: 70%; } }
+        @media (min-width: 768px) {
+          #landingContainer #middleWrapper .alignBox2Animated #textBox {
+            width: 60%; } }
+        @media (min-width: 1200px) {
+          #landingContainer #middleWrapper .alignBox2Animated #textBox {
+            width: 60%; } }
+        #landingContainer #middleWrapper .alignBox2Animated #textBox #texts {
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #landingContainer #middleWrapper .alignBox2Animated #textBox #texts {
+              font-size: 1.2rem; } }
+          @media (min-width: 768px) {
+            #landingContainer #middleWrapper .alignBox2Animated #textBox #texts {
+              font-size: 1.8rem; } }
+          @media (min-width: 1200px) {
+            #landingContainer #middleWrapper .alignBox2Animated #textBox #texts {
+              font-size: 2.5rem; } }
 
 @keyframes moveToRight {
   from {
@@ -9380,6 +9424,75 @@ a {
   to {
     transform: translate(0, 0);
     opacity: 100%; } }
+    #landingContainer #middleWrapper .alignBox2 {
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0; }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper .alignBox2 {
+          width: 80%;
+          height: 6%; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper .alignBox2 {
+          width: 70%;
+          height: 6%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper .alignBox2 {
+          width: 60%;
+          height: 10%; } }
+      #landingContainer #middleWrapper .alignBox2 #paddingBox {
+        position: relative; }
+        @media (max-width: 767px) {
+          #landingContainer #middleWrapper .alignBox2 #paddingBox {
+            width: 32%;
+            height: 100%; } }
+        @media (min-width: 768px) {
+          #landingContainer #middleWrapper .alignBox2 #paddingBox {
+            width: 32%;
+            height: 100%;
+            font-size: 1.5rem; } }
+        @media (min-width: 1200px) {
+          #landingContainer #middleWrapper .alignBox2 #paddingBox {
+            width: 48%;
+            height: 100%;
+            font-size: 2rem;
+            padding-bottom: 10%; } }
+        #landingContainer #middleWrapper .alignBox2 #paddingBox .grayGif {
+          position: absolute;
+          width: 100%;
+          height: 100%; }
+          #landingContainer #middleWrapper .alignBox2 #paddingBox .grayGif img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1); }
+      #landingContainer #middleWrapper .alignBox2 #textBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90%; }
+        @media (max-width: 767px) {
+          #landingContainer #middleWrapper .alignBox2 #textBox {
+            width: 70%; } }
+        @media (min-width: 768px) {
+          #landingContainer #middleWrapper .alignBox2 #textBox {
+            width: 60%; } }
+        @media (min-width: 1200px) {
+          #landingContainer #middleWrapper .alignBox2 #textBox {
+            width: 60%; } }
+        #landingContainer #middleWrapper .alignBox2 #textBox #texts {
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #landingContainer #middleWrapper .alignBox2 #textBox #texts {
+              font-size: 1.2rem; } }
+          @media (min-width: 768px) {
+            #landingContainer #middleWrapper .alignBox2 #textBox #texts {
+              font-size: 1.8rem; } }
+          @media (min-width: 1200px) {
+            #landingContainer #middleWrapper .alignBox2 #textBox #texts {
+              font-size: 2.5rem; } }
     #landingContainer #middleWrapper #thirdImgAnimated {
       animation: moveToLeft 2s;
       -moz-animation: moveToLeft 2s;
@@ -9388,6 +9501,18 @@ a {
       /* Safari and Chrome */
       -o-animation: moveToLeft 2s;
       /* Opera */ }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper #thirdImgAnimated {
+          width: 85%;
+          height: 20%; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper #thirdImgAnimated {
+          width: 75%;
+          height: 20%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper #thirdImgAnimated {
+          width: 44%;
+          height: 15%; } }
 
 @keyframes moveToLeft {
   from {
@@ -9420,19 +9545,24 @@ a {
   to {
     transform: translate(0, 0);
     opacity: 100%; } }
-    @media (max-width: 767px) {
-      #landingContainer #middleWrapper #thirdImg, #landingContainer #middleWrapper #thirdImgAnimated {
-        width: 85%;
-        height: 20%; } }
-    @media (min-width: 768px) {
-      #landingContainer #middleWrapper #thirdImg, #landingContainer #middleWrapper #thirdImgAnimated {
-        width: 75%;
-        height: 20%; } }
-    @media (min-width: 1200px) {
-      #landingContainer #middleWrapper #thirdImg, #landingContainer #middleWrapper #thirdImgAnimated {
-        width: 44%;
-        height: 15%; } }
+    #landingContainer #middleWrapper #thirdImg {
+      opacity: 0; }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper #thirdImg {
+          width: 85%;
+          height: 20%; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper #thirdImg {
+          width: 75%;
+          height: 20%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper #thirdImg {
+          width: 44%;
+          height: 15%; } }
     #landingContainer #middleWrapper .alignBox3Animated {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       animation: moveToRight 2s;
       -moz-animation: moveToRight 2s;
       /* Firefox */
@@ -9440,6 +9570,69 @@ a {
       /* Safari and Chrome */
       -o-animation: moveToRight 2s;
       /* Opera */ }
+      @media (max-width: 767px) {
+        #landingContainer #middleWrapper .alignBox3Animated {
+          width: 80%;
+          height: 6%; } }
+      @media (min-width: 768px) {
+        #landingContainer #middleWrapper .alignBox3Animated {
+          width: 70%;
+          height: 6%; } }
+      @media (min-width: 1200px) {
+        #landingContainer #middleWrapper .alignBox3Animated {
+          width: 60%;
+          height: 10%; } }
+      #landingContainer #middleWrapper .alignBox3Animated #paddingBox {
+        position: relative; }
+        @media (max-width: 767px) {
+          #landingContainer #middleWrapper .alignBox3Animated #paddingBox {
+            width: 32%;
+            height: 100%; } }
+        @media (min-width: 768px) {
+          #landingContainer #middleWrapper .alignBox3Animated #paddingBox {
+            width: 32%;
+            height: 100%;
+            font-size: 1.5rem; } }
+        @media (min-width: 1200px) {
+          #landingContainer #middleWrapper .alignBox3Animated #paddingBox {
+            width: 48%;
+            height: 100%;
+            font-size: 2rem;
+            padding-bottom: 10%; } }
+        #landingContainer #middleWrapper .alignBox3Animated #paddingBox .grayGif {
+          position: absolute;
+          width: 100%;
+          height: 100%; }
+          #landingContainer #middleWrapper .alignBox3Animated #paddingBox .grayGif img {
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1); }
+      #landingContainer #middleWrapper .alignBox3Animated #textBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90%; }
+        @media (max-width: 767px) {
+          #landingContainer #middleWrapper .alignBox3Animated #textBox {
+            width: 70%; } }
+        @media (min-width: 768px) {
+          #landingContainer #middleWrapper .alignBox3Animated #textBox {
+            width: 60%; } }
+        @media (min-width: 1200px) {
+          #landingContainer #middleWrapper .alignBox3Animated #textBox {
+            width: 60%; } }
+        #landingContainer #middleWrapper .alignBox3Animated #textBox #texts {
+          font-weight: bold; }
+          @media (max-width: 767px) {
+            #landingContainer #middleWrapper .alignBox3Animated #textBox #texts {
+              font-size: 1.2rem; } }
+          @media (min-width: 768px) {
+            #landingContainer #middleWrapper .alignBox3Animated #textBox #texts {
+              font-size: 1.8rem; } }
+          @media (min-width: 1200px) {
+            #landingContainer #middleWrapper .alignBox3Animated #textBox #texts {
+              font-size: 2.5rem; } }
 
 @keyframes moveToRight {
   from {
@@ -9472,6 +9665,8 @@ a {
   to {
     transform: translate(0, 0);
     opacity: 100%; } }
+    #landingContainer #middleWrapper .alignBox3 {
+      opacity: 0; }
   #landingContainer #bottomBox {
     position: absolute;
     display: flex;
