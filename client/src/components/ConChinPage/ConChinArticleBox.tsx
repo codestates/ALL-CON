@@ -2,6 +2,7 @@
 import defaultImage from '../../images/default_image.jpg';
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
+import notFound from '../../images/notFound.jpg';
 import ConChinArticleOrderBox from './ConChinArticleOrderBox';
 import ConChinArticlePagination from './ConChinArticlePagination';
 /* Store import */
@@ -185,16 +186,16 @@ function ConChinArticleBox() {
                       <div className='memberBox'>
                         <img className='icon' src={groupImage} />
                         <div className='count'>
-                          {article.view > 0 ? article.member_count : 0}/
-                          {article.view > 0 ? article.total_member : 0}
+                          {article.view >= 0 ? article.member_count : '-'}/
+                          {article.view >= 0 ? article.total_member : '-'}
                         </div>
                       </div>
                     </div>
                     <div
                       className={
-                        Object.keys(target).length === 0
-                          ? 'title'
-                          : 'titleChosen'
+                        article.id === targetArticle.id
+                          ? 'titleChosen'
+                          : 'title'
                       }
                     >
                       <img className='icon' src={viewImage} />
@@ -246,15 +247,16 @@ function ConChinArticleBox() {
                       <div className='memberBox'>
                         <img className='icon' src={groupImage} />
                         <div className='count'>
-                          {article.member_count}/{article.total_member}
+                          {article.view >= 0 ? article.member_count : '-'}/
+                          {article.view >= 0 ? article.total_member : '-'}
                         </div>
                       </div>
                     </div>
                     <div
                       className={
-                        Object.keys(target).length === 0
-                          ? 'title'
-                          : 'titleChosen'
+                        article.id === targetArticle.id
+                          ? 'titleChosen'
+                          : 'title'
                       }
                     >
                       <img className='icon' src={viewImage} />
@@ -275,7 +277,12 @@ function ConChinArticleBox() {
           )}
         </div>
       ) : (
-        <div id='articleBoxChosen'>게시물이 없습니다. 😢</div>
+        <div id='articleBoxChosen'>
+          <div id='notFound'>
+            <p className='text'>게시물이 없습니다.</p>
+            <img className='img' src={notFound} alt='notFound' />
+          </div>
+        </div>
       )}
       {/*게시물 맵핑 */}
       <div
