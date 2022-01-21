@@ -261,7 +261,7 @@ function Header() {
         <div
           id={searchClicked ? 'autoCompleteWrapper' : 'autoCompleteWrapperHide'}
         >
-          {/* <AutoComplete /> */}
+          <AutoComplete />
         </div>
 
         <div id='searchWrapper'>

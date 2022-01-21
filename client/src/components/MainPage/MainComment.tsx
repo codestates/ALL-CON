@@ -224,8 +224,8 @@ function MainComment() {
       )}
 
       {/* 댓글 목록 map */}
-      {pageAllComments.length!==0 && pageAllComments.map(el => (
-        <div className='box'>
+      {pageAllComments.length!==0 && pageAllComments.map((el, idx) => (
+        <div className='box' key={idx}>
           <div className='dateBox'>
             <p className='nickNameAndDate'>
               {el.User.username} | {dayFormatter(el.createdAt).substring(0, 10)}

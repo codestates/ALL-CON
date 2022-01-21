@@ -7,12 +7,17 @@ import MainFindConchin from '../components/MainPage/MainFindConchin';
 import MainPagination from '../components/MainPage/MainPagination';
 /* Store import */
 import { RootState } from '../index';
+import { showAlertModal, insertAlarmText } from '../store/ModalSlice';
 import {
   setTarget,
   setAllConcerts,
   setDetail,
   setIsRendering
 } from '../store/MainSlice';
+import {
+  setAlarm,
+  setAllAlarms, setEmailClick, setSmsClick,
+} from '../store/ConcertAlarmSlice';
 import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice';
 /* Library import */
 import axios from 'axios';
@@ -21,9 +26,11 @@ import { useEffect } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
+  const { isLogin, userInfo } = useSelector((state:RootState) => state.auth);
   const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
+  const { allAlarms, alarm, emailClick, smsClick } = useSelector((state:RootState) => state.concertAlarm);
   const { pageAllComments, pageNum } = useSelector(
     (state: RootState) => state.concertComments,
   );
@@ -33,15 +40,20 @@ function MainPage() {
     getAllConcerts(); // 전체 콘서트 목록
   }, [isRendering]);
 
-  /* 상세 콘서트 정보 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 댓글 갱신시) */
+  /* 상세 콘서트 정보 & 알람 정보 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 댓글 갱신시) */
   useEffect(() => {
     getDetailInfo(); // 상세 콘서트 정보
+    getDetailAlarmInfo();
   }, [target, order, pageAllComments]);
 
+  /* 전체 알람 렌더링 */
+  useEffect(() => {
+    if(isLogin) getAllAlarms(); // 전체 알람 목록
+  }, [isRendering, emailClick, smsClick]);
   /* 전체 댓글 목록 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 현재 포스터정보 변경시) */
   useEffect(() => {
     getAllComments(); // 전체 댓글 목록
-  }, [target, order]);
+  }, [target, order, pageNum]);
 
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
@@ -57,6 +69,23 @@ function MainPage() {
       }
       /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
       dispatch(setIsRendering(true));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 모든 알람 가져오기 */
+  const getAllAlarms = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/alarm`,
+        { withCredentials: true },
+      );
+      if (response.data.data.myAllAlarmInfo) {
+        const all = response.data.data.myAllAlarmInfo;
+        //모든 알람 allAlarms에 배열로 저장
+        dispatch(setAllAlarms(all));
+      }
     } catch (err) {
       console.log(err);
     }
@@ -79,6 +108,40 @@ function MainPage() {
       console.log(err);
     }
   };
+
+  /* 상세 콘서트 알람 여부 확인 함수 */
+  const getDetailAlarmInfo = () => {
+    /* 현재 target.id와 일치하며, 현재 로그인한 userInfo.id와 일치하는 알람을 가져온다. */
+    const myAlarmArray = allAlarms.filter(alarm => alarm.concert_id === target.id).filter(alarm => alarm.user_id === userInfo.id);
+    /* myAlarmArray에 값이 있다면? */
+    if(myAlarmArray.length > 0){
+      // 전역 상태값을 바꿔준다.
+      const myAlarm = myAlarmArray[0];
+      dispatch(setAlarm(myAlarm));
+      /* 현재 알람 정보 필드값에 따라 클릭버튼 상태 변경 */
+      if(myAlarm.email_alarm && myAlarm.phone_alarm) {
+        dispatch(setEmailClick(true));
+        dispatch(setSmsClick(true));
+      }
+      else if(myAlarm.email_alarm) {
+        dispatch(setEmailClick(true));
+        dispatch(setSmsClick(false));
+      }
+      else if(myAlarm.phone_alarm) {
+        dispatch(setEmailClick(false));
+        dispatch(setSmsClick(true));
+      }
+      else {
+        dispatch(setAlarm({}));
+        dispatch(setEmailClick(false));
+        dispatch(setSmsClick(false));
+      }
+    } else {
+      dispatch(setAlarm({}));
+      dispatch(setEmailClick(false));
+      dispatch(setSmsClick(false));
+    }
+  }
 
   /* 모든 댓글 가져오기 함수 */
   const getAllComments = async () => {

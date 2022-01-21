@@ -96,9 +96,10 @@ function ConcertPage() {
       </div>
       <div id='concertsBoard'>
         {/* 콘서트 목록 */}
-        {allConcerts.map(concert => (
+        {allConcerts.map((concert, idx) => (
           <div
             id='concertBoxWrapper'
+            key={idx}
             onClick={() => {
               concertClickHandler(concert.id);
             }}

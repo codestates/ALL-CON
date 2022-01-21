@@ -12,6 +12,7 @@ import headerSlice, { header } from './store/HeaderSlice';
 import mainSlice, { main } from './store/MainSlice';
 import mySlice, { my } from './store/MySlice';
 import conChinSlice, { conChin } from './store/ConChinSlice';
+import ConcertAlarmSlice, { concertAlarm } from './store/ConcertAlarmSlice';
 import ConcertCommentSlice, {
   concertComments,
 } from './store/ConcertCommentSlice';
@@ -25,7 +26,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistReducer, persistStore, PERSIST } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import React from 'react';
 import ReactDOM from 'react-dom';
 import storage from 'redux-persist/lib/storage';
 
@@ -44,6 +44,7 @@ const reducers = combineReducers({
   main: mainSlice,
   my: mySlice,
   conChin: conChinSlice,
+  concertAlarm: ConcertAlarmSlice,
   concertComments: ConcertCommentSlice,
   conChinComments: ConChinCommentSlice,
 });
@@ -70,6 +71,7 @@ export interface RootState {
   main: main;
   conChin: conChin;
   my: my;
+  concertAlarm: concertAlarm;
   concertComments: concertComments;
   conChinComments: conChinComments;
 }
