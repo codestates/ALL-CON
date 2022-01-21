@@ -38,9 +38,9 @@ function ConChinWritingModal() {
   // 글제목
   const [title, setTitle] = useState<string>('');
   // 모집중인 콘친수
-  const [numTotalConchin, setNumTotalConchin] = useState<string>('2');
+  const [numTotalConchin, setNumTotalConchin] = useState<string>('');
   // 현재 모인 콘친 수
-  const [numPresentConchin, setNumPresentConchin] = useState<string>('1');
+  const [numPresentConchin, setNumPresentConchin] = useState<string>('');
   // 글내용
   const [content, setContent] = useState<string>('');
 
@@ -158,6 +158,16 @@ function ConChinWritingModal() {
       dispatch(showAlertModal(true));
       setNumPresentConchin('1');
       setNumTotalConchin('2');
+    } else if (Number(numTotalConchin) <= 1) {
+      dispatch(insertAlertText('모집인원은 2명이상이어야 해요! 😖'));
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
+    } else if (Number(numPresentConchin) < 0 || Number(numTotalConchin) < 0) {
+      dispatch(insertAlertText('콘친 수를 음수로 설정할 수 없어요! 😖'));
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
     } else if (Number(numPresentConchin) > 9 || Number(numTotalConchin) > 9) {
       dispatch(insertAlertText('모집인원은 9명을 넘을 수 없어요! 😖'));
       dispatch(showAlertModal(true));
@@ -205,6 +215,16 @@ function ConChinWritingModal() {
       dispatch(
         insertAlertText('현재 모인 콘친 수가 모집 중인 콘친수보다 높아요! 😖'),
       );
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
+    } else if (Number(numTotalConchin) <= 1) {
+      dispatch(insertAlertText('모집인원은 2명이상이어야 해요! 😖'));
+      dispatch(showAlertModal(true));
+      setNumPresentConchin('1');
+      setNumTotalConchin('2');
+    } else if (Number(numPresentConchin) < 0 || Number(numTotalConchin) < 0) {
+      dispatch(insertAlertText('콘친 수를 음수로 설정할 수 없어요! 😖'));
       dispatch(showAlertModal(true));
       setNumPresentConchin('1');
       setNumTotalConchin('2');
@@ -326,8 +346,8 @@ function ConChinWritingModal() {
             />
           )}
           {/* 주의! 현재 선택된 콘서트의 제목을 store에서 가져와서 변수로 치환해줘야함 */}
-          <div id='concert' className='box'>
-            {target.title}
+          <div id='concertWrapper'>
+            <p id='concert'>{target.title}</p>
           </div>
           <input
             className='box'
@@ -345,24 +365,24 @@ function ConChinWritingModal() {
               min='1'
               className='want'
               placeholder={
-                targetArticle.total_member
-                  ? String(targetArticle.total_member)
-                  : '모집중인 콘친 수'
-              }
-              onChange={handleTotalNumConchin}
-              value={numTotalConchin}
-            ></input>
-            <input
-              type='number'
-              min='2'
-              className='want'
-              placeholder={
                 targetArticle.member_count
                   ? String(targetArticle.member_count)
                   : '현재 모인 콘친 수'
               }
               onChange={handlePresentNumConchin}
               value={numPresentConchin}
+            ></input>
+            <input
+              type='number'
+              min='2'
+              className='want'
+              placeholder={
+                targetArticle.total_member
+                  ? String(targetArticle.total_member)
+                  : '모집중인 콘친 수'
+              }
+              onChange={handleTotalNumConchin}
+              value={numTotalConchin}
             ></input>
           </div>
           <textarea

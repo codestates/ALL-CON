@@ -21,12 +21,11 @@
     position: fixed;
     display: flex;
     top: 0;
-    // background-color: white;
     background-color: #404040;
     opacity: 50%;
     @include mobile-only() {
-      width: 0%;
-      height: 0%;
+      width: 100%;
+      height: 100%;
     }
     @include md() {
       width: 100%;
@@ -47,9 +46,9 @@
     background-color: white;
 
     @include mobile-only() {
-      width: 100%;
-      height: 90%;
-      border-radius: 0px;
+      width: 70%;
+      height: 50%;
+      border-radius: 20px;
       top: 10%;
     }
     @include md() {
@@ -103,7 +102,7 @@
           color: $yellow;
           // border: 1px solid red;
           @include mobile-only() {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
           }
           @include md() {
             font-size: 4.5rem;
@@ -138,8 +137,8 @@
           position: absolute;
           display: flex;
           @include mobile-only() {
-            width: 25rem;
-            padding-bottom: 25rem;
+            width: 50%;
+            padding-bottom: 50%;
           }
           @include md() {
             width: 28rem;
@@ -168,6 +167,12 @@
           bottom: 0%;
           width: 20%;
           padding-bottom: 20%;
+          @include mobile-only() {
+            right: 20%;
+            bottom: 40%;
+            width: 13%;
+            padding-bottom: 13%;
+          }
           &:hover {
             cursor: pointer;
           }
@@ -182,31 +187,39 @@
           }
         }
         #imgSelection {
-          z-index: 900;
+          z-index: 10;
           position: absolute;
           display: flex;
           top: 50%;
           width: 10%;
+          @include mobile-only() {
+            top: 73%;
+            right: 40%;
+            width: 2%;
+            height: 2%
+          }
         }
         #imgSelectionLabel {
           z-index: 999;
           position: absolute;
           align-items: center;
           justify-content: center;
+          display: flex;
           top: 80%;
           right: 3.5%;
-          display: flex;
           width: 19.5%;
           height: 15%;
-          background-color: white;
-          opacity: 0%;
+          // background-color: red;
+          opacity: 30%;
           border-radius: 10%;
+          @include mobile-only() {
+            top: 47.3%;
+            right: 22.5%;
+            width: 13.3%;
+            height: 10%;
+          }
           &:hover {
             cursor: pointer;
-            // width: 16%;
-            // height: 16%;
-            // background-color: yellow;
-            // transition: 0.25s all;
           }
         }
       }
@@ -217,8 +230,8 @@
         width: 90%;
 
         @include mobile-only() {
-          height: 6%;
-          bottom: 20%;
+          height: 7.5%;
+          bottom: 10%;
         }
         @include md() {
           height: 8%;
@@ -238,12 +251,13 @@
           background-color: $yellow;
           border: none;
           border-radius: 5px;
+          font-weight: bold;
           color: white;
           &:hover {
             cursor: pointer;
           }
           @include mobile-only() {
-            font-size: 2rem;
+            font-size: 1.5rem;
           }
           @include md() {
             font-size: 2.3rem;
@@ -253,6 +267,7 @@
           }
         }
         .cancleBtn {
+          z-index: 999;
           position: relative;
           display: flex;
           align-items: center;
@@ -262,12 +277,17 @@
           background-color: black;
           border: none;
           border-radius: 5px;
+          font-weight: bold;
           color: white;
           &:hover {
+            background-color: #ffce63;
+            color: white;
             cursor: pointer;
+            transition: 0.15s all;
+            border: none;
           }
           @include mobile-only() {
-            font-size: 2rem;
+            font-size: 1.5rem;
           }
           @include md() {
             font-size: 2.3rem;

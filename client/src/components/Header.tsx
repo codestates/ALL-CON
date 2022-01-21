@@ -123,6 +123,10 @@ function Header() {
     }
   }
   /* Header Timer */
+  useEffect(() => {
+    stopTimer();
+    startTimer();
+  }, []);
 
   /* 스크롤 위치 저장 useEffect */
   useEffect(() => {

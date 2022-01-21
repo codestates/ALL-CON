@@ -190,7 +190,8 @@
 
             font-weight: bold;
             @include mobile-only() {
-              font-size: 1.5rem;
+              bottom: -5%;
+              font-size: 1.3rem;
             }
             @include md() {
               font-size: 1.8rem;
@@ -215,6 +216,15 @@
             padding-left: 2%;
             border: 1px solid $gray;
             border-radius: 5px;
+            @include mobile-only() {
+              font-size: 1.3rem;
+            }
+            @include md() {
+              font-size: 1.5rem;
+            }
+            @include lg() {
+              font-size: 1.8rem;
+            }
           }
           .timer {
             position: absolute;
@@ -252,6 +262,8 @@
             font-weight: bold;
             &:hover {
               cursor: pointer;
+              background-color: $yellow;
+              transition: all 0.15s;
             }
             @include mobile-only() {
               font-size: 1.5rem;
@@ -270,5 +282,11 @@
         }
       }
     }
+  }
+  // input number 타입에 위/아래 화살표 없애기
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 }

@@ -1,8 +1,8 @@
 /* Config import */
-
 /* CSS import */
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
+import noArticleImg from '../../images/no_article_img.png'
 /* Store import */
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
 import {
@@ -72,7 +72,7 @@ function MyArticleBox() {
       <div id='titleWrapper'>
         <p className='title'>내가 쓴 게시물</p>
       </div>
-      <h1 id='myArticleCount'>{myTotalArticle}개의 게시글</h1>
+      <h1 id='myArticleCount'>{myTotalArticle}개의 게시물</h1>
       <div id='articleWrapper'>
         <div id='articleBox'>
           <div id='box'>
@@ -121,6 +121,16 @@ function MyArticleBox() {
       <div id='paginationWrapper'>
         <MyArticlePagination />
       </div>
+      
+      {/* 게시물이 없다면 display */}
+      { myTotalArticle === 0 
+        ? <div id='noArticleImgWrapper'> 
+            <img id='noArticleImg' src={noArticleImg} />
+            <p id='noArticleMessage' >작성한 게시물이 없습니다!</p> 
+          </div>
+        : null
+      }
+
     </div>
   );
 }

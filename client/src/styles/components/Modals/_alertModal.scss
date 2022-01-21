@@ -49,12 +49,12 @@
       // border: 1px solid red;
       @include mobile-only() {
         // position: absolute;
-        width: 60%;
+        width: 80%;
         height: 50%;
         border-radius: 20px;
       }
       @include md() {
-        width: 25%;
+        width: 45%;
         height: 30%;
         border-radius: 20px;
       }
@@ -114,6 +114,7 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          text-align: center;
           width: 90%;
           height: 40%;
           // border: 1px solid red;
