@@ -11,142 +11,114 @@ import smsOff from '../../images/mail4off.png';
 /* Store import */
 import { RootState } from '../../index';
 import {
-  setEmailClick,
-  setSmsClick,
-} from '../../store/MainSlice';
-import {
   showAlertModal,
   insertAlertText,
   insertBtnText,
   showSuccessModal,
-  showLoginModal,
-  showEmailAlarmModal,
-  showSmsAlarmModal,
+  showAlarmModal,
   insertAlarmText,
   showConcertModal,
   showMainKakaoModal,
 } from '../../store/ModalSlice';
 /* Library import */
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
+import { setAlarm, setEmailClick, setSmsClick } from '../../store/ConcertAlarmSlice';
 
 function MainConcertInfo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {
-    passToConcert,
-    target,
-    detail,
-    emailClick,
-    smsClick,
-  } = useSelector((state: RootState) => state.main);
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
+  const { target, passToConcert, detail } = useSelector((state: RootState) => state.main);
+  const { alarm, emailClick, smsClick, allAlarms } = useSelector((state: RootState) => state.concertAlarm);
 
-  type maincon = {
-    concert_id?: number;
-    createdAt?: Date;
-    email_alarm?: boolean;
-    id: number;
-    phone_alarm?: boolean;
-    updatedAt?: Date;
-    user_id?: number;
-  };
-  
-  const [allAlarms, setAllAlarms] = useState<maincon[]>([]);
-
-  useEffect(() => {
-    // 로그인 상태인 경우, 나의 알람 리스트를 조회한다
+  /* 알람버튼 요청 핸들러 */
+  const alarmSetHandler = async (type: string) => {
+    /* 로그인 상태인 경우 */
     if (isLogin) {
-      console.log('getAllAlarms 렌더링');
-      getAllAlarms();
-    } else {
-      //로그 아웃하면 불이 꺼진다
-      dispatch(setEmailClick(false));
-      dispatch(setSmsClick(false));
-    }
-  }, [target, isLogin]);
-
-  const getAllAlarms = async () => {
-    try {
-      if (isLogin === false) {
-        dispatch(setEmailClick(false));
-        dispatch(setSmsClick(false));
-      } else {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/concert/alarm`,
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${type}`,
+          {},
           { withCredentials: true },
         );
-        if (res.data.data.myAllAlarmInfo) {
-          const all = res.data.data.myAllAlarmInfo;
-          //모든 알람 allAlarms에 배열로 저장
-          setAllAlarms(all);
-          console.log(allAlarms);
-          if (allAlarms) {
-            let flag = 1;
-            let check = () => {
-              for (let i = 0; i < allAlarms.length; i++) {
-                //이메일 알림이 이미 설정되어있는 경우
-                if (
-                  allAlarms[i].concert_id === target.id &&
-                  allAlarms[i].email_alarm === true
-                ) {
-                  console.log('emailClick', emailClick);
-                  console.log('이메일 알림을 찾았어요');
-                  dispatch(setEmailClick(true));
-                  //여기서 true로 잘 만들었는데 렌더링 여러번되면서 false로 풀림
-                  //타겟이 바뀔 때 렌더링이 엄청 많이 되면서 풀리는 거 같다
-                  //getAllAlarms는 1번 렌더링되는걸 보니 내부의 문제
-                  console.log('이메일 알림 dispatch로 바꿨어요');
-                  console.log('emailClick', emailClick);
-                  flag = 2;
-                }
-                if (
-                  //sms 알림이 이미 설정되어있는 경우
-                  allAlarms[i].concert_id === target.id &&
-                  allAlarms[i].phone_alarm === true
-                ) {
-                  console.log('문자 알림을 찾았어요');
-                  dispatch(setSmsClick(true));
-                  console.log('문자 알림 dispatch로 바꿨어요');
-                  flag = 3;
-                }
-              }
-            };
-            check();
-            if (flag === 1) {
-              //이메일도 sms도 알림설정 한적이 없는 경우
-              console.log('여길 처음에 왜와..? check돌린후인데');
-              dispatch(setEmailClick(false));
-              dispatch(setSmsClick(false));
-            }
+        /* 응답값이 있다면? */
+        if(response.data.data.alarmInfo){
+          const data = response.data.data.alarmInfo;
+          /* email 알람 클릭시 */
+          if(type === 'email'){
+            dispatch(setEmailClick(true));
+            alarm.phone_alarm ?
+              dispatch(setAlarm({
+                id: data.id,
+                email_alarm: data.email_alarm,
+                phone_alarm: true,
+                user_id: data.user_id,
+                concert_id: data.concert_id,
+                createdAt: data.createdAt,
+                updatedAt: data.updatedAt
+              }))
+              : dispatch(setAlarm(data));
+            dispatch(insertBtnText('확인'));
+            dispatch(insertAlertText(`${target.title} 이메일 알림이 설정되었습니다! 🙂`));
+            dispatch(showSuccessModal(true));
+          }
+          /* sms 알람 클릭시 */
+          else if(type === 'phone'){
+            dispatch(setSmsClick(true));
+            alarm.email_alarm ?
+              dispatch(setAlarm({
+                id: data.id,
+                email_alarm: true,
+                phone_alarm: data.phone_alarm,
+                user_id: data.user_id,
+                concert_id: data.concert_id,
+                createdAt: data.createdAt,
+                updatedAt: data.updatedAt
+              }))
+              : dispatch(setAlarm(data));
+            dispatch(insertBtnText('확인'));
+            dispatch(insertAlertText(`${target.title} SMS 알림이 설정되었습니다! 🙂`));
+            dispatch(showSuccessModal(true));
           }
         }
+      } catch(err) {
+        const error = err as AxiosError;
+        if (error.response?.status === 400)
+          dispatch(insertAlertText('잘못된 요청입니다! 😖'));
+        else if (error.response?.status === 401)
+          dispatch(insertAlertText('휴대폰 인증을 해주세요! 😖'));
+        else dispatch(insertAlertText('Server Error! 😖'));
+        dispatch(showAlertModal(true));
       }
-    } catch (err) {
-      console.log(err);
+    } 
+    /* 비로그인 상태인 경우 */
+    else {
+      dispatch(insertAlertText('로그인 먼저 해주세요! 😖'));
+      dispatch(showAlertModal(true));
     }
   };
 
-  //해당 콘서트에서 한번도 알람 설정한적 없을때 알람
-  const getAlarm = async (test: string) => {
-    try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/alarm?alarm_type=${test}`,
-        {},
-        { withCredentials: true },
-      );
-      if (res.data.data.alarmInfo) {
-        if (res.data.data.alarmInfo.email_alarm === true) {
-          dispatch(setEmailClick(true));
-        }
-        if (res.data.data.alarmInfo.phone_alarm === true) {
-          dispatch(setSmsClick(true));
-        }
+  /* 알람버튼 삭제 핸들러 */
+  const alarmDeleteHandler = async (type: string) => {
+    /* 로그인 상태인 경우 */
+    if (isLogin) {
+      if(type === 'email'){
+        dispatch(insertAlarmText('이메일'));
+        dispatch(showAlarmModal(true));
       }
-    } catch (err) {
-      console.log(err);
+      /* sms 알람 클릭시 */
+      else if(type === 'phone'){
+        dispatch(insertAlarmText('SMS'));
+        dispatch(showAlarmModal(true));
+      }
+    } 
+    /* 비로그인 상태인 경우 */
+    else {
+      dispatch(insertAlertText('로그인 먼저 해주세요! 😖'));
+      dispatch(showAlertModal(true));
     }
   };
 
@@ -167,8 +139,6 @@ function MainConcertInfo() {
 
       if (gap > 24) return true;
       else {
-        dispatch(setEmailClick(false));
-        dispatch(setSmsClick(false));
         return false;
       }
     }
@@ -191,63 +161,6 @@ function MainConcertInfo() {
       );
     }
     return '';
-  };
-
-  const emailClickHandler = () => {
-    if (isLogin === false) {
-      dispatch(insertAlarmText('로그인 먼저 해주세요! 😖'));
-    } else {
-      if (emailClick) {
-        dispatch(
-          insertAlarmText(
-            `이메일 알림이 이미 등록되어있어요.\n
-            알림 취소하시겠어요? 😖`,
-          ),
-        );
-        dispatch(showEmailAlarmModal(true));
-      } else {
-        //알람 새로 요청함
-        getAlarm('email');
-        dispatch(insertBtnText('확인'));
-        dispatch(
-          insertAlertText(`${target.title} 이메일 알림이 설정되었습니다! 🙂`),
-        );
-        dispatch(showSuccessModal(true));
-      }
-    }
-  };
-
-  const smsClickHandler = () => {
-    if (isLogin === false) {
-      dispatch(showAlertModal(true));
-      dispatch(insertAlertText('로그인 먼저 해주세요! 😖'));
-    } else {
-      //로그인을 했는데 콘친인증 안한 경우(핸드폰 번호x)
-      //관리자 role=1 콘친인증 유저 role=2 콘친 인증안된 유저 role=3
-      if (userInfo.role === 3) {
-        alert('콘친 인증을 해주세요! 😖');
-        navigate('/mypage');
-      } else {
-        //콘친인증을 했다.
-        if (smsClick) {
-          dispatch(
-            insertAlarmText(
-              `sms 알림이 이미 등록되어있어요.\n
-              알림 취소하시겠어요? 😖`,
-            ),
-          );
-          dispatch(showSmsAlarmModal(true));
-        } else {
-          //알람 설정을 이전에 한 적이 없다. 이번에 처음 알람 등록한다.
-          getAlarm('phone');
-          dispatch(insertBtnText('확인'));
-          dispatch(
-            insertAlertText(`${target.title} sms 알림이 설정되었습니다! 🙂`),
-          );
-          dispatch(showSuccessModal(true));
-        }
-      }
-    }
   };
 
   return (
@@ -277,7 +190,6 @@ function MainConcertInfo() {
               <div className='where'>YES24</div>
             </>
           )}
-          <img alt='종' src={bellOff} id='bell'></img>
         </div>
         <div id='titleBox'>
           <div id='h2AlignBox'>{detail && <h2>{detail.title}</h2>}</div>
@@ -362,19 +274,23 @@ function MainConcertInfo() {
                   {ticketOpenCheck(detail.open_date) ? (
                     <>
                       <img
-                        src={emailClick ? emailOn : emailOff}
+                        src={alarm.email_alarm ? emailOn : emailOff}
                         alt='이메일아이콘'
                         id='mailIcon2'
                         onClick={() => {
-                          emailClickHandler();
+                          alarm.email_alarm ?
+                          alarmDeleteHandler('email')
+                          : alarmSetHandler('email');
                         }}
                       ></img>
                       <img
-                        src={smsClick ? smsOn : smsOff}
+                        src={alarm.phone_alarm ? smsOn : smsOff}
                         alt='문자아이콘'
                         id='kakaoIcon2'
                         onClick={() => {
-                          smsClickHandler();
+                          alarm.phone_alarm ?
+                          alarmDeleteHandler('phone')
+                          : alarmSetHandler('phone');
                         }}
                       ></img>
                     </>

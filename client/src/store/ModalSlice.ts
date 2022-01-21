@@ -20,8 +20,7 @@ export interface modal {
   deliverText: string;
   conChinWritingModal: boolean;
   conChinProfileModal: boolean;
-  emailAlarmModal: boolean;
-  smsAlarmModal: boolean;
+  alarmModal: boolean;
   alarmText: string;
   mainKakaoModal: boolean;
   myProfileImageModal: boolean; 
@@ -48,8 +47,7 @@ const initialState: modal = {
   deliverText: '',
   conChinWritingModal: false,
   conChinProfileModal: false,
-  emailAlarmModal: false,
-  smsAlarmModal: false,
+  alarmModal: false,
   alarmText: '',
   mainKakaoModal: false,
   myProfileImageModal: false,
@@ -133,14 +131,8 @@ const modalSlice = createSlice({
     ) => {
       state.conChinProfileModal = payload;
     },
-    showEmailAlarmModal: (
-      state: modal,
-      { payload }: PayloadAction<boolean>,
-    ) => {
-      state.emailAlarmModal = payload;
-    },
-    showSmsAlarmModal: (state: modal, { payload }: PayloadAction<boolean>) => {
-      state.smsAlarmModal = payload;
+    showAlarmModal: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.alarmModal = payload;
     },
     insertAlarmText: (state: modal, { payload }: PayloadAction<string>) => {
       state.alarmText = payload;
@@ -176,8 +168,7 @@ export const {
   insertDeliverText,
   showConChinWritingModal,
   showConChinProfileModal,
-  showEmailAlarmModal,
-  showSmsAlarmModal,
+  showAlarmModal,
   insertAlarmText,
   showMainKakaoModal,
   showMyProfileImageModal,
