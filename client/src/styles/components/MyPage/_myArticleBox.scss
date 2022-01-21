@@ -22,14 +22,16 @@
     // border: 2px solid red;
     @include mobile-only() {
       width: 80%;
-      top: 21%;
+      left: 9%;
+      top: -6%;
     }
     @include md() {
-      width: 71%;
+      width: 79%;
+      left: 11%;
     }
     @include lg() {
       width: 66%;
-      
+      left: 15%;
     }
     .title {
       font-weight: bold;
@@ -52,16 +54,20 @@
     top: 10%;
     left: 19%;
     @include mobile-only() {
-      top: 35%;
-      left: 13%;
+      top: 9.5%;
+      left: 10.2%;
       font-size: 1.0rem;
     }
     @include md() {
+      top: 19%;
+      left: 13.8%;
+      font-size: 1.6rem;
 
     }
     @include lg() {
       top: 12%;
-      left: 18.2%;
+      left: 16.9%;
+      font-size: 2.0rem;
     }
   }
   #articleWrapper {
@@ -71,17 +77,17 @@
     // border: 2px solid yellow;
     @include mobile-only() {
       width: 90%;
-      top: 16.5%;
+      top: 13.5%;
       height: 90%;
     }
     @include md() {
       width: 80%;
-      top: 15%;
+      top: 25%;
       height: 90%;
     }
     @include lg() {
       width: 75%;
-      top: 13%;
+      top: 11.5%;
       height: 90%;
     }
     #myMemberBoxWrapper {
@@ -98,11 +104,11 @@
     flex-wrap: wrap;
     width: 100%;
     @include mobile-only() {
-      top: 120%;
+      top: 100%;
       height: 25%;
     }
     @include md() {
-      top: 63%;
+      top: 110%;
       height: 45%;
     }
     @include lg() {

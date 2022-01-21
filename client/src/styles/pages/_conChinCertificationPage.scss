@@ -80,7 +80,7 @@
       height: 75%;
     }
     @include lg() {
-      top: 28%;
+      top: 26%;
       height: 67%;
     }
     #userInfoBox {
@@ -368,7 +368,7 @@
         justify-content: center;
         width: 100%;
         height: 16.66%;
-        top: 83.3%;
+        top: 80%;
         // border: 1px solid red;
         #btnWrapper {
           position: absolute;
@@ -431,7 +431,7 @@
     @include lg() {
       width: 100%;
       height: 18%;
-      top: 97%;
+      top: 95%;
     }
     // border: 1px solid red;
     #footerWrapper {

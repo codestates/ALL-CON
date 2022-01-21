@@ -1,13 +1,12 @@
 import MyProfileBox from '../components/MyPage/MyProfileBox';
 import Footer from '../components/Footer';
 /* CSS import */
-import profileImage from '../../../images/taeyang.png';
-import camera from '../../../images/camera.png';
+import resignArrow from '../images/resignArrow.png';
 import check from '../images/check.png';
 /* Store import */
 import { RootState } from '../index';
 import { logout, getUserInfo } from '../store/AuthSlice';
-import { showLoginModal, showPrivacyModal, showSignupModal, showTosModal, showAlertModal, insertAlertText, insertBtnText, showSuccessModal } from '../store/ModalSlice';
+import { showAlertModal, insertAlertText, insertBtnText, showSuccessModal, showMyProfileResignMembershipModal } from '../store/ModalSlice';
 import { setMyIntroductionState, getBtnSwitchState } from '../store/MySlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
@@ -221,16 +220,18 @@ function MyEditPage() {
             // 입력값들을 reset
             resetInput();
 
-            dispatch(insertAlertText(`(${changeUserInfo.username})님의 프로필이 변경되었습니다! 🙂`));
+            dispatch(insertAlertText(`(${userInfo.username})님의 프로필이 변경되었습니다! 🙂`));
             dispatch(insertBtnText('확인'));
             dispatch(showSuccessModal(true));
 
             // userInfo 상태 업데이트
             dispatch(getUserInfo(response.data.data));
-            // 마이페이지로 이동
-            navigate('/mypage')
+            // 프로필 수정 / 콘친 인증 버튼 비활성화
+            dispatch(getBtnSwitchState({ profileEdit: false, conchinCertification: false }))
             // 자기소개는 비활성화로 전환
             dispatch(setMyIntroductionState(false))
+            // 마이페이지로 이동
+            navigate('/mypage')
           } 
         // 닉네임란이 비어있을 경우, 다음을 실행한다
         else if(changeUserInfo.username === '' || !nameErr){
@@ -347,6 +348,10 @@ function MyEditPage() {
               <button className='cancelBtn' onClick={() => {handleCloseBtn()}}>취소</button>
             </div>
           </div>
+        </div>
+        <div id='resignBtn' onClick={() => {dispatch(showMyProfileResignMembershipModal(true))}}>
+          <p id='resignBtnMessage'>ALL-CON을 더 이상 이용하지 않는다면 <b>회원탈퇴 바로가기</b></p>
+          <img id='resignArrowImg' src={resignArrow}/>
         </div>
       </div>
       <div id='fullFooter'>

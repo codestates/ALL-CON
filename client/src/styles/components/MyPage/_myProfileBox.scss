@@ -69,6 +69,8 @@
 
         }
         @include md() {
+          width: 90%;
+          height: 90%;
 
         }
         @include lg() {
@@ -190,6 +192,9 @@
         resize: none;
         overflow: hidden;
         text-align: center;
+        vertical-align: center;
+        height: auto;
+        // border: 1px solid blue;
         top: 42%;
         @include mobile-only() {
           font-size: 1.3rem;
@@ -199,6 +204,7 @@
           font-size: 1.8rem;
         }
         @include lg() {
+          width: 80%;
           font-size: 2rem;
         }
       }
@@ -209,6 +215,7 @@
       justify-content: space-between;
       width: 100%;
       bottom: 20%;
+      // border: 2px solid yellowgreen;
       @include mobile-only() {
         height: 13%;
         bottom: 25.0%;
@@ -238,7 +245,8 @@
         @include mobile-only() {
           align-items: center;
           justify-content: center;
-          width: 30%;
+          top: 6.5%;
+          width: 45%;
           height: 90%;
           font-size: 1.2rem;
 
@@ -280,11 +288,10 @@
       justify-content: center;
       width: 100%;
       bottom: 0%;
+      display: none;
       // border: 1px solid red;
       @include mobile-only() {
-        bottom: 50%;
-        height: 13%;
-        bottom: 25%;
+        display: none;
       }
       @include md() {
         height: 11.5%;

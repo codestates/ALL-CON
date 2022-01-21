@@ -3013,10 +3013,12 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #myPageContainer #myArticleBoxWrapper {
-        height: 26.5%; } }
+        height: 26.5%;
+        top: 35%; } }
     @media (min-width: 768px) {
       #myPageContainer #myArticleBoxWrapper {
-        height: 33.33%; } }
+        height: 33.33%;
+        top: 35%; } }
     @media (min-width: 1200px) {
       #myPageContainer #myArticleBoxWrapper {
         height: 50%;
@@ -3029,14 +3031,15 @@ a {
     @media (max-width: 767px) {
       #myPageContainer #myCommentWrapper {
         height: 33.33%;
-        top: 63%; } }
+        top: 73%; } }
     @media (min-width: 768px) {
       #myPageContainer #myCommentWrapper {
-        height: 33.33%; } }
+        height: 33.33%;
+        top: 85%; } }
     @media (min-width: 1200px) {
       #myPageContainer #myCommentWrapper {
         height: 25%;
-        top: 73%; } }
+        top: 76%; } }
   #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
@@ -3046,12 +3049,12 @@ a {
       #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 18.5%;
-        top: 90%; } }
+        top: 110%; } }
     @media (min-width: 768px) {
       #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
         width: 100%;
         height: 15.9%;
-        top: 100%; } }
+        top: 140%; } }
     @media (min-width: 1200px) {
       #myPageContainer #fullFooter, #myPageContainer #conChinContainer #fullFooterChosen, #conChinContainer #myPageContainer #fullFooterChosen, #myPageContainer #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myPageContainer #fullFooterArticleNotChosen {
         width: 100%;
@@ -3342,7 +3345,6 @@ a {
     position: fixed;
     display: flex;
     background-color: #404040;
-    border: 3px solid blue;
     opacity: 50%; }
     @media (max-width: 767px) {
       #myProfileResignMembershipModal #bg, #myProfileResignMembershipModal #sideMenuModal #bgUp, #sideMenuModal #myProfileResignMembershipModal #bgUp {
@@ -3509,12 +3511,16 @@ a {
           justify-content: center;
           width: 45%;
           height: 100%;
-          background-color: #ffce63;
+          background-color: black;
           border: none;
           border-radius: 5px;
           color: white; }
           #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn:hover {
-            cursor: pointer; }
+            background-color: #ffce63;
+            color: white;
+            cursor: pointer;
+            transition: 0.15s all;
+            border: none; }
           @media (max-width: 767px) {
             #myProfileResignMembershipModal #modalBox #modal #resignBtnWrapper .resignBtn {
               font-size: 2rem; } }
@@ -3531,7 +3537,7 @@ a {
           justify-content: center;
           width: 45%;
           height: 100%;
-          background-color: black;
+          background-color: #ffce63;
           border: none;
           border-radius: 5px;
           color: white; }
@@ -3618,7 +3624,7 @@ a {
         height: 75%; } }
     @media (min-width: 1200px) {
       #conChinCertificationPage #userInfoWrapper {
-        top: 28%;
+        top: 26%;
         height: 67%; } }
     #conChinCertificationPage #userInfoWrapper #userInfoBox {
       position: absolute;
@@ -3869,7 +3875,7 @@ a {
         justify-content: center;
         width: 100%;
         height: 16.66%;
-        top: 83.3%; }
+        top: 80%; }
         #conChinCertificationPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper {
           position: absolute;
           display: flex;
@@ -3921,7 +3927,7 @@ a {
       #conChinCertificationPage #fullFooter, #conChinCertificationPage #conChinContainer #fullFooterChosen, #conChinContainer #conChinCertificationPage #fullFooterChosen, #conChinCertificationPage #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #conChinCertificationPage #fullFooterArticleNotChosen {
         width: 100%;
         height: 18%;
-        top: 97%; } }
+        top: 95%; } }
     #conChinCertificationPage #fullFooter #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterChosen #footerWrapper, #conChinCertificationPage #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #conChinCertificationPage #fullFooterArticleNotChosen #footerWrapper {
       position: absolute;
       display: flex;
@@ -4832,6 +4838,10 @@ a {
           #myProfileBox #imgBox #cameraWrapper .camera {
             width: 90%;
             height: 90%; } }
+        @media (min-width: 768px) {
+          #myProfileBox #imgBox #cameraWrapper .camera {
+            width: 90%;
+            height: 90%; } }
         @media (min-width: 1200px) {
           #myProfileBox #imgBox #cameraWrapper .camera {
             width: 100%;
@@ -4931,6 +4941,8 @@ a {
         resize: none;
         overflow: hidden;
         text-align: center;
+        vertical-align: center;
+        height: auto;
         top: 42%; }
         @media (max-width: 767px) {
           #myProfileBox #introductionBox #textWrapper #introduction {
@@ -4941,6 +4953,7 @@ a {
             font-size: 1.8rem; } }
         @media (min-width: 1200px) {
           #myProfileBox #introductionBox #textWrapper #introduction {
+            width: 80%;
             font-size: 2rem; } }
     #myProfileBox #introductionBox #modifyBtnWrapper {
       position: absolute;
@@ -4977,7 +4990,8 @@ a {
           #myProfileBox #introductionBox #modifyBtnWrapper .btn {
             align-items: center;
             justify-content: center;
-            width: 30%;
+            top: 6.5%;
+            width: 45%;
             height: 90%;
             font-size: 1.2rem; } }
         @media (min-width: 768px) {
@@ -5011,12 +5025,11 @@ a {
       display: flex;
       justify-content: center;
       width: 100%;
-      bottom: 0%; }
+      bottom: 0%;
+      display: none; }
       @media (max-width: 767px) {
         #myProfileBox #introductionBox #resignBtnWrapper {
-          bottom: 50%;
-          height: 13%;
-          bottom: 25%; } }
+          display: none; } }
       @media (min-width: 768px) {
         #myProfileBox #introductionBox #resignBtnWrapper {
           height: 11.5%; } }
@@ -5073,13 +5086,16 @@ a {
     @media (max-width: 767px) {
       #myArticleBox #titleWrapper {
         width: 80%;
-        top: 21%; } }
+        left: 9%;
+        top: -6%; } }
     @media (min-width: 768px) {
       #myArticleBox #titleWrapper {
-        width: 71%; } }
+        width: 79%;
+        left: 11%; } }
     @media (min-width: 1200px) {
       #myArticleBox #titleWrapper {
-        width: 66%; } }
+        width: 66%;
+        left: 15%; } }
     #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #box .article:hover .title, #articleBox #box .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #box .article:hover .title, #articleBoxChosen #box .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #boxChosen .article:hover .title, #articleBox #boxChosen .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #boxChosen .article:hover .title, #articleBoxChosen #boxChosen .article:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #box .articleChosen:hover .title, #articleBox #box .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #box .articleChosen:hover .title, #articleBoxChosen #box .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBox #boxChosen .articleChosen:hover .title, #articleBox #boxChosen .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #articleBoxChosen #boxChosen .articleChosen:hover .title, #articleBoxChosen #boxChosen .articleChosen:hover #myArticleBox #titleWrapper .title, #myArticleBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myArticleBox #titleWrapper .title2 {
       font-weight: bold; }
       @media (max-width: 767px) {
@@ -5100,30 +5116,36 @@ a {
     left: 19%; }
     @media (max-width: 767px) {
       #myArticleBox #myArticleCount {
-        top: 35%;
-        left: 13%;
+        top: 9.5%;
+        left: 10.2%;
         font-size: 1.0rem; } }
+    @media (min-width: 768px) {
+      #myArticleBox #myArticleCount {
+        top: 19%;
+        left: 13.8%;
+        font-size: 1.6rem; } }
     @media (min-width: 1200px) {
       #myArticleBox #myArticleCount {
         top: 12%;
-        left: 18.2%; } }
+        left: 16.9%;
+        font-size: 2.0rem; } }
   #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
     position: absolute;
     display: flex; }
     @media (max-width: 767px) {
       #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
         width: 90%;
-        top: 16.5%;
+        top: 13.5%;
         height: 90%; } }
     @media (min-width: 768px) {
       #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
         width: 80%;
-        top: 15%;
+        top: 25%;
         height: 90%; } }
     @media (min-width: 1200px) {
       #myArticleBox #articleWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen {
         width: 75%;
-        top: 13%;
+        top: 11.5%;
         height: 90%; } }
     #myArticleBox #articleWrapper #myMemberBoxWrapper, #myArticleBox #conChinContainer #conChinExceptFooter #articleWrapperChosen #myMemberBoxWrapper, #conChinContainer #conChinExceptFooter #myArticleBox #articleWrapperChosen #myMemberBoxWrapper {
       position: absolute;
@@ -5137,11 +5159,11 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
-        top: 120%;
+        top: 100%;
         height: 25%; } }
     @media (min-width: 768px) {
       #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
-        top: 63%;
+        top: 110%;
         height: 45%; } }
     @media (min-width: 1200px) {
       #myArticleBox #paginationWrapper, #myArticleBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myArticleBox #paginationWrapperChosen, #myArticleBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myArticleBox #paginationWrapperChosen {
@@ -5172,12 +5194,18 @@ a {
     height: 20%; }
     @media (max-width: 767px) {
       #myCommentBox #titleWrapper {
+        height: 12%;
+        top: 6%;
         width: 90%; } }
     @media (min-width: 768px) {
       #myCommentBox #titleWrapper {
-        width: 90%; } }
+        top: 4%;
+        height: 8%;
+        left: 5%;
+        width: 92%; } }
     @media (min-width: 1200px) {
       #myCommentBox #titleWrapper {
+        top: 6%;
         width: 88%; } }
     #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #box .article:hover .title, #articleBox #box .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #box .article:hover .title, #articleBoxChosen #box .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #boxChosen .article:hover .title, #articleBox #boxChosen .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #boxChosen .article:hover .title, #articleBoxChosen #boxChosen .article:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #box .articleChosen:hover .title, #articleBox #box .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #box .articleChosen:hover .title, #articleBoxChosen #box .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBox #boxChosen .articleChosen:hover .title, #articleBox #boxChosen .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #articleBoxChosen #boxChosen .articleChosen:hover .title, #articleBoxChosen #boxChosen .articleChosen:hover #myCommentBox #titleWrapper .title, #myCommentBox #titleWrapper #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper .title2, #conChinProfileModal #modalBox #modal #introductionBox #genderAndAgeWrapper #myCommentBox #titleWrapper .title2 {
       font-weight: bold; }
@@ -5214,6 +5242,9 @@ a {
     width: 100%;
     bottom: 102%;
     align-items: center; }
+    @media (min-width: 768px) {
+      #myCommentBox #myCountWrapper {
+        width: 102%; } }
     @media (min-width: 1200px) {
       #myCommentBox #myCountWrapper {
         bottom: 102%; } }
@@ -5231,7 +5262,7 @@ a {
         width: 35%; } }
     @media (min-width: 768px) {
       #myCommentBox .myOptionWrapper {
-        width: 20%; } }
+        width: 25%; } }
     @media (min-width: 1200px) {
       #myCommentBox .myOptionWrapper {
         width: 15%; } }
@@ -5250,7 +5281,7 @@ a {
         font-size: 1.2rem; } }
     @media (min-width: 768px) {
       #myCommentBox .myCommentOptionBtnWrapper {
-        width: 12%;
+        width: 16%;
         height: 50%;
         font-size: 1.8rem; } }
     @media (min-width: 1200px) {
@@ -5285,15 +5316,18 @@ a {
       transition: 0.15s all; }
   #myCommentBox .hidden {
     display: none; }
-  @media (max-width: 767px) {
-    #myCommentBox .myCount {
-      font-size: 1.0rem; } }
-  @media (min-width: 768px) {
-    #myCommentBox .myCount {
-      font-size: 1.1rem; } }
-  @media (min-width: 1200px) {
-    #myCommentBox .myCount {
-      font-size: 2.0rem; } }
+  #myCommentBox .myCount {
+    position: relative;
+    display: flex; }
+    @media (max-width: 767px) {
+      #myCommentBox .myCount {
+        font-size: 1.0rem; } }
+    @media (min-width: 768px) {
+      #myCommentBox .myCount {
+        font-size: 1.6rem; } }
+    @media (min-width: 1200px) {
+      #myCommentBox .myCount {
+        font-size: 2.0rem; } }
   #myCommentBox .myOrder {
     position: relative;
     display: flex;
@@ -5304,13 +5338,15 @@ a {
     font-weight: bold; }
     @media (max-width: 767px) {
       #myCommentBox .myOrder {
-        left: 45%;
+        left: 50.5%;
         width: 19%;
-        height: 50%; } }
+        height: 50%;
+        font-size: 1.0rem; } }
     @media (min-width: 768px) {
       #myCommentBox .myOrder {
+        left: 68%;
         width: 12%;
-        height: 50%;
+        height: 20%;
         font-size: 1.2rem; } }
     @media (min-width: 1200px) {
       #myCommentBox .myOrder {
@@ -5335,11 +5371,13 @@ a {
     font-weight: bold; }
     @media (max-width: 767px) {
       #myCommentBox .myOrderChosen {
-        left: 45%;
+        left: 50.5%;
         width: 19%;
-        height: 50%; } }
+        height: 50%;
+        font-size: 1.0rem; } }
     @media (min-width: 768px) {
       #myCommentBox .myOrderChosen {
+        left: 68%;
         width: 12%;
         height: 50%;
         font-size: 1.2rem; } }
@@ -5362,13 +5400,15 @@ a {
         display: none; } }
     @media (min-width: 768px) {
       #myCommentBox .myOptionBtn {
-        width: 12%;
-        height: 50%;
-        font-size: 1.2rem; } }
+        margin-right: 0.2%;
+        right: -38%;
+        width: 45%;
+        height: 70%;
+        font-size: 1.0rem; } }
     @media (min-width: 1200px) {
       #myCommentBox .myOptionBtn {
         margin-right: 1.0%;
-        right: 1%;
+        right: -11%;
         width: 50%;
         height: 70%;
         font-size: 1.3rem; } }
@@ -5391,14 +5431,15 @@ a {
       cursor: pointer; }
       @media (max-width: 767px) {
         #myCommentBox #myImgAndText .myImgWrapper {
-          width: 9%;
-          height: 70%;
-          top: -12%;
+          width: 9.5%;
+          height: 80%;
+          top: 5.5%;
           left: -0.5%; } }
       @media (min-width: 768px) {
         #myCommentBox #myImgAndText .myImgWrapper {
           width: 8%;
-          height: 75%;
+          height: 86%;
+          top: 6.5%;
           left: 1.5%; } }
       @media (min-width: 1200px) {
         #myCommentBox #myImgAndText .myImgWrapper {
@@ -5423,23 +5464,63 @@ a {
       width: 102.5%;
       height: 70%;
       top: 30%;
-      left: 11%; }
+      left: 11%;
+      border: 1px solid black; }
+      @media (max-width: 767px) {
+        #myCommentBox #myImgAndText .myTextWrapper {
+          width: 92%;
+          height: 64%;
+          font-size: 1.0rem;
+          text-overflow: ellipsis; } }
+      @media (min-width: 768px) {
+        #myCommentBox #myImgAndText .myTextWrapper {
+          width: 96%;
+          font-size: 1.1rem; } }
+      @media (min-width: 1200px) {
+        #myCommentBox #myImgAndText .myTextWrapper {
+          width: 89%;
+          font-size: 1.6rem; } }
       #myCommentBox #myImgAndText .myTextWrapper #myText {
         position: relative;
         display: flex;
-        width: 85%;
+        width: 100%;
         height: 100%;
         margin-right: 0.5%;
         resize: none; }
         @media (max-width: 767px) {
           #myCommentBox #myImgAndText .myTextWrapper #myText {
-            font-size: 1.1rem; } }
+            font-size: 1.0rem;
+            text-overflow: ellipsis; } }
         @media (min-width: 768px) {
           #myCommentBox #myImgAndText .myTextWrapper #myText {
             font-size: 1.1rem; } }
         @media (min-width: 1200px) {
           #myCommentBox #myImgAndText .myTextWrapper #myText {
             font-size: 1.6rem; } }
+  #myCommentBox .myDateBox {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 89%;
+    height: 30%;
+    left: 11%; }
+    #myCommentBox .myDateBox .myNickNameAndDate {
+      color: #a0a0a0; }
+      @media (max-width: 767px) {
+        #myCommentBox .myDateBox .myNickNameAndDate {
+          font-size: 1rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; } }
+      @media (min-width: 768px) {
+        #myCommentBox .myDateBox .myNickNameAndDate {
+          font-size: 1.1rem;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; } }
+      @media (min-width: 1200px) {
+        #myCommentBox .myDateBox .myNickNameAndDate {
+          font-size: 1.5rem; } }
   #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
     position: absolute;
     display: flex;
@@ -5449,16 +5530,36 @@ a {
     width: 100%; }
     @media (max-width: 767px) {
       #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
-        top: 66%;
+        top: 70%;
         height: 25%; } }
     @media (min-width: 768px) {
       #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
-        top: 67%;
+        top: 70%;
         height: 45%; } }
     @media (min-width: 1200px) {
       #myCommentBox #paginationWrapper, #myCommentBox #conChinArticleBox #paginationWrapperChosen, #conChinArticleBox #myCommentBox #paginationWrapperChosen, #myCommentBox #conChinArticleBoxChosen #paginationWrapperChosen, #conChinArticleBoxChosen #myCommentBox #paginationWrapperChosen {
         top: 92%;
         height: 30%; } }
+  #myCommentBox #noCommentImgWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    font-size: 3rem;
+    color: yellowgreen;
+    font-weight: bold;
+    bottom: 15%; }
+  #myCommentBox #noCommentImg {
+    position: absolute;
+    width: 55%;
+    height: 70%;
+    opacity: 30%; }
+  #myCommentBox #noCommentMessage {
+    position: absolute;
+    bottom: 2%;
+    opacity: 80%; }
 
 #myEditPage {
   position: absolute;
@@ -5531,7 +5632,7 @@ a {
         height: 70%; } }
     @media (min-width: 1200px) {
       #myEditPage #userInfoWrapper {
-        top: 29%;
+        top: 26%;
         height: 66.67%; } }
     #myEditPage #userInfoWrapper #userInfoBox {
       position: absolute;
@@ -5626,7 +5727,11 @@ a {
             font-weight: bold;
             background-color: black; }
             #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #duplicationCheck:hover {
-              cursor: pointer; }
+              background-color: #ffce63;
+              color: white;
+              cursor: pointer;
+              transition: 0.15s all;
+              border: none; }
           #myEditPage #userInfoWrapper #userInfoBox #nickNameWrapper #nickNameBox #checkImg {
             position: absolute;
             right: 15.7%;
@@ -5816,6 +5921,12 @@ a {
                 font-size: 2rem; } }
           #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn {
             background-color: #000; }
+            #myEditPage #userInfoWrapper #userInfoBox #btnBox #btnWrapper .cancelBtn:hover {
+              background-color: #ffce63;
+              color: white;
+              cursor: pointer;
+              transition: 0.15s all;
+              border: none; }
   #myEditPage #fullFooter, #myEditPage #conChinContainer #fullFooterChosen, #conChinContainer #myEditPage #fullFooterChosen, #myEditPage #conChinContainer #fullFooterArticleNotChosen, #conChinContainer #myEditPage #fullFooterArticleNotChosen {
     position: absolute;
     display: flex;
@@ -5852,6 +5963,26 @@ a {
         #myEditPage #fullFooter #footerWrapper, #myEditPage #conChinContainer #fullFooterChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterChosen #footerWrapper, #myEditPage #conChinContainer #fullFooterArticleNotChosen #footerWrapper, #conChinContainer #myEditPage #fullFooterArticleNotChosen #footerWrapper {
           height: 70%;
           width: 73%; } }
+  #myEditPage #resignBtn {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26%;
+    text-align: center;
+    font-size: 2.0rem;
+    background: linear-gradient(currentColor 0 0) 0 100%/var(--d, 0) 3px no-repeat;
+    transition: 0.5s; }
+    #myEditPage #resignBtn #resignArrowImg {
+      margin-left: 0.5%;
+      width: 1.5%;
+      height: 1.5%; }
+    #myEditPage #resignBtn:hover {
+      cursor: pointer;
+      --d: 100%; }
+    @media (min-width: 1200px) {
+      #myEditPage #resignBtn {
+        bottom: 5.5%; } }
 
 #sideMenuModal {
   z-index: 15;
