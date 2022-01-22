@@ -27,7 +27,7 @@
     @include mobile-only() {
       font-size: 2.2rem;
       left: 6.5%;
-      top: 7%;
+      top: 6%;
     }
     @include md() {
       font-size: 3rem;
@@ -81,17 +81,20 @@
     &Chosen {
       @extend #postingBoxWrapper;
       @include mobile-only() {
-        height: 70%;
-
-        top: 25%;
+        height: 60%;
+        // border: 1px solid blue;
+        top: 30%;
+        overflow-y: hidden;
       }
       @include md() {
-        height: 80%;
-        top: 15%;
+        height: 55%;
+        top: 30%;
+        overflow-y: hidden;
       }
       @include lg() {
         height: 50%;
         top: 40%;
+        overflow-y: hidden;
       }
     }
     .posting {
@@ -169,11 +172,23 @@
           width: 55%;
           height: 100%;
           font-size: 1.3rem;
+          top: 85%;
+          transform: translate(0%, -50%);
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         @include md() {
           width: 60%;
           height: 100%;
           font-size: 2rem;
+          top: 85%;
+          transform: translate(0%, -50%);
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         @include lg() {
           width: 60%;
@@ -189,7 +204,7 @@
         text-align: center;
         // border: 1px solid red;
         @include mobile-only() {
-          right: 23%;
+          right: 27%;
           font-size: 0.5rem;
           width: 15%;
         }
@@ -218,7 +233,7 @@
         }
         @include md() {
           font-size: 1.2rem;
-          transform: translate(0%, -35%);
+          transform: translate(0%, -20%);
         }
         @include lg() {
           font-size: 1.5rem;
@@ -233,17 +248,26 @@
         height: 50%;
         right: 1%;
         text-align: right;
+
         transform: translate(0%, 50%);
         // border: 1px solid red;
         @include mobile-only() {
           font-size: 1rem;
           width: 23%;
           transform: translate(0%, 40%);
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         @include md() {
           font-size: 1.2rem;
           width: 20%;
-          transform: translate(0%, 35%);
+          transform: translate(0%, 50%);
+          display: block;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         @include lg() {
           font-size: 1.5rem;

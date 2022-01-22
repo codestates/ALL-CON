@@ -18,7 +18,7 @@
   }
   @include lg() {
     border-top: 10px solid $yellow;
-    height: 89.1%;
+    height: 79.1%;
     top: 10%;
   }
   &Chosen {
@@ -45,9 +45,9 @@
     display: flex;
     align-items: center;
     width: 100%;
-    // border: 1px solid red;
+    border: 1px solid red;
     @include mobile-only() {
-      top: 65%;
+      top: 70%;
       height: 20%;
     }
     @include md() {
@@ -55,21 +55,21 @@
       height: 20%;
     }
     @include lg() {
-      top: 83%;
+      top: 94%;
       height: 25%;
     }
     &Chosen {
       @extend #paginationWrapper;
       @include mobile-only() {
-        top: 58%;
+        top: 78%;
         height: 20%;
       }
       @include md() {
-        top: 79%;
+        top: 89%;
         height: 25%;
       }
       @include lg() {
-        top: 60%;
+        top: 70%;
         height: 10%;
         // border: 1px solid red;
       }
