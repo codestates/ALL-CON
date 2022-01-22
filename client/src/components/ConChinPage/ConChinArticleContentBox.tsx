@@ -179,7 +179,7 @@ function ConChinArticleContentBox() {
                 등록일 : {handlePostedDate(targetArticle.createdAt)} | 조회수 :
                 {targetArticle.view !== undefined && targetArticle.view >= 0
                   ? targetArticle.view
-                  : ' 종료된 콘서트'}
+                  : ' 종료'}
               </p>
             </div>
             <div id='modifyBox'>

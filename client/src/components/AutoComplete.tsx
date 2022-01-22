@@ -81,12 +81,6 @@ function AutoComplete() {
     //클릭한 콘서트의 전체콘서트에 대한 인덱스값
     const clickedIdx = deselectedOptions.indexOf(clickedOption);
 
-    //콘서트 모달 띄우고 콘서트페이지로 이동
-    dispatch(showConcertModal(true));
-    navigate('/concert');
-    setInputValue('');
-    //조회수순으로 변경
-
     //headerAllConcerts에 clickedIdx로 접근하여 target 변경
 
     dispatch(insertAlertText('관련 콘서트 페이지로 이동합니다! 🙂'));
@@ -94,6 +88,11 @@ function AutoComplete() {
     dispatch(showSuccessModal(true));
     dispatch(setTarget(headerAllConcerts[clickedIdx]));
     dispatch(setPassToConcert(true));
+
+    //콘서트 모달 띄우고 콘서트페이지로 이동
+    dispatch(showConcertModal(true));
+    navigate('/concert');
+    setInputValue('');
   };
 
   //x버튼 핸들러 => 인풋 지우고 드랍다운 해제

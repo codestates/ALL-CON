@@ -184,12 +184,12 @@
       @include md() {
         width: 85%;
         height: 65%;
-        top: 80%;
+        top: 83%;
       }
       @include lg() {
         width: 75%;
         height: 70%;
-        top: 77%;
+        top: 80%;
       }
     }
     &ArticleNotChosen {
@@ -236,18 +236,18 @@
     @include lg() {
       width: 100%;
       height: 17.5%;
-      top: 110%;
+      top: 106.5%;
     }
     &Chosen {
       @extend #fullFooter;
       @include mobile-only() {
-        top: 135%;
+        top: 149%;
       }
       @include md() {
-        top: 150%;
+        top: 158%;
       }
       @include lg() {
-        top: 150%;
+        top: 153%;
       }
     }
     &ArticleNotChosen {
@@ -256,10 +256,10 @@
         top: 86%;
       }
       @include md() {
-        top: 87%;
+        top: 83%;
       }
       @include lg() {
-        top: 88%;
+        top: 86.5%;
       }
     }
     // border: 1px solid red;
