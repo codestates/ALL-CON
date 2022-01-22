@@ -13,6 +13,7 @@
     "@types/react-dom": "^16.9.14",
     "@types/react-redux": "^7.1.21",
     "@types/react-slick": "^0.23.8",
+    "animate.css": "^4.1.1",
     "axios": "^0.24.0",
     "dotenv": "^10.0.0",
     "node-sass": "^7.0.1",
