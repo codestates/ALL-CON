@@ -45,33 +45,33 @@
     display: flex;
     align-items: center;
     width: 100%;
-    border: 1px solid red;
+    // border: 1px solid red;
     @include mobile-only() {
       top: 70%;
       height: 20%;
     }
     @include md() {
-      top: 105%;
+      top: 103%;
       height: 20%;
     }
     @include lg() {
-      top: 94%;
+      top: 88%;
       height: 25%;
     }
     &Chosen {
       @extend #paginationWrapper;
+      // border: 1px solid red;
       @include mobile-only() {
-        top: 78%;
+        top: 75%;
         height: 20%;
       }
       @include md() {
-        top: 89%;
+        top: 78%;
         height: 25%;
       }
       @include lg() {
-        top: 70%;
+        top: 72%;
         height: 10%;
-        // border: 1px solid red;
       }
     }
   }
