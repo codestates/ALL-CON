@@ -148,7 +148,7 @@ function Header() {
     dispatch(
       setScrollCount(window.scrollY || document.documentElement.scrollTop),
     );
-    setSearchClicked(false);
+
     if (scrollCount > 0.5) dispatch(setIsScrolled(true));
   };
 
@@ -196,6 +196,7 @@ function Header() {
     /* LandingPage */
     if (menu === 'logo') {
       showTimer();
+      setSearchClicked(false);
     } else if (menu === 'main') {
       /* MainPage */
       dispatch(setTarget({}));
@@ -205,11 +206,13 @@ function Header() {
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
       navigate('/main');
+      setSearchClicked(false);
     } else if (menu === 'concert') {
       /* ConcertPage */
       dispatch(setTarget({}));
       dispatch(setOrder('view'));
       navigate('/concert');
+      setSearchClicked(false);
     } else if (menu === 'conchin') {
       /* ConChinPage */
       dispatch(setTarget({}));
@@ -218,6 +221,7 @@ function Header() {
       dispatch(setArticleCurPage(1));
       getAllArticles();
       navigate('/conchin');
+      setSearchClicked(false);
     }
   };
 
