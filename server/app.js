@@ -13,7 +13,7 @@ const app = express();
 const port = 8080;
 
 // 콘서트 티켓 오픈일 알라머 실행
-const autoAlarm = schedule.scheduleJob('00 57 * * * *', async () => {
+const autoAlarm = schedule.scheduleJob('00 23 * * * *', async () => {
   concertAlarm();
   console.log('24시간마다 콘서트 알람중..');
 });
