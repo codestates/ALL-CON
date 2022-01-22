@@ -155,7 +155,10 @@ function AutoComplete() {
                   className={selected === idx ? 'selected' : ''}
                 >
                   <div>
-                    <img src={optionsImages[idx]} alt='optionsImages' />
+                    <img
+                      src={optionsImages[deselectedOptions.indexOf(option)]}
+                      alt='optionsImages'
+                    />
                   </div>
                   <p>{option}</p>
                 </li>
