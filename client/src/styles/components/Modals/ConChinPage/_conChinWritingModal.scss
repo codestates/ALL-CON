@@ -53,7 +53,7 @@
     @include md() {
       width: 65%;
       height: 85%;
-      border-radius: 5px;
+      border-radius: 10px;
     }
     @include lg() {
       width: 30%;
@@ -73,18 +73,31 @@
       position: absolute;
       align-items: center;
       justify-content: center;
-      top: 10%;
+
       right: 50%;
       display: flex;
-      width: 15%;
-      padding-bottom: 15%;
-      height: 15%;
+
       transform: translate(50%, 0%);
       object-fit: 100%;
       background-color: white;
       opacity: 0%;
       // border: 1px solid red;
       border-radius: 10px;
+      @include mobile-only() {
+        width: 44.155%;
+        height: 30%;
+        top: 7%;
+      }
+      @include md() {
+        width: 30%;
+        height: 30%;
+        top: 10%;
+      }
+      @include lg() {
+        width: 15%;
+        height: 30.5%;
+        top: 10%;
+      }
       &:hover {
         cursor: pointer;
         // width: 16%;
@@ -97,36 +110,66 @@
     #image {
       z-index: 998;
       position: absolute;
-      width: 15%;
-      height: 30.5%;
-      top: 10%;
+
       background-color: white;
       border-radius: 20px;
       object-fit: cover;
       object-position: center;
       // border: 3px solid blue;
+      @include mobile-only() {
+        top: 7%;
+        width: 44.155%;
+        height: 30%;
+      }
+      @include md() {
+        top: 10%;
+        width: 30%;
+        height: 30%;
+      }
+      @include lg() {
+        top: 10%;
+        width: 15%;
+        height: 30.5%;
+      }
     }
     .box {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 75%;
+
       height: 5%;
       background-color: $gray;
       border-radius: 5px;
       font-size: 1.5rem;
       font-weight: bold;
+      @include mobile-only() {
+        width: 75%;
+      }
+      @include md() {
+        width: 75%;
+      }
+      @include lg() {
+        width: 75%;
+      }
     }
     #concertWrapper {
       position: absolute;
       display: flex;
       align-items: center;
-      width: 22.5%;
       height: 4.5%;
       top: 43%;
       // border: 1px solid blue;
       border-radius: 5px;
       background-color: $gray;
+      @include mobile-only() {
+        width: 70%;
+      }
+      @include md() {
+        width: 50%;
+      }
+      @include lg() {
+        width: 22.5%;
+      }
     }
     #concert {
       display: block;
@@ -142,7 +185,6 @@
     }
     #write {
       position: absolute;
-      width: 22.5%;
       height: 4.5%;
       top: 49%;
       text-align: center;
@@ -151,16 +193,33 @@
       outline-color: $yellow;
       font-weight: bold;
       font-size: 1.5rem;
+      @include mobile-only() {
+        width: 70%;
+      }
+      @include md() {
+        width: 50%;
+      }
+      @include lg() {
+        width: 22.5%;
+      }
     }
     #peopleNum {
       position: absolute;
       top: 55%;
       height: 4.5%;
-      width: 22.5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       background-color: #fff;
+      @include mobile-only() {
+        width: 70%;
+      }
+      @include md() {
+        width: 50%;
+      }
+      @include lg() {
+        width: 22.5%;
+      }
 
       // border: 1px solid blue;
       .want {
@@ -175,13 +234,13 @@
         background-color: #ccc;
         outline-color: $yellow;
         font-weight: bold;
+        // border: 1px solid blue;
         font-size: 1.5rem;
       }
     }
     #board {
       position: absolute;
       top: 61%;
-      width: 22.5%;
       height: 24%;
       padding: 1%;
       white-space: pre-line;
@@ -195,16 +254,34 @@
       font-family: sans-serif;
       font-weight: bold;
       font-size: 1.5rem;
+      @include mobile-only() {
+        width: 70%;
+      }
+      @include md() {
+        width: 50%;
+      }
+      @include lg() {
+        width: 22.5%;
+      }
     }
     #btnBox {
       position: absolute;
       bottom: 9%;
-      width: 22.5%;
+
       height: 4.5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       background-color: #fff;
+      @include mobile-only() {
+        width: 70%;
+      }
+      @include md() {
+        width: 50%;
+      }
+      @include lg() {
+        width: 22.5%;
+      }
       #no1 {
         color: #fff;
         background-color: $yellow;
