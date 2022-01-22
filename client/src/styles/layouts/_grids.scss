@@ -41,7 +41,18 @@
     height: 3rem;
     margin-right: 1%;
     cursor: pointer;
-
+    @include mobile-only() {
+      width: 2rem;
+      height: 2rem;
+    }
+    @include md() {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+    @include lg() {
+      width: 3rem;
+      height: 3rem;
+    }
     .refreshBtn {
       width: 100%;
       height: 100%;
@@ -105,18 +116,21 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 90%;
-  height: 75%;
-  left: 50%;
 
+  left: 50%;
+  // border: 1px solid red;
   transform: translate(-50%, 0%);
   @include mobile-only() {
     font-size: 1.5rem;
+    height: 85%;
   }
   @include md() {
     font-size: 2rem;
+    height: 90%;
   }
   @include lg() {
     font-size: 2.5rem;
+    height: 75%;
   }
 
   &Chosen {
@@ -124,10 +138,10 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-
+    border: 1px solid red;
     @include mobile-only() {
       font-size: 1.5rem;
-      height: 50%;
+      height: 60%;
     }
     @include md() {
       height: 70%;
@@ -258,7 +272,16 @@
         transform: translate(0, 50%);
         background-color: white;
         transition: 1s all;
-        border-radius: 0px 0px 10px 10px;
+
+        @include mobile-only() {
+          border-radius: 0px 0px 5px 5px;
+        }
+        @include md() {
+          border-radius: 0px 0px 10px 10px;
+        }
+        @include lg() {
+          border-radius: 0px 0px 10px 10px;
+        }
         &Chosen {
           border-radius: 0px;
           @extend .title;
@@ -293,7 +316,25 @@
           bottom: 20%;
           height: 60%;
           width: 100%;
-
+          @include mobile-only() {
+            display: block;
+            top: 45%;
+            font-size: 1rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          @include md() {
+            display: block;
+            top: 45%;
+            font-size: 1.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          @include lg() {
+            font-size: 2rem;
+          }
           // border: 1px solid red;
           text-align: left;
           @include mobile-only() {
@@ -561,7 +602,6 @@
   display: flex;
   flex-direction: column;
   width: 95%;
-
   top: 5%;
   @include mobile-only() {
     height: 80%;
@@ -595,13 +635,14 @@
       position: absolute;
       display: flex;
       align-items: center;
-      justify-content: left;
+      justify-content: space-between;
       font-weight: bold;
       width: 100%;
       height: 25%;
       // border:1px solid blue;
       .nickName {
         margin-left: 1.5%;
+        width: 48.5%;
         color: $gray;
         @include mobile-only() {
           font-size: 1rem;
@@ -613,6 +654,27 @@
           font-size: 2rem;
         }
         // border:1px solid blue;
+      }
+      .byte {
+        display: flex;
+        margin-right: 1.5%;
+        width: 48.5%;
+        color: $gray;
+        align-items: center;
+        justify-content: right;
+        @include mobile-only() {
+          font-size: 1rem;
+        }
+        @include md() {
+          font-size: 1.5rem;
+        }
+        @include lg() {
+          font-size: 1.5rem;
+        }
+      }
+      .byteError {
+        @extend .byte;
+        color: red;
       }
     }
     .commentBodyBox {
@@ -742,7 +804,6 @@
       }
     }
   }
-
   .box {
     position: relative;
     display: flex;
@@ -907,6 +968,7 @@
           height: 95%;
           margin-right: 0.5%;
           resize: none;
+          white-space: pre; 
           // border: 1px solid red;
           @include mobile-only() {
             font-size: 1.1rem;
@@ -918,54 +980,34 @@
             font-size: 1.4rem;
           }
         }
-        // .textBtn {
-        //   position: relative;
-        //   display: flex;
-        //   align-items: center;
-        //   justify-content: center;
-        //   color: white;
-        //   font-weight: bold;
-        //   background-color: black;
-        //   margin-right: 1%;
-        //   width: 7.5%;
-        //   height: 80%;
-        //   cursor: pointer;
-        //   @include mobile-only() {
-        //     border-radius: 5px;
-        //     font-size: 1rem;
-        //   }
-        //   @include md() {
-        //     border-radius: 8px;
-        //     font-size: 1.25rem;
-        //   }
-        //   @include lg() {
-        //     border-radius: 12px;
-        //     font-size: 1.5rem;
-        //   }
-        // }
-        // .textBtn:hover {
-        //   transition: 0.25s all;
-        //   background-color: $yellow;
-        // }
       }
     }
   }
-  .emptyBox {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+.emptyBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 40%;
+  // border: 1px solid red;
+  img {
+    width: auto;
+    max-height: 60%;
+    margin-top: 1.5%;
+    opacity: 50%;
+  }
+  div {
     font-weight: bold;
-    color: $yellow;
-    width: 100%;
-    height: 50%;
-    top: 20%;
-    // border: 1px solid red;
+    opacity: 50%;
     @include mobile-only() {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
     @include md() {
-      font-size: 1.3rem;
+      font-size: 2rem;
     }
     @include lg() {
       font-size: 3rem;
@@ -1203,13 +1245,11 @@
 #hiddenSearchBox {
   position: absolute;
   display: flex;
-
   justify-content: right;
   align-items: center;
   width: 100%;
   height: 100%;
   // border: 1px solid red;
-
   #searchWrapper {
     position: absolute;
     height: 3rem;
@@ -1291,7 +1331,7 @@
     width: 100%;
     left: 50%;
     transform: translate(-50%, 0%);
-    height: 500%;
+    height: 700%;
     // left: 0%;
     top: 87%;
     background-color: #ffffff;
@@ -1322,22 +1362,57 @@
 
     > li:hover {
       background-color: $yellow;
+      color: white;
       cursor: pointer;
     }
 
     > li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 30%;
       padding: 0 0rem;
       font-size: 1.5rem;
-      text-align: center;
+
       margin-top: 0.8rem;
       margin-bottom: 0.8rem;
       width: 99%;
       padding: 0 5px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      color: #404040;
+      // border: 1px solid red;
+
       &.selected {
         background-color: $yellow;
+      }
+      > div {
+        position: relative;
+        width: 30%;
+        height: 100%;
+        left: 0;
+
+        // border: 1px solid red;
+        > img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          border-radius: 5px;
+        }
+      }
+      > p {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 70%;
+        height: 100%;
+        margin-left: 5%;
+        text-align: center;
+        font-weight: bold;
+
+        // &:hover {
+        //   color: white;
+        // }
       }
     }
   }

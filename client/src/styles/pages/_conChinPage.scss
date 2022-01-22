@@ -97,6 +97,7 @@
           height: 15%;
           top: 17%;
           padding-top: 4%;
+          // border: 1px solid blue;
         }
         @include lg() {
           width: 85%;
@@ -114,12 +115,12 @@
       @include mobile-only() {
         width: 95%;
         height: 45%;
-        top: 45.5%;
+        top: 46.5%;
       }
       @include md() {
         width: 85%;
         height: 50%;
-        top: 43%;
+        top: 52%;
       }
       @include lg() {
         width: 85%;
@@ -178,7 +179,7 @@
       @include mobile-only() {
         width: 93.5%;
         height: 60%;
-        top: 75%;
+        top: 82%;
       }
       @include md() {
         width: 85%;
