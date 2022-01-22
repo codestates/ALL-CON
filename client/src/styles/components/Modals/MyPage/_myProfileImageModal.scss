@@ -49,12 +49,12 @@
       width: 70%;
       height: 50%;
       border-radius: 20px;
-      top: 10%;
+      top: 23%;
     }
     @include md() {
-      width: 65%;
-      height: 65%;
-      padding-bottom: 65%;
+      width: 60%;
+      height: 60%;
+      padding-bottom: 60%;
       top: 50%;
       transform: translate(0%, -50%);
       border-radius: 20px;
@@ -105,7 +105,7 @@
             font-size: 2.5rem;
           }
           @include md() {
-            font-size: 4.5rem;
+            font-size: 3.5rem;
           }
           @include lg() {
             font-size: 4.5rem;
@@ -128,7 +128,7 @@
           padding-bottom: 30rem;
         }
         @include lg() {
-          top: 20%;
+          top: 10%;
           width: 55%;
           padding-bottom: 51%;
           height: 51%;
@@ -136,17 +136,24 @@
         #imgWrapper {
           position: absolute;
           display: flex;
+
+          // border: 2px solid green;
           @include mobile-only() {
+            top: 3.5%;
             width: 50%;
-            padding-bottom: 50%;
+            height: 50%;
           }
           @include md() {
-            width: 28rem;
-            padding-bottom: 28rem;
+            top: 3%;
+            width: 70%;
+            height: 70%;
+            // padding-bottom: 28rem;
           }
           @include lg() {
+            top: 20%;
             width: 90%;
-            padding-bottom: 90%;
+            height: 90%;
+
           }
           // border: 1px solid blue;
           .img {
@@ -165,13 +172,24 @@
           justify-content: center;
           right: 0%;
           bottom: 0%;
-          width: 20%;
+          
           padding-bottom: 20%;
           @include mobile-only() {
             right: 20%;
             bottom: 40%;
             width: 13%;
             padding-bottom: 13%;
+          }
+          @include md() {
+            width: 13%;
+            height: 2%;
+            right: 7.5%;
+            bottom: 18%;
+          }
+          @include lg() {
+            width: 20%;
+            right: -3%;
+            bottom: -22%;
           }
           &:hover {
             cursor: pointer;
@@ -190,17 +208,23 @@
           z-index: 10;
           position: absolute;
           display: flex;
-          top: 50%;
-          width: 10%;
+          width: 0.1%;
+          height: 0.1%;
           @include mobile-only() {
             top: 73%;
             right: 40%;
-            width: 2%;
-            height: 2%
+          }
+          @include md() {
+            right: 30%;
+            top: 105%;
+          }
+          @include lg() {
+            right: 25%;
+            top: 145%;
           }
         }
         #imgSelectionLabel {
-          z-index: 999;
+          z-index: 10;
           position: absolute;
           align-items: center;
           justify-content: center;
@@ -217,6 +241,17 @@
             right: 22.5%;
             width: 13.3%;
             height: 10%;
+          }
+          @include md() {
+            width: 13.3%;
+            height: 14%;
+            right: 10.3%;
+            top: 64%;
+          }
+          @include lg() {
+            width: 20%;
+            right: 1%;
+            top: 104%;
           }
           &:hover {
             cursor: pointer;
@@ -267,7 +302,7 @@
           }
         }
         .cancleBtn {
-          z-index: 999;
+          z-index: 990;
           position: relative;
           display: flex;
           align-items: center;
