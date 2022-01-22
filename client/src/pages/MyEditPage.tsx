@@ -5,7 +5,7 @@ import resignArrow from '../images/resignArrow.png';
 import check from '../images/check.png';
 /* Store import */
 import { RootState } from '../index';
-import { logout, getUserInfo } from '../store/AuthSlice';
+import { getUserInfo } from '../store/AuthSlice';
 import { showAlertModal, insertAlertText, insertBtnText, showSuccessModal, showMyProfileResignMembershipModal } from '../store/ModalSlice';
 import { setMyIntroductionState, getBtnSwitchState } from '../store/MySlice';
 /* Library import */
@@ -165,15 +165,12 @@ function MyEditPage() {
   const duplicationHandler = async () => {
     try {
       setDuplicationBtn(true)
-      setActivationPasswrd(true)
 
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/user/username`,
         { username: changeUserInfo.username || userInfo.username },
         { withCredentials: true }
       );
-
-      console.log('----------------------------------------:', response.data.data)
 
       // 중복되지 않은 닉네임이라면, 다음을 실행한다
       if(response.data.state) {
@@ -295,8 +292,8 @@ function MyEditPage() {
             <div id='nickNameBox'>
               <input type='text' id='nickName' placeholder={userInfo.username} value={changeUserInfo.username} onChange={inputValueHandler('username')} onKeyPress={onKeyPress}/>
               <img
-                  // id={isPassDuplication ? 'checkImg' : 'hidden'}
-                  id='checkImg'
+                  id={isPassDuplication ? 'checkImg' : 'hidden'}
+                  // id='checkImg'
                   src={check}
                 />
                 {/* 중복확인 버튼 */}
