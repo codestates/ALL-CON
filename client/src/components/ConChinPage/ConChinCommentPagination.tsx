@@ -14,20 +14,18 @@ function ConChinCommentPagination() {
   const pageArr = Array.from({ length: conChinTotalNum }, (v, i) => i + 1);
 
   return (
-    <div id='paginationWrapper'>
-      <div id='pagination'>
-        {/* 페이지 map */}
-        {pageArr.map((num, idx) => (
-          <ul
-            className={num === conChinPageNum ? 'pageChosen' : 'page'}
-            onClick={() => dispatch(setConChinPageNum(num))}
-          >
-            <p className='text' key={idx}>
-              {num}
-            </p>
-          </ul>
-        ))}
-      </div>
+    <div id='pagination'>
+      {/* 페이지 map */}
+      {pageArr.map((num, idx) => (
+        <ul
+          className={num === conChinPageNum ? 'pageChosen' : 'page'}
+          onClick={() => dispatch(setConChinPageNum(num))}
+        >
+          <p className='text' key={idx}>
+            {num}
+          </p>
+        </ul>
+      ))}
     </div>
   );
 }
