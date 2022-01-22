@@ -59,11 +59,12 @@ function PosterSlide() {
     infinite: true,
     lazyLoad: 'ondemand', //progressive
     speed: 500,
-    dots: true,
+    dots: false,
     // dotsClass: 'dots',
+    focusOnSelect: true,
     slidesToShow: 5,
     centerMode: true,
-    centerPadding: '10px',
+    centerPadding: '5px',
     swipeToSlide: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -86,6 +87,9 @@ function PosterSlide() {
     dispatch(setTarget(allConcerts[targetIdx]));
   }, [targetIdx]);
 
+  let func = (value: number): any => {
+    dispatch(setTarget(allConcerts[value]));
+  };
   return (
     <div className='posterContainer'>
       <Slider {...settings} ref={sliderRef} className='sliderWrapper'>
@@ -112,6 +116,11 @@ function PosterSlide() {
               return (
                 <div className='center' key={el.id}>
                   <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div id='alignDay'>
+                    <div id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}>
+                      {dayCalculator(target.open_date)}
+                    </div>
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === targetIdx + 1) {
@@ -158,6 +167,11 @@ function PosterSlide() {
               return (
                 <div className='center' key={el.id}>
                   <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div id='alignDay'>
+                    <div id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}>
+                      {dayCalculator(target.open_date)}
+                    </div>
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === targetIdx + 1) {
@@ -204,6 +218,11 @@ function PosterSlide() {
               return (
                 <div className='center' key={el.id}>
                   <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div id='alignDay'>
+                    <div id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}>
+                      {dayCalculator(target.open_date)}
+                    </div>
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === targetIdx + 1) {
@@ -250,6 +269,11 @@ function PosterSlide() {
               return (
                 <div className='center' key={el.id}>
                   <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div id='alignDay'>
+                    <div id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}>
+                      {dayCalculator(target.open_date)}
+                    </div>
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === 0) {
@@ -296,6 +320,11 @@ function PosterSlide() {
               return (
                 <div className='center' key={el.id}>
                   <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div id='alignDay'>
+                    <div id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}>
+                      {dayCalculator(target.open_date)}
+                    </div>
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === targetIdx + 1) {
@@ -323,6 +352,19 @@ function PosterSlide() {
           }
         })}
       </Slider>
+      <input
+        id='sliderBar'
+        type='range'
+        value={targetIdx}
+        onChange={e => {
+          sliderRef.current.slickGoTo(e.target.value);
+          console.log('e.target.value', e.target.value);
+          console.log('targetIdx', targetIdx);
+          // func(e.target.value)
+        }}
+        min={0}
+        max={allConcerts.length - 1}
+      />
     </div>
   );
 }
