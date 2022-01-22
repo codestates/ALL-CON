@@ -38,6 +38,7 @@
       width: 88%;
     }
     // border: 2px solid red;
+    // [제목] 내가 쓴 댓글
     .title {
       font-weight: bold;
       @include mobile-only() {
@@ -145,10 +146,8 @@
     margin-right: 0.5%;
     text-align: center;
 
-    
     font-weight: bold;
 
-    
     @include mobile-only() {
       width: 19%;
       height: 10%;
@@ -189,7 +188,7 @@
       font-size: 1.6rem;
     }
     @include lg() {
-      font-size: 2.0rem;
+      font-size: 2.4rem;
     }
     // border: 2px solid blue;
   }
@@ -218,10 +217,10 @@
       font-size: 1.3rem;
     }
     @include lg() {
-      left: 72.5%;
-      width: 9%;
+      left: 69%;
+      width: 11%;
       height: 50%;
-      font-size: 2.0rem;
+      font-size: 1.8rem;
     }
     &:hover {
       background-color: #ffce63;
@@ -256,10 +255,10 @@
       font-size: 1.3rem;
     }
     @include lg() {
-      left: 72.5%;
-      width: 9%;
+      left: 69%;
+      width: 11%;
       height: 50%;
-      font-size: 2.0rem;
+      font-size: 1.8rem;
     }
   }
   // 수정하기 / 삭제하기 버튼
@@ -441,6 +440,7 @@
     }
     // border: 3px solid green;
   }  
+  // 댓글 0개 일때, 표시되는 문구
   #noCommentImgWrapper{
     position: absolute;
     display: flex;
@@ -449,17 +449,19 @@
     width: 50%;
     height: 50%;
     font-size: 3rem;
-    color: $yellow;
+    color: grey;
+    // color: $yellow;
     font-weight: bold;
     bottom: 15%;
   }
+  // 댓글 0개 일때, 표시되는 이미지
   #noCommentImg{
     position: absolute;
-    opacity: 30%;
+    opacity: 40%;
     @include mobile-only() {
       width: 80%;
       height: 65%;
-      bottom: 25%;
+      bottom: 38%;
     }
     @include md() {
       width: 90%;
@@ -476,7 +478,7 @@
     opacity: 90%;
 
     @include mobile-only() {
-      bottom: 10%;
+      bottom: 27%;
       font-size: 1.4rem;
     }
     @include md() {

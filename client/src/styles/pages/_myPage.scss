@@ -41,11 +41,11 @@
     // border: 2px solid blue;
     @include mobile-only() {
       height: 26.5%;
-      top: 35%;
+      top: 32%;
     }
     @include md() {
       height: 33.33%;
-      top: 35%;
+      top: 31%;
     }
     @include lg() {
       height: 50%;
@@ -60,12 +60,12 @@
 
     // border: 2px solid yellow;
     @include mobile-only() {
-      height: 33.33%;
-      top: 73%;
+      height: 35.33%;
+      top: 68%;
     }
     @include md() {
       height: 33.33%;
-      top: 85%;
+      top: 80.5%;
     }
     @include lg() {
       height: 25%;
@@ -81,12 +81,12 @@
     @include mobile-only() {
       width: 100%;
       height: 18.5%;
-      top: 110%;
+      top: 102%;
     }
     @include md() {
       width: 100%;
       height: 15.9%;
-      top: 135%;
+      top: 130%;
     }
     @include lg() {
       width: 100%;

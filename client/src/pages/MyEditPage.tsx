@@ -354,7 +354,7 @@ function MyEditPage() {
         </div>
         {/* 회원탈퇴 버튼 */}
         <div id='resignBtn' onClick={() => {dispatch(showMyProfileResignMembershipModal(true))}}>
-          <p id='resignBtnMessage'>ALL-CON을 더 이상 이용하지 않는다면 <b>회원탈퇴 바로가기</b></p>
+          <div id='resignBtnMessage'>ALL-CON을 더 이상 이용하지 않는다면 <b>&nbsp;회원탈퇴 바로가기</b></div>
           <img id='resignArrowImg' src={resignArrow}/>
         </div>
       </div>
