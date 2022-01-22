@@ -7,7 +7,6 @@ import MainFindConchin from '../components/MainPage/MainFindConchin';
 import MainPagination from '../components/MainPage/MainPagination';
 /* Store import */
 import { RootState } from '../index';
-import { showAlertModal, insertAlarmText } from '../store/ModalSlice';
 import {
   setTarget,
   setAllConcerts,

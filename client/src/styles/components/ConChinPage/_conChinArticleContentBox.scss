@@ -25,16 +25,19 @@
   width: 100%;
 
   @include mobile-only() {
-    height: 6%;
+    height: 5%;
+    border-bottom: 0.1rem solid black;
   }
   @include md() {
     height: 5%;
+    border-bottom: 0.15rem solid black;
   }
   @include lg() {
     height: 5%;
+    border-bottom: 0.2rem solid black;
   }
   // border: 1px solid blue;
-  border-bottom: 2px solid black;
+
   .title {
     position: absolute;
     display: flex;
@@ -152,13 +155,13 @@
     position: relative;
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 80%;
     height: 7%;
-    // border:1px solid red;
+    // border: 1px solid red;
     .view {
       position: relative;
       display: flex;
-      width: 80%;
+      width: 100%;
       // border:1px solid red;
       color: #a0a0a0;
       @include mobile-only() {
@@ -173,12 +176,13 @@
     }
   }
   #modifyBox {
-    position: relative;
+    position: absolute;
+    right: 0;
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 70%;
     height: 7%;
-    // border:1px solid red;
+    // border: 1px solid red;
     .modifyBtn {
       position: absolute;
       display: flex;
@@ -251,15 +255,16 @@
       height: 45%;
       padding-bottom: 45%;
     }
-    // border:1px solid blue;
+    // border: 1px solid blue;
     #imgWrapper {
       position: absolute;
-      top: 10%;
+
       @include mobile-only() {
         width: 40%;
         height: 40%;
         padding-bottom: 40%;
         left: 8%;
+        top: 15%;
         max-height: 70px;
         border: 3px solid $yellow;
       }
@@ -267,7 +272,8 @@
         width: 37%;
         height: 37%;
         padding-bottom: 37%;
-        left: 10%;
+        left: 8%;
+        top: 15%;
         border: 5px solid $yellow;
       }
       @include lg() {
@@ -275,6 +281,7 @@
         height: 35%;
         padding-bottom: 35%;
         left: 7%;
+        top: 10%;
         border: 7px solid $yellow;
       }
 
@@ -288,27 +295,28 @@
       }
     }
     .textWrapper {
-      top: 10%;
       position: absolute;
       display: flex;
       @include mobile-only() {
         font-size: 1.3rem;
         right: -3%;
         width: 45%;
-        height: 35%;
-        padding-bottom: 35%;
+        height: 75%;
+        top: 15%;
       }
       @include md() {
         font-size: 1.8rem;
         right: -10%;
         width: 55%;
-        height: 35%;
+        height: 72.5%;
+        top: 15%;
       }
       @include lg() {
         font-size: 2rem;
-        right: -15%;
+        right: -11%;
         width: 60%;
         height: 52%;
+        top: 10%;
       }
       .text {
         width: 100%;
@@ -352,15 +360,15 @@
     flex-wrap: wrap;
     width: 100%;
     @include mobile-only() {
-      top: 45%;
+      top: 50%;
       height: 65%;
     }
     @include md() {
-      top: 45%;
+      top: 50%;
       height: 45%;
     }
     @include lg() {
-      top: 40%;
+      top: 43%;
       height: 55%;
     }
     #conChinCountWrapper {
@@ -368,17 +376,48 @@
       display: flex;
       align-items: center;
       justify-content: left;
-      top: -7%;
+
       height: 10%;
       width: 100%;
+      @include mobile-only() {
+        top: -14%;
+      }
+      @include md() {
+        top: -12%;
+      }
+      @include lg() {
+        top: -12%;
+      }
       // border: 1px solid red;
       #imgWrapper {
-        height: 5rem;
-        width: 5rem;
         margin-right: 1%;
+        @include mobile-only() {
+          height: 2.5rem;
+          width: 2.5rem;
+        }
+        @include md() {
+          height: 3rem;
+          width: 3rem;
+        }
+        @include lg() {
+          height: 4rem;
+          width: 4rem;
+        }
         .img {
           width: 100%;
           height: 100%;
+        }
+      }
+      .count {
+        // border: 1px solid red;
+        @include mobile-only() {
+          font-size: 1.5rem;
+        }
+        @include md() {
+          font-size: 2rem;
+        }
+        @include lg() {
+          font-size: 2.5rem;
         }
       }
     }
@@ -392,16 +431,16 @@
     height: 20%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 52.5%;
-      height: 20%;
+      top: 65%;
+      height: 15%;
     }
     @include md() {
-      top: 80%;
-      height: 22.5%;
+      top: 110%;
+      height: 20%;
     }
     @include lg() {
-      top: 70%;
-      height: 25%;
+      top: 80%;
+      height: 20%;
     }
   }
 }

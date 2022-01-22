@@ -1,6 +1,7 @@
 /* CSS import */
 import shield from '../../images/shield.png';
 import comment from '../../images/comment.png';
+import noComment from '../../images/no_comment_img.png'
 /* Store import */
 import { RootState } from '../../index';
 import {
@@ -37,14 +38,22 @@ function ConChinArticleCommentBox() {
   );
   const { conChinPageNum, conChinPageAllComments, conChinComment } =
     useSelector((state: RootState) => state.conChinComments);
-  /* 댓글 인풋 && 버튼 클릭 */
+  /* 댓글 작성 인풋 && 작성 버튼 클릭 여부 */
   const [inputComment, setInputComment] = useState<string>('');
   const [isClick, setIsClick] = useState<boolean>(false);
-  /* 특정 댓글 클릭 && 댓글 수정 모드 상태  */
+  /* byte 길이 & byte 초과 에러 */
+  const [byteLength, setByteLength] = useState<number>(0);
+  const [editByteLength, setEditByteLength] = useState<number>(0);
+  const [byteError, setByteError] = useState<boolean>(false);
+  const [editByteError, setEditByteError] = useState<boolean>(false);
+  /* line 길이 & lien 초과 에러 */
+  const [line, setLine] = useState<number>(0);
+  const [lineError, setLineError] = useState<boolean>(false);
+  /* 수정된 상태 & 특정 댓글 클릭 & 댓글 수정 모드 상태  */
+  const [editMode, setEditMode] = useState<boolean>(false);
   const [clickId, setClickId] = useState<number>(0);
   const [editComment, setEditComment] = useState<string>('');
-  /* 수정된 상태 */
-  const [commentChanged, setCommentChanged] = useState<boolean>(false);
+  
 
   useEffect(() => {
     getAllComments();
@@ -56,27 +65,115 @@ function ConChinArticleCommentBox() {
 
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (clickId > 0) setEditComment(e.target.value);
-    else setInputComment(e.target.value);
+    inputCheckByte(e.target.value); // byte 초과여부 체크
+    inputCheckLine(e.target.value); // line 초과여부 체크
+
+    if(!editMode && !byteError && !lineError) setInputComment(e.target.value);
+    if(editMode && !editByteError && !lineError) setEditComment(e.target.value);
   };
+
+  /* textarea 바이트 체크 함수 */
+  const checkByte = (text: string): number => {
+    const textLength = text.length; //입력한 문자수
+    let totalByte = 0;
+
+    // 반복문안에서 문자열 하나하나 유니코드로 전환하여 byte를 계산해준다.
+    for(let i=0; i<textLength; i++){
+      const char = text.charAt(i);
+      const uniChar = char.charCodeAt(0).toString(16); //유니코드 형식으로 변환
+      if(uniChar.length >= 4){
+        // 한글 : 2Byte
+          totalByte += 2;
+      }else{
+        // 영문,숫자,특수문자 : 1Byte
+          totalByte += 1;
+      }
+    }
+    return totalByte
+  }
+
+  /* textarea 바이트 초과 체크 함수 */
+  const inputCheckByte = (text: string) => {
+    const maxByte = 120; //최대 바이트
+    const totalByte = checkByte(text);
+    /* 댓글 최초 입력 */
+    if(!editMode) {
+      /* 현재 byte 길이를 상태로 저장 */
+      setByteLength(totalByte);
+      /* byte 길이에 따라 에러 상태 변경 */
+      if(totalByte >= maxByte) setByteError(true);
+      else setByteError(false);
+    }
+    /* 댓글 수정 입력 */
+    else {
+      setEditByteLength(totalByte);
+      /* byte 길이에 따라 에러 상태 변경 */
+      if(totalByte >= maxByte) {
+        setEditByteError(true);
+        setByteError(false);
+      }
+      else {
+        setEditByteError(false);
+        setByteError(false);
+      }
+    }
+  }
+
+  /* textarea 줄 초과 체크 함수 */
+  const inputCheckLine = (text: string) => {
+    const maxLine = 3; //최대 3줄
+    const textLength = text.length; //입력한 문자수
+    let inputLine = 0;
+    // 반복문안에서 문자열 검사하여 줄바꿈 문자가 있는지 검사한다
+    for(let i=0; i<textLength; i++){
+      const char = text.charAt(i);
+      const uniChar = char.charCodeAt(0).toString(16); //유니코드
+      if(uniChar === 'a'){
+        inputLine += 1;
+      }
+      /* 현재 Line을 상태로 저장 */
+      setLine(inputLine);
+    }
+    /* line 상태에 따라 에러 상태 변경 */
+    if(inputLine >= maxLine){
+      setLineError(true);
+      dispatch(insertAlertText('3줄이상 입력은 불가능합니다! 🙂'));
+      dispatch(showAlertModal(true));
+    } else {
+      setLineError(false);
+    }
+  }
+
+  /* byte, line, error 리셋 핸들러 */
+  const resetState = () => {
+    setEditMode(false); // 수정 모드 상태 초기화
+    setByteLength(0);  // 댓글 작성 인풋 Byte
+    setEditByteLength(0); // 댓글 수정 인풋 Byte
+    setByteError(false);  // 댓글 작성 Byte 에러
+    setEditByteError(false);  // 댓글 수정 Byte 에러
+    setLine(0);  // 라인 수
+    setLineError(false);  // 라인 에러
+  }
 
   /* 댓글 작성 핸들러 */
   const commentHandler = async () => {
     try {
+      // 글 작성할 때 enter 개행문자로 치환
+      const result: any = inputComment.replace(/(\n|\r\n)/g, '\n');
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}/comment`,
-        { content: inputComment },
+        { content: result },
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 작성 성공 */
       if (response.data) {
         /* 클릭 상태 변경 후 알람창 생성 */
         setIsClick(true);
+        resetState();  // byte, line, error 초기화
         dispatch(insertAlertText('댓글이 작성되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
-        setCommentChanged(!commentChanged);
         getTargetArticles();
       }
     } catch (err) {
@@ -93,10 +190,12 @@ function ConChinArticleCommentBox() {
   /* 댓글 수정 핸들러 */
   const commentEditHandler = async () => {
     try {
+      // 글 작성할 때 enter 개행문자로 치환
+      const result: any = editComment.replace(/(\n|\r\n)/g, '\n');
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.patch(
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}/comment/${conChinComment.id}`,
-        { content: editComment },
+        { content: result },
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 수정 성공 */
@@ -104,6 +203,7 @@ function ConChinArticleCommentBox() {
         /* 클릭 상태 변경 후 알람창 생성 */
         setIsClick(true);
         setClickId(0);
+        resetState();  // byte, line, error 초기화
         dispatch(insertAlertText('댓글이 수정되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
@@ -120,22 +220,22 @@ function ConChinArticleCommentBox() {
   };
 
   /* 댓글 삭제 핸들러 */
-  const commentDelHandler = async () => {
-    console.log('삭제하려는 댓글 concert id: ', conChinComment.id);
+  const commentDelHandler = async (e:React.MouseEvent<HTMLDivElement>) => {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.delete(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}/comment/${conChinComment.id}`,
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}/comment/${e.currentTarget.id}`,
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 삭제 성공 */
       if (response.data) {
         /* 클릭 상태 변경 후 알람창 생성 */
         setIsClick(true);
+        setClickId(0);
+        resetState();  // byte, line, error 초기화
         dispatch(insertAlertText('댓글이 삭제되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
-        setCommentChanged(!commentChanged);
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -238,6 +338,7 @@ function ConChinArticleCommentBox() {
             <p className='nickName'>
               {isLogin ? userInfo.username + ' 님' : '로그인이 필요합니다.'}
             </p>
+            <p className={byteError ? 'byteError' : 'byte'}>{byteLength} / 120byte</p>
           </div>
           <div className='commentBodyBox'>
             <div className='imgWrapper'>
@@ -254,6 +355,10 @@ function ConChinArticleCommentBox() {
                 placeholder='댓글을 입력해주세요.'
                 value={inputComment}
                 onChange={inputChangeHandler}
+                onClick={() => {
+                  setClickId(0);
+                  setEditMode(false);
+                }}
               ></textarea>
               <div id='inputBtn' onClick={commentHandler}>
                 작성하기
@@ -285,8 +390,14 @@ function ConChinArticleCommentBox() {
                   <div
                     className='optionBtn'
                     onClick={() => {
-                      setClickId(el.id);
                       dispatch(setConChinComment(el));
+                      setEditMode(true);
+                      setClickId(el.id);
+                      setByteLength(0);
+                      setEditByteLength(checkByte(el.content));
+                      setByteError(false);
+                      setEditByteError(false);
+                      setInputComment('');
                       setEditComment(el.content);
                     }}
                   >
@@ -295,14 +406,12 @@ function ConChinArticleCommentBox() {
                 )}
                 {(userInfo.id === el.user_id) && (el.id !== clickId) && (
                   <div
+                  id={String(el.id)}
                     className='optionBtn'
-                    onMouseDown={() => {
+                    onClick={(e) => {
                       dispatch(setConChinComment(el));
-                      commentDelHandler();
-                    }}
-                    onMouseUp={() => {
-                      dispatch(setConChinComment(el));
-                      commentDelHandler();
+                      setEditByteLength(checkByte(el.content));
+                      commentDelHandler(e);
                     }}
                   >
                     삭제하기
@@ -314,7 +423,10 @@ function ConChinArticleCommentBox() {
                   </div>
                 )}
                 {el.id === clickId && (
-                  <div className='optionBtn' onClick={() => setClickId(0)}>
+                  <div className='optionBtn' onClick={() => {
+                    setEditMode(false);
+                    setClickId(0);
+                  }}>
                     취소
                   </div>
                 )}
@@ -332,11 +444,17 @@ function ConChinArticleCommentBox() {
               </div>
               <div className='textWrapper'>
                 {el.id === clickId ? (
-                  <textarea
-                    id='text'
-                    value={editComment}
-                    onChange={inputChangeHandler}
-                  />
+                  <>
+                    <textarea
+                      id='text'
+                      rows={3}
+                      value={editComment}
+                      onChange={inputChangeHandler}
+                    />
+                    <div className='byteWrapper'>
+                      <p className={editByteError ? 'errorByteError' : 'byte'}>{editByteLength} / 120byte</p>
+                    </div>
+                  </>
                 ) : (
                   <p id='text'>{el.content}</p>
                 )}
@@ -345,7 +463,12 @@ function ConChinArticleCommentBox() {
           </div>
         ))
       ) : (
-        <div className='emptyBox'>댓글이 없습니다.</div>
+        <>
+          <div className='emptyBox'>
+            <div>댓글이 없습니다.</div>
+            <img src={noComment} alt='noCommentImg' />
+          </div>
+        </>
       )}
     </div>
   );

@@ -121,7 +121,7 @@
             img {
               margin-right: 2%;
               @include mobile-only() {
-                height: 90%;
+                height: 50%;
               }
               @include md() {
                 height: 100%;

@@ -31,9 +31,8 @@ import { useEffect } from 'react';
 function ConChinArticleBox() {
   const dispatch = useDispatch();
   const { target } = useSelector((state: RootState) => state.main);
-  const { allArticles, targetArticle, articleOrder } = useSelector(
-    (state: RootState) => state.conChin,
-  );
+  const { allArticles, targetArticle, articleOrder, articleCurPage } =
+    useSelector((state: RootState) => state.conChin);
   const { conChinPageNum, conChinPageAllComments, conChinComment } =
     useSelector((state: RootState) => state.conChinComments);
 
@@ -83,29 +82,19 @@ function ConChinArticleBox() {
   };
 
   /* 게시글 조회 핸들러 */
-  const getAllArticles = async () => {
+  const getTargetArticles = async () => {
     try {
-      if (
-        Object.keys(target).length === 0 &&
-        Object.keys(allArticles).length !== 0
-      ) {
-        /* 타겟이 없지만 전체 표시중일 때 게시물 전체 정렬순에 맞게 정렬 */
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
-          { withCredentials: true },
-        );
-        if (response.data) {
-          dispatch(setAllArticles(response.data.data.articleInfo));
-          dispatch(setArticleTotalPage(response.data.data.totalPage));
-        } else {
-          console.log('ConChinArticleOrderBox=> 없거나 실수로 못가져왔어요.');
-        }
-      } else if (target === undefined || target === null) {
-        // dispatch(setTarget({}));
-        // dispatch(setTargetArticle({}));
-        // dispatch(setArticleCurPage(1));
+      /* 타겟에 종속된 게시물 정렬순표시 */
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setAllArticles(response.data.data.articleInfo));
+        dispatch(setArticleTotalPage(response.data.data.totalPage));
+        dispatch(setArticleCurPage(articleCurPage));
         console.log(
-          'ConChinArticleOrderBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
+          'ConChinArticleOrderBox=> 타겟에 종속된 게시물을 보여줍니다.',
         );
       }
     } catch (err) {
@@ -143,7 +132,7 @@ function ConChinArticleBox() {
 
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
   useEffect(() => {
-    getAllArticles();
+    getTargetArticles();
   }, [targetArticle]);
 
   return (
@@ -200,7 +189,7 @@ function ConChinArticleBox() {
                     >
                       <img className='icon' src={viewImage} />
                       <p className='count'>
-                        {article.view >= 0 ? article.view : '종료된 콘서트'}
+                        {article.view >= 0 ? article.view : '종료'}
                       </p>
                       <p className='date'>
                         {article.createdAt.substring(0, 10)}
@@ -261,7 +250,7 @@ function ConChinArticleBox() {
                     >
                       <img className='icon' src={viewImage} />
                       <p className='count'>
-                        {article.view >= 0 ? article.view : '종료된 콘서트'}
+                        {article.view >= 0 ? article.view : '종료'}
                       </p>
                       <p className='date'>
                         {article.createdAt.substring(0, 10)}
