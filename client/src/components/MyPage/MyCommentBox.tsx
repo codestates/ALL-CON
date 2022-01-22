@@ -1,7 +1,5 @@
 /* Config import */
 /* CSS import */
-import shield from '../../images/shield.png';
-import tripleDot from '../../images/tripleDot.png';
 import noCommentImg from '../../images/no_comment_img.png'
 /* Store import */
 import { RootState } from '../../index';
@@ -515,7 +513,7 @@ function MyCommentBox() {
       {/* 댓글이 없다면 display */}
       { commentBtnType === '콘서트' && myTotalConcertComment === 0 || commentBtnType === '콘친' && myTotalArticleComment === 0
         ? <div id='noCommentImgWrapper'> 
-            <img id='noCommentImg' src={noCommentImg}/>
+            <img id='noCommentImg' src={noCommentImg} />
             <p id='noCommentMessage' >작성한 댓글이 없습니다!</p> 
           </div>
         : null

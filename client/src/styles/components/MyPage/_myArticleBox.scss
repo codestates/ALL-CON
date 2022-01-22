@@ -33,6 +33,7 @@
       width: 66%;
       left: 15%;
     }
+    // [제목] 내가 쓴 게시물
     .title {
       font-weight: bold;
       @include mobile-only() {
@@ -49,6 +50,7 @@
       }
     }
   }
+  // 게시물 수 ex) 9개의 게시물
   #myArticleCount {
     position: absolute;
     top: 10%;
@@ -67,7 +69,7 @@
     @include lg() {
       top: 12%;
       left: 16.9%;
-      font-size: 2.0rem;
+      font-size: 2.4rem;
     }
   }
   #articleWrapper {
@@ -116,5 +118,58 @@
       height: 45%;
     }
     // border: 3px solid green;
+  }
+  #noArticleImgWrapper{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    // border: 3px solid blue;
+    font-size: 3rem;
+    color: grey;
+    // color: $yellow;
+    font-weight: bold;
+    bottom: 15%;
+  }
+     // 게시물이 0개 일때, 나타나는 문구
+     #noArticleMessage{
+      position: absolute;
+      
+      opacity: 90%;
+      @include mobile-only() {
+        bottom: 5%;
+        font-size: 1.4rem;
+      }
+      @include md() {
+        bottom: -35%;
+        font-size: 2.0rem;
+      }
+      @include lg() {
+        top: 73%;
+        font-size: 3.0rem;
+      }
+    }
+  // 게시물이 0개 일때, 나타나는 이미지
+  #noArticleImg{
+    position: absolute;
+    opacity: 50%;
+
+    @include mobile-only() {
+      width: 80%;
+      height: 100%;
+      bottom: 15%;
+    }
+    @include md() {
+      width: 90%;
+      height: 120%;
+      top: 10%;
+    }
+    @include lg() {
+      width: 90%;
+      height: 100%;
+      top: -25%;
+    }
   }
 }

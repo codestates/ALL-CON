@@ -11,15 +11,12 @@ module.exports = {
       const { image } = req.body
 
       // 유저의 프로필 사진 url을 변경해준다
-     await Users.update(
+      await Users.update(
         { image: image},
         { where: { id: userInfo.dataValues.id }}
       )
 
       const updatedUserInfo = await Users.findOne({ where: { id: userInfo.dataValues.id }})
-
-      console.log('----- userInfo', userInfo)
-      console.log('----- updatedUserInfo', updatedUserInfo)
 
       res.status(201).json({ data: { userInfo: updatedUserInfo }, message: 'Profile Change Success!' });
     } catch (err) {

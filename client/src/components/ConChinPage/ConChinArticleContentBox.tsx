@@ -177,14 +177,18 @@ function ConChinArticleContentBox() {
             <div id='viewBox'>
               <p className='view'>
                 등록일 : {handlePostedDate(targetArticle.createdAt)} | 조회수 :
-                {targetArticle.view !== undefined && targetArticle.view > 0
+                {targetArticle.view !== undefined && targetArticle.view >= 0
                   ? targetArticle.view
                   : ' 종료된 콘서트'}
               </p>
             </div>
             <div id='modifyBox'>
               <p className='modifyBtn' onClick={showMyConChinWritingModal}>
-                {userInfo.id === targetArticle.user_id ? '수정' : null}
+                {userInfo.id === targetArticle.user_id &&
+                targetArticle.view !== undefined &&
+                targetArticle.view >= 0
+                  ? '수정'
+                  : null}
               </p>
               <p className='deleteBtn' onClick={deleteMyArticle}>
                 {userInfo.id === targetArticle.user_id ? '삭제' : null}
@@ -193,7 +197,13 @@ function ConChinArticleContentBox() {
                 <div className='memberBox'>
                   <img className='icon' src={groupImage} />
                   <div className='count'>
-                    {targetArticle.member_count}/{targetArticle.total_member}
+                    {targetArticle.view !== undefined && targetArticle.view >= 0
+                      ? targetArticle.member_count
+                      : '-'}
+                    /
+                    {targetArticle.view !== undefined && targetArticle.view >= 0
+                      ? targetArticle.total_member
+                      : '-'}
                   </div>
                 </div>
               </div>
@@ -209,7 +219,9 @@ function ConChinArticleContentBox() {
                   }
                 />
               </div>
-              <div className='text'>{targetArticle.content}</div>
+              <div className='textWrapper'>
+                <p className='text'>{targetArticle.content}</p>
+              </div>
             </div>
             <div id='commentWrapper'>
               <ConChinArticleCommentBox />

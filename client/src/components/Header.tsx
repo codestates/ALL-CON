@@ -123,6 +123,10 @@ function Header() {
     }
   }
   /* Header Timer */
+  useEffect(() => {
+    stopTimer();
+    startTimer();
+  }, []);
 
   /* 스크롤 위치 저장 useEffect */
   useEffect(() => {
@@ -144,7 +148,7 @@ function Header() {
     dispatch(
       setScrollCount(window.scrollY || document.documentElement.scrollTop),
     );
-    setSearchClicked(false);
+
     if (scrollCount > 0.5) dispatch(setIsScrolled(true));
   };
 
@@ -192,20 +196,23 @@ function Header() {
     /* LandingPage */
     if (menu === 'logo') {
       showTimer();
+      setSearchClicked(false);
     } else if (menu === 'main') {
       /* MainPage */
-      dispatch(setPassToConcert(false));
       dispatch(setTarget({}));
       dispatch(setTargetIdx(0));
       dispatch(setOrder('view'));
       dispatch(setPageNum(1));
       dispatch(setIsRendering(false));
+      dispatch(setPassToConcert(false));
       navigate('/main');
+      setSearchClicked(false);
     } else if (menu === 'concert') {
       /* ConcertPage */
       dispatch(setTarget({}));
       dispatch(setOrder('view'));
       navigate('/concert');
+      setSearchClicked(false);
     } else if (menu === 'conchin') {
       /* ConChinPage */
       dispatch(setTarget({}));
@@ -214,6 +221,7 @@ function Header() {
       dispatch(setArticleCurPage(1));
       getAllArticles();
       navigate('/conchin');
+      setSearchClicked(false);
     }
   };
 

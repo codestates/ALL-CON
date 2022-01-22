@@ -46,7 +46,9 @@ function AutoComplete() {
   let deselectedOptions = headerAllConcerts.map(el => {
     return el.title;
   });
-
+  let optionsImages = headerAllConcerts.map(el => {
+    return el.image_concert;
+  });
   useEffect(() => {
     getAllConcerts();
   }, []);
@@ -126,7 +128,6 @@ function AutoComplete() {
           placeholder='검색어를 입력해주세요.'
           type='text'
           value={inputValue}
-          // defaultValue={inputValue}
           onChange={handleInputChange}
           onKeyUp={handleKeyUp}
           onClick={getAllConcerts}
@@ -154,7 +155,10 @@ function AutoComplete() {
                   onClick={() => handleDropDownClick(option)}
                   className={selected === idx ? 'selected' : ''}
                 >
-                  {option}
+                  <div>
+                    <img src={optionsImages[idx]} alt='optionsImages' />
+                  </div>
+                  <p>{option}</p>
                 </li>
               );
             })

@@ -38,6 +38,7 @@
       width: 88%;
     }
     // border: 2px solid red;
+    // [제목] 내가 쓴 댓글
     .title {
       font-weight: bold;
       @include mobile-only() {
@@ -145,10 +146,8 @@
     margin-right: 0.5%;
     text-align: center;
 
-    
     font-weight: bold;
 
-    
     @include mobile-only() {
       width: 19%;
       height: 10%;
@@ -182,13 +181,14 @@
     position: relative;
     display: flex;
     @include mobile-only() {
+      left: 2%;
       font-size: 1.0rem;
     }
     @include md() {
       font-size: 1.6rem;
     }
     @include lg() {
-      font-size: 2.0rem;
+      font-size: 2.4rem;
     }
     // border: 2px solid blue;
   }
@@ -211,16 +211,16 @@
       font-size: 1.0rem;
     }
     @include md() {
-      left: 68%;
-      width: 12%;
-      height: 20%;
-      font-size: 1.2rem;
+      left: 66%;
+      width: 14%;
+      height: 30%;
+      font-size: 1.3rem;
     }
     @include lg() {
-      left: 72.5%;
-      width: 9%;
+      left: 69%;
+      width: 11%;
       height: 50%;
-      font-size: 2.0rem;
+      font-size: 1.8rem;
     }
     &:hover {
       background-color: #ffce63;
@@ -249,16 +249,16 @@
       font-size: 1.0rem;
     }
     @include md() {
-      left: 68%;
-      width: 12%;
+      left: 66%;
+      width: 14%;
       height: 50%;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
     @include lg() {
-      left: 72.5%;
-      width: 9%;
+      left: 69%;
+      width: 11%;
       height: 50%;
-      font-size: 2.0rem;
+      font-size: 1.8rem;
     }
   }
   // 수정하기 / 삭제하기 버튼
@@ -440,6 +440,7 @@
     }
     // border: 3px solid green;
   }  
+  // 댓글 0개 일때, 표시되는 문구
   #noCommentImgWrapper{
     position: absolute;
     display: flex;
@@ -447,21 +448,46 @@
     justify-content: center;
     width: 50%;
     height: 50%;
-    // border: 3px solid blue;
     font-size: 3rem;
-    color: yellowgreen;
+    color: grey;
+    // color: $yellow;
     font-weight: bold;
     bottom: 15%;
   }
+  // 댓글 0개 일때, 표시되는 이미지
   #noCommentImg{
     position: absolute;
-    width: 55%;
-    height: 70%;
-    opacity: 30%;
+    opacity: 40%;
+    @include mobile-only() {
+      width: 80%;
+      height: 65%;
+      bottom: 38%;
+    }
+    @include md() {
+      width: 90%;
+      height: 80%;
+      bottom: 15%;
+    }
+    @include lg() {
+      width: 60%;
+      height: 73%;
+    }
   }
   #noCommentMessage{
     position: absolute;
-    bottom: 2%;
-    opacity: 80%;
+    opacity: 90%;
+
+    @include mobile-only() {
+      bottom: 27%;
+      font-size: 1.4rem;
+    }
+    @include md() {
+      bottom: 4%;
+      font-size: 2.0rem;
+    }
+    @include lg() {
+      bottom: 2%;
+      font-size: 3.0rem;
+    }
   }
 }

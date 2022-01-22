@@ -10,7 +10,6 @@ module.exports = {
       // 클라이언트로부터 받은 유저네임
       const { username } = req.body;
 
-
       // 요청 바디에 username이 없다면, 에러메시지 반환
       if(!username) return res.status(400).json({ message: 'Bad Request!' });
 
