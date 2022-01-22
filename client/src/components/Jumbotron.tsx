@@ -1,5 +1,7 @@
 /* CSS import */
 import PosterSlide from './PosterSlide';
+import left from '../images/left_arrow.png';
+import right from '../images/right_arrow.png';
 /* Store import */
 import { RootState } from '../index';
 import {
@@ -92,6 +94,7 @@ function Jumbotron() {
         </div>
         {/*포스터 wrapper*/}
         <div id='jumboPosterSlideWrapper'>
+          <div id='posterCover'></div>
           <PosterSlide />
         </div>
       </div>

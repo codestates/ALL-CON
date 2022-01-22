@@ -37,7 +37,7 @@
     position: absolute;
     display: flex;
     width: 100%;
-   
+    
     // border: 2px solid blue;
     @include mobile-only() {
       height: 26.5%;
@@ -86,7 +86,7 @@
     @include md() {
       width: 100%;
       height: 15.9%;
-      top: 140%;
+      top: 135%;
     }
     @include lg() {
       width: 100%;

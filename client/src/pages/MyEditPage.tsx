@@ -173,6 +173,8 @@ function MyEditPage() {
         { withCredentials: true }
       );
 
+      console.log('----------------------------------------:', response.data.data)
+
       // 중복되지 않은 닉네임이라면, 다음을 실행한다
       if(response.data.state) {
         // 닉네임 중복 판단 여부를 true로 설정
@@ -204,7 +206,6 @@ function MyEditPage() {
   // [PATCH] 변경 완료 버튼 핸들러
   const changeUserProfileHandler = async () => {
     try {
-      console.log('----- 중복확인 버튼 체크 ------')
       let finalIntroduction = myIntroduction.replace(' ', '')
       // 만약 변경된 유저의 정보가 모두 유효하다면, 다음을 실행한다
       if (isAllValid(changeUserInfo)) {
@@ -225,7 +226,7 @@ function MyEditPage() {
             dispatch(showSuccessModal(true));
 
             // userInfo 상태 업데이트
-            dispatch(getUserInfo(response.data.data));
+            dispatch(getUserInfo(response.data.data.userInfo));
             // 프로필 수정 / 콘친 인증 버튼 비활성화
             dispatch(getBtnSwitchState({ profileEdit: false, conchinCertification: false }))
             // 자기소개는 비활성화로 전환
@@ -294,9 +295,11 @@ function MyEditPage() {
             <div id='nickNameBox'>
               <input type='text' id='nickName' placeholder={userInfo.username} value={changeUserInfo.username} onChange={inputValueHandler('username')} onKeyPress={onKeyPress}/>
               <img
-                  id={isPassDuplication ? 'checkImg' : 'hidden'}
+                  // id={isPassDuplication ? 'checkImg' : 'hidden'}
+                  id='checkImg'
                   src={check}
                 />
+                {/* 중복확인 버튼 */}
               <div id='duplicationCheck' onClick={duplicationHandler}> 중복확인 </div>
             </div>
             {changeUserInfo.username === '' || changeUserInfo.username === userInfo.username
@@ -349,6 +352,7 @@ function MyEditPage() {
             </div>
           </div>
         </div>
+        {/* 회원탈퇴 버튼 */}
         <div id='resignBtn' onClick={() => {dispatch(showMyProfileResignMembershipModal(true))}}>
           <p id='resignBtnMessage'>ALL-CON을 더 이상 이용하지 않는다면 <b>회원탈퇴 바로가기</b></p>
           <img id='resignArrowImg' src={resignArrow}/>

@@ -6,7 +6,7 @@ import findConchin from '../images/findConchin.png';
 import chanwon from '../images/chanwon.png';
 import concert from '../images/concertss.png';
 import Footer from '../components/Footer';
-import LandingPosterSlide from '../components/LandingPosterSlide';
+import PosterSlide from '../components/PosterSlide';
 /* Store import */
 import { RootState } from '../index';
 import { setAllConcerts, setTargetIdx, setTarget } from '../store/MainSlice';
@@ -67,7 +67,7 @@ function LandingPage() {
               <h1 id='jumboClassify'>ALL-CON</h1>
             </div>
             <div id='jumboPosterSlideWrapper'>
-              <LandingPosterSlide />
+              <PosterSlide />
             </div>
           </div>
         </div>

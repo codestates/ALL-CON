@@ -85,13 +85,13 @@
     height: 5%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 175%;
+      top: 200%;
     }
     @include md() {
       top: 185%;
     }
     @include lg() {
-      top: 245%;
+      top: 265%;
     }
   }
   #mainFindConchinWrapper {
@@ -99,15 +99,15 @@
     width: 100%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 190%;
+      top: 210%;
       height: 40%;
     }
     @include md() {
-      top: 190%;
+      top: 195%;
       height: 60%;
     }
     @include lg() {
-      top: 250%;
+      top: 275%;
       height: 80%;
     }
   }
@@ -119,7 +119,7 @@
     @include mobile-only() {
       width: 100%;
       height: 30%;
-      top: 240%;
+      top: 260%;
     }
     @include md() {
       width: 100%;
@@ -129,7 +129,7 @@
     @include lg() {
       width: 100%;
       height: 38%;
-      top: 340%;
+      top: 360%;
     }
     // border: 1px solid red;
     #mainFooterWrapper {

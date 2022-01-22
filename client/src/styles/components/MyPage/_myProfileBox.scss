@@ -108,8 +108,8 @@
         .oauth {
           @include mobile-only() {
             position: absolute;
-            width: 80%;
-            height: 80%;
+            width: 73%;
+            height: 73%;
             left: 23%;
             top: -16.5%;
           }
@@ -133,7 +133,7 @@
         height: 100%;
         @include mobile-only() {
           top: -30%;
-          font-size: 1.5rem;
+          font-size: 1.4rem;
         }
         @include md() {
           font-size: 1.8rem;
@@ -198,10 +198,12 @@
         top: 42%;
         @include mobile-only() {
           font-size: 1.3rem;
-          top: 37%;
+          width: 80%;
+          top: 42%;
         }
         @include md() {
           font-size: 1.8rem;
+          width: 80%;
         }
         @include lg() {
           width: 80%;
@@ -209,6 +211,7 @@
         }
       }
     }
+    // 프로필 수정 버튼
     #modifyBtnWrapper {
       position: absolute;
       display: flex;
@@ -248,7 +251,7 @@
           top: 6.5%;
           width: 45%;
           height: 90%;
-          font-size: 1.2rem;
+          font-size: 1.3rem;
 
         }
         @include md() {
@@ -272,7 +275,7 @@
         color: white;       
 
         @include mobile-only() {
-          font-size: 1.5rem;
+          font-size: 1.3rem;
         }
         @include md() {
           font-size: 1.8rem;

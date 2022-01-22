@@ -68,7 +68,7 @@ import React, { useState, useEffect } from 'react';
       // 성공적으로 프로필 이미지가 변경되었다면, 다음을 실행한다
       if (response.data.data) {
         // 변경된 프로필 이미지로 유저 상태를 업데이트 한다
-        dispatch(getUserInfo(response.data.data));
+        dispatch(getUserInfo(response.data.data.userInfo));
         // 프로필 변경 모달을 닫고, 마이페이지로 이동한다
         dispatch(showMyProfileImageModal(false))
         navigate('/mypage');

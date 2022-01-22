@@ -10,14 +10,13 @@ import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Slider, { Settings } from 'react-slick';
 import { setTarget, setTargetIdx } from '../store/MainSlice';
-import { $CombinedState } from 'redux';
+
 function PosterSlide() {
   const dispatch = useDispatch();
 
   const { target, targetIdx, allConcerts, isRendering } = useSelector(
     (state: RootState) => state.main,
   );
-  const [isClick, setIsClick] = useState(false);
 
   /* D-DAY 계산기 */
   const dayCalculator = (openDate?: Date): string => {
@@ -33,7 +32,6 @@ function PosterSlide() {
     }
     return '';
   };
-
   const NextArrow = ({ onClick }: any) => {
     return (
       <div className='arrow next' onClick={onClick}>
@@ -50,12 +48,11 @@ function PosterSlide() {
     );
   };
 
-  const sliderRef = useRef();
+  const sliderRef = useRef<any>(null);
 
-  const func = (index?: number, bool?: boolean): any => {
-    console.log('func작동');
-    setIsClick(true);
-    // sliderRef.current.slickGoTo(targetIdx, true);
+  const setCenterfunc = (index?: number, bool?: boolean): any => {
+    console.log(targetIdx);
+    sliderRef.current.slickGoTo(targetIdx, false);
   };
 
   const settings: Settings = {
@@ -74,15 +71,14 @@ function PosterSlide() {
       dispatch(setTargetIdx(next));
     },
   };
-  console.log('타겟', target);
-  console.log('타겟인덱스', targetIdx);
+
   //isRendering이 변할때마다(즉 받아오는 이미지들이 변할때마다)
   //beforeChange로 0번부터 시작하게 만들고싶다
   useEffect(() => {
     if (settings.beforeChange) {
       settings.beforeChange(targetIdx, 0);
-      //+ slick-dot의 0번을 누른 상태
-      func();
+      //0번째 포스터가 가운데로 이동
+      setCenterfunc();
     }
   }, [isRendering]);
 
@@ -92,27 +88,240 @@ function PosterSlide() {
 
   return (
     <div className='posterContainer'>
-      <Slider {...settings} className='sliderWrapper'>
-        {allConcerts.map((el, idx) => (
-          <div className={idx === targetIdx ? 'center' : 'side'} key={el.idx}>
-            <img src={el.image_concert} alt='콘서트 이미지' />
-          </div>
-          //인덱스가 targetIdx+2또는 targetIdx-2라면
-          //width,height값을 줄인다. (targetIdx가 0일때랑 lastIdx일때 예외처리)
-        ))}
-        <ul className='slick-dots'>
-          {
-            /*map돌려서 li가 나옴. 
-          거기서 현재 onClick된 버튼이 className="slick-active"
-          버튼이 클릭된 상태 isClick.
-          isClick이 켜진 상태로 만들기..?
-          -> slick-active가 0번째 li가되게 만들면 될 듯
-           */
-            allConcerts.map(el => {
-              return <li></li>;
-            })
+      <Slider {...settings} ref={sliderRef} className='sliderWrapper'>
+        {allConcerts.map((el, idx) => {
+          const lastIdx = allConcerts.length - 1;
+          //targetIdx가 0일때 ->
+          // lastIdx-1 lastIdx targetIdx targetIdx+1 targetIdx+2
+          if (targetIdx === 0) {
+            if (allConcerts.indexOf(el) === lastIdx - 1) {
+              return (
+                <div className='edge_l' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === lastIdx) {
+              return (
+                <div className='side_l' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx) {
+              return (
+                <div className='center' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx + 1) {
+              return (
+                <div className='side_r' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx + 2) {
+              return (
+                <div className='edge_r' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            } else {
+              return (
+                <div className='else' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            }
           }
-        </ul>
+          //targetIdx가 1일때 ->
+          //lastIdx targetIdx-1 targetIdx targetIdx+1 targetIdx+2
+          else if (targetIdx === 1) {
+            if (allConcerts.indexOf(el) === lastIdx) {
+              return (
+                <div className='edge_l' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx - 1) {
+              return (
+                <div className='side_l' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx) {
+              return (
+                <div className='center' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx + 1) {
+              return (
+                <div className='side_r' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx + 2) {
+              return (
+                <div className='edge_r' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            } else {
+              return (
+                <div className='else' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            }
+          }
+          //targetIdx가 lastIdx -1일때 ->
+          //targetIdx-2 targetIdx-1 targetIdx targetIdx+1 0번째인덱스
+          else if (targetIdx === lastIdx - 1) {
+            if (allConcerts.indexOf(el) === targetIdx - 2) {
+              return (
+                <div className='edge_l' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx - 1) {
+              return (
+                <div className='side_l' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx) {
+              return (
+                <div className='center' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx + 1) {
+              return (
+                <div className='side_r' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === 0) {
+              return (
+                <div className='edge_r' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            } else {
+              return (
+                <div className='else' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            }
+          }
+          //targetIdx가 lastIdx일때 ->
+          // targetIdx-2 targetIdx-1 targetIdx 0 1번째 인덱스
+          else if (targetIdx === lastIdx) {
+            if (allConcerts.indexOf(el) === targetIdx - 2) {
+              return (
+                <div className='edge_l' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx - 1) {
+              return (
+                <div className='side_l' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx) {
+              return (
+                <div className='center' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === 0) {
+              return (
+                <div className='side_r' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === 1) {
+              return (
+                <div className='edge_r' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            } else {
+              return (
+                <div className='else' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            }
+          }
+          //그 외 ->
+          // targetIdx -2 targetIdx-1 targetIdx targetIdx+1 targetIdx +2
+          else {
+            if (allConcerts.indexOf(el) === targetIdx - 2) {
+              return (
+                <div className='edge_l' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx - 1) {
+              return (
+                <div className='side_l' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx) {
+              return (
+                <div className='center' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx + 1) {
+              return (
+                <div className='side_r' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover'></div>
+                </div>
+              );
+            } else if (allConcerts.indexOf(el) === targetIdx + 2) {
+              return (
+                <div className='edge_r' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            } else {
+              return (
+                <div className='else' key={el.id}>
+                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='posterCover2'></div>
+                </div>
+              );
+            }
+          }
+        })}
       </Slider>
     </div>
   );

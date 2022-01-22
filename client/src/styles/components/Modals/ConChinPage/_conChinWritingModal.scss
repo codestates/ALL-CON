@@ -70,18 +70,21 @@
     }
     #imgSelectionLabel {
       z-index: 999;
-      position: fixed;
+      position: absolute;
       align-items: center;
       justify-content: center;
       top: 10%;
-      right: 42.5%;
+      right: 50%;
       display: flex;
       width: 15%;
       padding-bottom: 15%;
+      height: 15%;
+      transform: translate(50%, 0%);
+      object-fit: 100%;
       background-color: white;
       opacity: 0%;
-      border: 1px solid red;
-      border-radius: 5px;
+      // border: 1px solid red;
+      border-radius: 10px;
       &:hover {
         cursor: pointer;
         // width: 16%;
@@ -90,9 +93,18 @@
         // transition: 0.25s all;
       }
     }
+
     #image {
-      width: 50%;
+      z-index: 998;
+      position: absolute;
+      width: 15%;
+      height: 30.5%;
+      top: 10%;
+      background-color: white;
       border-radius: 20px;
+      object-fit: cover;
+      object-position: center;
+      // border: 3px solid blue;
     }
     .box {
       display: flex;
@@ -102,51 +114,93 @@
       height: 5%;
       background-color: $gray;
       border-radius: 5px;
-      font-size: 1.4rem;
-      font-weight: bold;
-    }
-    #write {
-      text-align: center;
-      border: 0;
-      background-color: #ccc;
-      font-weight: bold;
-    }
-    #concert {
       font-size: 1.5rem;
       font-weight: bold;
     }
+    #concertWrapper {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      width: 22.5%;
+      height: 4.5%;
+      top: 43%;
+      // border: 1px solid blue;
+      border-radius: 5px;
+      background-color: $gray;
+    }
+    #concert {
+      display: block;
+      position: absolute;
+      width: 100%;
+      overflow: hidden;
+      padding: 0 0rem;
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    #write {
+      position: absolute;
+      width: 22.5%;
+      height: 4.5%;
+      top: 49%;
+      text-align: center;
+      border: 0;
+      background-color: #ccc;
+      outline-color: $yellow;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
     #peopleNum {
+      position: absolute;
+      top: 55%;
+      height: 4.5%;
+      width: 22.5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       background-color: #fff;
+
       // border: 1px solid blue;
       .want {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 45%;
         height: 100%;
         text-align: center;
         border: 0;
         border-radius: 5px;
         background-color: #ccc;
+        outline-color: $yellow;
         font-weight: bold;
+        font-size: 1.5rem;
       }
     }
     #board {
-      width: 75%;
-      height: 30%;
+      position: absolute;
+      top: 61%;
+      width: 22.5%;
+      height: 24%;
+      padding: 1%;
       white-space: pre-line;
       text-align: left;
       resize: none;
       border: 0;
       border-radius: 5px;
       background-color: #ccc;
-
+      outline-color: $yellow;
       word-wrap: break-word;
       font-family: sans-serif;
+      font-weight: bold;
       font-size: 1.5rem;
-      padding: 1%;
     }
     #btnBox {
+      position: absolute;
+      bottom: 9%;
+      width: 22.5%;
+      height: 4.5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -154,22 +208,24 @@
       #no1 {
         color: #fff;
         background-color: $yellow;
+        cursor: pointer;
         width: 45%;
         height: 100%;
         border: 0;
         border-radius: 5px;
         font-weight: bold;
-        cursor: pointer;
+        font-size: 1.5rem;
       }
       #no2 {
-        color: #fff;
         background-color: #000;
+        color: #fff;
+        cursor: pointer;
         width: 45%;
         height: 100%;
         border: 0;
         border-radius: 5px;
         font-weight: bold;
-        cursor: pointer;
+        font-size: 1.5rem;
       }
     }
   }

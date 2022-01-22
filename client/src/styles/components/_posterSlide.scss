@@ -2,13 +2,70 @@
   width: 100%;
   height: 100%;
   // border: 1px solid pink;
+
   .sliderWrapper {
     width: 100%;
     height: 100%;
     // border: 1px solid yellow;
+
+    .edge_l {
+      position: relative;
+      top: 50%;
+      left: 10%;
+      width: 20vw;
+      height: 50vh;
+      img {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        height: 70%;
+      }
+      .posterCover2 {
+        z-index: 2;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -150%);
+        width: 70%;
+        height: 70%;
+        background-color: rgba(0, 0, 0, 0.8);
+        // border: 1px solid red;
+      }
+    }
+
+    .side_l {
+      position: relative;
+      top: 50%;
+      width: 20vw;
+      height: 50vh;
+      img {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80%;
+      }
+      .posterCover {
+        z-index: 2;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -150%);
+        width: 80%;
+        height: 80%;
+        background-color: rgba(0, 0, 0, 0.5);
+        // border: 1px solid red;
+      }
+    }
+
     .center {
-      width: 15%;
-      height: 52vh;
+      position: relative;
+      top: 50%;
+      width: 20vw;
+      height: 50vh;
       // border: 1px solid blue;
       img {
         position: relative;
@@ -20,31 +77,82 @@
       }
     }
 
-    .side {
-      width: 15%;
-      height: 52vh;
-      border: 2px solid #fff;
+    .side_r {
+      position: relative;
+      top: 50%;
+      width: 20vw;
+      height: 50vh;
       img {
         position: relative;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 75%;
-        height: 75%;
+        width: 80%;
+        height: 80%;
+      }
+      .posterCover {
+        z-index: 2;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -150%);
+        width: 80%;
+        height: 80%;
+        background-color: rgba(0, 0, 0, 0.5);
+        // border: 1px solid red;
       }
     }
 
-    .side2 {
-      width: 14%;
+    .edge_r {
+      position: relative;
+      top: 50%;
+      right: 10%;
+      width: 20vw;
       height: 50vh;
-      border: 2px solid yellow;
       img {
         position: relative;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 75%;
-        height: 75%;
+        width: 70%;
+        height: 70%;
+      }
+      .posterCover2 {
+        z-index: 2;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -150%);
+        width: 70%;
+        height: 70%;
+        background-color: rgba(0, 0, 0, 0.8);
+        // border: 1px solid red;
+      }
+    }
+
+    .else {
+      position: relative;
+      top: 50%;
+      width: 20vw;
+      height: 50vh;
+      img {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 70%;
+        height: 70%;
+      }
+      .posterCover2 {
+        z-index: 2;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -150%);
+        width: 70%;
+        height: 70%;
+        background-color: rgba(0, 0, 0, 0.8);
+        // border: 1px solid red;
       }
     }
 
@@ -55,7 +163,7 @@
       width: 8vh;
       height: 8vh;
       cursor: pointer;
-      //border: 1px solid red;
+      // border: 1px solid red;
       img {
         width: 90%;
         height: 90%;
@@ -63,11 +171,11 @@
     }
 
     .next {
-      right: -5%;
+      right: 0%;
     }
 
     .prev {
-      left: -5%;
+      left: 0%;
     }
     .slick-dots {
       li {
@@ -82,222 +190,5 @@
         }
       }
     }
-  }
-}
-
-/*--------전에 만든 css----------*/
-.posterImg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.posterCover {
-  z-index: 40;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.posterCover2 {
-  z-index: 40;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0%;
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-#posterWrapper1 {
-  position: absolute;
-  overflow: hidden;
-  z-index: 8;
-  transform: translate(-50%, -50%);
-  @include mobile-only() {
-    width: 29%;
-    height: 55%;
-    top: 50%;
-    left: 15%;
-    padding-bottom: 30%;
-  }
-  @include md() {
-    width: 25%;
-    height: 65%;
-    top: 50%;
-    left: 20%;
-    padding-bottom: 20%;
-  }
-  @include lg() {
-    width: 20%;
-    height: 70%;
-    top: 50%;
-    left: 30%;
-    padding-bottom: 20%;
-  }
-}
-
-#posterWrapper2 {
-  position: absolute;
-  overflow: hidden;
-  z-index: 9;
-  transform: translate(-50%, -50%);
-  @include mobile-only() {
-    width: 29%;
-    height: 60%;
-    padding-bottom: 30%;
-    top: 50%;
-    left: 30%;
-  }
-  @include md() {
-    width: 25%;
-    height: 70%;
-    padding-bottom: 20%;
-    top: 50%;
-    left: 35%;
-  }
-  @include lg() {
-    width: 20%;
-    height: 75%;
-    padding-bottom: 20%;
-    top: 50%;
-    left: 40%;
-  }
-}
-
-/*가운데*/
-#posterWrapper3 {
-  position: absolute;
-  overflow: hidden;
-  z-index: 10;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  &:hover {
-    box-shadow: 3px 3px 14px 1px #606060;
-    cursor: pointer;
-    transition: all 1s ease;
-    #alignDay {
-      width: 100%;
-      height: 100%;
-
-      #dDay {
-        z-index: 50;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        color: #fff;
-        font-weight: bold;
-        @include mobile-only() {
-          width: 75%;
-          height: 45%;
-          border: 4px solid $yellow;
-          font-size: 2.5rem;
-        }
-        @include md() {
-          width: 75%;
-          height: 50%;
-          border: 5px solid $yellow;
-          font-size: 4rem;
-        }
-        @include lg() {
-          width: 75%;
-          height: 58%;
-          border: 6px solid $yellow;
-          font-size: 5rem;
-        }
-      }
-    }
-  }
-
-  #alignDay {
-    width: 100%;
-    height: 100%;
-
-    #dDay {
-      display: none;
-    }
-  }
-
-  /*posterWrapper3*/
-  @include mobile-only() {
-    width: 33%;
-    height: 70%;
-    top: 50%;
-    padding-bottom: 30%;
-  }
-  @include md() {
-    width: 28%;
-    height: 80%;
-    top: 48%;
-    padding-bottom: 20%;
-  }
-  @include lg() {
-    width: 20%;
-    height: 85%;
-    top: 50%;
-    padding-bottom: 20%;
-  }
-}
-
-#posterWrapper4 {
-  position: absolute;
-  overflow: hidden;
-  z-index: 9;
-  transform: translate(-50%, -50%);
-  @include mobile-only() {
-    width: 29%;
-    height: 60%;
-    top: 50%;
-    left: 70%;
-    padding-bottom: 30%;
-  }
-  @include md() {
-    width: 25%;
-    height: 70%;
-    top: 50%;
-    left: 65%;
-    padding-bottom: 20%;
-  }
-  @include lg() {
-    width: 20%;
-    height: 75%;
-    top: 50%;
-    left: 60%;
-    padding-bottom: 20%;
-  }
-}
-
-#posterWrapper5 {
-  position: absolute;
-  overflow: hidden;
-  z-index: 8;
-  transform: translate(-50%, -50%);
-  @include mobile-only() {
-    width: 29%;
-    height: 55%;
-    top: 50%;
-    left: 85%;
-    padding-bottom: 30%;
-  }
-  @include md() {
-    width: 20%;
-    height: 65%;
-    top: 50%;
-    left: 80%;
-    padding-bottom: 20%;
-  }
-  @include lg() {
-    width: 20%;
-    height: 70%;
-    top: 50%;
-    left: 70%;
-    padding-bottom: 20%;
   }
 }

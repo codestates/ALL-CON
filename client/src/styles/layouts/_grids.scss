@@ -123,7 +123,6 @@
     @extend #articleBox;
     align-items: center;
     justify-content: center;
-    font-size: 5rem;
     width: 100%;
 
     @include mobile-only() {
@@ -137,6 +136,28 @@
     @include lg() {
       height: 50%;
       font-size: 2.5rem;
+    }
+    #notFound {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      // border: 1px solid blue;
+      .text {
+        position: absolute;
+        top: 18%;
+        color: $gray;
+        font-size: 3rem;
+        font-weight: bold;
+      }
+      .img {
+        position: absolute;
+        width: 50%;
+        height: 80%;
+        opacity: 70%;
+        top: 30%;
+      }
     }
     // border: 1px solid red;
   }
@@ -239,6 +260,7 @@
         transition: 1s all;
         border-radius: 0px 0px 10px 10px;
         &Chosen {
+          border-radius: 0px;
           @extend .title;
           height: 33.35%;
         }
@@ -462,7 +484,6 @@
 
 /***** pagination *****/
 #pagination {
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -470,9 +491,7 @@
   width: 100%;
   height: 100%;
   left: 50%;
-
   // border: 1px solid purple;
-  transform: translate(-50%, 0%);
   .page {
     position: relative;
     display: flex;
@@ -487,7 +506,8 @@
       height: 30px;
       padding: 0;
       line-height: 30px;
-      margin-left: 10px;
+      margin-left: 5px;
+      margin-right: 5px;
       border-radius: 3px;
       float: left;
     }
@@ -496,7 +516,8 @@
       height: 40px;
       padding: 0;
       line-height: 40px;
-      margin-left: 25px;
+      margin-left: 12.5px;
+      margin-right: 12.5px;
       border-radius: 4px;
       float: left;
     }
@@ -505,7 +526,8 @@
       height: 50px;
       padding: 0;
       line-height: 50px;
-      margin-left: 30px;
+      margin-left: 15px;
+      margin-right: 15px;
       border-radius: 5px;
       float: left;
     }
@@ -762,13 +784,13 @@
         right: 2%;
         // border: 1px solid red;
         @include mobile-only() {
-          width: 25%;
+          width: 40%;
         }
         @include md() {
-          width: 20%;
+          width: 25%;
         }
         @include lg() {
-          width: 15%;
+          width: 20%;
         }
         .optionBtn {
           position: relative;
@@ -781,19 +803,19 @@
           cursor: pointer;
           border: 1px solid #c4c4c4;
           @include mobile-only() {
-            width: 50%;
+            width: 45%;
             border-radius: 3px;
             font-size: 1rem;
           }
           @include md() {
             width: 45%;
             border-radius: 3px;
-            font-size: 1rem;
+            font-size: 1.2rem;
           }
           @include lg() {
             width: 45%;
             border-radius: 5px;
-            font-size: 1rem;
+            font-size: 1.2rem;
           }
         }
         & :hover {

@@ -182,6 +182,7 @@
     position: relative;
     display: flex;
     @include mobile-only() {
+      left: 2%;
       font-size: 1.0rem;
     }
     @include md() {
@@ -211,10 +212,10 @@
       font-size: 1.0rem;
     }
     @include md() {
-      left: 68%;
-      width: 12%;
-      height: 20%;
-      font-size: 1.2rem;
+      left: 66%;
+      width: 14%;
+      height: 30%;
+      font-size: 1.3rem;
     }
     @include lg() {
       left: 72.5%;
@@ -249,10 +250,10 @@
       font-size: 1.0rem;
     }
     @include md() {
-      left: 68%;
-      width: 12%;
+      left: 66%;
+      width: 14%;
       height: 50%;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
     @include lg() {
       left: 72.5%;
@@ -447,21 +448,44 @@
     justify-content: center;
     width: 50%;
     height: 50%;
-    // border: 3px solid blue;
     font-size: 3rem;
-    color: yellowgreen;
+    color: $yellow;
     font-weight: bold;
     bottom: 15%;
   }
   #noCommentImg{
     position: absolute;
-    width: 55%;
-    height: 70%;
     opacity: 30%;
+    @include mobile-only() {
+      width: 80%;
+      height: 65%;
+      bottom: 25%;
+    }
+    @include md() {
+      width: 90%;
+      height: 80%;
+      bottom: 15%;
+    }
+    @include lg() {
+      width: 60%;
+      height: 73%;
+    }
   }
   #noCommentMessage{
     position: absolute;
-    bottom: 2%;
-    opacity: 80%;
+    opacity: 90%;
+
+    @include mobile-only() {
+      bottom: 10%;
+      font-size: 1.4rem;
+    }
+    @include md() {
+      bottom: 4%;
+      font-size: 2.0rem;
+    }
+    @include lg() {
+      bottom: 2%;
+      font-size: 3.0rem;
+    }
   }
 }
