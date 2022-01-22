@@ -107,7 +107,6 @@
   width: 90%;
   height: 75%;
   left: 50%;
-
   transform: translate(-50%, 0%);
   @include mobile-only() {
     font-size: 1.5rem;
@@ -561,7 +560,6 @@
   display: flex;
   flex-direction: column;
   width: 95%;
-
   top: 5%;
   @include mobile-only() {
     height: 80%;
@@ -595,13 +593,14 @@
       position: absolute;
       display: flex;
       align-items: center;
-      justify-content: left;
+      justify-content: space-between;
       font-weight: bold;
       width: 100%;
       height: 25%;
       // border:1px solid blue;
       .nickName {
         margin-left: 1.5%;
+        width: 48.5%;
         color: $gray;
         @include mobile-only() {
           font-size: 1rem;
@@ -613,6 +612,27 @@
           font-size: 2rem;
         }
         // border:1px solid blue;
+      }
+      .byte {
+        display: flex;
+        margin-right: 1.5%;
+        width: 48.5%;
+        color: $gray;
+        align-items: center;
+        justify-content: right;
+        @include mobile-only() {
+          font-size: 1rem;
+        }
+        @include md() {
+          font-size: 1.5rem;
+        }
+        @include lg() {
+          font-size: 1.5rem;
+        }
+      }
+      .byteError {
+        @extend .byte;
+        color: red;
       }
     }
     .commentBodyBox {
@@ -742,7 +762,6 @@
       }
     }
   }
-
   .box {
     position: relative;
     display: flex;
@@ -907,6 +926,7 @@
           height: 95%;
           margin-right: 0.5%;
           resize: none;
+          white-space: pre; 
           // border: 1px solid red;
           @include mobile-only() {
             font-size: 1.1rem;
@@ -918,54 +938,34 @@
             font-size: 1.4rem;
           }
         }
-        // .textBtn {
-        //   position: relative;
-        //   display: flex;
-        //   align-items: center;
-        //   justify-content: center;
-        //   color: white;
-        //   font-weight: bold;
-        //   background-color: black;
-        //   margin-right: 1%;
-        //   width: 7.5%;
-        //   height: 80%;
-        //   cursor: pointer;
-        //   @include mobile-only() {
-        //     border-radius: 5px;
-        //     font-size: 1rem;
-        //   }
-        //   @include md() {
-        //     border-radius: 8px;
-        //     font-size: 1.25rem;
-        //   }
-        //   @include lg() {
-        //     border-radius: 12px;
-        //     font-size: 1.5rem;
-        //   }
-        // }
-        // .textBtn:hover {
-        //   transition: 0.25s all;
-        //   background-color: $yellow;
-        // }
       }
     }
   }
-  .emptyBox {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+.emptyBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 40%;
+  // border: 1px solid red;
+  img {
+    width: auto;
+    max-height: 60%;
+    margin-top: 1.5%;
+    opacity: 50%;
+  }
+  div {
     font-weight: bold;
-    color: $yellow;
-    width: 100%;
-    height: 50%;
-    top: 20%;
-    // border: 1px solid red;
+    opacity: 50%;
     @include mobile-only() {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
     @include md() {
-      font-size: 1.3rem;
+      font-size: 2rem;
     }
     @include lg() {
       font-size: 3rem;

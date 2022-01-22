@@ -35,10 +35,6 @@ function MainPage() {
     (state: RootState) => state.concertComments,
   );
 
-  console.log('---------------')
-  console.log('emailClick: ', emailClick);
-  console.log('smsClick: ', smsClick);
-
   /* 전체 콘서트 렌더링 */
   useEffect(() => {
     getAllConcerts(); // 전체 콘서트 목록
