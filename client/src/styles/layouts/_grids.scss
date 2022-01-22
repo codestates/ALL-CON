@@ -689,20 +689,42 @@
       width: 100%;
       height: 25%;
       // border:1px solid blue;
-      .nickName {
-        margin-left: 1.5%;
-        width: 48.5%;
-        color: $gray;
-        @include mobile-only() {
-          font-size: 1rem;
-        }
-        @include md() {
-          font-size: 1.5rem;
-        }
-        @include lg() {
-          font-size: 2rem;
-        }
+      .nameWrapper {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        width: 50%;
+        height: 100%;
         // border:1px solid blue;
+        .nickName {
+          position: relative;
+          display: flex;
+          margin-left: 0.5;
+          width: 48.5%;
+          height: 100%;
+          align-items: center;
+          color: $gray;
+          // border:1px solid red;
+          @include mobile-only() {
+            font-size: 1rem;
+          }
+          @include md() {
+            font-size: 1.5rem;
+          }
+          @include lg() {
+            font-size: 2rem;
+          }
+        }
+        .shield {
+          position: relative;
+          margin-left: 1.5%;
+          width: auto;
+          max-height: 100%;
+          padding: 1%;
+          align-items: center;
+          justify-content: center;
+          // border:1px solid red;
+        }
       }
       .byte {
         display: flex;
@@ -759,28 +781,6 @@
           @include lg() {
             width: 70%;
             height: 80%;
-          }
-        }
-        .shield {
-          position: absolute;
-          display: flex;
-          @include mobile-only() {
-            width: 15px;
-            height: 15px;
-            bottom: 5%;
-            right: 10%;
-          }
-          @include md() {
-            width: 22.5px;
-            height: 22.5px;
-            bottom: 0%;
-            right: 7.5%;
-          }
-          @include lg() {
-            width: 28px;
-            height: 28px;
-            bottom: 5%;
-            right: 10%;
           }
         }
       }
@@ -869,7 +869,6 @@
       width: 89%;
       height: 30%;
       left: 11%;
-      // border: 1px solid red;
       .nickNameAndDate {
         color: $gray;
         @include mobile-only() {
@@ -881,7 +880,6 @@
         @include lg() {
           font-size: 1.5rem;
         }
-        // border:1px solid blue;
       }
       .optionWrapper {
         z-index: 100;
@@ -892,7 +890,6 @@
         height: 100%;
         top: 0%;
         right: 2%;
-        // border: 1px solid red;
         @include mobile-only() {
           width: 40%;
         }
@@ -1015,10 +1012,11 @@
           display: flex;
           width: 98%;
           height: 95%;
+          padding-left: 0.5%;
           margin-right: 0.5%;
           resize: none;
+          overflow: hidden;
           white-space: pre;
-          // border: 1px solid red;
           @include mobile-only() {
             font-size: 1.1rem;
           }
@@ -1027,6 +1025,38 @@
           }
           @include lg() {
             font-size: 1.4rem;
+          }
+        }
+        .byteWrapper {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          justify-content: right;
+          height: 100%;
+          width: 20%;
+          right: 0%;
+          margin-right: 2%;
+          .byte {
+            align-self: flex-end;
+            color: $gray;
+            margin: 2.5%;
+            @include mobile-only() {
+              font-size: 1rem;
+            }
+            @include md() {
+              font-size: 1rem;
+            }
+            @include lg() {
+              font-size: 1.2rem;
+            }
+          }
+          .byteError {
+            @extend .byte;
+            color: red;
+          }
+          .errorByteError {
+            @extend .byte;
+            color: red;
           }
         }
       }
