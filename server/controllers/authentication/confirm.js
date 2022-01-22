@@ -29,12 +29,10 @@ module.exports = {
   patch: async (req, res) => {
     try {
       // 클라이언트로부터 email, newPassword를 전달 받는다. 
-      console.log(req.body);
       const { email, newPassword } = req.body
 
       // 요청 바디의 값이 없다면 에러메시지 반환
       if(!email || ! newPassword) return res.status(400).json({ message: 'Bad Request!' });
-
       // email_key 값이 'success' 상태라면, 비밀번호를 업데이트 한뒤, email_key값도 expired로 변경해준다.
       const userInfo = await Users.findOne({ where: { email: email } })
       if(userInfo.email_key !== 'success') return res.status(401).json({ message: 'Email Key Is Not Authorized!' });

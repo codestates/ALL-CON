@@ -6,15 +6,7 @@ module.exports = {
   get: async (req, res) => {
     try {
       // 로그인 인증 검사
-      // const userInfo = await userAuth(req, res);
-
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      const userInfo = await Users.findOne({
-        where: { id: req.body.id }
-      });
-      /* 임시 TEST CODE (삭제예정) */
-
+      const userInfo = await userAuth(req, res);
       // 회원의 민감정보(비밀번호) 삭제
       delete userInfo.dataValues.password;
 
@@ -28,11 +20,9 @@ module.exports = {
     try {
       // 로그인 인증 검사
       const userInfo = await userAuth(req, res);
-
       const { username, introduction, password } = req.body;
 
-      /* 임시 TEST CODE (닉네임 중복 API가 정상 작동한다면 삭제예정) */
-      // 요청 바디에 username이 있다면, 나를 제외한 username 중 이미 존재하는지 검사 => 중복확인 검사가 있는데 굳이 해야될까?!
+      // 요청 바디에 username이 있다면, 나를 제외한 username 중 이미 존재하는지 검사
       if(username) {
         const usernameInfo = await Users.findOne({ 
           where: { 
@@ -43,7 +33,6 @@ module.exports = {
         // 이미 존재하는 username이면 요청 거절
         if(usernameInfo) return res.status(409).json({ message: 'Username Is Already Existed!' });
       }
-      /* 임시 TEST CODE (닉네임 중복 API가 정상 작동한다면 삭제예정) */
 
       // 요청 바디가 없는 값은 그대로 유지, 있다면 새로 업데이트 한다
       await Users.update(
@@ -67,18 +56,8 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
-
-      console.log('----- 회원탈퇴 진입 완료! -----')
-
       // 로그인 인증 검사
       const userInfo = await userAuth(req, res);
-
-      /* 임시 TEST CODE (삭제예정) */
-      // POSTMAN 테스트시 => req.body = { id }
-      // const userInfo = await Users.findOne({
-      //   where: { id: req.body.id }
-      // });
-      /* 임시 TEST CODE (삭제예정) */
 
       Users.destroy({ where: { id: userInfo.id } });  // 유저 삭제
 

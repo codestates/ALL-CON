@@ -29,7 +29,14 @@ export interface auth {
   }
 }
 /* State 초기값 설정 */
-const initialState: auth = { isLogin: false, userInfo: {}, yearList: [], monthList: [], dateList: [], isPhoneCertificatePass: false, certificateInfo: '' };
+const initialState: auth = { 
+  isLogin: false, 
+  userInfo: {}, 
+  yearList: [], 
+  monthList: [], 
+  dateList: [], 
+  isPhoneCertificatePass: false, 
+  certificateInfo: '' };
 
 const authSlice = createSlice({
   name: 'auth',
@@ -44,8 +51,8 @@ const authSlice = createSlice({
       /* 로그아웃시 persistStore의 데이터를 전부 삭제 */
       setTimeout(() => persistor.purge(), 500);
     },
-    getUserInfo: (state: auth, { payload }: PayloadAction<auth>) => { 
-      state.userInfo = payload.userInfo;
+    getUserInfo: (state: auth, { payload }: PayloadAction<object>) => { 
+      state.userInfo = payload;
     },
     getPhoneCertificatePassInfo: (state: auth, { payload }: PayloadAction<boolean>) => { 
       state.isPhoneCertificatePass = payload;

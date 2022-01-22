@@ -1,5 +1,7 @@
 /* CSS import */
 import PosterSlide from './PosterSlide';
+import left from '../images/left_arrow.png';
+import right from '../images/right_arrow.png';
 /* Store import */
 import { RootState } from '../index';
 import {
@@ -49,12 +51,6 @@ function Jumbotron() {
     dispatch(setPageNum(1));
   };
 
-  const ballList = allConcerts.map(el => {
-    if (el.id === target.id && target)
-      return <div className='balls' id='targetBall'></div>;
-    return <div className='balls'></div>;
-  });
-
   return (
     <div id='jumboContainer'>
       <div id='jumboMiniContainer'></div>
@@ -98,6 +94,7 @@ function Jumbotron() {
         </div>
         {/*포스터 wrapper*/}
         <div id='jumboPosterSlideWrapper'>
+          <div id='posterCover'></div>
           <PosterSlide />
         </div>
       </div>
