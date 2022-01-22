@@ -6,7 +6,7 @@ import findConchin from '../images/findConchin.png';
 import chanwon from '../images/chanwon.png';
 import concert from '../images/concertss.png';
 import Footer from '../components/Footer';
-import PosterSlide from '../components/PosterSlide';
+import LandingPosterSlide from '../components/LandingPosterSlide';
 /* Store import */
 import { RootState } from '../index';
 import { setAllConcerts, setTargetIdx, setTarget } from '../store/MainSlice';
@@ -62,12 +62,13 @@ function LandingPage() {
         {/*jumbotronBackground */}
         <div id='jumboContainer'>
           <div className='jumboTopBox'>
+            {/*여기 부분 landingpage.scss에 있음(jumbotronBackground 아님) */}
             <div className='jumboTextBox'>
               <h1 id='jumboWhat'>국내 모든 콘서트 정보를 한눈에!</h1>
               <h1 id='jumboClassify'>ALL-CON</h1>
             </div>
             <div id='jumboPosterSlideWrapper'>
-              <PosterSlide />
+              <LandingPosterSlide />
             </div>
           </div>
         </div>

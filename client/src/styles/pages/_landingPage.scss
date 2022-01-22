@@ -60,7 +60,7 @@
         padding-bottom: 20%;
       }
     }
-
+    //--------문구---------//
     .jumboTextBox {
       position: relative;
       display: flex;
@@ -70,7 +70,7 @@
       width: 60%;
       // border: 1px solid blue;
       @include mobile-only() {
-        top: 10%;
+        top: 5%;
         height: 8%;
       }
       @include md() {
@@ -110,16 +110,17 @@
     }
 
     #jumboPosterSlideWrapper {
+      // border: 1px solid #fff;
       @include mobile-only() {
         position: relative;
-        bottom: -5%;
-        width: 80%;
+        top: 10%;
+        width: 95%;
         height: 77%;
       }
       @include md() {
         position: relative;
         bottom: -3%;
-        width: 80%;
+        width: 90%;
         height: 77%;
       }
       @include lg() {
