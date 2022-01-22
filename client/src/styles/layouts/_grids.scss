@@ -169,11 +169,11 @@
         color: $gray;
         font-weight: bold;
         @include mobile-only() {
-          top: 23%;
+          top: 25%;
           font-size: 2rem;
         }
         @include md() {
-          top: 20%;
+          top: 12%;
           font-size: 2.5rem;
         }
         @include lg() {
@@ -192,12 +192,12 @@
           height: 90%;
         }
         @include md() {
-          top: 35%;
+          top: 27%;
           width: 60%;
           height: 90%;
         }
         @include lg() {
-          top: 55%;
+          top: 48%;
           width: 70%;
           height: 110%;
         }

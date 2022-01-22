@@ -255,15 +255,16 @@
       height: 45%;
       padding-bottom: 45%;
     }
-    // border:1px solid blue;
+    // border: 1px solid blue;
     #imgWrapper {
       position: absolute;
-      top: 10%;
+
       @include mobile-only() {
         width: 40%;
         height: 40%;
         padding-bottom: 40%;
         left: 8%;
+        top: 15%;
         max-height: 70px;
         border: 3px solid $yellow;
       }
@@ -271,7 +272,8 @@
         width: 37%;
         height: 37%;
         padding-bottom: 37%;
-        left: 10%;
+        left: 8%;
+        top: 15%;
         border: 5px solid $yellow;
       }
       @include lg() {
@@ -279,6 +281,7 @@
         height: 35%;
         padding-bottom: 35%;
         left: 7%;
+        top: 10%;
         border: 7px solid $yellow;
       }
 
@@ -292,27 +295,28 @@
       }
     }
     .textWrapper {
-      top: 10%;
       position: absolute;
       display: flex;
       @include mobile-only() {
         font-size: 1.3rem;
         right: -3%;
         width: 45%;
-        height: 35%;
-        padding-bottom: 35%;
+        height: 75%;
+        top: 15%;
       }
       @include md() {
         font-size: 1.8rem;
         right: -10%;
         width: 55%;
-        height: 35%;
+        height: 72.5%;
+        top: 15%;
       }
       @include lg() {
         font-size: 2rem;
-        right: -15%;
+        right: -11%;
         width: 60%;
         height: 52%;
+        top: 10%;
       }
       .text {
         width: 100%;
