@@ -19,6 +19,9 @@ const concertAlarm = async () => {
     let concertInfo = await Concerts.findOne({ where: { id: concertId }})
     
     let userInfo = await Users.findOne({ where: { id: userId}})
+    let concerInfo = await Concerts.findOne({ where: {id: concertId}})
+    let concertLink = concertInfo.dataValues.link
+
 
     // 이메일 알람인 경우, 다음을 실행한다
     if(alaramInfo[i].dataValues.email_alarm) {
@@ -31,7 +34,8 @@ const concertAlarm = async () => {
         open_date: concertInfo.dataValues.open_date,
         image_concert: concertInfo.dataValues.image_concert,
         period: concertInfo.dataValues.period,
-        place: concertInfo.dataValues.place
+        place: concertInfo.dataValues.place,
+        link: concertLink
       })
     } 
     else if(alaramInfo[i].dataValues.phone_alarm) {
