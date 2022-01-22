@@ -51,12 +51,6 @@ function Jumbotron() {
     dispatch(setPageNum(1));
   };
 
-  const ballList = allConcerts.map(el => {
-    if (el.id === target.id && target)
-      return <div className='balls' id='targetBall'></div>;
-    return <div className='balls'></div>;
-  });
-
   return (
     <div id='jumboContainer'>
       <div id='jumboMiniContainer'></div>
@@ -100,21 +94,6 @@ function Jumbotron() {
         </div>
         {/*포스터 wrapper*/}
         <div id='jumboPosterSlideWrapper'>
-          <div id='arrows'>
-            <img
-              id='left'
-              src={left}
-              alt='왼쪽 화살표'
-              onClick={() => moveHandler('left')}
-            ></img>
-            <img
-              id='right'
-              src={right}
-              alt='오른쪽 화살표'
-              onClick={() => moveHandler('right')}
-            ></img>
-          </div>
-          {ballList && <div id='ballsWrapper'>{ballList}</div>}
           <div id='posterCover'></div>
           <PosterSlide />
         </div>
