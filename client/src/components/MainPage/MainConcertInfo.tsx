@@ -4,7 +4,7 @@ import bellOff from '../../images/notification1.png';
 import comment from '../../images/comment.png';
 import emailOn from '../../images/email2.png';
 import emailOff from '../../images/email3.png';
-import map from '../../images/map.png';
+import map from '../../images/mapMarker.png';
 import returnImg from '../../images/return.png';
 import smsOn from '../../images/mail4.png';
 import smsOff from '../../images/mail4off.png';

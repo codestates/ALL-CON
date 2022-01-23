@@ -14,7 +14,7 @@ const openDateCheck = async (targetOpenDate) => {
   // 2022년 1월 9일
   let today = new Date()
 
-  // console.log('-------------------TODAY----------------------------', today)
+  console.log('-------------------TODAY----------------------------', today)
 
   let yearToday = today.getFullYear()
   let monthToday = today.getMonth()
@@ -24,15 +24,13 @@ const openDateCheck = async (targetOpenDate) => {
   // console.log("-------------openDateCheck함수-------------", today)
   console.log("---------------openDateCheck함수---------", yearToday, monthToday+1, dateToday, hourToday)
 
-  /* 테스트 */
-    // 년 확인
+  // 년 확인
   if(year !== yearToday) return false
   // 월 확인
   if(month !== monthToday) return false
   // 날짜 및 시간 확인
-  if(date === 29) return true
+  if(date-1 === dateToday && hour+9 === hourToday) return true
   else return false
-    /* 테스트 */
 
   // // 년 확인
   // if(year !== yearToday) return false
