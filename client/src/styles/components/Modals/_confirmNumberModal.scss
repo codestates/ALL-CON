@@ -53,7 +53,7 @@
       border-radius: 5px;
     }
     @include md() {
-      width: 60%;
+      width: 55%;
       height: 30%;
       top: 50%;
       transform: translate(0%, -50%);
@@ -187,16 +187,15 @@
           .subTitle {
             position: absolute;
             bottom: 0%;
-
             font-weight: bold;
             @include mobile-only() {
-              font-size: 1.5rem;
+              font-size: 1.25rem;
             }
             @include md() {
-              font-size: 1.8rem;
+              font-size: 1.5rem;
             }
             @include lg() {
-              font-size: 2rem;
+              font-size: 1.75rem;
             }
           }
         }
@@ -212,11 +211,19 @@
           .input {
             width: 80%;
             height: 50%;
-            font-size: 1.8rem;
-            font-weight: bold;
+            // font-weight: bold;
             padding-left: 2%;
             border: 1px solid $gray;
             border-radius: 5px;
+            @include mobile-only() {
+              font-size: 1.25rem;
+            }
+            @include md() {
+              font-size: 1.35rem;
+            }
+            @include lg() {
+              font-size: 1.5rem;
+            }
           }
           .timer {
             position: absolute;
@@ -246,6 +253,9 @@
           top: 66.66%;
           // border: 1px solid green;
           .okBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 45%;
             height: 50%;
             background-color: $yellow;
@@ -253,14 +263,12 @@
             border-radius: 5px;
             color: white;
             font-weight: bold;
-            &:hover {
-              cursor: pointer;
-            }
+            cursor: pointer;
             @include mobile-only() {
-              font-size: 1.5rem;
+              font-size: 1.35rem;
             }
             @include md() {
-              font-size: 1.8rem;
+              font-size: 1.6rem;
             }
             @include lg() {
               font-size: 2rem;
