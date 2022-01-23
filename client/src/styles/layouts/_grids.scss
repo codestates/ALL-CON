@@ -117,10 +117,6 @@
     animation: pulse;
     animation-duration: 0.5s;
   }
-  &:active {
-    animation: flash;
-    animation-duration: 0.5s;
-  }
 }
 /****** orderBox ******/
 
@@ -640,10 +636,6 @@
       animation: pulse;
       animation-duration: 0.5s;
     }
-    &:active {
-      animation: flash;
-      animation-duration: 0.5s;
-    }
   }
   .text {
     position: absolute;
@@ -779,7 +771,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
+
         width: 10%;
         height: 75%;
         @include mobile-only() {

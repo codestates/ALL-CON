@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 
-  function MyProfileImageModal() {
+function MyProfileImageModal() {
   /* dispatch / navigate */
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,21 +33,24 @@ import React, { useState, useEffect } from 'react';
   const handleImageUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
   ): Promise<void> => {
-
     if (e.target.files) {
       // formData 빈 객체를 만들어준다
       const formData = new FormData();
 
       formData.append('img', e.target.files[0]);
       // 선택한 이미지를 서버와 s3 bucket에 업로드한다
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/upload`, formData, {
-        headers: {
-          'Content-Type' : 'multipart/form-data'
-        }
-      })
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/upload`,
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        },
+      );
 
       // AWS 버킷 주소 + 객체 키 값
-      let imageFullUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.imagePath}`
+      let imageFullUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.imagePath}`;
       // 미리보기 기능
 
       setPreview(imageFullUrl);
@@ -58,7 +61,6 @@ import React, { useState, useEffect } from 'react';
   // 변경 버튼을 클릭하면, 현재 preview 이미자가 유저의 프로필 이미지로 변경된다 (Users DB에 해당 이미지 url를 저장한다)
   const handleProfileImgSave = async () => {
     try {
-
       // 변경하기 버튼을 클릭하면, 해당 이미지를 프로필 이미지로 변경
       const response = await axios.patch(
         `${process.env.REACT_APP_API_URL}/user/picture`,
@@ -70,11 +72,10 @@ import React, { useState, useEffect } from 'react';
         // 변경된 프로필 이미지로 유저 상태를 업데이트 한다
         dispatch(getUserInfo(response.data.data.userInfo));
         // 프로필 변경 모달을 닫고, 마이페이지로 이동한다
-        dispatch(showMyProfileImageModal(false))
-        navigate('/mypage');
+        dispatch(showMyProfileImageModal(false));
       }
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   };
 
@@ -82,7 +83,9 @@ import React, { useState, useEffect } from 'react';
     <div id='myProfileImageModal'>
       <div
         id='bg'
-        onClick={() => {dispatch(showMyProfileImageModal(false))}}
+        onClick={() => {
+          dispatch(showMyProfileImageModal(false));
+        }}
       />
       <div id='modalBox'>
         <div id='modal'>
@@ -101,13 +104,12 @@ import React, { useState, useEffect } from 'react';
               <img className='camera' src={camera} alt='camera' />
             </div>
             <div className='imgSelectionWrapper'>
-            <label id='imgSelectionLabel' htmlFor='imgSelection'></label>
+              <label id='imgSelectionLabel' htmlFor='imgSelection'></label>
               <input
                 type='file'
                 id='imgSelection'
                 onChange={handleImageUpload}
               />
-              
             </div>
           </div>
           <div id='modifyBtnWrapper'>
@@ -121,8 +123,9 @@ import React, { useState, useEffect } from 'react';
             </button>
             <button
               className='cancleBtn'
-              onClick={
-                () => {dispatch(showMyProfileImageModal(false))}}
+              onClick={() => {
+                dispatch(showMyProfileImageModal(false));
+              }}
             >
               변경 안함
             </button>
