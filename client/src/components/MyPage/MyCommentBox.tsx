@@ -327,9 +327,9 @@ function MyCommentBox() {
                           {' '}
                           <b>{el.Concert.title}</b> | {el.updatedAt.substring(0, 10)}{' '}
                         </p>
-                        <div className='myOptionWrapper'>
+                        {/* <div className='myOptionWrapper'> */}
                           {/* 콘서트 댓글 수정하기 */}
-                          { commentClick && myConcertCommentCurrentComment === el.id
+                          {/* { commentClick && myConcertCommentCurrentComment === el.id
                               ? <div
                                   className='myOptionBtn'
                                   onClick={() =>
@@ -350,9 +350,9 @@ function MyCommentBox() {
                                     }}>
                                     수정하기
                                   </div>
-                           }
+                           } */}
                           {/* 콘서트 댓글 삭제하기 */}
-                          { commentClick && myConcertCommentCurrentComment === el.id
+                          {/* { commentClick && myConcertCommentCurrentComment === el.id
                             ? <div
                                 className='myOptionBtn'
                                 onClick={handleEditCommentClose}
@@ -371,7 +371,7 @@ function MyCommentBox() {
                                 삭제하기
                               </div>
                           }
-                        </div>
+                        </div> */}
                       </div>
                       <div id='myImgAndText'>
                         <div className='myImgWrapper'>
@@ -420,9 +420,9 @@ function MyCommentBox() {
                         {' '}
                         <b>{el.Article.title} </b> | {el.updatedAt.substring(0, 10)}{' '}
                       </p>
-                      <div className='myOptionWrapper'>
+                      {/* <div className='myOptionWrapper'> */}
                         {/* 콘친 게시물 댓글 수정하기 */}
-                        { conchinCommentClick && myArticleCommentCurrentComment === el.id
+                        {/* { conchinCommentClick && myArticleCommentCurrentComment === el.id
                           ? <div
                               className='myOptionBtn'
                               onClick={() =>
@@ -444,9 +444,9 @@ function MyCommentBox() {
                              }}>
                              수정하기
                             </div>
-                        }
+                        } */}
                         {/* 콘친 게시물 댓글 삭제하기 */}
-                        { conchinCommentClick && myArticleCommentCurrentComment === el.id
+                        {/* { conchinCommentClick && myArticleCommentCurrentComment === el.id
                           ? <div
                               className='myOptionBtn'
                               onClick={handleEditCommentClose}
@@ -465,7 +465,7 @@ function MyCommentBox() {
                              삭제하기
                             </div>
                         }
-                      </div>
+                      </div> */}
                     </div>
                     <div id='myImgAndText'>
                       <div className='myImgWrapper'>

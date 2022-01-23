@@ -39,6 +39,8 @@ const yes24Crawler = async () => {
   /* urlNums 배열중 가장 큰 글번호만 추출(lastUrlNum)  */
   const lastUrlNum = urlNums.length > 0 ? Math.max.apply(null, urlNums) : 0;
 
+  console.log('---------------- lastUrlNum -------------------', lastUrlNum)
+
   let driver = await new Builder().
   withCapabilities(caps).
   forBrowser('chrome').
@@ -93,6 +95,9 @@ const yes24Crawler = async () => {
         if(subResult.length !== 0) {
           let title = await subResult[0].getText();
           let exclusive = '';
+
+          console.log('-------------- title확인 ---------------------', title)
+
           // 제목 앞에 '단독판매' 문구가 있으면 변수 eclusive에 'YES24'를 할당, 없으면 null
           if(title.indexOf('단독판매') !== -1) {
             exclusive = 'YES24';
@@ -209,13 +214,14 @@ const yes24Crawler = async () => {
 
             inputDate = inputDate.replaceAll('-', '.')
 
-            console.log('---- inputDate ----:', inputDate)
-
-            
+            console.log('*********** YES24 크롤링 입력합니다 *********************', inputDate, title)
             
             // 현재 Url이 DB에 있는 것보다 작거나 같으면 break, 더 크면 DB에 넣어준다
             if(Number(inputUrl.split('#id=')[1] <= lastUrlNum)) break;
             else {
+
+            console.log('*********** YES24 크롤링 입력합니다 *********************')
+
               concertList.push({
                 exclusive: exclusive,
                 open_date: openDateFormatterYes(ticketOpen),

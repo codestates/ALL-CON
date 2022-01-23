@@ -71,7 +71,6 @@ import React, { useState, useEffect } from 'react';
         dispatch(getUserInfo(response.data.data.userInfo));
         // 프로필 변경 모달을 닫고, 마이페이지로 이동한다
         dispatch(showMyProfileImageModal(false))
-        navigate('/mypage');
       }
     } catch (err) {
       console.log(err)

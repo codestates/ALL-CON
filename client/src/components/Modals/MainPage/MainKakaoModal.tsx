@@ -1,5 +1,5 @@
 /* CSS import */
-import map from '../../../images/map.png';
+import map from '../../../images/mapMarker.png';
 /* Component import */
 import KakaoMap from '../../ConcertPage/KakaoMap';
 /* Store import */

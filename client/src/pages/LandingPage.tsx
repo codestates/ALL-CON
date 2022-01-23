@@ -19,9 +19,8 @@ import { useEffect, useState } from 'react';
 function LandingPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   /* 반응형 화면 크기 */
-  let mobileSize = window.matchMedia('screen and (max-width: 767px)');
+  let mobileSize = window.matchMedia('screen and (max-width: 768px)');
   let tabSize = window.matchMedia('screen and (max-width: 1200px)');
 
   const { targetIdx, allConcerts } = useSelector(
@@ -259,6 +258,26 @@ function LandingPage() {
                 <p>않을 수 있어요!</p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/*하단 박스 */}
+        <div id='bottomBox'>
+          <div id='bottomAlignBox'>
+            <div id='bottomTextBox'>
+              <p>ALL-CON에서</p>
+              <p>예매부터 동료찾기까지</p>
+              <p>한번에 해결해요!</p>
+            </div>
+            <button id='goBtn' onClick={() => navigate('/main')}>
+              시작하기
+            </button>
+          </div>
+        </div>
+        {/*바닥글*/}
+        <div id='fullFooter'>
+          <div id='landingFooterWrapper'>
+            <Footer />
           </div>
         </div>
 
