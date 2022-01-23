@@ -9,7 +9,9 @@ function Footer() {
         <div className='profiles'>
           <div className='profile'>
             <div id='paddingBox'>
-              <img src={github} id='github' alt='깃허브 로고'></img>
+              <a href='https://github.com/sun0-1106' target='_blank'>
+                <img src={github} id='github' alt='깃허브 로고'/>
+              </a>
             </div>
             <div className='text'>
               <div className='name'>최선영</div>
@@ -22,7 +24,9 @@ function Footer() {
 
           <div className='profile'>
             <div id='paddingBox'>
-              <img src={github} id='github' alt='깃허브 로고'></img>
+              <a href='https://github.com/Esoolgnah' target='_blank'>
+                <img src={github} id='github' alt='깃허브 로고'/>
+              </a>
             </div>
             <div className='text'>
               <div className='name'>정재혁</div>
@@ -35,7 +39,9 @@ function Footer() {
 
           <div className='profile'>
             <div id='paddingBox'>
-              <img src={github} id='github' alt='깃허브 로고'></img>
+              <a href='https://github.com/JH8459' target='_blank'>
+                <img src={github} id='github' alt='깃허브 로고'/>
+              </a>
             </div>
             <div className='text'>
               <div className='name'>김정현</div>
@@ -48,7 +54,9 @@ function Footer() {
 
           <div className='profile'>
             <div id='paddingBox'>
-              <img src={github} id='github' alt='깃허브 로고'></img>
+              <a href='https://github.com/joykim93' target='_blank'>
+                <img src={github} id='github' alt='깃허브 로고'/>
+              </a>
             </div>
             <div className='text'>
               <div className='name'>김기쁨</div>

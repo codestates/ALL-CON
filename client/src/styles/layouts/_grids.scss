@@ -688,25 +688,25 @@
       font-weight: bold;
       width: 100%;
       height: 25%;
+      margin-left: 1.5%;
       // border:1px solid blue;
       .nameWrapper {
         position: relative;
         display: flex;
         align-items: flex-start;
         width: 50%;
-        height: 100%;
+        height: 90%;
         // border:1px solid blue;
         .nickName {
           position: relative;
           display: flex;
-          margin-left: 0.5;
           width: 48.5%;
           height: 100%;
           align-items: center;
           color: $gray;
           // border:1px solid red;
           @include mobile-only() {
-            font-size: 1rem;
+            font-size: 1.1rem;
           }
           @include md() {
             font-size: 1.5rem;
@@ -717,10 +717,10 @@
         }
         .shield {
           position: relative;
-          margin-left: 1.5%;
+          display: flex;
           width: auto;
           max-height: 100%;
-          padding: 1%;
+          padding: 1.5%;
           align-items: center;
           justify-content: center;
           // border:1px solid red;
@@ -728,7 +728,7 @@
       }
       .byte {
         display: flex;
-        margin-right: 1.5%;
+        margin-right: 3%;
         width: 48.5%;
         color: $gray;
         align-items: center;
@@ -761,27 +761,31 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-left: 1%;
+        
         width: 10%;
         height: 75%;
+        @include mobile-only() {
+          margin-left: 1%;
+          width: 3.35rem;
+          height: 3.35rem;
+        }
+        @include md() {
+          margin-left: 1.5%;
+          width: 6rem;
+          height: 6rem;
+        }
+        @include lg() {
+          margin-left: 1.5%;
+          width: 9rem;
+          height: 9rem;
+        }
         .img {
-          position: absolute;
+          position: relative;
           display: flex;
           align-items: center;
-          object-fit: cover;
           border-radius: 100%;
-          @include mobile-only() {
-            width: 70%;
-            height: 60%;
-          }
-          @include md() {
-            width: 70%;
-            height: 80%;
-          }
-          @include lg() {
-            width: 70%;
-            height: 80%;
-          }
+          width: 100%;
+          height: 100%;
         }
       }
       .bodyWrapper {
@@ -817,6 +821,27 @@
             font-size: 2rem;
           }
         }
+        #inputNotLogin {
+          position: relative;
+          display: flex;
+          top: 12.5%;
+          width: 85%;
+          height: 100%;
+          font-weight: bold;
+          color: $gray;
+          @include mobile-only() {
+            left: 10%;
+            font-size: 1.25rem;
+          }
+          @include md() {
+            left: 27.5%;
+            font-size: 1.5rem;
+          }
+          @include lg() {
+            left: 27.5%;
+            font-size: 2rem;
+          }
+        }
         #inputBtn {
           position: relative;
           display: flex;
@@ -826,7 +851,6 @@
           font-weight: bold;
           background-color: $yellow;
           margin-right: 1.5%;
-
           height: 80%;
           cursor: pointer;
           @include mobile-only() {
@@ -860,25 +884,65 @@
     height: 21.5%;
     top: 0%;
     margin-top: 1.5%;
-    // border: 1px solid #c4c4c4;
-    border-radius: 5px;
+    // border: 1px solid purple;
     .dateBox {
       position: absolute;
       display: flex;
       align-items: center;
-      width: 89%;
       height: 30%;
-      left: 11%;
-      .nickNameAndDate {
-        color: $gray;
-        @include mobile-only() {
-          font-size: 1rem;
+      // border: 1px solid red;
+      @include mobile-only() {
+        left: 13%;
+        width: 87%;
+      }
+      @include md() {
+        left: 10%;
+        width: 90%;
+      }
+      @include lg() {
+        left: 10.5%;
+        width: 89.5%;
+      }
+      .nickNameAndDateWrapper {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        width: 50%;
+        height: 90%;
+        // border: 1px solid red;
+        .shield {
+          position: relative;
+          display: flex;
+          width: auto;
+          max-height: 100%;
+          align-items: center;
+          justify-content: center;
+          @include mobile-only() {
+            padding: 2%;
+          }
+          @include md() {
+            padding: 1.25%;
+          }
+          @include lg() {
+            padding: 1.25%;
+          }
         }
-        @include md() {
-          font-size: 1.3rem;
-        }
-        @include lg() {
-          font-size: 1.5rem;
+        .nickNameAndDate {
+          position: relative;
+          display: flex;
+          margin-left: 0.5;
+          height: 100%;
+          align-items: center;
+          color: $gray;
+          @include mobile-only() {
+            font-size: 1rem;
+          }
+          @include md() {
+            font-size: 1.3rem;
+          }
+          @include lg() {
+            font-size: 1.5rem;
+          }
         }
       }
       .optionWrapper {
@@ -890,6 +954,7 @@
         height: 100%;
         top: 0%;
         right: 2%;
+        // border: 1px solid blue;
         @include mobile-only() {
           width: 40%;
         }
@@ -942,53 +1007,34 @@
       height: 100%;
       // border: 1px solid purple;
       .imgWrapper {
-        position: relative;
+        position: absolute;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        // border: 1px solid purple;
+        // border: 1px solid red;
         @include mobile-only() {
-          width: 8%;
-          height: 50%;
+          width: 3.1rem;
+          height: 3.1rem;
           left: 2%;
         }
         @include md() {
-          width: 8%;
-          height: 75%;
+          width: 5rem;
+          height: 5rem;
           left: 1.5%;
         }
         @include lg() {
-          width: 7.5%;
-          height: 75%;
+          width: 7.25rem;
+          height: 7.25rem;
           left: 2%;
         }
         .img {
-          position: absolute;
-          border-radius: 100%;
-          width: 80%;
-          height: 82.5%;
-          object-fit: cover;
-        }
-        .shield {
-          position: absolute;
+          position: relative;
           display: flex;
-          right: 7.5%;
-          @include mobile-only() {
-            width: 13px;
-            height: 13px;
-            bottom: 5%;
-          }
-          @include md() {
-            width: 20px;
-            height: 20px;
-            bottom: 5%;
-          }
-          @include lg() {
-            width: 25px;
-            height: 25px;
-            bottom: 10%;
-          }
+          align-items: center;
+          border-radius: 100%;
+          width: 100%;
+          height: 100%;
         }
       }
       & :hover {
@@ -1002,23 +1048,31 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 89%;
         height: 70%;
         top: 30%;
-        left: 11%;
+        @include mobile-only() {
+          left: 13%;
+          width: 85%;
+        }
+        @include md() {
+          left: 10%;
+          width: 87.5%;
+        }
+        @include lg() {
+          left: 10.5%;
+          width: 88%;
+        }
         // border: 1px solid red;
         #text {
           position: relative;
           display: flex;
-          width: 98%;
+          width: 100%;
           height: 95%;
           padding-left: 0.5%;
-          margin-right: 0.5%;
           resize: none;
-          overflow: hidden;
-          white-space: pre;
+          white-space: pre-wrap;
           @include mobile-only() {
-            font-size: 1.1rem;
+            font-size: 1rem;
           }
           @include md() {
             font-size: 1.1rem;
@@ -1073,12 +1127,6 @@
   height: 100%;
   top: 40%;
   // border: 1px solid red;
-  img {
-    width: auto;
-    max-height: 60%;
-    margin-top: 1.5%;
-    opacity: 50%;
-  }
   div {
     font-weight: bold;
     opacity: 50%;
@@ -1091,6 +1139,12 @@
     @include lg() {
       font-size: 3rem;
     }
+  }
+  img {
+    width: auto;
+    max-height: 40%;
+    margin-top: 1.5%;
+    opacity: 50%;
   }
 }
 /***** commentBox *****/
