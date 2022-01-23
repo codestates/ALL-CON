@@ -241,7 +241,7 @@
     &Chosen {
       @extend #fullFooter;
       @include mobile-only() {
-        top: 149%;
+        top: 155%;
       }
       @include md() {
         top: 158%;
