@@ -19,7 +19,7 @@ function LandingPosterSlide() {
     speed: 300,
     dots: false,
     autoplay: true,
-    autoplaySpeed: 1800,
+    autoplaySpeed: 1500,
     cssEase: 'linear',
     arrows: false,
     // dotsClass: 'dots',
@@ -43,42 +43,120 @@ function LandingPosterSlide() {
             if (allConcerts.indexOf(el) === lastIdx - 1) {
               return (
                 <div className='edge_l' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === lastIdx) {
               return (
                 <div className='side_l' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx) {
               return (
                 <div className='center' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='card'>
+                    <img
+                      className='frontImg'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                    <div className='back'>
+                      <img
+                        className='backImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx + 1) {
               return (
                 <div className='side_r' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx + 2) {
               return (
                 <div className='edge_r' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else {
               return (
                 <div className='else' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             }
@@ -89,42 +167,120 @@ function LandingPosterSlide() {
             if (allConcerts.indexOf(el) === lastIdx) {
               return (
                 <div className='edge_l' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx - 1) {
               return (
                 <div className='side_l' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx) {
               return (
                 <div className='center' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='card'>
+                    <img
+                      className='frontImg'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                    <div className='back'>
+                      <img
+                        className='backImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx + 1) {
               return (
                 <div className='side_r' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx + 2) {
               return (
                 <div className='edge_r' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else {
               return (
                 <div className='else' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             }
@@ -135,42 +291,120 @@ function LandingPosterSlide() {
             if (allConcerts.indexOf(el) === imageIdx - 2) {
               return (
                 <div className='edge_l' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx - 1) {
               return (
                 <div className='side_l' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx) {
               return (
                 <div className='center' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='card'>
+                    <img
+                      className='frontImg'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                    <div className='back'>
+                      <img
+                        className='backImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx + 1) {
               return (
                 <div className='side_r' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === 0) {
               return (
                 <div className='edge_r' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else {
               return (
                 <div className='else' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             }
@@ -181,42 +415,120 @@ function LandingPosterSlide() {
             if (allConcerts.indexOf(el) === imageIdx - 2) {
               return (
                 <div className='edge_l' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx - 1) {
               return (
                 <div className='side_l' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx) {
               return (
                 <div className='center' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='card'>
+                    <img
+                      className='frontImg'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                    <div className='back'>
+                      <img
+                        className='backImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === 0) {
               return (
                 <div className='side_r' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === 1) {
               return (
                 <div className='edge_r' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else {
               return (
                 <div className='else' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             }
@@ -227,42 +539,120 @@ function LandingPosterSlide() {
             if (allConcerts.indexOf(el) === imageIdx - 2) {
               return (
                 <div className='edge_l' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx - 1) {
               return (
                 <div className='side_l' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx) {
               return (
                 <div className='center' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
+                  <div className='card'>
+                    <img
+                      className='frontImg'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                    <div className='back'>
+                      <img
+                        className='backImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx + 1) {
               return (
                 <div className='side_r' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else if (allConcerts.indexOf(el) === imageIdx + 2) {
               return (
                 <div className='edge_r' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             } else {
               return (
                 <div className='else' key={el.id}>
-                  <img src={el.image_concert} alt='콘서트 이미지' />
-                  <div className='posterCover2'></div>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
                 </div>
               );
             }
