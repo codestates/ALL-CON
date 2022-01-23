@@ -91,6 +91,9 @@ function ConChinPostingOrderBox() {
     dispatch(setArticleRendered(false));
     dispatch(setTargetArticle({}));
     dispatch(setArticleCurPage(1));
+    getAllConcerts();
+    getAllArticles();
+    getAllConcerts();
     getAllArticles();
   };
 

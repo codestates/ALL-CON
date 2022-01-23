@@ -270,6 +270,7 @@
       transform: translate(-50%, 25%);
       transition: 0.4s all;
       // border: 1px solid green;
+
       @include mobile-only() {
         z-index: 16;
         position: fixed;
