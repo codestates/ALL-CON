@@ -6,10 +6,6 @@ require('dotenv').config();
 
 const emailAlarm = async (alarmInfo) => {
 
-
-  console.log("********************* emailAlarm 확인!!! ********************")
-  console.log(alarmInfo)
-
   const newConcert = await Concerts.findAll({ 
     limit: 6,
     order: [['view', 'DESC']]
@@ -20,8 +16,6 @@ const emailAlarm = async (alarmInfo) => {
   for(let i = 0; i < newConcert.length; i++) {
     hotConcertList.push(newConcert[i].dataValues)
   }
-
-  console.log('******************************************************************', hotConcertList)
 
   const userInfo = await Users.findOne({ id: alarmInfo.user_id })
 
