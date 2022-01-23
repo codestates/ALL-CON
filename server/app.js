@@ -28,14 +28,14 @@ const port = 8080;
 // )
 
 /* Auto Crawling */
-// const autoCrawling = schedule.scheduleJob(
-//   '00 16 23 1 * *',
-//   async () => {
-//     console.log('ec2 테스트')
-//     await crawler()
-//     console.log('24시간마다 크롤링중..')
-//   }
-// );
+const autoCrawling = schedule.scheduleJob(
+  '00 07 * * * *',
+  async () => {
+    console.log('ec2 테스트')
+    await crawler()
+    console.log('24시간마다 크롤링중..')
+  }
+);
 
 /* Middleware */
 app.use(express.json());
