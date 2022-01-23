@@ -120,7 +120,7 @@
         #imgWrapper {
           position: absolute;
           display: flex;
-          // border: 1px solid red;
+          border: 1px solid red;
           top: 0%;
           @include mobile-only() {
             width: 13rem;
