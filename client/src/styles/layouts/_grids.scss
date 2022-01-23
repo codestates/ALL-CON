@@ -62,6 +62,10 @@
     .refreshBtn {
       width: 100%;
       height: 100%;
+      &:hover {
+        animation: rotateIn;
+        animation-duration: 0.5s;
+      }
     }
   }
 }
@@ -110,6 +114,12 @@
     color: white;
     cursor: pointer;
     transition: 0.15s all;
+    animation: pulse;
+    animation-duration: 0.5s;
+  }
+  &:active {
+    animation: flash;
+    animation-duration: 0.5s;
   }
 }
 /****** orderBox ******/
@@ -264,10 +274,10 @@
       width: 28%;
       padding-bottom: 28%;
       // border: 1px solid green;
-      transition: 2s all;
+
       &:hover {
-        bottom: 1%;
-        transition: 1s all;
+        animation: pulse;
+        animation-duration: 0.5s;
       }
       @include mobile-only() {
         border-radius: 5px;
@@ -455,9 +465,11 @@
         }
       }
       &:hover {
+        animation: pulse;
+        animation-duration: 0.5s;
         box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.3);
         cursor: pointer;
-        transition: 0.15s all;
+        // transition: 0.15s all;
         .title {
           @extend .title;
           opacity: 95%;
@@ -625,6 +637,12 @@
       background-color: $yellow;
       cursor: pointer;
       transition: 0.1s all;
+      animation: pulse;
+      animation-duration: 0.5s;
+    }
+    &:active {
+      animation: flash;
+      animation-duration: 0.5s;
     }
   }
   .text {
@@ -1160,29 +1178,37 @@
   height: 100%;
 
   @include mobile-only() {
-    display: flex;
-    width: 5%;
-    left: 2%;
+    width: 20px;
+    height: 20px;
+    left: 3.5%;
   }
   @include md() {
-    display: flex;
-    width: 5%;
+    width: 30px;
+    height: 30px;
     left: 2%;
   }
   @include lg() {
     display: none;
-    width: 15%;
-    left: 2%;
   }
   // border: 1px solid green;
   .menu {
     position: relative;
-    width: 30px;
-    height: 30px;
+
     cursor: pointer;
+
+    @include mobile-only() {
+      width: 100%;
+      height: 100%;
+    }
+    @include md() {
+      width: 100%;
+      height: 100%;
+    }
+    @include lg() {
+      display: none;
+    }
     &:hover {
       cursor: pointer;
-      color: $yellow;
       transition: 0.15s all;
     }
   }
@@ -1214,6 +1240,8 @@
     // border: 1px solid green;
     &:hover {
       cursor: pointer;
+      animation: pulse;
+      animation-duration: 0.5s;
     }
     @include mobile-only() {
       display: flex;
@@ -1223,15 +1251,15 @@
     }
     @include md() {
       display: flex;
-      width: 25px;
-      height: 25px;
+      width: 23px;
+      height: 23px;
     }
     @include lg() {
       display: flex;
       position: absolute;
       right: 190%;
-      width: 25px;
-      height: 25px;
+      width: 23px;
+      height: 23px;
     }
     &:hover {
       cursor: pointer;
@@ -1277,34 +1305,48 @@
       transition: all 0.15s;
     }
   }
-  .profile {
-    position: relative;
-    display: block;
-    margin: auto;
+  #profileWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 100%;
-    border: 3px solid $yellow;
-    cursor: pointer;
-    object-fit: cover;
-    right: 0%;
 
     @include mobile-only() {
-      border-width: 0.25rem;
-      width: 3rem;
-      height: 3rem;
+      border: 2px solid $yellow;
+      width: 2.5rem;
+      height: 2.5rem;
     }
     @include md() {
-      border-width: 0.3rem;
+      border: 2px solid $yellow;
       width: 3.5rem;
       height: 3.5rem;
     }
     @include lg() {
-      border-width: 0.35rem;
-      width: 3.5rem;
-      height: 3.5rem;
-      bottom: 3%;
+      border: 2.5px solid $yellow;
+      width: 4rem;
+      height: 4rem;
     }
-    &:hover {
-      cursor: pointer;
+  }
+  .profile {
+    position: relative;
+
+    // margin: auto;
+    border-radius: 100%;
+    cursor: pointer;
+    object-fit: cover;
+    object-position: center;
+
+    @include mobile-only() {
+      width: 100%;
+      height: 100%;
+    }
+    @include md() {
+      width: 100%;
+      height: 100%;
+    }
+    @include lg() {
+      width: 100%;
+      height: 100%;
     }
   }
 }
@@ -1387,7 +1429,7 @@
   @include mobile-only() {
     width: 145%;
     right: 2%;
-    bottom: 2%;
+    bottom: 0%;
   }
   @include md() {
     width: 170%;
@@ -1404,10 +1446,11 @@
     right: 0%;
     background-color: #eaeaea;
     border-radius: 50px;
-
+    // border: 1px solid red;
     @include mobile-only() {
       display: flex;
       justify-content: left;
+      height: 80%;
     }
     @include md() {
       display: flex;
@@ -1544,9 +1587,11 @@
 
       margin-top: 0.8rem;
       margin-bottom: 0.8rem;
-      width: 99%;
+      width: 99.8%;
       padding: 0 5px;
       color: #404040;
+      animation: slideInDown;
+      animation-duration: 0.5s;
       // border: 1px solid red;
       @include mobile-only() {
         font-size: 1.3rem;
@@ -1559,6 +1604,7 @@
       }
       &.selected {
         background-color: $yellow;
+        color: white;
       }
       > div {
         position: relative;

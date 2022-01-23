@@ -19,7 +19,7 @@ import { useState, useEffect, useRef } from 'react';
 function ConChinPostingOrderBox() {
   const dispatch = useDispatch();
   const { postingOrder } = useSelector((state: RootState) => state.conChin);
-  const { target } = useSelector((state: RootState) => state.main);
+  const { target, allConcerts } = useSelector((state: RootState) => state.main);
   const { articleOrder, allArticles, articleRendered, targetArticle } =
     useSelector((state: RootState) => state.conChin);
 
@@ -33,6 +33,7 @@ function ConChinPostingOrderBox() {
         );
         if (response.data) {
           dispatch(setAllConcerts(response.data.data.concertInfo));
+          console.log(allConcerts);
         }
       } catch (err) {
         console.log(err);
@@ -67,6 +68,7 @@ function ConChinPostingOrderBox() {
     /* 타겟이 없을 때 모든 콘서트 보여주기 */
     if (Object.keys(target).length === 0) {
       getAllConcerts();
+      getAllArticles();
       dispatch(setTarget({}));
       dispatch(setArticleRendered(false));
       dispatch(setTargetArticle({}));
@@ -109,6 +111,7 @@ function ConChinPostingOrderBox() {
           if (Object.keys(target).length === 0) {
             dispatch(setPostingOrder('view'));
             getAllConcerts();
+            getAllArticles();
           }
         }}
         style={
@@ -125,6 +128,7 @@ function ConChinPostingOrderBox() {
           if (Object.keys(target).length === 0) {
             dispatch(setPostingOrder('near'));
             getAllConcerts();
+            getAllArticles();
           }
         }}
         style={
@@ -141,6 +145,7 @@ function ConChinPostingOrderBox() {
           if (Object.keys(target).length === 0) {
             dispatch(setPostingOrder('new'));
             getAllConcerts();
+            getAllArticles();
           }
         }}
         style={

@@ -4,6 +4,7 @@ import { persistor } from '../index';
 import logo from '../images/allConLogo.png';
 import menu from '../images/menu.png';
 import search from '../images/search.png';
+import yellowSearch from '../images/yellowSearch.png';
 import user from '../images/user.png';
 /* Component import */
 import AutoComplete from './AutoComplete';
@@ -14,6 +15,8 @@ import {
   showSideMenuModal,
   showMyDropDown,
   showConcertModal,
+  showConChinProfileModal,
+  showConChinWritingModal,
 } from '../store/ModalSlice';
 import {
   setAllArticles,
@@ -55,6 +58,7 @@ function Header() {
     sideMenuModal,
     myDropDown,
     conChinProfileModal,
+    conChinWritingModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
   const { isScrolled, scrollCount, timerMessage, headerAllConcerts } =
@@ -67,65 +71,65 @@ function Header() {
   const [searchClicked, setSearchClicked] = useState<boolean>(false);
 
   /* Header Timer */
-  const [isPause, setIsPause] = useState<boolean>(false);
-  let timer: any;
-  let stDate = new Date().getTime();
-  let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
-  let RemainDate = edDate - stDate;
+  // const [isPause, setIsPause] = useState<boolean>(false);
+  // let timer: any;
+  // let stDate = new Date().getTime();
+  // let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
+  // let RemainDate = edDate - stDate;
 
-  /* 헤더 타이머 시작 핸들러 */
-  const startTimer = () => {
-    stopTimer();
-    setIsPause(false);
-    timer = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
-  };
-  /* 헤더 타이머 멈춤 핸들러 */
-  const stopTimer = () => {
-    setIsPause(true);
-    clearInterval(timer);
-  };
+  // /* 헤더 타이머 시작 핸들러 */
+  // const startTimer = () => {
+  //   stopTimer();
+  //   setIsPause(false);
+  //   timer = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
+  // };
+  // /* 헤더 타이머 멈춤 핸들러 */
+  // const stopTimer = () => {
+  //   setIsPause(true);
+  //   clearInterval(timer);
+  // };
 
-  /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
-  const showTimer = () => {
-    dispatch(setIsScrolled(false));
-  };
+  // /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
+  // const showTimer = () => {
+  //   dispatch(setIsScrolled(false));
+  // };
 
-  function msg_time() {
-    if (!isPause) {
-      let hours: string | number = Math.floor(
-        (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-      );
-      let miniutes: string | number = Math.floor(
-        (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
-      );
-      let seconds: string | number = Math.floor(
-        (RemainDate % (1000 * 60)) / 1000,
-      );
-      if (String(hours).length === 1) {
-        miniutes = `0${hours}`;
-      }
-      if (String(miniutes).length === 1) {
-        miniutes = `0${miniutes}`;
-      }
-      if (String(seconds).length === 1) {
-        seconds = `0${seconds}`;
-      }
+  // function msg_time() {
+  //   if (!isPause) {
+  //     let hours: string | number = Math.floor(
+  //       (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+  //     );
+  //     let miniutes: string | number = Math.floor(
+  //       (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
+  //     );
+  //     let seconds: string | number = Math.floor(
+  //       (RemainDate % (1000 * 60)) / 1000,
+  //     );
+  //     if (String(hours).length === 1) {
+  //       miniutes = `0${hours}`;
+  //     }
+  //     if (String(miniutes).length === 1) {
+  //       miniutes = `0${miniutes}`;
+  //     }
+  //     if (String(seconds).length === 1) {
+  //       seconds = `0${seconds}`;
+  //     }
 
-      let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
-      dispatch(setTimerMessage(m));
+  //     let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
+  //     dispatch(setTimerMessage(m));
 
-      if (RemainDate < 0) {
-        // 시간이 종료 되면
-        clearInterval(timer); // 타이머 해제
-      } else {
-        RemainDate = RemainDate - 1000; // 남은시간 -1초
-      }
-    }
-  }
+  //     if (RemainDate < 0) {
+  //       // 시간이 종료 되면
+  //       clearInterval(timer); // 타이머 해제
+  //     } else {
+  //       RemainDate = RemainDate - 1000; // 남은시간 -1초
+  //     }
+  //   }
+  // }
   /* Header Timer */
   useEffect(() => {
-    stopTimer();
-    startTimer();
+    // stopTimer();
+    // startTimer();
   }, []);
 
   /* 스크롤 위치 저장 useEffect */
@@ -134,7 +138,14 @@ function Header() {
   });
   /* 해당 모달 띄워져있을 시 스크롤바 제거 useEffect */
   useEffect(() => {
-    if (loginModal || signupModal || conChinProfileModal || mainKakaoModal)
+    if (
+      loginModal ||
+      signupModal ||
+      conChinProfileModal ||
+      mainKakaoModal ||
+      conChinProfileModal ||
+      conChinWritingModal
+    )
       document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'unset';
   });
@@ -195,7 +206,7 @@ function Header() {
     dispatch(showConcertModal(false)); // concertPage 모달창
     /* LandingPage */
     if (menu === 'logo') {
-      showTimer();
+      // showTimer();
       setSearchClicked(false);
     } else if (menu === 'main') {
       /* MainPage */
@@ -229,7 +240,12 @@ function Header() {
     /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */
     <div
       id={
-        loginModal || signupModal || conChinProfileModal || mainKakaoModal
+        loginModal ||
+        signupModal ||
+        conChinProfileModal ||
+        mainKakaoModal ||
+        conChinProfileModal ||
+        conChinWritingModal
           ? 'headerSecondContainer'
           : 'headerContainer'
       }
@@ -237,8 +253,8 @@ function Header() {
       {/* 스크롤 후 히든타이머 제거 */}
       <div
         id={isScrolled === false ? 'firstHiddenBar' : 'hiddenBar'}
-        onMouseOver={startTimer}
-        onMouseOut={stopTimer}
+        // onMouseOver={startTimer}
+        // onMouseOut={stopTimer}
       >
         {timerMessage}
       </div>
@@ -253,7 +269,7 @@ function Header() {
             }
             alt='logoImg'
             src={logo}
-            onClick={showTimer}
+            // onClick={showTimer}
           />
         </Link>
       </div>
@@ -276,19 +292,21 @@ function Header() {
           <img
             className='search'
             alt='searchImg'
-            src={search}
+            src={searchClicked ? yellowSearch : search}
             onClick={getAllConcerts}
           />
         </div>
         <div id='loginWrapper'>
           {/* 로그인 여부에 따라 프로필 이미지 혹은 로그인 버튼 출력 */}
           {isLogin ? (
-            <img
-              className='profile'
-              alt='profileImg'
-              src={userInfo.image ? userInfo.image : user}
-              onClick={() => dispatch(displayMyDropDown())}
-            />
+            <div id='profileWrapper'>
+              <img
+                className='profile'
+                alt='profileImg'
+                src={userInfo.image ? userInfo.image : user}
+                onClick={() => dispatch(displayMyDropDown())}
+              />
+            </div>
           ) : (
             <p className='login' onClick={() => dispatch(showLoginModal(true))}>
               로그인
