@@ -103,6 +103,7 @@
       }
     }
     #tabBar {
+      z-index: 10;
       position: absolute;
       display: flex;
       justify-content: space-between;
