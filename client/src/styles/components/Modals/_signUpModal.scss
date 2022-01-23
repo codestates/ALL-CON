@@ -161,6 +161,16 @@
             .textBoxMatch2 {
               width: 100%;
               height: 100%;
+              padding-left: 1%;
+              @include mobile-only() {
+                font-size: 1.5rem;
+              }
+              @include md() {
+                font-size: 1.75rem;
+              }
+              @include lg() {
+                font-size: 2rem;
+              }
             }
             #no0 {
               display: flex;
@@ -207,8 +217,16 @@
             }
           }
           .warningMsg {
-            font-size: 1.2rem;
             color: red;
+            @include mobile-only() {
+              font-size: 1rem;
+            }
+            @include md() {
+              font-size: 1.2rem;
+            }
+            @include lg() {
+              font-size: 1.2rem;
+            }
           }
           .duplicationMsg {
             font-size: 1.2rem;
@@ -222,10 +240,10 @@
         #bottomBox {
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
+          justify-content: space-between;
           width: 90%;
-          height: 23%;
-          margin-top: 5%;
+          height: 17.5%;
+          margin-top: 2.5%;
           // border: 1px solid blue;
           #agreeBox {
             display: flex;
@@ -233,7 +251,7 @@
             justify-content: space-between;
             width: 100%;
             height: 30%;
-            margin-bottom: 5%;
+            // margin-bottom: 5%;
             // border: 1px solid pink;
             .agreeAll {
               font-weight: bold;
@@ -307,7 +325,7 @@
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            height: 30%;
+            height: 37.5%;
             // border: 1px solid red;
             .fontMatch {
               font-weight: bold;
