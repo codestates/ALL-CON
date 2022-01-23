@@ -114,10 +114,6 @@
         animation: pulse;
         animation-duration: 0.5s;
       }
-      &:active {
-        animation: flash;
-        animation-duration: 0.5s;
-      }
       .img {
         position: absolute;
         @include mobile-only() {
