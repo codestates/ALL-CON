@@ -6,18 +6,13 @@
   
   <body style="font-family:sans-serif;">
     <header>
-      <div style="width:100%; align-items: center; text-align: center;">
-        <!-- <p style="color: white; font-size: 20px; font-weight: bold; text-align: center;"> 콘서트: <%= concertTitle %></p>
-        <p style="color: white; font-size: 20px; font-weight: bold; text-align: center;"> 티켓오픈일: <%= concertOpenDate %> </p> -->
-        <img style="height:70px;" src=<%=allconLogo %> />
-      </div>
-      <div style="width:100%; font-size: 20px; font-weight: bold; align-items: center; text-align: center; margin-bottom:5px;">
-        콘서트: <%= concertTitle %>
-      </div>
-      <div style="width:100%; font-size: 20px; font-weight: bold; align-items: center; text-align: center; margin-bottom:5px;">
+      <div style="width:100%; display: flex; height: 100px; background-color: #202020; color: white; font-size: 25px; font-weight: bold; justify-content: center; align-items: center; text-align: center;">
+        <h style="position: relative;">
+        <%= concertTitle %> <br/>
         티켓오픈일: <%= concertOpenDate %>
+      </h>
       </div>
-      <div style="background-color: #ffce63; width:100%; height: 5px; margin-bottom: 30px; background: radial-gradient(180deg, #ffce63, white); "></div>
+      <div style="background-color: #ffce63; width:100%; height: 8px; margin-bottom: 30px;"></div>
     </header>
 
     <section >
@@ -37,23 +32,22 @@
 
     <article>
 
-      <div style="width:100%; height: 30px; color: #191a20;; font-size: 30px; font-weight: bold; margin-bottom:10px; vertical-align: center;">
-        &nbsp;TOP6 CONCERTS
+      <div style="width:100%; height: 30px; color: #191a20;; font-size: 40px; font-weight: bold; margin-bottom:25px; vertical-align: center;">
+        &nbsp;&nbsp;TOP6 CONCERTS
       </div>
-      <div style="background-color:#ffce63; width:100%; height: 5px; margin-bottom: 30px; background: linear-gradient(to right,#ffce63, white); "></div>
+      <div style="background-color:#ffce63; width:100%; height: 5px; margin-bottom: 30px; background: linear-gradient(to right,#ffce63, white);"></div>
 
     </article>
 
       <article style="position: relative; display: flex; width: 100%; flex-wrap: wrap;">
       <% for(let i = 1; i <= hotConcertList.length; i++) {%>
-      <article style="width:45%; max-width:1500px; height: 150px; margin:0 auto; margin-bottom:30px; display: flex; justify-content: flex-start; align-items: center; border: 1px solid #c4c4c4; border-radius: 10px;">
-        <div style="display: flex; width: 60px; font-size: 18px; font-weight: bold; justify-content: center; text-align: center; vertical-align: center; align-items: center;"> 
-          <p style="position: relative;"><%= i %>위</p>
-        </div>
+      <article style="width:45%; max-width:1500px; height: 150px; margin:0 auto; margin-bottom:30px; display: flex; justify-content: flex-start; align-items: center; background-color:#F5F5F5; border: 1px solid #c4c4c4; border-radius: 10px;">
         <div style="position: relative; display: flex; justify-content: center; align-items: center; ">
-          <p style="position: relative;">
-          <a href='<%=hotConcertList[i-1].link %>' style="display: block; justify-content: center; align-items: center; text-decoration: none;" ><img style="position: relative; height:150px; width: 90px; margin-right: 10px; " src=<%=hotConcertList[i-1].image_concert %> /></a>
-          </p>
+
+            <p style="position: relative; width: 90px; height: 150px; margin-right: 10px; border-radius: 5px 0px 0px 5px;">
+          <a href='<%=hotConcertList[i-1].link %>' style="position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; text-decoration: none;" ><img style="position: relative; width: 100px; height:150px; border-radius: 5px 0px 0px 5px; object-fit: cover;" src=<%=hotConcertList[i-1].image_concert %> /></a>
+            </p>
+
           <div">
         <h3 style="display: flex; font-size: 18px; text-align: center;"> 
           <p style="position: relative; ">
@@ -66,20 +60,14 @@
       <%}%>
     </article>
 
-    <div style="width:100%; max-width:350px; margin:0 auto; text-align:center; margin-bottom:30px; z-index: 999;">
-    <div style="display: flex; justify-content: center; align-items: center; text-align:center; font-weight:bold; font-size: 20px; margin-bottom: 30px;">
-      <a href='https://all-con.kr' style="width: 100%; display: block; text-decoration: none; color: white; border-radius:8px; background-color:#ffce63;  padding:10px; margin-bottom:10px;" target="_blank" >ALL-CON 바로가기</a>
-    </div>
-    </div>
-
     </section>
-    <footer style="font-size:14px; padding:20px; color:#A9A9A9; text-align:center;">
-      <div style="background-color:#ffce63; width:100%; height: 5px; margin-bottom: 30px; background: linear-gradient(to 0deg, #ffce63, white); "></div>
-      <div style="margin-bottom: 20px;">
-        <img style="height:70px;" src=<%=allconLogo %> />
+    <div style="width: 100%; height: 8px; background-color:#ffce63; "></div>
+    <footer style="font-size:14px; padding:20px; background-color: #202020; color: white; text-align:center;">
+      <div style="margin-bottom: 10px;">
+        <a href='https://all-con.kr' style="display: block; justify-content: center; align-items: center; text-decoration: none;" ><img style="height:70px;" src=<%=allconLogo %> /></a>
       </div>
 			<p>Copyright ⓒ 2021-2022 weAct. All rights  reserved.</p>
-			<p style="font-size:12px;">본 메일은 발신전용입니다.<br/>문의사항이 있으시다면 <a href='https://github.com/joykim93/ALL-CON'>ALL-CON Github</a>를 확인해주세요.</p>
+			<p style="font-size:12px;">본 메일은 발신전용입니다.<br/>문의사항이 있으시다면 <a href='https://github.com/codestates/ALL-CON' style="text-decoration: none; color: #ffce63;">ALL-CON Github</a>를 확인해주세요.</p>
       <br/>
       <div style="display: flex; justify-content: center;">
         <img style="height:30px;  margin-right: 20px; top:10px;" src=<%=youtubeLogo %> />
