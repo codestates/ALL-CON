@@ -1197,15 +1197,15 @@
     }
     @include md() {
       display: flex;
-      width: 25px;
-      height: 25px;
+      width: 23px;
+      height: 23px;
     }
     @include lg() {
       display: flex;
       position: absolute;
       right: 190%;
-      width: 25px;
-      height: 25px;
+      width: 23px;
+      height: 23px;
     }
     &:hover {
       cursor: pointer;
@@ -1371,7 +1371,7 @@
   align-items: center;
 
   height: 100%;
-  border: 1px solid red;
+  // border: 1px solid red;
   @include mobile-only() {
     width: 145%;
     right: 2%;
