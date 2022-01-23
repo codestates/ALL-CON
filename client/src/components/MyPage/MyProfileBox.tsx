@@ -135,13 +135,12 @@ function MyProfileBox() {
           </div>
           {/* 유저네임 (username) */}
           <p className='nickName'> {`${userInfo.username}`} </p>
-          <div id='shieldWrapper'>
-          </div>
         </div>
         {/* 자기소개 */}
         <div id='textWrapper'>
           {
-            myIntroductionState
+            btnSwitchState?.profileEdit
+            // myIntroductionState
             ? <textarea id='introduction' maxLength={40} placeholder={ userInfo.introduction ? userInfo.introduction : '자기소개를 입력해주세요.'} onChange={inputIntroduction}></textarea>
             : <div id='introduction'>{userInfo.introduction}</div> 
           }

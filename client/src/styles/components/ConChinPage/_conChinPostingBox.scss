@@ -102,7 +102,7 @@
       display: flex;
       align-items: center;
       border-radius: 5px;
-      transition: 0.15s all;
+      transition: 0.5s all;
       border: 1px solid white;
 
       @include mobile-only() {
@@ -121,9 +121,11 @@
         right: 1%;
       }
       &:hover {
+        animation: pulse;
+        animation-duration: 0.5s;
         box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.1);
         cursor: pointer;
-        transition: 0.15s all;
+        // transition: 0.15s all;
       }
       &Chosen {
         z-index: 16;
@@ -135,6 +137,10 @@
         transition: 0.15s all;
         top: 0%;
         right: 3.3%;
+        animation: none;
+        &:hover {
+          animation: none;
+        }
         @include mobile-only() {
           height: 70%;
           width: 100%;

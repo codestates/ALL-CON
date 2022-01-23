@@ -127,6 +127,10 @@ function MainComment() {
       setLineError(true);
       dispatch(insertAlertText('3줄이상 입력은 불가능합니다! 🙂'));
       dispatch(showAlertModal(true));
+      /* 현재 줄수를 1줄 줄이고, 마지막 문자를 삭제해준다. */
+      setLine(2);
+      if(!editMode) dispatch(setInputComment(text.slice(0,-1)));
+      else dispatch(setEditComment(text.slice(0,-1)));
     } else {
       setLineError(false);
     }
@@ -295,27 +299,27 @@ function MainComment() {
 
   return (
     <div id='commentBox'>
-      {/* 로그인시 보일 댓글 작성 영역 */}
-      {isLogin && (
-        <div className='writeBox'>
-          <div className='nicknameBox'>
-            <div className='nameWrapper'>
-              {isLogin && userInfo.role !== 3 && (
-                <img className='shield' src={shield} alt='인증 뱃지' />
-              )}
-              <p className='nickName'>
-                {isLogin ? userInfo.username + ' 님' : '로그인이 필요합니다.'}
-              </p>
-            </div>
-            <p className={byteError ? 'byteError' : 'byte'}>{byteLength} / 120byte</p>
+      {/* 댓글 작성 영역 */}
+      <div className='writeBox'>
+        <div className='nicknameBox'>
+          <div className='nameWrapper'>
+            {isLogin && userInfo.role !== 3 && (
+              <img className='shield' src={shield} alt='인증 뱃지' />
+            )}
+            {isLogin && <p className='nickName'>
+              {userInfo.username} 님
+            </p>}
           </div>
-          <div className='commentBodyBox'>
-            <div className='imgWrapper'>
-              {isLogin && (
-                <img className='img' src={userInfo.image} alt='프로필 사진' />
-              )}
-            </div>
-            <div className='bodyWrapper'>
+          <p className={byteError ? 'byteError' : 'byte'}>{byteLength} / 120byte</p>
+        </div>
+        <div className='commentBodyBox'>
+          <div className='imgWrapper'>
+            {isLogin && (
+              <img className='img' src={userInfo.image} alt='프로필 사진' />
+            )}
+          </div>
+          <div className='bodyWrapper'>
+            {isLogin ? 
               <textarea
                 id='input'
                 placeholder='댓글을 입력해주세요.'
@@ -325,22 +329,33 @@ function MainComment() {
                   setClickId(0);
                   setEditMode(false);
                 }}
-              ></textarea>
+              ></textarea> : 
+              <div id='inputNotLogin'>댓글 작성은 로그인을 해주세요!</div>
+            }
+            {isLogin ? 
               <div id='inputBtn' onClick={commentHandler}>
                 작성하기
+              </div> : 
+              <div id='hiddenBtn'>
+                작성하기
               </div>
-            </div>
+            }
           </div>
         </div>
-      )}
+      </div>
 
       {/* 댓글 목록 map */}
       {pageAllComments.length!==0 && pageAllComments.map((el, idx) => (
         <div className='box' key={idx}>
           <div className='dateBox'>
-            <p className='nickNameAndDate'>
-              {el.User.username} | {dayFormatter(el.createdAt).substring(0, 10)}
-            </p>
+            <div className='nickNameAndDateWrapper'>
+              {el.User.role !== 3 && (
+                <img className='shield' src={shield} alt='인증 뱃지' />
+              )}
+              <p className='nickNameAndDate'>
+                {el.User.username} | {dayFormatter(el.createdAt).substring(0, 10)}
+              </p>
+            </div>
             <div className='optionWrapper'>
               {/* 수정하기 버튼 클릭시 */}
               {(userInfo.id === el.user_id) && (el.id !== clickId) &&  (
@@ -392,9 +407,6 @@ function MainComment() {
           <div id='imgAndText'>
             <div className='imgWrapper' onClick={()=> getTargetCommentsUserInfo(el.user_id)}>
               <img className='img' src={el.User.image} alt='프로필 사진' />
-              {el.User.role !== 3 && (
-                <img className='shield' src={shield} alt='인증 뱃지' />
-              )}
             </div>
             <div className='textWrapper'>
               {el.id === clickId ? (

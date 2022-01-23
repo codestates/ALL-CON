@@ -97,6 +97,8 @@
     }
 
     #jumboClassify {
+      animation: rubberBand;
+      animation-duration: 2s;
       color: #fff;
       @include mobile-only() {
         font-size: 2.5rem;
@@ -142,6 +144,8 @@
     position: absolute;
     width: 100%;
     // border: 3px solid red;
+    overflow-x: hidden;
+    overflow-y: hidden;
     @include mobile-only() {
       height: 250%;
       top: 45%;
@@ -151,8 +155,8 @@
       top: 60%;
     }
     @include lg() {
-      height: 520%;
-      top: 78%;
+      height: 530%;
+      top: 100%;
     }
 
     #firstImgAnimated {
@@ -170,9 +174,12 @@
         height: 13%;
       }
       animation: moveToLeft 2s;
+      animation-iteration-count: 1;
       -moz-animation: moveToLeft 2s; /* Firefox */
       -webkit-animation: moveToLeft 2s; /* Safari and Chrome */
       -o-animation: moveToLeft 2s; /* Opera */
+      // -webkit-animation-fill-mode: both;
+      animation-fill-mode: forwards;
       @keyframes moveToLeft {
         from {
           transform: translate(100%, 0);
@@ -385,6 +392,7 @@
       -moz-animation: moveToRight 2s; /* Firefox */
       -webkit-animation: moveToRight 2s; /* Safari and Chrome */
       -o-animation: moveToRight 2s; /* Opera */
+      animation-fill-mode: forwards;
       @keyframes moveToRight {
         from {
           transform: translate(-100%, 0);
@@ -946,7 +954,7 @@
     }
     @include lg() {
       height: 40%;
-      top: 610%;
+      top: 640%;
     }
     #bottomAlignBox {
       display: flex;
@@ -1069,7 +1077,7 @@
     @include lg() {
       width: 100%;
       height: 38%;
-      top: 650%;
+      top: 680%;
     }
     // border: 1px solid red;
     #landingFooterWrapper {

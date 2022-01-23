@@ -17,14 +17,17 @@
       align-items: center;
       justify-content: center;
       @include mobile-only() {
-        width: 20%;
+        left: 0.75%;
+        width: 18.5%;
         height: 80px;
       }
       @include md() {
-        width: 20%;
+        left: 1.25%;
+        width: 17.5%;
         height: 150px;
       }
       @include lg() {
+        width: 20%;
         height: 150px;
       }
       overflow: hidden;
@@ -140,6 +143,14 @@
           width: 50%;
           height: 100%;
           // border: 1px solid green;
+          @include mobile-only() {
+            margin-right: 0.75%;
+          }
+          @include md() {
+            margin-right: 1.25%;
+          }
+          @include lg() {
+          }
           .viewWrapper {
             display: flex;
             flex-direction: rows;
@@ -172,7 +183,7 @@
             width: 100%;
             height: 70%;
             align-items: center;
-            justify-self: right;
+            justify-content: right;
             font-weight: bold;
             @include mobile-only() {
               font-size: 1.1rem;
@@ -191,7 +202,6 @@
 }
 #concertBoxOuterContainer :hover {
   // border: 1px solid red;
-  
   #poster {
     filter: brightness(30%);
     transition: 0.25s;
@@ -229,20 +239,27 @@
   transition: 0.25s all;
   #concertBoxContainer {
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 100%;
     .imgWrapper {
+      position: relative;
       align-items: center;
-      width: 20%;
+      justify-content: center;
       @include mobile-only() {
-        height: 75px;
+        left: 0.75%;
+        width: 18.5%;
+        height: 80px;
       }
       @include md() {
+        left: 1.25%;
+        width: 17.5%;
         height: 150px;
       }
       @include lg() {
+        width: 20%;
         height: 150px;
       }
       overflow: hidden;
@@ -253,12 +270,7 @@
         border-radius: 10px;
       }
       #round {
-        z-index: 4;
-        top: -50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        align-items: center;
-        border-radius: 50%;
+        display: none;
       }
     }
 
@@ -345,6 +357,14 @@
           width: 50%;
           height: 100%;
           // border: 1px solid green;
+          @include mobile-only() {
+            margin-right: 0.75%;
+          }
+          @include md() {
+            margin-right: 1.25%;
+          }
+          @include lg() {
+          }
           .viewWrapper {
             display: flex;
             flex-direction: rows;
@@ -377,7 +397,7 @@
             width: 100%;
             height: 70%;
             align-items: center;
-            justify-self: right;
+            justify-content: right;
             font-weight: bold;
             @include mobile-only() {
               font-size: 1.1rem;

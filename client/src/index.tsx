@@ -1,5 +1,7 @@
 /* Module import */
 import ScrollToTop from './components/ScrollToTop';
+/* animation import */
+import 'animate.css';
 /* CSS import */
 import './style.css';
 /* Component import */

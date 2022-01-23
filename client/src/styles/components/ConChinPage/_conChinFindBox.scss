@@ -91,6 +91,7 @@
       border-radius: 5px;
       color: white;
       font-weight: bold;
+      cursor: pointer;
       @include mobile-only() {
         width: 80%;
         padding-left: 17%;
@@ -108,9 +109,6 @@
         padding-left: 6.5%;
         font-size: 2rem;
         height: 45%;
-      }
-      &:hover {
-        cursor: pointer;
       }
       .img {
         position: absolute;

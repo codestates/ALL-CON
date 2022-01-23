@@ -91,6 +91,8 @@
 
       #jumboClassify {
         color: $yellow;
+        animation: rubberBand;
+        animation-duration: 1s;
         @include mobile-only() {
           font-size: 30px;
         }
@@ -103,6 +105,7 @@
       }
     }
     #tabBar {
+      z-index: 10;
       position: absolute;
       display: flex;
       justify-content: space-between;
@@ -141,12 +144,27 @@
       }
       #hot {
         border-bottom: 2px solid #fff;
+        &:hover {
+          cursor: pointer;
+          animation: pulse;
+          animation-duration: 0.5s;
+        }
       }
       #near {
         border-bottom: 2px solid #fff;
+        &:hover {
+          cursor: pointer;
+          animation: pulse;
+          animation-duration: 0.5s;
+        }
       }
       #new {
         border-bottom: 2px solid #fff;
+        &:hover {
+          cursor: pointer;
+          animation: pulse;
+          animation-duration: 0.5s;
+        }
       }
     }
   }

@@ -78,7 +78,15 @@ function ConChinWritingModal() {
   const handleArticleTitle = async (
     e: React.ChangeEvent<HTMLInputElement>,
   ): Promise<void> => {
-    setTitle(e.target.value);
+    if (title.length < 21) {
+      setTitle(e.target.value);
+    } else {
+      let exceptOneWord: string = '';
+      for (let i = 0; i < title.length - 1; i++) exceptOneWord += title[i];
+      setTitle(exceptOneWord);
+      dispatch(insertAlertText('제목의 글자수는 20자를 넘을 수 없어요! 😖'));
+      dispatch(showAlertModal(true));
+    }
   };
 
   // (input) 모집중인 콘친 수
@@ -151,6 +159,12 @@ function ConChinWritingModal() {
     if (title.length === 0 || title === undefined) {
       dispatch(insertAlertText('제목을 입력해 주세요! 😖'));
       dispatch(showAlertModal(true));
+    } else if (title.length > 20) {
+      let exceptOneWord: string = '';
+      for (let i = 0; i < 20; i++) exceptOneWord += title[i];
+      setTitle(exceptOneWord);
+      dispatch(insertAlertText('제목의 글자수는 20자를 넘을 수 없어요! 😖'));
+      dispatch(showAlertModal(true));
     } else if (Number(numPresentConchin) > Number(numTotalConchin)) {
       dispatch(
         insertAlertText('현재 모인 콘친 수가 모집 중인 콘친수보다 높아요! 😖'),
@@ -210,6 +224,12 @@ function ConChinWritingModal() {
     console.log(target.id);
     if (title.length === 0 || title === undefined) {
       dispatch(insertAlertText('제목을 입력해 주세요! 😖'));
+      dispatch(showAlertModal(true));
+    } else if (title.length > 20) {
+      let exceptOneWord: string = '';
+      for (let i = 0; i < 20; i++) exceptOneWord += title[i];
+      setTitle(exceptOneWord);
+      dispatch(insertAlertText('제목의 글자수는 20자를 넘을 수 없어요! 😖'));
       dispatch(showAlertModal(true));
     } else if (Number(numPresentConchin) > Number(numTotalConchin)) {
       dispatch(

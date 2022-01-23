@@ -6,7 +6,6 @@
   .sliderWrapper {
     width: 100%;
     height: 100%;
-    // overflow-x: scroll;
     // border: 1px solid yellow;
     .edge_l {
       position: relative;
@@ -25,43 +24,63 @@
         width: 20vw;
         height: 50vh;
       }
-      img {
+      .card {
         position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        @include mobile-only() {
-          width: 70%;
-          height: 60%;
-        }
-        @include md() {
-          width: 70%;
-          height: 70%;
-        }
-        @include lg() {
-          width: 70%;
-          height: 70%;
-        }
-      }
-      .posterCover2 {
-        z-index: 2;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -150%);
-        background-color: rgba(0, 0, 0, 0.8);
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
         // border: 1px solid red;
+        &:active {
+          transform: rotateY(180deg);
+        }
         @include mobile-only() {
           width: 70%;
           height: 60%;
+          margin-left: 15%;
+          margin-top: 55%;
         }
         @include md() {
           width: 70%;
           height: 70%;
+          margin-left: 15%;
+          margin-top: 35%;
         }
         @include lg() {
           width: 70%;
-          height: 70%;
+          height: 65%;
+          margin-left: 15%;
+          margin-top: 28%;
+        }
+        .front {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          .posterCover2 {
+            z-index: 5;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            height: 100%;
+          }
+          .frontImg {
+            position: relative;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          transform: rotateY(180deg);
         }
       }
     }
@@ -82,43 +101,63 @@
         width: 20vw;
         height: 50vh;
       }
-      img {
+      .card {
         position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        @include mobile-only() {
-          width: 80%;
-          height: 65%;
-        }
-        @include md() {
-          width: 80%;
-          height: 75%;
-        }
-        @include lg() {
-          width: 80%;
-          height: 80%;
-        }
-      }
-      .posterCover {
-        z-index: 2;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -150%);
-        background-color: rgba(0, 0, 0, 0.5);
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
         // border: 1px solid red;
+        &:active {
+          transform: rotateY(180deg);
+        }
         @include mobile-only() {
           width: 80%;
-          height: 65%;
+          height: 70%;
+          margin-left: 10%;
+          margin-top: 40%;
         }
         @include md() {
           width: 80%;
-          height: 75%;
+          height: 80%;
+          margin-left: 10%;
+          margin-top: 25%;
         }
         @include lg() {
           width: 80%;
-          height: 80%;
+          height: 75%;
+          margin-left: 10%;
+          margin-top: 20%;
+        }
+        .front {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          .posterCover {
+            z-index: 5;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            height: 100%;
+          }
+          .frontImg {
+            position: relative;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          transform: rotateY(180deg);
         }
       }
     }
@@ -139,101 +178,109 @@
         width: 20vw;
         height: 50vh;
       }
-      img {
+      .card {
         position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
+        // border: 1px solid red;
         @include mobile-only() {
-          width: 95%;
-          height: 76%;
+          box-shadow: 0px 0px 3px 3px #606060;
+        }
+        @include md() {
+          box-shadow: 0px 0px 5px 5px #606060;
+        }
+        @include lg() {
+          box-shadow: 0px 0px 6px 6px #606060;
+        }
+        &:active {
+          transform: rotateY(180deg);
+        }
+
+        @include mobile-only() {
+          width: 100%;
+          height: 80%;
+          margin-top: 30%;
         }
         @include md() {
           width: 100%;
-          height: 80%;
+          height: 85%;
+
+          margin-top: 17.5%;
         }
         @include lg() {
           width: 90%;
-          height: 90%;
+          height: 85%;
+          margin-left: 5%;
+          margin-top: 13%;
         }
-      }
-      #alignDay {
-        position: relative;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        transition: all 1s ease;
-        @include mobile-only() {
+        .frontImg {
+          position: absolute;
           width: 100%;
-          top: -26%;
-          height: 76%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
         }
-        @include md() {
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
-          top: -30%;
-          height: 80%;
-        }
-        @include lg() {
-          width: 90%;
-          top: -40%;
-          height: 90%;
-        }
-        #dDay {
-          display: none;
-        }
-      }
-      &:hover {
-        #alignDay {
-          position: relative;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          box-shadow: 3px 3px 14px 1px #606060;
-          cursor: pointer;
-          transition: all 1s ease;
-          @include mobile-only() {
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          transform: rotateY(180deg);
+          #alignDay {
+            z-index: 5;
+            position: relative;
+            // border: 2px solid yellow;
             width: 100%;
-            top: -26%;
-            height: 76%;
+            height: 100%;
+            #dDay {
+              z-index: 50;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              color: #fff;
+              font-weight: bold;
+              @include mobile-only() {
+                width: 70%;
+                height: 30%;
+                border: 4px solid $yellow;
+                font-size: 1.5rem;
+              }
+              @include md() {
+                width: 75%;
+                height: 43%;
+                border: 5px solid $yellow;
+                font-size: 3.5rem;
+              }
+              @include lg() {
+                width: 75%;
+                height: 58%;
+                border: 6px solid $yellow;
+                font-size: 5rem;
+              }
+            }
           }
-          @include md() {
+        }
+        &:active {
+          #alignDay {
+            position: relative;
             width: 100%;
-            top: -30%;
-            height: 80%;
+            height: 100%;
+            cursor: pointer;
+            box-shadow: inset 10px 10px 10px -5px rgba(0, 0, 0, 0.7);
           }
-          @include lg() {
-            width: 90%;
-            top: -40%;
-            height: 90%;
-          }
-          #dDay {
-            z-index: 50;
+          .backImg {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            color: #fff;
-            font-weight: bold;
-            @include mobile-only() {
-              width: 70%;
-              height: 30%;
-              border: 4px solid $yellow;
-              font-size: 1.5rem;
-            }
-            @include md() {
-              width: 75%;
-              height: 48%;
-              border: 5px solid $yellow;
-              font-size: 4rem;
-            }
-            @include lg() {
-              width: 75%;
-              height: 58%;
-              border: 6px solid $yellow;
-              font-size: 5rem;
-            }
+            top: 0%;
+            width: 100%;
+            height: 100%;
           }
         }
       }
@@ -255,43 +302,63 @@
         width: 20vw;
         height: 50vh;
       }
-      img {
+      .card {
         position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        @include mobile-only() {
-          width: 80%;
-          height: 65%;
-        }
-        @include md() {
-          width: 80%;
-          height: 75%;
-        }
-        @include lg() {
-          width: 80%;
-          height: 80%;
-        }
-      }
-      .posterCover {
-        z-index: 2;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -150%);
-        background-color: rgba(0, 0, 0, 0.5);
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
         // border: 1px solid red;
+        &:active {
+          transform: rotateY(180deg);
+        }
         @include mobile-only() {
           width: 80%;
-          height: 65%;
+          height: 70%;
+          margin-left: 10%;
+          margin-top: 40%;
         }
         @include md() {
           width: 80%;
-          height: 75%;
+          height: 80%;
+          margin-left: 10%;
+          margin-top: 25%;
         }
         @include lg() {
           width: 80%;
-          height: 80%;
+          height: 75%;
+          margin-left: 10%;
+          margin-top: 20%;
+        }
+        .front {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          .posterCover {
+            z-index: 5;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            height: 100%;
+          }
+          .frontImg {
+            position: relative;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          transform: rotateY(180deg);
         }
       }
     }
@@ -313,43 +380,63 @@
         width: 20vw;
         height: 50vh;
       }
-      img {
+      .card {
         position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        @include mobile-only() {
-          width: 70%;
-          height: 60%;
-        }
-        @include md() {
-          width: 70%;
-          height: 70%;
-        }
-        @include lg() {
-          width: 70%;
-          height: 70%;
-        }
-      }
-      .posterCover2 {
-        z-index: 2;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -150%);
-        background-color: rgba(0, 0, 0, 0.8);
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
         // border: 1px solid red;
+        &:active {
+          transform: rotateY(180deg);
+        }
         @include mobile-only() {
           width: 70%;
           height: 60%;
+          margin-left: 15%;
+          margin-top: 55%;
         }
         @include md() {
           width: 70%;
           height: 70%;
+          margin-left: 15%;
+          margin-top: 35%;
         }
         @include lg() {
           width: 70%;
-          height: 70%;
+          height: 65%;
+          margin-left: 15%;
+          margin-top: 28%;
+        }
+        .front {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          .posterCover2 {
+            z-index: 5;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            height: 100%;
+          }
+          .frontImg {
+            position: relative;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          transform: rotateY(180deg);
         }
       }
     }
@@ -370,43 +457,63 @@
         width: 20vw;
         height: 50vh;
       }
-      img {
+      .card {
         position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        @include mobile-only() {
-          width: 70%;
-          height: 60%;
-        }
-        @include md() {
-          width: 70%;
-          height: 70%;
-        }
-        @include lg() {
-          width: 70%;
-          height: 70%;
-        }
-      }
-      .posterCover2 {
-        z-index: 2;
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -150%);
-        background-color: rgba(0, 0, 0, 0.8);
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
         // border: 1px solid red;
+        &:active {
+          transform: rotateY(180deg);
+        }
         @include mobile-only() {
           width: 70%;
           height: 60%;
+          margin-left: 15%;
+          margin-top: 55%;
         }
         @include md() {
           width: 70%;
           height: 70%;
+          margin-left: 15%;
+          margin-top: 35%;
         }
         @include lg() {
           width: 70%;
-          height: 70%;
+          height: 65%;
+          margin-left: 15%;
+          margin-top: 28%;
+        }
+        .front {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          .posterCover2 {
+            z-index: 5;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            height: 100%;
+          }
+          .frontImg {
+            position: relative;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          transform: rotateY(180deg);
         }
       }
     }
@@ -416,6 +523,10 @@
       position: absolute;
       top: 40%;
       cursor: pointer;
+      & :hover {
+        animation: pulse;
+        animation-duration: 0.5s;
+      }
       // border: 1px solid red;
       @include mobile-only() {
         display: none;
@@ -446,6 +557,9 @@
     .next {
       right: 0%;
       opacity: 25%;
+      &:hover {
+        opacity: 70%;
+      }
       @include md() {
         right: -3%;
       }
@@ -454,13 +568,17 @@
     .prev {
       left: 0%;
       opacity: 25%;
+      &:hover {
+        opacity: 70%;
+      }
       @include md() {
         left: -3%;
       }
     }
   }
-  #sliderBar {
-    width: 50vw;
-    border: 2px solid red;
-  }
+  // #sliderBar {
+  //   width: 75vw;
+  //   border: 2px solid red;
+  //   background-color: transparent;
+  // }
 }

@@ -46,31 +46,31 @@
 
     @include mobile-only() {
       height: 90%;
-      width: 70%;
+      width: 58%;
     }
     @include md() {
-      height: 50%;
-      width: 80%;
-      bottom: 18%;
+      height: 100%;
+      width: 65%;
     }
     @include lg() {
-      height: 50%;
-      width: 80%;
-      bottom: 10%;
+      height: 100%;
+      width: 65%;
     }
-    // border:1px solid blue;
+
+    // border: 1px solid blue;
 
     .text {
+      position: absolute;
       @include mobile-only() {
-        font-size: 2rem;
+        font-size: 1.3rem;
       }
       @include md() {
-        font-size: 3rem;
+        font-size: 2.2rem;
       }
       @include lg() {
-        font-size: 4rem;
+        font-size: 3.5rem;
       }
-      // border:1px solid blue;
+      // border: 1px solid blue;
     }
   }
   #profileBox {
@@ -78,21 +78,24 @@
     display: flex;
     align-items: center;
     justify-content: right;
-    width: 35%;
-    right: 2%;
 
     @include mobile-only() {
-      height: 80%;
+      height: 100%;
+      width: 42%;
+      right: 0%;
     }
     @include md() {
-      height: 50%;
-      bottom: 18%;
+      height: 100%;
+      right: 0%;
+      width: 35%;
     }
     @include lg() {
-      height: 50%;
-      bottom: 8%;
+      height: 100%;
+      bottom: 0%;
+      right: 0%;
+      width: 35%;
     }
-    // border:1px solid blue;
+    // border: 1px solid blue;
     .img {
       position: relative;
       border-radius: 100%;
@@ -102,21 +105,21 @@
       }
       @include mobile-only() {
         bottom: 5%;
-        right: 3%;
-        width: 25px;
-        height: 25px;
+        right: 2%;
+        width: 1.5rem;
+        height: 1.5rem;
       }
       @include md() {
-        bottom: 15%;
+        bottom: 8%;
         right: 2%;
-        width: 33px;
-        height: 33px;
+        width: 2.5rem;
+        height: 2.5rem;
       }
       @include lg() {
-        bottom: 10%;
+        bottom: 3%;
         right: 2%;
-        width: 40px;
-        height: 40px;
+        width: 3.5rem;
+        height: 3.5rem;
       }
     }
   }
@@ -431,7 +434,7 @@
     height: 20%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 65%;
+      top: 85%;
       height: 15%;
     }
     @include md() {

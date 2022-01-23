@@ -4,6 +4,7 @@ import { persistor } from '../index';
 import logo from '../images/allConLogo.png';
 import menu from '../images/menu.png';
 import search from '../images/search.png';
+import yellowSearch from '../images/yellowSearch.png';
 import user from '../images/user.png';
 /* Component import */
 import AutoComplete from './AutoComplete';
@@ -14,6 +15,8 @@ import {
   showSideMenuModal,
   showMyDropDown,
   showConcertModal,
+  showConChinProfileModal,
+  showConChinWritingModal,
 } from '../store/ModalSlice';
 import {
   setAllArticles,
@@ -55,6 +58,7 @@ function Header() {
     sideMenuModal,
     myDropDown,
     conChinProfileModal,
+    conChinWritingModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
   const { isScrolled, scrollCount, timerMessage, headerAllConcerts } =
@@ -134,7 +138,14 @@ function Header() {
   });
   /* 해당 모달 띄워져있을 시 스크롤바 제거 useEffect */
   useEffect(() => {
-    if (loginModal || signupModal || conChinProfileModal || mainKakaoModal)
+    if (
+      loginModal ||
+      signupModal ||
+      conChinProfileModal ||
+      mainKakaoModal ||
+      conChinProfileModal ||
+      conChinWritingModal
+    )
       document.body.style.overflow = 'hidden';
     else document.body.style.overflow = 'unset';
   });
@@ -229,7 +240,12 @@ function Header() {
     /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */
     <div
       id={
-        loginModal || signupModal || conChinProfileModal || mainKakaoModal
+        loginModal ||
+        signupModal ||
+        conChinProfileModal ||
+        mainKakaoModal ||
+        conChinProfileModal ||
+        conChinWritingModal
           ? 'headerSecondContainer'
           : 'headerContainer'
       }
@@ -276,19 +292,21 @@ function Header() {
           <img
             className='search'
             alt='searchImg'
-            src={search}
+            src={searchClicked ? yellowSearch : search}
             onClick={getAllConcerts}
           />
         </div>
         <div id='loginWrapper'>
           {/* 로그인 여부에 따라 프로필 이미지 혹은 로그인 버튼 출력 */}
           {isLogin ? (
-            <img
-              className='profile'
-              alt='profileImg'
-              src={userInfo.image ? userInfo.image : user}
-              onClick={() => dispatch(displayMyDropDown())}
-            />
+            <div id='profileWrapper'>
+              <img
+                className='profile'
+                alt='profileImg'
+                src={userInfo.image ? userInfo.image : user}
+                onClick={() => dispatch(displayMyDropDown())}
+              />
+            </div>
           ) : (
             <p className='login' onClick={() => dispatch(showLoginModal(true))}>
               로그인
