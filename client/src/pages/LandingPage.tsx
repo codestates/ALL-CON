@@ -26,6 +26,8 @@ function LandingPage() {
   const { targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
+  /*현재 스크린 크기 */
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
   /* 스크롤 바 위치 */
   const [scrollPosition, setScrollPosition] = useState(0);
   /* 애니메이션 상태 여부 */
@@ -58,6 +60,19 @@ function LandingPage() {
     }
   }, [scrollPosition]);
 
+  /*현재 스크린 크기 감지*/
+  // -> 여기 현재 스크린이 막 변할때 감지하는게 없음.
+  // 모바일, 탭 왔다갔다할때 scrollPosition이 유동적으로 변하지x
+  useEffect(() => {
+    console.log(windowSize);
+    if (windowSize < 1200) {
+      check3();
+      if (windowSize < 767) {
+        check2();
+      }
+    }
+  }, [windowSize]);
+
   /*전체 콘서트 받아오기(1회) */
   const getAllConcerts = async () => {
     try {
@@ -76,6 +91,7 @@ function LandingPage() {
     }
   };
 
+  /*데스크탑 사이즈 스크롤 확인 함수 */
   const check = () => {
     if (scrollPosition > 4300) {
       setAnimation5(true);
@@ -94,19 +110,20 @@ function LandingPage() {
       }
     }
   };
-
+  /*모바일 사이즈 스크롤 확인 함수 */
   const check2 = () => {
     if (scrollPosition > 1590) {
       setAnimation5(true);
-      console.log(animation5);
-      console.log(scrollPosition);
       if (scrollPosition > 1100) {
         setAnimation4(true);
         if (scrollPosition > 700) {
           setAnimation3(true);
           if (scrollPosition > 200) {
+            console.log('animation2', animation2);
             setAnimation2(true);
-            if (scrollPosition > 0) {
+            if (scrollPosition > 200) {
+              console.log(scrollPosition);
+              console.log('animation', animation);
               setAnimation(true);
             }
           }
@@ -114,7 +131,7 @@ function LandingPage() {
       }
     }
   };
-
+  /*탭 사이즈 스크롤 확인 함수 */
   const check3 = () => {
     if (scrollPosition > 2800) {
       setAnimation5(true);
@@ -160,7 +177,9 @@ function LandingPage() {
           <img id='firstImgAnimated' src={img1} alt='밴드 일러스트'></img>
           <div
             className={
-              scrollPosition > 0 || animation ? 'alignBoxAnimated' : 'alignBox'
+              scrollPosition > 200 || animation
+                ? 'alignBoxAnimated'
+                : 'alignBox'
             }
           >
             <div id='paddingBox'>
@@ -239,6 +258,26 @@ function LandingPage() {
                 <p>않을 수 있어요!</p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/*하단 박스 */}
+        <div id='bottomBox'>
+          <div id='bottomAlignBox'>
+            <div id='bottomTextBox'>
+              <p>ALL-CON에서</p>
+              <p>예매부터 동료찾기까지</p>
+              <p>한번에 해결해요!</p>
+            </div>
+            <button id='goBtn' onClick={() => navigate('/main')}>
+              시작하기
+            </button>
+          </div>
+        </div>
+        {/*바닥글*/}
+        <div id='fullFooter'>
+          <div id='landingFooterWrapper'>
+            <Footer />
           </div>
         </div>
 
