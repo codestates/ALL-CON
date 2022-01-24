@@ -127,6 +127,10 @@ function MainComment() {
       setLineError(true);
       dispatch(insertAlertText('3줄이상 입력은 불가능합니다! 🙂'));
       dispatch(showAlertModal(true));
+      /* 현재 줄수를 1줄 줄이고, 마지막 문자를 삭제해준다. */
+      setLine(2);
+      if(!editMode) dispatch(setInputComment(text.slice(0,-1)));
+      else dispatch(setEditComment(text.slice(0,-1)));
     } else {
       setLineError(false);
     }

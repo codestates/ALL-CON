@@ -117,10 +117,6 @@
     animation: pulse;
     animation-duration: 0.5s;
   }
-  &:active {
-    animation: flash;
-    animation-duration: 0.5s;
-  }
 }
 /****** orderBox ******/
 
@@ -640,10 +636,6 @@
       animation: pulse;
       animation-duration: 0.5s;
     }
-    &:active {
-      animation: flash;
-      animation-duration: 0.5s;
-    }
   }
   .text {
     position: absolute;
@@ -712,13 +704,13 @@
         position: relative;
         display: flex;
         align-items: flex-start;
-        width: 50%;
+        width: 100%;
         height: 90%;
         // border:1px solid blue;
         .nickName {
           position: relative;
           display: flex;
-          width: 48.5%;
+          width: 100%;
           height: 100%;
           align-items: center;
           color: $gray;
@@ -779,7 +771,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        
+
         width: 10%;
         height: 75%;
         @include mobile-only() {
@@ -925,7 +917,7 @@
         position: relative;
         display: flex;
         align-items: flex-start;
-        width: 50%;
+        width: 65%;
         height: 90%;
         // border: 1px solid red;
         .shield {
@@ -974,7 +966,7 @@
         right: 2%;
         // border: 1px solid blue;
         @include mobile-only() {
-          width: 40%;
+          width: 32.5%;
         }
         @include md() {
           width: 25%;
@@ -1107,11 +1099,11 @@
           height: 100%;
           width: 20%;
           right: 0%;
-          margin-right: 2%;
+          margin-right: 1%;
+          margin-bottom: 2.5%;
           .byte {
             align-self: flex-end;
             color: $gray;
-            margin: 2.5%;
             @include mobile-only() {
               font-size: 1rem;
             }
@@ -1143,7 +1135,16 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  top: 40%;
+
+  @include mobile-only() {
+    top: 30%;
+  }
+  @include md() {
+    top: 36%;
+  }
+  @include lg() {
+    top: 40%;
+  }
   // border: 1px solid red;
   div {
     font-weight: bold;
@@ -1209,7 +1210,7 @@
     }
     &:hover {
       cursor: pointer;
-      transition: 0.15s all;
+      transition: 0.3s all;
     }
   }
 }
@@ -1377,6 +1378,7 @@
     &:hover {
       cursor: pointer;
       color: $yellow;
+      transition: all 0.15s;
     }
   }
 }

@@ -1,4 +1,4 @@
-const { Articles, Concerts } = require('../../models');
+const { Articles, Concerts, Users } = require('../../models');
 
 module.exports = {
   get: async (req, res) => {
@@ -11,13 +11,17 @@ module.exports = {
       if (pageNum > 1) offset = limit * (pageNum - 1);
       /* 페이지 네이션 */
 
-      // 만약 최신순 정렬이라면, 다음을 실행한다
+      // 만약 최신순 정렬이라면, 다음을 실행한다 (Users, Cocnerts 조인)
       if (order === 'new') {
         const articleInfo = await Articles.findAndCountAll({
           include: [
             {
               model: Concerts,
               attributes: ['activation'],
+            },
+            {
+              model: Users,
+              attributes: ['username', 'image', 'role'],
             },
           ],
           order: [
@@ -29,17 +33,17 @@ module.exports = {
         });
         // 게시글이 없다면 다음 메시지를 반환한다.
         if (articleInfo.count === 0)
-          return res.status(200).json({ data: { articleInfo: [] }, message: 'Article Is Empty!' });
+          return res
+            .status(200)
+            .json({ data: { articleInfo: [] }, message: 'Article Is Empty!' });
         // 총 페이지 수
         const totalPage = Math.ceil(articleInfo.count / limit);
-        res
-          .status(200)
-          .json({
-            data: { articleInfo: articleInfo.rows, totalPage: totalPage },
-            message: 'Article Order By New!',
-          });
+        res.status(200).json({
+          data: { articleInfo: articleInfo.rows, totalPage: totalPage },
+          message: 'Article Order By New!',
+        });
       }
-      // 만약 그외의 경우엔 조회수 순 정렬 (Default)
+      // 만약 그외의 경우엔 조회수 순 정렬 (Users, Cocnerts 조인)
       else {
         const articleInfo = await Articles.findAndCountAll({
           include: [
@@ -47,7 +51,12 @@ module.exports = {
               model: Concerts,
               attributes: ['activation'],
             },
+            {
+              model: Users,
+              attributes: ['username', 'image', 'role'],
+            },
           ],
+
           order: [
             ['view', 'DESC'],
             ['createdAt', 'DESC'],
@@ -60,15 +69,15 @@ module.exports = {
 
         // 게시글이 없다면 다음 메시지를 반환한다.
         if (articleInfo.count === 0)
-          return res.status(200).json({ data: { articleInfo: [] }, message: 'Article Is Empty!' });
+          return res
+            .status(200)
+            .json({ data: { articleInfo: [] }, message: 'Article Is Empty!' });
         // 총 페이지 수
         const totalPage = Math.ceil(articleInfo.count / limit);
-        res
-          .status(200)
-          .json({
-            data: { articleInfo: articleInfo.rows, totalPage: totalPage },
-            message: 'Article Order By View!',
-          });
+        res.status(200).json({
+          data: { articleInfo: articleInfo.rows, totalPage: totalPage },
+          message: 'Article Order By View!',
+        });
       }
     } catch (err) {
       console.log(err);

@@ -73,9 +73,15 @@
         }
         &:hover {
           background-color: #ffce63;
+          animation: pulse;
+          animation-duration: 0.5s;
           color: white;
           cursor: pointer;
           transition: 0.15s all;
+        }
+        &:active {
+          animation: flash;
+          animation-duration: 0.5s;
         }
       }
       .click {

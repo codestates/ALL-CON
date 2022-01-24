@@ -1,16 +1,15 @@
 /* open_date 날짜 객체로 변경 함수 */
-const openDateFormatterYes = (date) => {
-
+const openDateFormatterYes = date => {
   // 입력값 (문자열)에서 공백을 모두 제거한다
   let sliceDate = date.replace(/\s/g, '');
   // year
   const year = Number(sliceDate.substring(0, 4));
   sliceDate = sliceDate.slice(5);
   // month
-  const month = Number(sliceDate.substring(0, 2))
+  const month = Number(sliceDate.substring(0, 2));
   sliceDate = sliceDate.slice(3);
   // day
-  const day = Number(sliceDate.substring(0, 2))
+  const day = Number(sliceDate.substring(0, 2));
   sliceDate = sliceDate.slice(3);
   // 요일 제거
   sliceDate = sliceDate.slice(2);
@@ -31,5 +30,5 @@ const openDateFormatterYes = (date) => {
 }
 
 module.exports = {
-  openDateFormatterYes
-}
+  openDateFormatterYes,
+};

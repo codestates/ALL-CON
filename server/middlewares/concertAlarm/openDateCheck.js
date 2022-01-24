@@ -22,7 +22,6 @@ const openDateCheck = async (targetOpenDate) => {
   // 날짜 및 시간 확인
   if(date-1 === dateToday && hour === hourToday) return true
   else return false
-  
 }
 
 module.exports = {
