@@ -35,27 +35,21 @@ function ConChinArticleContentBox() {
   const { userInfo } = useSelector((state: RootState) => state.auth);
   /* 유저정보 보기 핸들러 */
   const showUserProfile = () => {
-    console.log('실행됨?');
     dispatch(showConChinProfileModal(true));
   };
 
   /* 글 수정하기 핸들러 */
   const showMyConChinWritingModal = () => {
     if (userInfo.id === targetArticle.user_id) {
-      console.log('ConChinArticleContentBox=> 글 수정하기 모달로 접근합니다.');
       dispatch(showConChinWritingModal(true));
     } else {
-      console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
+      // console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
     }
   };
 
   /* 글 삭제하기 & 경고모달 핸들러 */
   const deleteMyArticle = () => {
     if (userInfo.id === targetArticle.user_id) {
-      console.log('ConChinArticleContentBox=> target.id');
-      console.log(target.id);
-      console.log('ConChinArticleContentBox=> targetArticle.id');
-      console.log(targetArticle.id);
       dispatch(insertAlertText('글을 삭제합니다. 😖'));
       dispatch(showAlertModal(true));
       deleteArticle();
@@ -63,7 +57,7 @@ function ConChinArticleContentBox() {
       dispatch(setArticleCurPage(1));
       getTargetArticles();
     } else {
-      console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
+      // console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
     }
   };
 
@@ -99,11 +93,10 @@ function ConChinArticleContentBox() {
         dispatch(setArticleCurPage(1));
         dispatch(setTargetArticle({}));
       } else {
-        console.log('없거나 실수로 못가져왔어요.');
+        // console.log('없거나 실수로 못가져왔어요.');
       }
     } catch (err) {
       console.log(err);
-      console.log('에러가 났나봐요.');
     }
   };
 
@@ -120,11 +113,10 @@ function ConChinArticleContentBox() {
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
       } else {
-        console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
+        // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
       }
     } catch (err) {
       console.log(err);
-      console.log('에러가 났나봐요.');
     }
   };
 

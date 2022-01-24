@@ -35,8 +35,6 @@ function ConChinFindBox() {
   /* handler 함수 (기능별 정렬) */
   // 글쓰기 버튼 클릭시
   const handleWriteModal = async () => {
-    console.log('--- 글쓰기 모달 확인 ---', userInfo.role);
-
     // 만약 유저가 일반회원(role=2)이라면, (가칭) 인증하러가기 모달을 띄어준다
     if (userInfo.role === 3) {
       dispatch(

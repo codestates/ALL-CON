@@ -27,7 +27,7 @@ function LandingPage() {
     (state: RootState) => state.main,
   );
   /*현재 스크린 크기 */
-  const [windowSize, setWindowSize] = useState(window.innerWidth);
+  // const [windowSize, setWindowSize] = useState(window.innerWidth);
   /* 스크롤 바 위치 */
   const [scrollPosition, setScrollPosition] = useState(0);
   /* 애니메이션 상태 여부 */
@@ -63,15 +63,15 @@ function LandingPage() {
   /*현재 스크린 크기 감지*/
   // -> 여기 현재 스크린이 막 변할때 감지하는게 없음.
   // 모바일, 탭 왔다갔다할때 scrollPosition이 유동적으로 변하지x
-  useEffect(() => {
-    console.log(windowSize);
-    if (windowSize < 1200) {
-      check3();
-      if (windowSize < 767) {
-        check2();
-      }
-    }
-  }, [windowSize]);
+  // useEffect(() => {
+  //   console.log(windowSize);
+  //   if (windowSize < 1200) {
+  //     check3();
+  //     if (windowSize < 767) {
+  //       check2();
+  //     }
+  //   }
+  // }, [windowSize]);
 
   /*전체 콘서트 받아오기(1회) */
   const getAllConcerts = async () => {
@@ -103,7 +103,7 @@ function LandingPage() {
             setAnimation2(true);
             if (scrollPosition > 340) {
               setAnimation(true);
-              console.log(animation);
+              // console.log(animation);
             }
           }
         }
@@ -119,11 +119,11 @@ function LandingPage() {
         if (scrollPosition > 700) {
           setAnimation3(true);
           if (scrollPosition > 200) {
-            console.log('animation2', animation2);
+            // console.log('animation2', animation2);
             setAnimation2(true);
             if (scrollPosition > 200) {
-              console.log(scrollPosition);
-              console.log('animation', animation);
+              // console.log(scrollPosition);
+              // console.log('animation', animation);
               setAnimation(true);
             }
           }

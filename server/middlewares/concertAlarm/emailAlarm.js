@@ -101,19 +101,15 @@ const emailAlarm = async (alarmInfo) => {
     }
     console.log('Message sent: %s', info.messageId);
   });
-}
 
-/* 주의! 테스트 동안 잠깐 주석 처리 */ 
   // 이메일은 보낸 알람은 테이블에서 삭제
-//   await Alarms.destroy({
-//     where: { 
-//       user_id: alarmInfo.user_id, 
-//       concert_id: alarmInfo.concert_id
-//     }
-//   })
-// }
-/* 주의! 테스트 동안 잠깐 주석 처리 */ 
-
+  await Alarms.destroy({
+    where: { 
+      user_id: alarmInfo.user_id, 
+      concert_id: alarmInfo.concert_id
+    }
+  })
+}
 
 module.exports = {
   emailAlarm

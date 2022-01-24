@@ -659,6 +659,17 @@ function LandingPosterSlide() {
           }
         })}
       </Slider>
+      {/* <h2>포스터를 좌우로 움직여 보세요 </h2> */}
+      {/* <div className='s1_arrow'>
+        <div className='scroll-arrow1'></div>
+        <div className='scroll-arrow2'></div>
+        <div className='scroll-arrow3'></div>
+      </div>
+      <div className='s2_arrow'>
+        <div className='scroll-arrow1'></div>
+        <div className='scroll-arrow2'></div>
+        <div className='scroll-arrow3'></div>
+      </div> */}
     </div>
   );
 }

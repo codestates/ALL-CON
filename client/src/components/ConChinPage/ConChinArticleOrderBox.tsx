@@ -27,7 +27,7 @@ function ConChinArticleOrderBox() {
         Object.keys(target).length === 0 &&
         Object.keys(allArticles).length === 0
       ) {
-        console.log('ConChinArticleOrderBox=> 게시물이 없어요.');
+        // console.log('ConChinArticleOrderBox=> 게시물이 없어요.');
       } else if (
         Object.keys(target).length === 0 &&
         Object.keys(allArticles).length !== 0
@@ -42,15 +42,15 @@ function ConChinArticleOrderBox() {
           dispatch(setArticleTotalPage(response.data.data.totalPage));
           dispatch(setArticleCurPage(1));
         } else {
-          console.log('ConChinArticleOrderBox=> 없거나 실수로 못가져왔어요.');
+          // console.log('ConChinArticleOrderBox=> 없거나 실수로 못가져왔어요.');
         }
       } else if (target === undefined || target === null) {
         // dispatch(setTarget({}));
         // dispatch(setTargetArticle({}));
         dispatch(setArticleCurPage(1));
-        console.log(
-          'ConChinArticleOrderBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
-        );
+        // console.log(
+        //   'ConChinArticleOrderBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
+        // );
       } else {
         /* 타겟에 종속된 게시물 정렬순표시 */
         const response = await axios.get(
@@ -61,14 +61,14 @@ function ConChinArticleOrderBox() {
           dispatch(setAllArticles(response.data.data.articleInfo));
           dispatch(setArticleTotalPage(response.data.data.totalPage));
           dispatch(setArticleCurPage(1));
-          console.log(
-            'ConChinArticleOrderBox=> 타겟에 종속된 게시물을 보여줍니다.',
-          );
+          // console.log(
+          //   'ConChinArticleOrderBox=> 타겟에 종속된 게시물을 보여줍니다.',
+          // );
         }
       }
     } catch (err) {
       console.log(err);
-      console.log('에러가 났나봐요. 게시물 없음 처리합니다.');
+      // console.log('에러가 났나봐요. 게시물 없음 처리합니다.');
       dispatch(setArticleRendered(true));
       dispatch(setAllArticles([]));
       dispatch(setArticleTotalPage(0));
@@ -78,7 +78,6 @@ function ConChinArticleOrderBox() {
   /* 게시물 정렬순 교체 및 게시물 조회*/
   const setArticleOrderAndGetAllArticles = (hotOrView: string) => {
     dispatch(setArticleOrder(hotOrView));
-    console.log('ConChinArticleOrderBox=> 현재정렬은 ' + hotOrView);
   };
 
   useEffect(() => {

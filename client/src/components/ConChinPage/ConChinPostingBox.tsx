@@ -39,7 +39,7 @@ function ConChinPostingBox() {
             dispatch(setArticleCurPage(1));
             dispatch(setArticleRendered(true));
           } else {
-            console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
+            // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
           }
         }
       } else {
@@ -60,7 +60,7 @@ function ConChinPostingBox() {
       console.log(err);
       dispatch(setAllArticles([]));
       dispatch(setArticleTotalPage(0));
-      console.log('ConChinPostingBox=> 게시물이 없네요.');
+      // console.log('ConChinPostingBox=> 게시물이 없네요.');
     }
   };
 

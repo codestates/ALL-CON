@@ -39,8 +39,6 @@ const yes24Crawler = async () => {
   /* urlNums 배열중 가장 큰 글번호만 추출(lastUrlNum)  */
   const lastUrlNum = urlNums.length > 0 ? Math.max.apply(null, urlNums) : 0;
 
-  console.log('---------------- lastUrlNum -------------------', lastUrlNum)
-
   let driver = await new Builder().
   withCapabilities(caps).
   forBrowser('chrome').
@@ -68,7 +66,6 @@ const yes24Crawler = async () => {
       if(result.length !== 0) {
         url = await result[0].getAttribute('href');
       } else {
-        console.log('url 없습니다!')
         break;
       }
       
@@ -96,15 +93,13 @@ const yes24Crawler = async () => {
           let title = await subResult[0].getText();
           let exclusive = '';
 
-          console.log('-------------- title확인 ---------------------', title)
-
           // 제목 앞에 '단독판매' 문구가 있으면 변수 eclusive에 'YES24'를 할당, 없으면 null
           if(title.indexOf('단독판매') !== -1) {
             exclusive = 'YES24';
             title = title.split('단독판매')[1] 
           };
           // 만약 "제목"에 콘서트가 포함되어있으면,
-          if(title.indexOf('콘서트') !== -1 || title.indexOf('CONCERT') !== -1) {
+          if(title.indexOf('콘서트') !== -1 || title.indexOf('CONCERT') !== -1 || title.indexOf('Concert') !== -1 || title.indexOf('concert') !== -1) {
             // 게시물 등록일
             let dateResult = await driver.findElements(By.className('noti-view-date'));
             let date = await dateResult[0].getText();
@@ -129,7 +124,7 @@ const yes24Crawler = async () => {
             let inputRating = '';
                 
             let concertInfoModi = concertInfo.split('\n');
-                
+ 
             for(let i = 0; i < concertInfoModi.length; i++) {
               // 공연 제목 (title)
               if(concertInfoModi[i].indexOf('제목') !== -1|| concertInfoModi[i].indexOf('공 연 명') !== -1 || concertInfoModi[i].indexOf('공연명') !== -1) {
@@ -205,6 +200,7 @@ const yes24Crawler = async () => {
                 if(concertInfoModi[i].indexOf('연령 :') !== -1) inputRating = concertInfoModi[i].split('연령 : ')[1];
               }    
             };
+
             // 공연 이미지
             let imgPath = '//*[@id="NoticeRead"]/div[3]/div/div[1]/img';
             let imageResult = await driver.findElements(By.xpath(imgPath));
@@ -214,14 +210,11 @@ const yes24Crawler = async () => {
 
             inputDate = inputDate.replaceAll('-', '.')
 
-            console.log('*********** YES24 크롤링 입력합니다 *********************', inputDate, title)
-            
             // 현재 Url이 DB에 있는 것보다 작거나 같으면 break, 더 크면 DB에 넣어준다
-            if(Number(inputUrl.split('#id=')[1] <= lastUrlNum)) break;
+            if(Number(inputUrl.split('#id=')[1] <= lastUrlNum)) {
+              break;
+            }
             else {
-
-            console.log('*********** YES24 크롤링 입력합니다 *********************')
-
               concertList.push({
                 exclusive: exclusive,
                 open_date: openDateFormatterYes(ticketOpen),
@@ -239,16 +232,12 @@ const yes24Crawler = async () => {
           }; // 없으면 안한다
         }
           
-          /********************************************************************************************************************/
-
           if(trNum === 21) {
             trNum = 2
             pageNum++
           } else {
             trNum++
           }
-
-          console.log('------------------ trNum, pageNum ---------------', trNum, pageNum)
 
           address = `http://ticket.yes24.com/New/Notice/NoticeMain.aspx?Gcode=009_215#page=${pageNum}`
           let targetAddress = `'` + `${address}` + `'`
@@ -264,15 +253,12 @@ const yes24Crawler = async () => {
       // while문 조건
       while(pageNum < 3) 
       
-      console.log('-------------- YES24 크롤링 종료 -----------------')
       await driver.sleep(10000*1.5);
       driver.quit();
     } catch(error) {
-      console.log('-------------- 에러를 확인해주세요! ----------------- ', error);
+      // console.log('-------------- 에러를 확인해주세요! ----------------- ', error);
     }
 
-    console.log('-------------- concertList ----------------- ', concertList)
-    
     return concertList
 }
 

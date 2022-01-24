@@ -53,7 +53,7 @@ function PosterSlide() {
 
   //선택된 타겟인덱스가 있으면 그 타겟으로 이동하기
   const setCenterfunc = (index?: number, bool?: boolean): any => {
-    console.log(targetIdx);
+    // console.log(targetIdx);
     sliderRef.current.slickGoTo(targetIdx, true);
   };
 
@@ -85,7 +85,7 @@ function PosterSlide() {
 
     //오더 바꿔 누를때마다
     else {
-      console.log('0으로 바꿔버림~');
+      // console.log('0으로 바꿔버림~');
       dispatch(setTargetIdx(0));
       //0번째 포스터가 가운데로 이동
       setCenterfunc();
@@ -163,11 +163,11 @@ function PosterSlide() {
                     />
                     <div className='back'>
                       <div id='alignDay'>
-                        <div
+                        {/* <div
                           id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}
                         >
                           {dayCalculator(target.open_date)}
-                        </div>
+                        </div> */}
                       </div>
                       <img
                         className='backImg'
@@ -294,11 +294,11 @@ function PosterSlide() {
                     />
                     <div className='back'>
                       <div id='alignDay'>
-                        <div
+                        {/* <div
                           id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}
                         >
                           {dayCalculator(target.open_date)}
-                        </div>
+                        </div> */}
                       </div>
                       <img
                         className='backImg'
@@ -425,11 +425,11 @@ function PosterSlide() {
                     />
                     <div className='back'>
                       <div id='alignDay'>
-                        <div
+                        {/* <div
                           id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}
                         >
                           {dayCalculator(target.open_date)}
-                        </div>
+                        </div> */}
                       </div>
                       <img
                         className='backImg'
@@ -556,11 +556,11 @@ function PosterSlide() {
                     />
                     <div className='back'>
                       <div id='alignDay'>
-                        <div
+                        {/* <div
                           id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}
                         >
                           {dayCalculator(target.open_date)}
-                        </div>
+                        </div> */}
                       </div>
                       <img
                         className='backImg'
@@ -687,11 +687,11 @@ function PosterSlide() {
                     />
                     <div className='back'>
                       <div id='alignDay'>
-                        <div
+                        {/* <div
                           id={dayCalculator(target.open_date) ? 'dDay' : 'hide'}
                         >
                           {dayCalculator(target.open_date)}
-                        </div>
+                        </div> */}
                       </div>
                       <img
                         className='backImg'
