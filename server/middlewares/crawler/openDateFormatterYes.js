@@ -24,10 +24,10 @@ const openDateFormatterYes = date => {
   const minute = Number(sliceDate.split(':')[1]);
 
   // 만약 오후라는 단어가 들어가 있으면, 기존 시간에 12를 더해준다 (ex. 오후 8:00 => 20:00로 변환)
-  if (twelveClock === '오후') hour = hour + 12;
-
-  return new Date(year, month - 1, day, hour, minute, 0);
-};
+  if(twelveClock === '오후') hour = hour + 12; 
+  
+  return new Date(year, month-1, day, hour, minute, 0)
+}
 
 module.exports = {
   openDateFormatterYes,

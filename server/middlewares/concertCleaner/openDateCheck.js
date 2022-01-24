@@ -18,10 +18,6 @@ const openDateCheck = async (targetOpenDate, concertid) => {
   let hourToday = today.getHours()
   let minuteToday = today.getMinutes()
 
-  console.log('--------------------- 콘서트 오픈일 ------------------', year, month, date)
-  console.log('--------------------- Today -------------------------', today, yearToday, monthToday, dateToday)
-
-  
   /* 주의: 아래 코드 함수화 시켜야합니다!!! */
   // 날짜 확인
   if(year < yearToday) {
@@ -44,7 +40,7 @@ const openDateCheck = async (targetOpenDate, concertid) => {
   } 
   // 
   else if(year === yearToday) {
-    if(month <= monthToday && date+1 <= dateToday) {
+    if(month+1 <= monthToday && date <= dateToday) {
       // 해당 콘서트의 activation을 false로 바꿔준다!
       await Concerts.update(
         { activation: false },

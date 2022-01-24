@@ -115,17 +115,14 @@ function MyEditPage() {
     // 닉네임 유효성검사 정규식
     const usernameExp = /^([a-zA-Z0-9ㄱ-ㅎ|ㅏ-ㅣ|가-힣]).{1,10}$/;
     if (username === ''){
-      console.log('여기인가?#1', username)
       setNameErr(false);
       return
     }
     // 닉네임 유효성검사를 통과한 경우, nameErr 상태를 true로 변경
     if (usernameExp.test(username)){
-      console.log('여기인가?#2', username)
       setNameErr(true);
       return 
     }
-    console.log('여기인가?#3', username)
     setNameErr(false);
     return
   };
@@ -191,7 +188,7 @@ function MyEditPage() {
         setIsPassDuplication(false)
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
   }
 

@@ -22,7 +22,7 @@ module.exports = {
       )
       res.status(200).json({ email: isValid.email, message: 'Succes Email Certification!'})
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       return res.status(500).json({ message: 'Server Error!' });
     }
   },
@@ -46,7 +46,7 @@ module.exports = {
       )
       res.status(200).json({ message: 'Success Change Password!' });
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
     }
   }

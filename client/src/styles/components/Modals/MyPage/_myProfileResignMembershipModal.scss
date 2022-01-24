@@ -25,8 +25,8 @@
     background-color: #404040;
     opacity: 50%;
     @include mobile-only() {
-      width: 0%;
-      height: 0%;
+      width: 100%;
+      height: 100%;
     }
     @include md() {
       width: 100%;
@@ -47,10 +47,10 @@
     background-color: white;
 
     @include mobile-only() {
-      width: 100%;
-      height: 90%;
-      border-radius: 0px;
-      top: 10%;
+      width: 80%;
+      height: 50%;
+      border-radius: 20px;
+      top: 20%;
     }
     @include md() {
       width: 50%;
@@ -155,7 +155,7 @@
         width: 100%;
         height: 20%;
         @include mobile-only() {
-          bottom: 34.5%;
+          bottom: 22%;
         }
         @include md() {
           bottom: 22%;
@@ -194,8 +194,8 @@
         // border: 1px solid red;
 
         @include mobile-only() {
-          height: 6%;
-          bottom: 27%;
+          height: 8%;
+          bottom: 8%;
         }
         @include md() {
           height: 8%;

@@ -211,7 +211,8 @@ function ConChinCertificationPage() {
               <p className='title'>생년월일</p>
             </div>
             <div id='birthdayBox'>
-              <select
+              <select 
+                // size={10}
                 className='short'
                 onChange={inputDropdownValueHandler('birthYear')}
               >

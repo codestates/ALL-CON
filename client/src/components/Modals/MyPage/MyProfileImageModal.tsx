@@ -75,7 +75,7 @@ function MyProfileImageModal() {
         dispatch(showMyProfileImageModal(false));
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err)
     }
   };
 
