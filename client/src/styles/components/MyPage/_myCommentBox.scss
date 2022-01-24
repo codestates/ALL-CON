@@ -459,8 +459,9 @@
     position: absolute;
     opacity: 40%;
     @include mobile-only() {
+      // border: 2px solid blue;
       width: 80%;
-      height: 65%;
+      height: 45%;
       bottom: 38%;
     }
     @include md() {
@@ -469,7 +470,7 @@
       bottom: 15%;
     }
     @include lg() {
-      width: 60%;
+      width: 70%;
       height: 73%;
     }
   }

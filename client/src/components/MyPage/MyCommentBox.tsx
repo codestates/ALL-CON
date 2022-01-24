@@ -196,8 +196,6 @@ function MyCommentBox() {
         { withCredentials: true },
       );
 
-      console.log(response.data.data)
-
       // 수정후 총 댓글 (현재 페이지) 업데이트
       dispatch(getMyArticleCommentInfo(response.data.data));
       // 댓글 수정란 초기화

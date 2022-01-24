@@ -196,6 +196,7 @@
           
           padding-bottom: 20%;
           @include mobile-only() {
+            display: none;
             right: 5%;
             bottom: 0%;
             width: 17%;
@@ -256,24 +257,22 @@
           align-items: center;
           justify-content: center;
           display: flex;
-          top: 80%;
-          right: 3.5%;
-          width: 19.5%;
-          height: 15%;
+
           // background-color: red;
           opacity: 30%;
           border-radius: 10%;
           @include mobile-only() {
-            top: 47.3%;
-            right: 22.5%;
-            width: 13.3%;
-            height: 10%;
+            top: 0%;
+            right: 7%;
+            width: 90%;
+            height: 90%;
+            border-radius: 100%;
           }
           @include md() {
-            width: 13.3%;
+            width: 17%;
             height: 14%;
-            right: 10.3%;
-            top: 64%;
+            right: 2%;
+            top: 83%;
           }
           @include lg() {
             width: 18%;

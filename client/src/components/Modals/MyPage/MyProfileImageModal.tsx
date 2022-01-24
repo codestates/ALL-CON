@@ -73,7 +73,7 @@ import React, { useState, useEffect } from 'react';
         dispatch(showMyProfileImageModal(false))
       }
     } catch (err) {
-      console.log(err)
+      // console.log(err)
     }
   };
 
