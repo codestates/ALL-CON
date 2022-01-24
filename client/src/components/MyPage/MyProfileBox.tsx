@@ -1,4 +1,3 @@
-/* Config import */
 /* CSS import */
 import camera from '../../images/camera.png';
 import kakao from '../../images/kakaoOAuth.png';
