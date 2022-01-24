@@ -274,7 +274,7 @@
             width: 100%;
             height: 100%;
             cursor: pointer;
-            box-shadow: inset 10px 10px 10px -5px rgba(0, 0, 0, 0.7);
+            // box-shadow: inset 10px 10px 10px -5px rgba(0, 0, 0, 0.7);
           }
           .backImg {
             position: absolute;
@@ -576,6 +576,147 @@
       }
     }
   }
+  h2 {
+    // border: 1px solid green;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    color: #a0a0a0;
+    animation: arrow_down 1.5s infinite;
+    @include mobile-only() {
+      width: 200px;
+      bottom: 0%;
+      font-size: 1.4rem;
+      padding-bottom: 32%;
+    }
+    @include md() {
+      padding-bottom: 18%;
+      font-size: 1.6rem;
+    }
+    @include lg() {
+      top: 30%;
+      padding-bottom: 6%;
+      font-size: 2rem;
+    }
+    @keyframes arrow-wave {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.5;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes arrow_down {
+      0% {
+        top: 28px;
+        opacity: 20%;
+      }
+      50% {
+        top: 40px;
+        opacity: 50%;
+      }
+      100% {
+        top: 28px;
+        opacity: 70%;
+      }
+    }
+  }
+  // .s1_arrow {
+  //   border: 1px solid red;
+  //   z-index: 10;
+  //   display: inline-block;
+  //   position: absolute;
+  //   text-align: center;
+  //   transform: rotate(90deg);
+  //   animation: arrow_down 1.5s infinite;
+  //   @include mobile-only() {
+  //     bottom: -70%;
+  //   }
+  //   @include md() {
+  //     left: -5%;
+  //     bottom: -70%;
+  //   }
+  //   @include lg() {
+  //     bottom: -90%;
+  //   }
+  //   .scroll-arrow1 {
+  //     border-right: 3px solid #a0a0a0;
+  //     border-bottom: 3px solid#a0a0a0;
+  //     transform: rotate(45deg);
+  //     -webkit-transform: rotate(45deg);
+  //     -moz-transform: rotate(45deg);
+  //     -o-transform: rotate(45deg);
+  //     -ms-transform: rotate(45deg);
+  //     animation: arrow-wave 1s infinite;
+  //     animation-direction: alternate;
+  //     animation-delay: 0.1s;
+  //     @include mobile-only() {
+  //       width: 10px;
+  //       height: 10px;
+  //     }
+  //     @include md() {
+  //       width: 10px;
+  //       height: 10px;
+  //     }
+  //     @include lg() {
+  //       width: 15px;
+  //       height: 15px;
+  //     }
+  //   }
+  //   .scroll-arrow2 {
+  //     @extend .scroll-arrow1;
+  //     animation-delay: 0.2s;
+  //   }
+  //   .scroll-arrow3 {
+  //     @extend .scroll-arrow1;
+  //     animation-delay: 0.3s;
+  //   }
+  //   @keyframes arrow-wave {
+  //     0% {
+  //       opacity: 0;
+  //     }
+  //     50% {
+  //       opacity: 0.5;
+  //     }
+  //     100% {
+  //       opacity: 1;
+  //     }
+  //   }
+  //   @keyframes arrow_down {
+  //     0% {
+  //       top: 28px;
+  //     }
+  //     50% {
+  //       top: 40px;
+  //     }
+  //     100% {
+  //       top: 28px;
+  //     }
+  //   }
+  // }
+  // .s2_arrow {
+  //   @extend .s1_arrow;
+  //   transform: rotate(270deg);
+  //   @include mobile-only() {
+  //   }
+  //   @include md() {
+  //     // margin-bottom: 150%;
+  //     padding-bottom: 10%;
+  //     top: -20%;
+  //     right: -60%;
+  //     height: 5%;
+  //     margin-top: -55%;
+  //   }
+  //   @include lg() {
+  //     right: 0%;
+  //   }
+  // }
+  //----------스크롤바----------//
   // #sliderBar {
   //   width: 75vw;
   //   border: 2px solid red;
