@@ -1,4 +1,3 @@
-/* Config import */
 /* CSS import */
 import camera from '../../images/camera.png';
 import kakao from '../../images/kakaoOAuth.png';
@@ -135,6 +134,7 @@ function MyProfileBox() {
           </div>
           {/* 유저네임 (username) */}
           <p className='nickName'> {`${userInfo.username}`} </p>
+          <div id='shieldWrapper'></div>
         </div>
         {/* 자기소개 */}
         <div id='textWrapper'>

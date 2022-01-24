@@ -1,4 +1,4 @@
-const { Articles, Concerts } = require('../../models');
+const { Articles, Concerts, Users} = require('../../models');
 
 module.exports = {
   get: async (req, res) => {
@@ -11,7 +11,7 @@ module.exports = {
       if (pageNum > 1) offset = limit * (pageNum - 1);
       /* 페이지 네이션 */
 
-      // 만약 최신순 정렬이라면, 다음을 실행한다
+      // 만약 최신순 정렬이라면, 다음을 실행한다 (Users, Cocnerts 조인)
       if (order === 'new') {
         const articleInfo = await Articles.findAndCountAll({
           include: [
@@ -19,6 +19,10 @@ module.exports = {
               model: Concerts,
               attributes: ['activation'],
             },
+            {
+              model: Users,
+              attributes: ['username', 'image', 'role']
+            }
           ],
           order: [
             ['createdAt', 'DESC'],
@@ -39,15 +43,20 @@ module.exports = {
             message: 'Article Order By New!',
           });
       }
-      // 만약 그외의 경우엔 조회수 순 정렬 (Default)
+      // 만약 그외의 경우엔 조회수 순 정렬 (Users, Cocnerts 조인)
       else {
         const articleInfo = await Articles.findAndCountAll({
           include: [
             {
-              model: Concerts,
-              attributes: ['activation'],
+              model: Concerts, 
+              attributes: ['activation']
             },
+            {
+              model: Users,
+              attributes: ['username', 'image', 'role']
+            }
           ],
+          
           order: [
             ['view', 'DESC'],
             ['createdAt', 'DESC'],
