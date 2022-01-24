@@ -22,6 +22,10 @@ module.exports = {
               model: Concerts,
               attributes: ['activation'],
             },
+            {
+              model: Users,
+              attributes: ['username', 'image', 'role']
+            }
           ],
           where: { concert_id: concertid },
           order: [
@@ -51,6 +55,10 @@ module.exports = {
               model: Concerts,
               attributes: ['activation'],
             },
+            {
+              model: Users,
+              attributes: ['username', 'image', 'role']
+            }
           ],
           where: { concert_id: concertid },
           order: [
@@ -101,7 +109,7 @@ module.exports = {
       res
         .status(201)
         .json({
-          data: { articleInfo: articleInfo },
+          data: { articleInfo: joinUserArticleInfo },
           message: 'Success Create Article!',
         });
     } catch (err) {
