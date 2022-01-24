@@ -76,7 +76,7 @@ function MyDropDown() {
       dispatch(insertAlertText(`로그아웃 되었습니다!`));
       goHomeHandler();
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       dispatch(showAlertModal(true));
       dispatch(insertAlertText(`로그아웃에 실패했습니다!`));
     }

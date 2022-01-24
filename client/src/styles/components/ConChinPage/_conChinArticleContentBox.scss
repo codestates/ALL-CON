@@ -434,7 +434,7 @@
     height: 20%;
     // border: 1px solid red;
     @include mobile-only() {
-      top: 65%;
+      top: 85%;
       height: 15%;
     }
     @include md() {

@@ -37,8 +37,6 @@ const interparkCrawler = async () => {
     image_concert = String($('.poster').find('img').attr('src').trim());
     title = String($('.comment').find('p').text().trim());
 
-    console.log(" ---------- open_date: 확인 ---------- ", open_date)
-    
     if(body.length > 0){
       for(let i=0; i<body.length-1; i++){
         if(body[i].nextSibling.nodeValue){
@@ -79,7 +77,6 @@ const interparkCrawler = async () => {
     concertsDB.push(concertDB);
   }
   
-  console.log(concertsDB);
   return concertsDB;
 }
 

@@ -16,11 +16,9 @@ module.exports = {
   },
   isAuthorized: (accessToken) => {
     // JWT 토큰 정보를 받아서 검증한다.
-    console.log('------------토큰 검증!')
     try{
       return jwt.verify(accessToken, process.env.ACCESS_SECRET);
     } catch (err){
-      console.log('------------err가 들어가나?', err);
       return null;
     }
   }

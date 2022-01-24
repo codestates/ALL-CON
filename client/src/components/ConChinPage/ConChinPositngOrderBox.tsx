@@ -33,7 +33,6 @@ function ConChinPostingOrderBox() {
         );
         if (response.data) {
           dispatch(setAllConcerts(response.data.data.concertInfo));
-          console.log(allConcerts);
         }
       } catch (err) {
         console.log(err);
@@ -55,7 +54,7 @@ function ConChinPostingOrderBox() {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
       } else {
-        console.log('없거나 실수로 못가져왔어요..');
+        // console.log('없거나 실수로 못가져왔어요..');
       }
     } catch (err) {
       console.log(err);
@@ -91,6 +90,9 @@ function ConChinPostingOrderBox() {
     dispatch(setArticleRendered(false));
     dispatch(setTargetArticle({}));
     dispatch(setArticleCurPage(1));
+    getAllConcerts();
+    getAllArticles();
+    getAllConcerts();
     getAllArticles();
   };
 

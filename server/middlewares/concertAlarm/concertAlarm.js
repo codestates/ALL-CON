@@ -22,7 +22,6 @@ const concertAlarm = async () => {
     let concerInfo = await Concerts.findOne({ where: {id: concertId}})
     let concertLink = concertInfo.dataValues.link
 
-
     // 이메일 알람인 경우, 다음을 실행한다
     if(alaramInfo[i].dataValues.email_alarm) {
       // 각 콘서트의 openDate의 정보를 담는다
@@ -51,10 +50,6 @@ const concertAlarm = async () => {
     }
   }
 
-  console.log(" ------------알라머 데이터 필터 완료----------------")
-  console.log(" ----------------------------", emailAlarmInfo)
-  console.log(" ----------------------------", phoneAlarmInfo)
-
   // 이메일 알라머
   for(let i = 0; i < emailAlarmInfo.length; i++) {
 
@@ -63,9 +58,7 @@ const concertAlarm = async () => {
 
     // 알람스위치가 true이면 메일을 전송한다!
     if(alarmSwitch) {
-      console.log(" ------------이메일 전송 시작----------------")
       await emailAlarm(emailAlarmInfo[i])
-      console.log(" ------------이메일 전송 완료----------------")
     }
   }
 
@@ -77,9 +70,7 @@ const concertAlarm = async () => {
 
     // 알람스위치가 true이면 문자메시지를 전송한다!
     if(alarmSwitch) {
-      console.log(" ------------문자메시지 전송 시작----------------")
       await phoneAlarm(phoneAlarmInfo[i])
-      console.log(" ------------문자메시지 전송 완료----------------")
     }
   }
 }

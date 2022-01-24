@@ -25,8 +25,6 @@ import { showMyProfileResignMembershipModal, insertAlertText, insertBtnText, sho
   /* handler 함수 (기능별 정렬) */
   // 회원탈퇴 버튼
   const handleResignMembership = async () => {
-    console.log('회원탈퇴 버튼을 클릭하셨습니다!')
-    // navigate('/main');
     try {
       await axios.delete(
         `${process.env.REACT_APP_API_URL}/user/me`,
@@ -43,7 +41,7 @@ import { showMyProfileResignMembershipModal, insertAlertText, insertBtnText, sho
       dispatch(logout());
       navigate('/main')
     } catch(error) {
-      console.log(error)
+      // console.log(error)
     }
   }
   
