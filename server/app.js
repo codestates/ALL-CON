@@ -18,20 +18,14 @@ const autoAlarm = schedule.scheduleJob('00 45 * * * *', async () => {
 });
 
 // 콘서트 클리너 실행
-const autoConcertCleaner = schedule.scheduleJob(
-  '00 00 23 * * *',
-  async () => {
-    concertCleaner()
-  }
-)
+const autoConcertCleaner = schedule.scheduleJob('00 00 23 * * *', async () => {
+  concertCleaner();
+});
 
 /* Auto Crawling */
-const autoCrawling = schedule.scheduleJob(
-  '00 00 9 * * *',
-  async () => {
-    await crawler()
-  }
-);
+const autoCrawling = schedule.scheduleJob('00 00 9 * * *', async () => {
+  await crawler();
+});
 
 /* Middleware */
 app.use(express.json());
@@ -65,7 +59,6 @@ const upload = multer({
 
 const { uploadFile, getFileStream } = require('./s3');
 app.get('/upload/:key', (req, res) => {
-
   const key = req.params.key;
   const readStream = getFileStream(key);
 

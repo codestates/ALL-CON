@@ -52,53 +52,55 @@ function Jumbotron() {
   };
 
   return (
-    <div id='jumboContainer'>
-      <div id='jumboMiniContainer'></div>
-      {/*점보트론 검은배경 전체*/}
-      <div className='jumboTopBox'>
-        <div id='jumboTextsAlignBox'>
-          {/*WHAT'S HOT 문구*/}
-          <div className='jumboTextBox'>
-            <h1 id='jumboWhat'>WHAT'S</h1>
-            {order === 'view' && <h1 id='jumboClassify'>HOT</h1>}
-            {order === 'near' && <h1 id='jumboClassify'>NEAR</h1>}
-            {order === 'new' && <h1 id='jumboClassify'>NEW</h1>}
+    <>
+      <div id='jumboContainer'>
+        <div id='jumboMiniContainer'></div>
+        {/*점보트론 검은배경 전체*/}
+        <div className='jumboTopBox'>
+          <div id='jumboTextsAlignBox'>
+            {/*WHAT'S HOT 문구*/}
+            <div className='jumboTextBox'>
+              <h1 id='jumboWhat'>WHAT'S</h1>
+              {order === 'view' && <h1 id='jumboClassify'>HOT</h1>}
+              {order === 'near' && <h1 id='jumboClassify'>NEAR</h1>}
+              {order === 'new' && <h1 id='jumboClassify'>NEW</h1>}
+            </div>
+            {/*오른쪽 상단 탭 바*/}
+            <div id='tabBar'>
+              <p
+                id={order === 'view' ? 'hot' : undefined}
+                onClick={() => {
+                  orderClickHandler('view');
+                }}
+              >
+                HOT
+              </p>
+              <p
+                id={order === 'near' ? 'near' : undefined}
+                onClick={() => {
+                  orderClickHandler('near');
+                }}
+              >
+                NEAR
+              </p>
+              <p
+                id={order === 'new' ? 'new' : undefined}
+                onClick={() => {
+                  orderClickHandler('new');
+                }}
+              >
+                NEW
+              </p>
+            </div>
           </div>
-          {/*오른쪽 상단 탭 바*/}
-          <div id='tabBar'>
-            <p
-              id={order === 'view' ? 'hot' : undefined}
-              onClick={() => {
-                orderClickHandler('view');
-              }}
-            >
-              HOT
-            </p>
-            <p
-              id={order === 'near' ? 'near' : undefined}
-              onClick={() => {
-                orderClickHandler('near');
-              }}
-            >
-              NEAR
-            </p>
-            <p
-              id={order === 'new' ? 'new' : undefined}
-              onClick={() => {
-                orderClickHandler('new');
-              }}
-            >
-              NEW
-            </p>
+          {/*포스터 wrapper*/}
+          <div id='jumboPosterSlideWrapper'>
+            <div id='posterCover'></div>
+            <PosterSlide />
           </div>
-        </div>
-        {/*포스터 wrapper*/}
-        <div id='jumboPosterSlideWrapper'>
-          <div id='posterCover'></div>
-          <PosterSlide />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 export default Jumbotron;

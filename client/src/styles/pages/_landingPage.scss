@@ -110,12 +110,11 @@
         font-size: 5rem;
       }
     }
-
     #jumboPosterSlideWrapper {
       // border: 1px solid #fff;
       @include mobile-only() {
         position: relative;
-        top: 10%;
+        top: 6%;
         width: 95%;
         height: 77%;
       }
@@ -148,7 +147,7 @@
     overflow-y: hidden;
     @include mobile-only() {
       height: 250%;
-      top: 45%;
+      top: 50%;
     }
     @include md() {
       height: 350%;
