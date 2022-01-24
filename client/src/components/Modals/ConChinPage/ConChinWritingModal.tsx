@@ -383,6 +383,7 @@ function ConChinWritingModal() {
             <input
               type='number'
               min='1'
+              max='9'
               className='want'
               placeholder={
                 targetArticle.member_count
@@ -395,6 +396,7 @@ function ConChinWritingModal() {
             <input
               type='number'
               min='2'
+              max='9'
               className='want'
               placeholder={
                 targetArticle.total_member
