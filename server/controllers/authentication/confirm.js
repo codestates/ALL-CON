@@ -20,7 +20,7 @@ module.exports = {
         { email_key: 'success'},
         { where: { id: isValid.id }}
       )
-      res.status(200).json({ email: isValid.email, message: 'Succes Email Certification!'})
+      res.status(200).json({ email: isValid.email, message: 'Success Email Certification!'})
     } catch (err) {
       // console.log(err)
       return res.status(500).json({ message: 'Server Error!' });

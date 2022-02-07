@@ -31,7 +31,7 @@ module.exports = {
           .status(200)
           .json({
             data: { articleCommentInfo: [] },
-            message: 'Empty ArticleComments!',
+            message: 'Empty Article Comments!',
           });
 
       await Articles.update(
@@ -48,7 +48,7 @@ module.exports = {
             articleCommentInfo: articleCommentInfo.rows,
             totalPage: totalPage,
           },
-          message: 'AticlesComments!',
+          message: 'Article Comments!',
         });
     } catch (err) {
       console.log(err);
@@ -73,7 +73,7 @@ module.exports = {
         article_id: articleid,
       });
 
-      res.status(201).json({ message: 'Success Create ArticleComment!' });
+      res.status(201).json({ message: 'Success Create Article Comment!' });
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
     }

@@ -70,8 +70,12 @@ function Footer() {
       </div>
 
       <div className='badges'>
-        <img src={youtube} id='youtube' alt='유튜브 로고'></img>
-        <img src={insta} id='insta' alt='인스타 로고'></img>
+        <a href='https://www.youtube.com/channel/UCh-iIz8NKcP6HNDMIxfkMVQ' target='_blank'>
+          <img src={youtube} id='youtube' alt='유튜브 로고'></img>
+        </a>
+        <a href='https://www.instagram.com/allcon___/' target='_blank'>
+          <img src={insta} id='insta' alt='인스타 로고'></img>
+        </a>
       </div>
       <div id='copyright'>Copyright ⓒ 2021-2022 weAct</div>
     </div>

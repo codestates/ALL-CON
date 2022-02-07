@@ -14,7 +14,7 @@ module.exports = {
       const concertInfo = await Concerts.findOne({ where: { id: concertid } });
       // 존재하지 않는다면, 다음을 실행한다
       if (!concertInfo)
-        res.status(400).json({ message: '콘서트가 존재하지 않습니다!' });
+        res.status(400).json({ message: 'No Matched Concert!' });
       // 존재한다면, 다음을 실행한다
       else {
         const alarmInfo = await Alarms.findOne({

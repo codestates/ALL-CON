@@ -7,7 +7,7 @@ import axios from 'axios';
 import { RootState } from '../../../index';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { showMyProfileResignMembershipModal, insertAlertText, insertBtnText, showSuccessModal } from '../../../store/ModalSlice';
+import { showMyProfileResignMembershipModal, insertAlertText, insertBtnText, showSuccessModal, showAlertModal } from '../../../store/ModalSlice';
 
   function MyProfileResignMembershipModal() {
 
@@ -35,7 +35,7 @@ import { showMyProfileResignMembershipModal, insertAlertText, insertBtnText, sho
       
       dispatch(insertAlertText('GoodBye! 🙂'));
       dispatch(insertBtnText('확인'));
-      dispatch(showSuccessModal(true));
+      dispatch(showAlertModal(true));
       // ------------------- 주의!!! 수정이 필요!
       /* 로그인 상태 변경 & main 페이지로 이동 */
       dispatch(logout());

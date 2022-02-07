@@ -6,7 +6,6 @@ module.exports = {
     try {
       // 로그인 인증 검사
       const userInfo = await userAuth(req, res);
-      console.log('====', userInfo.dataValues);
 
       /* 에러 임시코드 */
       if(userInfo.dataValues){
@@ -18,7 +17,7 @@ module.exports = {
           message: 'Success Get My All Alarm List!',
         });
       } else {
-        console.log("======버그(임시코드)=====");
+        // console.log("======버그(임시코드)=====");
       }
     } catch (err) {
       console.log(err);

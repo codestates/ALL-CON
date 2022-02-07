@@ -39,6 +39,10 @@ app.use(
   }),
 );
 
+/** ejs 파일 경로 테스트 **/
+app.use('/ejsform', express.static(__dirname + '/ejsform'))
+/** ejs 파일 경로 테스트 **/
+
 // ****************** multer 테스트 ************************ //
 const multer = require('multer');
 app.use('/uploads', express.static('uploads'));

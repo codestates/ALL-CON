@@ -122,12 +122,15 @@
       height: 15%;
     }
     #youtube {
-      width: 35%;
+      width: 90%;
       height: 90%;
     }
     #insta {
-      width: 35%;
+      width: 90%;
       height: 90%;
+    }
+    &hover {
+      cursor: pointer;
     }
   }
   #copyright {
