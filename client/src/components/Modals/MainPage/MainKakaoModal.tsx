@@ -13,11 +13,8 @@ function MainKakaoModal() {
   const { detail } = useSelector((state: RootState) => state.main);
   return (
     <div id='MainKakaoModalContainer'>
-      <div id='outside' />
-      <div
-        id='alertBackground'
-        onClick={() => dispatch(showMainKakaoModal(false))}
-      >
+      <div id='outside' onClick={() => dispatch(showMainKakaoModal(false))}/>
+      <div id='alertBackground'>
         <div id='alertModal'>
           <div id='alignContainer'>
             <div id='topBox'>

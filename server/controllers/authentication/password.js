@@ -39,8 +39,7 @@ module.exports = {
       // ejs 파일에서 html 받아오기
       let passwordFindHtml;
       ejs.renderFile(
-        // __dirname + '/ejsform/passwordFind.ejs',
-        '/home/sunyoung/바탕화면/project/ALL-CON/server/middlewares/ejsform/passwordFind.ejs',
+        __dirname + '/ejsFindpassword/findPassword.ejs',
         {
           confirmNumber,
           allconLogo,
