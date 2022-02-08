@@ -94,7 +94,7 @@ module.exports = {
 
       // 일반회원은 게시글 작성 불가
       if (userInfo.dataValues.role === 3)
-        return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
+        return res.status(401).json({ message: 'UserInfo Is Not Authorized!' });
       // concertid, title 중 하나라도 전달되지 않았다면, 다음을 응답한다
       if (!concertid || !title)
         return res.status(400).json({ message: 'Bad Request!' });

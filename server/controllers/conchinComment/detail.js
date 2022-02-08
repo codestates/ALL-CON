@@ -16,11 +16,11 @@ module.exports = {
       // 일치하는 댓글이 없다면 에러메시지 반환
       if(!articleCommentInfo) return res.status(400).json({ message: 'Bad Request!' });
       // 댓글 작성자가 아니라면 에러메시지 반환
-      if(articleCommentInfo.user_id !== userInfo.dataValues.id) return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
+      if(articleCommentInfo.user_id !== userInfo.dataValues.id) return res.status(401).json({ message: 'UserInfo Is Not Authorized!' });
       
       // 댓글 업데이트
       await articleCommentInfo.update({ content: content });
-      res.status(200).json({ data: { articleCommentInfo: articleCommentInfo }, message: 'Success Edit ArticleComment!' });
+      res.status(200).json({ data: { articleCommentInfo: articleCommentInfo }, message: 'Success Edit Article Comment!' });
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
     }

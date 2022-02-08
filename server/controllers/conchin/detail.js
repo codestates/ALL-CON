@@ -38,7 +38,7 @@ module.exports = {
         return res.status(401).json({ message: 'Bad Request!' });
       // 본인 게시글 외 수정 불가
       if (articleInfo.user_id !== userInfo.dataValues.id)
-        return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
+        return res.status(401).json({ message: 'UserInfo Is Not Authorized!' });
 
       // 이미지가 새롭게 선택되지 않았다면, 기존 이미지를 그대로 사용한다
       if (!image) {
@@ -84,7 +84,7 @@ module.exports = {
         return res.status(401).json({ message: 'Bad Request!' });
       // 본인 게시글 외 수정 불가
       if (articleInfo.user_id !== userInfo.dataValues.id)
-        return res.status(401).json({ message: 'UserInfo Is Not Authroized!' });
+        return res.status(401).json({ message: 'UserInfo Is Not Authorized!' });
 
       articleInfo.destroy();
       res.status(200).json({ message: 'Success Delete Article!' });
