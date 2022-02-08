@@ -23,6 +23,10 @@ function ConChinPostingOrderBox() {
   const { articleOrder, allArticles, articleRendered, targetArticle } =
     useSelector((state: RootState) => state.conChin);
 
+  /* useState => 지역상태 */
+  const [conChinPostingOrder, setConChinPostingOrder] =
+    useState<String>('view');
+
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
     if (Object.keys(targetArticle).length === 0) {
@@ -96,6 +100,13 @@ function ConChinPostingOrderBox() {
     getAllArticles();
   };
 
+  /* postingOrder 변경시 지역상태 conChinPostingOrder 변경  */
+  useEffect(() => {
+    setConChinPostingOrder(postingOrder);
+    console.log('conChinPostingOrder:');
+    console.log(conChinPostingOrder);
+  }, [postingOrder]);
+
   return (
     <div
       id={
@@ -117,7 +128,7 @@ function ConChinPostingOrderBox() {
           }
         }}
         style={
-          postingOrder === 'view'
+          conChinPostingOrder === 'view'
             ? { backgroundColor: '#FFCE63', color: 'white' }
             : { backgroundColor: 'white', color: '#404040' }
         }
@@ -134,7 +145,7 @@ function ConChinPostingOrderBox() {
           }
         }}
         style={
-          postingOrder === 'near'
+          conChinPostingOrder === 'near'
             ? { backgroundColor: '#FFCE63', color: 'white' }
             : { backgroundColor: 'white', color: '#404040' }
         }
@@ -151,7 +162,7 @@ function ConChinPostingOrderBox() {
           }
         }}
         style={
-          postingOrder === 'new'
+          conChinPostingOrder === 'new'
             ? { backgroundColor: '#FFCE63', color: 'white' }
             : { backgroundColor: 'white', color: '#404040' }
         }

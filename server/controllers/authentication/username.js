@@ -16,7 +16,7 @@ module.exports = {
       if(usernameInfo) {
         return res.status(200).json({ state: false, message: 'Username Is Already Existed!' });
       } else {
-        return res.status(200).json({ state : true, message: 'Username Is No Existed!' });
+        return res.status(200).json({ state : true, message: 'Username Is Not Existed!' });
       }
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });

@@ -10,9 +10,7 @@ module.exports = {
       
       const { message_key } = req.body;
 
-      console.log("message_key -----------------", message_key, typeof userInfo.message_key)
-
-      if(!message_key) return res.status(400).json({ message: 'Bad Reqeust!' });
+      if(!message_key) return res.status(400).json({ message: 'Bad Request!' });
       if(message_key.toString() !== userInfo.message_key) return res.status(401).json({ message: 'Message_Key Is Not Authorized!' });
 
       // message_key 'success' 업데이트
@@ -21,7 +19,7 @@ module.exports = {
         { where: { id: userInfo.dataValues.id }}
       )
 
-      res.status(200).json({ message: 'Succes Message Certification!' });
+      res.status(200).json({ message: 'Success Message Certification!' });
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
     }

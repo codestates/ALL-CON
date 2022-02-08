@@ -169,21 +169,26 @@ function MyProfileBox() {
         </div>
         {/* 자기소개 */}
         <div id='textWrapper'>
-          {btnSwitchState?.profileEdit ? (
-            // myIntroductionState
-            <textarea
-              id='introduction'
-              maxLength={40}
-              placeholder={
-                userInfo.introduction
-                  ? userInfo.introduction
-                  : '자기소개를 입력해주세요.'
-              }
-              onChange={inputIntroduction}
-            ></textarea>
-          ) : (
-            <div id='introduction'>{userInfo.introduction}</div>
-          )}
+          {
+            btnSwitchState?.profileEdit 
+            ? 
+            (
+              <textarea
+                id='introduction'
+                maxLength={40}
+                placeholder={
+                  userInfo.introduction
+                    ? userInfo.introduction
+                    : '자기소개를 입력해주세요.'
+                }
+                onChange={inputIntroduction}
+              ></textarea>
+            ) 
+            : 
+            (
+              <div id='introduction'>{userInfo.introduction}</div>
+            )
+          }
         </div>
         <div id='modifyBtnWrapper'>
           <button

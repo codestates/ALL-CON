@@ -10,7 +10,7 @@ import {
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinArticleOrderBox() {
@@ -19,6 +19,10 @@ function ConChinArticleOrderBox() {
     (state: RootState) => state.conChin,
   );
   const { target } = useSelector((state: RootState) => state.main);
+
+  /* useState => 지역상태 */
+  const [conChinArticleOrder, setConChinArticleOrder] =
+    useState<String>('view');
 
   const getAllArticles = async () => {
     try {
@@ -84,6 +88,13 @@ function ConChinArticleOrderBox() {
     getAllArticles();
   }, [articleOrder]);
 
+  /* articleOrder 변경시 지역상태 conChinArticleOrder 변경  */
+  useEffect(() => {
+    setConChinArticleOrder(articleOrder);
+    console.log('conChinArticleOrder:');
+    console.log(conChinArticleOrder);
+  }, [articleOrder]);
+
   return (
     <div id='noLineOrderBox'>
       <p
@@ -92,7 +103,7 @@ function ConChinArticleOrderBox() {
           setArticleOrderAndGetAllArticles('view');
         }}
         style={
-          articleOrder === 'view'
+          conChinArticleOrder === 'view'
             ? { backgroundColor: '#FFCE63', color: 'white' }
             : { backgroundColor: 'white', color: '#404040' }
         }
@@ -105,7 +116,7 @@ function ConChinArticleOrderBox() {
           setArticleOrderAndGetAllArticles('new');
         }}
         style={
-          articleOrder === 'new'
+          conChinArticleOrder === 'new'
             ? { backgroundColor: '#FFCE63', color: 'white' }
             : { backgroundColor: 'white', color: '#404040' }
         }
