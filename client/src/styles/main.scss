@@ -38,27 +38,27 @@
 /*------------재혁------------*/
 
 /*------------선영------------*/
-@import '../styles/pages/mainPage.scss';
-@import '../styles/layouts/jumbotronBackground';
+@import './pages/mainPage.scss';
+@import './layouts/jumbotronBackground';
 @import '../styles/components/posterSlide';
-@import '../styles/components/MainPage/mainConcertInfo';
-@import '../styles/components/MainPage/mainFindConchin';
-@import '../styles/pages/concertPage';
-@import '../styles/components/ConcertPage/concertBox';
-@import '../styles/components/Modals/ConcertPage/concertModal';
-@import '../styles/components/Modals/ConChinPage/conChinWritingModal';
-@import '../styles/components/Modals/loginModal';
-@import '../styles/components/Modals/signUpModal';
-@import '../styles/components/Modals/tosModal';
-@import '../styles/pages/landingPage';
-@import '../styles/components/Modals/MainPage/alarmModal';
-@import '../styles/components/Modals/MainPage/mainKakaoModal';
-@import '../styles/layouts/landingJumbotronBackground';
+@import './components/MainPage/mainConcertInfo';
+@import './components/MainPage/mainFindConchin';
+@import './pages/concertPage';
+@import './components/ConcertPage/concertBox';
+@import './components/Modals/ConcertPage/concertModal';
+@import './components/Modals/ConChinPage/conChinWritingModal';
+@import './components/Modals/loginModal';
+@import './components/Modals/signUpModal';
+@import './components/Modals/tosModal';
+@import './pages/landingPage';
+@import './components/Modals/MainPage/alarmModal';
+@import './components/Modals/MainPage/mainKakaoModal';
+@import './layouts/landingJumbotronBackground';
 /*------------선영------------*/
 
 /*------------정현------------*/
-@import '../styles/components/Modals/privacyModal';
-@import '../styles/components/Modals/alertModal';
+@import './components/Modals/privacyModal';
+@import './components/Modals/alertModal';
 /*------------정현------------*/
 
 /*------------기쁨------------*/
