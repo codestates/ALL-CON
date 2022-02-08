@@ -109,7 +109,7 @@ module.exports = {
       });
 
       res.status(201).json({
-        data: { articleInfo: joinUserArticleInfo },
+        data: { articleInfo: articleInfo },
         message: 'Success Create Article!',
       });
     } catch (err) {
