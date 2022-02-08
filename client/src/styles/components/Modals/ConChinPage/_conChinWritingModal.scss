@@ -2,7 +2,7 @@
   z-index: 100;
   width: 100%;
   @include mobile-only() {
-    position: absolute;
+    position: fixed;
     top: 10%;
     height: 90%;
   }
