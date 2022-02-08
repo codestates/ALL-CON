@@ -32,6 +32,7 @@ import {
   setOrder,
   setTarget,
   setTargetIdx,
+  setIsRendering
 } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -57,6 +58,7 @@ function SideMenuModal() {
       dispatch(setTargetIdx(0));
       dispatch(setOrder('view'));
       dispatch(setPageNum(1));
+      dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
       navigate('/main');
     } else if (menu === 'concert') {

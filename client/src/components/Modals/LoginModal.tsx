@@ -64,8 +64,10 @@ function LoginModal() {
       const error = err as AxiosError;
       if (error.response?.status === 400)
         dispatch(insertAlertText('빈칸을 모두 입력해주세요! 😖'));
+      else if (error.response?.status === 401)
+        dispatch(insertAlertText('잘못된 비밀번호입니다! 😖'));
       else if (error.response?.status === 403)
-        dispatch(insertAlertText('잘못된 이메일 혹은 비밀번호입니다! 😖'));
+        dispatch(insertAlertText('존재하지 않는 이메일입니다! 😖'));
       else dispatch(insertAlertText('Server Error! 😖'));
       dispatch(showAlertModal(true));
     }
