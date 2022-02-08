@@ -1,3 +1,3 @@
-# https://www.robotstxt.org/robotstxt.html
+# https://all-con-kr/robotstxt.html
 User-agent: *
-Disallow:
+Disallow: /*

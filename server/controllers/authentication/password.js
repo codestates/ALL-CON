@@ -40,7 +40,8 @@ module.exports = {
       let passwordFindHtml;
       ejs.renderFile(
         // __dirname + '/ejsform/passwordFind.ejs',
-        '/Users/esoolgnah/Desktop/Final Project/ALL-CON/server/middlewares/ejsform/passwordFind.ejs',
+        // '/Users/esoolgnah/Desktop/Final Project/ALL-CON/server/middlewares/ejsform/passwordFind.ejs',
+        __dirname + '/ejsFindpassword/findPassword.ejs',
         {
           confirmNumber,
           allconLogo,

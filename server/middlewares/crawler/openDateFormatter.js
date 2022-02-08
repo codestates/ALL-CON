@@ -20,7 +20,7 @@ const openDateFormatter = (date) => {
   /* minute */
   const minute = 0;
   /* Date 객체 반환 */
-  return new Date(year, month-1, day, hour-9, minute);
+  return new Date(year, month-1, day, hour, minute);
 }
 
 module.exports = {
