@@ -137,8 +137,6 @@
 
   #middleWrapper {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     position: absolute;
     width: 100%;
@@ -146,7 +144,7 @@
     overflow-x: hidden;
     overflow-y: hidden;
     @include mobile-only() {
-      height: 250%;
+      height: 300%;
       top: 50%;
     }
     @include md() {
@@ -158,106 +156,57 @@
       top: 100%;
     }
 
-    #firstImgAnimated {
+    #firstImg {
+      position: absolute;
+      top: 0%;
+      left: 50%;
       // border: 1px solid blue;
       @include mobile-only() {
         width: 85%;
         height: 14%;
+        margin-left: -42.5%;
       }
       @include md() {
         width: 80%;
         height: 14%;
+        margin-left: -40%;
       }
       @include lg() {
         width: 53%;
         height: 13%;
-      }
-      animation: moveToLeft 2s;
-      animation-iteration-count: 1;
-      -moz-animation: moveToLeft 2s; /* Firefox */
-      -webkit-animation: moveToLeft 2s; /* Safari and Chrome */
-      -o-animation: moveToLeft 2s; /* Opera */
-      // -webkit-animation-fill-mode: both;
-      animation-fill-mode: forwards;
-      @keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-          opacity: 0%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-moz-keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-          opacity: 0%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-webkit-keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-          opacity: 0%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-o-keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-          opacity: 0%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
+        margin-left: -26.5%;
       }
     }
-    #firstImg {
-      // border: 1px solid red;
-      opacity: 0%;
-      @include mobile-only() {
-        width: 85%;
-        height: 14%;
-      }
-      @include md() {
-        width: 80%;
-        height: 14%;
-      }
-      @include lg() {
-        width: 53%;
-        height: 13%;
-      }
-    }
+
     .alignBox {
+      position: absolute;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      opacity: 0;
+      left: 50%;
       // border: 1px solid pink;
       @include mobile-only() {
-        width: 80%;
-        height: 6%;
+        top: 18%;
+        margin-left: -42.5%;
+        width: 85%;
+        height: 8%;
       }
       @include md() {
+        top: 20%;
         width: 70%;
         height: 6%;
+        margin-left: -35%;
       }
       @include lg() {
+        top: 20%;
+        margin-left: -30%;
         width: 60%;
         height: 10%;
       }
       #paddingBox {
         position: relative;
         @include mobile-only() {
-          width: 32%;
+          width: 40%;
           height: 100%;
         }
         @include md() {
@@ -309,373 +258,62 @@
           @include lg() {
             font-size: 2.5rem;
           }
-        }
-      }
-    }
-
-    .alignBoxAnimated {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      // border: 1px solid pink;
-      @include mobile-only() {
-        width: 80%;
-        height: 6%;
-      }
-      @include md() {
-        width: 70%;
-        height: 6%;
-      }
-      @include lg() {
-        width: 60%;
-        height: 10%;
-      }
-      #paddingBox {
-        position: relative;
-        @include mobile-only() {
-          width: 32%;
-          height: 100%;
-        }
-        @include md() {
-          width: 32%;
-          height: 100%;
-          font-size: 1.5rem;
-        }
-        @include lg() {
-          width: 48%;
-          height: 100%;
-          font-size: 2rem;
-          padding-bottom: 10%;
-        }
-        .grayGif {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          img {
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-            box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
-          }
-        }
-      }
-      #textBox {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 90%;
-        // border: 1px solid green;
-        @include mobile-only() {
-          width: 70%;
-        }
-        @include md() {
-          width: 60%;
-        }
-        @include lg() {
-          width: 60%;
-        }
-        #texts {
-          font-weight: bold;
-          @include mobile-only() {
-            font-size: 1.2rem;
-          }
-          @include md() {
-            font-size: 1.8rem;
-          }
-          @include lg() {
-            font-size: 2.5rem;
-          }
-        }
-      }
-      animation: moveToRight 2s;
-      -moz-animation: moveToRight 2s; /* Firefox */
-      -webkit-animation: moveToRight 2s; /* Safari and Chrome */
-      -o-animation: moveToRight 2s; /* Opera */
-      animation-fill-mode: forwards;
-      @keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-moz-keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-webkit-keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-o-keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-    }
-
-    #paddingBox31 {
-      position: relative;
-      // border: 2px solid green;
-      @include mobile-only() {
-        width: 30%;
-        height: 100%;
-      }
-      @include md() {
-        width: 32%;
-        height: 100%;
-        font-size: 1.5rem;
-      }
-      @include lg() {
-        width: 30%;
-        height: 100%;
-        font-size: 2rem;
-        padding-bottom: 10%;
-      }
-      .grayGif {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        img {
-          width: 100%;
-          height: 100%;
-          border-radius: 5px;
-          box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
         }
       }
     }
 
     #secondImg {
-      opacity: 0;
+      position: absolute;
+      left: 50%;
       // border: 1px solid orange;
       @include mobile-only() {
+        top: 30%;
+        margin-left: -42.5%;
         width: 85%;
         height: 20%;
       }
       @include md() {
+        top: 32%;
+        margin-left: -37.5%;
         width: 75%;
         height: 20%;
       }
       @include lg() {
+        top: 35%;
+        margin-left: -22%;
         width: 44%;
         height: 15%;
-      }
-    }
-
-    #secondImgAnimated {
-      // border: 1px solid orange;
-      @include mobile-only() {
-        width: 85%;
-        height: 20%;
-      }
-      @include md() {
-        width: 75%;
-        height: 20%;
-      }
-      @include lg() {
-        width: 44%;
-        height: 15%;
-      }
-      animation: moveToLeft 2s;
-      -moz-animation: moveToLeft 2s; /* Firefox */
-      -webkit-animation: moveToLeft 2s; /* Safari and Chrome */
-      -o-animation: moveToLeft 2s; /* Opera */
-      @keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-        }
-        to {
-          transform: translate(0, 0);
-        }
-      }
-      @-moz-keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-        }
-        to {
-          transform: translate(0, 0);
-        }
-      }
-      @-webkit-keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-        }
-        to {
-          transform: translate(0, 0);
-        }
-      }
-      @-o-keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-        }
-        to {
-          transform: translate(0, 0);
-        }
-      }
-    }
-
-    .alignBox2Animated {
-      // border: 1px solid blue;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      @include mobile-only() {
-        width: 80%;
-        height: 6%;
-      }
-      @include md() {
-        width: 70%;
-        height: 6%;
-      }
-      @include lg() {
-        width: 60%;
-        height: 10%;
-      }
-      #paddingBox {
-        position: relative;
-        @include mobile-only() {
-          width: 32%;
-          height: 100%;
-        }
-        @include md() {
-          width: 32%;
-          height: 100%;
-          font-size: 1.5rem;
-        }
-        @include lg() {
-          width: 48%;
-          height: 100%;
-          font-size: 2rem;
-          padding-bottom: 10%;
-        }
-        .grayGif {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          img {
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-            box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.1);
-          }
-        }
-      }
-      #textBox {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 90%;
-        // border: 1px solid green;
-        @include mobile-only() {
-          width: 70%;
-        }
-        @include md() {
-          width: 60%;
-        }
-        @include lg() {
-          width: 60%;
-        }
-        #texts {
-          font-weight: bold;
-          @include mobile-only() {
-            font-size: 1.2rem;
-          }
-          @include md() {
-            font-size: 1.8rem;
-          }
-          @include lg() {
-            font-size: 2.5rem;
-          }
-        }
-      }
-      animation: moveToRight 2s;
-      -moz-animation: moveToRight 2s; /* Firefox */
-      -webkit-animation: moveToRight 2s; /* Safari and Chrome */
-      -o-animation: moveToRight 2s; /* Opera */
-      @keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-moz-keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-webkit-keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-o-keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
       }
     }
 
     .alignBox2 {
-      opacity: 0;
+      position: absolute;
+      left: 50%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      opacity: 0;
       @include mobile-only() {
-        width: 80%;
-        height: 6%;
+        top: 55%;
+        margin-left: -42.5%;
+        width: 85%;
+        height: 8%;
       }
       @include md() {
+        top: 58%;
+        margin-left: -35%;
         width: 70%;
         height: 6%;
       }
       @include lg() {
-        width: 60%;
+        top: 55%;
+        width: 65%;
         height: 10%;
+        margin-left: -32.5%;
       }
       #paddingBox {
         position: relative;
         @include mobile-only() {
-          width: 32%;
+          width: 40%;
           height: 100%;
         }
         @include md() {
@@ -727,110 +365,61 @@
           @include lg() {
             font-size: 2.5rem;
           }
-        }
-      }
-    }
-
-    #thirdImgAnimated {
-      // border: 1px solid orange;
-
-      @include mobile-only() {
-        width: 85%;
-        height: 20%;
-      }
-      @include md() {
-        width: 75%;
-        height: 20%;
-      }
-      @include lg() {
-        width: 44%;
-        height: 15%;
-      }
-      animation: moveToLeft 2s;
-      -moz-animation: moveToLeft 2s; /* Firefox */
-      -webkit-animation: moveToLeft 2s; /* Safari and Chrome */
-      -o-animation: moveToLeft 2s; /* Opera */
-      @keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-moz-keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-webkit-keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-o-keyframes moveToLeft {
-        from {
-          transform: translate(100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
         }
       }
     }
 
     #thirdImg {
-      opacity: 0;
-      // border: 1px solid blue;
+      position: absolute;
+      left: 50%;
+      //border: 1px solid blue;
       @include mobile-only() {
+        top: 67%;
+        margin-left: -42.5%;
         width: 85%;
         height: 20%;
       }
       @include md() {
+        top: 70%;
+        margin-left: -37.5%;
         width: 75%;
         height: 20%;
       }
       @include lg() {
+        top: 70%;
         width: 44%;
         height: 15%;
+        margin-left: -22%;
       }
     }
 
-    .alignBox3Animated {
-      // border: 3px solid purple;
+    .alignBox3 {
+      position: absolute;
+      bottom: 0.2%;
+      left: 50%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      // border: 1px solid pink;
+      //border: 1px solid pink;
       @include mobile-only() {
-        width: 80%;
-        height: 6%;
+        margin-left: -42.5%;
+        width: 85%;
+        height: 8%;
       }
       @include md() {
+        margin-left: -37.5%;
         width: 70%;
         height: 6%;
       }
       @include lg() {
         width: 60%;
         height: 10%;
+        margin-left: -30%;
       }
       #paddingBox {
         position: relative;
         @include mobile-only() {
-          width: 32%;
+          width: 40%;
           height: 100%;
         }
         @include md() {
@@ -884,54 +473,6 @@
           }
         }
       }
-      animation: moveToRight 2s;
-      -moz-animation: moveToRight 2s; /* Firefox */
-      -webkit-animation: moveToRight 2s; /* Safari and Chrome */
-      -o-animation: moveToRight 2s; /* Opera */
-      @keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-moz-keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-webkit-keyframes moveToRight {
-        ffrom {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-      @-o-keyframes moveToRight {
-        from {
-          transform: translate(-100%, 0);
-          opacity: 20%;
-        }
-        to {
-          transform: translate(0, 0);
-          opacity: 100%;
-        }
-      }
-    }
-
-    .alignBox3 {
-      opacity: 0;
     }
   }
 
@@ -944,8 +485,8 @@
     background-color: $yellow;
     // border: 1px solid green;
     @include mobile-only() {
-      height: 20%;
-      top: 310%;
+      height: 25%;
+      top: 360%;
     }
     @include md() {
       height: 30%;
@@ -963,10 +504,10 @@
       width: 80%;
       // border: 1px solid red;
       @include mobile-only() {
-        height: 60%;
+        height: 68%;
       }
       @include md() {
-        height: 55%;
+        height: 65%;
       }
       @include lg() {
         height: 50%;
@@ -1066,7 +607,7 @@
     @include mobile-only() {
       width: 100%;
       height: 30%;
-      top: 330%;
+      top: 385%;
     }
     @include md() {
       width: 100%;

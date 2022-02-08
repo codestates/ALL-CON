@@ -1,4 +1,3 @@
-require('dotenv').config();
 const { Users } = require('../../models');
 require('dotenv').config();
 

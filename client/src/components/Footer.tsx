@@ -77,7 +77,7 @@ function Footer() {
           <img src={insta} id='insta' alt='인스타 로고'></img>
         </a>
       </div>
-      <div id='copyright'>Copyright ⓒ 2021-2022 weAct</div>
+      <div id='copyright'>Copyright ⓒ 2021-2022 weAct.</div>
     </div>
   );
 }

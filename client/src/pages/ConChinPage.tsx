@@ -17,7 +17,7 @@ import {
 } from '../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
-import { useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinPage() {
@@ -26,7 +26,46 @@ function ConChinPage() {
   const { articleOrder, postingOrder, targetArticle, allArticles } =
     useSelector((state: RootState) => state.conChin);
 
-  /*전체 콘서트 받아오기 */
+  /* 지역상태 interface */
+  interface ConChinTarget {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }
+
+  interface ConChinTargetArticle {
+    concert_id?: number;
+    content?: string;
+    createdAt?: Date;
+    id?: number;
+    image?: string;
+    member_count?: number;
+    title?: string;
+    total_comment?: number;
+    total_member?: number;
+    updatedAt?: Date;
+    user_id?: number;
+    view?: number;
+  }
+  /* useState => 지역상태 */
+  const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});
+  const [conChinTargetArticle, setConChinTargetArticle] =
+    useState<ConChinTargetArticle>({});
+
+  /* 전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
     try {
       const response = await axios.get(
@@ -102,11 +141,22 @@ function ConChinPage() {
   //   // dispatch(setArticleRendered(false));
   // };
 
-  /* 맨 처음 렌더링, 타겟이 있는지 없는지 유무에 따라 렌더링한다. */
+  /* useEffect => 맨 처음 렌더링, 타겟이 있는지 없는지 유무에 따라 렌더링한다. */
   useEffect(() => {
     getAllConcerts();
     getAllArticlesWithCondition();
   }, []);
+
+  /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
+  useEffect(() => {
+    setConChinTarget(target);
+    console.log('useEffect 정상작동, conChinTarget 변경');
+  }, [target]);
+  /* 다른 곳에서 targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
+  useEffect(() => {
+    setConChinTargetArticle(targetArticle);
+    console.log('useEffect 정상작동, conChinTargetArticle 변경');
+  }, [targetArticle]);
 
   return (
     <div id='conChinContainer'>
@@ -114,7 +164,7 @@ function ConChinPage() {
         <img id='jumbotron' src={banner} />
         <div
           id={
-            Object.keys(target).length === 0
+            Object.keys(conChinTarget).length === 0
               ? 'postingWrapper'
               : 'postingWrapperChosen'
           }
@@ -124,7 +174,7 @@ function ConChinPage() {
         </div>
         <div
           id={
-            Object.keys(target).length === 0
+            Object.keys(conChinTarget).length === 0
               ? 'articleWrapper'
               : 'articleWrapperChosen'
           }
@@ -135,11 +185,11 @@ function ConChinPage() {
       </div>
       <div
         id={
-          Object.keys(targetArticle).length === 0 &&
-          Object.keys(target).length !== 0
+          Object.keys(conChinTargetArticle).length === 0 &&
+          Object.keys(conChinTarget).length !== 0
             ? 'contentsWrapperArticleNotChosen'
-            : Object.keys(targetArticle).length !== 0 &&
-              Object.keys(target).length !== 0
+            : Object.keys(conChinTargetArticle).length !== 0 &&
+              Object.keys(conChinTarget).length !== 0
             ? 'contentsWrapperChosen'
             : 'contentWrapper'
         }
@@ -149,11 +199,11 @@ function ConChinPage() {
       </div>
       <div
         id={
-          Object.keys(targetArticle).length === 0 &&
-          Object.keys(target).length !== 0
+          Object.keys(conChinTargetArticle).length === 0 &&
+          Object.keys(conChinTarget).length !== 0
             ? 'fullFooterArticleNotChosen'
-            : Object.keys(targetArticle).length !== 0 &&
-              Object.keys(target).length !== 0
+            : Object.keys(conChinTargetArticle).length !== 0 &&
+              Object.keys(conChinTarget).length !== 0
             ? 'fullFooterChosen'
             : 'fullFooter'
         }

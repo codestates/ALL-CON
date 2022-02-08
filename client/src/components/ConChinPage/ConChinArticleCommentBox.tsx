@@ -104,7 +104,7 @@ function ConChinArticleCommentBox() {
       if (totalByte >= maxByte) setByteError(true);
       else setByteError(false);
     } else {
-    /* 댓글 수정 입력 */
+      /* 댓글 수정 입력 */
       setEditByteLength(totalByte);
       /* byte 길이에 따라 에러 상태 변경 */
       if (totalByte >= maxByte) {
@@ -313,7 +313,7 @@ function ConChinArticleCommentBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        dispatch(setTargetArticle(response.data.data.articleInfo));
+        // dispatch(setTargetArticle(response.data.data.articleInfo));
         dispatch(
           setConChinTotalComments(response.data.data.articleInfo.total_comment),
         );
