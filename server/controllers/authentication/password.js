@@ -39,6 +39,8 @@ module.exports = {
       // ejs 파일에서 html 받아오기
       let passwordFindHtml;
       ejs.renderFile(
+        // __dirname + '/ejsform/passwordFind.ejs',
+        // '/Users/esoolgnah/Desktop/Final Project/ALL-CON/server/middlewares/ejsform/passwordFind.ejs',
         __dirname + '/ejsFindpassword/findPassword.ejs',
         {
           confirmNumber,

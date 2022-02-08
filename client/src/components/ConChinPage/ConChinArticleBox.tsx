@@ -93,9 +93,6 @@ function ConChinArticleBox() {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(articleCurPage));
-        console.log(
-          'ConChinArticleOrderBox=> 타겟에 종속된 게시물을 보여줍니다.',
-        );
       }
     } catch (err) {
       console.log(err);
@@ -117,7 +114,6 @@ function ConChinArticleBox() {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
         // setIsClick(false);
         // setInputComment('');
-        console.log(id);
         dispatch(setConChinPageAllComments([]));
         dispatch(setConChinTotalNum(response.data.data.totalPage));
         dispatch(
