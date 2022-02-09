@@ -12,8 +12,11 @@ module.exports = {
       // 전달받은 인증번호가 없을 경우, 다음을 실행한다
       if(!email_key) return res.status(400).json({ message: 'Bad Request!' });
 
+      // 전달받은 email_key를 'sha256' 알고리즘, 'base64' 문자열 형식으로 해싱한다
+      const hashedNumber = crypto.createHash('sha256').update(String(email_key)).digest('base64');
+
       // 인증번호가 전달된 경우, 다음을 실행한다
-      const isValid = await Users.findOne({ where: { email_key: String(email_key) }})
+      const isValid = await Users.findOne({ where: { email_key: hashedNumber }})
       // 입력한 email_key값과 일치하는 유저정보가 없다면, 다음을 실행한다
       if(!isValid) return res.status(403).json({ message: 'Invalid Email Key!' })
 
@@ -45,7 +48,7 @@ module.exports = {
       // password를 salt를 첨가하여 sha512 알고리즘으로 106,699번 해싱 후 64바이트 buffer 형식으로 반환
       const key = await pbkdf2Promise(newPassword, salt, 106699, 64, 'sha512');
       // key값은 buffer 형식이므로 base64 문자열로 변환한 값을 hashedPassword 변수에 넣는다.
-      const hashedPassword = key.toString("base64");
+      const hashedPassword = key.toString('base64');
       
       await userInfo.update(
         { 
