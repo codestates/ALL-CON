@@ -23,6 +23,32 @@ function ConChinPostingBox() {
   const { articleOrder, allArticles, articleRendered, targetArticle } =
     useSelector((state: RootState) => state.conChin);
 
+  /* 지역상태 interface */
+  interface ConChinTarget {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }
+
+  /* useState => 지역상태 */
+  const [conChinAllConcerts, setConChinAllConcerts] = useState<any[]>([]);
+  const [conChinPostingOrder, setConChinPostingOrder] =
+    useState<String>('view');
+  const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});
+
   /* 조건부 게시물 받아오기 */
   const getAllArticlesWithCondition = async () => {
     try {
@@ -104,33 +130,57 @@ function ConChinPostingBox() {
     getAllArticlesWithCondition();
   }, [target]);
 
+  /* allConcerts 변경시 지역상태 conChinAllConcerts 변경  */
+  useEffect(() => {
+    setConChinAllConcerts(allConcerts);
+  }, [allConcerts]);
+
+  /* postingOrder 변경시 지역상태 conChinPostingOrder 변경  */
+  useEffect(() => {
+    setConChinPostingOrder(postingOrder);
+    // console.log('conChinPostingOrder:');
+    // console.log(conChinPostingOrder);
+  }, [postingOrder]);
+
+  /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
+  useEffect(() => {
+    setConChinTarget(target);
+    // console.log('useEffect 정상작동, conChinTarget 변경');
+  }, [target]);
+
   return (
     <li id='conChinPostingBox'>
-      <h1 id={Object.keys(target).length === 0 ? 'curOrder' : 'curOrderChosen'}>
-        {postingOrder === 'view'
+      <h1
+        id={
+          Object.keys(conChinTarget).length === 0
+            ? 'curOrder'
+            : 'curOrderChosen'
+        }
+      >
+        {conChinPostingOrder === 'view'
           ? '조회수 순'
-          : postingOrder === 'near'
+          : conChinPostingOrder === 'near'
           ? '임박예정 순'
-          : postingOrder === 'new'
+          : conChinPostingOrder === 'new'
           ? '등록일 순'
           : null}
       </h1>
       <ConChinPostingOrderBox />
       <div
         id={
-          Object.keys(target).length === 0
+          Object.keys(conChinTarget).length === 0
             ? 'postingBoxWrapper'
             : 'postingBoxWrapperChosen'
         }
       >
-        {target !== undefined
-          ? allConcerts.map(concert => {
+        {conChinTarget !== undefined
+          ? conChinAllConcerts.map(concert => {
               return (
                 <ul
                   className={
-                    target.id === concert.id
+                    conChinTarget.id === concert.id
                       ? 'postingChosen'
-                      : Object.keys(target).length === 0
+                      : Object.keys(conChinTarget).length === 0
                       ? 'posting'
                       : 'postingUnChosen'
                   }

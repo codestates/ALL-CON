@@ -138,12 +138,12 @@ function ConChinPage() {
   /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
   useEffect(() => {
     setConChinTarget(target);
-    console.log('useEffect 정상작동, conChinTarget 변경');
+    // console.log('useEffect 정상작동, conChinTarget 변경');
   }, [target]);
   /* 다른 곳에서 targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
   useEffect(() => {
     setConChinTargetArticle(targetArticle);
-    console.log('useEffect 정상작동, conChinTargetArticle 변경');
+    // console.log('useEffect 정상작동, conChinTargetArticle 변경');
   }, [targetArticle]);
 
   return (

@@ -28,11 +28,11 @@ function ConChinPostingOrderBox() {
     useState<String>('view');
 
   /*전체 콘서트 받아오기 */
-  const getAllConcerts = async () => {
+  const getAllConcerts = async (clickedPostingOrder: String) => {
     if (Object.keys(targetArticle).length === 0) {
       try {
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/concert?order=${postingOrder}`,
+          `${process.env.REACT_APP_API_URL}/concert?order=${clickedPostingOrder}`,
           { withCredentials: true },
         );
         if (response.data) {
@@ -93,7 +93,7 @@ function ConChinPostingOrderBox() {
     dispatch(setArticleRendered(false));
     dispatch(setTargetArticle({}));
     dispatch(setArticleCurPage(1));
-    getAllConcerts();
+    getAllConcerts(conChinPostingOrder);
     getAllArticles();
   };
 
@@ -120,7 +120,7 @@ function ConChinPostingOrderBox() {
         onClick={() => {
           if (Object.keys(target).length === 0) {
             dispatch(setPostingOrder('view'));
-            getAllConcerts();
+            getAllConcerts('view');
             getAllArticles();
           }
         }}
@@ -137,7 +137,7 @@ function ConChinPostingOrderBox() {
         onClick={() => {
           if (Object.keys(target).length === 0) {
             dispatch(setPostingOrder('near'));
-            getAllConcerts();
+            getAllConcerts('near');
             getAllArticles();
           }
         }}
@@ -154,7 +154,7 @@ function ConChinPostingOrderBox() {
         onClick={() => {
           if (Object.keys(target).length === 0) {
             dispatch(setPostingOrder('new'));
-            getAllConcerts();
+            getAllConcerts('new');
             getAllArticles();
           }
         }}
