@@ -1,7 +1,7 @@
-const nodemailer = require('nodemailer');
 const { Users, Alarms, Concerts } = require('../../models');
+const { ejsHtmlCaller } = require('../ejsHtmlCaller/ejsHtmlCaller')
 const ejs = require('ejs');
-const fs = require('fs');
+const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 const emailAlarm = async (alarmInfo) => {
@@ -52,63 +52,23 @@ const emailAlarm = async (alarmInfo) => {
   else concertOpenDate = `${year}.${month}.${date} ${hour}:${minute} ${day}`
   /* 날짜 변환 */
 
-  // 송신 이메일 설정
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 587,
-    secure: false,
-    auth: {
-      user: `${process.env.EMAIL_ID}`,
-      pass: `${process.env.EMAIL_PASS}`
-    }
+  // 콘서트 알람 이메일 보내기
+  await ejsHtmlCaller('concertAlarm', `${alarmInfo.email}`, {
+    username,
+    concertTitle,
+    concertOpenDate,
+    concertImageUrl,
+    concertUrl,
+    hotConcertList
   })
-
-  // ejs 파일에서 html 받아오기
-  let emailAlarmHtml;
-  ejs.renderFile(
-    __dirname + '/../ejsform/emailAlarm.ejs',
-    {
-      username,
-      concertTitle,
-      concertOpenDate,
-      concertImageUrl,
-      concertUrl,
-      allconLogo,
-      youtubeLogo,
-      instaLogo,
-      hotConcertList
-    },
-    (err, data) => {
-      if(err) console.log(err);
-      emailAlarmHtml = data;
-    }
-  )
-
-  // 메일 보내는 content 작성
-  var mailOptions = {
-    from: `<${process.env.EMAIL_ID}>`,
-    to: `${alarmInfo.email}`,
-    subject: `🔔[All-Con] 콘서트 티켓오픈일 알림 - ${alarmInfo.title}`,
-    text: `${alarmInfo.title}의 티켓오픈일은 ${alarmInfo.open_date} 입니다!`,
-    html: emailAlarmHtml,
-  };
-
-  // 메일 보내기
-  await transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return console.log(error);
-    }
-    console.log('Message sent: %s', info.messageId);
-  });
 
   // 이메일은 보낸 알람은 테이블에서 삭제
-  await Alarms.destroy({
-    where: { 
-      user_id: alarmInfo.user_id, 
-      concert_id: alarmInfo.concert_id
-    }
-  })
+  // await Alarms.destroy({
+  //   where: { 
+  //     user_id: alarmInfo.user_id, 
+  //     concert_id: alarmInfo.concert_id
+  //   }
+  // })
 }
 
 module.exports = {

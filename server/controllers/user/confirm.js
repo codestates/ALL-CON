@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { userAuth } = require('../../middlewares/authorized/userAuth')
 const { Users } = require('../../models');
+const crypto = require('crypto');
 
 module.exports = {
   post: async (req, res) => {
@@ -11,7 +12,11 @@ module.exports = {
       const { message_key } = req.body;
 
       if(!message_key) return res.status(400).json({ message: 'Bad Request!' });
-      if(message_key.toString() !== userInfo.message_key) return res.status(401).json({ message: 'Message_Key Is Not Authorized!' });
+
+      // 'sha256' 알고리즘으로 confirmNumber을 'base64' 문자열 형식으로 해싱한다
+      const hashedNumber = crypto.createHash('sha256').update(String(message_key)).digest('base64');
+
+      if(hashedNumber !== userInfo.message_key) return res.status(401).json({ message: 'Message_Key Is Not Authorized!' });
 
       // message_key 'success' 업데이트
       await Users.update(

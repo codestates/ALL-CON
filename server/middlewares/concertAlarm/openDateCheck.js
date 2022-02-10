@@ -15,13 +15,14 @@ const openDateCheck = async (targetOpenDate) => {
   let dateToday = today.getDate()
   let hourToday = today.getHours()
 
-  // 년 확인
-  if(year !== yearToday) return false
-  // 월 확인
-  if(month !== monthToday) return false
-  // 날짜 및 시간 확인
-  if(date-1 === dateToday && hour === hourToday) return true
-  else return false
+  // // 년 확인
+  // if(year !== yearToday) return false
+  // // 월 확인
+  // if(month !== monthToday) return false
+  // // 날짜 및 시간 확인
+  // if(date-1 === dateToday && hour === hourToday) return true
+  // else return false
+  return true
 }
 
 module.exports = {
