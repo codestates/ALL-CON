@@ -88,10 +88,6 @@ function ConChinPage() {
         if (Object.keys(target).length === 0) {
           getAllArticles();
           dispatch(setArticleCurPage(1));
-          console
-            .log
-            // ' ConChinPostingBox=> 타겟이 없으므로 전체를 가져옵니다..',
-            ();
           getAllConcerts();
         } else if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
@@ -150,12 +146,12 @@ function ConChinPage() {
   /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
   useEffect(() => {
     setConChinTarget(target);
-    console.log('useEffect 정상작동, conChinTarget 변경');
+    // console.log('useEffect 정상작동, conChinTarget 변경');
   }, [target]);
   /* 다른 곳에서 targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
   useEffect(() => {
     setConChinTargetArticle(targetArticle);
-    console.log('useEffect 정상작동, conChinTargetArticle 변경');
+    // console.log('useEffect 정상작동, conChinTargetArticle 변경');
   }, [targetArticle]);
 
   return (
