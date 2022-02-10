@@ -67,26 +67,25 @@ function ConChinPostingOrderBox() {
   };
 
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
-  useEffect(() => {
-    /* 타겟이 없을 때 모든 콘서트 보여주기 */
-    if (Object.keys(target).length === 0) {
-      getAllConcerts();
-      getAllArticles();
-      dispatch(setTarget({}));
-      dispatch(setArticleRendered(false));
-      dispatch(setTargetArticle({}));
-      dispatch(setArticleCurPage(1));
-
-      /* 타겟이 있고 타겟 게시물이 없을 때 타겟에 대한 게시물만 보여주기*/
-    } else if (
-      Object.keys(target).length > 0 &&
-      Object.keys(targetArticle).length === 0
-    ) {
-      dispatch(setTargetArticle({}));
-      dispatch(setArticleRendered(true));
-      dispatch(setArticleCurPage(1));
-    }
-  }, [postingOrder]);
+  // useEffect(() => {
+  //   /* 타겟이 없을 때 모든 콘서트 보여주기 */
+  //   if (Object.keys(target).length === 0) {
+  //     getAllConcerts();
+  //     getAllArticles();
+  //     dispatch(setTarget({}));
+  //     dispatch(setArticleRendered(false));
+  //     dispatch(setTargetArticle({}));
+  //     dispatch(setArticleCurPage(1));
+  //     /* 타겟이 있고 타겟 게시물이 없을 때 타겟에 대한 게시물만 보여주기*/
+  //   } else if (
+  //     Object.keys(target).length > 0 &&
+  //     Object.keys(targetArticle).length === 0
+  //   ) {
+  //     dispatch(setTargetArticle({}));
+  //     dispatch(setArticleRendered(true));
+  //     dispatch(setArticleCurPage(1));
+  //   }
+  // }, [postingOrder]);
 
   /* 타겟 초기화 핸들러 */
   const resetTargetHandler = () => {

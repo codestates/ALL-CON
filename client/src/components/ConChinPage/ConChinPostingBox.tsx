@@ -42,20 +42,21 @@ function ConChinPostingBox() {
             // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
           }
         }
-      } else {
-        if (
-          Object.keys(target).length > 0 &&
-          Object.keys(targetArticle).length === 0
-        ) {
-          // resetAllTarget();
-        } else if (
-          Object.keys(target).length > 0 &&
-          Object.keys(targetArticle).length > 0
-        ) {
-        } else if (Object.keys(target).length > 0 && allArticles.length === 0) {
-          // resetAllTarget();
-        }
       }
+      // else {
+      //   if (
+      //     Object.keys(target).length > 0 &&
+      //     Object.keys(targetArticle).length === 0
+      //   ) {
+      //     // resetAllTarget();
+      //   } else if (
+      //     Object.keys(target).length > 0 &&
+      //     Object.keys(targetArticle).length > 0
+      //   ) {
+      //   } else if (Object.keys(target).length > 0 && allArticles.length === 0) {
+      //     // resetAllTarget();
+      //   }
+      // }
     } catch (err) {
       console.log(err);
       dispatch(setAllArticles([]));
