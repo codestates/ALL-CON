@@ -96,15 +96,13 @@ function ConChinPostingOrderBox() {
     dispatch(setArticleCurPage(1));
     getAllConcerts();
     getAllArticles();
-    getAllConcerts();
-    getAllArticles();
   };
 
   /* postingOrder 변경시 지역상태 conChinPostingOrder 변경  */
   useEffect(() => {
     setConChinPostingOrder(postingOrder);
-    console.log('conChinPostingOrder:');
-    console.log(conChinPostingOrder);
+    // console.log('conChinPostingOrder:');
+    // console.log(conChinPostingOrder);
   }, [postingOrder]);
 
   return (
