@@ -1,8 +1,7 @@
 require('dotenv').config();
 const { Users } = require('../../models');
 const { ejsHtmlCaller } = require('../../middlewares/ejsHtmlCaller/ejsHtmlCaller.js')
-const nodemailer = require('nodemailer');
-const ejs = require('ejs');
+const crypto = require('crypto');
 
 module.exports = {
   post: async (req, res) => {
@@ -17,6 +16,8 @@ module.exports = {
       const max = 999999;
       const min = 100000;
       const confirmNumber = Math.floor(Math.random() * (max - min)) + min;
+      // 'sha256' 알고리즘으로 confirmNumber을 'base64' 문자열 형식으로 해싱한다
+      const hashedNumber = crypto.createHash('sha256').update(String(confirmNumber)).digest('base64');
 
       console.log('---- 비밀번호 찾기 ejs 보내기 시작 ----')
 
@@ -27,7 +28,7 @@ module.exports = {
 
       // 유저 테이블에 email_key 필드를 업데이트
       await Users.update(
-        { email_key: confirmNumber },
+        { email_key: hashedNumber }, // 해싱된 6자리 난수코드 업데이트
         { where: { email: email } },
       );
 
