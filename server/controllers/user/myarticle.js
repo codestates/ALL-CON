@@ -1,5 +1,5 @@
 const { userAuth } = require('../../middlewares/authorized/userAuth')
-const { Users, Articles } = require('../../models');
+const { Articles } = require('../../models');
 
 module.exports = {
   get: async (req, res) => {

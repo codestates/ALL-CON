@@ -1,8 +1,6 @@
-const { Users, Alarms, Concerts } = require('../../models');
-const { ejsHtmlCaller } = require('../ejsHtmlCaller/ejsHtmlCaller')
-const ejs = require('ejs');
-const nodemailer = require('nodemailer');
 require('dotenv').config();
+const { Users, Concerts } = require('../../models');
+const { ejsHtmlCaller } = require('../ejsHtmlCaller/ejsHtmlCaller')
 
 const emailAlarm = async (alarmInfo) => {
 
@@ -24,10 +22,6 @@ const emailAlarm = async (alarmInfo) => {
   const concertOpenDateRawData = alarmInfo.open_date;
   const concertImageUrl = alarmInfo.image_concert
   const concertUrl = alarmInfo.link
-
-  const allconLogo = 'https://allcon-image-bucket.s3.ap-northeast-2.amazonaws.com/allConLogo.png';
-  const youtubeLogo = `https://allcon-image-bucket.s3.ap-northeast-2.amazonaws.com/youtubeLogo.png`;
-  const instaLogo = 'https://allcon-image-bucket.s3.ap-northeast-2.amazonaws.com/instaLogo.png';
 
   let year = concertOpenDateRawData.getFullYear()
   let month = concertOpenDateRawData.getMonth() + 1;

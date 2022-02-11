@@ -11,12 +11,12 @@ const app = express();
 const port = 8080;
 
 // 콘서트 티켓 오픈일 알라머 실행
-const autoAlarm = schedule.scheduleJob('00 40 * * * *', async () => {
+const autoAlarm = schedule.scheduleJob('00 25 17 * * *', async () => {
   concertAlarm();
 });
 
 // 콘서트 클리너 실행
-const autoConcertCleaner = schedule.scheduleJob('00 00 23 * * *', async () => {
+const autoConcertCleaner = schedule.scheduleJob('00 30 16 * * *', async () => {
   concertCleaner();
 });
 
@@ -36,10 +36,6 @@ app.use(
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
   }),
 );
-
-/* ejs 파일 경로 테스트 */
-// app.use('/ejsform', express.static(__dirname + '/ejsform'))
-/* ejs 파일 경로 테스트 */
 
 /* Routing */
 app.use('/', router.authRouter);

@@ -59,7 +59,7 @@ function LoginRedirect() {
     dispatch(logout());
     dispatch(getUserInfo({}));
     /* 로그인 모달창 팝업 */
-    dispatch(showLoginModal(true));
+    // dispatch(showLoginModal(true));
   };
 
   useEffect(() => {
