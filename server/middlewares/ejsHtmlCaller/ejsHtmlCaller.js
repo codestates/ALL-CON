@@ -86,7 +86,6 @@ const ejsHtmlCaller = async (type, email, object) => {
       from: `<${process.env.EMAIL_ID}>`,
       to: `${email}`,
       subject: `🔔[All-Con] 콘서트 티켓오픈일 알림 - ${concertTitle}`,
-      // text: `${alarmInfo.title}의 티켓오픈일은 ${alarmInfo.open_date} 입니다!`,
       html: emailAlarmHtml,
     });
 

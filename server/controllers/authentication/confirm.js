@@ -1,5 +1,5 @@
-const { Users } = require('../../models');
 require('dotenv').config();
+const { Users } = require('../../models');
 const util = require('util');
 const crypto = require('crypto');
 const pbkdf2Promise = util.promisify(crypto.pbkdf2);

@@ -471,7 +471,8 @@
     }
     @include lg() {
       width: 70%;
-      height: 73%;
+      height: 77%;
+      bottom: -5%;
     }
   }
   #noCommentMessage{
@@ -487,7 +488,7 @@
       font-size: 2.0rem;
     }
     @include lg() {
-      bottom: 2%;
+      bottom: -17%;
       font-size: 3.0rem;
     }
   }

@@ -1,5 +1,5 @@
 const { userAuth } = require('../../middlewares/authorized/userAuth')
-const { Users, Alarms, ArticleComments, Articles, ConcertComments } = require('../../models');
+const { Users } = require('../../models');
 const { Op } = require('sequelize');
 const util = require('util');
 const crypto = require('crypto');

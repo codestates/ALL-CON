@@ -12,7 +12,26 @@
     height: 180%;
   }
   @include lg() {
-    height: 227%;
+    height: 300%;
+  }
+
+  #profileBoxWrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    // border: 5px solid green;
+    @include mobile-only() {
+      height: 33.33%;
+    }
+    @include md() {
+      height: 33.33%;
+    }
+    @include lg() {
+      height: 28%;
+    }
   }
 
   /***** 공통 *****/
@@ -45,24 +64,6 @@
   }
   /***** 공통 *****/
 
-  #profileBoxWrapper {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-
-    // border: 2px solid green;
-    @include mobile-only() {
-      height: 33.33%;
-    }
-    @include md() {
-      height: 33.33%;
-    }
-    @include lg() {
-      height: 33.33%;
-    }
-  }
   #userInfoWrapper {
     position: absolute;
     display: flex;
@@ -80,7 +81,7 @@
       height: 70%;
     }
     @include lg() {
-      top: 26%;
+      top: 22%;
       height: 66.67%;
     }
     #userInfoBox {
@@ -171,7 +172,7 @@
           }
           // 중복확인 버튼
           #duplicationCheck {
-            z-index: 100;
+            z-index: 10;
             position: absolute;
             display: flex;
             align-items: center;
@@ -449,49 +450,6 @@
     }
   }
 
-  #fullFooter {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-
-    background-color: black;
-    @include mobile-only() {
-      width: 100%;
-      height: 15.3%;
-      top: 82%;
-    }
-    @include md() {
-      width: 100%;
-      height: 15.9%;
-      top: 104%;
-    }
-    @include lg() {
-      width: 100%;
-      height: 18%;
-      top: 95%;
-    }
-    // border: 1px solid red;
-    #footerWrapper {
-      position: absolute;
-      display: flex;
-
-      background-color: black;
-      // border: 1px solid red;
-      @include mobile-only() {
-        height: 100%;
-        width: 100%;
-      }
-      @include md() {
-        height: 100%;
-        width: 90%;
-      }
-      @include lg() {
-        height: 70%;
-        width: 73%;
-      }
-    }
-  }
-
   #resignBtn{
     position: absolute;
     display: flex;
@@ -515,7 +473,6 @@
 
     }   
     
-   
   #resignBtnMessage{
     // border: 2px solid blue;
     transition: 0.5s;
@@ -557,9 +514,9 @@
       cursor: pointer;
       --d: 100%;
     }
-
-  }
-  #resignArrowImg{
+   }
+   
+   #resignArrowImg{
     position: relative;
     margin-left: 0.5%;
     // width: 2%;
@@ -574,6 +531,48 @@
     @include lg() {
       width: 2%
     }
+   }
   }
-}
+
+  #fullFooter {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    
+    @include mobile-only() {
+      width: 100%;
+      height: 18%;
+      top: 82%;
+    }
+    @include md() {
+      width: 100%;
+      height: 15.9%;
+      top: 104%;
+    }
+    @include lg() {
+      width: 100%;
+      height: 13.5%;
+      top: 95%;
+    }
+    // border: 1px solid red;
+    #footerWrapper {
+      position: absolute;
+      display: flex;
+      background-color: black;
+      // border: 1px solid red;
+      @include mobile-only() {
+        height: 100%;
+        width: 100%;
+      }
+      @include md() {
+        height: 100%;
+        width: 90%;
+      }
+      @include lg() {
+        height: 70%;
+        width: 73%;
+      }
+    }
+  }
 }

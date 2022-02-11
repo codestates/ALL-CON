@@ -19,12 +19,8 @@ module.exports = {
       // 'sha256' 알고리즘으로 confirmNumber을 'base64' 문자열 형식으로 해싱한다
       const hashedNumber = crypto.createHash('sha256').update(String(confirmNumber)).digest('base64');
 
-      console.log('---- 비밀번호 찾기 ejs 보내기 시작 ----')
-
       // User 이메일로 인증번호 발송
       await ejsHtmlCaller('passwordFind', email, { confirmNumber })
-
-      console.log('---- 비밀번호 찾기 ejs 보내기 종료 ----')
 
       // 유저 테이블에 email_key 필드를 업데이트
       await Users.update(

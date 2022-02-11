@@ -223,7 +223,6 @@ function ConChinCertificationPage() {
             </div>
             <div id='birthdayBox'>
               <select 
-                // size={10}
                 className='short'
                 onChange={inputDropdownValueHandler('birthYear')}
               >
