@@ -23,6 +23,10 @@ export interface conChin {
     updatedAt?: Date;
     user_id?: number;
     view?: number;
+    User?: {
+      username?: string;
+      image?: string;
+    };
   };
   /* 게시물 현재 페이지 */
   articleCurPage: number;

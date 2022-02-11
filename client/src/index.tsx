@@ -1,5 +1,6 @@
 /* Module import */
 import ScrollToTop from './components/ScrollToTop';
+import LoginRedirect from './components/LoginRedirect';
 /* animation import */
 import 'animate.css';
 /* CSS import */
@@ -87,6 +88,7 @@ ReactDOM.render(
     <PersistGate loading={null} persistor={persistor}>
       <Router>
         <ScrollToTop />
+        <LoginRedirect />
         <App />
       </Router>
     </PersistGate>

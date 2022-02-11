@@ -59,6 +59,10 @@ function ConChinPage() {
     updatedAt?: Date;
     user_id?: number;
     view?: number;
+    User?: {
+      username?: string;
+      image?: string;
+    };
   }
   /* useState => 지역상태 */
   const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});
@@ -88,11 +92,6 @@ function ConChinPage() {
         if (Object.keys(target).length === 0) {
           getAllArticles();
           dispatch(setArticleCurPage(1));
-          console
-            .log
-            // ' ConChinPostingBox=> 타겟이 없으므로 전체를 가져옵니다..',
-            ();
-          getAllConcerts();
         } else if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
           const response = await axios.get(
@@ -134,13 +133,6 @@ function ConChinPage() {
     }
   };
 
-  /* 타겟 초기화 핸들러 */
-  // const resetTarget = () => {
-  //   dispatch(setTarget({}));
-  //   dispatch(setTargetArticle({}));
-  //   // dispatch(setArticleRendered(false));
-  // };
-
   /* useEffect => 맨 처음 렌더링, 타겟이 있는지 없는지 유무에 따라 렌더링한다. */
   useEffect(() => {
     getAllConcerts();
@@ -150,12 +142,12 @@ function ConChinPage() {
   /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
   useEffect(() => {
     setConChinTarget(target);
-    console.log('useEffect 정상작동, conChinTarget 변경');
+    // console.log('useEffect 정상작동, conChinTarget 변경');
   }, [target]);
   /* 다른 곳에서 targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
   useEffect(() => {
     setConChinTargetArticle(targetArticle);
-    console.log('useEffect 정상작동, conChinTargetArticle 변경');
+    // console.log('useEffect 정상작동, conChinTargetArticle 변경');
   }, [targetArticle]);
 
   return (

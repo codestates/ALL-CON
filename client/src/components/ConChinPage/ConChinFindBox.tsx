@@ -27,10 +27,60 @@ function ConChinFindBox() {
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { target } = useSelector((state: RootState) => state.main);
   const { targetArticle } = useSelector((state: RootState) => state.conChin);
+
+  /* 지역상태 interface */
+  interface ConChinTarget {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }
+
+  interface ConChinTargetArticle {
+    concert_id?: number;
+    content?: string;
+    createdAt?: Date;
+    id?: number;
+    image?: string;
+    member_count?: number;
+    title?: string;
+    total_comment?: number;
+    total_member?: number;
+    updatedAt?: Date;
+    user_id?: number;
+    view?: number;
+    User?: {
+      username?: string;
+      image?: string;
+    };
+  }
+
   /* 지역상태 - useState */
-  const [writeModal, setWriteModal] = useState<boolean>(false);
+  const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});
+  const [conChinTargetArticle, setConChinTargetArticle] =
+    useState<ConChinTargetArticle>({});
 
   /* useEffect */
+  /* target 변경시 지역상태 conChinTarget 변경  */
+  useEffect(() => {
+    setConChinTarget(target);
+  }, [target]);
+  /* targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
+  useEffect(() => {
+    setConChinTargetArticle(targetArticle);
+  }, [targetArticle]);
 
   /* handler 함수 (기능별 정렬) */
   // 글쓰기 버튼 클릭시
@@ -66,8 +116,8 @@ function ConChinFindBox() {
       </div>
       <div
         className={
-          Object.keys(targetArticle).length !== 0 &&
-          Object.keys(target).length !== 0
+          Object.keys(conChinTargetArticle).length !== 0 &&
+          Object.keys(conChinTarget).length !== 0
             ? 'btnWrapperAllChosen'
             : 'btnWrapper'
         }

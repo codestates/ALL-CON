@@ -8,21 +8,25 @@ const pbkdf2Promise = util.promisify(crypto.pbkdf2);
 module.exports = {
   get: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
+      
       // 회원의 민감정보(비밀번호) 삭제
       delete userInfo.dataValues.password;
 
       // 회원정보 반환
-      res.status(200).json({ data: { userInfo: userInfo }, message: 'Welcome Mypage!' });
+      return res.status(200).json({ data: { userInfo: userInfo }, message: 'Welcome Mypage!' });
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
     }
   },
   patch: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
+
       const { username, introduction, password } = req.body;
 
       // 요청 바디에 username이 있다면, 나를 제외한 username 중 이미 존재하는지 검사
@@ -68,8 +72,9 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       Users.destroy({ where: { id: userInfo.id } });  // 유저 삭제
 

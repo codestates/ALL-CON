@@ -40,16 +40,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       defaultValue: 0
     },
-    member_count: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      defaultValue: 1
-    },
-    total_member: {
-      allowNull: false,
-      type: DataTypes.INTEGER,
-      defaultValue: 2
-    },
+    member_count: DataTypes.INTEGER,
+    total_member: DataTypes.INTEGER,
     view: {
       allowNull: false,
       type: DataTypes.INTEGER,
