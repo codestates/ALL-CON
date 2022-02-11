@@ -2,6 +2,7 @@
 import defaultImg from '../../../images/default_image.jpg';
 /* Store import */
 import { RootState } from '../../../index';
+import { loginCheck } from '../../../store/AuthSlice';
 import {
   showAlertModal,
   insertAlertText,
@@ -196,11 +197,13 @@ function ConChinWritingModal() {
             title: title,
             content: result,
             image: preview,
-            member_count: String(numPresentConchin),
-            total_member: String(numTotalConchin),
+            member_count: (numPresentConchin),
+            total_member: (numTotalConchin),
           },
           { withCredentials: true },
         );
+        // Axios 결과 로그아웃 상태시 MainPage Redirect
+        if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
 
         dispatch(insertAlertText('글 작성에 성공했습니다! 🙂'));
         getTargetArticles();
@@ -264,6 +267,9 @@ function ConChinWritingModal() {
           },
           { withCredentials: true },
         );
+        // Axios 결과 로그아웃 상태시 MainPage Redirect
+        if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+        
         getTargetArticles();
         dispatch(insertAlertText('글 수정에 성공했습니다! 🙂'));
         getTargetArticlesInfo();

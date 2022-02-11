@@ -4,8 +4,9 @@ const { Users, Articles } = require('../../models');
 module.exports = {
   get: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { pageNum } = req.query;
 

@@ -5,6 +5,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 /* State Type 설정 */
 export interface auth {
   isLogin: boolean;
+  isLoginCheck: boolean;
   yearList: Array<string>;
   monthList: Array<string>;
   dateList: Array<string>;
@@ -31,6 +32,7 @@ export interface auth {
 /* State 초기값 설정 */
 const initialState: auth = { 
   isLogin: false, 
+  isLoginCheck: true,
   userInfo: {}, 
   yearList: [], 
   monthList: [], 
@@ -45,6 +47,9 @@ const authSlice = createSlice({
     /* Action 설정 */
     login: (state: auth) => { 
       state.isLogin = true;
+    },
+    loginCheck: (state: auth, { payload }: PayloadAction<boolean>) => { 
+      state.isLoginCheck = payload;
     },
     logout: (state: auth) => { 
       state.isLogin = false;
@@ -72,5 +77,5 @@ const authSlice = createSlice({
   }
 });
 
-export const { login, logout, getUserInfo, getCertificateInfo, getPhoneCertificatePassInfo,  getYearList, getMonthList,  getDateList } = authSlice.actions;
+export const { login, loginCheck, logout, getUserInfo, getCertificateInfo, getPhoneCertificatePassInfo,  getYearList, getMonthList,  getDateList } = authSlice.actions;
 export default authSlice.reducer;

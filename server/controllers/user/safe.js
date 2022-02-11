@@ -7,8 +7,9 @@ const crypto = require('crypto');
 module.exports = {
   post: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { phone_number } = req.body;
 
@@ -56,8 +57,9 @@ module.exports = {
   },
   patch: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       // 요청 바디 (생년월일, 성별, 전화번호)
       const { birth, gender, phone_number } = req.body;

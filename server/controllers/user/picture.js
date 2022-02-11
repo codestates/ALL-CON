@@ -5,8 +5,10 @@ const { Users } = require('../../models');
 module.exports = {
   patch: async (req, res) => {
     try {
-       // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
+      
       // 클라이언트로부터 변경할 프로필 사진 url을 전달받는다
       const { image } = req.body
 
