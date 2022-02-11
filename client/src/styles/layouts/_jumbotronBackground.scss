@@ -64,7 +64,7 @@
       flex-direction: row;
       align-items: center;
       justify-content: flex-start;
-      transition: 0.5s;
+
       // border: 1px solid yellow;
       @include mobile-only() {
         width: 210px;
