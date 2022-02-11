@@ -68,7 +68,7 @@ function Jumbotron() {
             {/*오른쪽 상단 탭 바*/}
             <div id='tabBar'>
               <p
-                id={order === 'view' ? 'hot' : undefined}
+                id={order === 'view' ? 'hotChosen' : 'hot'}
                 onClick={() => {
                   orderClickHandler('view');
                 }}
@@ -76,7 +76,7 @@ function Jumbotron() {
                 HOT
               </p>
               <p
-                id={order === 'near' ? 'near' : undefined}
+                id={order === 'near' ? 'nearChosen' : 'near'}
                 onClick={() => {
                   orderClickHandler('near');
                 }}
@@ -84,7 +84,7 @@ function Jumbotron() {
                 NEAR
               </p>
               <p
-                id={order === 'new' ? 'new' : undefined}
+                id={order === 'new' ? 'newChosen' : 'new'}
                 onClick={() => {
                   orderClickHandler('new');
                 }}
