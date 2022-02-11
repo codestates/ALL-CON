@@ -38,6 +38,7 @@ function ConChinArticleCommentBox() {
   );
   const { conChinPageNum, conChinPageAllComments, conChinComment } =
     useSelector((state: RootState) => state.conChinComments);
+
   /* 댓글 작성 인풋 && 작성 버튼 클릭 여부 */
   const [inputComment, setInputComment] = useState<string>('');
   const [isClick, setIsClick] = useState<boolean>(false);
@@ -53,14 +54,6 @@ function ConChinArticleCommentBox() {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [clickId, setClickId] = useState<number>(0);
   const [editComment, setEditComment] = useState<string>('');
-
-  useEffect(() => {
-    getAllComments();
-  }, [targetArticle, conChinPageNum]);
-
-  useEffect(() => {
-    getTargetArticles();
-  }, [isClick]);
 
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -324,6 +317,14 @@ function ConChinArticleCommentBox() {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    getAllComments();
+  }, [targetArticle, conChinPageNum]);
+
+  useEffect(() => {
+    getTargetArticles();
+  }, [isClick]);
 
   return (
     <div id='commentBox'>
