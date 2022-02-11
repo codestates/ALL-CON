@@ -2,6 +2,7 @@
 import logo from '../../../images/alert.png';
 /* Store import */
 import { RootState } from '../../../index';
+import { loginCheck } from '../../../store/AuthSlice';
 import { showAlarmModal, showAlertModal, insertAlertText } from '../../../store/ModalSlice';
 import { setEmailClick, setSmsClick, setAlarm } from '../../../store/ConcertAlarmSlice';
 /* Library import */
@@ -25,6 +26,9 @@ function AlarmModal() {
           `${process.env.REACT_APP_API_URL}/concert/${detail.id}/alarm?alarm_type=${type}`,
           { withCredentials: true },
         );
+        // Axios 결과 로그아웃 상태시 MainPage Redirect
+        if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+        
         if (response.data.message!=='Delete Alarm!') {
           /* 이메일 알람 삭제인 경우 */
           const data = response.data.data.alarmDestroyInfo;

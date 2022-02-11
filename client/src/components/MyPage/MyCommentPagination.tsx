@@ -1,9 +1,10 @@
 /* Config import */
 /* CSS import */
 /* Store import */
+import { RootState } from '../../index';
+import { loginCheck } from '../../store/AuthSlice';
 import { getMyConcertCommentInfo, getMyConcertCommentTotalPage, getMyArticleCommentInfo, getMyArticleCommentTotalPage, getMyConcertCommentCurrentPage, getMyArticleCommentCurrentPage } from '../../store/MySlice';
 /* Library import */
-import { RootState } from '../../index';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +13,6 @@ import { useNavigate } from 'react-router-dom';
 interface MyCommentPaginationProps {
   deactivateEditTextarea(key?: string): void
 }
-
 
 function MyCommentPagination( { deactivateEditTextarea }: MyCommentPaginationProps ) {
   /* dispatch / navigate */
@@ -43,7 +43,9 @@ function MyCommentPagination( { deactivateEditTextarea }: MyCommentPaginationPro
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${pageNum}`,
       { withCredentials: true },
-      );
+    );
+    // Axios 결과 로그아웃 상태시 MainPage Redirect
+    if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
       
     dispatch(getMyConcertCommentInfo(response.data.data))
     dispatch(getMyConcertCommentTotalPage(response.data.data.totalPage))
@@ -59,7 +61,9 @@ function MyCommentPagination( { deactivateEditTextarea }: MyCommentPaginationPro
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${pageNum}&comment_type=article`,
       { withCredentials: true },
-      );
+    );
+    // Axios 결과 로그아웃 상태시 MainPage Redirect
+    if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
       
     dispatch(getMyArticleCommentInfo(response.data.data))
     dispatch(getMyArticleCommentTotalPage(response.data.data.totalPage))

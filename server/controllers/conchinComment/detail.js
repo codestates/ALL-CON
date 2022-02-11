@@ -4,8 +4,9 @@ const { Articles, ArticleComments } = require('../../models');
 module.exports = {
   patch: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { commentid } = req.params;
       const { content } = req.body;
@@ -27,8 +28,9 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { articleid, commentid } = req.params;
       const articleInfo = await Articles.findOne({ where: { id: articleid }});

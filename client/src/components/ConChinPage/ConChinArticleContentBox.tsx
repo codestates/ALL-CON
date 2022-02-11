@@ -6,6 +6,7 @@ import ConChinArticleCommentBox from './ConChinArticleCommentBox';
 import ConChinCommentPagination from './ConChinCommentPagination';
 /* Store import */
 import { RootState } from '../../index';
+import { loginCheck } from '../../store/AuthSlice';
 import {
   insertAlertText,
   showConChinProfileModal,
@@ -91,10 +92,14 @@ function ConChinArticleContentBox() {
   /* 글 삭제하기 핸들러 */
   const deleteArticle = async () => {
     try {
-      await axios.delete(
+      const response = await axios.delete(
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
         { withCredentials: true },
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if (response.data.message === 'Unauthorized userInfo!')
+        return dispatch(loginCheck(false));
+
       getTargetArticles();
     } catch (err) {
       console.log(err);

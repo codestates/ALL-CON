@@ -10,6 +10,7 @@ import smsOn from '../../images/mail4.png';
 import smsOff from '../../images/mail4off.png';
 /* Store import */
 import { RootState } from '../../index';
+import { loginCheck } from '../../store/AuthSlice';
 import {
   showAlertModal,
   insertAlertText,
@@ -44,6 +45,9 @@ function MainConcertInfo() {
           {},
           { withCredentials: true },
         );
+        // Axios 결과 로그아웃 상태시 MainPage Redirect
+        if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+
         /* 응답값이 있다면? */
         if(response.data.data.alarmInfo){
           const data = response.data.data.alarmInfo;

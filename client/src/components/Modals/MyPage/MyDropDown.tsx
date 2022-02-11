@@ -2,7 +2,7 @@
 import { RootState } from '../../../index';
 import { setTarget, setTargetIdx, setOrder, setAllConcerts, setIsRendering } from '../../../store/MainSlice';
 import { setTargetArticle, setArticleRendered, setArticleCurPage } from '../../../store/ConChinSlice';
-import { logout, getUserInfo } from '../../../store/AuthSlice';
+import { loginCheck, logout, getUserInfo } from '../../../store/AuthSlice';
 import { setPageNum } from '../../../store/ConcertCommentSlice';
 import {
   getCommentBtnType,
@@ -30,6 +30,7 @@ import {
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import LoginRedirect from '../../LoginRedirect';
 
 function MyDropDown() {
   /* dispatch / navigate */
@@ -38,7 +39,8 @@ function MyDropDown() {
   
   /* useSelector */
   const { scrollCount } = useSelector((state: RootState) => state.header);
-  
+  const { isLoginCheck } = useSelector((state: RootState) => state.auth);
+
   /* 지역상태 - useState */
   /* useEffect */
   
@@ -70,6 +72,7 @@ function MyDropDown() {
         { withCredentials: true },
       );
       /* 로그인 상태 변경 & main 페이지로 이동 & 로그아웃 성공 모달 생성 */
+      dispatch(loginCheck(false));
       dispatch(logout());
       dispatch(getUserInfo({}));
       dispatch(showAlertModal(true));
@@ -117,6 +120,8 @@ function MyDropDown() {
       `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=1`,
       { withCredentials: true },
     );
+    // Axios 결과 로그아웃 상태시 MainPage Redirect
+    if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
 
     dispatch(getArticleInfo(response.data.data));
     dispatch(getMyArticleTotalPage(response.data.data.totalPage));
@@ -129,6 +134,8 @@ function MyDropDown() {
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
       { withCredentials: true },
     );
+    // Axios 결과 로그아웃 상태시 MainPage Redirect
+    if(responseMyConcertComment.data.message === 'Unauthorized userInfo!') dispatch(loginCheck(false));
 
     dispatch(getMyConcertCommentInfo(responseMyConcertComment.data.data));
     dispatch(
@@ -150,6 +157,8 @@ function MyDropDown() {
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
       { withCredentials: true },
     );
+    // Axios 결과 로그아웃 상태시 MainPage Redirect
+    if(responseMyArticleComment.data.message === 'Unauthorized userInfo!') dispatch(loginCheck(false));
 
     /* 마이페이지 -> 메인페이지 이동시 가져갈 전체 콘서트 목록(조회수 고정) */
     const responseAllConcerts = await axios.get(

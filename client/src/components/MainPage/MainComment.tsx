@@ -3,6 +3,7 @@ import shield from '../../images/shield.png';
 import noComment from '../../images/no_comment_img.png'
 /* Store import */
 import { RootState } from '../../index';
+import { loginCheck } from '../../store/AuthSlice';
 import {
   showAlertModal,
   insertAlertText,
@@ -158,6 +159,9 @@ function MainComment() {
         { content: result },
         { withCredentials: true },
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 작성 성공 */
       if (response.data) {
         /* 클릭 상태 변경 후 알람창 생성 */
@@ -189,6 +193,9 @@ function MainComment() {
         { content: result },
         { withCredentials: true },
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 수정 성공 */
       if (response.data) {
         /* 클릭 상태 변경 후 알람창 생성 */
@@ -219,6 +226,9 @@ function MainComment() {
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment/${e.currentTarget.id}`,
         { withCredentials: true },
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+      
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 삭제 성공 */
       if (response.data) {
         /* 클릭 상태 변경 후 알람창 생성 */
