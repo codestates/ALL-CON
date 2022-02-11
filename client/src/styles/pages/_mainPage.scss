@@ -16,7 +16,7 @@
   #mainJumboWrapper {
     position: absolute;
     top: 0;
-
+    transition: 0.5s;
     @include mobile-only() {
       height: 75%;
       width: 100%;
@@ -33,6 +33,7 @@
   #mainConcertInfoWrapper {
     position: absolute;
     width: 100%;
+    transition: 0.5s;
     // border: 2px solid red;
     @include mobile-only() {
       top: 41.2%;
@@ -58,6 +59,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 0.5s;
     // border: 1px solid green;
     @include mobile-only() {
       top: 135%;
@@ -83,6 +85,7 @@
     justify-content: center;
     width: 100%;
     height: 5%;
+    transition: 0.5s;
     // border: 1px solid red;
     @include mobile-only() {
       top: 190%;
@@ -97,6 +100,7 @@
   #mainFindConchinWrapper {
     position: absolute;
     width: 100%;
+    transition: 0.5s;
     // border: 1px solid red;
     @include mobile-only() {
       top: 200%;
@@ -116,6 +120,7 @@
     display: flex;
     justify-content: center;
     background-color: black;
+    transition: 0.5s;
     @include mobile-only() {
       width: 100%;
       height: 30%;

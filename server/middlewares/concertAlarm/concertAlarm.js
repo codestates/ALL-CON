@@ -19,7 +19,6 @@ const concertAlarm = async () => {
     let concertInfo = await Concerts.findOne({ where: { id: concertId }})
     
     let userInfo = await Users.findOne({ where: { id: userId}})
-    let concerInfo = await Concerts.findOne({ where: {id: concertId}})
     let concertLink = concertInfo.dataValues.link
 
     // 이메일 알람인 경우, 다음을 실행한다
@@ -46,7 +45,6 @@ const concertAlarm = async () => {
         title: concertInfo.dataValues.title,
         open_date: concertInfo.dataValues.open_date
       })
-
     }
   }
 

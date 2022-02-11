@@ -41,6 +41,8 @@ function MyProfileBox() {
   const [profileEdit, setProfileEdit] = useState<boolean>(false);
   // 회원탈퇴 모달 상태
   const [resignMembership, setResignMembership] = useState<boolean>(false);
+  //
+  const [editIntroduction, setEditIntroduction] = useState<string | undefined>(userInfo.introduction);
 
   /* useEffect */
 
@@ -111,9 +113,8 @@ function MyProfileBox() {
   };
 
   // 자기소개 글을 수정할 경우
-  const inputIntroduction = async (
-    e: React.ChangeEvent<HTMLTextAreaElement>,
-  ) => {
+  const inputIntroduction = async (e: React.ChangeEvent<HTMLTextAreaElement>,) => {
+    setEditIntroduction(e.target.value);
     dispatch(getMyIntroduction(e.target.value));
   };
 
@@ -178,9 +179,10 @@ function MyProfileBox() {
                 maxLength={40}
                 placeholder={
                   userInfo.introduction
-                    ? userInfo.introduction
+                    ? ''
                     : '자기소개를 입력해주세요.'
                 }
+                value={editIntroduction}
                 onChange={inputIntroduction}
               ></textarea>
             ) 
@@ -210,7 +212,7 @@ function MyProfileBox() {
             <b>콘친 인증</b>
           </button>
         </div>
-        <div id='resignBtnWrapper'>
+        {/* <div id='resignBtnWrapper'>
           <button
             className='btn'
             onClick={() => {
@@ -219,7 +221,7 @@ function MyProfileBox() {
           >
             회원 탈퇴
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );

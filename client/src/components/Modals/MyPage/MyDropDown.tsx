@@ -30,7 +30,6 @@ import {
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import LoginRedirect from '../../LoginRedirect';
 
 function MyDropDown() {
   /* dispatch / navigate */

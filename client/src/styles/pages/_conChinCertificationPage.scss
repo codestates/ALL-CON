@@ -12,7 +12,7 @@
     height: 180%;
   }
   @include lg() {
-    height: 227%;
+    height: 300%;
   }
   /***** 공통 *****/
   #titleWrapper {
@@ -60,7 +60,7 @@
       height: 33.33%;
     }
     @include lg() {
-      height: 33.33%;
+      height: 28%;
     }
   }
   #userInfoWrapper {
@@ -80,7 +80,7 @@
       height: 75%;
     }
     @include lg() {
-      top: 26%;
+      top: 22%;
       height: 67%;
     }
     #userInfoBox {
@@ -161,6 +161,9 @@
             border: 1px solid $gray2;
             border-radius: 5px;
             padding-left: 2%;
+            &:hover {
+              cursor: pointer;
+            }
             @include mobile-only() {
               font-size: 1.3rem;
             }
@@ -194,6 +197,9 @@
           border: 1px solid $gray2;
           border-radius: 5px;
           background-color: white;
+          &:hover {
+            cursor: pointer;
+          }
           @include mobile-only() {
             font-size: 1.3rem;
           }
@@ -444,8 +450,8 @@
     }
     @include lg() {
       width: 100%;
-      height: 18%;
-      top: 95%;
+      height: 13.5%;
+      top: 90%;
     }
     // border: 1px solid red;
     #footerWrapper {
