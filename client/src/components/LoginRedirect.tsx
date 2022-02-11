@@ -59,11 +59,12 @@ function LoginRedirect() {
     dispatch(logout());
     dispatch(getUserInfo({}));
     /* 로그인 모달창 팝업 */
-    dispatch(showLoginModal(true));
+    // dispatch(showLoginModal(true));
   };
 
   useEffect(() => {
     if(!isLoginCheck){
+      console.log('언제 실행되는거지?')
       goHomeHandler(); // 메인페이지로 이동
       loginStateHandler();  // 로그인 상태 변경 & 로그인 모달창 팝업
     }

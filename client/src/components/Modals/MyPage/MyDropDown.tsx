@@ -39,7 +39,6 @@ function MyDropDown() {
   
   /* useSelector */
   const { scrollCount } = useSelector((state: RootState) => state.header);
-  const { isLoginCheck } = useSelector((state: RootState) => state.auth);
 
   /* 지역상태 - useState */
   /* useEffect */
