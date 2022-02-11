@@ -61,6 +61,10 @@ function ConChinFindBox() {
     updatedAt?: Date;
     user_id?: number;
     view?: number;
+    User?: {
+      username?: string;
+      image?: string;
+    };
   }
 
   /* 지역상태 - useState */

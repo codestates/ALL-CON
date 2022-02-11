@@ -92,8 +92,8 @@ function ConChinArticleOrderBox() {
   /* articleOrder 변경시 지역상태 conChinArticleOrder 변경  */
   useEffect(() => {
     setConChinArticleOrder(articleOrder);
-    console.log('conChinArticleOrder:');
-    console.log(conChinArticleOrder);
+    // console.log('conChinArticleOrder:');
+    // console.log(conChinArticleOrder);
   }, [articleOrder]);
 
   return (

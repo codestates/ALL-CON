@@ -317,8 +317,6 @@ function ConChinArticleCommentBox() {
         dispatch(
           setConChinTotalComments(response.data.data.articleInfo.total_comment),
         );
-        dispatch(setArticleTotalPage(response.data.data.totalPage));
-        dispatch(setArticleCurPage(1));
       } else {
         // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
       }

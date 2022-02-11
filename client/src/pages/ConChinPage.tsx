@@ -59,6 +59,10 @@ function ConChinPage() {
     updatedAt?: Date;
     user_id?: number;
     view?: number;
+    User?: {
+      username?: string;
+      image?: string;
+    };
   }
   /* useState => 지역상태 */
   const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});

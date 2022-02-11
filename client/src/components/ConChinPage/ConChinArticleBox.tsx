@@ -31,8 +31,13 @@ import { useState, useEffect } from 'react';
 function ConChinArticleBox() {
   const dispatch = useDispatch();
   const { target } = useSelector((state: RootState) => state.main);
-  const { allArticles, targetArticle, articleOrder, articleCurPage } =
-    useSelector((state: RootState) => state.conChin);
+  const {
+    allArticles,
+    targetArticle,
+    articleOrder,
+    articleCurPage,
+    articleTotalPage,
+  } = useSelector((state: RootState) => state.conChin);
   const { conChinPageNum, conChinPageAllComments, conChinComment } =
     useSelector((state: RootState) => state.conChinComments);
 
@@ -69,6 +74,10 @@ function ConChinArticleBox() {
     updatedAt?: Date;
     user_id?: number;
     view?: number;
+    User?: {
+      username?: string;
+      image?: string;
+    };
   }
 
   /* useState => 지역상태 */
@@ -101,21 +110,8 @@ function ConChinArticleBox() {
       );
       if (response.data) {
         dispatch(setTargetArticle(response.data.data.articleInfo));
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  /* 게시물 작성자 유저정보 조회 핸들러 => getTargetArticlesInfo 부분 수정하고 지워야함 */
-  const getTargetArticlesUserInfo = async (id: number) => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/user/other/${id}`,
-        { withCredentials: true },
-      );
-      if (response.data) {
-        dispatch(setTargetArticlesUserInfo(response.data.data.userInfo));
+        // dispatch(setArticleTotalPage(articleTotalPage));
+        console.log(articleCurPage);
       }
     } catch (err) {
       console.log(err);
@@ -131,14 +127,14 @@ function ConChinArticleBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        dispatch(setAllArticles(response.data.data.articleInfo));
+        // dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
-        dispatch(setArticleCurPage(articleCurPage));
+        // dispatch(setArticleCurPage(articleCurPage));
       }
     } catch (err) {
       console.log(err);
-      dispatch(setAllArticles([]));
-      dispatch(setArticleTotalPage(0));
+      // dispatch(setAllArticles([]));
+      // dispatch(setArticleTotalPage(0));
     }
   };
 
@@ -174,6 +170,7 @@ function ConChinArticleBox() {
   useEffect(() => {
     setConChinTarget(target);
   }, [target]);
+
   /* targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
   useEffect(() => {
     setConChinTargetArticle(targetArticle);
@@ -213,9 +210,8 @@ function ConChinArticleBox() {
                     onClick={() => {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
-                      getTargetArticlesUserInfo(article.user_id);
                       getAllComments(article.id);
-                      dispatch(setConChinPageNum(1));
+                      console.log('게시물 맵핑, 타겟이 없고 게시물만 있을 때');
                     }}
                   >
                     <img
@@ -271,10 +267,11 @@ function ConChinArticleBox() {
                     }
                     key={article.id}
                     onClick={() => {
+                      getTargetArticles();
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
-                      getTargetArticlesUserInfo(article.user_id);
                       getAllComments(article);
+                      console.log('게시물 맵핑, 타겟이 있고 게시물도 있을 때');
                     }}
                   >
                     <img

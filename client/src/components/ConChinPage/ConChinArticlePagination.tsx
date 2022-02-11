@@ -67,9 +67,9 @@ function ConChinArticlePagination() {
   useEffect(() => {
     getPageArticles(articleCurPage);
   }, [articleCurPage]);
-  useEffect(() => {
-    getPageArticles(articleCurPage);
-  }, [articleTotalPage]);
+  // useEffect(() => {
+  //   getPageArticles(articleCurPage);
+  // }, [articleTotalPage]);
 
   const getClickedPageNumber = (pageNum: number) => {
     // console.log(pageNum);
