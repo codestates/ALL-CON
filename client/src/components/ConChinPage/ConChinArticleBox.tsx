@@ -26,7 +26,7 @@ import { setTarget } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function ConChinArticleBox() {
   const dispatch = useDispatch();
@@ -35,6 +35,47 @@ function ConChinArticleBox() {
     useSelector((state: RootState) => state.conChin);
   const { conChinPageNum, conChinPageAllComments, conChinComment } =
     useSelector((state: RootState) => state.conChinComments);
+
+  /* 지역상태 interface */
+  interface ConChinTarget {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }
+
+  interface ConChinTargetArticle {
+    concert_id?: number;
+    content?: string;
+    createdAt?: Date;
+    id?: number;
+    image?: string;
+    member_count?: number;
+    title?: string;
+    total_comment?: number;
+    total_member?: number;
+    updatedAt?: Date;
+    user_id?: number;
+    view?: number;
+  }
+
+  /* useState => 지역상태 */
+  const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});
+  const [conChinAllArticles, setConChinAllArticles] = useState<any[]>([]);
+  const [conChinTargetArticle, setConChinTargetArticle] =
+    useState<ConChinTargetArticle>({});
 
   /* 게시물에 관련된 콘서트 정보 조회 핸들러 */
   const getTargetArticlesConcert = async (id: number) => {
@@ -66,7 +107,7 @@ function ConChinArticleBox() {
     }
   };
 
-  /* 게시물 작성자 유저정보 조회 핸들러 */
+  /* 게시물 작성자 유저정보 조회 핸들러 => getTargetArticlesInfo 부분 수정하고 지워야함 */
   const getTargetArticlesUserInfo = async (id: number) => {
     try {
       const response = await axios.get(
@@ -125,28 +166,46 @@ function ConChinArticleBox() {
   };
 
   /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
+  // useEffect(() => {
+  //   getTargetArticles();
+  // }, [targetArticle]);
+
+  /* target 변경시 지역상태 conChinTarget 변경  */
   useEffect(() => {
-    getTargetArticles();
+    setConChinTarget(target);
+  }, [target]);
+  /* targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
+  useEffect(() => {
+    setConChinTargetArticle(targetArticle);
   }, [targetArticle]);
+
+  /* allArticles 변경시 지역상태 conChinAllArticles 변경  */
+  useEffect(() => {
+    setConChinAllArticles(allArticles);
+  }, [allArticles]);
 
   return (
     <div id='conChinArticleBox'>
       <ConChinArticleOrderBox />
-      {allArticles !== undefined && allArticles.length > 0 ? (
+      {conChinAllArticles !== undefined && conChinAllArticles.length > 0 ? (
         <div
           id={
-            Object.keys(target).length === 0 ? 'articleBox' : 'articleBoxChosen'
+            Object.keys(conChinTarget).length === 0
+              ? 'articleBox'
+              : 'articleBoxChosen'
           }
         >
           {/*게시물 맵핑, 타겟이 없고 게시물만 있을 때 */}
-          {Object.keys(allArticles).length > 0 &&
-          Object.keys(target).length === 0 ? (
-            <div id={Object.keys(target).length === 0 ? 'box' : 'boxChosen'}>
-              {allArticles.map(article => {
+          {Object.keys(conChinAllArticles).length > 0 &&
+          Object.keys(conChinTarget).length === 0 ? (
+            <div
+              id={Object.keys(conChinTarget).length === 0 ? 'box' : 'boxChosen'}
+            >
+              {conChinAllArticles.map(article => {
                 return (
                   <ul
                     className={
-                      article.id === targetArticle.id
+                      article.id === conChinTargetArticle.id
                         ? 'articleChosen'
                         : 'article'
                     }
@@ -155,7 +214,7 @@ function ConChinArticleBox() {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
                       getTargetArticlesUserInfo(article.user_id);
-                      getAllComments(article);
+                      getAllComments(article.id);
                       dispatch(setConChinPageNum(1));
                     }}
                   >
@@ -176,7 +235,7 @@ function ConChinArticleBox() {
                     </div>
                     <div
                       className={
-                        article.id === targetArticle.id
+                        article.id === conChinTargetArticle.id
                           ? 'titleChosen'
                           : 'title'
                       }
@@ -194,17 +253,19 @@ function ConChinArticleBox() {
                 );
               })}
             </div>
-          ) : Object.keys(target).length !== 0 &&
-            target !== undefined &&
-            target !== null &&
-            Object.keys(allArticles).length > 0 ? (
-            <div id={Object.keys(target).length === 0 ? 'box' : 'boxChosen'}>
+          ) : Object.keys(conChinTarget).length !== 0 &&
+            conChinTarget !== undefined &&
+            conChinTarget !== null &&
+            Object.keys(conChinAllArticles).length > 0 ? (
+            <div
+              id={Object.keys(conChinTarget).length === 0 ? 'box' : 'boxChosen'}
+            >
               {/*게시물 맵핑, 타겟이 있고 게시물도 있을 때 */}
-              {allArticles.map(article => {
+              {conChinAllArticles.map(article => {
                 return (
                   <ul
                     className={
-                      article.id === targetArticle.id
+                      article.id === conChinTargetArticle.id
                         ? 'articleChosen'
                         : 'article'
                     }
@@ -218,7 +279,7 @@ function ConChinArticleBox() {
                   >
                     <img
                       className={
-                        article.id === targetArticle.id
+                        article.id === conChinTargetArticle.id
                           ? 'thumbNailChosen'
                           : 'thumbNail'
                       }
@@ -237,7 +298,7 @@ function ConChinArticleBox() {
                     </div>
                     <div
                       className={
-                        article.id === targetArticle.id
+                        article.id === conChinTargetArticle.id
                           ? 'titleChosen'
                           : 'title'
                       }
@@ -270,7 +331,7 @@ function ConChinArticleBox() {
       {/*게시물 맵핑 */}
       <div
         id={
-          Object.keys(target).length === 0
+          Object.keys(conChinTarget).length === 0
             ? 'paginationWrapper'
             : 'paginationWrapperChosen'
         }
