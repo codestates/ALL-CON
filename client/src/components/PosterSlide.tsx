@@ -57,6 +57,13 @@ function PosterSlide() {
     sliderRef.current.slickGoTo(targetIdx, true);
   };
 
+  //targetIdx 변화시 target포스터 가운데로 오도록 예외처리하는 함수
+  const changeTargetIdx = {
+    //만약 allConcerts를 map돌렸는데
+    //targetIdx가 (0에서) lastIdx나 lastIdx-1로 변하면
+    //뒤에있는 index포스터들이 다 나오도록 한다.
+  };
+
   const settings: Settings = {
     infinite: true,
     lazyLoad: 'ondemand', //progressive
@@ -68,6 +75,7 @@ function PosterSlide() {
     centerMode: true,
     centerPadding: '5px',
     swipeToSlide: true,
+    slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     beforeChange: (current: any, next: any) => {
@@ -85,7 +93,6 @@ function PosterSlide() {
 
     //오더 바꿔 누를때마다
     else {
-      // console.log('0으로 바꿔버림~');
       dispatch(setTargetIdx(0));
       //0번째 포스터가 가운데로 이동
       setCenterfunc();
@@ -98,11 +105,6 @@ function PosterSlide() {
     //타겟 인덱스가 변할때마다 타겟이 점보트론에 보이도록 이동하기
     setCenterfunc();
   }, [targetIdx]);
-
-  //스크롤바 e.target.value값을 누르면 누른 target으로 보이게 하기
-  let func = (value: string): any => {
-    dispatch(setTarget(allConcerts[Number(value)]));
-  };
 
   return (
     <div className='posterContainer'>
