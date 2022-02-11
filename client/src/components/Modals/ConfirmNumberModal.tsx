@@ -48,6 +48,7 @@ function ConfirmNumberModal() {
         { email: deliverText },
         { withCredentials: true }
       );
+      
       /* 타이머 & 코드 초기화 */
       setMinutes(3);
       setSeconds(0);

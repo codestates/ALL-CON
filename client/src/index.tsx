@@ -1,5 +1,6 @@
 /* Module import */
 import ScrollToTop from './components/ScrollToTop';
+import LoginRedirect from './components/LoginRedirect';
 /* animation import */
 import 'animate.css';
 /* CSS import */
@@ -80,13 +81,14 @@ export interface RootState {
 
 /* persist store 세팅 (새로고침, 종료해도 지속될 store) */
 export let persistor = persistStore(store);
-// persistor.purge();
+//persistor.purge();
 
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <Router>
         <ScrollToTop />
+        <LoginRedirect />
         <App />
       </Router>
     </PersistGate>

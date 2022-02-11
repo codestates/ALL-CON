@@ -5,7 +5,7 @@ import resignArrow from '../images/resignArrow.png';
 import check from '../images/check.png';
 /* Store import */
 import { RootState } from '../index';
-import { getUserInfo } from '../store/AuthSlice';
+import { loginCheck, getUserInfo } from '../store/AuthSlice';
 import { showAlertModal, insertAlertText, insertBtnText, showSuccessModal, showMyProfileResignMembershipModal } from '../store/ModalSlice';
 import { setMyIntroductionState, getBtnSwitchState } from '../store/MySlice';
 /* Library import */
@@ -172,6 +172,8 @@ function MyEditPage() {
         { username: changeUserInfo.username || userInfo.username },
         { withCredentials: true }
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
 
       // 중복되지 않은 닉네임이라면, 다음을 실행한다
       if(response.data.state) {
@@ -216,6 +218,9 @@ function MyEditPage() {
               },
               { withCredentials: true }
             );
+            // Axios 결과 로그아웃 상태시 MainPage Redirect
+            if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+            
             // 입력값들을 reset
             resetInput();
 

@@ -4,6 +4,7 @@ import comment from '../../images/comment.png';
 import noComment from '../../images/no_comment_img.png';
 /* Store import */
 import { RootState } from '../../index';
+import { loginCheck } from '../../store/AuthSlice';
 import {
   showAlertModal,
   insertAlertText,
@@ -38,6 +39,7 @@ function ConChinArticleCommentBox() {
   );
   const { conChinPageNum, conChinPageAllComments, conChinComment } =
     useSelector((state: RootState) => state.conChinComments);
+
   /* 댓글 작성 인풋 && 작성 버튼 클릭 여부 */
   const [inputComment, setInputComment] = useState<string>('');
   const [isClick, setIsClick] = useState<boolean>(false);
@@ -53,14 +55,6 @@ function ConChinArticleCommentBox() {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [clickId, setClickId] = useState<number>(0);
   const [editComment, setEditComment] = useState<string>('');
-
-  useEffect(() => {
-    getAllComments();
-  }, [targetArticle, conChinPageNum]);
-
-  useEffect(() => {
-    getTargetArticles();
-  }, [isClick]);
 
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -168,6 +162,9 @@ function ConChinArticleCommentBox() {
         { content: result },
         { withCredentials: true },
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 작성 성공 */
       if (response.data) {
         /* 클릭 상태 변경 후 알람창 생성 */
@@ -200,6 +197,9 @@ function ConChinArticleCommentBox() {
         { content: result },
         { withCredentials: true },
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 수정 성공 */
       if (response.data) {
         /* 클릭 상태 변경 후 알람창 생성 */
@@ -229,6 +229,9 @@ function ConChinArticleCommentBox() {
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}/comment/${e.currentTarget.id}`,
         { withCredentials: true },
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+      
       /* 서버의 응답결과에 유효한 값이 있다면 댓글 삭제 성공 */
       if (response.data) {
         /* 클릭 상태 변경 후 알람창 생성 */
@@ -317,8 +320,6 @@ function ConChinArticleCommentBox() {
         dispatch(
           setConChinTotalComments(response.data.data.articleInfo.total_comment),
         );
-        dispatch(setArticleTotalPage(response.data.data.totalPage));
-        dispatch(setArticleCurPage(1));
       } else {
         // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
       }
@@ -326,6 +327,14 @@ function ConChinArticleCommentBox() {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    getAllComments();
+  }, [targetArticle, conChinPageNum]);
+
+  useEffect(() => {
+    getTargetArticles();
+  }, [isClick]);
 
   return (
     <div id='commentBox'>

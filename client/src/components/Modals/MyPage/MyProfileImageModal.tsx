@@ -3,7 +3,7 @@ import profileImage from '../../../images/taeyang.png';
 import camera from '../../../images/camera.png';
 /* Store import */
 import { RootState } from '../../../index';
-import { logout, getUserInfo } from '../../../store/AuthSlice';
+import { loginCheck, getUserInfo } from '../../../store/AuthSlice';
 import { showMyProfileImageModal } from '../../../store/ModalSlice';
 /* Library import */
 import axios from 'axios';
@@ -67,6 +67,9 @@ function MyProfileImageModal() {
         { image: preview || previewImage },
         { withCredentials: true },
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+
       // 성공적으로 프로필 이미지가 변경되었다면, 다음을 실행한다
       if (response.data.data) {
         // 변경된 프로필 이미지로 유저 상태를 업데이트 한다

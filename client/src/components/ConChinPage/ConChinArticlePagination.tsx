@@ -21,12 +21,23 @@ function ConChinArticlePagination() {
     (state: RootState) => state.conChin,
   );
 
-  const pageArr = Array.from({ length: articleTotalPage }, (v, i) => i + 1);
+  /* useState => 지역상태 */
+  const [conChinArticleCurPage, setConChinArticleCurPage] = useState<number>(0);
+  const [conChinPageArr, setConChinPageArr] = useState<any[]>(
+    Array.from({ length: articleTotalPage }, (v, i) => i + 1),
+  );
 
+  /* 페이지 클릭시 페이지에 맞는 게시물 리스트 갱신 */
+  const getClickedPageNumber = (pageNum: number) => {
+    dispatch(setArticleCurPage(pageNum));
+    getPageArticles(pageNum);
+  };
+
+  /* 페이지에 맞는 게시물 받아오기 */
   const getPageArticles = async (pageNum: number) => {
     try {
       //페이지 길이가 1 이상일 때
-      if (pageArr.length > 0) {
+      if (conChinPageArr.length > 0) {
         //target이 없을 때, 전체 게시물에서 클릭한 pageNum 조회
         if (Object.keys(target).length === 0) {
           const response = await axios.get(
@@ -64,26 +75,28 @@ function ConChinArticlePagination() {
     }
   };
 
+  /* 현재 페이지에 맞는 게시물 리스트 갱신, 지역상태 할당 */
   useEffect(() => {
     getPageArticles(articleCurPage);
+    setConChinArticleCurPage(articleCurPage);
   }, [articleCurPage]);
-  useEffect(() => {
-    getPageArticles(articleCurPage);
-  }, [articleTotalPage]);
 
-  const getClickedPageNumber = (pageNum: number) => {
-    // console.log(pageNum);
-    dispatch(setArticleCurPage(pageNum));
-    getPageArticles(pageNum);
-  };
+  /* 전체 페이지 갱신 때마다 pagination 렌더링 */
+  useEffect(() => {
+    setConChinPageArr(
+      Array.from({ length: articleTotalPage }, (v, i) => i + 1),
+    );
+  }, [articleTotalPage]);
 
   return (
     <div id='pagination'>
-      {pageArr.length > 0
-        ? pageArr.map((el, idx) => {
+      {conChinPageArr.length > 0
+        ? conChinPageArr.map((el, idx) => {
             return (
               <ul
-                className={articleCurPage === idx + 1 ? 'pageChosen' : 'page'}
+                className={
+                  conChinArticleCurPage === idx + 1 ? 'pageChosen' : 'page'
+                }
                 key={idx}
                 onClick={() => {
                   getClickedPageNumber(el);

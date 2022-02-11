@@ -4,8 +4,9 @@ const { Concerts, ConcertComments } = require('../../models');
 module.exports = {
   patch: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { content } = req.body;
       const { commentid } = req.params;
@@ -25,8 +26,9 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { concertid, commentid } = req.params;
       const concertInfo = await Concerts.findOne({ where: { id: concertid }});

@@ -1,20 +1,16 @@
-
-import axios from 'axios';
-
+/* Store import */
 import { RootState } from '../../index';
-
+import { loginCheck } from '../../store/AuthSlice';
+import { getArticleInfo, getMyArticleTotalPage, getMyArticleCommentCurrentPage } from '../../store/MySlice';
+/* Library import */
+import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { getArticleInfo, getMyArticleTotalPage, getMyArticleCommentCurrentPage } from '../../store/MySlice';
-
-
 function MyArticlePagination() {
-
-  const { articleInfo, myArticleTotalPage, myArticleCommentCurrentPage } = useSelector((state: RootState) => state.my);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { articleInfo, myArticleTotalPage, myArticleCommentCurrentPage } = useSelector((state: RootState) => state.my);
 
   let pageArr: number[] = [];
   for (let i = 1; i <= myArticleTotalPage; i++) {
@@ -28,7 +24,9 @@ function MyArticlePagination() {
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=${pageNum}`,
       { withCredentials: true },
-      );
+    );
+    // Axios 결과 로그아웃 상태시 MainPage Redirect
+    if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
 
     dispatch(getArticleInfo(response.data.data))
     dispatch(getMyArticleTotalPage(response.data.data.totalPage))
