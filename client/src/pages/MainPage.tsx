@@ -7,6 +7,7 @@ import MainFindConchin from '../components/MainPage/MainFindConchin';
 import MainPagination from '../components/MainPage/MainPagination';
 /* Store import */
 import { RootState } from '../index';
+import { loginCheck } from '../store/AuthSlice';
 import {
   setTarget,
   setAllConcerts,
@@ -84,6 +85,9 @@ function MainPage() {
         `${process.env.REACT_APP_API_URL}/concert/alarm`,
         { withCredentials: true },
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+
       if (response.data.data.myAllAlarmInfo) {
         const all = response.data.data.myAllAlarmInfo;
         //모든 알람 allAlarms에 배열로 저장
@@ -98,13 +102,13 @@ function MainPage() {
   const getDetailInfo = async () => {
     try {
       if (target.id) {
-        const res = await axios.get(
+        const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/concert/${target.id}`,
           { withCredentials: true },
         );
-        if (res.data.data) {
+        if (response.data.data) {
           /* 서버 응답값이 있다면 detail(상세정보) 갱신 */
-          dispatch(setDetail(res.data.data.concertInfo));
+          dispatch(setDetail(response.data.data.concertInfo));
         }
       }
     } catch (err) {

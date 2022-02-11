@@ -6,7 +6,13 @@ module.exports = {
     try {
       const { articleid } = req.params;
       // 클라이언트로부터 전달된, 게시물 id와 일치하는 게시물이 있는지 DB에서 찾는다
-      const articleInfo = await Articles.findOne({ where: { id: articleid } });
+      const articleInfo = await Articles.findOne({ 
+        include: [{
+          model: Users,
+          attributes: ['username', 'image']
+        }],
+        where: { id: articleid } 
+      });
 
       // 만약 일치하는 게시물이 존재하지 않는다면, 다음을 실행한다
       if (!articleInfo)
@@ -25,8 +31,9 @@ module.exports = {
   },
   patch: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { articleid } = req.params;
       const { title, content, image, member_count, total_member } = req.body;
@@ -72,8 +79,9 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { articleid } = req.params;
 

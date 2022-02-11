@@ -2,7 +2,7 @@
 import xButton from '../../../images/xWhiteButton.png';
 /* Store import */
 import { RootState } from '../../../index';
-import { getPhoneCertificatePassInfo } from '../../../store/AuthSlice';
+import { loginCheck, getPhoneCertificatePassInfo } from '../../../store/AuthSlice';
 import { 
   showFindPasswordModal, 
   showConfirmNumberModal, 
@@ -12,7 +12,7 @@ import {
   insertAlertText,
   insertBtnText,
   showSuccessModal
- } from '../../../store/ModalSlice';
+} from '../../../store/ModalSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -57,11 +57,13 @@ function PhoneConfirmNumberModal() {
   const confirmHandler = async () => {
     try {
       //휴대폰 인증번호을 입력한 후 확인버튼을 클릭했을 때, 다음을 실행한다
-      await axios.post(
+      const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/user/safe/confirm`,
         { message_key: inputCode },
         { withCredentials: true }
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
 
       // 모달 상태 변경
       dispatch(insertAlertText('인증되었습니다! 🙂'));
@@ -85,12 +87,13 @@ function PhoneConfirmNumberModal() {
   // 재전송(인증번호) 버튼 핸들러
   const requestHandler = async () => {
     try {
-
-      await axios.post(
+      const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/user/safe`,
         { phone_number: certificateInfo },
         { withCredentials: true }
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
       
       // 타이머 & 코드 초기화
       setMinutes(3);

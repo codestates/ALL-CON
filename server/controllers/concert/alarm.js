@@ -4,8 +4,9 @@ const { Users, Concerts, Alarms } = require('../../models');
 module.exports = {
   post: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       // 특정 콘서트 id를 클라이언트로부터 전달받는다
       const { concertid } = req.params;
@@ -100,8 +101,9 @@ module.exports = {
   },
   delete: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       // 알람 설정을 취소할 콘서트 id를 클라이언트로부터 전달받는다
       const { concertid } = req.params;
