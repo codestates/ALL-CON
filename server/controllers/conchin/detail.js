@@ -1,5 +1,5 @@
 const { userAuth } = require('../../middlewares/authorized/userAuth');
-const { Articles } = require('../../models');
+const { Articles, Users } = require('../../models');
 
 module.exports = {
   get: async (req, res) => {
@@ -28,6 +28,7 @@ module.exports = {
         message: 'Article Detail!',
       });
     } catch (err) {
+      console.log(err)
       return res.status(500).json({ message: 'Server Error!' });
     }
   },
