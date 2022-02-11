@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export default function LoginRedirect() {
+function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -10,3 +10,4 @@ export default function LoginRedirect() {
 
   return null;
 }
+export default ScrollToTop;
