@@ -111,7 +111,7 @@ function ConChinArticleBox() {
       if (response.data) {
         dispatch(setTargetArticle(response.data.data.articleInfo));
         // dispatch(setArticleTotalPage(articleTotalPage));
-        console.log(articleCurPage);
+        // console.log(articleCurPage);
       }
     } catch (err) {
       console.log(err);
@@ -211,7 +211,7 @@ function ConChinArticleBox() {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
                       getAllComments(article.id);
-                      console.log('게시물 맵핑, 타겟이 없고 게시물만 있을 때');
+                      // console.log('게시물 맵핑, 타겟이 없고 게시물만 있을 때');
                     }}
                   >
                     <img
@@ -271,7 +271,7 @@ function ConChinArticleBox() {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
                       getAllComments(article);
-                      console.log('게시물 맵핑, 타겟이 있고 게시물도 있을 때');
+                      // console.log('게시물 맵핑, 타겟이 있고 게시물도 있을 때');
                     }}
                   >
                     <img

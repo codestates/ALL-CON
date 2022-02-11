@@ -33,6 +33,7 @@ function ConChinArticleContentBox() {
   const { target } = useSelector((state: RootState) => state.main);
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
+  /* 지역상태 interface */
   interface ConChinTargetArticle {
     concert_id?: number;
     content?: string;
