@@ -15,7 +15,7 @@ import MyArticlePagination from './MyArticlePagination';
 import axios from 'axios';
 import { RootState } from '../../index';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function MyArticleBox() {
   /* dispatch / navigate */
