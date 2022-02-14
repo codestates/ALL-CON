@@ -19,20 +19,6 @@ function PosterSlide() {
     (state: RootState) => state.main,
   );
 
-  /* D-DAY 계산기 */
-  const dayCalculator = (openDate?: Date): string => {
-    if (openDate) {
-      const today = new Date();
-      const targetDay = new Date(openDate);
-      const gap = targetDay.getTime() - today.getTime();
-      const count = Math.ceil(gap / (1000 * 60 * 60 * 24));
-      /* 남은 일수에 따라 디데이 리턴 */
-      if (count === 1) return 'D-0';
-      else if (count < 1) return '';
-      else return 'D-' + (count - 1);
-    }
-    return '';
-  };
   const NextArrow = ({ onClick }: any) => {
     return (
       <div className='arrow next' onClick={onClick}>
@@ -55,13 +41,6 @@ function PosterSlide() {
   const setCenterfunc = (index?: number, bool?: boolean): any => {
     // console.log(targetIdx);
     sliderRef.current.slickGoTo(targetIdx, true);
-  };
-
-  //targetIdx 변화시 target포스터 가운데로 오도록 예외처리하는 함수
-  const changeTargetIdx = {
-    //만약 allConcerts를 map돌렸는데
-    //targetIdx가 (0에서) lastIdx나 lastIdx-1로 변하면
-    //뒤에있는 index포스터들이 다 나오도록 한다.
   };
 
   const settings: Settings = {

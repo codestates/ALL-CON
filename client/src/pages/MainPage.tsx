@@ -24,14 +24,13 @@ import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
-    (state: RootState) => state.main,
-  );
+  const { isRendering, order, target, targetIdx, allConcerts, detail } =
+    useSelector((state: RootState) => state.main);
   const { allAlarms, alarm, emailClick, smsClick } = useSelector(
     (state: RootState) => state.concertAlarm,
   );
@@ -39,6 +38,48 @@ function MainPage() {
     (state: RootState) => state.concertComments,
   );
 
+  /* 지역상태 interface */
+  interface mainTarget {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }
+
+  interface mainDetail {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }
+  /* useState => 지역상태 */
+  const [allConcertsMain, setAllConcertsMain] = useState<any>([]);
+  const [targetMain, setTargetMain] = useState<mainTarget>({});
+  const [detailMain, setDetailMain] = useState<mainDetail>({});
   /* 전체 콘서트 렌더링 */
   useEffect(() => {
     getAllConcerts(); // 전체 콘서트 목록
@@ -54,10 +95,26 @@ function MainPage() {
   useEffect(() => {
     if (isLogin) getAllAlarms(); // 전체 알람 목록
   }, [isRendering, emailClick, smsClick, isLogin]);
+
   /* 전체 댓글 목록 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 현재 포스터정보 변경시) */
   useEffect(() => {
     getAllComments(); // 전체 댓글 목록
   }, [target, pageNum, isLogin]);
+
+  /* 전체 콘서트 받아올 때 지역상태 allConcertsMain 변경  */
+  useEffect(() => {
+    setAllConcertsMain(allConcerts);
+  }, [allConcerts]);
+
+  /* 타겟 변경시 지역상태 targetMain 변경  */
+  useEffect(() => {
+    setTargetMain(target);
+  }, [target]);
+
+  /* 타겟 변경시 지역상태 targetMain 변경  */
+  useEffect(() => {
+    setDetailMain(detail);
+  }, [detail]);
 
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
@@ -86,7 +143,8 @@ function MainPage() {
         { withCredentials: true },
       );
       // Axios 결과 로그아웃 상태시 MainPage Redirect
-      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+      if (response.data.message === 'Unauthorized userInfo!')
+        return dispatch(loginCheck(false));
 
       if (response.data.data.myAllAlarmInfo) {
         const all = response.data.data.myAllAlarmInfo;
