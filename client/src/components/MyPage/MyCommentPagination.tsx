@@ -38,36 +38,30 @@ function MyCommentPagination( { deactivateEditTextarea }: MyCommentPaginationPro
     /* handler 함수 (기능별 정렬) */
   // 내가 쓴 (콘서트) 게시물 페이지를 클릭헀을 때, 다음을 실행한다
   const handleConcertPageClick = async (pageNum: number) => {
-    
-    /* 내가 쓴 댓글(콘서트 게시물) axios 테스트 */
+    // 내가 쓴 댓글(콘서트 게시물) axios
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${pageNum}`,
       { withCredentials: true },
     );
     // Axios 결과 로그아웃 상태시 MainPage Redirect
-    if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
-      
+    if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));    
     dispatch(getMyConcertCommentInfo(response.data.data))
     dispatch(getMyConcertCommentTotalPage(response.data.data.totalPage))
-    /* 내가 쓴 댓글(콘서트 게시물) axios 테스트 */
     // 현재 (내가 쓴 콘서트 댓글) 페이지 업데이트
     dispatch(getMyConcertCommentCurrentPage(pageNum))
   } 
 
   // 내가 쓴 (콘친) 게시물 페이지를 클릭헀을 때, 다음을 실행한다
   const handleArticlePageClick = async (pageNum: number) => {
-    
-    /* 내가 쓴 댓글(콘친 게시물) axios 테스트 */
+    // 내가 쓴 댓글(콘친 게시물)
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${pageNum}&comment_type=article`,
       { withCredentials: true },
     );
     // Axios 결과 로그아웃 상태시 MainPage Redirect
     if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
-      
     dispatch(getMyArticleCommentInfo(response.data.data))
     dispatch(getMyArticleCommentTotalPage(response.data.data.totalPage))
-    /* 내가 쓴 댓글(콘친 게시물) axios 테스트 */
     // 현재 (내가 쓴 콘서트 댓글) 페이지 업데이트
     dispatch(getMyArticleCommentCurrentPage(pageNum))
   } 

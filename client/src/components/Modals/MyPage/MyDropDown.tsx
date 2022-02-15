@@ -4,20 +4,6 @@ import { setTarget, setTargetIdx, setOrder, setAllConcerts, setIsRendering } fro
 import { setTargetArticle, setArticleRendered, setArticleCurPage } from '../../../store/ConChinSlice';
 import { loginCheck, logout, getUserInfo } from '../../../store/AuthSlice';
 import { setPageNum } from '../../../store/ConcertCommentSlice';
-import {
-  getCommentBtnType,
-  getArticleInfo,
-  getMyArticleTotalPage,
-  getMyConcertCommentTotalPage,
-  getMyConcertCommentInfo,
-  getMyTotalConcertComment,
-  getMyArticleCommentInfo,
-  getMyArticleCommentTotalPage,
-  getMyTotalArticleComment,
-  getBtnSwitchState,
-  getMyTotalArticle,
-  getMyConcertCommentCurrentPage
-} from '../../../store/MySlice';
 import { setAlarm, setEmailClick, setSmsClick } from '../../../store/ConcertAlarmSlice';
 import {
   showMyDropDown,
@@ -101,81 +87,7 @@ function MyDropDown() {
 
   // 마이페이지 버튼을 누르면, 다음이 실행된다
   const handleMypageBtn = async () => {
-
-    // 프로필 수정 / 콘친인증 버튼 SWITCH OFF
-    dispatch(getBtnSwitchState({
-      profileEdit: false,
-      conchinCertification: false,
-      userResign: false
-    }))
-
-    // 내가 쓴 댓글 기본값을 '콘서트'로 설정
-    dispatch(getCommentBtnType('콘서트'));
-    
-    /****************************************************************************************************/
-    // 내가 쓴 게시물 axios 테스트
-    const response = await axios.get(
-      `${process.env.REACT_APP_API_URL}/user/myarticle?pageNum=1`,
-      { withCredentials: true },
-    );
-    // Axios 결과 로그아웃 상태시 MainPage Redirect
-    if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
-
-    dispatch(getArticleInfo(response.data.data));
-    dispatch(getMyArticleTotalPage(response.data.data.totalPage));
-
-    dispatch(getMyTotalArticle(response.data.data.totalArticle))
-
-    /****************************************************************************************************/
-    // 내가 쓴 댓글(콘서트 게시물) axios 테스트
-    const responseMyConcertComment = await axios.get(
-      `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
-      { withCredentials: true },
-    );
-    // Axios 결과 로그아웃 상태시 MainPage Redirect
-    if(responseMyConcertComment.data.message === 'Unauthorized userInfo!') dispatch(loginCheck(false));
-
-    dispatch(getMyConcertCommentInfo(responseMyConcertComment.data.data));
-    dispatch(
-      getMyConcertCommentTotalPage(
-        responseMyConcertComment.data.data.totalPage,
-      ),
-    );
-    dispatch(
-      getMyTotalConcertComment(
-        responseMyConcertComment.data.data.totalConcertComment,
-      ),
-    );
-    // 전체 페이지가 0이 아니라면, 항상 마이페이지에 진입했을 때 내가 쓴 댓글의 현재페이지는 1이다
-    if(responseMyConcertComment.data.data.totalPage !== 0) dispatch(getMyConcertCommentCurrentPage(1))
-    
-    /****************************************************************************************************/
-    // 내가 쓴 댓글(콘친 게시물) axios 테스트
-    const responseMyArticleComment = await axios.get(
-      `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
-      { withCredentials: true },
-    );
-    // Axios 결과 로그아웃 상태시 MainPage Redirect
-    if(responseMyArticleComment.data.message === 'Unauthorized userInfo!') dispatch(loginCheck(false));
-
-    /* 마이페이지 -> 메인페이지 이동시 가져갈 전체 콘서트 목록(조회수 고정) */
-    const responseAllConcerts = await axios.get(
-      `${process.env.REACT_APP_API_URL}/concert`,
-      { withCredentials: true },
-    );
-
-    dispatch(getMyArticleCommentInfo(responseMyArticleComment.data.data));
-    dispatch(
-      getMyArticleCommentTotalPage(
-        responseMyArticleComment.data.data.totalPage,
-      ),
-    );
-    dispatch(
-      getMyTotalArticleComment(
-        responseMyArticleComment.data.data.totalArticleComment,
-      ),
-    );
-    dispatch(setAllConcerts(responseAllConcerts.data.data.concertInfo));
+    // 콘서트 페이지에서 콘서트를 선택한 후 마이페이지로 넘어갈 때, 지도 API close 해주는 함수
     resetHandler();
   };
 

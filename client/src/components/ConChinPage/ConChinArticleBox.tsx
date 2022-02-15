@@ -21,6 +21,7 @@ import {
   setConChinTotalNum,
   setConChinComment,
   setConChinPageNum,
+  setConChinTotalComments,
 } from '../../store/ConChinCommentSlice';
 import { setTarget } from '../../store/MainSlice';
 /* Library import */
@@ -151,6 +152,7 @@ function ConChinArticleBox() {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
         // setIsClick(false);
         // setInputComment('');
+        dispatch(setConChinTotalComments(response.data.data.totalComment));
         dispatch(setConChinPageAllComments([]));
         dispatch(setConChinTotalNum(response.data.data.totalPage));
         dispatch(
@@ -270,7 +272,7 @@ function ConChinArticleBox() {
                       getTargetArticles();
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
-                      getAllComments(article);
+                      getAllComments(article.id);
                       // console.log('게시물 맵핑, 타겟이 있고 게시물도 있을 때');
                     }}
                   >

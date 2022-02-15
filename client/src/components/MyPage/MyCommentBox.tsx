@@ -5,24 +5,13 @@ import noCommentImg from '../../images/no_comment_img.png'
 import { RootState } from '../../index';
 import {
   getCommentBtnType,
-  getMyConcertCommentInfo,
-  getMyConcertCommentCurrentComment,
-  getMyTotalConcertComment,
-  getMyConcertCommentTotalPage,
   getMyConcertCommentCurrentPage,
+  getMyArticleCommentCurrentPage,
+  getMyConcertCommentInfo,
   getMyArticleCommentInfo,
-  getMyArticleCommentCurrentComment,
-  getMyTotalArticleComment,
-  getMyArticleCommentTotalPage,
 } from '../../store/MySlice';
 import { setConChinPageNum } from '../../store/ConChinCommentSlice';
 import { setPageNum } from '../../store/ConcertCommentSlice';
-import {
-  showAlertModal,
-  insertAlertText,
-  insertBtnText,
-  showSuccessModal,
-} from '../../store/ModalSlice';
 import { setTarget, setTargetIdx, setIsRendering, setOrder } from '../../store/MainSlice';
 import { setTargetArticle } from '../../store/ConChinSlice';
 /* Library import */
@@ -54,10 +43,13 @@ function MyCommentBox() {
   const { allConcerts, target, targetIdx } = useSelector((state: RootState) => state.main)
 
   /* 지역상태 - useState */
-  /* useEffect */
   const [commentClick, setCommentClick] = useState<boolean>(false);
   const [conchinCommentClick, setConchinCommentClick] = useState<boolean>(false);
   const [editComment, setEditComment] = useState<string>('');
+
+  const [myArticle, setMyArticle] = useState<any[]>([]);
+  /* useEffect */
+ 
 
   /* handler 함수 (기능별 정렬) */
   // 콘서트 및 콘친 게시물 버튼 핸들러
@@ -67,11 +59,29 @@ function MyCommentBox() {
     dispatch(getCommentBtnType(key));
     if(key === '콘서트') {
       setCommentClick(false);
-      // 주의! 현재 페이지를 1로 세팅하는 코드 추가해야됨
+      //
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
+        { withCredentials: true },
+      );
+
+      dispatch(getMyArticleCommentInfo(response.data.data));
+
+      // 콘친 댓글의 현재 페이지를 1로 업데이트
+      dispatch(getMyArticleCommentCurrentPage(1))
     }
     else if(key === '콘친') {
       setConchinCommentClick(false);
-      // 주의! 현재 페이지를 1로 세팅하는 코드 추가해야됨
+      //
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
+        { withCredentials: true },
+      );
+
+      dispatch(getMyConcertCommentInfo(response.data.data));
+      
+      // 콘친 댓글의 현재 페이지를 1로 업데이트
+      dispatch(getMyConcertCommentCurrentPage(1))
     }
   };
 
@@ -132,151 +142,7 @@ function MyCommentBox() {
     }
   };
 
-  // 댓글 수정하기 버튼 핸들러
-  const handleEditBtn = async (key: string) => {
-    // 댓글 수정 textarea 활성화
-    if(key === '콘서트') setCommentClick(true);
-    else if(key === '콘친') setConchinCommentClick(true);
-  };
 
-  // 댓글 수정창 핸들러
-  const handleEditComment = async (
-    e: React.ChangeEvent<HTMLTextAreaElement>,
-  ) => {
-    // 수정 textarea에 입력되는 문자들을 editComment 상태에 저장한다
-    setEditComment(e.target.value);
-  };
-
-  // [PATCH] 댓글 수정창 확인 버튼 핸들러
-  const handleEditCommentConfirm = async (
-    commentType: string,
-    commentId: number,
-    concertId: number,
-    currentContent: string,
-    articleId?: number,
-  ) => {
-    if (commentType === '콘서트') {
-      // [PATCH] 댓글 수정
-      // /concert/:concertid/comment/:commentid, { content } = req.body
-      await axios.patch(
-        `${process.env.REACT_APP_API_URL}/concert/${concertId}/comment/${commentId}`,
-        { content: editComment || currentContent },
-        { withCredentials: true },
-      );
-
-      // 주의! 비효율적인 코드... 리팩토링이 필요함
-      // [GET] 내가 쓴 댓글(콘서트 게시물)
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myConcertCommentCurrentPage}`,
-        { withCredentials: true },
-      );
-
-      // 수정후 총 댓글 (현재 페이지) 업데이트
-      dispatch(getMyConcertCommentInfo(response.data.data));
-
-      // 댓글 수정란 초기화
-      setEditComment('');
-      // 댓글 수정 textarea 비활성화
-      setCommentClick(false);
-    } 
-    // 콘친 게시물 댓글을 수정하는 경우, 다음을 실행한다
-    else if (commentType === '콘친') {
-      // [PATCH] 댓글 수정
-      // /concert/:concertid/comment/:commentid, { content } = req.body
-      await axios.patch(
-        `${process.env.REACT_APP_API_URL}/concert/${concertId}/article/${articleId}/comment/${commentId}`,
-        { content: editComment || currentContent },
-        { withCredentials: true },
-      );
-
-      // 주의! 비효율적인 코드... 리팩토링이 필요함
-      // [GET] 내가 쓴 댓글(콘서트 게시물)
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myArticleCommentCurrentPage}&comment_type=article`,
-        { withCredentials: true },
-      );
-
-      // 수정후 총 댓글 (현재 페이지) 업데이트
-      dispatch(getMyArticleCommentInfo(response.data.data));
-      // 댓글 수정란 초기화
-      setEditComment('');
-      // 댓글 수정 textarea 비활성화
-      setConchinCommentClick(false);
-    }
-  };
-
-  // 댓글 수정창 취소 버튼 핸들러
-  const handleEditCommentClose = async () => {
-    // 댓글 수정란 초기화
-    setEditComment('');
-    // 댓글 수정 textarea 비활성화
-    setCommentClick(false);
-    setConchinCommentClick(false);
-  };
-
-  // [DELETE] 댓글 삭제 버튼 핸들러
-  const handleCommentDelete = async (
-    commentType: string,
-    commentId: number,
-    concertId: number,
-    articleId?: number,
-  ) => {
-    if (commentType === '콘서트') {
-      // (콘서트) [DELETE] 댓글 삭제
-      await axios.delete(
-        `${process.env.REACT_APP_API_URL}/concert/${concertId}/comment/${commentId}`,
-        { withCredentials: true },
-      );
-
-      // 주의! 비효율적인 코드... 리팩토링이 필요함
-      // (콘서트) 내가 쓴 댓글(콘서트 게시물) axios 테스트
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myConcertCommentCurrentPage}`,
-        { withCredentials: true },
-      );
-
-      // (콘서트) 삭제후 총 댓글 (현재 페이지) 업데이트
-      dispatch(getMyConcertCommentInfo(response.data.data));
-      // 만약 현재 페이지가 삭제후 총 페이지보다 크다면, 현재페이지 총페이지로 이동
-      // if(myConcertCommentCurrentPage > response.data.data.totalPage) dispatch(getMyConcertCommentCurrentPage(response.data.data.totalPage))
-      // (콘서트) 삭제후 총 페이지 수 업데이트
-      dispatch(getMyConcertCommentTotalPage(response.data.data.totalPage));
-      // (콘서트) 삭제후 총 댓글 수 업데이트
-      dispatch(
-        getMyTotalConcertComment(response.data.data.totalConcertComment),
-      );
-    }
-    /********************************************************************************/
-    // 콘친 게시물 댓글 삭제
-    else if (commentType === '콘친') {
-      // [DELETE] 댓글 삭제
-      // /concert/:concertid/article/:articleid/comment/:commentid
-      await axios.delete(
-        `${process.env.REACT_APP_API_URL}/concert/${concertId}/article/${articleId}/comment/${commentId}`,
-        { withCredentials: true },
-      );
-
-      // 주의! 비효율적인 코드... 리팩토링이 필요함
-      // 내가 쓴 댓글(콘서트 게시물) axios 테스트
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${myArticleCommentCurrentPage}&comment_type=article`,
-        { withCredentials: true },
-      );
-
-      // 삭제후 총 댓글 (현재 페이지) 업데이트
-      dispatch(getMyArticleCommentInfo(response.data.data));
-      // (콘서트) 삭제후 총 페이지 수 업데이트
-      dispatch(getMyArticleCommentTotalPage(response.data.data.totalPage));
-      // 현재 총 댓글 수 업데이트
-      dispatch(
-        getMyTotalArticleComment(response.data.data.totalArticleComment),
-      );
-    }
-
-    dispatch(insertAlertText('댓글이 삭제되었습니다! 🙂'));
-    dispatch(insertBtnText('확인'));
-    dispatch(showSuccessModal(true));
-  };
 
   // 페이지를 바꾸면 수정 비활성화 핸들러
   const deactivateEditTextarea = async (key?: string) => {
@@ -393,7 +259,7 @@ function MyCommentBox() {
                             <textarea
                               id='myText'
                               placeholder={el.content}
-                              onChange={handleEditComment}
+                              // onChange={handleEditComment}
                             />
                           ) : (
                             <p id='myText'> {el.content} </p>
@@ -488,7 +354,7 @@ function MyCommentBox() {
                           <textarea
                             id='myText'
                             placeholder={el.content}
-                            onChange={handleEditComment}
+                            // onChange={handleEditComment}
                           />
                         ) : (
                           <p id='myText'> {el.content} </p>

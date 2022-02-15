@@ -8,6 +8,7 @@ import {
   setArticleTotalPage,
   setTargetArticle,
   setPostingOrder,
+  setArticleOrder,
   setArticleCurPage,
   setArticleRendered,
 } from '../../store/ConChinSlice';
@@ -18,10 +19,14 @@ import { useState, useEffect, useRef } from 'react';
 
 function ConChinPostingOrderBox() {
   const dispatch = useDispatch();
-  const { postingOrder } = useSelector((state: RootState) => state.conChin);
   const { target, allConcerts } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles, articleRendered, targetArticle } =
-    useSelector((state: RootState) => state.conChin);
+  const {
+    postingOrder,
+    articleOrder,
+    allArticles,
+    articleRendered,
+    targetArticle,
+  } = useSelector((state: RootState) => state.conChin);
 
   /* useState => 지역상태 */
   const [conChinPostingOrder, setConChinPostingOrder] =
@@ -45,10 +50,10 @@ function ConChinPostingOrderBox() {
   };
 
   /* 전체 게시물 받아오기 */
-  const getAllArticles = async () => {
+  const getAllArticles = async (order: string) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
+        `${process.env.REACT_APP_API_URL}/concert/article?order=${order}`,
         { withCredentials: true },
       );
       if (response.data) {
@@ -89,12 +94,14 @@ function ConChinPostingOrderBox() {
 
   /* 타겟 초기화 핸들러 */
   const resetTargetHandler = () => {
+    dispatch(setPostingOrder('view'));
+    dispatch(setArticleOrder('view'));
     dispatch(setTarget({}));
     dispatch(setArticleRendered(false));
     dispatch(setTargetArticle({}));
     dispatch(setArticleCurPage(1));
-    getAllConcerts(conChinPostingOrder);
-    getAllArticles();
+    getAllConcerts('view');
+    getAllArticles('view');
   };
 
   /* postingOrder 변경시 지역상태 conChinPostingOrder 변경  */
@@ -121,7 +128,7 @@ function ConChinPostingOrderBox() {
           if (Object.keys(target).length === 0) {
             dispatch(setPostingOrder('view'));
             getAllConcerts('view');
-            getAllArticles();
+            getAllArticles(articleOrder);
           }
         }}
         style={
@@ -138,7 +145,7 @@ function ConChinPostingOrderBox() {
           if (Object.keys(target).length === 0) {
             dispatch(setPostingOrder('near'));
             getAllConcerts('near');
-            getAllArticles();
+            getAllArticles(articleOrder);
           }
         }}
         style={
@@ -155,7 +162,7 @@ function ConChinPostingOrderBox() {
           if (Object.keys(target).length === 0) {
             dispatch(setPostingOrder('new'));
             getAllConcerts('new');
-            getAllArticles();
+            getAllArticles(articleOrder);
           }
         }}
         style={
