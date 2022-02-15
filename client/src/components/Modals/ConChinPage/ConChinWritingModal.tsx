@@ -2,6 +2,7 @@
 import defaultImg from '../../../images/default_image.jpg';
 /* Store import */
 import { RootState } from '../../../index';
+import { loginCheck } from '../../../store/AuthSlice';
 import {
   showAlertModal,
   insertAlertText,
@@ -30,7 +31,55 @@ function ConChinWritingModal() {
   const { articleOrder, allArticles, targetArticle, targetArticlesUserInfo } =
     useSelector((state: RootState) => state.conChin);
   const { userInfo } = useSelector((state: RootState) => state.auth);
+
+  /* 지역상태 interface */
+
+  interface ConChinTarget {
+    id?: number;
+    exclusive?: string;
+    open_date?: Date;
+    post_date?: string;
+    image_concert?: string;
+    title?: string;
+    period?: string;
+    place?: string;
+    price?: string;
+    running_time?: string;
+    rating?: string;
+    link?: string;
+    view?: number;
+    total_comment?: number;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }
+
+  interface ConChinTargetArticle {
+    concert_id?: number;
+    content?: string;
+    createdAt?: Date;
+    id?: number;
+    image?: string;
+    member_count?: number;
+    title?: string;
+    total_comment?: number;
+    total_member?: number;
+    updatedAt?: Date;
+    user_id?: number;
+    view?: number;
+    User?: {
+      username?: string;
+      image?: string;
+    };
+  }
+
   /* 지역상태 - useState */
+
+  // target 변환
+  const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});
+  // targetArticle 변환
+  const [conChinTargetArticle, setConChinTargetArticle] =
+    useState<ConChinTargetArticle>({});
+
   // 미리보기 이미지 상태
   const [preview, setPreview] = useState<string>('');
   const [previewHandle, setPreviewHandle] = useState<boolean>(false);
@@ -111,40 +160,40 @@ function ConChinWritingModal() {
   };
 
   /* 전체 게시물 받아오기(조건) */
-  const getAllArticles = async () => {
-    try {
-      /* 타겟에 종속된 게시물이 없을때, 게시물 없음 표시 */
-      if (target !== undefined && target !== null) {
-        if (Object.keys(target).length === 0) {
-          dispatch(setAllArticles([]));
-          dispatch(setArticleTotalPage(0));
-          // console.log(' ConChinPostingBox=> 게시물이 없어요.');
-        } else if (target === undefined || target === null) {
-          // console.log(
-          //   'ConChinPostingBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
-          // );
-        } else {
-          /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
-          const response = await axios.get(
-            `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
-            { withCredentials: true },
-          );
-          if (response.data) {
-            dispatch(setAllArticles(response.data.data.articleInfo));
-            dispatch(setArticleTotalPage(response.data.data.totalPage));
-            dispatch(setArticleCurPage(1));
-          } else {
-            // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
-          }
-        }
-      }
-    } catch (err) {
-      console.log(err);
-      // console.log(
-      //   'ConChinPostingBox=> 에러가 났나봐요. 게시물 없음 처리합니다.',
-      // );
-    }
-  };
+  // const getAllArticles = async () => {
+  //   try {
+  //     /* 타겟에 종속된 게시물이 없을때, 게시물 없음 표시 */
+  //     if (target !== undefined && target !== null) {
+  //       if (Object.keys(target).length === 0) {
+  //         dispatch(setAllArticles([]));
+  //         dispatch(setArticleTotalPage(0));
+  //         // console.log(' ConChinPostingBox=> 게시물이 없어요.');
+  //       } else if (target === undefined || target === null) {
+  //         // console.log(
+  //         //   'ConChinPostingBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
+  //         // );
+  //       } else {
+  //         /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
+  //         const response = await axios.get(
+  //           `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
+  //           { withCredentials: true },
+  //         );
+  //         if (response.data) {
+  //           dispatch(setAllArticles(response.data.data.articleInfo));
+  //           dispatch(setArticleTotalPage(response.data.data.totalPage));
+  //           dispatch(setArticleCurPage(1));
+  //         } else {
+  //           // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
+  //         }
+  //       }
+  //     }
+  //   } catch (err) {
+  //     console.log(err);
+  //     // console.log(
+  //     //   'ConChinPostingBox=> 에러가 났나봐요. 게시물 없음 처리합니다.',
+  //     // );
+  //   }
+  // };
 
   // // 모집중인 콘친수
   // const [numTotalConchin, setNumTotalConchin] = useState<string>('2');
@@ -196,18 +245,21 @@ function ConChinWritingModal() {
             title: title,
             content: result,
             image: preview,
-            member_count: String(numPresentConchin),
-            total_member: String(numTotalConchin),
+            member_count: numPresentConchin,
+            total_member: numTotalConchin,
           },
           { withCredentials: true },
         );
+        // Axios 결과 로그아웃 상태시 MainPage Redirect
+        if (response.data.message === 'Unauthorized userInfo!')
+          return dispatch(loginCheck(false));
 
         dispatch(insertAlertText('글 작성에 성공했습니다! 🙂'));
         getTargetArticles();
         dispatch(insertBtnText('확인'));
         dispatch(showConChinWritingModal(false));
         dispatch(showSuccessModal(true));
-        getAllArticles();
+        // getAllArticles();
       }
     }
 
@@ -264,10 +316,11 @@ function ConChinWritingModal() {
           },
           { withCredentials: true },
         );
-        getTargetArticles();
-        dispatch(insertAlertText('글 수정에 성공했습니다! 🙂'));
-        getTargetArticlesInfo();
+        // Axios 결과 로그아웃 상태시 MainPage Redirect
+        if (response.data.message === 'Unauthorized userInfo!')
+          return dispatch(loginCheck(false));
 
+        dispatch(insertAlertText('글 수정에 성공했습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
         dispatch(showConChinWritingModal(false));
@@ -332,6 +385,16 @@ function ConChinWritingModal() {
     }
   }, []);
 
+  /* target 변경시 지역상태 conChinTarget 변경  */
+  useEffect(() => {
+    setConChinTarget(target);
+  }, [target]);
+
+  /* targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
+  useEffect(() => {
+    setConChinTargetArticle(targetArticle);
+  }, [targetArticle]);
+
   return (
     <div id='conChinWritingContainer'>
       <div
@@ -357,13 +420,17 @@ function ConChinWritingModal() {
           ) : (
             <img
               className='img'
-              src={targetArticle.image ? targetArticle.image : defaultImg}
+              src={
+                conChinTargetArticle.image
+                  ? conChinTargetArticle.image
+                  : defaultImg
+              }
               id='image'
             />
           )}
           {/* 주의! 현재 선택된 콘서트의 제목을 store에서 가져와서 변수로 치환해줘야함 */}
           <div id='concertWrapper'>
-            <p id='concert'>{target.title}</p>
+            <p id='concert'>{conChinTarget.title}</p>
           </div>
           <input
             className='box'
@@ -371,7 +438,9 @@ function ConChinWritingModal() {
             id='write'
             onChange={handleArticleTitle}
             placeholder={
-              targetArticle.title ? targetArticle.title : '제목을 입력해주세요.'
+              conChinTargetArticle.title
+                ? conChinTargetArticle.title
+                : '제목을 입력해주세요.'
             }
             value={title}
           ></input>
@@ -382,8 +451,8 @@ function ConChinWritingModal() {
               max='9'
               className='want'
               placeholder={
-                targetArticle.member_count
-                  ? String(targetArticle.member_count)
+                conChinTargetArticle.member_count
+                  ? String(conChinTargetArticle.member_count)
                   : '현재 모인 콘친 수'
               }
               onChange={handlePresentNumConchin}
@@ -395,8 +464,8 @@ function ConChinWritingModal() {
               max='9'
               className='want'
               placeholder={
-                targetArticle.total_member
-                  ? String(targetArticle.total_member)
+                conChinTargetArticle.total_member
+                  ? String(conChinTargetArticle.total_member)
                   : '모집중인 콘친 수'
               }
               onChange={handleTotalNumConchin}
@@ -406,8 +475,8 @@ function ConChinWritingModal() {
           <textarea
             id='board'
             placeholder={
-              targetArticle.content
-                ? targetArticle.content
+              conChinTargetArticle.content
+                ? conChinTargetArticle.content
                 : '글 내용을 입력해주세요.'
             }
             onChange={handleArticleContent}
@@ -418,12 +487,14 @@ function ConChinWritingModal() {
             <button
               id='no1'
               onClick={() =>
-                userInfo.id === targetArticle.user_id
+                userInfo.id === conChinTargetArticle.user_id
                   ? handleModifyBtn()
                   : handleWriteBtn()
               }
             >
-              {Object.keys(targetArticle).length > 0 ? '수정하기' : '작성하기'}
+              {Object.keys(conChinTargetArticle).length > 0
+                ? '수정하기'
+                : '작성하기'}
             </button>
             <button
               id='no2'

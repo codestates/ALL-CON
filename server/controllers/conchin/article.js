@@ -86,11 +86,12 @@ module.exports = {
   },
   post: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { concertid } = req.params;
-      const { title, content, image } = req.body;
+      const { title, content, member_count, total_member, image } = req.body;
 
       // 일반회원은 게시글 작성 불가
       if (userInfo.dataValues.role === 3)
@@ -103,6 +104,8 @@ module.exports = {
       const articleInfo = await Articles.create({
         title: title,
         content: content,
+        member_count: member_count,
+        total_member: total_member,
         image: image || process.env.ARTICLE_DEFAULT_IMAGE,
         user_id: Number(userInfo.dataValues.id),
         concert_id: Number(concertid),

@@ -19,6 +19,10 @@ module.exports = {
             model: Users,
             attributes: ['username', 'image', 'role'],
           },
+          {
+            model: Articles,
+            attributes: ['total_comment'],
+          },
         ],
         where: { article_id: articleid },
         order: [['createdAt', 'DESC']],
@@ -27,12 +31,10 @@ module.exports = {
       });
       // 댓글이 없을 경우, 다음을 실행한다
       if (articleCommentInfo.count === 0)
-        return res
-          .status(200)
-          .json({
-            data: { articleCommentInfo: [] },
-            message: 'Empty Article Comments!',
-          });
+        return res.status(200).json({
+          data: { articleCommentInfo: [] },
+          message: 'Empty Article Comments!',
+        });
 
       await Articles.update(
         { total_comment: articleCommentInfo.count },
@@ -41,15 +43,14 @@ module.exports = {
       // 총 페이지 수
       const totalPage = Math.ceil(articleCommentInfo.count / limit);
 
-      res
-        .status(200)
-        .json({
-          data: {
-            articleCommentInfo: articleCommentInfo.rows,
-            totalPage: totalPage,
-          },
-          message: 'Article Comments!',
-        });
+      res.status(200).json({
+        data: {
+          articleCommentInfo: articleCommentInfo.rows,
+          totalComment: articleCommentInfo.rows[0].Article.total_comment,
+          totalPage: totalPage,
+        },
+        message: 'Article Comments!',
+      });
     } catch (err) {
       console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
@@ -57,8 +58,10 @@ module.exports = {
   },
   post: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if (!userInfo)
+        return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { articleid } = req.params;
       const { content } = req.body;

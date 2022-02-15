@@ -5,8 +5,10 @@ const { Op } = require('sequelize');
 module.exports = {
   post: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
+      
       // 클라이언트로부터 받은 유저네임
       const { username } = req.body;
 

@@ -5,5 +5,6 @@ module.exports = {
   concert: require('./concert'),
   concertComment: require('./concertComment'),
   conchin: require('./conchin'),
-  conchinComment: require('./conchinComment')
+  conchinComment: require('./conchinComment'),
+  upload: require('./upload')
 };

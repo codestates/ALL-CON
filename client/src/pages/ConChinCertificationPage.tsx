@@ -1,12 +1,9 @@
-import MyProfileBox from '../components/MyPage/MyProfileBox';
-import Footer from '../components/Footer';
-
 /* CSS import */
 import check from '../images/check.png';
 /* Store import */
 import { RootState } from '../index';
 import {
-  logout,
+  loginCheck,
   getUserInfo,
   getCertificateInfo,
   getPhoneCertificatePassInfo,
@@ -21,6 +18,9 @@ import {
   insertDeliverText,
 } from '../store/ModalSlice';
 import { getBtnSwitchState } from '../store/MySlice';
+/* Component import */
+import MyProfileBox from '../components/MyPage/MyProfileBox';
+import Footer from '../components/Footer';
 /* Library import */
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -129,8 +129,10 @@ function ConChinCertificationPage() {
         `${process.env.REACT_APP_API_URL}/user/safe`,
         { phone_number: `${conchinCertificateInfo.phoneNumber}` },
         { withCredentials: true },
-        );
-      }
+      );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
+    }
   };
 
   // 인증 완료 버튼 핸들러
@@ -158,6 +160,8 @@ function ConChinCertificationPage() {
         },
         { withCredentials: true },
       );
+      // Axios 결과 로그아웃 상태시 MainPage Redirect
+      if(response.data.message === 'Unauthorized userInfo!') return dispatch(loginCheck(false));
       
       // 콘친 인증 성공 모달 OPEN
       dispatch(insertAlertText(`(${userInfo.username})님의 콘친 인증이 완료되었습니다! 🙂`));
@@ -223,7 +227,6 @@ function ConChinCertificationPage() {
             </div>
             <div id='birthdayBox'>
               <select 
-                // size={10}
                 className='short'
                 onChange={inputDropdownValueHandler('birthYear')}
               >

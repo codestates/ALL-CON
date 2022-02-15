@@ -4,8 +4,9 @@ const { Alarms } = require('../../models');
 module.exports = {
   get: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       /* 에러 임시코드 */
       if(userInfo.dataValues){
@@ -20,7 +21,6 @@ module.exports = {
         // console.log("======버그(임시코드)=====");
       }
     } catch (err) {
-      console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
     }
   },

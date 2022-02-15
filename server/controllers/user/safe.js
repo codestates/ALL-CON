@@ -2,12 +2,14 @@ require('dotenv').config();
 const { userAuth } = require('../../middlewares/authorized/userAuth')
 const { Users } = require('../../models');
 const twilio = require("twilio")(process.env.TWILIO_SID, process.env.TWILIO_TOKEN);
+const crypto = require('crypto');
 
 module.exports = {
   post: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       const { phone_number } = req.body;
 
@@ -18,6 +20,8 @@ module.exports = {
       const max = 999999;
       const min = 100000;
       const confirmNumber = Math.floor(Math.random() * (max - min)) + min;
+      // 'sha256' 알고리즘으로 confirmNumber을 'base64' 문자열 형식으로 해싱한다
+      const hashedNumber = crypto.createHash('sha256').update(String(confirmNumber)).digest('base64');
       
       // 인증번호 발송
       twilio.messages.create({
@@ -28,20 +32,22 @@ module.exports = {
 
       // Users 테이블 message_key 필드 업데이트
       await Users.update(
-        { message_key: confirmNumber },
+        { message_key: hashedNumber },
         { where: { id: userInfo.dataValues.id }}
       )
       
       // 인증번호 입력 시간이 지나면, message_key 값이 expired로 변경한다
-      // setTimeout(async function() {
-      //   const messageKeyChecker = await Users.findOne({ where: { id: userInfo.dataValues.id } })
-      //   if(messageKeyChecker.message_key !== 'success'){
-      //     await Users.update(
-      //       { message_key: 'expired' },
-      //       { where: { id: userInfo.dataValues.id }}
-      //     )
-      //   }
-      // }, 60000)
+      setTimeout(async () => {
+        const messageKeyChecker = await Users.findOne({ 
+          where: { id: userInfo.dataValues.id },
+        });
+        if(messageKeyChecker.message_key !== 'success'){
+          await Users.update(
+            { message_key: 'expired' },
+            { where: { id: userInfo.dataValues.id }}
+          )
+        }
+      }, 60000)
 
       res.status(200).json({ message: 'Success Send Message!' });
     } catch (err) {
@@ -51,8 +57,9 @@ module.exports = {
   },
   patch: async (req, res) => {
     try {
-      // 로그인 인증 검사
+      /* 로그인 인증 검사 */
       const userInfo = await userAuth(req, res);
+      if(!userInfo) return res.status(200).json({ message: 'Unauthorized userInfo!' });
 
       // 요청 바디 (생년월일, 성별, 전화번호)
       const { birth, gender, phone_number } = req.body;
