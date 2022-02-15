@@ -23,6 +23,8 @@ export interface my {
 
   // 총 게시글 수
   myTotalArticle: number;
+  // 현재 게시글 페이지
+  myArticleCurrentPage: number;
   
   myConcertCommentTotalPage: number;
   myConcertCommentCurrentPage: number;
@@ -84,6 +86,8 @@ const initialState: my = {
   myArticleCommentTotalPage: 0,
   myArticleCommentCurrentComment: 0,
   myTotalArticle: 0,
+
+  myArticleCurrentPage: 1,
 
 
   myTotalArticleComment: 0,
@@ -158,6 +162,9 @@ const mySlice = createSlice({
     getBtnSwitchState: (state: my, { payload }: PayloadAction<object>) => { 
       state.btnSwitchState = payload;
     }, 
+    getMyArticleCurrentPage: (state: my, { payload }: PayloadAction<number>) => { 
+      state.myArticleCommentCurrentPage = payload;
+    }, 
   }
 });
 
@@ -182,6 +189,7 @@ export const {
   getMyTotalArticleComment,
   getMyArticleCommentTotalPage,
   getMyArticleCommentInfo,
+  getMyArticleCurrentPage,
 
   getBtnSwitchState
 } = mySlice.actions;
