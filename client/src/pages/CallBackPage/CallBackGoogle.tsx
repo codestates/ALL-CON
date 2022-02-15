@@ -1,7 +1,7 @@
 /* Store import */
 import { setTarget, setTargetIdx, setOrder, setIsRendering } from '../../store/MainSlice';
 import { setPageNum } from '../../store/ConcertCommentSlice';
-import { login, getUserInfo } from '../../store/AuthSlice';
+import { login, loginCheck, getUserInfo } from '../../store/AuthSlice';
 import {
   showLoginModal,
   showConcertModal,
@@ -55,6 +55,8 @@ function CallbackGooglePage() {
         );
         /* 로그인 & 유저 상태 변경 */
         dispatch(login());
+        dispatch(loginCheck(true));
+        console.log(response.data.data.userInfo.image);
         dispatch(getUserInfo(response.data.data.userInfo));
       }
       goHomeHandler();

@@ -54,6 +54,7 @@ function MainPage() {
   useEffect(() => {
     if (isLogin) getAllAlarms(); // 전체 알람 목록
   }, [isRendering, emailClick, smsClick, isLogin]);
+  
   /* 전체 댓글 목록 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 현재 포스터정보 변경시) */
   useEffect(() => {
     getAllComments(); // 전체 댓글 목록
