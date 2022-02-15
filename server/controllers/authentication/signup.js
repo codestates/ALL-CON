@@ -26,7 +26,7 @@ module.exports = {
         const key = await pbkdf2Promise(password, salt, 106699, 64, 'sha512');
         // key값은 buffer 형식이므로 base64 문자열로 변환한 값을 hashedPassword 변수에 넣는다.
         const hashedPassword = key.toString('base64');
-        
+
         // 신규회원 생성
         await Users.create({ 
           email: email, 
