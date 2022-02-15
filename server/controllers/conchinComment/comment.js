@@ -19,6 +19,10 @@ module.exports = {
             model: Users,
             attributes: ['username', 'image', 'role'],
           },
+          {
+            model: Articles,
+            attributes: ['total_comment'],
+          },
         ],
         where: { article_id: articleid },
         order: [['createdAt', 'DESC']],
@@ -46,6 +50,7 @@ module.exports = {
         .json({
           data: {
             articleCommentInfo: articleCommentInfo.rows,
+            totalComment: articleCommentInfo.rows[0].Article.total_comment,
             totalPage: totalPage,
           },
           message: 'Article Comments!',

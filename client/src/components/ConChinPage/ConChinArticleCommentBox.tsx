@@ -264,6 +264,7 @@ function ConChinArticleCommentBox() {
       );
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
       if (response.data) {
+        console.log(response.data);
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
         setIsClick(false);
         setInputComment('');
