@@ -1,7 +1,7 @@
 /* Store import */
 import { RootState } from '../index';
 import { logout, getUserInfo } from '../store/AuthSlice';
-import { setTarget, setTargetIdx, setOrder, setIsRendering } from '../store/MainSlice';
+import { setTarget, setTargetIdx, setOrder, setPassToConcert, setIsRendering } from '../store/MainSlice';
 import { setPageNum } from '../store/ConcertCommentSlice';
 import { setAlarm, setEmailClick, setSmsClick } from '../store/ConcertAlarmSlice';
 import { 
@@ -40,6 +40,7 @@ function LoginRedirect() {
     dispatch(setAlarm({}));
     dispatch(setEmailClick(false));
     dispatch(setSmsClick(false));
+    dispatch(setPassToConcert(false));
     /* 켜져있는 모달창 모두 종료 */
     dispatch(showConcertModal(false));  
     dispatch(showLoginModal(false));
@@ -58,12 +59,11 @@ function LoginRedirect() {
     /* 로그아웃 상태로 변경 & 유저정보 상태 초기화 */
     dispatch(logout());
     dispatch(getUserInfo({}));
-    /* 로그인 모달창 팝업 */
-    // dispatch(showLoginModal(true));
   };
 
   useEffect(() => {
     if(!isLoginCheck){
+      console.log('언제 실행되는거지?')
       goHomeHandler(); // 메인페이지로 이동
       loginStateHandler();  // 로그인 상태 변경 & 로그인 모달창 팝업
     }

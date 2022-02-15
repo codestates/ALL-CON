@@ -58,32 +58,18 @@ function MainPage() {
     updatedAt?: Date;
   }
 
-  interface mainDetail {
-    id?: number;
-    exclusive?: string;
-    open_date?: Date;
-    post_date?: string;
-    image_concert?: string;
-    title?: string;
-    period?: string;
-    place?: string;
-    price?: string;
-    running_time?: string;
-    rating?: string;
-    link?: string;
-    view?: number;
-    total_comment?: number;
-    createdAt?: Date;
-    updatedAt?: Date;
-  }
   /* useState => 지역상태 */
   const [allConcertsMain, setAllConcertsMain] = useState<any>([]);
   const [targetMain, setTargetMain] = useState<mainTarget>({});
-  const [detailMain, setDetailMain] = useState<mainDetail>({});
+  const [targetIdxMain, setTargetIdxMain] = useState(0);
+
   /* 전체 콘서트 렌더링 */
   useEffect(() => {
-    getAllConcerts(); // 전체 콘서트 목록
-  }, [isRendering]);
+    getAllConcerts(); // 전체 콘서트 목록 불러오기
+  }, [order]);
+  //allConcerts를 맨 처음에 []일때만 실행하고
+  //order가 변할때마다 다시 실행되어서
+  //isRendering이 되고나면 화면에 보여져야지
 
   /* 상세 콘서트 정보 & 알람 정보 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 댓글 갱신시) */
   useEffect(() => {
@@ -100,21 +86,6 @@ function MainPage() {
   useEffect(() => {
     getAllComments(); // 전체 댓글 목록
   }, [target, pageNum, isLogin]);
-
-  /* 전체 콘서트 받아올 때 지역상태 allConcertsMain 변경  */
-  useEffect(() => {
-    setAllConcertsMain(allConcerts);
-  }, [allConcerts]);
-
-  /* 타겟 변경시 지역상태 targetMain 변경  */
-  useEffect(() => {
-    setTargetMain(target);
-  }, [target]);
-
-  /* 타겟 변경시 지역상태 targetMain 변경  */
-  useEffect(() => {
-    setDetailMain(detail);
-  }, [detail]);
 
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
@@ -159,7 +130,7 @@ function MainPage() {
   /* 상세 콘서트 받아오기 */
   const getDetailInfo = async () => {
     try {
-      if (target.id) {
+      if (isRendering && target) {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/concert/${target.id}`,
           { withCredentials: true },
@@ -210,16 +181,18 @@ function MainPage() {
   /* 모든 댓글 가져오기 함수 */
   const getAllComments = async () => {
     try {
-      /* response 변수에 서버 응답결과를 담는다 */
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment?pageNum=${pageNum}`,
-        { withCredentials: true },
-      );
-      /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
-      if (response.data) {
-        /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-        dispatch(setTotalNum(response.data.data.totalPage));
-        dispatch(setPageAllComments(response.data.data.concertCommentInfo));
+      if (target) {
+        /* response 변수에 서버 응답결과를 담는다 */
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment?pageNum=${pageNum}`,
+          { withCredentials: true },
+        );
+        /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
+        if (response.data) {
+          /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
+          dispatch(setTotalNum(response.data.data.totalPage));
+          dispatch(setPageAllComments(response.data.data.concertCommentInfo));
+        }
       }
     } catch (err) {
       console.log(err);
@@ -229,7 +202,11 @@ function MainPage() {
   return (
     <div id='mainContainer'>
       <div id='mainJumboWrapper'>
-        <Jumbotron />
+        <Jumbotron
+          allConcertsMain={allConcertsMain}
+          targetMain={targetMain}
+          targetIdxMain={targetIdxMain}
+        />
       </div>
       {isRendering && (
         <div id='mainConcertInfoWrapper'>

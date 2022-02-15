@@ -12,22 +12,24 @@ import {
 } from '../store/ModalSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConcertPage() {
   const dispatch = useDispatch();
   const { allConcerts, order, passToConcert } = useSelector((state: RootState) => state.main);
-
+  /* useState => 지역상태 */
+  const [concertOrder, setConcertOrder] = useState<String>('view');
+  /* order, passToConcert 전역상태 변경시 지역상태 concertOrder 변경 */
   useEffect(() => {
-    if(!passToConcert) orderByHandler(order);
+    setConcertOrder(order);
   }, [order, passToConcert]);
 
   /* 정렬 핸들러 */
-  const orderByHandler = async (order: string) => {
+  const orderByHandler = async (clickedOrder: String) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert?order=${order}`,
+        `${process.env.REACT_APP_API_URL}/concert?order=${clickedOrder}`,
         { withCredentials: true },
       );
       if (response.data) {
@@ -37,8 +39,7 @@ function ConcertPage() {
       }
     } catch (err) {
       const error = err as AxiosError;
-      if (error.response?.status === 400)
-        dispatch(insertAlertText('잘못된 요청입니다! 😖'));
+      if (error.response?.status === 400) dispatch(insertAlertText('잘못된 요청입니다! 😖'));
       else dispatch(insertAlertText('Server Error! 😖'));
       dispatch(showAlertModal(true));
     }
@@ -76,18 +77,21 @@ function ConcertPage() {
           </h1>
           <p className={order === 'view' ? 'click' : 'orderBy'} onClick={() => {
             dispatch(setOrder('view'));
+            orderByHandler('view');
             dispatch(setPassToConcert(false));
           }}>
             조회수
           </p>
           <p className={order === 'near' ? 'click' : 'orderBy'}  onClick={() => {
             dispatch(setOrder('near'));
+            orderByHandler('near');
             dispatch(setPassToConcert(false));
           }}>
             임박예정
           </p>
           <p className={order === 'new' ? 'click' : 'orderBy'}  onClick={() => {
             dispatch(setOrder('new'));
+            orderByHandler('new');
             dispatch(setPassToConcert(false));
           }}>
             등록일

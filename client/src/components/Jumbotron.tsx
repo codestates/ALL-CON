@@ -17,7 +17,13 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPageNum } from '../store/ConcertCommentSlice';
 
-function Jumbotron() {
+interface props {
+  allConcertsMain: any[];
+  targetMain: {};
+  targetIdxMain: number;
+}
+
+function Jumbotron({ allConcertsMain, targetMain, targetIdxMain }: props) {
   const dispatch = useDispatch();
   const { order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,

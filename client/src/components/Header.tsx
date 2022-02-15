@@ -260,7 +260,7 @@ function Header() {
       </div>
 
       <div id='logoBar'>
-        <Link to='/' onClick={() => resetHandler('logo')}>
+        <Link to='/main' onClick={() => resetHandler('logo')}>
           {/* 스크롤 후 로고 호출*/}
 
           <img
@@ -269,7 +269,6 @@ function Header() {
             }
             alt='logoImg'
             src={logo}
-            onClick={showTimer}
           />
         </Link>
       </div>
