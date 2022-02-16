@@ -17,6 +17,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function ConcertPage() {
   const dispatch = useDispatch();
+  /* useSelector => 전역상태 */
   const { allConcerts, order, passToConcert } = useSelector((state: RootState) => state.main);
   /* useState => 지역상태 */
   const [concertOrder, setConcertOrder] = useState<String>('view');
