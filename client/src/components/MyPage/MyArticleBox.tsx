@@ -4,7 +4,7 @@ import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
 import noArticleImg from '../../images/no_article_img.png'
 /* Store import */
-import { setTarget, setAllConcerts } from '../../store/MainSlice';
+import { setTarget } from '../../store/MainSlice';
 import {
   setTargetArticle,
   setTargetArticlesUserInfo,
