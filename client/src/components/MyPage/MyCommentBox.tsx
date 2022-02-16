@@ -33,16 +33,11 @@ function MyCommentBox() {
     myTotalConcertComment,
     commentBtnType,
     articleCommentInfo,
-    myConcertCommentCurrentComment,
     myTotalArticleComment,
-    myArticleCommentCurrentComment,
   } = useSelector((state: RootState) => state.my);
   const { allConcerts } = useSelector((state: RootState) => state.main)
 
   /* 지역상태 - useState */
-  const [commentClick, setCommentClick] = useState<boolean>(false);
-  const [conchinCommentClick, setConchinCommentClick] = useState<boolean>(false);
-
   /* useEffect */
  
   /* handler 함수 (기능별 정렬) */
@@ -52,7 +47,6 @@ function MyCommentBox() {
     // ex) 콘서트 버튼을 누르면 => commentBtnType = '콘서트', 콘친 게시물 버튼을 누르면 => commentBtnType = '콘친'
     dispatch(getCommentBtnType(key));
     if(key === '콘서트') {
-      setCommentClick(false);
       // [GET] 내가 작성한 댓글 조회 (콘친&페이지: 1) 
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
@@ -64,7 +58,6 @@ function MyCommentBox() {
       dispatch(getMyArticleCommentCurrentPage(1))
     }
     else if(key === '콘친') {
-      setConchinCommentClick(false);
       // [GET] 내가 작성한 댓글 조회 (콘서트&페이지: 1) 
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
@@ -130,13 +123,6 @@ function MyCommentBox() {
       dispatch(setConChinPageNum(1));
     }
   };
-
-  // 페이지를 바꾸면 수정 비활성화 핸들러
-  const deactivateEditTextarea = async (key?: string) => {
-    // 수정이 활성화된 상태에서 페이지를 누르면, 수정을 비활성화 시킨다
-    if(key === '콘서트') setCommentClick(false)
-    else if(key === '콘친') setConchinCommentClick(false)
-  }
 
   return (
     <div id='myCommentBox'>
@@ -244,7 +230,7 @@ function MyCommentBox() {
       </div>
 
       <div id='paginationWrapper'>
-        <MyCommentPagination deactivateEditTextarea={deactivateEditTextarea}/>
+        <MyCommentPagination />
       </div>
       
       {/* 댓글이 없다면 display */}
