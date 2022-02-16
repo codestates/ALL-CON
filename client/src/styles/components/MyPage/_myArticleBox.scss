@@ -13,13 +13,11 @@
   @include lg() {
     top: 5%;
   }
-  // border: 4px solid green;
   #titleWrapper {
     position: absolute;
     display: flex;
     align-items: center;
     height: 10%;
-    // border: 2px solid red;
     @include mobile-only() {
       width: 80%;
       left: 9%;
@@ -64,7 +62,6 @@
       top: 19%;
       left: 13.8%;
       font-size: 1.6rem;
-
     }
     @include lg() {
       top: 12%;
@@ -75,8 +72,6 @@
   #articleWrapper {
     position: absolute;
     display: flex;
-
-    // border: 2px solid yellow;
     @include mobile-only() {
       width: 90%;
       top: 13.5%;
@@ -94,7 +89,6 @@
     }
     #myMemberBoxWrapper {
       position: absolute;
-      // border: 2px solid blue;
       top: 0%;
     }
   }
@@ -117,7 +111,6 @@
       top: 72%;
       height: 45%;
     }
-    // border: 3px solid green;
   }
   #noArticleImgWrapper{
     position: absolute;
@@ -126,17 +119,14 @@
     justify-content: center;
     width: 50%;
     height: 50%;
-    // border: 3px solid blue;
     font-size: 3rem;
     color: grey;
-    // color: $yellow;
     font-weight: bold;
     bottom: 15%;
   }
      // 게시물이 0개 일때, 나타나는 문구
      #noArticleMessage{
       position: absolute;
-      
       opacity: 90%;
       @include mobile-only() {
         bottom: 5%;
@@ -155,7 +145,6 @@
   #noArticleImg{
     position: absolute;
     opacity: 50%;
-
     @include mobile-only() {
       width: 80%;
       height: 100%;

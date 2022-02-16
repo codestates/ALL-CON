@@ -33,6 +33,11 @@ module.exports = (sequelize, DataTypes) => {
   };
   Articles.init({
     title: DataTypes.STRING,
+    activation: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
+    },
     content: DataTypes.STRING,
     image: DataTypes.STRING,
     total_comment: {

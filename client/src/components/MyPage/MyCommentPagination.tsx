@@ -7,22 +7,19 @@ import { getMyConcertCommentInfo, getMyConcertCommentTotalPage, getMyArticleComm
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 /* Props 선언 */
-interface MyCommentPaginationProps {
-  deactivateEditTextarea(key?: string): void
-}
 
-function MyCommentPagination( { deactivateEditTextarea }: MyCommentPaginationProps ) {
+function MyCommentPagination() {
   /* dispatch / navigate */
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   
   /* useSelector */
   const { myConcertCommentTotalPage, myArticleCommentTotalPage, commentBtnType, myConcertCommentCurrentPage, myArticleCommentCurrentPage } = useSelector((state: RootState) => state.my);
 
   /* 지역상태 - useState */
+  /* useEffect */
+
   let concertPageArr: number[] = [];
   for (let i = 1; i <= myConcertCommentTotalPage; i++) {
     concertPageArr.push(i);
@@ -33,9 +30,7 @@ function MyCommentPagination( { deactivateEditTextarea }: MyCommentPaginationPro
     articlePageArr.push(i);
   }
 
-  /* useEffect */
-
-    /* handler 함수 (기능별 정렬) */
+  /* handler 함수 (기능별 정렬) */
   // 내가 쓴 (콘서트) 게시물 페이지를 클릭헀을 때, 다음을 실행한다
   const handleConcertPageClick = async (pageNum: number) => {
     // 내가 쓴 댓글(콘서트 게시물) axios
@@ -77,7 +72,6 @@ function MyCommentPagination( { deactivateEditTextarea }: MyCommentPaginationPro
             <ul className={ el === myConcertCommentCurrentPage ? 'pageChosen' : 'page' } 
               onClick={() => {
               handleConcertPageClick(el)
-              deactivateEditTextarea('콘서트')
               }
             }>
               <p className='text'> {el} </p>
@@ -91,7 +85,6 @@ function MyCommentPagination( { deactivateEditTextarea }: MyCommentPaginationPro
             <ul className={ el === myArticleCommentCurrentPage ? 'pageChosen' : 'page' } 
                 onClick={() => {
                   handleArticlePageClick(el)
-                  deactivateEditTextarea('콘친')
                 }
               }>
               <p className='text'> {el} </p>

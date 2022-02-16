@@ -60,7 +60,6 @@
     top: 20%;
     
     @include mobile-only() {
-      
       width: 95%;
       height: 80%;
     }
@@ -114,68 +113,6 @@
     }
   }
   
-  .myCommentOptionBtnWrapper{
-    position: absolute;
-    display: flex;
-    align-items: center;
-    // justify-content: space-between;
-    width: 13.2%;
-    height: 100%;
-    margin-right: 0.5%;
-
-    // border: 2px solid green;
-    font-weight: bold;
-    @include mobile-only() {
-      width: 19%;
-      height: 10%;
-      font-size: 1.2rem;
-    }
-    @include md() {
-      width: 16%;
-      height: 50%;
-      font-size: 1.8rem;
-    }
-    @include lg() {
-      right: 1%;
-    }
-  }
-  .myCommentOptionBtn {
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    margin-right: 0.5%;
-    text-align: center;
-
-    font-weight: bold;
-
-    @include mobile-only() {
-      width: 19%;
-      height: 10%;
-      font-size: 1.2rem;
-    }
-    @include md() {
-      width: 12%;
-      height: 50%;
-      font-size: 1.8rem;
-    }
-    @include lg() {
-      width: 35%;
-      height: 60%;
-      font-size: 1.5rem;
-    }
-    &:hover {
-      // background-color: #ffce63;
-      background-color: #ffce63;
-      color: white;
-      cursor: pointer;
-      transition: 0.15s all;
-    }
-
-    // border: 2px solid blue;
-  }
-  .hidden {
-    display: none;
-  }
   // 댓글수 (ex. 3개의 댓글)
   .myCount {
     position: relative;
@@ -261,40 +198,7 @@
       font-size: 1.8rem;
     }
   }
-  // 수정하기 / 삭제하기 버튼
-  .myOptionBtn {
-    z-index: 999;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: gray;
-    font-weight: bold;
-    
-    @include mobile-only() {
-      display: none;
-    }
-    @include md() {
-      margin-right: 0.2%;
-      right: -38%;
-      width: 45%;
-      height: 70%;
-      font-size: 1.0rem;
-    }
-    @include lg() {
-      margin-right: 1.0%;
-      right: -11%;
-      width: 50%;
-      height: 70%;
-      font-size: 1.3rem;
-    }
-    &:hover {
-      background-color: #ffce63;
-      color: white;
-      cursor: pointer;
-      transition: 0.15s all;
-    }
-  }
+  
   //
   #myImgAndText {
     position: relative;
@@ -313,19 +217,19 @@
       @include mobile-only() {
         width: 9.5%;
         height: 80%;
-        top: 5.5%;
-        left: -0.5%;
+        top: 0.5%;
+        left: 0.5%;
       }
       @include md() {
         width: 8%;
         height: 86%;
-        top: 6.5%;
+        top: 2%;
         left: 1.5%;
       }
       @include lg() {
         width: 7.5%;
         height: 88%;
-        top: 7%;
+        top: 2%;
         left: 2%;
       }
       .myImg {
@@ -336,12 +240,12 @@
         object-fit: cover;
       }
     }
-    & :hover {
-      .myImg {
-        border: 2px solid $yellow;
-        outline: 2px solid $yellow;
-      }
-    }
+    // & :hover {
+    //   .myImg {
+    //     border: 2px solid $yellow;
+    //     outline: 2px solid $yellow;
+    //   }
+    // }
     // 댓글창
     .myTextWrapper {
       position: absolute;
@@ -490,6 +394,35 @@
     @include lg() {
       bottom: -17%;
       font-size: 3.0rem;
+    }
+  }
+}
+
+.myCommentSingleBox {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 21.5%;
+  top: 0%;
+  margin-top: 1.5%;
+  opacity: 80%;
+  
+  &:hover {
+    animation: pulse;
+    animation-duration: 0.5s;
+    box-shadow: 2px 6px 14px 0.5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    opacity: 100%;
+
+    @include mobile-only() {
+      border-radius: 5px;
+    }
+    @include md() {
+      border-radius: 10px;
+      width: 105%;
+    }
+    @include lg() {
+      border-radius: 10px;
     }
   }
 }

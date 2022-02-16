@@ -214,7 +214,7 @@ function ConChinArticleBox() {
                       <div className='memberBox'>
                         <img className='icon' src={groupImage} />
                         <div className='count'>
-                          {article.view >= 0 ? article.member_count : '-'}/
+                          {article.view >= 0 ? article.member_count : '-'}
                           {article.view >= 0 ? article.total_member : '-'}
                         </div>
                       </div>
