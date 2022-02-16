@@ -1,5 +1,6 @@
 const { userAuth } = require('../../middlewares/authorized/userAuth');
 const { Concerts } = require('../../models');
+const { Op } = require('sequelize');
 
 module.exports = {
   get: async (req, res) => {
@@ -25,7 +26,7 @@ module.exports = {
             ['post_date', 'DESC'],
             ['view', 'DESC']
           ],
-          // where: { activation: true },
+          where: { activation: true },
         });
         res.status(200).json({ data: { concertInfo: concertInfo }, message: 'Concerts Order By New!' });
       }
@@ -44,11 +45,13 @@ module.exports = {
             'view',
           ],
           order: [
-            ['activation', 'DESC'],
             ['open_date', 'ASC'],
             ['view', 'DESC'],
           ],
-          // where: { activation: true },
+          where: { 
+            open_date: { [Op.gte]: new Date() },
+            activation: true 
+          }
         });
         res.status(200).json({ data: { concertInfo: concertInfo }, message: 'Concerts Order By Near!' });
       }
@@ -67,11 +70,12 @@ module.exports = {
             'view',
           ],
           order: [['view', 'DESC']],
-          // where: { activation: true },
+          where: { activation: true },
         });
         res.status(200).json({ data: { concertInfo: concertInfo }, message: 'Concerts Order By View!' });
       }
     } catch (err) {
+      console.log(err);
       return res.status(500).json({ message: 'Server Error!' });
     }
   },

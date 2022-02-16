@@ -16,12 +16,12 @@ const autoAlarm = schedule.scheduleJob('00 25 17 * * *', async () => {
 });
 
 // 콘서트 클리너 실행
-const autoConcertCleaner = schedule.scheduleJob('00 30 16 * * *', async () => {
-  concertCleaner();
+const autoConcertCleaner = schedule.scheduleJob('00 00 09 * * *', async () => {
+  await concertCleaner();
 });
 
 // Auto Crawling
-const autoCrawling = schedule.scheduleJob('00 00 9 * * *', async () => {
+const autoCrawling = schedule.scheduleJob('00 00 09 * * *', async () => {
   await crawler();
 });
 
