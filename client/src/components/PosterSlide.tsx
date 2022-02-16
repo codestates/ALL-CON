@@ -15,7 +15,7 @@ import { setTarget, setTargetIdx } from '../store/MainSlice';
 function PosterSlide() {
   const dispatch = useDispatch();
 
-  const { target, targetIdx, allConcerts, isRendering } = useSelector(
+  const { target, targetIdx, allConcerts, isRendering, passToConcert } = useSelector(
     (state: RootState) => state.main,
   );
 
@@ -33,6 +33,7 @@ function PosterSlide() {
     }
     return '';
   };
+  
   const NextArrow = ({ onClick }: any) => {
     return (
       <div className='arrow next' onClick={onClick}>

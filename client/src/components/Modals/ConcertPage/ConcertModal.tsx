@@ -9,7 +9,6 @@ import { showConcertModal } from '../../../store/ModalSlice';
 import { setIsRendering, setPassToConcert, setTargetIdx } from '../../../store/MainSlice';
 import { setPageNum } from '../../../store/ConcertCommentSlice';
 /* Library import */
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -17,10 +16,8 @@ import { useSelector, useDispatch } from 'react-redux';
 function ConcertModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  /* useSelector => 전역상태 */
   const { target, allConcerts } = useSelector((state: RootState) => state.main);
-  
-  useEffect(() => {
-  }, [target]);
 
   /* D-DAY 계산기 */
   const dayCalculator = (openDate?: Date): string => {
@@ -108,7 +105,7 @@ function ConcertModal() {
             </div>
           </div>
           {target.place ? 
-          <div id='bottom_box'> <KakaoMap place={target.place}/></div> :
+          <div id='bottom_box'><KakaoMap place={target.place}/></div> :
           <div id='bottom_box'>
             <h1>콘서트 위치정보를 찾을수 없습니다!</h1>
             <img id='noMap' src={map} alt='지도 이미지'></img>

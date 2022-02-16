@@ -23,6 +23,7 @@ export interface modal {
   alarmModal: boolean;
   alarmText: string;
   mainKakaoModal: boolean;
+  kakaoLoading: boolean;
   myProfileImageModal: boolean; 
   myProfileResignMembershipModal: boolean;
 }
@@ -50,6 +51,7 @@ const initialState: modal = {
   alarmModal: false,
   alarmText: '',
   mainKakaoModal: false,
+  kakaoLoading: false,
   myProfileImageModal: false,
   myProfileResignMembershipModal: false,
 };
@@ -140,6 +142,9 @@ const modalSlice = createSlice({
     showMainKakaoModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.mainKakaoModal = payload;
     },
+    setKakaoLoading: (state: modal, { payload }: PayloadAction<boolean>) => {
+      state.kakaoLoading = payload;
+    },
     showMyProfileImageModal: (state: modal, { payload }: PayloadAction<boolean>) => {
       state.myProfileImageModal = payload;
     },
@@ -171,6 +176,7 @@ export const {
   showAlarmModal,
   insertAlarmText,
   showMainKakaoModal,
+  setKakaoLoading,
   showMyProfileImageModal,
   showMyProfileResignMembershipModal,
 } = modalSlice.actions;

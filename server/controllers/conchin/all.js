@@ -16,17 +16,14 @@ module.exports = {
         const articleInfo = await Articles.findAndCountAll({
           include: [
             {
-              model: Concerts,
-              attributes: ['activation'],
-            },
-            {
               model: Users,
               attributes: ['username', 'image', 'role'],
             },
           ],
           order: [
+            ['activation', 'DESC'],
             ['createdAt', 'DESC'],
-            ['view', 'DESC'],
+            ['view', 'DESC']
           ],
           offset: offset,
           limit: limit,
@@ -48,18 +45,14 @@ module.exports = {
         const articleInfo = await Articles.findAndCountAll({
           include: [
             {
-              model: Concerts,
-              attributes: ['activation'],
-            },
-            {
               model: Users,
               attributes: ['username', 'image', 'role'],
             },
           ],
-
           order: [
+            ['activation', 'DESC'],
             ['view', 'DESC'],
-            ['createdAt', 'DESC'],
+            ['createdAt', 'DESC']
           ],
           offset: offset,
           limit: limit,
