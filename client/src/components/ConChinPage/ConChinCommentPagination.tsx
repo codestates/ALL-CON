@@ -66,7 +66,6 @@ function ConChinCommentPagination() {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
 
         dispatch(setConChinPageAllComments([]));
-        // dispatch(setConChinTotalNum(response.data.data.totalPage));
         dispatch(
           setConChinPageAllComments(response.data.data.articleCommentInfo),
         );

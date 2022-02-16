@@ -96,7 +96,7 @@ function ConChinWritingModal() {
   /* useEffect */
 
   /* handler 함수 (기능별 정렬) */
-  // useEffect handle 함수 (async 못쓰기 때문에...)
+  // useEffect handle 함수
   const handleImageUpload = async (
     e: React.ChangeEvent<HTMLInputElement>,
   ): Promise<void> => {
@@ -159,47 +159,6 @@ function ConChinWritingModal() {
     setContent(e.target.value);
   };
 
-  /* 전체 게시물 받아오기(조건) */
-  // const getAllArticles = async () => {
-  //   try {
-  //     /* 타겟에 종속된 게시물이 없을때, 게시물 없음 표시 */
-  //     if (target !== undefined && target !== null) {
-  //       if (Object.keys(target).length === 0) {
-  //         dispatch(setAllArticles([]));
-  //         dispatch(setArticleTotalPage(0));
-  //         // console.log(' ConChinPostingBox=> 게시물이 없어요.');
-  //       } else if (target === undefined || target === null) {
-  //         // console.log(
-  //         //   'ConChinPostingBox=> target이 undefined거나 null이네요, 빈객체 처리할게요.',
-  //         // );
-  //       } else {
-  //         /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
-  //         const response = await axios.get(
-  //           `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
-  //           { withCredentials: true },
-  //         );
-  //         if (response.data) {
-  //           dispatch(setAllArticles(response.data.data.articleInfo));
-  //           dispatch(setArticleTotalPage(response.data.data.totalPage));
-  //           dispatch(setArticleCurPage(1));
-  //         } else {
-  //           // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
-  //         }
-  //       }
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //     // console.log(
-  //     //   'ConChinPostingBox=> 에러가 났나봐요. 게시물 없음 처리합니다.',
-  //     // );
-  //   }
-  // };
-
-  // // 모집중인 콘친수
-  // const [numTotalConchin, setNumTotalConchin] = useState<string>('2');
-  // // 현재 모인 콘친 수
-  // const [numPresentConchin, setNumPresentConchin] = useState<string>('1');
-
   // 작성하기 버튼
   const handleWriteBtn = async () => {
     // [POST] 서버로 게시물 작성 요청, ex) concert/:concertid/article => concertid는 변수 처리해야됨!
@@ -259,12 +218,8 @@ function ConChinWritingModal() {
         dispatch(insertBtnText('확인'));
         dispatch(showConChinWritingModal(false));
         dispatch(showSuccessModal(true));
-        // getAllArticles();
       }
     }
-
-    // 주의: 글 작성 성공 알림 모달 필요함!
-    // 게시글 작성 모달도 닫는다
   };
 
   // 수정하기 버튼

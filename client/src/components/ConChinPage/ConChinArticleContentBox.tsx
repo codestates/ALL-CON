@@ -133,26 +133,6 @@ function ConChinArticleContentBox() {
     }
   };
 
-  /* 전체 게시물 받아오기 */
-  // const getAllArticles = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
-  //       { withCredentials: true },
-  //     );
-  //     if (response.data) {
-  //       dispatch(setAllArticles(response.data.data.articleInfo));
-  //       dispatch(setArticleTotalPage(response.data.data.totalPage));
-  //       dispatch(setArticleCurPage(1));
-  //       dispatch(setTargetArticle({}));
-  //     } else {
-  //       // console.log('없거나 실수로 못가져왔어요.');
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   /* 타겟 게시물 받아오기 */
   const getTargetArticles = async () => {
     try {

@@ -307,7 +307,6 @@ function ConChinArticleCommentBox() {
       if (response.data) {
         console.log(response.data);
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-
         setIsClick(false);
         setInputComment('');
         dispatch(setConChinPageAllComments([]));
@@ -352,39 +351,6 @@ function ConChinArticleCommentBox() {
       console.log(err);
     }
   };
-
-  // /* 타겟 게시물 받아오기 */
-  // const getTargetArticles = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
-  //       { withCredentials: true },
-  //     );
-  //     if (response.data) {
-  //       dispatch(setTargetArticle({}));
-  //       dispatch(setTargetArticle(response.data.data.articleInfo));
-  //       dispatch(
-  //         setConChinTotalComments(response.data.data.articleInfo.total_comment),
-  //       );
-  //     } else {
-  //       // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getAllComments();
-  // }, [conChinPageNum]);
-
-  // useEffect(() => {
-  //   getTargetArticles();
-  // }, [isClick]);
-
-  // useEffect(() => {
-  //   getTargetArticles();
-  // }, [isClick]);
 
   /* conChinPageAllComments 변경시 지역상태 conChinConChinPageAllComments 변경  */
   useEffect(() => {
