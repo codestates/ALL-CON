@@ -1,5 +1,4 @@
 /* CSS import */
-import defaultImage from '../../images/default_image.jpg';
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
 import notFound from '../../images/notFound.jpg';
@@ -206,9 +205,7 @@ function ConChinArticleBox() {
                   >
                     <img
                       className='thumbNail'
-                      src={
-                        article.image !== null ? article.image : defaultImage
-                      }
+                      src={ article.image }
                     ></img>
                     <div id='conChinmemberBoxWrapper'>
                       <div className='memberBox'>
@@ -270,9 +267,7 @@ function ConChinArticleBox() {
                           ? 'thumbNailChosen'
                           : 'thumbNail'
                       }
-                      src={
-                        article.image !== null ? article.image : defaultImage
-                      }
+                      src={ article.image }
                     ></img>
                     <div id='conChinmemberBoxWrapper'>
                       <div className='memberBox'>
