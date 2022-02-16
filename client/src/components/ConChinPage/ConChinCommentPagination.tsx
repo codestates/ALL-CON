@@ -45,12 +45,14 @@ function ConChinCommentPagination() {
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
       if (response.data) {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-        setConChinTotalComments(response.data.data.totalComment);
+
         dispatch(setConChinPageAllComments([]));
+        dispatch(setConChinTotalNum(0));
         dispatch(setConChinTotalNum(response.data.data.totalPage));
         dispatch(
           setConChinPageAllComments(response.data.data.articleCommentInfo),
         );
+        dispatch(setConChinTotalComments(response.data.data.totalComment));
       }
     } catch (err) {
       const response = await axios.get(
@@ -62,12 +64,13 @@ function ConChinCommentPagination() {
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
       if (response.data) {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-        setConChinTotalComments(response.data.data.totalComment);
+
         dispatch(setConChinPageAllComments([]));
         // dispatch(setConChinTotalNum(response.data.data.totalPage));
         dispatch(
           setConChinPageAllComments(response.data.data.articleCommentInfo),
         );
+        dispatch(setConChinTotalComments(response.data.data.totalComment));
       }
     }
   };

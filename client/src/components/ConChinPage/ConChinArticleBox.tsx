@@ -144,7 +144,9 @@ function ConChinArticleBox() {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${id}/comment?pageNum=${conChinPageNum}`,
+        `${process.env.REACT_APP_API_URL}/concert/${
+          target.id
+        }/article/${id}/comment?pageNum=${1}`,
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
@@ -173,9 +175,10 @@ function ConChinArticleBox() {
     setConChinTarget(target);
   }, [target]);
 
-  /* targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
+  /* targetArticle 변경시 지역상태 conChinTargetArticle 변경, 댓글 조회  */
   useEffect(() => {
     setConChinTargetArticle(targetArticle);
+    if (targetArticle.id !== undefined) getAllComments(targetArticle.id);
   }, [targetArticle]);
 
   /* allArticles 변경시 지역상태 conChinAllArticles 변경  */
@@ -212,7 +215,7 @@ function ConChinArticleBox() {
                     onClick={() => {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
-                      getAllComments(article.id);
+                      // getAllComments(article.id);
                       // console.log('게시물 맵핑, 타겟이 없고 게시물만 있을 때');
                     }}
                   >
@@ -272,7 +275,7 @@ function ConChinArticleBox() {
                       getTargetArticles();
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
-                      getAllComments(article.id);
+                      // getAllComments(article.id);
                       // console.log('게시물 맵핑, 타겟이 있고 게시물도 있을 때');
                     }}
                   >

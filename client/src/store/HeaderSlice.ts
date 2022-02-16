@@ -4,9 +4,10 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface header {
   isScrolled: boolean;
   scrollCount: number;
-  timerMessage: string | number;
+  timerMessage: string;
   headerAllConcerts: any[];
   headerIsRendered: boolean;
+  isPaused: boolean;
 }
 
 /* State 초기값 설정 */
@@ -16,6 +17,7 @@ const initialState: header = {
   timerMessage: '',
   headerAllConcerts: [],
   headerIsRendered: false,
+  isPaused: false,
 };
 
 const headerSlice = createSlice({
@@ -29,10 +31,7 @@ const headerSlice = createSlice({
     setScrollCount: (state: header, { payload }: PayloadAction<number>) => {
       state.scrollCount = payload;
     },
-    setTimerMessage: (
-      state: header,
-      { payload }: PayloadAction<string | number>,
-    ) => {
+    setTimerMessage: (state: header, { payload }: PayloadAction<string>) => {
       state.timerMessage = payload;
     },
     setHeaderAllConcerts: (
@@ -47,6 +46,9 @@ const headerSlice = createSlice({
     ) => {
       state.headerIsRendered = payload;
     },
+    setIsPaused: (state: header, { payload }: PayloadAction<boolean>) => {
+      state.isPaused = payload;
+    },
   },
 });
 
@@ -56,5 +58,6 @@ export const {
   setTimerMessage,
   setHeaderAllConcerts,
   setHeaderIsRendered,
+  setIsPaused,
 } = headerSlice.actions;
 export default headerSlice.reducer;

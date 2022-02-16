@@ -208,7 +208,8 @@ function ConChinArticleCommentBox() {
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
         getAllComments();
-        getAllComments();
+        dispatch(setConChinPageNum(0));
+        dispatch(setConChinPageNum(1));
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -280,7 +281,7 @@ function ConChinArticleCommentBox() {
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
         getAllComments();
-        getAllComments();
+        dispatch(setConChinPageNum(1));
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -306,7 +307,7 @@ function ConChinArticleCommentBox() {
       if (response.data) {
         console.log(response.data);
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-        dispatch(setConChinTotalComments(response.data.data.totalComment));
+
         setIsClick(false);
         setInputComment('');
         dispatch(setConChinPageAllComments([]));
@@ -315,6 +316,7 @@ function ConChinArticleCommentBox() {
         dispatch(
           setConChinPageAllComments(response.data.data.articleCommentInfo),
         );
+        dispatch(setConChinTotalComments(response.data.data.totalComment));
       }
     } catch (err) {}
   };
