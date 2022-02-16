@@ -69,20 +69,6 @@ function ConChinPostingBox() {
           }
         }
       }
-      // else {
-      //   if (
-      //     Object.keys(target).length > 0 &&
-      //     Object.keys(targetArticle).length === 0
-      //   ) {
-      //     // resetAllTarget();
-      //   } else if (
-      //     Object.keys(target).length > 0 &&
-      //     Object.keys(targetArticle).length > 0
-      //   ) {
-      //   } else if (Object.keys(target).length > 0 && allArticles.length === 0) {
-      //     // resetAllTarget();
-      //   }
-      // }
     } catch (err) {
       console.log(err);
       dispatch(setAllArticles([]));
@@ -90,28 +76,6 @@ function ConChinPostingBox() {
       // console.log('ConChinPostingBox=> 게시물이 없네요.');
     }
   };
-
-  /* 전체 게시물 받아오기(무조건) */
-  // const getAllArticles = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
-  //       { withCredentials: true },
-  //     );
-  //     if (response.data) {
-  //       // dispatch(setTarget({}));
-  //       dispatch(setAllArticles(response.data.data.articleInfo));
-  //       dispatch(setArticleTotalPage(response.data.data.totalPage));
-  //       dispatch(setArticleCurPage(1));
-  //       console.log('ConChinPostingBox => 전체 콘서트를 가져왔습니다.');
-  //     } else {
-  //       console.log('없거나 실수로 못가져왔어요..');
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //     console.log('에러가 났나봐요.');
-  //   }
-  // };
 
   /* 조건부 게시물 받아오기 & 타겟 교체 */
   function changeTarget(concert: any[]) {

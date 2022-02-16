@@ -30,6 +30,7 @@ import {
   setScrollCount,
   setTimerMessage,
   setHeaderAllConcerts,
+  setIsPaused,
 } from '../store/HeaderSlice';
 import { setPageNum } from '../store/ConcertCommentSlice';
 import {
@@ -42,7 +43,7 @@ import {
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function Header() {
@@ -61,7 +62,7 @@ function Header() {
     conChinWritingModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
-  const { isScrolled, scrollCount, timerMessage, headerAllConcerts } =
+  const { isScrolled, scrollCount, timerMessage, headerAllConcerts, isPaused } =
     useSelector((state: RootState) => state.header);
   const { articleOrder, allArticles } = useSelector(
     (state: RootState) => state.conChin,
@@ -71,84 +72,72 @@ function Header() {
   const [searchClicked, setSearchClicked] = useState<boolean>(false);
 
   /* Header Timer */
-  const [isPause, setIsPause] = useState<boolean>(false);
-  let timer: any;
-  let stDate = new Date().getTime();
-  let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
-  let RemainDate = edDate - stDate;
+  // const [isPause, setIsPause] = useState<boolean>(false);
+  // let timer: any;
+  // let stDate = new Date().getTime();
+  // let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
+  // let RemainDate = edDate - stDate;
+
+  // /* 헤더 타이머 시작 핸들러 */
+  // const startTimer = () => {
+  //   setIsPause(false);
+  //   timer = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
+  // };
+  // /* 헤더 타이머 멈춤 핸들러 */
+  // const stopTimer = () => {
+  //   setIsPause(true);
+  //   console.log('stop & isPause:' + isPause);
+  //   clearInterval(timer);
+  // };
+
+  // /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
+  // const showTimer = () => {
+  //   dispatch(setIsScrolled(false));
+  // };
+
+  // function msg_time() {
+  //   if (isPause === false) {
+  //     let hours: string | number = Math.floor(
+  //       (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+  //     );
+  //     let miniutes: string | number = Math.floor(
+  //       (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
+  //     );
+  //     let seconds: string | number = Math.floor(
+  //       (RemainDate % (1000 * 60)) / 1000,
+  //     );
+  //     if (String(hours).length === 1) {
+  //       miniutes = `0${hours}`;
+  //     }
+  //     if (String(miniutes).length === 1) {
+  //       miniutes = `0${miniutes}`;
+  //     }
+  //     if (String(seconds).length === 1) {
+  //       seconds = `0${seconds}`;
+  //     }
+
+  //     let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
+  //     dispatch(setTimerMessage(m));
+  //     console.log(m);
+
+  //     if (RemainDate < 0) {
+  //       // 시간이 종료 되면
+  //       clearInterval(timer); // 타이머 해제
+  //     } else {
+  //       RemainDate = RemainDate - 1000; // 남은시간 -1초
+  //     }
+  //   }
+  // }
 
   /* 헤더 타이머 시작 핸들러 */
-  const startTimer = () => {
-    stopTimer();
-    setIsPause(false);
-    timer = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
-  };
+  const startTimer = () => {};
   /* 헤더 타이머 멈춤 핸들러 */
-  const stopTimer = () => {
-    setIsPause(true);
-    clearInterval(timer);
-  };
+  const stopTimer = () => {};
 
   /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
   const showTimer = () => {
     dispatch(setIsScrolled(false));
   };
-
-  function msg_time() {
-    if (!isPause) {
-      let hours: string | number = Math.floor(
-        (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-      );
-      let miniutes: string | number = Math.floor(
-        (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
-      );
-      let seconds: string | number = Math.floor(
-        (RemainDate % (1000 * 60)) / 1000,
-      );
-      if (String(hours).length === 1) {
-        miniutes = `0${hours}`;
-      }
-      if (String(miniutes).length === 1) {
-        miniutes = `0${miniutes}`;
-      }
-      if (String(seconds).length === 1) {
-        seconds = `0${seconds}`;
-      }
-
-      let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
-      dispatch(setTimerMessage(m));
-
-      if (RemainDate < 0) {
-        // 시간이 종료 되면
-        clearInterval(timer); // 타이머 해제
-      } else {
-        RemainDate = RemainDate - 1000; // 남은시간 -1초
-      }
-    }
-  }
-  /* Header Timer */
-  useEffect(() => {
-    stopTimer();
-    startTimer();
-  }, []);
-
-  /* 스크롤 위치 저장 useEffect */
-  useEffect(() => {
-    window.addEventListener('scroll', updateScroll);
-  });
-  /* 해당 모달 띄워져있을 시 스크롤바 제거 useEffect */
-  useEffect(() => {
-    if (
-      loginModal ||
-      signupModal ||
-      conChinProfileModal ||
-      mainKakaoModal ||
-      conChinProfileModal ||
-      conChinWritingModal
-    )
-      document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'unset';
-  });
 
   /* 드랍다운 오픈 상태 변경 핸들러 */
   const displayMyDropDown = () => {
@@ -160,7 +149,9 @@ function Header() {
       setScrollCount(window.scrollY || document.documentElement.scrollTop),
     );
 
-    if (scrollCount > 0.5) dispatch(setIsScrolled(true));
+    if (scrollCount > 0.5) {
+      dispatch(setIsScrolled(true));
+    }
   };
 
   /* 전체 게시물 받아오기 */
@@ -235,6 +226,38 @@ function Header() {
       setSearchClicked(false);
     }
   };
+
+  /* Header Timer useEffect : 첫 렌더링시에만 */
+  useEffect(() => {
+    // stopTimer();
+    startTimer();
+    showTimer();
+    setSearchClicked(false);
+  }, []);
+
+  /* 스크롤 위치 저장 useEffect */
+  useEffect(() => {
+    window.addEventListener('scroll', updateScroll);
+  }, [scrollCount]);
+
+  /* 해당 모달 띄워져있을 시 스크롤바 제거 useEffect */
+  useEffect(() => {
+    if (
+      loginModal ||
+      signupModal ||
+      conChinProfileModal ||
+      mainKakaoModal ||
+      conChinWritingModal
+    )
+      document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = 'unset';
+  }, [
+    loginModal,
+    signupModal,
+    conChinProfileModal,
+    mainKakaoModal,
+    conChinWritingModal,
+  ]);
 
   return (
     /* 해당 모달들(loginModal, signupModal 등) 띄워져있을 시 헤더 통채로 교체 */

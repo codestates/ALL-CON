@@ -14,10 +14,13 @@ import {
   showConChinWritingModal,
 } from '../../store/ModalSlice';
 import { setTarget } from '../../store/MainSlice';
-/* Library import */
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import {
+  setConChinPageAllComments,
+  setConChinTotalNum,
+  setConChinComment,
+  setConChinTotalComments,
+  setConChinPageNum,
+} from '../../store/ConChinCommentSlice';
 import {
   setAllArticles,
   setTargetArticle,
@@ -26,6 +29,10 @@ import {
   setArticleOrder,
   setTargetArticlesUserInfo,
 } from '../../store/ConChinSlice';
+/* Library import */
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinArticleContentBox() {
   const dispatch = useDispatch();
@@ -120,26 +127,6 @@ function ConChinArticleContentBox() {
       );
       if (response.data) {
         dispatch(setTargetArticlesUserInfo(response.data.data.userInfo));
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  /* 전체 게시물 받아오기 */
-  const getAllArticles = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
-        { withCredentials: true },
-      );
-      if (response.data) {
-        dispatch(setAllArticles(response.data.data.articleInfo));
-        dispatch(setArticleTotalPage(response.data.data.totalPage));
-        dispatch(setArticleCurPage(1));
-        dispatch(setTargetArticle({}));
-      } else {
-        // console.log('없거나 실수로 못가져왔어요.');
       }
     } catch (err) {
       console.log(err);

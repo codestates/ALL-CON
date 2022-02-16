@@ -111,8 +111,6 @@ function ConChinArticleBox() {
       );
       if (response.data) {
         dispatch(setTargetArticle(response.data.data.articleInfo));
-        // dispatch(setArticleTotalPage(articleTotalPage));
-        // console.log(articleCurPage);
       }
     } catch (err) {
       console.log(err);
@@ -128,14 +126,10 @@ function ConChinArticleBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        // dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
-        // dispatch(setArticleCurPage(articleCurPage));
       }
     } catch (err) {
       console.log(err);
-      // dispatch(setAllArticles([]));
-      // dispatch(setArticleTotalPage(0));
     }
   };
 
@@ -144,14 +138,14 @@ function ConChinArticleBox() {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${id}/comment?pageNum=${conChinPageNum}`,
+        `${process.env.REACT_APP_API_URL}/concert/${
+          target.id
+        }/article/${id}/comment?pageNum=${1}`,
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
       if (response.data) {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-        // setIsClick(false);
-        // setInputComment('');
         dispatch(setConChinTotalComments(response.data.data.totalComment));
         dispatch(setConChinPageAllComments([]));
         dispatch(setConChinTotalNum(response.data.data.totalPage));
@@ -163,19 +157,15 @@ function ConChinArticleBox() {
     } catch (err) {}
   };
 
-  /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
-  // useEffect(() => {
-  //   getTargetArticles();
-  // }, [targetArticle]);
-
   /* target 변경시 지역상태 conChinTarget 변경  */
   useEffect(() => {
     setConChinTarget(target);
   }, [target]);
 
-  /* targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
+  /* targetArticle 변경시 지역상태 conChinTargetArticle 변경, 댓글 조회  */
   useEffect(() => {
     setConChinTargetArticle(targetArticle);
+    if (targetArticle.id !== undefined) getAllComments(targetArticle.id);
   }, [targetArticle]);
 
   /* allArticles 변경시 지역상태 conChinAllArticles 변경  */
@@ -212,8 +202,6 @@ function ConChinArticleBox() {
                     onClick={() => {
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
-                      getAllComments(article.id);
-                      // console.log('게시물 맵핑, 타겟이 없고 게시물만 있을 때');
                     }}
                   >
                     <img
@@ -272,7 +260,7 @@ function ConChinArticleBox() {
                       getTargetArticles();
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
-                      getAllComments(article.id);
+                      // getAllComments(article.id);
                       // console.log('게시물 맵핑, 타겟이 있고 게시물도 있을 때');
                     }}
                   >
