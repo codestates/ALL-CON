@@ -34,7 +34,7 @@ const openDateCheck = async (targetOpenDate, concertid) => {
           let articleid = articleInfo[i].id
           
           await Articles.update(
-            { view: -999999 },
+            { activation: false },
             { where: { id: articleid } }
           )
         }
@@ -56,13 +56,12 @@ const openDateCheck = async (targetOpenDate, concertid) => {
         let articleid = articleInfo[i].id
         
         await Articles.update(
-          { view: -999999 },
+          { activation: false },
           { where: { id: articleid } }
         )
       }
     }
   }
-  
   return
 }
 
