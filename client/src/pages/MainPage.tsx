@@ -24,13 +24,14 @@ import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { isRendering, order, target, targetIdx, allConcerts, detail } =
-    useSelector((state: RootState) => state.main);
+  const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
+    (state: RootState) => state.main,
+  );
   const { allAlarms, alarm, emailClick, smsClick } = useSelector(
     (state: RootState) => state.concertAlarm,
   );
@@ -38,38 +39,10 @@ function MainPage() {
     (state: RootState) => state.concertComments,
   );
 
-  /* 지역상태 interface */
-  interface mainTarget {
-    id?: number;
-    exclusive?: string;
-    open_date?: Date;
-    post_date?: string;
-    image_concert?: string;
-    title?: string;
-    period?: string;
-    place?: string;
-    price?: string;
-    running_time?: string;
-    rating?: string;
-    link?: string;
-    view?: number;
-    total_comment?: number;
-    createdAt?: Date;
-    updatedAt?: Date;
-  }
-
-  /* useState => 지역상태 */
-  const [allConcertsMain, setAllConcertsMain] = useState<any>([]);
-  const [targetMain, setTargetMain] = useState<mainTarget>({});
-  const [targetIdxMain, setTargetIdxMain] = useState(0);
-
   /* 전체 콘서트 렌더링 */
   useEffect(() => {
-    getAllConcerts(); // 전체 콘서트 목록 불러오기
-  }, [order]);
-  //allConcerts를 맨 처음에 []일때만 실행하고
-  //order가 변할때마다 다시 실행되어서
-  //isRendering이 되고나면 화면에 보여져야지
+    getAllConcerts(); // 전체 콘서트 목록
+  }, [isRendering]);
 
   /* 상세 콘서트 정보 & 알람 정보 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 댓글 갱신시) */
   useEffect(() => {
@@ -130,7 +103,7 @@ function MainPage() {
   /* 상세 콘서트 받아오기 */
   const getDetailInfo = async () => {
     try {
-      if (isRendering && target) {
+      if (target) {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/concert/${target.id}`,
           { withCredentials: true },
@@ -202,11 +175,7 @@ function MainPage() {
   return (
     <div id='mainContainer'>
       <div id='mainJumboWrapper'>
-        <Jumbotron
-          allConcertsMain={allConcertsMain}
-          targetMain={targetMain}
-          targetIdxMain={targetIdxMain}
-        />
+        <Jumbotron />
       </div>
       {isRendering && (
         <div id='mainConcertInfoWrapper'>

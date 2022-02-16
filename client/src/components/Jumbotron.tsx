@@ -17,17 +17,18 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPageNum } from '../store/ConcertCommentSlice';
 
-interface props {
-  allConcertsMain: any[];
-  targetMain: {};
-  targetIdxMain: number;
-}
-
-function Jumbotron({ allConcertsMain, targetMain, targetIdxMain }: props) {
+function Jumbotron() {
   const dispatch = useDispatch();
   const { order, target, targetIdx, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
+
+  /* useState => 지역상태 */
+  const [orderJumbo, setOrderJumbo] = useState('view');
+
+  useEffect(() => {
+    setOrderJumbo(order);
+  }, [order]);
 
   /* 포스터 이동 핸들러 */
   const moveHandler = (move: string) => {
@@ -67,14 +68,14 @@ function Jumbotron({ allConcertsMain, targetMain, targetIdxMain }: props) {
             {/*WHAT'S HOT 문구*/}
             <div className='jumboTextBox'>
               <h1 id='jumboWhat'>WHAT'S</h1>
-              {order === 'view' && <h1 id='jumboClassify'>HOT</h1>}
-              {order === 'near' && <h1 id='jumboClassify'>NEAR</h1>}
-              {order === 'new' && <h1 id='jumboClassify'>NEW</h1>}
+              {orderJumbo === 'view' && <h1 id='jumboClassify'>HOT</h1>}
+              {orderJumbo === 'near' && <h1 id='jumboClassify'>NEAR</h1>}
+              {orderJumbo === 'new' && <h1 id='jumboClassify'>NEW</h1>}
             </div>
             {/*오른쪽 상단 탭 바*/}
             <div id='tabBar'>
               <p
-                id={order === 'view' ? 'hotChosen' : 'hot'}
+                id={orderJumbo === 'view' ? 'hotChosen' : 'hot'}
                 onClick={() => {
                   orderClickHandler('view');
                 }}
@@ -82,7 +83,7 @@ function Jumbotron({ allConcertsMain, targetMain, targetIdxMain }: props) {
                 HOT
               </p>
               <p
-                id={order === 'near' ? 'nearChosen' : 'near'}
+                id={orderJumbo === 'near' ? 'nearChosen' : 'near'}
                 onClick={() => {
                   orderClickHandler('near');
                 }}
@@ -90,7 +91,7 @@ function Jumbotron({ allConcertsMain, targetMain, targetIdxMain }: props) {
                 NEAR
               </p>
               <p
-                id={order === 'new' ? 'newChosen' : 'new'}
+                id={orderJumbo === 'new' ? 'newChosen' : 'new'}
                 onClick={() => {
                   orderClickHandler('new');
                 }}
