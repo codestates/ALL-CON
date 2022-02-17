@@ -80,7 +80,7 @@ function Header() {
   const [isPause, setIsPause] = useState<boolean>(false);
 
   let stDate = new Date().getTime();
-  let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
+  let edDate = new Date('02/18/2222 09:00:00').getTime(); // 종료날짜
   let RemainDate = edDate - stDate;
 
   /* 헤더 타이머 시작 핸들러 */
@@ -112,7 +112,7 @@ function Header() {
         (RemainDate % (1000 * 60)) / 1000,
       );
       if (String(hours).length === 1) {
-        miniutes = `0${hours}`;
+        hours = `0${hours}`;
       }
       if (String(miniutes).length === 1) {
         miniutes = `0${miniutes}`;
