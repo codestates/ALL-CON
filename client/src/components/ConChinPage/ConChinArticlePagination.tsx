@@ -45,7 +45,6 @@ function ConChinArticlePagination() {
             { withCredentials: true },
           );
           if (response.data) {
-            console.log(response.data)
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
           } else {

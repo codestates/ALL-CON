@@ -6,6 +6,7 @@ import menu from '../images/menu.png';
 import search from '../images/search.png';
 import yellowSearch from '../images/yellowSearch.png';
 import user from '../images/user.png';
+import xButton from '../images/xWhiteButton.png';
 /* Component import */
 import AutoComplete from './AutoComplete';
 /* Store import */
@@ -45,6 +46,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+let timerArr: any[] = [];
 
 function Header() {
   const dispatch = useDispatch();
@@ -72,72 +74,68 @@ function Header() {
   const [searchClicked, setSearchClicked] = useState<boolean>(false);
 
   /* Header Timer */
-  // const [isPause, setIsPause] = useState<boolean>(false);
-  // let timer: any;
-  // let stDate = new Date().getTime();
-  // let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
-  // let RemainDate = edDate - stDate;
-
-  // /* 헤더 타이머 시작 핸들러 */
-  // const startTimer = () => {
-  //   setIsPause(false);
-  //   timer = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
-  // };
-  // /* 헤더 타이머 멈춤 핸들러 */
-  // const stopTimer = () => {
-  //   setIsPause(true);
-  //   console.log('stop & isPause:' + isPause);
-  //   clearInterval(timer);
-  // };
-
-  // /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
-  // const showTimer = () => {
-  //   dispatch(setIsScrolled(false));
-  // };
-
-  // function msg_time() {
-  //   if (isPause === false) {
-  //     let hours: string | number = Math.floor(
-  //       (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-  //     );
-  //     let miniutes: string | number = Math.floor(
-  //       (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
-  //     );
-  //     let seconds: string | number = Math.floor(
-  //       (RemainDate % (1000 * 60)) / 1000,
-  //     );
-  //     if (String(hours).length === 1) {
-  //       miniutes = `0${hours}`;
-  //     }
-  //     if (String(miniutes).length === 1) {
-  //       miniutes = `0${miniutes}`;
-  //     }
-  //     if (String(seconds).length === 1) {
-  //       seconds = `0${seconds}`;
-  //     }
-
-  //     let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
-  //     dispatch(setTimerMessage(m));
-  //     console.log(m);
-
-  //     if (RemainDate < 0) {
-  //       // 시간이 종료 되면
-  //       clearInterval(timer); // 타이머 해제
-  //     } else {
-  //       RemainDate = RemainDate - 1000; // 남은시간 -1초
-  //     }
-  //   }
-  // }
+  const [isPause, setIsPause] = useState<boolean>(false);
+  let timer: any;
+  let stDate = new Date().getTime();
+  let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
+  let RemainDate = edDate - stDate;
 
   /* 헤더 타이머 시작 핸들러 */
-  const startTimer = () => {};
+  const startTimer = () => {
+    timerArr = [];
+    timer = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
+  };
   /* 헤더 타이머 멈춤 핸들러 */
-  const stopTimer = () => {};
+  const stopTimer = () => {
+    for (let i = 0; i < timerArr.length; i++) {
+      console.log(timerArr[i]);
+      clearInterval(timerArr[i]);
+    }
+  };
 
   /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
   const showTimer = () => {
     dispatch(setIsScrolled(false));
+    dispatch(setIsPaused(false));
   };
+
+  function msg_time() {
+    if (isPause === false) {
+      let hours: string | number = Math.floor(
+        (RemainDate % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      );
+      let miniutes: string | number = Math.floor(
+        (RemainDate % (1000 * 60 * 60)) / (1000 * 60),
+      );
+      let seconds: string | number = Math.floor(
+        (RemainDate % (1000 * 60)) / 1000,
+      );
+      if (String(hours).length === 1) {
+        miniutes = `0${hours}`;
+      }
+      if (String(miniutes).length === 1) {
+        miniutes = `0${miniutes}`;
+      }
+      if (String(seconds).length === 1) {
+        seconds = `0${seconds}`;
+      }
+
+      let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
+      dispatch(setTimerMessage(m));
+      console.log(m);
+      console.log(timer);
+      if (timerArr.includes(timer) === false) {
+        timerArr.push(timer);
+      }
+      console.log(timerArr);
+      if (RemainDate < 0) {
+        // 시간이 종료 되면
+        clearInterval(timer); // 타이머 해제
+      } else {
+        RemainDate = RemainDate - 1000; // 남은시간 -1초
+      }
+    }
+  }
 
   /* 드랍다운 오픈 상태 변경 핸들러 */
   const displayMyDropDown = () => {
@@ -148,10 +146,6 @@ function Header() {
     dispatch(
       setScrollCount(window.scrollY || document.documentElement.scrollTop),
     );
-
-    if (scrollCount > 0.5) {
-      dispatch(setIsScrolled(true));
-    }
   };
 
   /* 전체 게시물 받아오기 */
@@ -229,11 +223,18 @@ function Header() {
 
   /* Header Timer useEffect : 첫 렌더링시에만 */
   useEffect(() => {
-    // stopTimer();
-    startTimer();
     showTimer();
     setSearchClicked(false);
+    dispatch(setScrollCount(0));
   }, []);
+
+  useEffect(() => {
+    if (isPaused === false) {
+      startTimer();
+    } else if (isPaused === true) {
+      stopTimer();
+    }
+  }, [isPaused]);
 
   /* 스크롤 위치 저장 useEffect */
   useEffect(() => {
@@ -274,14 +275,20 @@ function Header() {
       }
     >
       {/* 스크롤 후 히든타이머 제거 */}
-      <div
-        id={isScrolled === false ? 'firstHiddenBar' : 'hiddenBar'}
-        onMouseOver={startTimer}
-        onMouseOut={stopTimer}
-      >
-        {timerMessage}
-      </div>
-
+      {isScrolled === false ? (
+        <div id='firstHiddenBar'>
+          {timerMessage}
+          <div
+            className='closeButtonWrapper'
+            onClick={() => {
+              dispatch(setIsScrolled(true));
+              dispatch(setIsPaused(true));
+            }}
+          >
+            <img className='closeButton' src={xButton} />
+          </div>
+        </div>
+      ) : null}
       <div id='logoBar'>
         <Link to='/main' onClick={() => resetHandler('logo')}>
           {/* 스크롤 후 로고 호출*/}

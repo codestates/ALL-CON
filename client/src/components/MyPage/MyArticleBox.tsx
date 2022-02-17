@@ -89,6 +89,11 @@ function MyArticleBox() {
                         handleArticleSelected(el.id, el.concert_id, el.user_id)
                       }
                     >
+                      {el.activation === false ? (
+                        <div className='endArticle'>
+                          <p className='endTitle'>종료된 게시물</p>
+                        </div>
+                      ) : null}
                       <img
                         className='thumbNail'
                         src={el.image}
@@ -107,13 +112,16 @@ function MyArticleBox() {
                           />
                           <div className='count'>
                             {' '}
-                            {el.member_count}/{el.total_member}{' '}
+                            {el.activation === true ? el.member_count : '-'}/
+                            {el.activation === true ? el.total_member : '-'}{' '}
                           </div>
                         </div>
                       </div>
                       <div className='title'>
                         <img className='icon' src={viewImage} alt='viewImage' />
-                        <p className='count'>{el.view < 0 ? null : el.view}</p>
+                        <p className='count'>
+                          {el.activation === true ? el.view : '종료'}
+                        </p>
                         <p className='date'>{el.updatedAt.substring(0, 10)}</p>
                         <p className='text'>{el.title}</p>
                       </div>
