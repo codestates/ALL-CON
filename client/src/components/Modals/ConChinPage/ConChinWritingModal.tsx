@@ -51,6 +51,7 @@ function ConChinWritingModal() {
     total_comment?: number;
     createdAt?: Date;
     updatedAt?: Date;
+    activation?: boolean;
   }
 
   interface ConChinTargetArticle {
@@ -70,6 +71,7 @@ function ConChinWritingModal() {
       username?: string;
       image?: string;
     };
+    activation?: boolean;
   }
 
   /* 지역상태 - useState */

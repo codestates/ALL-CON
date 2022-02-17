@@ -2,7 +2,8 @@
 /* CSS import */
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
-import noArticleImg from '../../images/no_article_img.png'
+import commentImage from '../../images/commentDots.png';
+import noArticleImg from '../../images/no_article_img.png';
 /* Store import */
 import { setTarget } from '../../store/MainSlice';
 import {
@@ -23,7 +24,9 @@ function MyArticleBox() {
   const navigate = useNavigate();
 
   /* useSelector */
-  const { articleInfo, myTotalArticle } = useSelector((state: RootState) => state.my);
+  const { articleInfo, myTotalArticle } = useSelector(
+    (state: RootState) => state.my,
+  );
 
   /* 지역상태 - useState */
 
@@ -91,6 +94,10 @@ function MyArticleBox() {
                         src={el.image}
                         // alt='defaultImage'
                       ></img>
+                      <div className='commentBox'>
+                        <img className='icon' src={commentImage} />
+                        <div className='count'>{el.total_comment}</div>
+                      </div>
                       <div id='myMemberBoxWrapper'>
                         <div className='memberBox'>
                           <img
@@ -121,16 +128,14 @@ function MyArticleBox() {
       <div id='paginationWrapper'>
         <MyArticlePagination />
       </div>
-      
-      {/* 게시물이 없다면 display */}
-      { myTotalArticle === 0 
-        ? <div id='noArticleImgWrapper'> 
-            <img id='noArticleImg' src={noArticleImg} />
-            <p id='noArticleMessage' >작성한 게시물이 없습니다!</p> 
-          </div>
-        : null
-      }
 
+      {/* 게시물이 없다면 display */}
+      {myTotalArticle === 0 ? (
+        <div id='noArticleImgWrapper'>
+          <img id='noArticleImg' src={noArticleImg} />
+          <p id='noArticleMessage'>작성한 게시물이 없습니다!</p>
+        </div>
+      ) : null}
     </div>
   );
 }

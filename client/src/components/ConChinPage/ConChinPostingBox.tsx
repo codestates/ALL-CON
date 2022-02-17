@@ -41,6 +41,7 @@ function ConChinPostingBox() {
     total_comment?: number;
     createdAt?: Date;
     updatedAt?: Date;
+    activation?: boolean;
   }
 
   /* useState => 지역상태 */
@@ -102,14 +103,11 @@ function ConChinPostingBox() {
   /* postingOrder 변경시 지역상태 conChinPostingOrder 변경  */
   useEffect(() => {
     setConChinPostingOrder(postingOrder);
-    // console.log('conChinPostingOrder:');
-    // console.log(conChinPostingOrder);
   }, [postingOrder]);
 
   /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
   useEffect(() => {
     setConChinTarget(target);
-    // console.log('useEffect 정상작동, conChinTarget 변경');
   }, [target]);
 
   return (
@@ -137,34 +135,37 @@ function ConChinPostingBox() {
             : 'postingBoxWrapperChosen'
         }
       >
-        {conChinTarget !== undefined
-          ? conChinAllConcerts.map(concert => {
-              return (
-                <ul
-                  className={
-                    conChinTarget.id === concert.id
-                      ? 'postingChosen'
-                      : Object.keys(conChinTarget).length === 0
-                      ? 'posting'
-                      : 'postingUnChosen'
-                  }
-                  key={concert.id}
-                  onClick={() => {
-                    changeTarget(concert);
-                  }}
-                >
-                  <h1 className='title'>{concert.title}</h1>
-                  <p className='date'>
-                    {' '}
-                    오픈일
-                    <br /> {concert.post_date}
-                  </p>
-                  <p className='view'> 조회수 {concert.view}</p>
-                  <p className='place'> {concert.place}</p>
-                </ul>
-              );
-            })
-          : null}
+        {conChinTarget.activation === true ||
+        Object.keys(conChinTarget).length === 0 ? (
+          conChinAllConcerts.map(concert => {
+            return (
+              <ul
+                className={
+                  conChinTarget.id === concert.id
+                    ? 'postingChosen'
+                    : Object.keys(conChinTarget).length === 0
+                    ? 'posting'
+                    : 'postingUnChosen'
+                }
+                key={concert.id}
+                onClick={() => {
+                  changeTarget(concert);
+                }}
+              >
+                <h1 className='title'>{concert.title}</h1>
+                <p className='date'>
+                  {' '}
+                  오픈일
+                  <br /> {concert.post_date}
+                </p>
+                <p className='view'> 조회수 {concert.view}</p>
+                <p className='place'> {concert.place}</p>
+              </ul>
+            );
+          })
+        ) : (
+          <ul className='postingendChosen'>종료된 콘서트</ul>
+        )}
       </div>
     </li>
   );

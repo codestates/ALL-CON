@@ -59,6 +59,7 @@ function ConChinArticleContentBox() {
       username?: string;
       image?: string;
     };
+    activation?: boolean;
   }
 
   /* useState => 지역상태 */
@@ -210,8 +211,7 @@ function ConChinArticleContentBox() {
               <p className='view'>
                 등록일 : {handlePostedDate(conChinTargetArticle.createdAt)} |
                 조회수 :
-                {conChinTargetArticle.view !== undefined &&
-                conChinTargetArticle.view >= 0
+                {conChinTargetArticle.activation === true
                   ? conChinTargetArticle.view
                   : ' 종료'}
               </p>
@@ -219,8 +219,7 @@ function ConChinArticleContentBox() {
             <div id='modifyBox'>
               <p className='modifyBtn' onClick={showMyConChinWritingModal}>
                 {userInfo.id === conChinTargetArticle.user_id &&
-                conChinTargetArticle.view !== undefined &&
-                conChinTargetArticle.view >= 0
+                conChinTargetArticle.activation === true
                   ? '수정'
                   : null}
               </p>
@@ -231,13 +230,11 @@ function ConChinArticleContentBox() {
                 <div className='memberBox'>
                   <img className='icon' src={groupImage} />
                   <div className='count'>
-                    {conChinTargetArticle.view !== undefined &&
-                    conChinTargetArticle.view >= 0
+                    {conChinTargetArticle.activation === true
                       ? conChinTargetArticle.member_count
                       : '-'}
                     /
-                    {conChinTargetArticle.view !== undefined &&
-                    conChinTargetArticle.view >= 0
+                    {conChinTargetArticle.activation === true
                       ? conChinTargetArticle.total_member
                       : '-'}
                   </div>
@@ -246,14 +243,7 @@ function ConChinArticleContentBox() {
             </div>
             <div id='content'>
               <div id='imgWrapper'>
-                <img
-                  className='img'
-                  src={
-                    conChinTargetArticle.image
-                      ? conChinTargetArticle.image
-                      : articleDefaultImage
-                  }
-                />
+                <img className='img' src={conChinTargetArticle.image} />
               </div>
               <div className='textWrapper'>
                 <p className='text'>{conChinTargetArticle.content}</p>
