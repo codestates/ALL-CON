@@ -21,7 +21,7 @@ import {
   setArticleRendered,
 } from '../../store/ConChinSlice';
 import {
-  setIsScrolled,
+  setIsClosed,
   setScrollCount,
   setTimerMessage,
   setHeaderAllConcerts,
@@ -32,7 +32,7 @@ import {
   setOrder,
   setTarget,
   setTargetIdx,
-  setIsRendering
+  setIsRendering,
 } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';

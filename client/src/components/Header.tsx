@@ -27,7 +27,7 @@ import {
   setArticleRendered,
 } from '../store/ConChinSlice';
 import {
-  setIsScrolled,
+  setIsClosed,
   setScrollCount,
   setTimerMessage,
   setHeaderAllConcerts,
@@ -46,7 +46,10 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-let timerArr: any[] = [];
+/* 타이머 함수 */
+let timer: any;
+// /* 타이머 콜 스택 배열 */
+// let timerArr: any[] = [];
 
 function Header() {
   const dispatch = useDispatch();
@@ -64,7 +67,7 @@ function Header() {
     conChinWritingModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
-  const { isScrolled, scrollCount, timerMessage, headerAllConcerts, isPaused } =
+  const { isClosed, scrollCount, timerMessage, headerAllConcerts, isPaused } =
     useSelector((state: RootState) => state.header);
   const { articleOrder, allArticles } = useSelector(
     (state: RootState) => state.conChin,
@@ -75,27 +78,25 @@ function Header() {
 
   /* Header Timer */
   const [isPause, setIsPause] = useState<boolean>(false);
-  let timer: any;
+
   let stDate = new Date().getTime();
   let edDate = new Date('2222-12-31 09:00:00').getTime(); // 종료날짜
   let RemainDate = edDate - stDate;
 
   /* 헤더 타이머 시작 핸들러 */
   const startTimer = () => {
-    timerArr = [];
     timer = setInterval(msg_time, 1000); // 타이머 1초간격으로 수행
   };
   /* 헤더 타이머 멈춤 핸들러 */
   const stopTimer = () => {
-    for (let i = 0; i < timerArr.length; i++) {
-      console.log(timerArr[i]);
-      clearInterval(timerArr[i]);
-    }
+    // for (let i = 0; i <= timerArr.length; i++) clearInterval(timerArr[i]); // 타이머 콜스택 배열의 setInterval 모두 제거
+    // timerArr = []; // 타이머 콜스택 배열 비움
+    clearInterval(timer);
   };
 
   /* 랜딩 페이지 클릭 시 히든타이머 호출 핸들러 */
   const showTimer = () => {
-    dispatch(setIsScrolled(false));
+    dispatch(setIsClosed(false));
     dispatch(setIsPaused(false));
   };
 
@@ -119,18 +120,15 @@ function Header() {
       if (String(seconds).length === 1) {
         seconds = `0${seconds}`;
       }
+      // if (timerArr.includes(timer) === false) timerArr = [...timerArr, timer]; // 타이머 콜스택 배열에 타이머 id 없을 시 추가
 
       let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
+      // console.log(m);
       dispatch(setTimerMessage(m));
-      console.log(m);
-      console.log(timer);
-      if (timerArr.includes(timer) === false) {
-        timerArr.push(timer);
-      }
-      console.log(timerArr);
       if (RemainDate < 0) {
         // 시간이 종료 되면
-        clearInterval(timer); // 타이머 해제
+        stopTimer(); // 타이머 해제
+        dispatch(setIsClosed(true));
       } else {
         RemainDate = RemainDate - 1000; // 남은시간 -1초
       }
@@ -220,7 +218,8 @@ function Header() {
       setSearchClicked(false);
     }
   };
-
+  //
+  //
   /* Header Timer useEffect : 첫 렌더링시에만 */
   useEffect(() => {
     showTimer();
@@ -274,14 +273,14 @@ function Header() {
           : 'headerContainer'
       }
     >
-      {/* 스크롤 후 히든타이머 제거 */}
-      {isScrolled === false ? (
+      {/* x버튼 클릭 후 히든타이머 제거 */}
+      {isClosed === false ? (
         <div id='firstHiddenBar'>
           {timerMessage}
           <div
             className='closeButtonWrapper'
             onClick={() => {
-              dispatch(setIsScrolled(true));
+              dispatch(setIsClosed(true));
               dispatch(setIsPaused(true));
             }}
           >
@@ -291,11 +290,11 @@ function Header() {
       ) : null}
       <div id='logoBar'>
         <Link to='/main' onClick={() => resetHandler('logo')}>
-          {/* 스크롤 후 로고 호출*/}
+          {/* 로고 호출 */}
 
           <img
             className={
-              isScrolled === false || searchClicked ? 'logohide' : 'logo'
+              isClosed === false || searchClicked ? 'logohide' : 'logo'
             }
             alt='logoImg'
             src={logo}
