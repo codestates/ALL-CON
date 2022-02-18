@@ -284,8 +284,6 @@ function ConChinArticleBox() {
                       getTargetArticles();
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
-                      // getAllComments(article.id);
-                      // console.log('게시물 맵핑, 타겟이 있고 게시물도 있을 때');
                     }}
                   >
                     {article.activation === false ? (

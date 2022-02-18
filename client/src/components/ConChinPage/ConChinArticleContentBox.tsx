@@ -69,7 +69,6 @@ function ConChinArticleContentBox() {
   /* 유저정보 보기 핸들러 */
   const showUserProfile = () => {
     if (targetArticle.user_id !== undefined) {
-      console.log('접근?');
       getTargetArticlesUserInfo(targetArticle.user_id);
       dispatch(showConChinProfileModal(true));
     }
@@ -80,7 +79,6 @@ function ConChinArticleContentBox() {
     if (userInfo.id === targetArticle.user_id) {
       dispatch(showConChinWritingModal(true));
     } else {
-      // console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
     }
   };
 
@@ -93,7 +91,6 @@ function ConChinArticleContentBox() {
       dispatch(setArticleCurPage(1));
       getTargetArticles();
     } else {
-      // console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
     }
   };
 
@@ -146,9 +143,7 @@ function ConChinArticleContentBox() {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setTargetArticle({}));
-        // dispatch(setArticleCurPage(1));
       } else {
-        // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
       }
     } catch (err) {
       console.log(err);

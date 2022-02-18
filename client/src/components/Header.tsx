@@ -48,8 +48,6 @@ import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 /* 타이머 함수 */
 let timer: any;
-// /* 타이머 콜 스택 배열 */
-// let timerArr: any[] = [];
 
 function Header() {
   const dispatch = useDispatch();
@@ -88,8 +86,6 @@ function Header() {
   };
   /* 헤더 타이머 멈춤 핸들러 */
   const stopTimer = () => {
-    // for (let i = 0; i <= timerArr.length; i++) clearInterval(timerArr[i]); // 타이머 콜스택 배열의 setInterval 모두 제거
-    // timerArr = []; // 타이머 콜스택 배열 비움
     clearInterval(timer);
   };
 
@@ -119,8 +115,6 @@ function Header() {
       if (String(seconds).length === 1) {
         seconds = `0${seconds}`;
       }
-      // if (timerArr.includes(timer) === false) timerArr = [...timerArr, timer]; // 타이머 콜스택 배열에 타이머 id 없을 시 추가
-
       let m = `다음 콘서트를 업데이트하기까지 ${hours}:${miniutes}:${seconds}`; // 남은 시간 text형태로 변경
       // console.log(m);
       dispatch(setTimerMessage(m));
@@ -157,11 +151,9 @@ function Header() {
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
       } else {
-        console.log('없거나 실수로 못가져왔어요..');
       }
     } catch (err) {
       console.log(err);
-      console.log('에러가 났나봐요.');
     }
   };
 
@@ -236,7 +228,9 @@ function Header() {
 
   /* 스크롤 위치 저장 useEffect */
   useEffect(() => {
-    window.addEventListener('scroll', updateScroll);
+    if (scrollCount < 48) {
+      window.addEventListener('scroll', updateScroll);
+    }
   }, [scrollCount]);
 
   /* 해당 모달 띄워져있을 시 스크롤바 제거 useEffect */

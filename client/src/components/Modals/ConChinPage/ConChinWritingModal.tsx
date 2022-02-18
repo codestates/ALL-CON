@@ -301,11 +301,9 @@ function ConChinWritingModal() {
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
       } else {
-        // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
       }
     } catch (err) {
       console.log(err);
-      // console.log('에러가 났나봐요.');
     }
   };
 
