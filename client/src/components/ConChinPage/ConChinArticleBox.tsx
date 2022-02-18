@@ -1,6 +1,7 @@
 /* CSS import */
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
+import commentImage from '../../images/commentDots.png';
 import notFound from '../../images/notFound.jpg';
 import ConChinArticleOrderBox from './ConChinArticleOrderBox';
 import ConChinArticlePagination from './ConChinArticlePagination';
@@ -59,6 +60,7 @@ function ConChinArticleBox() {
     total_comment?: number;
     createdAt?: Date;
     updatedAt?: Date;
+    activation?: boolean;
   }
 
   interface ConChinTargetArticle {
@@ -78,6 +80,7 @@ function ConChinArticleBox() {
       username?: string;
       image?: string;
     };
+    activation?: boolean;
   }
 
   /* useState => 지역상태 */
@@ -203,16 +206,34 @@ function ConChinArticleBox() {
                       getTargetArticlesConcert(article.concert_id);
                     }}
                   >
-                    <img
-                      className='thumbNail'
-                      src={ article.image }
-                    ></img>
+                    {article.activation === false ? (
+                      <div
+                        className={
+                          article.id === conChinTargetArticle.id
+                            ? 'endArticleChosen'
+                            : 'endArticle'
+                        }
+                      >
+                        <p className='endTitle'>종료된 게시물</p>
+                      </div>
+                    ) : null}
+
+                    <img className='thumbNail' src={article.image}></img>
+                    <div className='commentBox'>
+                      <img className='icon' src={commentImage} />
+                      <div className='count'>{article.total_comment}</div>
+                    </div>
                     <div id='conChinmemberBoxWrapper'>
                       <div className='memberBox'>
                         <img className='icon' src={groupImage} />
                         <div className='count'>
-                          {article.view >= 0 ? article.member_count : '-'}
-                          {article.view >= 0 ? article.total_member : '-'}
+                          {article.activation === true
+                            ? article.member_count
+                            : '-'}
+                          /
+                          {article.activation === true
+                            ? article.total_member
+                            : '-'}
                         </div>
                       </div>
                     </div>
@@ -222,10 +243,15 @@ function ConChinArticleBox() {
                           ? 'titleChosen'
                           : 'title'
                       }
+                      style={
+                        article.activation === true
+                          ? { backgroundColor: 'white' }
+                          : { backgroundColor: '$gray2' }
+                      }
                     >
                       <img className='icon' src={viewImage} />
                       <p className='count'>
-                        {article.view >= 0 ? article.view : '종료'}
+                        {article.activation === true ? article.view : '종료'}
                       </p>
                       <p className='date'>
                         {article.createdAt.substring(0, 10)}
@@ -257,37 +283,56 @@ function ConChinArticleBox() {
                       getTargetArticles();
                       getTargetArticlesInfo(article.id);
                       getTargetArticlesConcert(article.concert_id);
-                      // getAllComments(article.id);
-                      // console.log('게시물 맵핑, 타겟이 있고 게시물도 있을 때');
                     }}
                   >
+                    {article.activation === false ? (
+                      <div
+                        className={
+                          article.id === conChinTargetArticle.id
+                            ? 'endArticleChosen'
+                            : 'endArticle'
+                        }
+                      >
+                        <p className='endTitle'>종료된 게시물</p>
+                      </div>
+                    ) : null}
                     <img
                       className={
                         article.id === conChinTargetArticle.id
                           ? 'thumbNailChosen'
                           : 'thumbNail'
                       }
-                      src={ article.image }
+                      src={article.image}
                     ></img>
+                    <div className='commentBox'>
+                      <img className='icon' src={commentImage} />
+                      <div className='count'>{article.total_comment}</div>
+                    </div>
                     <div id='conChinmemberBoxWrapper'>
                       <div className='memberBox'>
                         <img className='icon' src={groupImage} />
                         <div className='count'>
-                          {article.view >= 0 ? article.member_count : '-'}/
-                          {article.view >= 0 ? article.total_member : '-'}
+                          {article.activation === true
+                            ? article.member_count
+                            : '-'}
+                          /
+                          {article.activation === true
+                            ? article.total_member
+                            : '-'}
                         </div>
                       </div>
                     </div>
                     <div
                       className={
-                        article.id === conChinTargetArticle.id
+                        article.id === conChinTargetArticle.id &&
+                        article.activation === true
                           ? 'titleChosen'
                           : 'title'
                       }
                     >
                       <img className='icon' src={viewImage} />
                       <p className='count'>
-                        {article.view >= 0 ? article.view : '종료'}
+                        {article.activation === true ? article.view : '종료'}
                       </p>
                       <p className='date'>
                         {article.createdAt.substring(0, 10)}

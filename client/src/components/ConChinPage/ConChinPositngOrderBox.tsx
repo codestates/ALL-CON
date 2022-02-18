@@ -60,11 +60,9 @@ function ConChinPostingOrderBox() {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
       } else {
-        // console.log('없거나 실수로 못가져왔어요..');
       }
     } catch (err) {
       console.log(err);
-      console.log('에러가 났나봐요.');
     }
   };
 

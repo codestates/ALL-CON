@@ -1,23 +1,26 @@
 /* Library import */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 /* State Type 설정 */
+
 export interface header {
-  isScrolled: boolean;
+  isClosed: boolean;
   scrollCount: number;
   timerMessage: string;
   headerAllConcerts: any[];
   headerIsRendered: boolean;
   isPaused: boolean;
+  // headerTimerArr: any[];
 }
 
 /* State 초기값 설정 */
 const initialState: header = {
-  isScrolled: false,
+  isClosed: false,
   scrollCount: 0,
   timerMessage: '',
   headerAllConcerts: [],
   headerIsRendered: false,
   isPaused: false,
+  // headerTimerArr: [],
 };
 
 const headerSlice = createSlice({
@@ -25,8 +28,8 @@ const headerSlice = createSlice({
   initialState: initialState,
   reducers: {
     /* Action 설정 */
-    setIsScrolled: (state: header, { payload }: PayloadAction<boolean>) => {
-      state.isScrolled = payload;
+    setIsClosed: (state: header, { payload }: PayloadAction<boolean>) => {
+      state.isClosed = payload;
     },
     setScrollCount: (state: header, { payload }: PayloadAction<number>) => {
       state.scrollCount = payload;
@@ -49,15 +52,22 @@ const headerSlice = createSlice({
     setIsPaused: (state: header, { payload }: PayloadAction<boolean>) => {
       state.isPaused = payload;
     },
+    // setHeaderTimerArr: (
+    //   state: header,
+    //   { payload }: PayloadAction<Array<any>>,
+    // ) => {
+    //   state.headerTimerArr = [...state.headerTimerArr, payload];
+    // },
   },
 });
 
 export const {
-  setIsScrolled,
+  setIsClosed,
   setScrollCount,
   setTimerMessage,
   setHeaderAllConcerts,
   setHeaderIsRendered,
   setIsPaused,
+  // setHeaderTimerArr,
 } = headerSlice.actions;
 export default headerSlice.reducer;

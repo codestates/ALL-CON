@@ -1,4 +1,3 @@
-import react from 'react';
 import ConChinArticleBox from './ConChinArticleBox';
 import ConChinFindBox from './ConChinFindBox';
 

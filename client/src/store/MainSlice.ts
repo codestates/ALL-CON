@@ -22,6 +22,7 @@ export interface main {
     total_comment?: number;
     createdAt?: Date;
     updatedAt?: Date;
+    activation?: boolean;
   };
   /* 현재 선택된 포스터 상세정보 */
   detail: {
