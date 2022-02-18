@@ -27,6 +27,7 @@ export interface conChin {
       username?: string;
       image?: string;
     };
+    activation?: boolean;
   };
   /* 게시물 현재 페이지 */
   articleCurPage: number;

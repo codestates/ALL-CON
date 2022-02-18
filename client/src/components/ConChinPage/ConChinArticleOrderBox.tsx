@@ -31,7 +31,6 @@ function ConChinArticleOrderBox() {
         Object.keys(target).length === 0 &&
         Object.keys(allArticles).length === 0
       ) {
-        // console.log('ConChinArticleOrderBox=> 게시물이 없어요.');
       } else if (
         Object.keys(target).length === 0 &&
         Object.keys(allArticles).length !== 0
@@ -46,7 +45,6 @@ function ConChinArticleOrderBox() {
           dispatch(setArticleTotalPage(response.data.data.totalPage));
           dispatch(setArticleCurPage(1));
         } else {
-          // console.log('ConChinArticleOrderBox=> 없거나 실수로 못가져왔어요.');
         }
       } else if (target === undefined || target === null) {
         dispatch(setArticleCurPage(1));
@@ -64,7 +62,6 @@ function ConChinArticleOrderBox() {
       }
     } catch (err) {
       console.log(err);
-      // console.log('에러가 났나봐요. 게시물 없음 처리합니다.');
       dispatch(setArticleRendered(true));
       dispatch(setAllArticles([]));
       dispatch(setArticleTotalPage(0));

@@ -44,6 +44,7 @@ function ConChinPage() {
     total_comment?: number;
     createdAt?: Date;
     updatedAt?: Date;
+    activation?: boolean;
   }
 
   interface ConChinTargetArticle {
@@ -63,6 +64,7 @@ function ConChinPage() {
       username?: string;
       image?: string;
     };
+    activation?: boolean;
   }
   /* useState => 지역상태 */
   const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});
@@ -122,7 +124,6 @@ function ConChinPage() {
         { withCredentials: true },
       );
       if (response.data) {
-        console.log(response.data)
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));

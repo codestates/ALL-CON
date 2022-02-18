@@ -59,6 +59,7 @@ function ConChinArticleContentBox() {
       username?: string;
       image?: string;
     };
+    activation?: boolean;
   }
 
   /* useState => 지역상태 */
@@ -68,7 +69,6 @@ function ConChinArticleContentBox() {
   /* 유저정보 보기 핸들러 */
   const showUserProfile = () => {
     if (targetArticle.user_id !== undefined) {
-      console.log('접근?');
       getTargetArticlesUserInfo(targetArticle.user_id);
       dispatch(showConChinProfileModal(true));
     }
@@ -79,7 +79,6 @@ function ConChinArticleContentBox() {
     if (userInfo.id === targetArticle.user_id) {
       dispatch(showConChinWritingModal(true));
     } else {
-      // console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
     }
   };
 
@@ -92,7 +91,6 @@ function ConChinArticleContentBox() {
       dispatch(setArticleCurPage(1));
       getTargetArticles();
     } else {
-      // console.log('ConChinArticleContentBox=> 당신이 작성한 글이 아닙니다.');
     }
   };
 
@@ -145,9 +143,7 @@ function ConChinArticleContentBox() {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setTargetArticle({}));
-        // dispatch(setArticleCurPage(1));
       } else {
-        // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
       }
     } catch (err) {
       console.log(err);
@@ -210,8 +206,7 @@ function ConChinArticleContentBox() {
               <p className='view'>
                 등록일 : {handlePostedDate(conChinTargetArticle.createdAt)} |
                 조회수 :
-                {conChinTargetArticle.view !== undefined &&
-                conChinTargetArticle.view >= 0
+                {conChinTargetArticle.activation === true
                   ? conChinTargetArticle.view
                   : ' 종료'}
               </p>
@@ -219,8 +214,7 @@ function ConChinArticleContentBox() {
             <div id='modifyBox'>
               <p className='modifyBtn' onClick={showMyConChinWritingModal}>
                 {userInfo.id === conChinTargetArticle.user_id &&
-                conChinTargetArticle.view !== undefined &&
-                conChinTargetArticle.view >= 0
+                conChinTargetArticle.activation === true
                   ? '수정'
                   : null}
               </p>
@@ -231,13 +225,11 @@ function ConChinArticleContentBox() {
                 <div className='memberBox'>
                   <img className='icon' src={groupImage} />
                   <div className='count'>
-                    {conChinTargetArticle.view !== undefined &&
-                    conChinTargetArticle.view >= 0
+                    {conChinTargetArticle.activation === true
                       ? conChinTargetArticle.member_count
                       : '-'}
                     /
-                    {conChinTargetArticle.view !== undefined &&
-                    conChinTargetArticle.view >= 0
+                    {conChinTargetArticle.activation === true
                       ? conChinTargetArticle.total_member
                       : '-'}
                   </div>
@@ -246,14 +238,7 @@ function ConChinArticleContentBox() {
             </div>
             <div id='content'>
               <div id='imgWrapper'>
-                <img
-                  className='img'
-                  src={
-                    conChinTargetArticle.image
-                      ? conChinTargetArticle.image
-                      : articleDefaultImage
-                  }
-                />
+                <img className='img' src={conChinTargetArticle.image} />
               </div>
               <div className='textWrapper'>
                 <p className='text'>{conChinTargetArticle.content}</p>

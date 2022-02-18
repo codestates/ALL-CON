@@ -2,7 +2,8 @@
 /* CSS import */
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
-import noArticleImg from '../../images/no_article_img.png'
+import commentImage from '../../images/commentDots.png';
+import noArticleImg from '../../images/no_article_img.png';
 /* Store import */
 import { setTarget } from '../../store/MainSlice';
 import {
@@ -23,7 +24,9 @@ function MyArticleBox() {
   const navigate = useNavigate();
 
   /* useSelector */
-  const { articleInfo, myTotalArticle } = useSelector((state: RootState) => state.my);
+  const { articleInfo, myTotalArticle } = useSelector(
+    (state: RootState) => state.my,
+  );
 
   /* 지역상태 - useState */
 
@@ -86,11 +89,20 @@ function MyArticleBox() {
                         handleArticleSelected(el.id, el.concert_id, el.user_id)
                       }
                     >
+                      {el.activation === false ? (
+                        <div className='endArticle'>
+                          <p className='endTitle'>종료된 게시물</p>
+                        </div>
+                      ) : null}
                       <img
                         className='thumbNail'
                         src={el.image}
                         // alt='defaultImage'
                       ></img>
+                      <div className='commentBox'>
+                        <img className='icon' src={commentImage} />
+                        <div className='count'>{el.total_comment}</div>
+                      </div>
                       <div id='myMemberBoxWrapper'>
                         <div className='memberBox'>
                           <img
@@ -100,13 +112,16 @@ function MyArticleBox() {
                           />
                           <div className='count'>
                             {' '}
-                            {el.member_count}/{el.total_member}{' '}
+                            {el.activation === true ? el.member_count : '-'}/
+                            {el.activation === true ? el.total_member : '-'}{' '}
                           </div>
                         </div>
                       </div>
                       <div className='title'>
                         <img className='icon' src={viewImage} alt='viewImage' />
-                        <p className='count'>{el.view < 0 ? null : el.view}</p>
+                        <p className='count'>
+                          {el.activation === true ? el.view : '종료'}
+                        </p>
                         <p className='date'>{el.updatedAt.substring(0, 10)}</p>
                         <p className='text'>{el.title}</p>
                       </div>
@@ -121,16 +136,14 @@ function MyArticleBox() {
       <div id='paginationWrapper'>
         <MyArticlePagination />
       </div>
-      
-      {/* 게시물이 없다면 display */}
-      { myTotalArticle === 0 
-        ? <div id='noArticleImgWrapper'> 
-            <img id='noArticleImg' src={noArticleImg} />
-            <p id='noArticleMessage' >작성한 게시물이 없습니다!</p> 
-          </div>
-        : null
-      }
 
+      {/* 게시물이 없다면 display */}
+      {myTotalArticle === 0 ? (
+        <div id='noArticleImgWrapper'>
+          <img id='noArticleImg' src={noArticleImg} />
+          <p id='noArticleMessage'>작성한 게시물이 없습니다!</p>
+        </div>
+      ) : null}
     </div>
   );
 }

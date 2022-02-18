@@ -46,6 +46,7 @@ function ConChinFindBox() {
     total_comment?: number;
     createdAt?: Date;
     updatedAt?: Date;
+    activation?: boolean;
   }
 
   interface ConChinTargetArticle {
@@ -65,6 +66,7 @@ function ConChinFindBox() {
       username?: string;
       image?: string;
     };
+    activation?: boolean;
   }
 
   /* 지역상태 - useState */

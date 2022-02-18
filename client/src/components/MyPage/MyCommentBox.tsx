@@ -1,6 +1,6 @@
 /* Config import */
 /* CSS import */
-import noCommentImg from '../../images/no_comment_img.png'
+import noCommentImg from '../../images/no_comment_img.png';
 /* Store import */
 import { RootState } from '../../index';
 import {
@@ -12,7 +12,12 @@ import {
 } from '../../store/MySlice';
 import { setConChinPageNum } from '../../store/ConChinCommentSlice';
 import { setPageNum } from '../../store/ConcertCommentSlice';
-import { setTarget, setTargetIdx, setIsRendering, setOrder } from '../../store/MainSlice';
+import {
+  setTarget,
+  setTargetIdx,
+  setIsRendering,
+  setOrder,
+} from '../../store/MainSlice';
 import { setTargetArticle } from '../../store/ConChinSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
@@ -35,19 +40,19 @@ function MyCommentBox() {
     articleCommentInfo,
     myTotalArticleComment,
   } = useSelector((state: RootState) => state.my);
-  const { allConcerts } = useSelector((state: RootState) => state.main)
+  const { allConcerts } = useSelector((state: RootState) => state.main);
 
   /* 지역상태 - useState */
   /* useEffect */
- 
+
   /* handler 함수 (기능별 정렬) */
   // 콘서트 및 콘친 게시물 버튼 핸들러
   const handleCommentSelectionBtn = async (key: string) => {
     // 현재 댓글 버튼의 상태를 업데이트
     // ex) 콘서트 버튼을 누르면 => commentBtnType = '콘서트', 콘친 게시물 버튼을 누르면 => commentBtnType = '콘친'
     dispatch(getCommentBtnType(key));
-    if(key === '콘서트') {
-      // [GET] 내가 작성한 댓글 조회 (콘친&페이지: 1) 
+    if (key === '콘서트') {
+      // [GET] 내가 작성한 댓글 조회 (콘친&페이지: 1)
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
         { withCredentials: true },
@@ -55,10 +60,9 @@ function MyCommentBox() {
       // dispatch로 내가 작성한 댓글 업데이트 (콘친)
       dispatch(getMyArticleCommentInfo(response.data.data));
       // 콘친 댓글의 현재 페이지를 1로 업데이트
-      dispatch(getMyArticleCommentCurrentPage(1))
-    }
-    else if(key === '콘친') {
-      // [GET] 내가 작성한 댓글 조회 (콘서트&페이지: 1) 
+      dispatch(getMyArticleCommentCurrentPage(1));
+    } else if (key === '콘친') {
+      // [GET] 내가 작성한 댓글 조회 (콘서트&페이지: 1)
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
         { withCredentials: true },
@@ -66,7 +70,7 @@ function MyCommentBox() {
       // dispatch로 내가 작성한 댓글 업데이트 (콘서트)
       dispatch(getMyConcertCommentInfo(response.data.data));
       // 콘친 댓글의 현재 페이지를 1로 업데이트
-      dispatch(getMyConcertCommentCurrentPage(1))
+      dispatch(getMyConcertCommentCurrentPage(1));
     }
   };
 
@@ -89,7 +93,13 @@ function MyCommentBox() {
       dispatch(setIsRendering(false));
       dispatch(setOrder('view'));
       dispatch(setPageNum(1));
-      dispatch(setTargetIdx(allConcerts.findIndex(concert => concert.id === responseConcert.data.data.concertInfo.id)));
+      dispatch(
+        setTargetIdx(
+          allConcerts.findIndex(
+            concert => concert.id === responseConcert.data.data.concertInfo.id,
+          ),
+        ),
+      );
       // 메인페이지로 이동
       navigate('/main');
     }
@@ -140,13 +150,19 @@ function MyCommentBox() {
             </h1>
             {/* 콘서트 & 콘친 버튼 */}
             <p
-              className={commentBtnType === '콘서트' ? 'myOrderChosen' : 'myOrder'}
-              onClick={() => handleCommentSelectionBtn('콘서트')}>
+              className={
+                commentBtnType === '콘서트' ? 'myOrderChosen' : 'myOrder'
+              }
+              onClick={() => handleCommentSelectionBtn('콘서트')}
+            >
               콘서트
             </p>
             <p
-              className={commentBtnType === '콘친' ? 'myOrderChosen' : 'myOrder'}
-              onClick={() => handleCommentSelectionBtn('콘친')}>
+              className={
+                commentBtnType === '콘친' ? 'myOrderChosen' : 'myOrder'
+              }
+              onClick={() => handleCommentSelectionBtn('콘친')}
+            >
               콘친 게시물
             </p>
           </div>
@@ -169,7 +185,8 @@ function MyCommentBox() {
                         {/* 날짜와 작성자 */}
                         <p className='myNickNameAndDate'>
                           {' '}
-                          <b>{el.Concert.title}</b> | {el.updatedAt.substring(0, 10)}{' '}
+                          <b>{el.Concert.title}</b> |{' '}
+                          {el.updatedAt.substring(0, 10)}{' '}
                         </p>
                       </div>
                       <div id='myImgAndText'>
@@ -179,6 +196,11 @@ function MyCommentBox() {
                             src={el.Concert.image_concert}
                             alt='profileImage'
                           />
+                          {el.Concert.activation === false ? (
+                            <div className='endArticle'>
+                              <p className='endTitle'>종료</p>
+                            </div>
+                          ) : null}
                         </div>
                         <div className='myTextWrapper'>
                           <p id='myText'> {el.content} </p>
@@ -188,8 +210,8 @@ function MyCommentBox() {
                   );
                 })
               : null
-              /******************************************************************************************************************/
-            : Array.isArray(articleCommentInfo)
+            : /******************************************************************************************************************/
+            Array.isArray(articleCommentInfo)
             ? articleCommentInfo.map((el: any, idx: number) => {
                 return (
                   <div
@@ -207,7 +229,8 @@ function MyCommentBox() {
                       {/* 날짜와 작성자 */}
                       <p className='myNickNameAndDate'>
                         {' '}
-                        <b>{el.Article.title} </b> | {el.updatedAt.substring(0, 10)}{' '}
+                        <b>{el.Article.title} </b> |{' '}
+                        {el.updatedAt.substring(0, 10)}{' '}
                       </p>
                     </div>
                     <div id='myImgAndText'>
@@ -217,6 +240,11 @@ function MyCommentBox() {
                           src={el.Article.image}
                           alt='profileImage'
                         />
+                        {el.Article.activation === false ? (
+                          <div className='endArticle'>
+                            <p className='endTitle'>종료</p>
+                          </div>
+                        ) : null}
                       </div>
                       <div className='myTextWrapper'>
                         <p id='myText'> {el.content} </p>
@@ -232,16 +260,15 @@ function MyCommentBox() {
       <div id='paginationWrapper'>
         <MyCommentPagination />
       </div>
-      
-      {/* 댓글이 없다면 display */}
-      { commentBtnType === '콘서트' && myTotalConcertComment === 0 || commentBtnType === '콘친' && myTotalArticleComment === 0
-        ? <div id='noCommentImgWrapper'> 
-            <img id='noCommentImg' src={noCommentImg} />
-            <p id='noCommentMessage' >작성한 댓글이 없습니다!</p> 
-          </div>
-        : null
-      }
 
+      {/* 댓글이 없다면 display */}
+      {(commentBtnType === '콘서트' && myTotalConcertComment === 0) ||
+      (commentBtnType === '콘친' && myTotalArticleComment === 0) ? (
+        <div id='noCommentImgWrapper'>
+          <img id='noCommentImg' src={noCommentImg} />
+          <p id='noCommentMessage'>작성한 댓글이 없습니다!</p>
+        </div>
+      ) : null}
     </div>
   );
 }
