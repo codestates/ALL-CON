@@ -15,9 +15,8 @@ import { setTarget, setTargetIdx } from '../store/MainSlice';
 function PosterSlide() {
   const dispatch = useDispatch();
 
-  const { target, targetIdx, allConcerts, isRendering } = useSelector(
-    (state: RootState) => state.main,
-  );
+  const { target, targetIdx, allConcerts, isRendering, passToConcert } =
+    useSelector((state: RootState) => state.main);
 
   /* 지역상태 interface */
   interface mainTarget {

@@ -48,9 +48,6 @@ function ConChinArticlePagination() {
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
           } else {
-            // console.log(
-            //   'ConChinArticlePagination=> 없거나 실수로 못가져왔어요.',
-            // );
           }
         } else if (Object.keys(target).length > 0) {
           //target이 있을 때, target의 게시물에서 클릭한 pageNum 조회
@@ -62,9 +59,6 @@ function ConChinArticlePagination() {
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
           } else {
-            // console.log(
-            //   'ConChinArticlePagination=> 없거나 실수로 못가져왔어요.',
-            // );
           }
         }
       }

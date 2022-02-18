@@ -57,40 +57,14 @@ function ConChinPostingOrderBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        // console.log('PostingOrderBox=> 전체 게시물을 받아왔습니다.');
-        // resetTarget();
-
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
       } else {
-        // console.log('없거나 실수로 못가져왔어요..');
       }
     } catch (err) {
       console.log(err);
-      console.log('에러가 났나봐요.');
     }
   };
-
-  /* useEffect: 정렬순으로 전체 콘서트, 게시물 받아오기  */
-  // useEffect(() => {
-  //   /* 타겟이 없을 때 모든 콘서트 보여주기 */
-  //   if (Object.keys(target).length === 0) {
-  //     getAllConcerts();
-  //     getAllArticles();
-  //     dispatch(setTarget({}));
-  //     dispatch(setArticleRendered(false));
-  //     dispatch(setTargetArticle({}));
-  //     dispatch(setArticleCurPage(1));
-  //     /* 타겟이 있고 타겟 게시물이 없을 때 타겟에 대한 게시물만 보여주기*/
-  //   } else if (
-  //     Object.keys(target).length > 0 &&
-  //     Object.keys(targetArticle).length === 0
-  //   ) {
-  //     dispatch(setTargetArticle({}));
-  //     dispatch(setArticleRendered(true));
-  //     dispatch(setArticleCurPage(1));
-  //   }
-  // }, [postingOrder]);
 
   /* 타겟 초기화 핸들러 */
   const resetTargetHandler = () => {
@@ -107,8 +81,6 @@ function ConChinPostingOrderBox() {
   /* postingOrder 변경시 지역상태 conChinPostingOrder 변경  */
   useEffect(() => {
     setConChinPostingOrder(postingOrder);
-    // console.log('conChinPostingOrder:');
-    // console.log(conChinPostingOrder);
   }, [postingOrder]);
 
   return (

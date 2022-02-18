@@ -44,6 +44,7 @@ function ConChinPage() {
     total_comment?: number;
     createdAt?: Date;
     updatedAt?: Date;
+    activation?: boolean;
   }
 
   interface ConChinTargetArticle {
@@ -63,6 +64,7 @@ function ConChinPage() {
       username?: string;
       image?: string;
     };
+    activation?: boolean;
   }
   /* useState => 지역상태 */
   const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});

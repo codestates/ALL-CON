@@ -41,6 +41,7 @@ function ConChinPostingBox() {
     total_comment?: number;
     createdAt?: Date;
     updatedAt?: Date;
+    activation?: boolean;
   }
 
   /* useState => 지역상태 */
@@ -65,53 +66,15 @@ function ConChinPostingBox() {
             dispatch(setArticleCurPage(1));
             dispatch(setArticleRendered(true));
           } else {
-            // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
           }
         }
       }
-      // else {
-      //   if (
-      //     Object.keys(target).length > 0 &&
-      //     Object.keys(targetArticle).length === 0
-      //   ) {
-      //     // resetAllTarget();
-      //   } else if (
-      //     Object.keys(target).length > 0 &&
-      //     Object.keys(targetArticle).length > 0
-      //   ) {
-      //   } else if (Object.keys(target).length > 0 && allArticles.length === 0) {
-      //     // resetAllTarget();
-      //   }
-      // }
     } catch (err) {
       console.log(err);
       dispatch(setAllArticles([]));
       dispatch(setArticleTotalPage(0));
-      // console.log('ConChinPostingBox=> 게시물이 없네요.');
     }
   };
-
-  /* 전체 게시물 받아오기(무조건) */
-  // const getAllArticles = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
-  //       { withCredentials: true },
-  //     );
-  //     if (response.data) {
-  //       // dispatch(setTarget({}));
-  //       dispatch(setAllArticles(response.data.data.articleInfo));
-  //       dispatch(setArticleTotalPage(response.data.data.totalPage));
-  //       dispatch(setArticleCurPage(1));
-  //       console.log('ConChinPostingBox => 전체 콘서트를 가져왔습니다.');
-  //     } else {
-  //       console.log('없거나 실수로 못가져왔어요..');
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //     console.log('에러가 났나봐요.');
-  //   }
-  // };
 
   /* 조건부 게시물 받아오기 & 타겟 교체 */
   function changeTarget(concert: any[]) {
@@ -138,14 +101,11 @@ function ConChinPostingBox() {
   /* postingOrder 변경시 지역상태 conChinPostingOrder 변경  */
   useEffect(() => {
     setConChinPostingOrder(postingOrder);
-    // console.log('conChinPostingOrder:');
-    // console.log(conChinPostingOrder);
   }, [postingOrder]);
 
   /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
   useEffect(() => {
     setConChinTarget(target);
-    // console.log('useEffect 정상작동, conChinTarget 변경');
   }, [target]);
 
   return (
@@ -173,34 +133,37 @@ function ConChinPostingBox() {
             : 'postingBoxWrapperChosen'
         }
       >
-        {conChinTarget !== undefined
-          ? conChinAllConcerts.map(concert => {
-              return (
-                <ul
-                  className={
-                    conChinTarget.id === concert.id
-                      ? 'postingChosen'
-                      : Object.keys(conChinTarget).length === 0
-                      ? 'posting'
-                      : 'postingUnChosen'
-                  }
-                  key={concert.id}
-                  onClick={() => {
-                    changeTarget(concert);
-                  }}
-                >
-                  <h1 className='title'>{concert.title}</h1>
-                  <p className='date'>
-                    {' '}
-                    오픈일
-                    <br /> {concert.post_date}
-                  </p>
-                  <p className='view'> 조회수 {concert.view}</p>
-                  <p className='place'> {concert.place}</p>
-                </ul>
-              );
-            })
-          : null}
+        {conChinTarget.activation === true ||
+        Object.keys(conChinTarget).length === 0 ? (
+          conChinAllConcerts.map(concert => {
+            return (
+              <ul
+                className={
+                  conChinTarget.id === concert.id
+                    ? 'postingChosen'
+                    : Object.keys(conChinTarget).length === 0
+                    ? 'posting'
+                    : 'postingUnChosen'
+                }
+                key={concert.id}
+                onClick={() => {
+                  changeTarget(concert);
+                }}
+              >
+                <h1 className='title'>{concert.title}</h1>
+                <p className='date'>
+                  {' '}
+                  오픈일
+                  <br /> {concert.post_date}
+                </p>
+                <p className='view'> 조회수 {concert.view}</p>
+                <p className='place'> {concert.place}</p>
+              </ul>
+            );
+          })
+        ) : (
+          <ul className='postingendChosen'>종료된 콘서트</ul>
+        )}
       </div>
     </li>
   );

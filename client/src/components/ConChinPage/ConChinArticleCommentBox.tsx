@@ -63,6 +63,7 @@ function ConChinArticleCommentBox() {
       username?: string;
       image?: string;
     };
+    activation?: boolean;
   }
 
   /* useState => 지역상태 */
@@ -208,7 +209,8 @@ function ConChinArticleCommentBox() {
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
         getAllComments();
-        getAllComments();
+        dispatch(setConChinPageNum(0));
+        dispatch(setConChinPageNum(1));
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -280,7 +282,7 @@ function ConChinArticleCommentBox() {
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
         getAllComments();
-        getAllComments();
+        dispatch(setConChinPageNum(1));
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -304,9 +306,7 @@ function ConChinArticleCommentBox() {
       );
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
       if (response.data) {
-        console.log(response.data);
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-        dispatch(setConChinTotalComments(response.data.data.totalComment));
         setIsClick(false);
         setInputComment('');
         dispatch(setConChinPageAllComments([]));
@@ -315,6 +315,7 @@ function ConChinArticleCommentBox() {
         dispatch(
           setConChinPageAllComments(response.data.data.articleCommentInfo),
         );
+        dispatch(setConChinTotalComments(response.data.data.totalComment));
       }
     } catch (err) {}
   };
@@ -350,39 +351,6 @@ function ConChinArticleCommentBox() {
       console.log(err);
     }
   };
-
-  // /* 타겟 게시물 받아오기 */
-  // const getTargetArticles = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}`,
-  //       { withCredentials: true },
-  //     );
-  //     if (response.data) {
-  //       dispatch(setTargetArticle({}));
-  //       dispatch(setTargetArticle(response.data.data.articleInfo));
-  //       dispatch(
-  //         setConChinTotalComments(response.data.data.articleInfo.total_comment),
-  //       );
-  //     } else {
-  //       // console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
-  //     }
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getAllComments();
-  // }, [conChinPageNum]);
-
-  // useEffect(() => {
-  //   getTargetArticles();
-  // }, [isClick]);
-
-  // useEffect(() => {
-  //   getTargetArticles();
-  // }, [isClick]);
 
   /* conChinPageAllComments 변경시 지역상태 conChinConChinPageAllComments 변경  */
   useEffect(() => {
