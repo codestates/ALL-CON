@@ -1,5 +1,4 @@
 /* CSS import */
-import defaultImage from '../../images/default_image.jpg';
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
 import commentImage from '../../images/commentDots.png';
