@@ -34,9 +34,7 @@ function MyProfileBox() {
   );
 
   /* 지역상태 - useState */
-  // 프로필 수정 버튼 모니터링 상태
-  const [profileChangeBtn, setProfileChangeBtn] = useState<boolean>(false);
-  //
+  // 수정하는 자기소개 상태
   const [editIntroduction, setEditIntroduction] = useState<string | undefined>(userInfo.introduction);
 
   /* useEffect */
@@ -45,15 +43,14 @@ function MyProfileBox() {
 
   // 프로필 수정 버튼
   const handleProfileEdit = async () => {
+    // 프로필 수정 / 콘친인증 활성화 셋팅
     dispatch(
       getBtnSwitchState({
         profileEdit: true,
         conchinCertification: false,
-        userResign: false,
       }),
     );
-    // 프로필 수정 버튼 클릭 상태 갱신
-    // setProfileChangeBtn(true);
+    // 프로필 수정란 활성화
     dispatch(setMyIntroductionState(true));
     navigate('/myEdit');
   };

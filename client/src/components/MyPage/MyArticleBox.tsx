@@ -51,8 +51,7 @@ function MyArticleBox() {
       { withCredentials: true },
     );
 
-    // 선택한 게시물 작성자 유저정보를 불러온다 */
-
+    // 선택한 게시물 작성자 유저정보를 불러온다
     const responseUser = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/other/${user_id}`,
       { withCredentials: true },
@@ -97,7 +96,6 @@ function MyArticleBox() {
                       <img
                         className='thumbNail'
                         src={el.image}
-                        // alt='defaultImage'
                       ></img>
                       <div className='commentBox'>
                         <img className='icon' src={commentImage} />
