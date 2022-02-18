@@ -15,14 +15,12 @@
     width: 35%;
     height: 90%;
   }
-    // border: 5px solid purple;
 }
 
 #imgBox {
   position: absolute;
   display: flex;
   justify-content: center;
-  // border: 2px solid red;
   @include mobile-only() {
     width: 40%;
     height: 40%;
@@ -40,7 +38,6 @@
     display: flex;
     width: 80%;
     height: 80%;
-    // border: 1px solid blue;
     .img {
       position: absolute;
       width: 100%;
@@ -60,7 +57,6 @@
   right: 10%;
   width: 20%;
   padding-bottom: 20%;
-  // border: 1px solid blue;
   .camera {
     position: absolute;
     @include mobile-only() {
@@ -89,13 +85,10 @@
       height: 64.5%;
       bottom: 0%;
       text-align: center;
-      // border: 3px solid red;
       @include mobile-only() {
-
       }
       @include md() {
         bottom: -5%;
-
       }
       @include lg() {
         bottom: 5%;
@@ -107,7 +100,6 @@
         justify-content: center;
         width: 100%;
         height: 15%;
-        // border: 1px solid red;
         #oauthWrapper {
           position: relative;
           display: flex;
@@ -115,7 +107,6 @@
           justify-content: center;
           height: 30px;
           width: 30px;
-          // border: 1px solid blue;
           .oauth {
             @include mobile-only() {
               position: absolute;
@@ -141,7 +132,6 @@
           display: flex;
           align-items: center;
           font-weight: bold;
-          // border: 1px solid red;
           height: 100%;
           @include mobile-only() {
             top: -30%;
@@ -161,7 +151,6 @@
           justify-content: center;
           height: 30px;
           width: 30px;
-          // border: 1px solid red;
           .shield {
             @include mobile-only() {
               width: 60%;
@@ -208,7 +197,6 @@
               text-align: center;
               vertical-align: center;
               height: auto;
-              // border: 1px solid blue;
               top: 42%;
               @include mobile-only() {
                 font-size: 1.3rem;
@@ -232,17 +220,18 @@
       display: flex;
       justify-content: space-between;
       width: 100%;
-      bottom: 20%;
-      // border: 2px solid yellowgreen;
+      // border: 4px solid red;
       @include mobile-only() {
         height: 13%;
         bottom: 25.0%;
       }
       @include md() {
         height: 11.5%;
+        bottom: 20.0%;
       }
       @include lg() {
         height: 10%;
+        bottom: 25.0%;
       }
       .btn {
         position: relative;
@@ -267,7 +256,6 @@
           width: 45%;
           height: 90%;
           font-size: 1.3rem;
-
         }
         @include md() {
           font-size: 1.8rem;
@@ -276,7 +264,7 @@
           font-size: 2rem;
         }
       }
-      // 이렇게 하는게 아닌데 분명...
+
       .btnChosen {
         position: relative;
         display: flex;
@@ -288,7 +276,6 @@
         border: none;
         border-radius: 5px;
         color: white;       
-
         @include mobile-only() {
           font-size: 1.3rem;
         }
@@ -300,322 +287,3 @@
         }
       }
     }
-
-//   border: 1px solid purple;
-//   #imgBox {
-//     position: absolute;
-//     display: flex;
-//     justify-content: center;
-//     // border: 1px solid red;
-//     @include mobile-only() {
-//       width: 40%;
-//       padding-bottom: 40%;
-//     }
-//     @include md() {
-//       width: 35%;
-//       padding-bottom: 35%;
-//     }
-//     @include lg() {
-//       width: 33%;
-//       padding-bottom: 33%;
-//     }
-//     #imgWrapper {
-//       position: absolute;
-//       display: flex;
-//       width: 80%;
-//       padding-bottom: 80%;
-//       // border: 1px solid blue;
-//       .img {
-//         position: absolute;
-//         width: 100%;
-//         height: 100%;
-//         top: 0%;
-//         border-radius: 100%;
-//       }
-//     }
-//     #cameraWrapper {
-//       z-index: 2;
-//       position: absolute;
-//       display: flex;
-//       justify-content: center;
-//       bottom: 10%;
-//       right: 0%;
-//       width: 20%;
-//       padding-bottom: 20%;
-//       // border: 1px solid blue;
-//       .camera {
-//         position: absolute;
-
-//         @include mobile-only() {
-//           width: 90%;
-//           height: 90%;
-
-//         }
-//         @include md() {
-//           width: 90%;
-//           height: 90%;
-
-//         }
-//         @include lg() {
-//           width: 100%;
-//           height: 100%;
-//         }
-//         &:hover {
-//           cursor: pointer;
-//         }
-//       }
-//     }
-//   }
-//   #introductionBox {
-//     position: absolute;
-//     display: flex;
-//     justify-content: center;
-//     width: 80%;
-//     height: 64.5%;
-//     bottom: 0%;
-//     text-align: center;
-//     // border: 1px solid red;
-//     #nickNameWrapper {
-//       position: absolute;
-//       display: flex;
-//       align-items: center;
-//       justify-content: center;
-//       width: 100%;
-//       height: 15%;
-//       // border: 1px solid red;
-//       #oauthWrapper {
-//         position: relative;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         height: 30px;
-//         width: 30px;
-//         // border: 1px solid blue;
-//         .oauth {
-//           @include mobile-only() {
-//             position: absolute;
-//             width: 73%;
-//             height: 73%;
-//             left: 23%;
-//             top: -16.5%;
-//           }
-//           @include md() {
-//             width: 90%;
-//             height: 90%;
-//             margin-right: 15%;
-//           }
-//           @include lg() {
-//             width: 100%;
-//             height: 100%;
-//             margin-right: 15%;
-//           }
-//         }
-//       }
-//       .nickName {
-//         position: relative;
-//         display: flex;
-//         align-items: center;
-//         // border: 1px solid red;
-//         height: 100%;
-//         @include mobile-only() {
-//           top: -30%;
-//           font-size: 1.4rem;
-//         }
-//         @include md() {
-//           font-size: 1.8rem;
-//         }
-//         @include lg() {
-//           font-size: 2rem;
-//         }
-//       }
-//       #shieldWrapper {
-//         position: relative;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         height: 30px;
-//         width: 30px;
-//         // border: 1px solid red;
-//         .shield {
-//           @include mobile-only() {
-//             width: 60%;
-//             height: 60%;
-//           }
-//           @include md() {
-//             width: 70%;
-//             height: 70%;
-//             margin-left: 15%;
-//           }
-//           @include lg() {
-//             width: 80%;
-//             height: 80%;
-//             margin-left: 15%;
-//           }
-//         }
-//       }
-//     }
-//     #textWrapper {
-//       position: absolute;
-//       display: flex;
-//       align-items: center;
-//       justify-content: center;
-//       width: 100%;
-//       height: 45%;
-//       top: 15%;
-//       border: 1px solid #c4c4c4;
-//       border-radius: 5px;
-//       @include mobile-only() {
-//         top: 12%;
-//       }
-//       @include md() {
-//       }
-//       @include lg() {
-//       }
-//       #introduction {
-//         position: absolute;
-//         border: none;
-//         outline: none;
-//         resize: none;
-//         overflow: hidden;
-//         text-align: center;
-//         vertical-align: center;
-//         height: auto;
-//         // border: 1px solid blue;
-//         top: 42%;
-//         @include mobile-only() {
-//           font-size: 1.3rem;
-//           width: 80%;
-//           top: 42%;
-//         }
-//         @include md() {
-//           font-size: 1.8rem;
-//           width: 80%;
-//         }
-//         @include lg() {
-//           width: 80%;
-//           font-size: 2rem;
-//         }
-//       }
-//     }
-//     // 프로필 수정 버튼
-//     #modifyBtnWrapper {
-//       position: absolute;
-//       display: flex;
-//       justify-content: space-between;
-//       width: 100%;
-//       bottom: 20%;
-//       // border: 2px solid yellowgreen;
-//       @include mobile-only() {
-//         height: 13%;
-//         bottom: 25.0%;
-//       }
-//       @include md() {
-//         height: 11.5%;
-//       }
-//       @include lg() {
-//         height: 10%;
-//       }
-//       .btn {
-//         position: relative;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         width: 45%;
-//         height: 100%;
-//         background-color: black;
-//         border: none;
-//         border-radius: 5px;
-//         color: white;       
-//         &:hover {
-//           cursor: pointer;
-//           background-color: $yellow;
-//           transition: all 0.15s;
-//         }
-//         @include mobile-only() {
-//           align-items: center;
-//           justify-content: center;
-//           top: 6.5%;
-//           width: 45%;
-//           height: 90%;
-//           font-size: 1.3rem;
-
-//         }
-//         @include md() {
-//           font-size: 1.8rem;
-//         }
-//         @include lg() {
-//           font-size: 2rem;
-//         }
-//       }
-//       // 이렇게 하는게 아닌데 분명...
-//       .btnChosen {
-//         position: relative;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         width: 45%;
-//         height: 100%;
-//         background-color: #ffce63;
-//         border: none;
-//         border-radius: 5px;
-//         color: white;       
-
-//         @include mobile-only() {
-//           font-size: 1.3rem;
-//         }
-//         @include md() {
-//           font-size: 1.8rem;
-//         }
-//         @include lg() {
-//           font-size: 2rem;
-//         }
-//       }
-//     }
-//     #resignBtnWrapper {
-//       position: absolute;
-//       display: flex;
-//       justify-content: center;
-//       width: 100%;
-//       bottom: 0%;
-//       display: none;
-//       // border: 1px solid red;
-//       @include mobile-only() {
-//         display: none;
-//       }
-//       @include md() {
-//         height: 11.5%;
-//       }
-//       @include lg() {
-//         height: 10%;
-//       }
-//       .btn {
-//         position: relative;
-//         display: flex;
-//         align-items: center;
-//         justify-content: center;
-//         width: 50%;
-//         height: 100%;
-//         background-color: black;
-//         border: none;
-//         border-radius: 5px;
-//         color: white;
-//         &:hover {
-//           cursor: pointer;
-//           background-color: $yellow;
-//           transition: all 0.15s;
-//         }
-//         @include mobile-only() {
-//           width: 30%;
-//           height: 90%;
-//           font-size: 1.2rem;
-//         }
-//         @include md() {
-//           font-size: 1.8rem;
-//         }
-//         @include lg() {
-//           font-size: 2rem;
-//         }
-//       }
-//     }
-//   }
-// }
