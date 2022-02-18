@@ -14,10 +14,16 @@ module.exports = {
       /* 페이지 네이션 */ 
       
       const concertCommentInfo = await ConcertComments.findAndCountAll({
-        include: [{
-          model: Users,
-          attributes: ['username', 'image', 'role']
-        }],
+        include: [
+          {
+            model: Users,
+            attributes: ['username', 'image', 'role']
+          },
+          {
+            model: Concerts,
+            attributes: ['total_comment'],
+          },
+        ],
         where: { concert_id: concertid },
         order: [['createdAt','DESC']],
         offset: offset,
@@ -32,7 +38,11 @@ module.exports = {
         { total_comment: concertCommentInfo.count },
         { where: { id: concertid } }
       );
-      res.status(200).json({ data: { concertCommentInfo: concertCommentInfo.rows, totalPage: totalPage }, message: 'Concert Comments!' });
+      res.status(200).json({ 
+        data: { 
+          concertCommentInfo: concertCommentInfo.rows,
+          totalComment: concertCommentInfo.rows[0].Concert.total_comment,
+          totalPage: totalPage }, message: 'Concert Comments!' });
     } catch (err) {
       return res.status(500).json({ message: 'Server Error!' });
     }
