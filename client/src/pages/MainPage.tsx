@@ -24,7 +24,7 @@ import { setTotalNum, setPageAllComments } from '../store/ConcertCommentSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -38,6 +38,8 @@ function MainPage() {
   const { pageAllComments, pageNum } = useSelector(
     (state: RootState) => state.concertComments,
   );
+  //지역 상태
+  const [isRenderingMain, setIsRenderingMain] = useState(false);
 
   /* 전체 콘서트 렌더링 */
   useEffect(() => {
@@ -60,6 +62,11 @@ function MainPage() {
     getAllComments(); // 전체 댓글 목록
   }, [target, pageNum, isLogin]);
 
+  //지역상태 변경
+  useEffect(() => {
+    setIsRenderingMain(isRendering);
+  }, [isRendering]);
+
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
     try {
@@ -71,9 +78,9 @@ function MainPage() {
         /* 서버 응답값이 있다면 & target 상태 변경 */
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setTarget(allConcerts[targetIdx]));
+        /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
+        dispatch(setIsRendering(true));
       }
-      /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
-      dispatch(setIsRendering(true));
     } catch (err) {
       console.log(err);
     }
@@ -103,6 +110,8 @@ function MainPage() {
   /* 상세 콘서트 받아오기 */
   const getDetailInfo = async () => {
     try {
+      //console.log('getDeatilInfo함수 실행됌');
+      //order가 바뀔 때 5번 실행되고, 타겟 바꿀 때마다 2번씩 실행됌
       if (target) {
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/concert/${target.id}`,
@@ -111,6 +120,7 @@ function MainPage() {
         if (response.data.data) {
           /* 서버 응답값이 있다면 detail(상세정보) 갱신 */
           dispatch(setDetail(response.data.data.concertInfo));
+          //console.log('디스패치 실행중');
         }
       }
     } catch (err) {
@@ -177,17 +187,17 @@ function MainPage() {
       <div id='mainJumboWrapper'>
         <Jumbotron />
       </div>
-      {isRendering && (
+      {isRenderingMain && (
         <div id='mainConcertInfoWrapper'>
           <MainConcertInfo />
         </div>
       )}
-      {isRendering && (
+      {isRenderingMain && (
         <div id='mainCommentWrapper'>
           <MainComment />
         </div>
       )}
-      {isRendering && (
+      {isRenderingMain && (
         <div id='mainPaginationWrapper'>
           <MainPagination />
         </div>
