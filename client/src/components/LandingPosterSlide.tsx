@@ -3,15 +3,40 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 /* Store import */
 import { RootState } from '../index';
+import { setAllConcerts } from '../store/MainSlice';
 /* Library import */
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Slider, { Settings } from 'react-slick';
 
 function LandingPosterSlide() {
-  const [imageIdx, setImageIdx] = useState(0);
+  const dispatch = useDispatch();
 
+  const [imageIdx, setImageIdx] = useState(0);
   const { allConcerts } = useSelector((state: RootState) => state.main);
+
+  useEffect(() => {
+    getAllConcerts();
+  }, []);
+
+  /*전체 콘서트 받아오기(1회) */
+  const getAllConcerts = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert?order=view`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        /* 서버 응답값이 있다면 & target 상태 변경 */
+        dispatch(setAllConcerts(response.data.data.concertInfo));
+        // dispatch(setTargetIdx(0));
+        // dispatch(setTarget(allConcerts[targetIdx]));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const settings: Settings = {
     infinite: true,
