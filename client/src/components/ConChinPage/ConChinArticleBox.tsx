@@ -206,8 +206,11 @@ function ConChinArticleBox() {
                   >
                     <img
                       className='thumbNail'
+                      // src={
+                      //   article.image !== null ? article.image : defaultImage
+                      // }
                       src={
-                        article.image !== null ? article.image : defaultImage
+                        article.image
                       }
                     ></img>
                     <div id='conChinmemberBoxWrapper'>
@@ -270,8 +273,11 @@ function ConChinArticleBox() {
                           ? 'thumbNailChosen'
                           : 'thumbNail'
                       }
+                      // src={
+                      //   article.image !== null ? article.image : defaultImage
+                      // }
                       src={
-                        article.image !== null ? article.image : defaultImage
+                        article.image
                       }
                     ></img>
                     <div id='conChinmemberBoxWrapper'>

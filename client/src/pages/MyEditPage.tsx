@@ -206,6 +206,11 @@ function MyEditPage() {
 
   // [PATCH] 변경 완료 버튼 핸들러
   const changeUserProfileHandler = async () => {
+
+    // console.log('----- (수정) 자기소개:', changeUserInfo.introduction)
+    // console.log('----- (수정) 이름:', changeUserInfo.username)
+    // console.log('----- (수정) 비밀번호:', changeUserInfo.password)
+
     try {
       // 만약 변경된 유저의 정보가 모두 유효하다면, 다음을 실행한다
       if (isAllValid(changeUserInfo)) {
@@ -318,13 +323,14 @@ function MyEditPage() {
                 : <div id='nicknameErr'>사용할 수 없는 닉네임입니다.</div>
             }
           </div>
+          {/* 비밀번호 변경란 */}
           <div id='resetBox'>
             <div id='titleWrapper'>
               <p className='title'>비밀번호 변경</p>
             </div>
             {
               activationPassword
-              ? <input type='password' placeholder='비밀번호를 입력해주세요.' className='reset' value={changeUserInfo.password} onChange={inputValueHandler('password')} />
+              ? <form><input type='password' placeholder='비밀번호를 입력해주세요.' autoComplete='on' className='reset' value={changeUserInfo.password} onChange={inputValueHandler('password')} /> </form>
               : <input type='password' className='reset' placeholder='비밀번호를 변경할 수 없습니다.' disabled />
             }
             {
@@ -335,13 +341,14 @@ function MyEditPage() {
                 : <div id='passwordErr'> 비밀번호는 영문, 숫자만 가능하며 6~12자리로 입력해야 합니다. </div>
             }
           </div>
+          {/* 비밀번호 확인란 */}
           <div id='confirmBox'>
             <div id='titleWrapper'>
               <p className='title'>비밀번호 확인</p>
             </div>
             {
               activationPassword
-              ? <input type='password' placeholder='비밀번호를 확인해주세요.' className='confirm' value={changeUserInfo.confirmPassword} onChange={inputValueHandler('confirmPassword')} />
+              ? <form><input type='password' placeholder='비밀번호를 확인해주세요.' autoComplete='on' className='confirm' value={changeUserInfo.confirmPassword} onChange={inputValueHandler('confirmPassword')} /> </form>
               : <input type='password' className='confirm' placeholder='비밀번호를 변경할 수 없습니다.' disabled />
             }
             {
