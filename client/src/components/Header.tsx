@@ -25,6 +25,8 @@ import {
   setArticleCurPage,
   setTargetArticle,
   setArticleRendered,
+  setPostingOrder,
+  setArticleOrder,
 } from '../store/ConChinSlice';
 import {
   setIsClosed,
@@ -204,8 +206,10 @@ function Header() {
       dispatch(setTargetArticle({}));
       dispatch(setArticleRendered(false));
       dispatch(setArticleCurPage(1));
-      getAllArticles();
       navigate('/conchin');
+      dispatch(setPostingOrder('view'));
+      dispatch(setArticleOrder('view'));
+      getAllArticles();
       setSearchClicked(false);
     }
   };
