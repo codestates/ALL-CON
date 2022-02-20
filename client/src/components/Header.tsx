@@ -42,6 +42,7 @@ import {
   setTarget,
   setTargetIdx,
   setIsRendering,
+  setAllConcerts,
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -145,7 +146,7 @@ function Header() {
   const getAllArticles = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/article?order=${'view'}`,
+        `${process.env.REACT_APP_API_URL}/concert/article?order=view`,
         { withCredentials: true },
       );
       if (response.data) {
@@ -159,8 +160,8 @@ function Header() {
     }
   };
 
-  /*전체 콘서트 받아오기(정렬순:view) */
-  const getAllConcerts = async () => {
+  /* 헤더 전체 콘서트 받아오기(정렬순:view) */
+  const getHeaderAllConcerts = async () => {
     try {
       setSearchClicked(!searchClicked);
       const response = await axios.get(
@@ -170,6 +171,22 @@ function Header() {
       if (response.data) {
         /* 서버 응답값이 있다면 & target 상태 변경 */
         dispatch(setHeaderAllConcerts(response.data.data.concertInfo));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 콘서트 페이지 전체 콘서트 받아오기(정렬순:view) */
+  const getAllConcerts = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert?order=view`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        /* 서버 응답값이 있다면 & allConcerts 상태 변경 */
+        dispatch(setAllConcerts(response.data.data.concertInfo));
       }
     } catch (err) {
       console.log(err);
@@ -196,6 +213,7 @@ function Header() {
       setSearchClicked(false);
     } else if (menu === 'concert') {
       /* ConcertPage */
+      getAllConcerts();
       dispatch(setTarget({}));
       dispatch(setOrder('view'));
       navigate('/concert');
@@ -209,6 +227,7 @@ function Header() {
       navigate('/conchin');
       dispatch(setPostingOrder('view'));
       dispatch(setArticleOrder('view'));
+      getAllConcerts();
       getAllArticles();
       setSearchClicked(false);
     }
@@ -318,7 +337,7 @@ function Header() {
             className='search'
             alt='searchImg'
             src={searchClicked ? yellowSearch : search}
-            onClick={getAllConcerts}
+            onClick={getHeaderAllConcerts}
           />
         </div>
         <div id='loginWrapper'>

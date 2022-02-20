@@ -21,6 +21,7 @@ function ConcertPage() {
   const { allConcerts, order, passToConcert } = useSelector((state: RootState) => state.main);
   /* useState => 지역상태 */
   const [concertOrder, setConcertOrder] = useState<String>('view');
+
   /* order, passToConcert 전역상태 변경시 지역상태 concertOrder 변경 */
   useEffect(() => {
     setConcertOrder(order);

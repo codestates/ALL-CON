@@ -192,17 +192,15 @@ function MainConcertInfo() {
   /* Date 객체 형변환 함수 */
   const dayFormatter = (openDate?: Date): string => {
     if (openDate) {
-      const strOpenDate = String(openDate);
+      const strOpenDate = openDate.toString();
 
-      const year = strOpenDate.substring(0, 4);
-      const month = strOpenDate.substring(5, 7);
-      const date = strOpenDate.substring(8, 10);
-      const hour = strOpenDate.substring(11, 13);
-      const minute = strOpenDate.substring(14, 16);
+      const year = strOpenDate.substring(0,4);
+      const month = strOpenDate.substring(5,7);
+      const date = strOpenDate.substring(8,10);
+      const hour = Number(strOpenDate.substring(11,13)) + 9;
+      const minute = strOpenDate.substring(14,16);
 
-      return String(
-        year + '년 ' + month + '월 ' + date + '일 ' + hour + ' : ' + minute,
-      );
+      return String(year + '년 ' + month + '월 ' + date + '일 ' + hour + ' : ' + minute);
     }
     return '';
   };
