@@ -145,7 +145,7 @@ function Header() {
   const getAllArticles = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
+        `${process.env.REACT_APP_API_URL}/concert/article?order=${'view'}`,
         { withCredentials: true },
       );
       if (response.data) {
