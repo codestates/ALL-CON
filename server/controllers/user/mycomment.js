@@ -22,7 +22,7 @@ module.exports = {
         const commentInfo = await ConcertComments.findAndCountAll({ 
           include: [{
             model: Concerts,
-            attributes: ['image_concert', 'title']
+            attributes: ['image_concert', 'title', 'activation']
           }],
           where: { user_id: userInfo.dataValues.id },
           order: [['createdAt','DESC']],
@@ -48,7 +48,7 @@ module.exports = {
         const commentInfo = await ArticleComments.findAndCountAll({ 
           include: [{
             model: Articles,
-            attributes: ['concert_id', 'image', 'title']
+            attributes: ['concert_id', 'image', 'title', 'activation']
           }],
           where: { user_id: userInfo.dataValues.id },
           order: [['createdAt','DESC']],

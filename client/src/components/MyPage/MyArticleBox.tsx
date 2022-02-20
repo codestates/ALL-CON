@@ -9,6 +9,10 @@ import { setTarget } from '../../store/MainSlice';
 import {
   setTargetArticle,
   setTargetArticlesUserInfo,
+  setPostingOrder,
+  setArticleOrder,
+  setAllArticles, 
+  setArticleTotalPage,
 } from '../../store/ConChinSlice';
 import { setConChinPageNum } from '../../store/ConChinCommentSlice';
 import MyArticlePagination from './MyArticlePagination';
@@ -56,6 +60,16 @@ function MyArticleBox() {
       `${process.env.REACT_APP_API_URL}/user/other/${user_id}`,
       { withCredentials: true },
     );
+    
+    // 테스트
+    const responseAllArticle = await axios.get(
+      `${process.env.REACT_APP_API_URL}/concert/${responseConcert.data.data.concertInfo.id}/article?order='view'`,
+      { withCredentials: true },
+    );
+
+    dispatch(setAllArticles(responseAllArticle.data.data.articleInfo));
+    dispatch(setArticleTotalPage(responseAllArticle.data.data.totalPage));
+    // 테스트
 
     // 현재 선택한 콘서트 업데이트 (target)
     dispatch(setTarget(responseConcert.data.data.concertInfo));
@@ -66,6 +80,10 @@ function MyArticleBox() {
     // 현재 선택한 게시물 업데이트 (target)
     dispatch(setTargetArticle(responseArticle.data.data.articleInfo));
     dispatch(setConChinPageNum(1));
+   
+    dispatch(setPostingOrder('view'));
+    dispatch(setArticleOrder('view'));
+
     navigate('/conchin');
   };
 

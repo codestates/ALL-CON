@@ -74,6 +74,10 @@ function PosterSlide() {
   }, [allConcerts]);
 
   useEffect(() => {
+
+    console.log('----- 메인: PosterSlide -----', allConcerts)
+    console.log('----- 메인: PosterSlide 타켓 인덱스 -----', targetIdx)
+
     setTargetMain(target);
   }, [target]);
 

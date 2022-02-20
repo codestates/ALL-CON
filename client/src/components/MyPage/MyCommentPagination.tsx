@@ -1,5 +1,6 @@
 /* Config import */
 /* CSS import */
+import LoadingImage from '../../images/spinner.gif'; 
 /* Store import */
 import { RootState } from '../../index';
 import { loginCheck } from '../../store/AuthSlice';
