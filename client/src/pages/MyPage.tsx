@@ -144,6 +144,7 @@ function MyPage() {
         </div>
       </div>
     </div>
+
   );
 }
 export default MyPage;
