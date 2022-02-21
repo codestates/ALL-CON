@@ -10,6 +10,8 @@ import {
   setOrder,
   setIsRendering,
   setPassToConcert,
+  setAllConcerts,
+  setDetail,
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -53,9 +55,29 @@ function Jumbotron() {
     /* 정렬 버튼 클릭시 렌더링: false, 타겟값 초기화, order 갱신 */
     dispatch(setIsRendering(false));
     dispatch(setTargetIdx(0));
-    dispatch(setTarget(allConcerts[targetIdx]));
+    // dispatch(setTarget(allConcerts[targetIdx]));
     dispatch(setOrder(clickValue));
+    getAllConcerts(clickValue);
     dispatch(setPageNum(1));
+  };
+
+  /*전체 콘서트 받아오기 */
+  const getAllConcerts = async (clickValue: string) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert?order=${clickValue}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        /* 서버 응답값이 있다면 & target 상태 변경 */
+        dispatch(setAllConcerts(response.data.data.concertInfo));
+        dispatch(setTarget(response.data.data.concertInfo[0]));
+        /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
+        dispatch(setIsRendering(true));
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

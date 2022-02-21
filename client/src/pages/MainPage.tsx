@@ -13,6 +13,7 @@ import {
   setAllConcerts,
   setDetail,
   setIsRendering,
+  setMainTotalComments,
 } from '../store/MainSlice';
 import {
   setAlarm,
@@ -44,13 +45,15 @@ function MainPage() {
   /* 전체 콘서트 렌더링 */
   useEffect(() => {
     getAllConcerts(); // 전체 콘서트 목록
-  }, [isRendering]);
+  }, [isLogin]);
+  // isRendering]);
 
-  /* 상세 콘서트 정보 & 알람 정보 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 댓글 갱신시) */
+  /* 상세 콘서트 정보 & 알람 정보 렌더링 */
   useEffect(() => {
     getDetailInfo(); // 상세 콘서트 정보
     getDetailAlarmInfo();
-  }, [target, pageAllComments]);
+  }, [target]);
+  // , pageAllComments]);
 
   /* 전체 알람 렌더링 */
   useEffect(() => {
@@ -60,7 +63,8 @@ function MainPage() {
   /* 전체 댓글 목록 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 현재 포스터정보 변경시) */
   useEffect(() => {
     getAllComments(); // 전체 댓글 목록
-  }, [target, pageNum, isLogin]);
+  }, [target, pageNum]);
+  // , isLogin]);
 
   //지역상태 변경
   useEffect(() => {
@@ -77,7 +81,7 @@ function MainPage() {
       if (response.data) {
         /* 서버 응답값이 있다면 & target 상태 변경 */
         dispatch(setAllConcerts(response.data.data.concertInfo));
-        dispatch(setTarget(allConcerts[targetIdx]));
+        dispatch(setTarget(response.data.data.concertInfo[0]));
         /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
         dispatch(setIsRendering(true));
       }
@@ -175,6 +179,7 @@ function MainPage() {
           /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
           dispatch(setTotalNum(response.data.data.totalPage));
           dispatch(setPageAllComments(response.data.data.concertCommentInfo));
+          dispatch(setMainTotalComments(response.data.data.totalComment));
         }
       }
     } catch (err) {

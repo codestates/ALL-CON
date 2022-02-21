@@ -60,7 +60,6 @@ function MainFindConchin() {
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
         dispatch(setArticleRendered(true));
-        console.log(response.data.data.articleInfo);
       } else {
       }
     } catch (err) {
