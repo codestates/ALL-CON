@@ -162,3 +162,28 @@
     }
   }
 }
+
+.loadingMyArticleImg {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  @include mobile-only() {
+    width: 4rem;
+    height: 4rem;
+    left: 47%;
+    top: 35%;
+  }
+  @include md() {
+    width: 5rem;
+    height: 5rem;
+    left: 48%;
+    top: 53%;
+  }
+  @include lg() {
+    width: 7rem;
+    height: 7rem;
+    left: 48%;
+    top: 52%;
+  }
+}

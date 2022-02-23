@@ -3,7 +3,7 @@
 /* Store import */
 import { RootState } from '../../index';
 import { loginCheck } from '../../store/AuthSlice';
-import { getMyConcertCommentInfo, getMyConcertCommentTotalPage, getMyArticleCommentInfo, getMyArticleCommentTotalPage, getMyConcertCommentCurrentPage, getMyArticleCommentCurrentPage } from '../../store/MySlice';
+import { getMyConcertCommentInfo, getMyConcertCommentTotalPage, getMyArticleCommentInfo, getMyArticleCommentTotalPage, getMyConcertCommentCurrentPage, getMyArticleCommentCurrentPage, setIsLoadingState } from '../../store/MySlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -33,6 +33,8 @@ function MyCommentPagination() {
   /* handler 함수 (기능별 정렬) */
   // 내가 쓴 (콘서트) 게시물 페이지를 클릭헀을 때, 다음을 실행한다
   const handleConcertPageClick = async (pageNum: number) => {
+    // 페이지를 눌렀을 때 로딩중 상태 세팅 (내가 쓴 댓글 콘서트: false)
+    dispatch(setIsLoadingState({myArticle: true, myConcertComment: false, myArticleComment: true}))
     // 내가 쓴 댓글(콘서트 게시물) axios
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${pageNum}`,
@@ -44,10 +46,14 @@ function MyCommentPagination() {
     dispatch(getMyConcertCommentTotalPage(response.data.data.totalPage))
     // 현재 (내가 쓴 콘서트 댓글) 페이지 업데이트
     dispatch(getMyConcertCommentCurrentPage(pageNum))
+    // 페이지를 눌렀을 때 로딩중 상태 세팅 (내가 쓴 댓글 콘서트: true)
+    dispatch(setIsLoadingState({myArticle: true, myConcertComment: true, myArticleComment: true}))
   } 
 
   // 내가 쓴 (콘친) 게시물 페이지를 클릭헀을 때, 다음을 실행한다
   const handleArticlePageClick = async (pageNum: number) => {
+    // 페이지를 눌렀을 때 로딩중 상태 세팅 (내가 쓴 댓글 콘친: false)
+    dispatch(setIsLoadingState({myArticle: true, myConcertComment: true, myArticleComment: false}))
     // 내가 쓴 댓글(콘친 게시물)
     const response = await axios.get(
       `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=${pageNum}&comment_type=article`,
@@ -59,6 +65,8 @@ function MyCommentPagination() {
     dispatch(getMyArticleCommentTotalPage(response.data.data.totalPage))
     // 현재 (내가 쓴 콘서트 댓글) 페이지 업데이트
     dispatch(getMyArticleCommentCurrentPage(pageNum))
+    // 페이지를 눌렀을 때 로딩중 상태 세팅 (내가 쓴 댓글 콘친: true)
+    dispatch(setIsLoadingState({myArticle: true, myConcertComment: true, myArticleComment: true}))
   } 
 
   return (

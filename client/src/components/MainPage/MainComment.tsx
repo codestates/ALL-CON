@@ -14,21 +14,28 @@ import {
 import {
   setPageAllComments,
   setTotalNum,
+  setPageNum,
   setComment,
 } from '../../store/ConcertCommentSlice';
+import { setMainTotalComments } from '../../store/MainSlice';
 import { setTargetArticlesUserInfo } from '../../store/ConChinSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { setDetail } from '../../store/MainSlice';
 
 function MainComment() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { target, isRendering } = useSelector((state: RootState) => state.main);
+  const { target, isRendering, allConcerts, targetIdx } = useSelector(
+    (state: RootState) => state.main,
+  );
   const { pageNum, pageAllComments, comment } = useSelector(
     (state: RootState) => state.concertComments,
   );
+
+  const [pageAllCommentsMain, setPageAllCommentsMain] = useState<any[]>([]);
   /* 댓글 작성 인풋 && 작성 버튼 클릭 여부 */
   const [inputComment, setInputComment] = useState<string>('');
   const [isClick, setIsClick] = useState<boolean>(false);
@@ -44,11 +51,6 @@ function MainComment() {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [clickId, setClickId] = useState<number>(0);
   const [editComment, setEditComment] = useState<string>('');
-
-  /* 댓글 작성 클릭시 댓글 재렌더링 */
-  useEffect(() => {
-    getAllComments();
-  }, [isClick]);
 
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -92,7 +94,7 @@ function MainComment() {
       if (totalByte >= maxByte) setByteError(true);
       else setByteError(false);
     } else {
-    /* 댓글 수정 입력 */
+      /* 댓글 수정 입력 */
       setEditByteLength(totalByte);
       /* byte 길이에 따라 에러 상태 변경 */
       if (totalByte >= maxByte) {
@@ -168,6 +170,9 @@ function MainComment() {
         dispatch(insertAlertText('댓글이 작성되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
+        getAllComments();
+        dispatch(setPageNum(0));
+        dispatch(setPageNum(1));
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -238,6 +243,10 @@ function MainComment() {
         dispatch(insertAlertText('댓글이 삭제되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
+        getAllCommentsAfterDelete();
+        dispatch(setPageNum(0));
+        dispatch(setPageNum(1));
+        dispatch(setMainTotalComments(response.data.data.totalComment));
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -265,8 +274,39 @@ function MainComment() {
           /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
           setIsClick(false);
           setInputComment('');
+          dispatch(setTotalNum(0));
           dispatch(setTotalNum(response.data.data.totalPage));
+          dispatch(setPageAllComments([]));
           dispatch(setPageAllComments(response.data.data.concertCommentInfo));
+          dispatch(setMainTotalComments(response.data.data.totalComment));
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 모든 댓글 가져오기 함수 */
+  const getAllCommentsAfterDelete = async () => {
+    try {
+      /* response 변수에 서버 응답결과를 담는다 */
+      if (isRendering && target) {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment?pageNum=${pageNum}`,
+          { withCredentials: true },
+        );
+        /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
+        if (response.data) {
+          /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
+          setIsClick(false);
+          setInputComment('');
+          dispatch(setTotalNum(0));
+          dispatch(setTotalNum(response.data.data.totalPage));
+          dispatch(setPageAllComments([]));
+          dispatch(setPageAllComments(response.data.data.concertCommentInfo));
+          dispatch(setMainTotalComments(response.data.data.totalComment));
+          dispatch(setPageNum(0));
+          dispatch(setPageNum(1));
         }
       }
     } catch (err) {
@@ -314,6 +354,11 @@ function MainComment() {
     }
     return '';
   };
+
+  /* 댓글리스트 변경시 지역상태 pageAllCommentsMain 변경 */
+  useEffect(() => {
+    setPageAllCommentsMain(pageAllComments);
+  }, [pageAllComments]);
 
   return (
     <div id='commentBox'>
@@ -363,8 +408,8 @@ function MainComment() {
       </div>
 
       {/* 댓글 목록 map */}
-      {pageAllComments.length !== 0 &&
-        pageAllComments.map((el, idx) => (
+      {pageAllCommentsMain.length !== 0 &&
+        pageAllCommentsMain.map((el, idx) => (
           <div className='box' key={idx}>
             <div className='dateBox'>
               <div className='nickNameAndDateWrapper'>
@@ -456,7 +501,7 @@ function MainComment() {
             </div>
           </div>
         ))}
-      {pageAllComments.length === 0 && (
+      {pageAllCommentsMain.length === 0 && (
         <div className='emptyBox'>
           <div>댓글이 없습니다.</div>
           <img src={noComment} alt='noCommentImg' />

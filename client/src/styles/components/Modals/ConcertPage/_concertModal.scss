@@ -278,6 +278,10 @@
                 justify-content: left;
                 align-items: center;
                 height: 15%;
+                text-overflow:ellipsis;
+                white-space:nowrap;
+                word-wrap:normal;
+                overflow:hidden;
                 // border: 1px solid blue;
               }
             }

@@ -36,7 +36,7 @@ function MainConcertInfo() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { target, passToConcert, detail } = useSelector(
+  const { target, passToConcert, detail, mainTotalComments } = useSelector(
     (state: RootState) => state.main,
   );
   const { alarm, emailClick, smsClick, allAlarms } = useSelector(
@@ -61,12 +61,18 @@ function MainConcertInfo() {
     createdAt?: Date;
     updatedAt?: Date;
   }
+  const [mainTotalCommentsMain, setMainTotalCommentsMain] = useState<number>(0);
   const [detailMain, setDetailMain] = useState<mainDetail>({});
 
   /* 타겟 변경시 지역상태 detailMain 변경  */
   useEffect(() => {
     setDetailMain(detail);
   }, [detail]);
+
+  /* 총 댓글수 변경시 지역상태 mainTotalCommentsMain 변경 */
+  useEffect(() => {
+    setMainTotalCommentsMain(mainTotalComments);
+  }, [mainTotalComments]);
 
   /* 알람버튼 요청 핸들러 */
   const alarmSetHandler = async (type: string) => {
@@ -192,12 +198,12 @@ function MainConcertInfo() {
   /* Date 객체 형변환 함수 */
   const dayFormatter = (openDate?: Date): string => {
     if (openDate) {
-      const strOpenDate = String(openDate);
+      const strOpenDate = openDate.toString();
 
       const year = strOpenDate.substring(0, 4);
       const month = strOpenDate.substring(5, 7);
       const date = strOpenDate.substring(8, 10);
-      const hour = strOpenDate.substring(11, 13);
+      const hour = Number(strOpenDate.substring(11, 13)) + 9;
       const minute = strOpenDate.substring(14, 16);
 
       return String(
@@ -380,7 +386,9 @@ function MainConcertInfo() {
       </div>
       <div id='bottomBox'>
         <img src={comment} alt='commentImg' />
-        <div>{detailMain.total_comment}개의 댓글</div>
+        <div>
+          {mainTotalCommentsMain ? mainTotalCommentsMain : '0'}개의 댓글
+        </div>
       </div>
     </div>
   );
