@@ -6,15 +6,23 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 /* Store import */
 import { RootState } from '../index';
+import {
+  setPageAllComments,
+  setTotalNum,
+  setPageNum,
+  setComment,
+} from '../store/ConcertCommentSlice';
+import { setMainTotalComments } from '../store/MainSlice';
 /* Library import */
+import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Slider, { Settings } from 'react-slick';
-import { setTarget, setTargetIdx } from '../store/MainSlice';
+import { setTarget, setTargetIdx, setDetail } from '../store/MainSlice';
 
 function PosterSlide() {
   const dispatch = useDispatch();
-
+  const { pageNum } = useSelector((state: RootState) => state.concertComments);
   const { target, targetIdx, allConcerts, isRendering, passToConcert } =
     useSelector((state: RootState) => state.main);
 
@@ -43,43 +51,66 @@ function PosterSlide() {
   const [targetMain, setTargetMain] = useState<mainTarget>({});
   const [targetIdxMain, setTargetIdxMain] = useState(0);
 
-  //isRendering이 변할때마다(즉 받아오는 이미지들이 변할때마다) targetIdx 변화
-  useEffect(() => {
-    //콘서트 페이지에서 왔다면
-    if (targetIdx) {
-      // 해당 타겟인덱스로 이동, 보이도록 만들기
-      setCenterfunc();
-    }
-
-    //오더 바꿔 누를때마다
-    else {
-      dispatch(setTargetIdx(0));
-      //0번째 포스터가 가운데로 이동
-      setCenterfunc();
-    }
-  }, [isRendering]);
-
-  useEffect(() => {
-    //타겟 인덱스가 변할때마다 타겟 바꿔주기
-    dispatch(setTarget(allConcerts[targetIdx]));
-    //타겟 인덱스가 변할때마다 타겟이 점보트론에 보이도록 이동하기
-    setCenterfunc();
-    //지역상태 변경
-    setTargetIdxMain(targetIdx);
-  }, [targetIdx]);
-
   //전역상태가 변할때마다 지역상태도 변경됌
   useEffect(() => {
     setAllConcertsMain(allConcerts);
   }, [allConcerts]);
 
   useEffect(() => {
-
-    console.log('----- 메인: PosterSlide -----', allConcerts)
-    console.log('----- 메인: PosterSlide 타켓 인덱스 -----', targetIdx)
-
     setTargetMain(target);
   }, [target]);
+
+  useEffect(() => {
+    //타겟 인덱스가 변할때마다 타겟이 점보트론에 보이도록 이동하기
+    setCenterfunc();
+    //지역상태 변경
+    setTargetIdxMain(targetIdx);
+    getDetailInfo(allConcerts[targetIdx].id);
+  }, [targetIdx]);
+
+  /* 상세 콘서트 받아오기 */
+  const getDetailInfo = async (id: number) => {
+    try {
+      //order가 바뀔 때 5번 실행되고, 타겟 바꿀 때마다 2번씩 실행됌
+
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${id}`,
+        { withCredentials: true },
+      );
+      if (response.data.data) {
+        /* 서버 응답값이 있다면 detail(상세정보) 갱신 */
+        dispatch(setDetail(response.data.data.concertInfo));
+        //console.log('디스패치 실행중');
+        getAllComments(id);
+        //타겟 인덱스가 변할때마다 타겟 바꿔주기
+        dispatch(setTarget(allConcerts[targetIdx]));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 모든 댓글 가져오기 함수 */
+  const getAllComments = async (id: number) => {
+    try {
+      if (target) {
+        /* response 변수에 서버 응답결과를 담는다 */
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/concert/${id}/comment?pageNum=${pageNum}`,
+          { withCredentials: true },
+        );
+        /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
+        if (response.data) {
+          /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
+          dispatch(setTotalNum(response.data.data.totalPage));
+          dispatch(setPageAllComments(response.data.data.concertCommentInfo));
+          dispatch(setMainTotalComments(response.data.data.totalComment));
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const NextArrow = ({ onClick }: any) => {
     return (
@@ -132,7 +163,7 @@ function PosterSlide() {
           //targetIdx가 0일때 ->
           // lastIdx-1 lastIdx targetIdx targetIdx+1 targetIdx+2
           if (targetIdxMain === 0) {
-            if (allConcerts.indexOf(el) === lastIdx - 1) {
+            if (allConcertsMain.indexOf(el) === lastIdx - 1) {
               return (
                 <div className='edge_l' key={el.id}>
                   <div className='card'>
@@ -152,7 +183,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === lastIdx) {
+            } else if (allConcertsMain.indexOf(el) === lastIdx) {
               return (
                 <div className='side_l' key={el.id}>
                   <div className='card'>
@@ -172,7 +203,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain) {
               return (
                 <div className='center' key={el.id}>
                   <div className='card'>
@@ -198,7 +229,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain + 1) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain + 1) {
               return (
                 <div className='side_r' key={el.id}>
                   <div className='card'>
@@ -218,7 +249,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain + 2) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain + 2) {
               return (
                 <div className='edge_r' key={el.id}>
                   <div className='card'>
@@ -263,7 +294,7 @@ function PosterSlide() {
           //targetIdxMain가 1일때 ->
           //lastIdx targetIdxMain-1 targetIdxMain targetIdxMain+1 targetIdxMain+2
           else if (targetIdxMain === 1) {
-            if (allConcerts.indexOf(el) === lastIdx) {
+            if (allConcertsMain.indexOf(el) === lastIdx) {
               return (
                 <div className='edge_l' key={el.id}>
                   <div className='card'>
@@ -283,7 +314,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain - 1) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain - 1) {
               return (
                 <div className='side_l' key={el.id}>
                   <div className='card'>
@@ -303,7 +334,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain) {
               return (
                 <div className='center' key={el.id}>
                   <div className='card'>
@@ -329,7 +360,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain + 1) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain + 1) {
               return (
                 <div className='side_r' key={el.id}>
                   <div className='card'>
@@ -349,7 +380,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain + 2) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain + 2) {
               return (
                 <div className='edge_r' key={el.id}>
                   <div className='card'>
@@ -394,7 +425,7 @@ function PosterSlide() {
           //targetIdxMain가 lastIdx -1일때 ->
           //targetIdxMain-2 targetIdxMain-1 targetIdxMain targetIdxMain+1 0번째인덱스
           else if (targetIdxMain === lastIdx - 1) {
-            if (allConcerts.indexOf(el) === targetIdxMain - 2) {
+            if (allConcertsMain.indexOf(el) === targetIdxMain - 2) {
               return (
                 <div className='edge_l' key={el.id}>
                   <div className='card'>
@@ -414,7 +445,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain - 1) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain - 1) {
               return (
                 <div className='side_l' key={el.id}>
                   <div className='card'>
@@ -434,7 +465,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain) {
               return (
                 <div className='center' key={el.id}>
                   <div className='card'>
@@ -460,7 +491,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain + 1) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain + 1) {
               return (
                 <div className='side_r' key={el.id}>
                   <div className='card'>
@@ -480,7 +511,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === 0) {
+            } else if (allConcertsMain.indexOf(el) === 0) {
               return (
                 <div className='edge_r' key={el.id}>
                   <div className='card'>
@@ -525,7 +556,7 @@ function PosterSlide() {
           //targetIdxMain가 lastIdx일때 ->
           // targetIdxMain-2 targetIdxMain-1 targetIdxMain 0 1번째 인덱스
           else if (targetIdxMain === lastIdx) {
-            if (allConcerts.indexOf(el) === targetIdxMain - 2) {
+            if (allConcertsMain.indexOf(el) === targetIdxMain - 2) {
               return (
                 <div className='edge_l' key={el.id}>
                   <div className='card'>
@@ -545,7 +576,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain - 1) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain - 1) {
               return (
                 <div className='side_l' key={el.id}>
                   <div className='card'>
@@ -565,7 +596,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain) {
               return (
                 <div className='center' key={el.id}>
                   <div className='card'>
@@ -591,7 +622,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === 0) {
+            } else if (allConcertsMain.indexOf(el) === 0) {
               return (
                 <div className='side_r' key={el.id}>
                   <div className='card'>
@@ -611,7 +642,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === 1) {
+            } else if (allConcertsMain.indexOf(el) === 1) {
               return (
                 <div className='edge_r' key={el.id}>
                   <div className='card'>
@@ -656,7 +687,7 @@ function PosterSlide() {
           //그 외 ->
           // targetIdxMain -2 targetIdxMain-1 targetIdxMain targetIdxMain+1 targetIdxMain +2
           else {
-            if (allConcerts.indexOf(el) === targetIdxMain - 2) {
+            if (allConcertsMain.indexOf(el) === targetIdxMain - 2) {
               return (
                 <div className='edge_l' key={el.id}>
                   <div className='card'>
@@ -676,7 +707,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain - 1) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain - 1) {
               return (
                 <div className='side_l' key={el.id}>
                   <div className='card'>
@@ -696,7 +727,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain) {
               return (
                 <div className='center' key={el.id}>
                   <div className='card'>
@@ -722,7 +753,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain + 1) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain + 1) {
               return (
                 <div className='side_r' key={el.id}>
                   <div className='card'>
@@ -742,7 +773,7 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else if (allConcerts.indexOf(el) === targetIdxMain + 2) {
+            } else if (allConcertsMain.indexOf(el) === targetIdxMain + 2) {
               return (
                 <div className='edge_r' key={el.id}>
                   <div className='card'>

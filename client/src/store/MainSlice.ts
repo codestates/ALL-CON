@@ -51,6 +51,10 @@ export interface main {
   isRendering: boolean;
   /* 콘서트 페이지 이동 여부 상태 */
   passToConcert: boolean;
+  /* 댓글 총 개수 */
+  mainTotalComments: number;
+  /* 마지막 인덱스 */
+  mainLastIdx: number;
 }
 
 /* State 초기값 설정 */
@@ -62,6 +66,8 @@ const initialState: main = {
   targetIdx: 0,
   isRendering: false,
   passToConcert: false,
+  mainTotalComments: 0,
+  mainLastIdx: 0,
 };
 
 const mainSlice = createSlice({
@@ -90,6 +96,12 @@ const mainSlice = createSlice({
     setPassToConcert: (state: main, { payload }: PayloadAction<boolean>) => {
       state.passToConcert = payload;
     },
+    setMainTotalComments: (state: main, { payload }: PayloadAction<number>) => {
+      state.mainTotalComments = payload;
+    },
+    setMainLastIdx: (state: main, { payload }: PayloadAction<number>) => {
+      state.mainLastIdx = payload;
+    },
   },
 });
 
@@ -101,5 +113,7 @@ export const {
   setAllConcerts,
   setIsRendering,
   setPassToConcert,
+  setMainTotalComments,
+  setMainLastIdx,
 } = mainSlice.actions;
 export default mainSlice.reducer;

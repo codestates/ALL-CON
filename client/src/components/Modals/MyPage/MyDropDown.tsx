@@ -1,10 +1,24 @@
 /* Store import */
 import { RootState } from '../../../index';
-import { setTarget, setTargetIdx, setOrder, setAllConcerts, setIsRendering } from '../../../store/MainSlice';
-import { setTargetArticle, setArticleRendered, setArticleCurPage } from '../../../store/ConChinSlice';
+import {
+  setTarget,
+  setTargetIdx,
+  setOrder,
+  setAllConcerts,
+  setIsRendering,
+} from '../../../store/MainSlice';
+import {
+  setTargetArticle,
+  setArticleRendered,
+  setArticleCurPage,
+} from '../../../store/ConChinSlice';
 import { loginCheck, logout, getUserInfo } from '../../../store/AuthSlice';
 import { setPageNum } from '../../../store/ConcertCommentSlice';
-import { setAlarm, setEmailClick, setSmsClick } from '../../../store/ConcertAlarmSlice';
+import {
+  setAlarm,
+  setEmailClick,
+  setSmsClick,
+} from '../../../store/ConcertAlarmSlice';
 import {
   showMyDropDown,
   showLoginModal,
@@ -26,27 +40,27 @@ function MyDropDown() {
   /* dispatch / navigate */
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  
+
   /* useSelector */
   const { scrollCount } = useSelector((state: RootState) => state.header);
 
   /* 지역상태 - useState */
   /* useEffect */
-  
+
   /* handler 함수 (기능별 정렬) */
   // 로그아웃 후 메인페이지 리다이렉트 핸들러
   const goHomeHandler = () => {
     /* 메인페이지 상태 초기화 */
     dispatch(setTarget({}));
     dispatch(setTargetIdx(0));
-    dispatch(setOrder('view')); 
+    dispatch(setOrder('view'));
     dispatch(setPageNum(1));
     dispatch(setIsRendering(false));
     dispatch(setAlarm({}));
     dispatch(setEmailClick(false));
     dispatch(setSmsClick(false));
     /* 켜져있는 모달창 모두 종료 */
-    dispatch(showConcertModal(false)); // concertPage 모달창    
+    dispatch(showConcertModal(false)); // concertPage 모달창
     dispatch(showLoginModal(false));
     /* 홈으로 이동 */
     navigate('/main');
