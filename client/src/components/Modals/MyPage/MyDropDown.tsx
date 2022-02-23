@@ -26,6 +26,11 @@ import {
   showAlertModal,
   insertAlertText,
 } from '../../../store/ModalSlice';
+
+import {
+  setIsLoadingState,
+} from '../../../store/MySlice';
+
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
@@ -102,6 +107,12 @@ function MyDropDown() {
   // 마이페이지 버튼을 누르면, 다음이 실행된다
   const handleMypageBtn = async () => {
     try {
+      // isLoading 초기상태 세팅
+      dispatch(setIsLoadingState({
+          myArticle: false,
+          myConcertComment: false,
+          myArticleComment: false,
+      }))
       // 콘서트 페이지에서 콘서트를 선택한 후 마이페이지로 넘어갈 때, 지도 API close 해주는 함수
       resetHandler();
       // 메인페이지 점보트론 초기화 (전체콘서트:조회수 / Order: 조회수)

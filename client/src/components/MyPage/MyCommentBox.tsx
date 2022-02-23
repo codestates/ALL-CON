@@ -12,24 +12,20 @@ import {
   getMyArticleCommentInfo,
 } from '../../store/MySlice';
 import { setConChinPageNum } from '../../store/ConChinCommentSlice';
-
 import {
   showAlertModal,
   insertAlertText,
 } from '../../store/ModalSlice';
-
-import { setPageNum } from '../../store/ConcertCommentSlice';
 import {
-  setAllConcerts,
   setTarget,
   setTargetIdx,
   setIsRendering,
-  setOrder,
 } from '../../store/MainSlice';
 import { setTargetArticle, setPostingOrder, setArticleOrder, setAllArticles, setArticleTotalPage } from '../../store/ConChinSlice';
+import { setIsLoadingState } from '../../store/MySlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -47,22 +43,25 @@ function MyCommentBox() {
     commentBtnType,
     articleCommentInfo,
     myTotalArticleComment,
+    isLoadingState,
   } = useSelector((state: RootState) => state.my);
   const { allConcerts } = useSelector((state: RootState) => state.main);
 
   /* 지역상태 - useState */
   /* useEffect */
-  // 로딩중 상태
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+
 
   /* handler 함수 (기능별 정렬) */
   // 콘서트 및 콘친 게시물 버튼 핸들러
   const handleCommentSelectionBtn = async (key: string) => {
-    setIsLoading(false)
+    
     // 현재 댓글 버튼의 상태를 업데이트
     // ex) 콘서트 버튼을 누르면 => commentBtnType = '콘서트', 콘친 게시물 버튼을 누르면 => commentBtnType = '콘친'
     dispatch(getCommentBtnType(key));
     if (key === '콘서트') {
+
+      dispatch(setIsLoadingState({myArticle: true, myConcertComment: false, myArticleComment: true}))
+
       // [GET] 내가 작성한 댓글 조회 (콘친&페이지: 1)
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1&comment_type=article`,
@@ -72,8 +71,11 @@ function MyCommentBox() {
       dispatch(getMyArticleCommentInfo(response.data.data));
       // 콘친 댓글의 현재 페이지를 1로 업데이트
       dispatch(getMyArticleCommentCurrentPage(1));
-      setIsLoading(true)
+      dispatch(setIsLoadingState({myArticle: true, myConcertComment: true, myArticleComment: true}))
     } else if (key === '콘친') {
+
+      dispatch(setIsLoadingState({myArticle: true, myConcertComment: true, myArticleComment: false}))
+
       // [GET] 내가 작성한 댓글 조회 (콘서트&페이지: 1)
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/user/mycomment?pageNum=1`,
@@ -83,7 +85,7 @@ function MyCommentBox() {
       dispatch(getMyConcertCommentInfo(response.data.data));
       // 콘친 댓글의 현재 페이지를 1로 업데이트
       dispatch(getMyConcertCommentCurrentPage(1));
-      setIsLoading(true)
+      dispatch(setIsLoadingState({myArticle: true, myConcertComment: true, myArticleComment: true}))
     }
   };
 
@@ -164,7 +166,6 @@ function MyCommentBox() {
 
       // 콘친페이지로 이동
       navigate('/conchin');
-
     }
   };
 
@@ -202,7 +203,7 @@ function MyCommentBox() {
           </div>
           {/* 어떤 버튼 (콘서트 / 콘친 게시물)이 눌림에 따라 댓글이 달라진다 */}
           {commentBtnType === '콘서트'
-            ? Array.isArray(concertCommentInfo) && isLoading
+            ? Array.isArray(concertCommentInfo) && isLoadingState?.myConcertComment
               ? concertCommentInfo.map((el: any, idx: number) => {
                   return (
                     <div
@@ -245,7 +246,7 @@ function MyCommentBox() {
                 })
               : <img className='loadingImg' src={LoadingImage} alt='LoadingImage' />
             : /******************************************************************************************************************/
-            Array.isArray(articleCommentInfo) && isLoading
+            Array.isArray(articleCommentInfo) && isLoadingState?.myArticleComment
             ? articleCommentInfo.map((el: any, idx: number) => {
                 return (
                   <div
