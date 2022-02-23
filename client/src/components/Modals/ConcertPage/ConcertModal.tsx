@@ -24,6 +24,7 @@ import { setMainTotalComments } from '../../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConcertModal() {
@@ -75,10 +76,15 @@ function ConcertModal() {
     dispatch(
       setTargetIdx(allConcerts.findIndex(concert => concert.id === target.id)),
     );
-    dispatch(setTarget(allConcerts[targetIdx]));
-    getPageComments(1);
+    const targetTimeOut = setTimeout(setTargetHandler, 300);
+    const commentTimeOut = setTimeout(getPageComments, 500);
     dispatch(showConcertModal(false));
     navigate('/main');
+  };
+
+  /* Target 설정 Handler */
+  const setTargetHandler = () => {
+    dispatch(setTarget(allConcerts[targetIdx]));
   };
 
   /* 모든 댓글 가져오기 함수 */
@@ -87,7 +93,7 @@ function ConcertModal() {
       /* response 변수에 서버 응답결과를 담는다 */
 
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment?pageNum=${pageNum}`,
+        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment?pageNum=1`,
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
@@ -96,7 +102,7 @@ function ConcertModal() {
         dispatch(setTotalNum(response.data.data.totalPage));
         dispatch(setPageAllComments(response.data.data.concertCommentInfo));
         dispatch(setMainTotalComments(response.data.data.totalComment));
-        // dispatch(setPageNum(1));
+        dispatch(setPageNum(1));
       }
     } catch (err) {
       console.log(err);
