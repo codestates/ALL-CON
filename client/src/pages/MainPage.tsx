@@ -49,7 +49,7 @@ function MainPage() {
 
   /* 상세 콘서트 정보 & 알람 정보 렌더링 */
   useEffect(() => {
-    getDetailInfo(); // 상세 콘서트 정보
+    // getDetailInfo(); // 상세 콘서트 정보
     getDetailAlarmInfo();
   }, [target]);
   // , pageAllComments]);
@@ -60,9 +60,9 @@ function MainPage() {
   }, [isRendering, emailClick, smsClick, isLogin]);
 
   /* 전체 댓글 목록 렌더링 (좌우버튼 클릭시, 정렬버튼 클릭시, 현재 포스터정보 변경시) */
-  useEffect(() => {
-    getAllComments(); // 전체 댓글 목록
-  }, [target, pageNum]);
+  // useEffect(() => {
+  //   getAllComments(); // 전체 댓글 목록
+  // }, [target, pageNum]);
   // , isLogin]);
 
   //지역상태 변경
@@ -110,27 +110,6 @@ function MainPage() {
     }
   };
 
-  /* 상세 콘서트 받아오기 */
-  const getDetailInfo = async () => {
-    try {
-      //console.log('getDeatilInfo함수 실행됌');
-      //order가 바뀔 때 5번 실행되고, 타겟 바꿀 때마다 2번씩 실행됌
-      if (target) {
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/concert/${target.id}`,
-          { withCredentials: true },
-        );
-        if (response.data.data) {
-          /* 서버 응답값이 있다면 detail(상세정보) 갱신 */
-          dispatch(setDetail(response.data.data.concertInfo));
-          //console.log('디스패치 실행중');
-        }
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   /* 상세 콘서트 알람 여부 확인 함수 */
   const getDetailAlarmInfo = () => {
     /* 현재 target.id와 일치하며, 현재 로그인한 userInfo.id와 일치하는 알람을 가져온다. */
@@ -161,28 +140,6 @@ function MainPage() {
       dispatch(setAlarm({}));
       dispatch(setEmailClick(false));
       dispatch(setSmsClick(false));
-    }
-  };
-
-  /* 모든 댓글 가져오기 함수 */
-  const getAllComments = async () => {
-    try {
-      if (target) {
-        /* response 변수에 서버 응답결과를 담는다 */
-        const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment?pageNum=${pageNum}`,
-          { withCredentials: true },
-        );
-        /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
-        if (response.data) {
-          /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
-          dispatch(setTotalNum(response.data.data.totalPage));
-          dispatch(setPageAllComments(response.data.data.concertCommentInfo));
-          dispatch(setMainTotalComments(response.data.data.totalComment));
-        }
-      }
-    } catch (err) {
-      console.log(err);
     }
   };
 

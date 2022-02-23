@@ -28,7 +28,9 @@ import { setDetail } from '../../store/MainSlice';
 function MainComment() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { target, isRendering } = useSelector((state: RootState) => state.main);
+  const { target, isRendering, allConcerts, targetIdx } = useSelector(
+    (state: RootState) => state.main,
+  );
   const { pageNum, pageAllComments, comment } = useSelector(
     (state: RootState) => state.concertComments,
   );
@@ -51,9 +53,9 @@ function MainComment() {
   const [editComment, setEditComment] = useState<string>('');
 
   /* 댓글 작성 클릭시 댓글 재렌더링 */
-  useEffect(() => {
-    getAllComments();
-  }, [isClick]);
+  // useEffect(() => {
+  //   // getAllComments();
+  // }, [isClick]);
 
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
