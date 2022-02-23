@@ -53,6 +53,8 @@ export interface main {
   passToConcert: boolean;
   /* 댓글 총 개수 */
   mainTotalComments: number;
+  /* 마지막 인덱스 */
+  mainLastIdx: number;
 }
 
 /* State 초기값 설정 */
@@ -65,6 +67,7 @@ const initialState: main = {
   isRendering: false,
   passToConcert: false,
   mainTotalComments: 0,
+  mainLastIdx: 0,
 };
 
 const mainSlice = createSlice({
@@ -96,6 +99,9 @@ const mainSlice = createSlice({
     setMainTotalComments: (state: main, { payload }: PayloadAction<number>) => {
       state.mainTotalComments = payload;
     },
+    setMainLastIdx: (state: main, { payload }: PayloadAction<number>) => {
+      state.mainLastIdx = payload;
+    },
   },
 });
 
@@ -108,5 +114,6 @@ export const {
   setIsRendering,
   setPassToConcert,
   setMainTotalComments,
+  setMainLastIdx,
 } = mainSlice.actions;
 export default mainSlice.reducer;

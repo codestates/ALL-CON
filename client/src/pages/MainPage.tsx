@@ -30,9 +30,8 @@ import { useEffect, useState } from 'react';
 function MainPage() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { isRendering, order, target, targetIdx, allConcerts } = useSelector(
-    (state: RootState) => state.main,
-  );
+  const { isRendering, order, target, targetIdx, allConcerts, detail } =
+    useSelector((state: RootState) => state.main);
   const { allAlarms, alarm, emailClick, smsClick } = useSelector(
     (state: RootState) => state.concertAlarm,
   );

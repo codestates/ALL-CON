@@ -108,9 +108,9 @@ function AutoComplete() {
 
     //headerAllConcerts에 clickedIdx로 접근하여 target 변경
     getAllConcertsClick(clickedOption);
-    dispatch(insertAlertText('관련 콘서트 페이지로 이동합니다! 🙂'));
-    dispatch(insertBtnText('확인'));
-    dispatch(showSuccessModal(true));
+    // dispatch(insertAlertText('관련 콘서트 페이지로 이동합니다! 🙂'));
+    // dispatch(insertBtnText('확인'));
+    // dispatch(showSuccessModal(true));
     dispatch(setTarget(headerAllConcerts[clickedIdx]));
     dispatch(setPassToConcert(true));
 
