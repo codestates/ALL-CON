@@ -51,22 +51,6 @@ function PosterSlide() {
   const [targetMain, setTargetMain] = useState<mainTarget>({});
   const [targetIdxMain, setTargetIdxMain] = useState(0);
 
-  //isRendering이 변할때마다(즉 받아오는 이미지들이 변할때마다) targetIdx 변화
-  // useEffect(() => {
-  //   //콘서트 페이지에서 왔다면
-  //   if (targetIdx) {
-  //     // 해당 타겟인덱스로 이동, 보이도록 만들기
-  //     setCenterfunc();
-  //   }
-
-  //   //오더 바꿔 누를때마다
-  //   else {
-  //     dispatch(setTargetIdx(0));
-  //     //0번째 포스터가 가운데로 이동
-  //     setCenterfunc();
-  //   }
-  // }, [isRendering]);
-
   //전역상태가 변할때마다 지역상태도 변경됌
   useEffect(() => {
     setAllConcertsMain(allConcerts);
@@ -87,7 +71,6 @@ function PosterSlide() {
   /* 상세 콘서트 받아오기 */
   const getDetailInfo = async (id: number) => {
     try {
-      //console.log('getDeatilInfo함수 실행됌');
       //order가 바뀔 때 5번 실행되고, 타겟 바꿀 때마다 2번씩 실행됌
 
       const response = await axios.get(

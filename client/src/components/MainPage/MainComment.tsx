@@ -52,11 +52,6 @@ function MainComment() {
   const [clickId, setClickId] = useState<number>(0);
   const [editComment, setEditComment] = useState<string>('');
 
-  /* 댓글 작성 클릭시 댓글 재렌더링 */
-  // useEffect(() => {
-  //   // getAllComments();
-  // }, [isClick]);
-
   /* 인풋 체인지 핸들러 */
   const inputChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     inputCheckByte(e.target.value); // byte 초과여부 체크
@@ -175,6 +170,9 @@ function MainComment() {
         dispatch(insertAlertText('댓글이 작성되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
+        getAllComments();
+        dispatch(setPageNum(0));
+        dispatch(setPageNum(1));
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -245,8 +243,10 @@ function MainComment() {
         dispatch(insertAlertText('댓글이 삭제되었습니다! 🙂'));
         dispatch(insertBtnText('확인'));
         dispatch(showSuccessModal(true));
+        getAllCommentsAfterDelete();
+        dispatch(setPageNum(0));
+        dispatch(setPageNum(1));
         dispatch(setMainTotalComments(response.data.data.totalComment));
-        getAllComments();
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -274,9 +274,38 @@ function MainComment() {
           /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
           setIsClick(false);
           setInputComment('');
+          dispatch(setTotalNum(0));
           dispatch(setTotalNum(response.data.data.totalPage));
+          dispatch(setPageAllComments([]));
           dispatch(setPageAllComments(response.data.data.concertCommentInfo));
           dispatch(setMainTotalComments(response.data.data.totalComment));
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 모든 댓글 가져오기 함수 */
+  const getAllCommentsAfterDelete = async () => {
+    try {
+      /* response 변수에 서버 응답결과를 담는다 */
+      if (isRendering && target) {
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment?pageNum=${pageNum}`,
+          { withCredentials: true },
+        );
+        /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
+        if (response.data) {
+          /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
+          setIsClick(false);
+          setInputComment('');
+          dispatch(setTotalNum(0));
+          dispatch(setTotalNum(response.data.data.totalPage));
+          dispatch(setPageAllComments([]));
+          dispatch(setPageAllComments(response.data.data.concertCommentInfo));
+          dispatch(setMainTotalComments(response.data.data.totalComment));
+          dispatch(setPageNum(0));
           dispatch(setPageNum(1));
         }
       }
