@@ -33,6 +33,13 @@ export interface my {
   myTotalConcertComment: number;
   myTotalArticleComment: number;
 
+  // loading 관리
+  isLoadingState?: {
+    myArticle?: boolean;
+    myConcertComment?: boolean;
+    myArticleComment?: boolean;
+  }
+
   // 버튼 ON/OFF 관리
   btnSwitchState?: {
     profileEdit?: boolean;
@@ -94,6 +101,7 @@ const initialState: my = {
   articleCommentInfo: {},
 
   btnSwitchState: {},
+  isLoadingState: {}, 
 
   myConcertCommentTotalPage: 0, 
   myConcertCommentCurrentPage: 1,
@@ -163,8 +171,11 @@ const mySlice = createSlice({
       state.btnSwitchState = payload;
     }, 
     getMyArticleCurrentPage: (state: my, { payload }: PayloadAction<number>) => { 
-      state.myArticleCommentCurrentPage = payload;
+      state.myArticleCurrentPage = payload;
     }, 
+    setIsLoadingState: (state: my, { payload }: PayloadAction<object>) => {
+      state.isLoadingState = payload;
+    },
   }
 });
 
@@ -191,7 +202,8 @@ export const {
   getMyArticleCommentInfo,
   getMyArticleCurrentPage,
 
-  getBtnSwitchState
+  getBtnSwitchState,
+  setIsLoadingState,
 } = mySlice.actions;
 
 export default mySlice.reducer;

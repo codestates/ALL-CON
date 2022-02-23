@@ -1,5 +1,6 @@
 /* Config import */
 /* CSS import */
+import LoadingImage from '../../images/spinner.gif'; 
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
 import commentImage from '../../images/commentDots.png';
@@ -21,6 +22,7 @@ import axios from 'axios';
 import { RootState } from '../../index';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function MyArticleBox() {
   /* dispatch / navigate */
@@ -28,13 +30,19 @@ function MyArticleBox() {
   const navigate = useNavigate();
 
   /* useSelector */
-  const { articleInfo, myTotalArticle } = useSelector(
+  const { articleInfo, myTotalArticle, isLoadingState } = useSelector(
     (state: RootState) => state.my,
   );
 
   /* 지역상태 - useState */
+  const [firstIsLoading, setFirstIsLoading] = useState<boolean>(false)
 
   /* useEffect */
+  useEffect(() => {
+
+    if(isLoadingState?.myArticle === true) setFirstIsLoading(true)
+
+  }, [isLoadingState?.myArticle])
 
   /* handler 함수 (기능별 정렬) */
   // 마이페이지 - 나의 게시물 중 한 게시물을 선택하면, 다음이 실행된다
@@ -92,11 +100,15 @@ function MyArticleBox() {
       <div id='titleWrapper'>
         <p className='title'>내가 쓴 게시물</p>
       </div>
-      <h1 id='myArticleCount'>{myTotalArticle}개의 게시물</h1>
+      {
+        firstIsLoading
+          ? <h1 id='myArticleCount'>{myTotalArticle}개의 게시물</h1>
+          : null
+      }
       <div id='articleWrapper'>
         <div id='articleBox'>
           <div id='box'>
-            {Array.isArray(articleInfo)
+            {Array.isArray(articleInfo) && isLoadingState?.myArticle
               ? articleInfo.map((el: any) => {
                   return (
                     // 마이페이지, 내가 작성한 게시물에서 "특정 게시물"을 선택
@@ -144,7 +156,7 @@ function MyArticleBox() {
                     </ul>
                   );
                 })
-              : null}
+              : <img className='loadingMyArticleImg' src={LoadingImage} alt='LoadingImage' />}
           </div>
         </div>
       </div>
