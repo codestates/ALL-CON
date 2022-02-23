@@ -1,11 +1,21 @@
 /* Store import */
 import { RootState } from '../index';
 import { logout, getUserInfo } from '../store/AuthSlice';
-import { setTarget, setTargetIdx, setOrder, setPassToConcert, setIsRendering } from '../store/MainSlice';
+import {
+  setTarget,
+  setTargetIdx,
+  setOrder,
+  setPassToConcert,
+  setIsRendering,
+} from '../store/MainSlice';
 import { setPageNum } from '../store/ConcertCommentSlice';
-import { setAlarm, setEmailClick, setSmsClick } from '../store/ConcertAlarmSlice';
-import { 
-  showLoginModal, 
+import {
+  setAlarm,
+  setEmailClick,
+  setSmsClick,
+} from '../store/ConcertAlarmSlice';
+import {
+  showLoginModal,
   showConcertModal,
   showConfirmNumberModal,
   showPhoneConfirmNumberModal,
@@ -13,7 +23,7 @@ import {
   showSuccessModal,
   showConChinWritingModal,
   showAlarmModal,
-  showMyProfileImageModal
+  showMyProfileImageModal,
 } from '../store/ModalSlice';
 /* Library import */
 import { useEffect } from 'react';
@@ -27,14 +37,14 @@ function LoginRedirect() {
 
   /* useSelector */
   const { isLoginCheck } = useSelector((state: RootState) => state.auth);
-  
+
   /* handler 함수 (기능별 정렬) */
   // 메인페이지 리다이렉트 핸들러
   const goHomeHandler = () => {
     /* 메인페이지 상태 초기화 */
-    dispatch(setTarget({}));
+    // dispatch(setTarget({}));
     dispatch(setTargetIdx(0));
-    dispatch(setOrder('view')); 
+    dispatch(setOrder('view'));
     dispatch(setPageNum(1));
     dispatch(setIsRendering(false));
     dispatch(setAlarm({}));
@@ -42,7 +52,7 @@ function LoginRedirect() {
     dispatch(setSmsClick(false));
     dispatch(setPassToConcert(false));
     /* 켜져있는 모달창 모두 종료 */
-    dispatch(showConcertModal(false));  
+    dispatch(showConcertModal(false));
     dispatch(showLoginModal(false));
     dispatch(showConfirmNumberModal(false));
     dispatch(showPhoneConfirmNumberModal(false));
@@ -62,10 +72,9 @@ function LoginRedirect() {
   };
 
   useEffect(() => {
-    if(!isLoginCheck){
-      console.log('언제 실행되는거지?')
+    if (!isLoginCheck) {
       goHomeHandler(); // 메인페이지로 이동
-      loginStateHandler();  // 로그인 상태 변경 & 로그인 모달창 팝업
+      loginStateHandler(); // 로그인 상태 변경 & 로그인 모달창 팝업
     }
   }, [isLoginCheck]);
 
