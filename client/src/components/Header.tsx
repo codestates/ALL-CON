@@ -1,5 +1,3 @@
-/* Config import */
-import { persistor } from '../index';
 /* CSS import */
 import logo from '../images/allConLogo.png';
 import menu from '../images/menu.png';
@@ -16,8 +14,6 @@ import {
   showSideMenuModal,
   showMyDropDown,
   showConcertModal,
-  showConChinProfileModal,
-  showConChinWritingModal,
 } from '../store/ModalSlice';
 import {
   setAllArticles,
@@ -56,9 +52,6 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { allConcerts, targetIdx, target, order } = useSelector(
-    (state: RootState) => state.main,
-  );
   const {
     loginModal,
     signupModal,

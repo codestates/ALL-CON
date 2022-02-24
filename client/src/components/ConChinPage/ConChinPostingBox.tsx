@@ -2,14 +2,13 @@
 import LoadingImage from '../../images/spinner.gif';
 /* Store import */
 import { RootState } from '../../index';
-import { setTarget, setAllConcerts } from '../../store/MainSlice';
+import { setTarget } from '../../store/MainSlice';
 import {
   setAllArticles,
   setArticleTotalPage,
   setArticleCurPage,
   setArticleRendered,
-  setTargetArticle,
-  setIsLoadingConChin,
+  setIsLoadingArticle,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -23,13 +22,8 @@ function ConChinPostingBox() {
   const { postingOrder } = useSelector((state: RootState) => state.conChin);
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
-  const {
-    articleOrder,
-    allArticles,
-    articleRendered,
-    targetArticle,
-    isLoadingConChin,
-  } = useSelector((state: RootState) => state.conChin);
+  const { articleOrder, allArticles, articleRendered, isLoadingConChin } =
+    useSelector((state: RootState) => state.conChin);
 
   /* 지역상태 interface */
   interface ConChinTarget {
@@ -65,6 +59,8 @@ function ConChinPostingBox() {
   const getAllArticlesWithCondition = async () => {
     try {
       if (!articleRendered) {
+        /* 로딩 상태 세팅 article */
+        dispatch(setIsLoadingArticle(false));
         if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
           const response = await axios.get(
@@ -72,6 +68,7 @@ function ConChinPostingBox() {
             { withCredentials: true },
           );
           if (response.data) {
+            dispatch(setIsLoadingArticle(true));
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
             dispatch(setArticleCurPage(1));

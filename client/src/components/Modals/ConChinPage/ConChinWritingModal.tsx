@@ -10,7 +10,6 @@ import {
   showSuccessModal,
   showConChinWritingModal,
 } from '../../../store/ModalSlice';
-import { setTarget } from '../../../store/MainSlice';
 import {
   setAllArticles,
   setArticleTotalPage,
@@ -19,7 +18,6 @@ import {
 } from '../../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
 
@@ -28,8 +26,9 @@ function ConChinWritingModal() {
   const dispatch = useDispatch();
   /* useSelector */
   const { target } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles, targetArticle, targetArticlesUserInfo } =
-    useSelector((state: RootState) => state.conChin);
+  const { articleOrder, targetArticle } = useSelector(
+    (state: RootState) => state.conChin,
+  );
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
   /* 지역상태 interface */

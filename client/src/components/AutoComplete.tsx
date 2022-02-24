@@ -8,9 +8,7 @@ import {
   setPassToConcert,
   setAllConcerts,
 } from '../store/MainSlice';
-import { showConcertModal, showSuccessModal } from '../store/ModalSlice';
-import { insertAlertText, insertBtnText } from '../store/ModalSlice';
-import { setHeaderAllConcerts } from '../store/HeaderSlice';
+import { showConcertModal } from '../store/ModalSlice';
 /* Library import */
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -20,10 +18,7 @@ import { useSelector, useDispatch } from 'react-redux';
 function AutoComplete() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { allConcerts } = useSelector((state: RootState) => state.main);
-  const { headerAllConcerts, headerIsRendered } = useSelector(
-    (state: RootState) => state.header,
-  );
+  const { headerAllConcerts } = useSelector((state: RootState) => state.header);
 
   const [hasText, setHasText] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>('');

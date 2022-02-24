@@ -1,16 +1,16 @@
 /* Store import */
 import { RootState } from '../../index';
-import { setTarget } from '../../store/MainSlice';
 import {
   setArticleOrder,
   setAllArticles,
   setArticleTotalPage,
   setArticleCurPage,
   setArticleRendered,
+  setIsLoadingArticle,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinArticleOrderBox() {
@@ -26,6 +26,8 @@ function ConChinArticleOrderBox() {
 
   const getAllArticles = async (viewOrNew: string) => {
     try {
+      /* 로딩 상태 세팅 article */
+      dispatch(setIsLoadingArticle(false));
       /* 타겟은 있지만 종속된 게시물이 없을때, 게시물 없음 표시 */
       if (
         Object.keys(target).length === 0 &&
@@ -41,6 +43,7 @@ function ConChinArticleOrderBox() {
           { withCredentials: true },
         );
         if (response.data) {
+          dispatch(setIsLoadingArticle(true));
           dispatch(setAllArticles(response.data.data.articleInfo));
           dispatch(setArticleTotalPage(response.data.data.totalPage));
           dispatch(setArticleCurPage(1));
@@ -49,12 +52,16 @@ function ConChinArticleOrderBox() {
       } else if (target === undefined || target === null) {
         dispatch(setArticleCurPage(1));
       } else {
+        /* 로딩 상태 세팅 article */
+        dispatch(setIsLoadingArticle(false));
         /* 타겟에 종속된 게시물 정렬순표시 */
+
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${viewOrNew}`,
           { withCredentials: true },
         );
         if (response.data) {
+          dispatch(setIsLoadingArticle(true));
           dispatch(setAllArticles(response.data.data.articleInfo));
           dispatch(setArticleTotalPage(response.data.data.totalPage));
           dispatch(setArticleCurPage(1));

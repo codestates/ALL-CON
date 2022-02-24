@@ -1,4 +1,5 @@
 /* CSS import */
+import LoadingImage from '../../images/spinner.gif';
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
 import commentImage from '../../images/commentDots.png';
@@ -11,11 +12,11 @@ import {
   setArticleTotalPage,
   setTargetArticle,
   setIsLoadingConChin,
+  setIsLoadingArticleComment,
 } from '../../store/ConChinSlice';
 import {
   setConChinPageAllComments,
   setConChinTotalNum,
-  setConChinComment,
   setConChinPageNum,
   setConChinTotalComments,
 } from '../../store/ConChinCommentSlice';
@@ -28,15 +29,8 @@ import { useState, useEffect } from 'react';
 function ConChinArticleBox() {
   const dispatch = useDispatch();
   const { target } = useSelector((state: RootState) => state.main);
-  const {
-    allArticles,
-    targetArticle,
-    articleOrder,
-
-    isLoadingConChin,
-  } = useSelector((state: RootState) => state.conChin);
-  const { conChinPageNum, conChinPageAllComments, conChinComment } =
-    useSelector((state: RootState) => state.conChinComments);
+  const { allArticles, targetArticle, articleOrder, isLoadingArticle } =
+    useSelector((state: RootState) => state.conChin);
 
   /* 지역상태 interface */
   interface ConChinTarget {
@@ -84,11 +78,8 @@ function ConChinArticleBox() {
   const [conChinAllArticles, setConChinAllArticles] = useState<any[]>([]);
   const [conChinTargetArticle, setConChinTargetArticle] =
     useState<ConChinTargetArticle>({});
-  const [conChinIsLoadingConChin, setConChinIsLoadingConChin] = useState<{
-    posting?: boolean;
-    article?: boolean;
-    articleComment?: boolean;
-  }>({});
+  const [conChinIsLoadingArticle, setConChinIsLoadingArticle] =
+    useState<boolean>(false);
 
   /* 게시물에 관련된 콘서트 정보 조회 핸들러 */
   const getTargetArticlesConcert = async (id: number) => {
@@ -104,12 +95,12 @@ function ConChinArticleBox() {
         { withCredentials: true },
       );
       if (response.data) {
-        dispatch(setTarget(response.data.data.concertInfo));
         dispatch(
           setIsLoadingConChin({
             posting: true,
           }),
         );
+        dispatch(setTarget(response.data.data.concertInfo));
       }
     } catch (err) {
       console.log(err);
@@ -149,6 +140,8 @@ function ConChinArticleBox() {
   /* 모든 댓글 가져오기 함수 */
   const getAllComments = async (id: number) => {
     try {
+      /* 로딩 상태 세팅 articleComment */
+      dispatch(setIsLoadingArticleComment(false));
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/${
@@ -159,6 +152,7 @@ function ConChinArticleBox() {
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
       if (response.data) {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
+        dispatch(setIsLoadingArticleComment(true));
         dispatch(setConChinTotalComments(response.data.data.totalComment));
         dispatch(setConChinPageAllComments([]));
         dispatch(setConChinTotalNum(response.data.data.totalPage));
@@ -186,11 +180,10 @@ function ConChinArticleBox() {
     setConChinAllArticles(allArticles);
   }, [allArticles]);
 
-  /* isLoadingConChin 변경시 지역상태 conChinIsLoadingConChin 변경  */
+  /* isLoadingArticle 변경시 지역상태 conChinIsLoadingArticle 변경  */
   useEffect(() => {
-    if (isLoadingConChin !== undefined)
-      setConChinIsLoadingConChin(isLoadingConChin);
-  }, [isLoadingConChin]);
+    setConChinIsLoadingArticle(isLoadingArticle);
+  }, [isLoadingArticle]);
 
   return (
     <div id='conChinArticleBox'>
@@ -205,7 +198,8 @@ function ConChinArticleBox() {
         >
           {/*게시물 맵핑, 타겟이 없고 게시물만 있을 때 */}
           {Object.keys(conChinAllArticles).length > 0 &&
-          Object.keys(conChinTarget).length === 0 ? (
+          Object.keys(conChinTarget).length === 0 &&
+          conChinIsLoadingArticle === true ? (
             <div
               id={Object.keys(conChinTarget).length === 0 ? 'box' : 'boxChosen'}
             >
@@ -282,7 +276,8 @@ function ConChinArticleBox() {
           ) : Object.keys(conChinTarget).length !== 0 &&
             conChinTarget !== undefined &&
             conChinTarget !== null &&
-            Object.keys(conChinAllArticles).length > 0 ? (
+            Object.keys(conChinAllArticles).length > 0 &&
+            conChinIsLoadingArticle === true ? (
             <div
               id={Object.keys(conChinTarget).length === 0 ? 'box' : 'boxChosen'}
             >
@@ -361,14 +356,32 @@ function ConChinArticleBox() {
               })}
             </div>
           ) : (
-            '게시물이 없습니다. '
+            <div id='articleBoxChosen'>
+              <div id='notFound'>
+                <img
+                  className='loadingImg'
+                  src={LoadingImage}
+                  alt='LoadingImage'
+                />
+              </div>
+            </div>
           )}
         </div>
-      ) : (
+      ) : Object.keys(conChinTarget).length !== 0 &&
+        conChinTarget !== undefined &&
+        conChinTarget !== null &&
+        Object.keys(conChinAllArticles).length === 0 &&
+        conChinIsLoadingArticle === true ? (
         <div id='articleBoxChosen'>
           <div id='notFound'>
             <p className='text'>게시물이 없습니다.</p>
             <img className='img' src={notFound} alt='notFound' />
+          </div>
+        </div>
+      ) : (
+        <div id='articleBoxChosen'>
+          <div id='notFound'>
+            <img className='loadingImg' src={LoadingImage} alt='LoadingImage' />
           </div>
         </div>
       )}

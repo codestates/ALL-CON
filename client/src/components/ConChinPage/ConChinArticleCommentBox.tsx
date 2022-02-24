@@ -1,4 +1,5 @@
 /* CSS import */
+import LoadingImage from '../../images/spinner.gif';
 import shield from '../../images/shield.png';
 import comment from '../../images/comment.png';
 import noComment from '../../images/no_comment_img.png';
@@ -21,10 +22,7 @@ import {
 } from '../../store/ConChinCommentSlice';
 import {
   setTargetArticlesUserInfo,
-  setAllArticles,
-  setArticleCurPage,
-  setArticleTotalPage,
-  setTargetArticle,
+  setIsLoadingArticleComment,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
@@ -35,7 +33,7 @@ function ConChinArticleCommentBox() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
   const { target } = useSelector((state: RootState) => state.main);
-  const { targetArticle, articleOrder } = useSelector(
+  const { targetArticle, articleOrder, isLoadingArticleComment } = useSelector(
     (state: RootState) => state.conChin,
   );
   const {
@@ -73,6 +71,8 @@ function ConChinArticleCommentBox() {
     useState<ConChinTargetArticle>({});
   const [conChinConChinTotalComments, setConChinConChinTotalComments] =
     useState<Number>(0);
+  const [conChinIsLoadingArticleComment, setConChinIsLoadingArticleComment] =
+    useState<boolean>(false);
 
   /* 댓글 작성 인풋 && 작성 버튼 클릭 여부 */
   const [inputComment, setInputComment] = useState<string>('');
@@ -299,6 +299,8 @@ function ConChinArticleCommentBox() {
   /* 모든 댓글 가져오기 함수 */
   const getAllComments = async () => {
     try {
+      /* 로딩 상태 세팅 articleComment */
+      dispatch(setIsLoadingArticleComment(false));
       /* response 변수에 서버 응답결과를 담는다 */
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article/${targetArticle.id}/comment?pageNum=${conChinPageNum}`,
@@ -307,6 +309,7 @@ function ConChinArticleCommentBox() {
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
       if (response.data) {
         /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
+        dispatch(setIsLoadingArticleComment(true));
         setIsClick(false);
         setInputComment('');
         dispatch(setConChinPageAllComments([]));
@@ -361,6 +364,11 @@ function ConChinArticleCommentBox() {
   useEffect(() => {
     setConChinConChinTotalComments(conChinTotalComments);
   }, [conChinTotalComments]);
+
+  /* isLoadingArticleComment 변경시 지역상태 conChinIsLoadingArticleComment 변경  */
+  useEffect(() => {
+    setConChinIsLoadingArticleComment(isLoadingArticleComment);
+  }, [isLoadingArticleComment]);
 
   return (
     <div id='commentBox'>
@@ -420,7 +428,8 @@ function ConChinArticleCommentBox() {
         </h1>
       </div>
       {/* 댓글 목록 map */}
-      {conChinConChinPageAllComments.length > 0 ? (
+      {conChinConChinPageAllComments.length > 0 &&
+      conChinIsLoadingArticleComment === true ? (
         conChinConChinPageAllComments.map(el => (
           <div className='box'>
             <div className='dateBox'>
@@ -514,11 +523,18 @@ function ConChinArticleCommentBox() {
             </div>
           </div>
         ))
-      ) : (
+      ) : conChinConChinPageAllComments.length === 0 &&
+        conChinIsLoadingArticleComment === true ? (
         <>
           <div className='emptyBox'>
             <div>댓글이 없습니다.</div>
             <img src={noComment} alt='noCommentImg' />
+          </div>
+        </>
+      ) : (
+        <>
+          <div className='emptyBox'>
+            <img className='loadingImg' src={LoadingImage} alt='LoadingImage' />
           </div>
         </>
       )}

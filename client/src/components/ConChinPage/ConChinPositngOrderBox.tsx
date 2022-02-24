@@ -12,11 +12,12 @@ import {
   setArticleCurPage,
   setArticleRendered,
   setIsLoadingConChin,
+  setIsLoadingArticle,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 function ConChinPostingOrderBox() {
   const dispatch = useDispatch();
@@ -31,26 +32,26 @@ function ConChinPostingOrderBox() {
 
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async (clickedPostingOrder: String) => {
-    /* 로딩 상태 세팅 posting */
-    dispatch(
-      setIsLoadingConChin({
-        posting: false,
-      }),
-    );
     if (Object.keys(targetArticle).length === 0) {
       try {
+        /* 로딩 상태 세팅 posting */
+        dispatch(
+          setIsLoadingConChin({
+            posting: false,
+          }),
+        );
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/concert?order=${clickedPostingOrder}`,
           { withCredentials: true },
         );
         if (response.data) {
-          dispatch(setAllConcerts([]));
-          dispatch(setAllConcerts(response.data.data.concertInfo));
           dispatch(
             setIsLoadingConChin({
               posting: true,
             }),
           );
+          dispatch(setAllConcerts([]));
+          dispatch(setAllConcerts(response.data.data.concertInfo));
         }
       } catch (err) {
         console.log(err);
@@ -60,12 +61,15 @@ function ConChinPostingOrderBox() {
 
   /* 전체 게시물 받아오기 */
   const getAllArticles = async (order: string) => {
+    /* 로딩 상태 세팅 article */
+    dispatch(setIsLoadingArticle(false));
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=${order}`,
         { withCredentials: true },
       );
       if (response.data) {
+        dispatch(setIsLoadingArticle(true));
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
       } else {

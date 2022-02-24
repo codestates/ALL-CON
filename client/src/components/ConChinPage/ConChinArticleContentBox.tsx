@@ -13,21 +13,13 @@ import {
   showAlertModal,
   showConChinWritingModal,
 } from '../../store/ModalSlice';
-import { setTarget } from '../../store/MainSlice';
-import {
-  setConChinPageAllComments,
-  setConChinTotalNum,
-  setConChinComment,
-  setConChinTotalComments,
-  setConChinPageNum,
-} from '../../store/ConChinCommentSlice';
 import {
   setAllArticles,
   setTargetArticle,
   setArticleCurPage,
   setArticleTotalPage,
-  setArticleOrder,
   setTargetArticlesUserInfo,
+  setIsLoadingArticle,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -36,8 +28,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinArticleContentBox() {
   const dispatch = useDispatch();
-  const { allArticles, articleOrder, targetArticle, targetArticlesUserInfo } =
-    useSelector((state: RootState) => state.conChin);
+  const { articleOrder, targetArticle, targetArticlesUserInfo } = useSelector(
+    (state: RootState) => state.conChin,
+  );
   const { target } = useSelector((state: RootState) => state.main);
   const { userInfo } = useSelector((state: RootState) => state.auth);
 
@@ -134,11 +127,14 @@ function ConChinArticleContentBox() {
   /* 타겟 게시물 받아오기 */
   const getTargetArticles = async () => {
     try {
+      /* 로딩 상태 세팅 article */
+      dispatch(setIsLoadingArticle(false));
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
         { withCredentials: true },
       );
       if (response.data) {
+        dispatch(setIsLoadingArticle(true));
         dispatch(setAllArticles([]));
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));

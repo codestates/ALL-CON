@@ -15,6 +15,7 @@ import {
   setArticleCurPage,
   setArticleRendered,
   setIsLoadingConChin,
+  setIsLoadingArticle,
 } from '../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -107,11 +108,13 @@ function ConChinPage() {
           dispatch(setArticleCurPage(1));
         } else if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
+          dispatch(setIsLoadingArticle(false));
           const response = await axios.get(
             `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
             { withCredentials: true },
           );
           if (response.data) {
+            dispatch(setIsLoadingArticle(true));
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
           } else {
@@ -130,11 +133,13 @@ function ConChinPage() {
   /* 전체 게시물 받아오기 */
   const getAllArticles = async () => {
     try {
+      dispatch(setIsLoadingArticle(false));
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
         { withCredentials: true },
       );
       if (response.data) {
+        dispatch(setIsLoadingArticle(true));
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
@@ -156,6 +161,7 @@ function ConChinPage() {
   useEffect(() => {
     setConChinTarget(target);
   }, [target]);
+
   /* targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
   useEffect(() => {
     setConChinTargetArticle(targetArticle);
