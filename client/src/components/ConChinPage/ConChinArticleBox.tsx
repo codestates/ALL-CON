@@ -8,13 +8,9 @@ import ConChinArticlePagination from './ConChinArticlePagination';
 /* Store import */
 import { RootState } from '../../index';
 import {
-  setArticleOrder,
-  setAllArticles,
   setArticleTotalPage,
   setTargetArticle,
-  setTargetArticlesUserInfo,
-  setArticleRendered,
-  setArticleCurPage,
+  setIsLoadingConChin,
 } from '../../store/ConChinSlice';
 import {
   setConChinPageAllComments,
@@ -36,8 +32,8 @@ function ConChinArticleBox() {
     allArticles,
     targetArticle,
     articleOrder,
-    articleCurPage,
-    articleTotalPage,
+
+    isLoadingConChin,
   } = useSelector((state: RootState) => state.conChin);
   const { conChinPageNum, conChinPageAllComments, conChinComment } =
     useSelector((state: RootState) => state.conChinComments);
@@ -88,16 +84,32 @@ function ConChinArticleBox() {
   const [conChinAllArticles, setConChinAllArticles] = useState<any[]>([]);
   const [conChinTargetArticle, setConChinTargetArticle] =
     useState<ConChinTargetArticle>({});
+  const [conChinIsLoadingConChin, setConChinIsLoadingConChin] = useState<{
+    posting?: boolean;
+    article?: boolean;
+    articleComment?: boolean;
+  }>({});
 
   /* 게시물에 관련된 콘서트 정보 조회 핸들러 */
   const getTargetArticlesConcert = async (id: number) => {
     try {
+      /* 로딩 상태 세팅 posting */
+      dispatch(
+        setIsLoadingConChin({
+          posting: false,
+        }),
+      );
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/${id}`,
         { withCredentials: true },
       );
       if (response.data) {
         dispatch(setTarget(response.data.data.concertInfo));
+        dispatch(
+          setIsLoadingConChin({
+            posting: true,
+          }),
+        );
       }
     } catch (err) {
       console.log(err);
@@ -122,7 +134,6 @@ function ConChinArticleBox() {
   /* 게시글 조회 핸들러 */
   const getTargetArticles = async () => {
     try {
-      /* 타겟에 종속된 게시물 정렬순표시 */
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
         { withCredentials: true },
@@ -174,6 +185,12 @@ function ConChinArticleBox() {
   useEffect(() => {
     setConChinAllArticles(allArticles);
   }, [allArticles]);
+
+  /* isLoadingConChin 변경시 지역상태 conChinIsLoadingConChin 변경  */
+  useEffect(() => {
+    if (isLoadingConChin !== undefined)
+      setConChinIsLoadingConChin(isLoadingConChin);
+  }, [isLoadingConChin]);
 
   return (
     <div id='conChinArticleBox'>

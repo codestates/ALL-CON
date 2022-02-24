@@ -20,14 +20,10 @@ import { useState, useEffect, useRef } from 'react';
 
 function ConChinPostingOrderBox() {
   const dispatch = useDispatch();
-  const { target, allConcerts } = useSelector((state: RootState) => state.main);
-  const {
-    postingOrder,
-    articleOrder,
-    allArticles,
-    articleRendered,
-    targetArticle,
-  } = useSelector((state: RootState) => state.conChin);
+  const { target } = useSelector((state: RootState) => state.main);
+  const { postingOrder, articleOrder, targetArticle } = useSelector(
+    (state: RootState) => state.conChin,
+  );
 
   /* useState => 지역상태 */
   const [conChinPostingOrder, setConChinPostingOrder] =
@@ -39,8 +35,6 @@ function ConChinPostingOrderBox() {
     dispatch(
       setIsLoadingConChin({
         posting: false,
-        article: false,
-        articleComment: false,
       }),
     );
     if (Object.keys(targetArticle).length === 0) {
@@ -55,8 +49,6 @@ function ConChinPostingOrderBox() {
           dispatch(
             setIsLoadingConChin({
               posting: true,
-              article: false,
-              articleComment: false,
             }),
           );
         }
@@ -69,14 +61,6 @@ function ConChinPostingOrderBox() {
   /* 전체 게시물 받아오기 */
   const getAllArticles = async (order: string) => {
     try {
-      /* 로딩 상태 세팅 article */
-      dispatch(
-        setIsLoadingConChin({
-          posting: true,
-          article: false,
-          articleComment: false,
-        }),
-      );
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=${order}`,
         { withCredentials: true },
@@ -84,13 +68,6 @@ function ConChinPostingOrderBox() {
       if (response.data) {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
-        dispatch(
-          setIsLoadingConChin({
-            posting: true,
-            article: true,
-            articleComment: false,
-          }),
-        );
       } else {
       }
     } catch (err) {

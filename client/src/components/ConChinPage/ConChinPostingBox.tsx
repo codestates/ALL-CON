@@ -57,23 +57,13 @@ function ConChinPostingBox() {
   const [conChinPostingOrder, setConChinPostingOrder] =
     useState<String>('view');
   const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});
-  const [conChinisLoadingConChin, setConChinisLoadingConChin] = useState<{
+  const [conChinIsLoadingConChin, setConChinIsLoadingConChin] = useState<{
     posting?: boolean;
-    article?: boolean;
-    articleComment?: boolean;
   }>({});
 
   /* 조건부 게시물 받아오기 */
   const getAllArticlesWithCondition = async () => {
     try {
-      /* 로딩 상태 세팅 posting */
-      dispatch(
-        setIsLoadingConChin({
-          posting: false,
-          article: false,
-          articleComment: false,
-        }),
-      );
       if (!articleRendered) {
         if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
@@ -86,15 +76,6 @@ function ConChinPostingBox() {
             dispatch(setArticleTotalPage(response.data.data.totalPage));
             dispatch(setArticleCurPage(1));
             dispatch(setArticleRendered(true));
-            dispatch(
-              setIsLoadingConChin({
-                posting: true,
-                article: false,
-                articleComment: false,
-              }),
-            );
-            if (isLoadingConChin !== undefined)
-              console.log(isLoadingConChin.posting);
           } else {
           }
         }
@@ -127,16 +108,15 @@ function ConChinPostingBox() {
     setConChinPostingOrder(postingOrder);
   }, [postingOrder]);
 
-  /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
+  /* target 변경시 지역상태 conChinTarget 변경  */
   useEffect(() => {
     setConChinTarget(target);
   }, [target]);
 
-  /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
+  /* isLoadingConChin 변경시 지역상태 conChinIsLoadingConChin 변경  */
   useEffect(() => {
     if (isLoadingConChin !== undefined)
-      setConChinisLoadingConChin(isLoadingConChin);
-    console.log(conChinisLoadingConChin.posting);
+      setConChinIsLoadingConChin(isLoadingConChin);
   }, [isLoadingConChin]);
 
   return (
@@ -165,8 +145,8 @@ function ConChinPostingBox() {
         }
       >
         {(conChinTarget.activation === true &&
-          conChinisLoadingConChin.posting === true) ||
-        (conChinisLoadingConChin.posting === true &&
+          conChinIsLoadingConChin.posting === true) ||
+        (conChinIsLoadingConChin.posting === true &&
           Object.keys(conChinTarget).length === 0) ? (
           conChinAllConcerts.map(concert => {
             return (
@@ -195,11 +175,11 @@ function ConChinPostingBox() {
             );
           })
         ) : (conChinTarget.activation !== true &&
-            conChinisLoadingConChin.posting === true) ||
-          (conChinisLoadingConChin.posting === true &&
+            conChinIsLoadingConChin.posting === true) ||
+          (conChinIsLoadingConChin.posting === true &&
             Object.keys(conChinTarget).length !== 0) ? (
           <ul className='postingendChosen'>종료된 콘서트</ul>
-        ) : conChinisLoadingConChin.posting === false ? (
+        ) : conChinIsLoadingConChin.posting === false ? (
           <img className='loadingImg' src={LoadingImage} alt='LoadingImage' />
         ) : (
           <img className='loadingImg' src={LoadingImage} alt='LoadingImage' />
