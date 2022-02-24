@@ -14,6 +14,7 @@ import {
   setTargetArticle,
   setArticleCurPage,
   setArticleRendered,
+  setIsLoadingConChin,
 } from '../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -73,6 +74,14 @@ function ConChinPage() {
 
   /* 전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
+    /* 로딩 상태 세팅 posting */
+    dispatch(
+      setIsLoadingConChin({
+        posting: false,
+        article: false,
+        articleComment: false,
+      }),
+    );
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert?order=${postingOrder}`,
@@ -81,6 +90,13 @@ function ConChinPage() {
       if (response.data) {
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setArticleCurPage(1));
+        dispatch(
+          setIsLoadingConChin({
+            posting: true,
+            article: false,
+            articleComment: false,
+          }),
+        );
       }
     } catch (err) {
       console.log(err);
@@ -89,6 +105,14 @@ function ConChinPage() {
   /* 조건부 게시물 받아오기 */
   const getAllArticlesWithCondition = async () => {
     try {
+      /* 로딩 상태 세팅 article */
+      dispatch(
+        setIsLoadingConChin({
+          posting: true,
+          article: false,
+          articleComment: false,
+        }),
+      );
       /* 타겟에 종속된 게시물이 없을때, 게시물 없음 표시 */
       if (target !== undefined && target !== null) {
         if (Object.keys(target).length === 0) {
@@ -103,6 +127,13 @@ function ConChinPage() {
           if (response.data) {
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
+            dispatch(
+              setIsLoadingConChin({
+                posting: true,
+                article: true,
+                articleComment: false,
+              }),
+            );
           } else {
             console.log('ConChinPostingBox=> 없거나 실수로 못가져왔어요.');
           }
@@ -119,6 +150,14 @@ function ConChinPage() {
   /* 전체 게시물 받아오기 */
   const getAllArticles = async () => {
     try {
+      /* 로딩 상태 세팅 article */
+      dispatch(
+        setIsLoadingConChin({
+          posting: true,
+          article: false,
+          articleComment: false,
+        }),
+      );
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
         { withCredentials: true },
@@ -127,6 +166,13 @@ function ConChinPage() {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
+        dispatch(
+          setIsLoadingConChin({
+            posting: true,
+            article: true,
+            articleComment: false,
+          }),
+        );
       } else {
         console.log('없거나 실수로 못가져왔어요..');
       }

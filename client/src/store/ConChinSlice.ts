@@ -43,6 +43,12 @@ export interface conChin {
   };
   /* 게시물 렌더 상태 */
   articleRendered?: boolean;
+  // loading 관리
+  isLoadingConChin: {
+    posting?: boolean;
+    article?: boolean;
+    articleComment?: boolean;
+  };
 }
 
 /* State 초기값 설정 */
@@ -55,6 +61,7 @@ const initialState: conChin = {
   targetArticlesUserInfo: {},
   articleCurPage: 0,
   articleRendered: false,
+  isLoadingConChin: {},
 };
 
 const conChinSlice = createSlice({
@@ -98,6 +105,12 @@ const conChinSlice = createSlice({
     ) => {
       state.articleRendered = payload;
     },
+    setIsLoadingConChin: (
+      state: conChin,
+      { payload }: PayloadAction<object>,
+    ) => {
+      state.isLoadingConChin = payload;
+    },
   },
 });
 
@@ -110,5 +123,6 @@ export const {
   setTargetArticlesUserInfo,
   setArticleCurPage,
   setArticleRendered,
+  setIsLoadingConChin,
 } = conChinSlice.actions;
 export default conChinSlice.reducer;

@@ -1,3 +1,5 @@
+/* CSS import */
+import LoadingImage from '../../images/spinner.gif';
 /* Store import */
 import { RootState } from '../../index';
 import { setTarget, setAllConcerts } from '../../store/MainSlice';
@@ -7,6 +9,7 @@ import {
   setArticleCurPage,
   setArticleRendered,
   setTargetArticle,
+  setIsLoadingConChin,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -20,8 +23,13 @@ function ConChinPostingBox() {
   const { postingOrder } = useSelector((state: RootState) => state.conChin);
   const { target } = useSelector((state: RootState) => state.main);
   const { allConcerts } = useSelector((state: RootState) => state.main);
-  const { articleOrder, allArticles, articleRendered, targetArticle } =
-    useSelector((state: RootState) => state.conChin);
+  const {
+    articleOrder,
+    allArticles,
+    articleRendered,
+    targetArticle,
+    isLoadingConChin,
+  } = useSelector((state: RootState) => state.conChin);
 
   /* 지역상태 interface */
   interface ConChinTarget {
@@ -49,10 +57,23 @@ function ConChinPostingBox() {
   const [conChinPostingOrder, setConChinPostingOrder] =
     useState<String>('view');
   const [conChinTarget, setConChinTarget] = useState<ConChinTarget>({});
+  const [conChinisLoadingConChin, setConChinisLoadingConChin] = useState<{
+    posting?: boolean;
+    article?: boolean;
+    articleComment?: boolean;
+  }>({});
 
   /* 조건부 게시물 받아오기 */
   const getAllArticlesWithCondition = async () => {
     try {
+      /* 로딩 상태 세팅 posting */
+      dispatch(
+        setIsLoadingConChin({
+          posting: false,
+          article: false,
+          articleComment: false,
+        }),
+      );
       if (!articleRendered) {
         if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
@@ -65,6 +86,15 @@ function ConChinPostingBox() {
             dispatch(setArticleTotalPage(response.data.data.totalPage));
             dispatch(setArticleCurPage(1));
             dispatch(setArticleRendered(true));
+            dispatch(
+              setIsLoadingConChin({
+                posting: true,
+                article: false,
+                articleComment: false,
+              }),
+            );
+            if (isLoadingConChin !== undefined)
+              console.log(isLoadingConChin.posting);
           } else {
           }
         }
@@ -81,12 +111,6 @@ function ConChinPostingBox() {
     dispatch(setTarget(concert));
     getAllArticlesWithCondition();
   }
-  /* target,targetArticle 전체 초기화 핸들러 */
-  const resetAllTarget = () => {
-    dispatch(setTarget({}));
-    dispatch(setTargetArticle({}));
-    dispatch(setArticleRendered(false));
-  };
 
   /* useEffect: 타겟이 변경될 때마다 게시물 렌더링 */
   useEffect(() => {
@@ -107,6 +131,13 @@ function ConChinPostingBox() {
   useEffect(() => {
     setConChinTarget(target);
   }, [target]);
+
+  /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
+  useEffect(() => {
+    if (isLoadingConChin !== undefined)
+      setConChinisLoadingConChin(isLoadingConChin);
+    console.log(conChinisLoadingConChin.posting);
+  }, [isLoadingConChin]);
 
   return (
     <li id='conChinPostingBox'>
@@ -133,8 +164,10 @@ function ConChinPostingBox() {
             : 'postingBoxWrapperChosen'
         }
       >
-        {conChinTarget.activation === true ||
-        Object.keys(conChinTarget).length === 0 ? (
+        {(conChinTarget.activation === true &&
+          conChinisLoadingConChin.posting === true) ||
+        (conChinisLoadingConChin.posting === true &&
+          Object.keys(conChinTarget).length === 0) ? (
           conChinAllConcerts.map(concert => {
             return (
               <ul
@@ -161,8 +194,15 @@ function ConChinPostingBox() {
               </ul>
             );
           })
-        ) : (
+        ) : (conChinTarget.activation !== true &&
+            conChinisLoadingConChin.posting === true) ||
+          (conChinisLoadingConChin.posting === true &&
+            Object.keys(conChinTarget).length !== 0) ? (
           <ul className='postingendChosen'>종료된 콘서트</ul>
+        ) : conChinisLoadingConChin.posting === false ? (
+          <img className='loadingImg' src={LoadingImage} alt='LoadingImage' />
+        ) : (
+          <img className='loadingImg' src={LoadingImage} alt='LoadingImage' />
         )}
       </div>
     </li>

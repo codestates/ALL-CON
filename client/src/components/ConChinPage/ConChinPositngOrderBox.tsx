@@ -11,6 +11,7 @@ import {
   setArticleOrder,
   setArticleCurPage,
   setArticleRendered,
+  setIsLoadingConChin,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -34,6 +35,14 @@ function ConChinPostingOrderBox() {
 
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async (clickedPostingOrder: String) => {
+    /* 로딩 상태 세팅 posting */
+    dispatch(
+      setIsLoadingConChin({
+        posting: false,
+        article: false,
+        articleComment: false,
+      }),
+    );
     if (Object.keys(targetArticle).length === 0) {
       try {
         const response = await axios.get(
@@ -41,7 +50,15 @@ function ConChinPostingOrderBox() {
           { withCredentials: true },
         );
         if (response.data) {
+          dispatch(setAllConcerts([]));
           dispatch(setAllConcerts(response.data.data.concertInfo));
+          dispatch(
+            setIsLoadingConChin({
+              posting: true,
+              article: false,
+              articleComment: false,
+            }),
+          );
         }
       } catch (err) {
         console.log(err);
@@ -52,6 +69,14 @@ function ConChinPostingOrderBox() {
   /* 전체 게시물 받아오기 */
   const getAllArticles = async (order: string) => {
     try {
+      /* 로딩 상태 세팅 article */
+      dispatch(
+        setIsLoadingConChin({
+          posting: true,
+          article: false,
+          articleComment: false,
+        }),
+      );
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=${order}`,
         { withCredentials: true },
@@ -59,6 +84,13 @@ function ConChinPostingOrderBox() {
       if (response.data) {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
+        dispatch(
+          setIsLoadingConChin({
+            posting: true,
+            article: true,
+            articleComment: false,
+          }),
+        );
       } else {
       }
     } catch (err) {
