@@ -13,6 +13,7 @@ import authSlice, { auth } from './store/AuthSlice';
 import modalSlice, { modal } from './store/ModalSlice';
 import headerSlice, { header } from './store/HeaderSlice';
 import mainSlice, { main } from './store/MainSlice';
+import ConcertSlice, { concert } from './store/ConcertSlice';
 import mySlice, { my } from './store/MySlice';
 import conChinSlice, { conChin } from './store/ConChinSlice';
 import ConcertAlarmSlice, { concertAlarm } from './store/ConcertAlarmSlice';
@@ -45,6 +46,7 @@ const reducers = combineReducers({
   modal: modalSlice,
   header: headerSlice,
   main: mainSlice,
+  concert: ConcertSlice,
   my: mySlice,
   conChin: conChinSlice,
   concertAlarm: ConcertAlarmSlice,
@@ -72,6 +74,7 @@ export interface RootState {
   modal: modal;
   header: header;
   main: main;
+  concert: concert;
   conChin: conChin;
   my: my;
   concertAlarm: concertAlarm;
