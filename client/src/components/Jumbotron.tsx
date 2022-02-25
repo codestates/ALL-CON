@@ -1,14 +1,11 @@
 /* CSS import */
 import PosterSlide from './PosterSlide';
-import left from '../images/left_arrow.png';
-import right from '../images/right_arrow.png';
 /* Store import */
 import { RootState } from '../index';
 import {
   setPageAllComments,
   setTotalNum,
   setPageNum,
-  setComment,
 } from '../store/ConcertCommentSlice';
 import { setMainTotalComments } from '../store/MainSlice';
 import {
@@ -16,7 +13,6 @@ import {
   setTargetIdx,
   setOrder,
   setIsRendering,
-  setPassToConcert,
   setAllConcerts,
   setDetail,
 } from '../store/MainSlice';
@@ -24,9 +20,10 @@ import {
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 function Jumbotron() {
   const dispatch = useDispatch();
-  const { order, target, targetIdx, allConcerts } = useSelector(
+  const { order, target } = useSelector(
     (state: RootState) => state.main,
   );
   const { pageNum } = useSelector((state: RootState) => state.concertComments);
@@ -55,7 +52,7 @@ function Jumbotron() {
   //   }
   //   dispatch(setPassToConcert(false)); // 콘서트 -> 메인 페이지 상태 false
   // };
-
+  
   /* orderClick 핸들러 */
   const orderClickHandler = (clickValue: string) => {
     /* 정렬 버튼 클릭시 렌더링: false, 타겟값 초기화, order 갱신 */
@@ -73,6 +70,7 @@ function Jumbotron() {
       );
       if (response.data) {
         /* 서버 응답값이 있다면 & target,targetIdx,pageNum 상태 변경 */
+        
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setTarget(response.data.data.concertInfo[0]));
         dispatch(setTargetIdx(0));
@@ -130,55 +128,53 @@ function Jumbotron() {
   };
 
   return (
-    <>
-      <div id='jumboContainer'>
-        <div id='jumboMiniContainer'></div>
-        {/*점보트론 검은배경 전체*/}
-        <div className='jumboTopBox'>
-          <div id='jumboTextsAlignBox'>
-            {/*WHAT'S HOT 문구*/}
-            <div className='jumboTextBox'>
-              <h1 id='jumboWhat'>WHAT'S</h1>
-              {orderJumbo === 'view' && <h1 id='jumboClassify'>HOT</h1>}
-              {orderJumbo === 'near' && <h1 id='jumboClassify'>NEAR</h1>}
-              {orderJumbo === 'new' && <h1 id='jumboClassify'>NEW</h1>}
-            </div>
-            {/*오른쪽 상단 탭 바*/}
-            <div id='tabBar'>
-              <p
-                id={orderJumbo === 'view' ? 'hotChosen' : 'hot'}
-                onClick={() => {
-                  orderClickHandler('view');
-                }}
-              >
-                HOT
-              </p>
-              <p
-                id={orderJumbo === 'near' ? 'nearChosen' : 'near'}
-                onClick={() => {
-                  orderClickHandler('near');
-                }}
-              >
-                NEAR
-              </p>
-              <p
-                id={orderJumbo === 'new' ? 'newChosen' : 'new'}
-                onClick={() => {
-                  orderClickHandler('new');
-                }}
-              >
-                NEW
-              </p>
-            </div>
+    <div id='jumboContainer'>
+      <div id='jumboMiniContainer'></div>
+      {/*점보트론 검은배경 전체*/}
+      <div className='jumboTopBox'>
+        <div id='jumboTextsAlignBox'>
+          {/*WHAT'S HOT 문구*/}
+          <div className='jumboTextBox'>
+            <h1 id='jumboWhat'>WHAT'S</h1>
+            {orderJumbo === 'view' && <h1 id='jumboClassify'>HOT</h1>}
+            {orderJumbo === 'near' && <h1 id='jumboClassify'>NEAR</h1>}
+            {orderJumbo === 'new' && <h1 id='jumboClassify'>NEW</h1>}
           </div>
-          {/*포스터 wrapper*/}
-          <div id='jumboPosterSlideWrapper'>
-            <div id='posterCover'></div>
-            <PosterSlide />
+          {/*오른쪽 상단 탭 바*/}
+          <div id='tabBar'>
+            <p
+              id={orderJumbo === 'view' ? 'hotChosen' : 'hot'}
+              onClick={() => {
+                orderClickHandler('view');
+              }}
+            >
+              HOT
+            </p>
+            <p
+              id={orderJumbo === 'near' ? 'nearChosen' : 'near'}
+              onClick={() => {
+                orderClickHandler('near');
+              }}
+            >
+              NEAR
+            </p>
+            <p
+              id={orderJumbo === 'new' ? 'newChosen' : 'new'}
+              onClick={() => {
+                orderClickHandler('new');
+              }}
+            >
+              NEW
+            </p>
           </div>
         </div>
+        {/*포스터 wrapper*/}
+        <div id='jumboPosterSlideWrapper'>
+          <div id='posterCover'></div>
+          <PosterSlide />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 export default Jumbotron;

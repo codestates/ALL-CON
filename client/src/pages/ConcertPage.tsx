@@ -1,10 +1,12 @@
 /* CSS Import */
 import defaultImg from '../images/landingImage1.png';
+import loadingImg from '../images/spinner.gif';
 import ConcertBox from '../components/ConcertPage/ConcertBox';
 import Footer from '../components/Footer';
 /* Store import */
 import { RootState } from '../index';
 import { setAllConcerts, setPassToConcert, setOrder, setTarget } from '../store/MainSlice';
+import { setIsLoading } from '../store/ConcertSlice';
 import {
   showConcertModal,
   showAlertModal,
@@ -19,14 +21,15 @@ function ConcertPage() {
   const dispatch = useDispatch();
   /* useSelector => 전역상태 */
   const { allConcerts, order, passToConcert } = useSelector((state: RootState) => state.main);
+  const { isLoading } = useSelector((state: RootState) => state.concert);
   /* useState => 지역상태 */
   const [concertOrder, setConcertOrder] = useState<String>('view');
-
+  
   /* order, passToConcert 전역상태 변경시 지역상태 concertOrder 변경 */
   useEffect(() => {
     setConcertOrder(order);
-  }, [order, passToConcert]);
-
+  }, [order]);
+  
   /* 정렬 핸들러 */
   const orderByHandler = async (clickedOrder: String) => {
     try {
@@ -38,6 +41,7 @@ function ConcertPage() {
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setTarget({}));
         dispatch(showConcertModal(false));
+        dispatch(setIsLoading(true));
       }
     } catch (err) {
       const error = err as AxiosError;
@@ -78,6 +82,7 @@ function ConcertPage() {
               (order === 'new' && '등록일')} 순
           </h1>
           <p className={order === 'view' ? 'click' : 'orderBy'} onClick={() => {
+            dispatch(setIsLoading(false));
             dispatch(setOrder('view'));
             orderByHandler('view');
             dispatch(setPassToConcert(false));
@@ -85,6 +90,7 @@ function ConcertPage() {
             조회수
           </p>
           <p className={order === 'near' ? 'click' : 'orderBy'}  onClick={() => {
+            dispatch(setIsLoading(false));
             dispatch(setOrder('near'));
             orderByHandler('near');
             dispatch(setPassToConcert(false));
@@ -92,6 +98,7 @@ function ConcertPage() {
             임박예정
           </p>
           <p className={order === 'new' ? 'click' : 'orderBy'}  onClick={() => {
+            dispatch(setIsLoading(false));
             dispatch(setOrder('new'));
             orderByHandler('new');
             dispatch(setPassToConcert(false));
@@ -100,9 +107,9 @@ function ConcertPage() {
           </p>
         </div>
       </div>
-      <div id='concertsBoard'>
+      <div id={isLoading ? 'concertsBoard' : 'loadingBoard'}>
         {/* 콘서트 목록 */}
-        {allConcerts.map((concert, idx) => (
+        {isLoading ? allConcerts.map((concert, idx) => (
           <div
             id='concertBoxWrapper'
             key={idx}
@@ -112,7 +119,7 @@ function ConcertPage() {
           >
             <ConcertBox concert={concert} />
           </div>
-        ))}
+        )) : <img src={loadingImg} alt='loadingImg'/>}
       </div>
       <div id='modalBoard'>
         <div id='concertWrapper'>
