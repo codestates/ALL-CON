@@ -1,6 +1,6 @@
 /* Config import */
 /* CSS import */
-import LoadingImage from '../../images/spinner.gif'; 
+import LoadingImage from '../../images/spinner.gif';
 import noCommentImg from '../../images/no_comment_img.png';
 /* Store import */
 import { RootState } from '../../index';
@@ -12,16 +12,15 @@ import {
   getMyArticleCommentInfo,
 } from '../../store/MySlice';
 import { setConChinPageNum } from '../../store/ConChinCommentSlice';
+import { showAlertModal, insertAlertText } from '../../store/ModalSlice';
+import { setTarget, setTargetIdx, setIsRendering } from '../../store/MainSlice';
 import {
-  showAlertModal,
-  insertAlertText,
-} from '../../store/ModalSlice';
-import {
-  setTarget,
-  setTargetIdx,
-  setIsRendering,
-} from '../../store/MainSlice';
-import { setTargetArticle, setPostingOrder, setArticleOrder, setAllArticles, setArticleTotalPage } from '../../store/ConChinSlice';
+  setTargetArticle,
+  setPostingOrder,
+  setArticleOrder,
+  setAllArticles,
+  setArticleTotalPage,
+} from '../../store/ConChinSlice';
 import { setIsLoadingState } from '../../store/MySlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
@@ -50,17 +49,20 @@ function MyCommentBox() {
   /* 지역상태 - useState */
   /* useEffect */
 
-
   /* handler 함수 (기능별 정렬) */
   // 콘서트 및 콘친 게시물 버튼 핸들러
   const handleCommentSelectionBtn = async (key: string) => {
-    
     // 현재 댓글 버튼의 상태를 업데이트
     // ex) 콘서트 버튼을 누르면 => commentBtnType = '콘서트', 콘친 게시물 버튼을 누르면 => commentBtnType = '콘친'
     dispatch(getCommentBtnType(key));
     if (key === '콘서트') {
-
-      dispatch(setIsLoadingState({myArticle: true, myConcertComment: false, myArticleComment: true}))
+      dispatch(
+        setIsLoadingState({
+          myArticle: true,
+          myConcertComment: false,
+          myArticleComment: true,
+        }),
+      );
 
       // [GET] 내가 작성한 댓글 조회 (콘친&페이지: 1)
       const response = await axios.get(
@@ -71,10 +73,21 @@ function MyCommentBox() {
       dispatch(getMyArticleCommentInfo(response.data.data));
       // 콘친 댓글의 현재 페이지를 1로 업데이트
       dispatch(getMyArticleCommentCurrentPage(1));
-      dispatch(setIsLoadingState({myArticle: true, myConcertComment: true, myArticleComment: true}))
+      dispatch(
+        setIsLoadingState({
+          myArticle: true,
+          myConcertComment: true,
+          myArticleComment: true,
+        }),
+      );
     } else if (key === '콘친') {
-
-      dispatch(setIsLoadingState({myArticle: true, myConcertComment: true, myArticleComment: false}))
+      dispatch(
+        setIsLoadingState({
+          myArticle: true,
+          myConcertComment: true,
+          myArticleComment: false,
+        }),
+      );
 
       // [GET] 내가 작성한 댓글 조회 (콘서트&페이지: 1)
       const response = await axios.get(
@@ -85,7 +98,13 @@ function MyCommentBox() {
       dispatch(getMyConcertCommentInfo(response.data.data));
       // 콘친 댓글의 현재 페이지를 1로 업데이트
       dispatch(getMyConcertCommentCurrentPage(1));
-      dispatch(setIsLoadingState({myArticle: true, myConcertComment: true, myArticleComment: true}))
+      dispatch(
+        setIsLoadingState({
+          myArticle: true,
+          myConcertComment: true,
+          myArticleComment: true,
+        }),
+      );
     }
   };
 
@@ -104,19 +123,29 @@ function MyCommentBox() {
       );
 
       // 티켓 오픈일+1달이 끝난 콘서트인 경우, 다음을 실행한다 (activation: false)
-      if(!responseConcert.data.data.concertInfo.activation) {
+      if (!responseConcert.data.data.concertInfo.activation) {
         // 모달창 OPEN
         dispatch(insertAlertText('종료된 콘서트 입니다! 😖'));
         dispatch(showAlertModal(true));
-      } 
+      }
       // 활성화 콘서트인 경우, 다음을 실행한다 (activation: true)
       else {
         // 현재 선택한 콘서트 업데이트 (target)
-        dispatch(setTarget(responseConcert.data.data.concertInfo));
+        setTimeout(() => {
+          dispatch(setTarget(responseConcert.data.data.concertInfo));
+        }, 300);
         /* 마이페이지로 가기위한 상태 설정 */
         dispatch(setIsRendering(false));
-        dispatch(setTargetIdx(allConcerts.findIndex(concert => concert.id === responseConcert.data.data.concertInfo.id)));
-        // 메인페이지로 이동
+        setTimeout(() => {
+          dispatch(
+            setTargetIdx(
+              allConcerts.findIndex(
+                concert =>
+                  concert.id === responseConcert.data.data.concertInfo.id,
+              ),
+            ),
+          );
+        }, 500);
         navigate('/main');
       }
     }
@@ -143,7 +172,7 @@ function MyCommentBox() {
       );
 
       // 테스트
-  
+
       const responseAllArticle = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/${responseConcert.data.data.concertInfo.id}/article?order='view'`,
         { withCredentials: true },
@@ -157,10 +186,11 @@ function MyCommentBox() {
       // 현재 선택한 콘서트 업데이트 (target)
       dispatch(setTarget(responseConcert.data.data.concertInfo));
       // 현재 선택한 게시물 업데이트 (target)
-      dispatch(setTargetArticle(responseArticle.data.data.articleInfo));
-
+      setTimeout(() => {
+        dispatch(setTargetArticle(responseArticle.data.data.articleInfo));
+      }, 300);
       dispatch(setConChinPageNum(1));
-      
+
       dispatch(setPostingOrder('view'));
       dispatch(setArticleOrder('view'));
 
@@ -202,60 +232,17 @@ function MyCommentBox() {
             </p>
           </div>
           {/* 어떤 버튼 (콘서트 / 콘친 게시물)이 눌림에 따라 댓글이 달라진다 */}
-          {commentBtnType === '콘서트'
-            ? Array.isArray(concertCommentInfo) && isLoadingState?.myConcertComment
-              ? concertCommentInfo.map((el: any, idx: number) => {
-                  return (
-                    <div
-                      className='myCommentSingleBox'
-                      onClick={() =>
-                        handleConcertCommentSelected(
-                          el.id,
-                          el.concert_id,
-                          el.user_id,
-                        )
-                      }
-                    >
-                      <div className='myDateBox'>
-                        {/* 날짜와 작성자 */}
-                        <p className='myNickNameAndDate'>
-                          {' '}
-                          <b>{el.Concert.title}</b> |{' '}
-                          {el.updatedAt.substring(0, 10)}{' '}
-                        </p>
-                      </div>
-                      <div id='myImgAndText'>
-                        <div className='myImgWrapper'>
-                          <img
-                            className='myImg'
-                            src={el.Concert.image_concert}
-                            alt='profileImage'
-                          />
-                          {el.Concert.activation === false ? (
-                            <div className='endArticle'>
-                              <p className='endTitle'>종료</p>
-                            </div>
-                          ) : null}
-                        </div>
-                        <div className='myTextWrapper'>
-                          <p id='myText'> {el.content} </p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })
-              : <img className='loadingImg' src={LoadingImage} alt='LoadingImage' />
-            : /******************************************************************************************************************/
-            Array.isArray(articleCommentInfo) && isLoadingState?.myArticleComment
-            ? articleCommentInfo.map((el: any, idx: number) => {
+          {commentBtnType === '콘서트' ? (
+            Array.isArray(concertCommentInfo) &&
+            isLoadingState?.myConcertComment ? (
+              concertCommentInfo.map((el: any, idx: number) => {
                 return (
                   <div
                     className='myCommentSingleBox'
                     onClick={() =>
-                      handleArticleCommentSelected(
-                        idx,
+                      handleConcertCommentSelected(
                         el.id,
-                        el.article_id,
+                        el.concert_id,
                         el.user_id,
                       )
                     }
@@ -264,7 +251,7 @@ function MyCommentBox() {
                       {/* 날짜와 작성자 */}
                       <p className='myNickNameAndDate'>
                         {' '}
-                        <b>{el.Article.title} </b> |{' '}
+                        <b>{el.Concert.title}</b> |{' '}
                         {el.updatedAt.substring(0, 10)}{' '}
                       </p>
                     </div>
@@ -272,10 +259,10 @@ function MyCommentBox() {
                       <div className='myImgWrapper'>
                         <img
                           className='myImg'
-                          src={el.Article.image}
+                          src={el.Concert.image_concert}
                           alt='profileImage'
                         />
-                        {el.Article.activation === false ? (
+                        {el.Concert.activation === false ? (
                           <div className='endArticle'>
                             <p className='endTitle'>종료</p>
                           </div>
@@ -288,7 +275,60 @@ function MyCommentBox() {
                   </div>
                 );
               })
-            : <img className='loadingImg' src={LoadingImage} alt='LoadingImage' />}
+            ) : (
+              <img
+                className='loadingImg'
+                src={LoadingImage}
+                alt='LoadingImage'
+              />
+            )
+          ) : /******************************************************************************************************************/
+          Array.isArray(articleCommentInfo) &&
+            isLoadingState?.myArticleComment ? (
+            articleCommentInfo.map((el: any, idx: number) => {
+              return (
+                <div
+                  className='myCommentSingleBox'
+                  onClick={() =>
+                    handleArticleCommentSelected(
+                      idx,
+                      el.id,
+                      el.article_id,
+                      el.user_id,
+                    )
+                  }
+                >
+                  <div className='myDateBox'>
+                    {/* 날짜와 작성자 */}
+                    <p className='myNickNameAndDate'>
+                      {' '}
+                      <b>{el.Article.title} </b> |{' '}
+                      {el.updatedAt.substring(0, 10)}{' '}
+                    </p>
+                  </div>
+                  <div id='myImgAndText'>
+                    <div className='myImgWrapper'>
+                      <img
+                        className='myImg'
+                        src={el.Article.image}
+                        alt='profileImage'
+                      />
+                      {el.Article.activation === false ? (
+                        <div className='endArticle'>
+                          <p className='endTitle'>종료</p>
+                        </div>
+                      ) : null}
+                    </div>
+                    <div className='myTextWrapper'>
+                      <p id='myText'> {el.content} </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <img className='loadingImg' src={LoadingImage} alt='LoadingImage' />
+          )}
         </div>
       </div>
 

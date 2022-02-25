@@ -14,6 +14,8 @@ import {
   setTargetArticle,
   setArticleCurPage,
   setArticleRendered,
+  setIsLoadingConChin,
+  setIsLoadingArticle,
 } from '../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -73,6 +75,12 @@ function ConChinPage() {
 
   /* 전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
+    /* 로딩 상태 세팅 posting */
+    dispatch(
+      setIsLoadingConChin({
+        posting: false,
+      }),
+    );
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert?order=${postingOrder}`,
@@ -81,6 +89,11 @@ function ConChinPage() {
       if (response.data) {
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setArticleCurPage(1));
+        dispatch(
+          setIsLoadingConChin({
+            posting: true,
+          }),
+        );
       }
     } catch (err) {
       console.log(err);
@@ -89,18 +102,19 @@ function ConChinPage() {
   /* 조건부 게시물 받아오기 */
   const getAllArticlesWithCondition = async () => {
     try {
-      /* 타겟에 종속된 게시물이 없을때, 게시물 없음 표시 */
       if (target !== undefined && target !== null) {
         if (Object.keys(target).length === 0) {
           getAllArticles();
           dispatch(setArticleCurPage(1));
         } else if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
+          dispatch(setIsLoadingArticle(false));
           const response = await axios.get(
             `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
             { withCredentials: true },
           );
           if (response.data) {
+            dispatch(setIsLoadingArticle(true));
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
           } else {
@@ -119,11 +133,13 @@ function ConChinPage() {
   /* 전체 게시물 받아오기 */
   const getAllArticles = async () => {
     try {
+      dispatch(setIsLoadingArticle(false));
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
         { withCredentials: true },
       );
       if (response.data) {
+        dispatch(setIsLoadingArticle(true));
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
@@ -141,15 +157,14 @@ function ConChinPage() {
     getAllArticlesWithCondition();
   }, []);
 
-  /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
+  /* target 변경시 지역상태 conChinTarget 변경  */
   useEffect(() => {
     setConChinTarget(target);
-    // console.log('useEffect 정상작동, conChinTarget 변경');
   }, [target]);
-  /* 다른 곳에서 targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
+
+  /* targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
   useEffect(() => {
     setConChinTargetArticle(targetArticle);
-    // console.log('useEffect 정상작동, conChinTargetArticle 변경');
   }, [targetArticle]);
 
   return (
