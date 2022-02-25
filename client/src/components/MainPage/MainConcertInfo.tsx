@@ -11,6 +11,7 @@ import smsOff from '../../images/mail4off.png';
 /* Store import */
 import { RootState } from '../../index';
 import { loginCheck } from '../../store/AuthSlice';
+import { setIsLoading } from '../../store/ConcertSlice';
 import {
   showAlertModal,
   insertAlertText,
@@ -21,16 +22,17 @@ import {
   showConcertModal,
   showMainKakaoModal,
 } from '../../store/ModalSlice';
-/* Library import */
-import axios, { AxiosError } from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
 import {
   setAlarm,
   setEmailClick,
   setSmsClick,
 } from '../../store/ConcertAlarmSlice';
+/* Library import */
+import axios, { AxiosError } from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { setTarget } from '../../store/MainSlice';
 
 function MainConcertInfo() {
   const dispatch = useDispatch();
@@ -223,6 +225,8 @@ function MainConcertInfo() {
               src={returnImg}
               alt='콘서트페이지 돌아가기 버튼'
               onClick={() => {
+                dispatch(setTarget(detailMain));
+                dispatch(setIsLoading(true));
                 dispatch(showConcertModal(true));
                 navigate('/concert');
               }}

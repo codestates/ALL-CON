@@ -11,6 +11,7 @@ import xButton from '../images/xWhiteButton.png';
 import AutoComplete from './AutoComplete';
 /* Store import */
 import { RootState } from '../index';
+import { setIsLoading } from '../store/ConcertSlice';
 import {
   showLoginModal,
   showSideMenuModal,
@@ -49,6 +50,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 /* 타이머 함수 */
 let timer: any;
 
@@ -206,6 +208,7 @@ function Header() {
       if (response.data) {
         /* 서버 응답값이 있다면 & allConcerts 상태 변경 */
         dispatch(setAllConcerts(response.data.data.concertInfo));
+        dispatch(setIsLoading(true));
       }
     } catch (err) {
       console.log(err);
