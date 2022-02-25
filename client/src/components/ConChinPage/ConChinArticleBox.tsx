@@ -84,22 +84,11 @@ function ConChinArticleBox() {
   /* 게시물에 관련된 콘서트 정보 조회 핸들러 */
   const getTargetArticlesConcert = async (id: number) => {
     try {
-      /* 로딩 상태 세팅 posting */
-      dispatch(
-        setIsLoadingConChin({
-          posting: false,
-        }),
-      );
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/${id}`,
         { withCredentials: true },
       );
       if (response.data) {
-        dispatch(
-          setIsLoadingConChin({
-            posting: true,
-          }),
-        );
         dispatch(setTarget(response.data.data.concertInfo));
       }
     } catch (err) {
