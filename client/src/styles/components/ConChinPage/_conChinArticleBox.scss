@@ -43,20 +43,24 @@
   .loadingImg {
     position: absolute;
     transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
 
     @include mobile-only() {
       width: 4rem;
       height: 4rem;
+      left: 50%;
+      top: 25%;
     }
     @include md() {
       width: 5rem;
       height: 5rem;
+      left: 50%;
+      top: 50%;
     }
     @include lg() {
       width: 7rem;
       height: 7rem;
+      left: 50%;
+      top: 50%;
     }
   }
   #paginationWrapper {
