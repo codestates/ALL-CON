@@ -16,6 +16,7 @@ import {
   showMyDropDown,
   showConcertModal,
 } from '../store/ModalSlice';
+import { setIsOrderClicked } from '../store/MainSlice';
 import {
   setAllArticles,
   setArticleTotalPage,
@@ -63,6 +64,7 @@ function Header() {
     conChinWritingModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
+  const { isOrderClicked } = useSelector((state: RootState) => state.main);
   const { isClosed, scrollCount, timerMessage, headerAllConcerts, isPaused } =
     useSelector((state: RootState) => state.header);
   const { articleOrder, allArticles } = useSelector(
@@ -166,8 +168,13 @@ function Header() {
         /* 서버 응답값이 있다면 & target 상태 변경 */
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setOrder('view'));
-        dispatch(setTarget(response.data.data.concertInfo[0]));
-        dispatch(setTargetIdx(0));
+        dispatch(setIsOrderClicked(!isOrderClicked));
+        setTimeout(() => {
+          dispatch(setTargetIdx(0));
+        }, 100);
+        setTimeout(() => {
+          dispatch(setTarget(response.data.data.concertInfo[0]));
+        }, 200);
         /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
         dispatch(setIsRendering(true));
       }
@@ -221,13 +228,14 @@ function Header() {
     } else if (menu === 'main') {
       /* MainPage */
       dispatch(setTarget({}));
-      dispatch(setPageNum(1));
+
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
       getMainAllConcerts();
       setTimeout(() => {
+        dispatch(setPageNum(1));
         navigate('/main');
-      }, 100);
+      }, 300);
       setSearchClicked(false);
     } else if (menu === 'concert') {
       /* ConcertPage */
