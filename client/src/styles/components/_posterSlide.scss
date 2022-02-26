@@ -626,6 +626,29 @@
       }
     }
   }
+  .loadingImg {
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    @include mobile-only() {
+      width: 5rem;
+      height: 5rem;
+      left: 50%;
+      top: 50%;
+    }
+    @include md() {
+      width: 7rem;
+      height: 7rem;
+      left: 50%;
+      top: 50%;
+    }
+    @include lg() {
+      width: 9rem;
+      height: 9rem;
+      left: 50%;
+      top: 50%;
+    }
+  }
   // .s1_arrow {
   //   border: 1px solid red;
   //   z-index: 10;

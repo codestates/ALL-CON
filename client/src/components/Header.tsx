@@ -164,12 +164,10 @@ function Header() {
       );
       if (response.data) {
         /* 서버 응답값이 있다면 & target 상태 변경 */
-        dispatch(setOrder('view'));
         dispatch(setAllConcerts(response.data.data.concertInfo));
+        dispatch(setOrder('view'));
         dispatch(setTarget(response.data.data.concertInfo[0]));
-        setTimeout(() => {
-          dispatch(setTargetIdx(0));
-        }, 300);
+        dispatch(setTargetIdx(0));
         /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
         dispatch(setIsRendering(true));
       }
@@ -223,11 +221,13 @@ function Header() {
     } else if (menu === 'main') {
       /* MainPage */
       dispatch(setTarget({}));
-      getMainAllConcerts();
       dispatch(setPageNum(1));
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
-      navigate('/main');
+      getMainAllConcerts();
+      setTimeout(() => {
+        navigate('/main');
+      }, 100);
       setSearchClicked(false);
     } else if (menu === 'concert') {
       /* ConcertPage */
