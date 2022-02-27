@@ -231,12 +231,13 @@ function Header() {
       setSearchClicked(false);
     } else if (menu === 'main') {
       /* MainPage */
-      navigate('/main');
+
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
       getMainAllConcerts();
       setTimeout(() => {
         dispatch(setPageNum(1));
+        navigate('/main');
       }, 300);
       setSearchClicked(false);
     } else if (menu === 'concert') {
