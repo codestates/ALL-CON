@@ -297,10 +297,12 @@ function PosterSlide() {
                 </div>
               );
             } else if (
-              allConcertsMain.indexOf(el) === allConcerts.length - 1 ||
-              allConcertsMain.indexOf(el) === 0
+              (allConcertsMain.indexOf(el) === allConcerts.length - 1 &&
+                targetIdxMain === 0) ||
+              (targetIdxMain === allConcerts.length - 1 &&
+                allConcertsMain.indexOf(el) === 0)
             ) {
-              /* 나머지 */
+              /* (현재 targetIdx가 0일 때, 2번째 포스터 큰사이즈) || (현재 targetIdx가 마지막Idx일 때, 4번째 포스터 큰사이즈)  */
               return (
                 <div className='else' key={el.id}>
                   <div className='card'>
@@ -324,6 +326,7 @@ function PosterSlide() {
               targetIdxMain === allConcerts.length - 2 &&
               allConcertsMain.indexOf(el) === 0
             ) {
+              /* (현재 targetIdx가 마지막 Idx-1일 때, 0번째 포스터 작은 사이즈) */
               return (
                 <div className='else2' key={el.id}>
                   <div className='card'>
@@ -344,6 +347,7 @@ function PosterSlide() {
                 </div>
               );
             } else {
+              /* 이외의 경우 모두 작은사이즈 포스터 */
               return (
                 <div className='else2' key={el.id}>
                   <div className='card'>
