@@ -79,7 +79,10 @@ function PosterSlide() {
   useEffect(() => {
     //지역상태 변경
     setTargetIdxMain(targetIdx);
-    getDetailInfo(allConcerts[targetIdx].id);
+    //타겟 인덱스가 변할때마다 타겟 바꿔주기
+    dispatch(setTarget(allConcerts[targetIdx]));
+    if (posterLoading === true) getDetailInfo(allConcerts[targetIdx].id);
+
     //targetIdx가 바뀌면 targetIdx로 중앙 이동.(한번만)
     if (isMoved === false) {
       setTimeout(() => {
@@ -114,8 +117,6 @@ function PosterSlide() {
         dispatch(setDetail(response.data.data.concertInfo));
         //console.log('디스패치 실행중');
         getAllComments(id);
-        //타겟 인덱스가 변할때마다 타겟 바꿔주기
-        dispatch(setTarget(allConcerts[targetIdx]));
       }
     } catch (err) {
       console.log(err);
@@ -295,10 +296,56 @@ function PosterSlide() {
                   </div>
                 </div>
               );
-            } else {
+            } else if (
+              allConcertsMain.indexOf(el) === allConcerts.length - 1 ||
+              allConcertsMain.indexOf(el) === 0
+            ) {
               /* 나머지 */
               return (
                 <div className='else' key={el.id}>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
+                </div>
+              );
+            } else if (
+              targetIdxMain === allConcerts.length - 2 &&
+              allConcertsMain.indexOf(el) === 0
+            ) {
+              return (
+                <div className='else2' key={el.id}>
+                  <div className='card'>
+                    <div className='front'>
+                      <div className='posterCover2'></div>
+                      <img
+                        className='frontImg'
+                        src={el.image_concert}
+                        alt='콘서트 이미지'
+                      />
+                    </div>
+                    <img
+                      className='back'
+                      src={el.image_concert}
+                      alt='콘서트 이미지'
+                    />
+                  </div>
+                </div>
+              );
+            } else {
+              return (
+                <div className='else2' key={el.id}>
                   <div className='card'>
                     <div className='front'>
                       <div className='posterCover2'></div>

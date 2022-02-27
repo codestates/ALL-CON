@@ -73,10 +73,13 @@ function ConcertModal() {
     dispatch(setPassToConcert(true));
     dispatch(setIsRendering(false));
     dispatch(setPageNum(1));
-    dispatch(
-      setTargetIdx(allConcerts.findIndex(concert => concert.id === target.id)),
+    const concertIdx = allConcerts.findIndex(
+      concert => concert.id === target.id,
     );
-    const targetTimeOut = setTimeout(setTargetHandler, 300);
+    dispatch(setTargetIdx(concertIdx));
+    setTimeout(() => {
+      dispatch(setTarget(allConcerts[concertIdx]));
+    }, 300);
     const commentTimeOut = setTimeout(getPageComments, 500);
     dispatch(showConcertModal(false));
     navigate('/main');
@@ -88,7 +91,7 @@ function ConcertModal() {
   };
 
   /* 모든 댓글 가져오기 함수 */
-  const getPageComments = async (pageNum: number) => {
+  const getPageComments = async () => {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
 

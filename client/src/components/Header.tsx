@@ -64,7 +64,9 @@ function Header() {
     conChinWritingModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
-  const { isOrderClicked } = useSelector((state: RootState) => state.main);
+  const { target, isOrderClicked } = useSelector(
+    (state: RootState) => state.main,
+  );
   const { isClosed, scrollCount, timerMessage, headerAllConcerts, isPaused } =
     useSelector((state: RootState) => state.header);
   const { articleOrder, allArticles } = useSelector(
@@ -166,6 +168,8 @@ function Header() {
       );
       if (response.data) {
         /* 서버 응답값이 있다면 & target 상태 변경 */
+        if (response.data.data.concertInfo[0].id !== target.id)
+          dispatch(setTarget({}));
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setOrder('view'));
         dispatch(setIsOrderClicked(!isOrderClicked));
@@ -227,14 +231,12 @@ function Header() {
       setSearchClicked(false);
     } else if (menu === 'main') {
       /* MainPage */
-      dispatch(setTarget({}));
-
+      navigate('/main');
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
       getMainAllConcerts();
       setTimeout(() => {
         dispatch(setPageNum(1));
-        navigate('/main');
       }, 300);
       setSearchClicked(false);
     } else if (menu === 'concert') {

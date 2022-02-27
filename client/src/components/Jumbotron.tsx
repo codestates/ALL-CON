@@ -25,7 +25,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Jumbotron() {
   const dispatch = useDispatch();
-  const { order, target, isOrderClicked, allConcerts } = useSelector(
+  const { order, target, targetIdx, isOrderClicked, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
   const { pageNum } = useSelector((state: RootState) => state.concertComments);
