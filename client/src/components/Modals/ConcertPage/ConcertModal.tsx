@@ -12,6 +12,7 @@ import {
   setTarget,
   setTargetIdx,
   setDetail,
+  setAllConcerts,
 } from '../../../store/MainSlice';
 import {
   setPageAllComments,
@@ -19,18 +20,19 @@ import {
   setPageNum,
   setComment,
 } from '../../../store/ConcertCommentSlice';
-import { setMainTotalComments } from '../../../store/MainSlice';
+import { setMainTotalComments, setMainLoading } from '../../../store/MainSlice';
 
 /* Library import */
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 function ConcertModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   /* useSelector => 전역상태 */
-  const { target, targetIdx, allConcerts } = useSelector(
+  const { target, targetIdx, allConcerts, order } = useSelector(
     (state: RootState) => state.main,
   );
 
@@ -67,27 +69,62 @@ function ConcertModal() {
     return '';
   };
 
+  /*전체 콘서트 받아오기 */
+  const getAllConcerts = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert?order=${order}`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        /* 서버 응답값이 있다면 & target 상태 변경 */
+        dispatch(setAllConcerts(response.data.data.concertInfo));
+        /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
+        dispatch(setIsRendering(true));
+        const concerts: any[] = response.data.data.concertInfo;
+        const concertIdx = concerts.findIndex(
+          concert => concert.id === target.id,
+        );
+        dispatch(setTargetIdx(concertIdx));
+        setTimeout(() => {
+          dispatch(setTarget(concerts[concertIdx]));
+        }, 100);
+        console.log(target);
+        setTimeout(() => {
+          getPageComments(concerts[concertIdx].id);
+        }, 200);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   /* 자세히 보기 버튼 클릭 핸들러 (현재 target Concert 상태로 mainPage 이동) */
   const moveMainHandler = () => {
+    dispatch(setMainLoading(false));
     dispatch(setPassToConcert(true));
     dispatch(setIsRendering(false));
-    dispatch(setPageNum(1));
-    dispatch(
-      setTargetIdx(allConcerts.findIndex(concert => concert.id === target.id)),
-    );
-    dispatch(setTarget(allConcerts[targetIdx]));
-    getPageComments(1);
+    getAllConcerts();
+
     dispatch(showConcertModal(false));
-    navigate('/main');
+    setTimeout(() => {
+      dispatch(setMainLoading(true));
+      navigate('/main');
+    }, 500);
+  };
+
+  /* Target 설정 Handler */
+  const setTargetHandler = () => {
+    dispatch(setTarget(allConcerts[targetIdx]));
   };
 
   /* 모든 댓글 가져오기 함수 */
-  const getPageComments = async (pageNum: number) => {
+  const getPageComments = async (id: number) => {
     try {
       /* response 변수에 서버 응답결과를 담는다 */
 
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert/${target.id}/comment?pageNum=${pageNum}`,
+        `${process.env.REACT_APP_API_URL}/concert/${id}/comment?pageNum=1`,
         { withCredentials: true },
       );
       /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
@@ -96,7 +133,7 @@ function ConcertModal() {
         dispatch(setTotalNum(response.data.data.totalPage));
         dispatch(setPageAllComments(response.data.data.concertCommentInfo));
         dispatch(setMainTotalComments(response.data.data.totalComment));
-        // dispatch(setPageNum(1));
+        dispatch(setPageNum(1));
       }
     } catch (err) {
       console.log(err);

@@ -11,22 +11,20 @@ import {
   setArticleOrder,
   setArticleCurPage,
   setArticleRendered,
+  setIsLoadingConChin,
+  setIsLoadingArticle,
 } from '../../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 function ConChinPostingOrderBox() {
   const dispatch = useDispatch();
-  const { target, allConcerts } = useSelector((state: RootState) => state.main);
-  const {
-    postingOrder,
-    articleOrder,
-    allArticles,
-    articleRendered,
-    targetArticle,
-  } = useSelector((state: RootState) => state.conChin);
+  const { target } = useSelector((state: RootState) => state.main);
+  const { postingOrder, articleOrder, targetArticle } = useSelector(
+    (state: RootState) => state.conChin,
+  );
 
   /* useState => 지역상태 */
   const [conChinPostingOrder, setConChinPostingOrder] =
@@ -36,11 +34,23 @@ function ConChinPostingOrderBox() {
   const getAllConcerts = async (clickedPostingOrder: String) => {
     if (Object.keys(targetArticle).length === 0) {
       try {
+        /* 로딩 상태 세팅 posting */
+        dispatch(
+          setIsLoadingConChin({
+            posting: false,
+          }),
+        );
         const response = await axios.get(
           `${process.env.REACT_APP_API_URL}/concert?order=${clickedPostingOrder}`,
           { withCredentials: true },
         );
         if (response.data) {
+          dispatch(
+            setIsLoadingConChin({
+              posting: true,
+            }),
+          );
+          dispatch(setAllConcerts([]));
           dispatch(setAllConcerts(response.data.data.concertInfo));
         }
       } catch (err) {
@@ -51,12 +61,15 @@ function ConChinPostingOrderBox() {
 
   /* 전체 게시물 받아오기 */
   const getAllArticles = async (order: string) => {
+    /* 로딩 상태 세팅 article */
+    dispatch(setIsLoadingArticle(false));
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=${order}`,
         { withCredentials: true },
       );
       if (response.data) {
+        dispatch(setIsLoadingArticle(true));
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
       } else {

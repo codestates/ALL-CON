@@ -1,8 +1,9 @@
-import react from 'react';
+/* CSS import */
+import loadingImage from '../images/mainLoading.gif';
+import banner from '../images/banner.png';
 import ConChinPostingBox from '../components/ConChinPage/ConChinPostingBox';
 import ConChinBox from '../components/ConChinPage/ConChinBox';
 import ConChinArticleContentBox from '../components/ConChinPage/ConChinArticleContentBox';
-import banner from '../images/banner.png';
 import Footer from '../components/Footer';
 /* Store import */
 import { RootState } from '../index';
@@ -14,6 +15,8 @@ import {
   setTargetArticle,
   setArticleCurPage,
   setArticleRendered,
+  setIsLoadingConChin,
+  setIsLoadingArticle,
 } from '../store/ConChinSlice';
 /* Library import */
 import axios from 'axios';
@@ -22,7 +25,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinPage() {
   const dispatch = useDispatch();
-  const { target, allConcerts } = useSelector((state: RootState) => state.main);
+  const { target, allConcerts, mainLoading } = useSelector(
+    (state: RootState) => state.main,
+  );
   const { articleOrder, postingOrder, targetArticle, allArticles } =
     useSelector((state: RootState) => state.conChin);
 
@@ -73,6 +78,12 @@ function ConChinPage() {
 
   /* 전체 콘서트 받아오기 */
   const getAllConcerts = async () => {
+    /* 로딩 상태 세팅 posting */
+    dispatch(
+      setIsLoadingConChin({
+        posting: false,
+      }),
+    );
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert?order=${postingOrder}`,
@@ -81,6 +92,11 @@ function ConChinPage() {
       if (response.data) {
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setArticleCurPage(1));
+        dispatch(
+          setIsLoadingConChin({
+            posting: true,
+          }),
+        );
       }
     } catch (err) {
       console.log(err);
@@ -89,18 +105,19 @@ function ConChinPage() {
   /* 조건부 게시물 받아오기 */
   const getAllArticlesWithCondition = async () => {
     try {
-      /* 타겟에 종속된 게시물이 없을때, 게시물 없음 표시 */
       if (target !== undefined && target !== null) {
         if (Object.keys(target).length === 0) {
           getAllArticles();
           dispatch(setArticleCurPage(1));
         } else if (Object.keys(target).length > 0 && allArticles.length > 0) {
           /* 타겟에 종속된 게시물이 있을때, 해당 게시물들만 받아오기 */
+          dispatch(setIsLoadingArticle(false));
           const response = await axios.get(
             `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=${articleOrder}`,
             { withCredentials: true },
           );
           if (response.data) {
+            dispatch(setIsLoadingArticle(true));
             dispatch(setAllArticles(response.data.data.articleInfo));
             dispatch(setArticleTotalPage(response.data.data.totalPage));
           } else {
@@ -119,11 +136,13 @@ function ConChinPage() {
   /* 전체 게시물 받아오기 */
   const getAllArticles = async () => {
     try {
+      dispatch(setIsLoadingArticle(false));
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=${articleOrder}`,
         { withCredentials: true },
       );
       if (response.data) {
+        dispatch(setIsLoadingArticle(true));
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
@@ -141,74 +160,79 @@ function ConChinPage() {
     getAllArticlesWithCondition();
   }, []);
 
-  /* 다른 곳에서 target 변경시 지역상태 conChinTarget 변경  */
+  /* target 변경시 지역상태 conChinTarget 변경  */
   useEffect(() => {
     setConChinTarget(target);
-    // console.log('useEffect 정상작동, conChinTarget 변경');
   }, [target]);
-  /* 다른 곳에서 targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
+
+  /* targetArticle 변경시 지역상태 conChinTargetArticle 변경  */
   useEffect(() => {
     setConChinTargetArticle(targetArticle);
-    // console.log('useEffect 정상작동, conChinTargetArticle 변경');
   }, [targetArticle]);
-
-  return (
-    <div id='conChinContainer'>
-      <div id='conChinExceptFooter'>
-        <img id='jumbotron' src={banner} />
-        <div
-          id={
-            Object.keys(conChinTarget).length === 0
-              ? 'postingWrapper'
-              : 'postingWrapperChosen'
-          }
-        >
-          {/* 콘서트 정보, target유무에따라 외부,내부 크기 변경 */}
-          <ConChinPostingBox />
+  if (mainLoading === true)
+    return (
+      <div id='conChinContainer'>
+        <div id='conChinExceptFooter'>
+          <img id='jumbotron' src={banner} />
+          <div
+            id={
+              Object.keys(conChinTarget).length === 0
+                ? 'postingWrapper'
+                : 'postingWrapperChosen'
+            }
+          >
+            {/* 콘서트 정보, target유무에따라 외부,내부 크기 변경 */}
+            <ConChinPostingBox />
+          </div>
+          <div
+            id={
+              Object.keys(conChinTarget).length === 0
+                ? 'articleWrapper'
+                : 'articleWrapperChosen'
+            }
+          >
+            {/* 게시물 정보, targetArticle유무에따라 외부,내부 크기 변경, 가로 스크롤바 생성 */}
+            <ConChinBox />
+          </div>
         </div>
         <div
           id={
-            Object.keys(conChinTarget).length === 0
-              ? 'articleWrapper'
-              : 'articleWrapperChosen'
+            Object.keys(conChinTargetArticle).length === 0 &&
+            Object.keys(conChinTarget).length !== 0
+              ? 'contentsWrapperArticleNotChosen'
+              : Object.keys(conChinTargetArticle).length !== 0 &&
+                Object.keys(conChinTarget).length !== 0
+              ? 'contentsWrapperChosen'
+              : 'contentWrapper'
           }
         >
-          {/* 게시물 정보, targetArticle유무에따라 외부,내부 크기 변경, 가로 스크롤바 생성 */}
-          <ConChinBox />
+          {/* 게시물 내용, 없다가 생기므로 위치만 변경할 것. */}
+          <ConChinArticleContentBox />
+        </div>
+        <div
+          id={
+            Object.keys(conChinTargetArticle).length === 0 &&
+            Object.keys(conChinTarget).length !== 0
+              ? 'fullFooterArticleNotChosen'
+              : Object.keys(conChinTargetArticle).length !== 0 &&
+                Object.keys(conChinTarget).length !== 0
+              ? 'fullFooterChosen'
+              : 'fullFooter'
+          }
+        >
+          <div id='footerWrapper'>
+            {/* 푸터, targetArticle 유무에 따라 위치 변경 */}
+            <Footer />
+          </div>
         </div>
       </div>
-      <div
-        id={
-          Object.keys(conChinTargetArticle).length === 0 &&
-          Object.keys(conChinTarget).length !== 0
-            ? 'contentsWrapperArticleNotChosen'
-            : Object.keys(conChinTargetArticle).length !== 0 &&
-              Object.keys(conChinTarget).length !== 0
-            ? 'contentsWrapperChosen'
-            : 'contentWrapper'
-        }
-      >
-        {/* 게시물 내용, 없다가 생기므로 위치만 변경할 것. */}
-        <ConChinArticleContentBox />
+    );
+  else
+    return (
+      <div id='loadingContainer'>
+        <img className='loadingImg' src={loadingImage} />
       </div>
-      <div
-        id={
-          Object.keys(conChinTargetArticle).length === 0 &&
-          Object.keys(conChinTarget).length !== 0
-            ? 'fullFooterArticleNotChosen'
-            : Object.keys(conChinTargetArticle).length !== 0 &&
-              Object.keys(conChinTarget).length !== 0
-            ? 'fullFooterChosen'
-            : 'fullFooter'
-        }
-      >
-        <div id='footerWrapper'>
-          {/* 푸터, targetArticle 유무에 따라 위치 변경 */}
-          <Footer />
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default ConChinPage;

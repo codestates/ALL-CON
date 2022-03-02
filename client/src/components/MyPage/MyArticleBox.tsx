@@ -1,6 +1,6 @@
 /* Config import */
 /* CSS import */
-import LoadingImage from '../../images/spinner.gif'; 
+import LoadingImage from '../../images/spinner.gif';
 import viewImage from '../../images/view.png';
 import groupImage from '../../images/group.png';
 import commentImage from '../../images/commentDots.png';
@@ -12,7 +12,7 @@ import {
   setTargetArticlesUserInfo,
   setPostingOrder,
   setArticleOrder,
-  setAllArticles, 
+  setAllArticles,
   setArticleTotalPage,
 } from '../../store/ConChinSlice';
 import { setConChinPageNum } from '../../store/ConChinCommentSlice';
@@ -35,14 +35,12 @@ function MyArticleBox() {
   );
 
   /* 지역상태 - useState */
-  const [firstIsLoading, setFirstIsLoading] = useState<boolean>(false)
+  const [firstIsLoading, setFirstIsLoading] = useState<boolean>(false);
 
   /* useEffect */
   useEffect(() => {
-
-    if(isLoadingState?.myArticle === true) setFirstIsLoading(true)
-
-  }, [isLoadingState?.myArticle])
+    if (isLoadingState?.myArticle === true) setFirstIsLoading(true);
+  }, [isLoadingState?.myArticle]);
 
   /* handler 함수 (기능별 정렬) */
   // 마이페이지 - 나의 게시물 중 한 게시물을 선택하면, 다음이 실행된다
@@ -68,7 +66,7 @@ function MyArticleBox() {
       `${process.env.REACT_APP_API_URL}/user/other/${user_id}`,
       { withCredentials: true },
     );
-    
+
     // 테스트
     const responseAllArticle = await axios.get(
       `${process.env.REACT_APP_API_URL}/concert/${responseConcert.data.data.concertInfo.id}/article?order='view'`,
@@ -86,9 +84,11 @@ function MyArticleBox() {
     dispatch(setTargetArticlesUserInfo(responseUser.data.data.userInfo));
 
     // 현재 선택한 게시물 업데이트 (target)
-    dispatch(setTargetArticle(responseArticle.data.data.articleInfo));
+    setTimeout(() => {
+      dispatch(setTargetArticle(responseArticle.data.data.articleInfo));
+    }, 300);
     dispatch(setConChinPageNum(1));
-   
+
     dispatch(setPostingOrder('view'));
     dispatch(setArticleOrder('view'));
 
@@ -100,63 +100,64 @@ function MyArticleBox() {
       <div id='titleWrapper'>
         <p className='title'>내가 쓴 게시물</p>
       </div>
-      {
-        firstIsLoading
-          ? <h1 id='myArticleCount'>{myTotalArticle}개의 게시물</h1>
-          : null
-      }
+      {firstIsLoading ? (
+        <h1 id='myArticleCount'>{myTotalArticle}개의 게시물</h1>
+      ) : null}
       <div id='articleWrapper'>
         <div id='articleBox'>
           <div id='box'>
-            {Array.isArray(articleInfo) && isLoadingState?.myArticle
-              ? articleInfo.map((el: any) => {
-                  return (
-                    // 마이페이지, 내가 작성한 게시물에서 "특정 게시물"을 선택
-                    <ul
-                      className='article'
-                      onClick={() =>
-                        handleArticleSelected(el.id, el.concert_id, el.user_id)
-                      }
-                    >
-                      {el.activation === false ? (
-                        <div className='endArticle'>
-                          <p className='endTitle'>종료된 게시물</p>
-                        </div>
-                      ) : null}
-                      <img
-                        className='thumbNail'
-                        src={el.image}
-                      ></img>
-                      <div className='commentBox'>
-                        <img className='icon' src={commentImage} />
-                        <div className='count'>{el.total_comment}</div>
+            {Array.isArray(articleInfo) && isLoadingState?.myArticle ? (
+              articleInfo.map((el: any) => {
+                return (
+                  // 마이페이지, 내가 작성한 게시물에서 "특정 게시물"을 선택
+                  <ul
+                    className='article'
+                    onClick={() =>
+                      handleArticleSelected(el.id, el.concert_id, el.user_id)
+                    }
+                  >
+                    {el.activation === false ? (
+                      <div className='endArticle'>
+                        <p className='endTitle'>종료된 게시물</p>
                       </div>
-                      <div id='myMemberBoxWrapper'>
-                        <div className='memberBox'>
-                          <img
-                            className='icon'
-                            src={groupImage}
-                            alt='groupImage'
-                          />
-                          <div className='count'>
-                            {' '}
-                            {el.activation === true ? el.member_count : '-'}/
-                            {el.activation === true ? el.total_member : '-'}{' '}
-                          </div>
+                    ) : null}
+                    <img className='thumbNail' src={el.image}></img>
+                    <div className='commentBox'>
+                      <img className='icon' src={commentImage} />
+                      <div className='count'>{el.total_comment}</div>
+                    </div>
+                    <div id='myMemberBoxWrapper'>
+                      <div className='memberBox'>
+                        <img
+                          className='icon'
+                          src={groupImage}
+                          alt='groupImage'
+                        />
+                        <div className='count'>
+                          {' '}
+                          {el.activation === true ? el.member_count : '-'}/
+                          {el.activation === true ? el.total_member : '-'}{' '}
                         </div>
                       </div>
-                      <div className='title'>
-                        <img className='icon' src={viewImage} alt='viewImage' />
-                        <p className='count'>
-                          {el.activation === true ? el.view : '종료'}
-                        </p>
-                        <p className='date'>{el.updatedAt.substring(0, 10)}</p>
-                        <p className='text'>{el.title}</p>
-                      </div>
-                    </ul>
-                  );
-                })
-              : <img className='loadingMyArticleImg' src={LoadingImage} alt='LoadingImage' />}
+                    </div>
+                    <div className='title'>
+                      <img className='icon' src={viewImage} alt='viewImage' />
+                      <p className='count'>
+                        {el.activation === true ? el.view : '종료'}
+                      </p>
+                      <p className='date'>{el.updatedAt.substring(0, 10)}</p>
+                      <p className='text'>{el.title}</p>
+                    </div>
+                  </ul>
+                );
+              })
+            ) : (
+              <img
+                className='loadingMyArticleImg'
+                src={LoadingImage}
+                alt='LoadingImage'
+              />
+            )}
           </div>
         </div>
       </div>

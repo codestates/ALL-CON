@@ -1,3 +1,5 @@
+/* CSS import */
+import loadingImage from '../images/mainLoading.gif';
 /* Component import */
 import Footer from '../components/Footer';
 import Jumbotron from '../components/Jumbotron';
@@ -30,8 +32,15 @@ import { useEffect, useState } from 'react';
 function MainPage() {
   const dispatch = useDispatch();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { isRendering, order, target, targetIdx, allConcerts, detail } =
-    useSelector((state: RootState) => state.main);
+  const {
+    isRendering,
+    order,
+    target,
+    targetIdx,
+    allConcerts,
+    detail,
+    mainLoading,
+  } = useSelector((state: RootState) => state.main);
   const { allAlarms, alarm, emailClick, smsClick } = useSelector(
     (state: RootState) => state.concertAlarm,
   );
@@ -142,37 +151,43 @@ function MainPage() {
       dispatch(setSmsClick(false));
     }
   };
-
-  return (
-    <div id='mainContainer'>
-      <div id='mainJumboWrapper'>
-        <Jumbotron />
+  if (mainLoading === true)
+    return (
+      <div id='mainContainer'>
+        <div id='mainJumboWrapper'>
+          <Jumbotron />
+        </div>
+        {isRenderingMain && (
+          <div id='mainConcertInfoWrapper'>
+            <MainConcertInfo />
+          </div>
+        )}
+        {isRenderingMain && (
+          <div id='mainCommentWrapper'>
+            <MainComment />
+          </div>
+        )}
+        {isRenderingMain && (
+          <div id='mainPaginationWrapper'>
+            <MainPagination />
+          </div>
+        )}
+        <div id='mainFindConchinWrapper'>
+          <MainFindConchin />
+        </div>
+        <div id='fullFooter'>
+          <div id='mainFooterWrapper'>
+            <Footer />
+          </div>
+        </div>
       </div>
-      {isRenderingMain && (
-        <div id='mainConcertInfoWrapper'>
-          <MainConcertInfo />
-        </div>
-      )}
-      {isRenderingMain && (
-        <div id='mainCommentWrapper'>
-          <MainComment />
-        </div>
-      )}
-      {isRenderingMain && (
-        <div id='mainPaginationWrapper'>
-          <MainPagination />
-        </div>
-      )}
-      <div id='mainFindConchinWrapper'>
-        <MainFindConchin />
+    );
+  else
+    return (
+      <div id='loadingContainer'>
+        <img className='loadingImg' src={loadingImage} />
       </div>
-      <div id='fullFooter'>
-        <div id='mainFooterWrapper'>
-          <Footer />
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default MainPage;

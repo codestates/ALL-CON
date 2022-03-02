@@ -426,6 +426,25 @@
     }
     // border: 3px solid green;
   }
+  .loadingImg {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 30%;
+
+    @include mobile-only() {
+      width: 4rem;
+      height: 4rem;
+    }
+    @include md() {
+      width: 5rem;
+      height: 5rem;
+    }
+    @include lg() {
+      width: 7rem;
+      height: 7rem;
+    }
+  }
   #paginationWrapper {
     position: absolute;
     display: flex;

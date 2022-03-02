@@ -1,5 +1,3 @@
-/* Config import */
-import { persistor } from '../index';
 /* CSS import */
 import logo from '../images/allConLogo.png';
 import menu from '../images/menu.png';
@@ -11,14 +9,14 @@ import xButton from '../images/xWhiteButton.png';
 import AutoComplete from './AutoComplete';
 /* Store import */
 import { RootState } from '../index';
+import { setIsLoading } from '../store/ConcertSlice';
 import {
   showLoginModal,
   showSideMenuModal,
   showMyDropDown,
   showConcertModal,
-  showConChinProfileModal,
-  showConChinWritingModal,
 } from '../store/ModalSlice';
+import { setIsOrderClicked, setMainLoading } from '../store/MainSlice';
 import {
   setAllArticles,
   setArticleTotalPage,
@@ -49,6 +47,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
 /* 타이머 함수 */
 let timer: any;
 
@@ -56,9 +55,6 @@ function Header() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
-  const { allConcerts, targetIdx, target, order } = useSelector(
-    (state: RootState) => state.main,
-  );
   const {
     loginModal,
     signupModal,
@@ -68,6 +64,9 @@ function Header() {
     conChinWritingModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
+  const { target, isOrderClicked } = useSelector(
+    (state: RootState) => state.main,
+  );
   const { isClosed, scrollCount, timerMessage, headerAllConcerts, isPaused } =
     useSelector((state: RootState) => state.header);
   const { articleOrder, allArticles } = useSelector(
@@ -169,8 +168,17 @@ function Header() {
       );
       if (response.data) {
         /* 서버 응답값이 있다면 & target 상태 변경 */
+        if (response.data.data.concertInfo[0].id !== target.id)
+          dispatch(setTarget({}));
         dispatch(setAllConcerts(response.data.data.concertInfo));
-        dispatch(setTarget(response.data.data.concertInfo[0]));
+        dispatch(setOrder('view'));
+        dispatch(setIsOrderClicked(!isOrderClicked));
+        setTimeout(() => {
+          dispatch(setTargetIdx(0));
+        }, 50);
+        setTimeout(() => {
+          dispatch(setTarget(response.data.data.concertInfo[0]));
+        }, 100);
         /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
         dispatch(setIsRendering(true));
       }
@@ -206,6 +214,7 @@ function Header() {
       if (response.data) {
         /* 서버 응답값이 있다면 & allConcerts 상태 변경 */
         dispatch(setAllConcerts(response.data.data.concertInfo));
+        dispatch(setIsLoading(true));
       }
     } catch (err) {
       console.log(err);
@@ -222,14 +231,15 @@ function Header() {
       setSearchClicked(false);
     } else if (menu === 'main') {
       /* MainPage */
-      dispatch(setTarget({}));
-      getMainAllConcerts();
-      dispatch(setTargetIdx(0));
-      dispatch(setOrder('view'));
-      dispatch(setPageNum(1));
+      dispatch(setMainLoading(false));
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
-      navigate('/main');
+      getMainAllConcerts();
+      setTimeout(() => {
+        dispatch(setMainLoading(true));
+        dispatch(setPageNum(1));
+        navigate('/main');
+      }, 500);
       setSearchClicked(false);
     } else if (menu === 'concert') {
       /* ConcertPage */

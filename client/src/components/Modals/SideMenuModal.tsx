@@ -33,6 +33,7 @@ import {
   setTarget,
   setTargetIdx,
   setIsRendering,
+  setMainLoading,
 } from '../../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -54,13 +55,17 @@ function SideMenuModal() {
     if (menu === 'logo') {
     } else if (menu === 'main') {
       /* MainPage */
+      dispatch(setMainLoading(false));
       dispatch(setTarget({}));
       dispatch(setTargetIdx(0));
       dispatch(setOrder('view'));
       dispatch(setPageNum(1));
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
-      navigate('/main');
+      setTimeout(() => {
+        navigate('/main');
+        dispatch(setMainLoading(true));
+      }, 500);
     } else if (menu === 'concert') {
       /* ConcertPage */
       dispatch(setTarget({}));

@@ -43,6 +43,14 @@ export interface conChin {
   };
   /* 게시물 렌더 상태 */
   articleRendered?: boolean;
+  // loading 관리
+  isLoadingConChin: {
+    posting?: boolean;
+  };
+  // article loading
+  isLoadingArticle: boolean;
+  //articleComment loading
+  isLoadingArticleComment: boolean;
 }
 
 /* State 초기값 설정 */
@@ -55,6 +63,9 @@ const initialState: conChin = {
   targetArticlesUserInfo: {},
   articleCurPage: 0,
   articleRendered: false,
+  isLoadingConChin: {},
+  isLoadingArticle: false,
+  isLoadingArticleComment: false,
 };
 
 const conChinSlice = createSlice({
@@ -98,6 +109,24 @@ const conChinSlice = createSlice({
     ) => {
       state.articleRendered = payload;
     },
+    setIsLoadingConChin: (
+      state: conChin,
+      { payload }: PayloadAction<object>,
+    ) => {
+      state.isLoadingConChin = payload;
+    },
+    setIsLoadingArticle: (
+      state: conChin,
+      { payload }: PayloadAction<boolean>,
+    ) => {
+      state.isLoadingArticle = payload;
+    },
+    setIsLoadingArticleComment: (
+      state: conChin,
+      { payload }: PayloadAction<boolean>,
+    ) => {
+      state.isLoadingArticleComment = payload;
+    },
   },
 });
 
@@ -110,5 +139,8 @@ export const {
   setTargetArticlesUserInfo,
   setArticleCurPage,
   setArticleRendered,
+  setIsLoadingConChin,
+  setIsLoadingArticle,
+  setIsLoadingArticleComment,
 } = conChinSlice.actions;
 export default conChinSlice.reducer;

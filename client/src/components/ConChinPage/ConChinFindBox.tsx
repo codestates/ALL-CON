@@ -1,19 +1,14 @@
 /* CSS import */
 import shield from '../../images/shield.png';
-/* Component import */
-import ConChinWritingModal from '../Modals/ConChinPage/ConChinWritingModal';
 /* Store import */
 import { RootState } from '../../index';
-import { logout, getUserInfo } from '../../store/AuthSlice';
 import {
   showConChinWritingModal,
-  showLoginModal,
   showAlertModal,
   insertAlertText,
 } from '../../store/ModalSlice';
 
 /* Library import */
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useState, useEffect } from 'react';
@@ -21,7 +16,6 @@ import React, { useState, useEffect } from 'react';
 function ConChinFindBox() {
   /* dispatch / navigate */
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   /* useSelector */
   const { isLogin, userInfo } = useSelector((state: RootState) => state.auth);
