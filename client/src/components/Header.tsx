@@ -16,7 +16,7 @@ import {
   showMyDropDown,
   showConcertModal,
 } from '../store/ModalSlice';
-import { setIsOrderClicked } from '../store/MainSlice';
+import { setIsOrderClicked, setMainLoading } from '../store/MainSlice';
 import {
   setAllArticles,
   setArticleTotalPage,
@@ -175,10 +175,10 @@ function Header() {
         dispatch(setIsOrderClicked(!isOrderClicked));
         setTimeout(() => {
           dispatch(setTargetIdx(0));
-        }, 100);
+        }, 50);
         setTimeout(() => {
           dispatch(setTarget(response.data.data.concertInfo[0]));
-        }, 200);
+        }, 100);
         /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
         dispatch(setIsRendering(true));
       }
@@ -231,14 +231,15 @@ function Header() {
       setSearchClicked(false);
     } else if (menu === 'main') {
       /* MainPage */
-
+      dispatch(setMainLoading(false));
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
       getMainAllConcerts();
       setTimeout(() => {
+        dispatch(setMainLoading(true));
         dispatch(setPageNum(1));
         navigate('/main');
-      }, 300);
+      }, 500);
       setSearchClicked(false);
     } else if (menu === 'concert') {
       /* ConcertPage */

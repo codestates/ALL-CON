@@ -1,20 +1,27 @@
 /* Store import */
 import { RootState } from '../../../index';
 import {
+  setPageAllComments,
+  setTotalNum,
+  setPageNum,
+} from '../../../store/ConcertCommentSlice';
+import {
   setTarget,
   setTargetIdx,
   setOrder,
   setAllConcerts,
   setIsRendering,
   setIsOrderClicked,
+  setPosterLoading,
+  setDetail,
 } from '../../../store/MainSlice';
+import { setMainTotalComments } from '../../../store/MainSlice';
 import {
   setTargetArticle,
   setArticleRendered,
   setArticleCurPage,
 } from '../../../store/ConChinSlice';
 import { loginCheck, logout, getUserInfo } from '../../../store/AuthSlice';
-import { setPageNum } from '../../../store/ConcertCommentSlice';
 import {
   setAlarm,
   setEmailClick,
@@ -41,10 +48,10 @@ function MyDropDown() {
   const navigate = useNavigate();
 
   /* useSelector */
+  const { target } = useSelector((state: RootState) => state.main);
+  const { pageNum } = useSelector((state: RootState) => state.concertComments);
+
   const { scrollCount } = useSelector((state: RootState) => state.header);
-  const { allConcerts, isOrderClicked } = useSelector(
-    (state: RootState) => state.main,
-  );
 
   /* 지역상태 - useState */
   /* useEffect */
@@ -52,20 +59,11 @@ function MyDropDown() {
   /* handler 함수 (기능별 정렬) */
   // 로그아웃 후 메인페이지 리다이렉트 핸들러
   const goHomeHandler = () => {
-    dispatch(setOrder('view'));
-    getAllConcerts();
     /* 메인페이지 상태 초기화 */
-    setTimeout(() => {
-      dispatch(setTargetIdx(0));
-    }, 100);
-    setTimeout(() => {
-      dispatch(setTarget(allConcerts[0]));
-    }, 200);
-    setTimeout(() => {
-      dispatch(setIsOrderClicked(!isOrderClicked));
-    }, 300);
-    dispatch(setPageNum(1));
     dispatch(setIsRendering(false));
+    dispatch(setOrder('view'));
+    getAllConcerts('view');
+
     dispatch(setAlarm({}));
     dispatch(setEmailClick(false));
     dispatch(setSmsClick(false));
@@ -77,18 +75,65 @@ function MyDropDown() {
   };
 
   /*전체 콘서트 받아오기 */
-  const getAllConcerts = async () => {
+  const getAllConcerts = async (clickValue: string) => {
     try {
+      /* 포스터 로딩 상태 세팅 */
+      dispatch(setPosterLoading(false));
+      dispatch(setIsOrderClicked(false));
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert?order=view`,
+        `${process.env.REACT_APP_API_URL}/concert?order=${clickValue}`,
         { withCredentials: true },
       );
       if (response.data) {
-        /* 서버 응답값이 있다면 & target 상태 변경 */
+        /* 서버 응답값이 있다면 & target,targetIdx,pageNum 상태 변경 */
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setTarget(response.data.data.concertInfo[0]));
+        dispatch(setTargetIdx(0));
+        dispatch(setPageNum(1));
         /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
         dispatch(setIsRendering(true));
+        dispatch(setPosterLoading(true));
+        dispatch(setIsOrderClicked(true));
+        getDetailInfo(response.data.data.concertInfo[0].id);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 상세 콘서트 받아오기 */
+  const getDetailInfo = async (id: number) => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${id}`,
+        { withCredentials: true },
+      );
+      if (response.data.data) {
+        /* 서버 응답값이 있다면 detail(상세정보) 갱신 */
+        dispatch(setDetail(response.data.data.concertInfo));
+        getAllComments(id);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 모든 댓글 가져오기 함수 */
+  const getAllComments = async (id: number) => {
+    try {
+      if (target) {
+        /* response 변수에 서버 응답결과를 담는다 */
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/concert/${id}/comment?pageNum=${pageNum}`,
+          { withCredentials: true },
+        );
+        /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
+        if (response.data) {
+          /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
+          dispatch(setTotalNum(response.data.data.totalPage));
+          dispatch(setPageAllComments(response.data.data.concertCommentInfo));
+          dispatch(setMainTotalComments(response.data.data.totalComment));
+        }
       }
     } catch (err) {
       console.log(err);
@@ -122,9 +167,9 @@ function MyDropDown() {
     /* Common */
     dispatch(setTarget({}));
     /* MainPage */
-    dispatch(setTargetIdx(0));
-    dispatch(setPageNum(1));
-    dispatch(setOrder('view'));
+    // dispatch(setTargetIdx(0));
+    // dispatch(setPageNum(1));
+    // dispatch(setOrder('view'));
     /* ConcertPage */
     dispatch(showConcertModal(false));
     /* ConchinPage */
@@ -146,18 +191,6 @@ function MyDropDown() {
       );
       // 콘서트 페이지에서 콘서트를 선택한 후 마이페이지로 넘어갈 때, 지도 API close 해주는 함수
       resetHandler();
-      // 메인페이지 점보트론 초기화 (전체콘서트:조회수 / Order: 조회수)
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/concert`,
-        { withCredentials: true },
-      );
-      if (response.data) {
-        /* 서버 응답값이 있다면 & target 상태 변경 */
-        dispatch(setAllConcerts(response.data.data.concertInfo));
-        dispatch(setPageNum(1));
-        dispatch(setOrder('view'));
-        dispatch(setIsRendering(true));
-      }
     } catch (err) {
       console.log(err);
     }

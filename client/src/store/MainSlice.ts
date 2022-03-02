@@ -59,6 +59,8 @@ export interface main {
   isOrderClicked?: boolean;
   /* poster 로딩 */
   posterLoading?: boolean;
+  /* mainPage 로딩 */
+  mainLoading?: boolean;
 }
 
 /* State 초기값 설정 */
@@ -74,6 +76,7 @@ const initialState: main = {
   mainLastIdx: 0,
   isOrderClicked: false,
   posterLoading: false,
+  mainLoading: true,
 };
 
 const mainSlice = createSlice({
@@ -114,6 +117,9 @@ const mainSlice = createSlice({
     setPosterLoading: (state: main, { payload }: PayloadAction<boolean>) => {
       state.posterLoading = payload;
     },
+    setMainLoading: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.mainLoading = payload;
+    },
   },
 });
 
@@ -129,5 +135,6 @@ export const {
   setMainLastIdx,
   setIsOrderClicked,
   setPosterLoading,
+  setMainLoading,
 } = mainSlice.actions;
 export default mainSlice.reducer;

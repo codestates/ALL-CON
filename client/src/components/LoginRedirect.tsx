@@ -50,15 +50,13 @@ function LoginRedirect() {
     /* 메인페이지 상태 초기화 */
     dispatch(setOrder('view'));
     getAllConcerts();
-    setTimeout(() => {
-      dispatch(setTargetIdx(0));
-    }, 100);
+    dispatch(setTargetIdx(0));
     setTimeout(() => {
       dispatch(setTarget(allConcerts[0]));
     }, 200);
     setTimeout(() => {
-      dispatch(setIsOrderClicked(!isOrderClicked));
-    }, 300);
+      dispatch(setIsOrderClicked(false));
+    }, 100);
     dispatch(setPageNum(1));
     dispatch(setIsRendering(false));
     dispatch(setAlarm({}));
@@ -76,7 +74,9 @@ function LoginRedirect() {
     dispatch(showAlarmModal(false));
     dispatch(showMyProfileImageModal(false));
     /* 홈으로 이동 */
-    navigate('/main');
+    setTimeout(() => {
+      navigate('/main');
+    }, 300);
   };
 
   /*전체 콘서트 받아오기 */

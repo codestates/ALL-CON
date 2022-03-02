@@ -80,9 +80,12 @@ function PosterSlide() {
     //지역상태 변경
     setTargetIdxMain(targetIdx);
     //타겟 인덱스가 변할때마다 타겟 바꿔주기
-    dispatch(setTarget(allConcerts[targetIdx]));
-    if (posterLoading === true) getDetailInfo(allConcerts[targetIdx].id);
-
+    setTimeout(() => {
+      dispatch(setTarget(allConcerts[targetIdx]));
+    }, 100);
+    setTimeout(() => {
+      if (posterLoading === true) getDetailInfo(allConcerts[targetIdx].id);
+    }, 100);
     //targetIdx가 바뀌면 targetIdx로 중앙 이동.(한번만)
     if (isMoved === false) {
       setTimeout(() => {
