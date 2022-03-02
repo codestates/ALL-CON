@@ -11,9 +11,22 @@ import {
   getMyConcertCommentInfo,
   getMyArticleCommentInfo,
 } from '../../store/MySlice';
+import {
+  setPageAllComments,
+  setTotalNum,
+  setPageNum,
+  setComment,
+} from '../../store/ConcertCommentSlice';
 import { setConChinPageNum } from '../../store/ConChinCommentSlice';
 import { showAlertModal, insertAlertText } from '../../store/ModalSlice';
-import { setTarget, setTargetIdx, setIsRendering } from '../../store/MainSlice';
+import {
+  setTarget,
+  setTargetIdx,
+  setIsRendering,
+  setPassToConcert,
+  setMainTotalComments,
+  setMainLoading,
+} from '../../store/MainSlice';
 import {
   setTargetArticle,
   setPostingOrder,
@@ -21,6 +34,7 @@ import {
   setAllArticles,
   setArticleTotalPage,
 } from '../../store/ConChinSlice';
+
 import { setIsLoadingState } from '../../store/MySlice';
 /* Library import */
 import axios, { AxiosError } from 'axios';
@@ -44,8 +58,7 @@ function MyCommentBox() {
     myTotalArticleComment,
     isLoadingState,
   } = useSelector((state: RootState) => state.my);
-  const { allConcerts } = useSelector((state: RootState) => state.main);
-
+  const { target, allConcerts } = useSelector((state: RootState) => state.main);
   /* 지역상태 - useState */
   /* useEffect */
 
@@ -130,24 +143,52 @@ function MyCommentBox() {
       }
       // 활성화 콘서트인 경우, 다음을 실행한다 (activation: true)
       else {
+        dispatch(setMainLoading(false));
         // 현재 선택한 콘서트 업데이트 (target)
+        dispatch(setPageNum(1));
+        dispatch(
+          setTargetIdx(
+            allConcerts.findIndex(
+              concert =>
+                concert.id === responseConcert.data.data.concertInfo.id,
+            ),
+          ),
+        );
         setTimeout(() => {
           dispatch(setTarget(responseConcert.data.data.concertInfo));
         }, 300);
+        setTimeout(() => {
+          getPageComments(responseConcert.data.data.concertInfo.id);
+        }, 500);
         /* 마이페이지로 가기위한 상태 설정 */
         dispatch(setIsRendering(false));
         setTimeout(() => {
-          dispatch(
-            setTargetIdx(
-              allConcerts.findIndex(
-                concert =>
-                  concert.id === responseConcert.data.data.concertInfo.id,
-              ),
-            ),
-          );
+          navigate('/main');
+          dispatch(setMainLoading(true));
         }, 500);
-        navigate('/main');
       }
+    }
+  };
+
+  /* 모든 댓글 가져오기 함수 */
+  const getPageComments = async (id: number) => {
+    try {
+      /* response 변수에 서버 응답결과를 담는다 */
+
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${id}/comment?pageNum=1`,
+        { withCredentials: true },
+      );
+      /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
+      if (response.data) {
+        /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
+        dispatch(setTotalNum(response.data.data.totalPage));
+        dispatch(setPageAllComments(response.data.data.concertCommentInfo));
+        dispatch(setMainTotalComments(response.data.data.totalComment));
+        dispatch(setPageNum(1));
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 

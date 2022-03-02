@@ -55,6 +55,12 @@ export interface main {
   mainTotalComments: number;
   /* 마지막 인덱스 */
   mainLastIdx: number;
+  /* order 클릭 */
+  isOrderClicked?: boolean;
+  /* poster 로딩 */
+  posterLoading?: boolean;
+  /* mainPage 로딩 */
+  mainLoading?: boolean;
 }
 
 /* State 초기값 설정 */
@@ -68,6 +74,9 @@ const initialState: main = {
   passToConcert: false,
   mainTotalComments: 0,
   mainLastIdx: 0,
+  isOrderClicked: false,
+  posterLoading: false,
+  mainLoading: true,
 };
 
 const mainSlice = createSlice({
@@ -102,6 +111,15 @@ const mainSlice = createSlice({
     setMainLastIdx: (state: main, { payload }: PayloadAction<number>) => {
       state.mainLastIdx = payload;
     },
+    setIsOrderClicked: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.isOrderClicked = payload;
+    },
+    setPosterLoading: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.posterLoading = payload;
+    },
+    setMainLoading: (state: main, { payload }: PayloadAction<boolean>) => {
+      state.mainLoading = payload;
+    },
   },
 });
 
@@ -115,5 +133,8 @@ export const {
   setPassToConcert,
   setMainTotalComments,
   setMainLastIdx,
+  setIsOrderClicked,
+  setPosterLoading,
+  setMainLoading,
 } = mainSlice.actions;
 export default mainSlice.reducer;

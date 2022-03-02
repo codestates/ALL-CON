@@ -11,6 +11,7 @@ import {
   setArticleTotalPage,
   setPostingOrder,
   setArticleOrder,
+  setIsLoadingArticle,
 } from '../../store/ConChinSlice';
 
 /* Library import */
@@ -50,13 +51,18 @@ function MainFindConchin() {
   /* target 게시물 받아오기 (정렬순:view) */
   const getTargetArticles = async () => {
     try {
+      /* 로딩 상태 세팅 article */
+      dispatch(setIsLoadingArticle(false));
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/${target.id}/article?order=view`,
         { withCredentials: true },
       );
       if (response.data) {
+        dispatch(setIsLoadingArticle(true));
         dispatch(setTargetArticle({}));
+
         dispatch(setAllArticles(response.data.data.articleInfo));
+
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
         dispatch(setArticleRendered(true));
