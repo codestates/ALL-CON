@@ -14,6 +14,7 @@ import {
   setIsOrderClicked,
   setPosterLoading,
   setDetail,
+  setMainLoading,
 } from '../../../store/MainSlice';
 import { setMainTotalComments } from '../../../store/MainSlice';
 import {
@@ -59,6 +60,7 @@ function MyDropDown() {
   /* handler 함수 (기능별 정렬) */
   // 로그아웃 후 메인페이지 리다이렉트 핸들러
   const goHomeHandler = () => {
+    dispatch(setMainLoading(false));
     /* 메인페이지 상태 초기화 */
     dispatch(setIsRendering(false));
     dispatch(setOrder('view'));
@@ -71,7 +73,10 @@ function MyDropDown() {
     dispatch(showConcertModal(false)); // concertPage 모달창
     dispatch(showLoginModal(false));
     /* 홈으로 이동 */
-    navigate('/main');
+    setTimeout(() => {
+      navigate('/main');
+      dispatch(setMainLoading(true));
+    }, 500);
   };
 
   /*전체 콘서트 받아오기 */

@@ -20,7 +20,7 @@ import {
   setPageNum,
   setComment,
 } from '../../../store/ConcertCommentSlice';
-import { setMainTotalComments } from '../../../store/MainSlice';
+import { setMainTotalComments, setMainLoading } from '../../../store/MainSlice';
 
 /* Library import */
 import axios from 'axios';
@@ -101,14 +101,16 @@ function ConcertModal() {
 
   /* 자세히 보기 버튼 클릭 핸들러 (현재 target Concert 상태로 mainPage 이동) */
   const moveMainHandler = () => {
+    dispatch(setMainLoading(false));
     dispatch(setPassToConcert(true));
     dispatch(setIsRendering(false));
     getAllConcerts();
 
     dispatch(showConcertModal(false));
     setTimeout(() => {
+      dispatch(setMainLoading(true));
       navigate('/main');
-    }, 300);
+    }, 500);
   };
 
   /* Target 설정 Handler */

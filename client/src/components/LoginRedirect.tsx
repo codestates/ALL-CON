@@ -9,6 +9,7 @@ import {
   setIsRendering,
   setIsOrderClicked,
   setAllConcerts,
+  setMainLoading,
 } from '../store/MainSlice';
 import { setPageNum } from '../store/ConcertCommentSlice';
 import {
@@ -47,6 +48,7 @@ function LoginRedirect() {
   /* handler 함수 (기능별 정렬) */
   // 메인페이지 리다이렉트 핸들러
   const goHomeHandler = () => {
+    dispatch(setMainLoading(false));
     /* 메인페이지 상태 초기화 */
     dispatch(setOrder('view'));
     getAllConcerts();
@@ -75,8 +77,9 @@ function LoginRedirect() {
     dispatch(showMyProfileImageModal(false));
     /* 홈으로 이동 */
     setTimeout(() => {
+      dispatch(setMainLoading(true));
       navigate('/main');
-    }, 300);
+    }, 500);
   };
 
   /*전체 콘서트 받아오기 */

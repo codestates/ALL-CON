@@ -25,6 +25,7 @@ import {
   setIsRendering,
   setPassToConcert,
   setMainTotalComments,
+  setMainLoading,
 } from '../../store/MainSlice';
 import {
   setTargetArticle,
@@ -142,6 +143,7 @@ function MyCommentBox() {
       }
       // 활성화 콘서트인 경우, 다음을 실행한다 (activation: true)
       else {
+        dispatch(setMainLoading(false));
         // 현재 선택한 콘서트 업데이트 (target)
         dispatch(setPageNum(1));
         dispatch(
@@ -160,7 +162,10 @@ function MyCommentBox() {
         }, 500);
         /* 마이페이지로 가기위한 상태 설정 */
         dispatch(setIsRendering(false));
-        navigate('/main');
+        setTimeout(() => {
+          navigate('/main');
+          dispatch(setMainLoading(true));
+        }, 500);
       }
     }
   };
