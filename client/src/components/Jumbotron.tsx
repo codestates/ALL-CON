@@ -70,7 +70,6 @@ function Jumbotron() {
       );
       if (response.data) {
         /* 서버 응답값이 있다면 & target,targetIdx,pageNum 상태 변경 */
-        
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setTarget(response.data.data.concertInfo[0]));
         dispatch(setTargetIdx(0));
