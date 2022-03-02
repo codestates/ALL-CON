@@ -15,6 +15,8 @@ import {
   setIsRendering,
   setAllConcerts,
   setDetail,
+  setIsOrderClicked,
+  setPosterLoading,
 } from '../store/MainSlice';
 /* Library import */
 import axios from 'axios';
@@ -23,7 +25,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function Jumbotron() {
   const dispatch = useDispatch();
-  const { order, target } = useSelector(
+  const { order, target, targetIdx, isOrderClicked, allConcerts } = useSelector(
     (state: RootState) => state.main,
   );
   const { pageNum } = useSelector((state: RootState) => state.concertComments);
@@ -52,7 +54,7 @@ function Jumbotron() {
   //   }
   //   dispatch(setPassToConcert(false)); // 콘서트 -> 메인 페이지 상태 false
   // };
-  
+
   /* orderClick 핸들러 */
   const orderClickHandler = (clickValue: string) => {
     /* 정렬 버튼 클릭시 렌더링: false, 타겟값 초기화, order 갱신 */
@@ -64,19 +66,23 @@ function Jumbotron() {
   /*전체 콘서트 받아오기 */
   const getAllConcerts = async (clickValue: string) => {
     try {
+      /* 포스터 로딩 상태 세팅 */
+      dispatch(setPosterLoading(false));
+      dispatch(setIsOrderClicked(false));
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert?order=${clickValue}`,
         { withCredentials: true },
       );
       if (response.data) {
         /* 서버 응답값이 있다면 & target,targetIdx,pageNum 상태 변경 */
-        
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setTarget(response.data.data.concertInfo[0]));
         dispatch(setTargetIdx(0));
         dispatch(setPageNum(1));
         /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
         dispatch(setIsRendering(true));
+        dispatch(setPosterLoading(true));
+        dispatch(setIsOrderClicked(true));
         getDetailInfo(response.data.data.concertInfo[0].id);
       }
     } catch (err) {

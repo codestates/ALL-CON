@@ -1,8 +1,9 @@
-import react from 'react';
+/* CSS import */
+import loadingImage from '../images/mainLoading.gif';
+import banner from '../images/banner.png';
 import ConChinPostingBox from '../components/ConChinPage/ConChinPostingBox';
 import ConChinBox from '../components/ConChinPage/ConChinBox';
 import ConChinArticleContentBox from '../components/ConChinPage/ConChinArticleContentBox';
-import banner from '../images/banner.png';
 import Footer from '../components/Footer';
 /* Store import */
 import { RootState } from '../index';
@@ -24,7 +25,9 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function ConChinPage() {
   const dispatch = useDispatch();
-  const { target, allConcerts } = useSelector((state: RootState) => state.main);
+  const { target, allConcerts, mainLoading } = useSelector(
+    (state: RootState) => state.main,
+  );
   const { articleOrder, postingOrder, targetArticle, allArticles } =
     useSelector((state: RootState) => state.conChin);
 
@@ -166,64 +169,70 @@ function ConChinPage() {
   useEffect(() => {
     setConChinTargetArticle(targetArticle);
   }, [targetArticle]);
-
-  return (
-    <div id='conChinContainer'>
-      <div id='conChinExceptFooter'>
-        <img id='jumbotron' src={banner} />
-        <div
-          id={
-            Object.keys(conChinTarget).length === 0
-              ? 'postingWrapper'
-              : 'postingWrapperChosen'
-          }
-        >
-          {/* 콘서트 정보, target유무에따라 외부,내부 크기 변경 */}
-          <ConChinPostingBox />
+  if (mainLoading === true)
+    return (
+      <div id='conChinContainer'>
+        <div id='conChinExceptFooter'>
+          <img id='jumbotron' src={banner} />
+          <div
+            id={
+              Object.keys(conChinTarget).length === 0
+                ? 'postingWrapper'
+                : 'postingWrapperChosen'
+            }
+          >
+            {/* 콘서트 정보, target유무에따라 외부,내부 크기 변경 */}
+            <ConChinPostingBox />
+          </div>
+          <div
+            id={
+              Object.keys(conChinTarget).length === 0
+                ? 'articleWrapper'
+                : 'articleWrapperChosen'
+            }
+          >
+            {/* 게시물 정보, targetArticle유무에따라 외부,내부 크기 변경, 가로 스크롤바 생성 */}
+            <ConChinBox />
+          </div>
         </div>
         <div
           id={
-            Object.keys(conChinTarget).length === 0
-              ? 'articleWrapper'
-              : 'articleWrapperChosen'
+            Object.keys(conChinTargetArticle).length === 0 &&
+            Object.keys(conChinTarget).length !== 0
+              ? 'contentsWrapperArticleNotChosen'
+              : Object.keys(conChinTargetArticle).length !== 0 &&
+                Object.keys(conChinTarget).length !== 0
+              ? 'contentsWrapperChosen'
+              : 'contentWrapper'
           }
         >
-          {/* 게시물 정보, targetArticle유무에따라 외부,내부 크기 변경, 가로 스크롤바 생성 */}
-          <ConChinBox />
+          {/* 게시물 내용, 없다가 생기므로 위치만 변경할 것. */}
+          <ConChinArticleContentBox />
+        </div>
+        <div
+          id={
+            Object.keys(conChinTargetArticle).length === 0 &&
+            Object.keys(conChinTarget).length !== 0
+              ? 'fullFooterArticleNotChosen'
+              : Object.keys(conChinTargetArticle).length !== 0 &&
+                Object.keys(conChinTarget).length !== 0
+              ? 'fullFooterChosen'
+              : 'fullFooter'
+          }
+        >
+          <div id='footerWrapper'>
+            {/* 푸터, targetArticle 유무에 따라 위치 변경 */}
+            <Footer />
+          </div>
         </div>
       </div>
-      <div
-        id={
-          Object.keys(conChinTargetArticle).length === 0 &&
-          Object.keys(conChinTarget).length !== 0
-            ? 'contentsWrapperArticleNotChosen'
-            : Object.keys(conChinTargetArticle).length !== 0 &&
-              Object.keys(conChinTarget).length !== 0
-            ? 'contentsWrapperChosen'
-            : 'contentWrapper'
-        }
-      >
-        {/* 게시물 내용, 없다가 생기므로 위치만 변경할 것. */}
-        <ConChinArticleContentBox />
+    );
+  else
+    return (
+      <div id='loadingContainer'>
+        <img className='loadingImg' src={loadingImage} />
       </div>
-      <div
-        id={
-          Object.keys(conChinTargetArticle).length === 0 &&
-          Object.keys(conChinTarget).length !== 0
-            ? 'fullFooterArticleNotChosen'
-            : Object.keys(conChinTargetArticle).length !== 0 &&
-              Object.keys(conChinTarget).length !== 0
-            ? 'fullFooterChosen'
-            : 'fullFooter'
-        }
-      >
-        <div id='footerWrapper'>
-          {/* 푸터, targetArticle 유무에 따라 위치 변경 */}
-          <Footer />
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default ConChinPage;

@@ -466,6 +466,82 @@
           transform: rotateY(180deg);
         }
         @include mobile-only() {
+          width: 80%;
+          height: 70%;
+          margin-left: 10%;
+          margin-top: 40%;
+        }
+        @include md() {
+          width: 80%;
+          height: 80%;
+          margin-left: 10%;
+          margin-top: 25%;
+        }
+        @include lg() {
+          width: 80%;
+          height: 75%;
+          margin-left: 10%;
+          margin-top: 20%;
+        }
+        .front {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          .posterCover2 {
+            z-index: 5;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.8);
+            width: 100%;
+            height: 100%;
+          }
+          .frontImg {
+            position: relative;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .back {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          overflow: hidden;
+          transform: rotateY(180deg);
+        }
+      }
+    }
+    .else2 {
+      position: relative;
+      top: 50%;
+      // border: 1px solid blue;
+      @include mobile-only() {
+        width: 20vw;
+        height: 30vh;
+      }
+      @include md() {
+        width: 20vw;
+        height: 35vh;
+      }
+      @include lg() {
+        width: 20vw;
+        height: 50vh;
+      }
+      .card {
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.3s ease;
+        // border: 1px solid red;
+        &:active {
+          transform: rotateY(180deg);
+        }
+        @include mobile-only() {
           width: 70%;
           height: 60%;
           margin-left: 15%;
@@ -624,6 +700,29 @@
         top: 28px;
         opacity: 70%;
       }
+    }
+  }
+  .loadingImg {
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    @include mobile-only() {
+      width: 5rem;
+      height: 5rem;
+      left: 50%;
+      top: 50%;
+    }
+    @include md() {
+      width: 7rem;
+      height: 7rem;
+      left: 50%;
+      top: 50%;
+    }
+    @include lg() {
+      width: 9rem;
+      height: 9rem;
+      left: 50%;
+      top: 50%;
     }
   }
   // .s1_arrow {

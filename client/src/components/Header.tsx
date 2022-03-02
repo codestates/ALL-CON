@@ -16,6 +16,7 @@ import {
   showMyDropDown,
   showConcertModal,
 } from '../store/ModalSlice';
+import { setIsOrderClicked, setMainLoading } from '../store/MainSlice';
 import {
   setAllArticles,
   setArticleTotalPage,
@@ -63,6 +64,9 @@ function Header() {
     conChinWritingModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
+  const { target, isOrderClicked } = useSelector(
+    (state: RootState) => state.main,
+  );
   const { isClosed, scrollCount, timerMessage, headerAllConcerts, isPaused } =
     useSelector((state: RootState) => state.header);
   const { articleOrder, allArticles } = useSelector(
@@ -164,12 +168,17 @@ function Header() {
       );
       if (response.data) {
         /* 서버 응답값이 있다면 & target 상태 변경 */
-        dispatch(setOrder('view'));
+        if (response.data.data.concertInfo[0].id !== target.id)
+          dispatch(setTarget({}));
         dispatch(setAllConcerts(response.data.data.concertInfo));
-        dispatch(setTarget(response.data.data.concertInfo[0]));
+        dispatch(setOrder('view'));
+        dispatch(setIsOrderClicked(!isOrderClicked));
         setTimeout(() => {
           dispatch(setTargetIdx(0));
-        }, 300);
+        }, 50);
+        setTimeout(() => {
+          dispatch(setTarget(response.data.data.concertInfo[0]));
+        }, 100);
         /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
         dispatch(setIsRendering(true));
       }
@@ -222,12 +231,15 @@ function Header() {
       setSearchClicked(false);
     } else if (menu === 'main') {
       /* MainPage */
-      dispatch(setTarget({}));
-      getMainAllConcerts();
-      dispatch(setPageNum(1));
+      dispatch(setMainLoading(false));
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
-      navigate('/main');
+      getMainAllConcerts();
+      setTimeout(() => {
+        dispatch(setMainLoading(true));
+        dispatch(setPageNum(1));
+        navigate('/main');
+      }, 500);
       setSearchClicked(false);
     } else if (menu === 'concert') {
       /* ConcertPage */
