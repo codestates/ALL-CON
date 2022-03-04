@@ -231,6 +231,15 @@ function Header() {
     /* LandingPage */
     if (menu === 'logo') {
       showTimer();
+      dispatch(setMainLoading(false));
+      dispatch(setIsRendering(false));
+      dispatch(setPassToConcert(false));
+      getMainAllConcerts();
+      setTimeout(() => {
+        dispatch(setMainLoading(true));
+        dispatch(setPageNum(1));
+        navigate('/main');
+      }, 500);
       setSearchClicked(false);
     } else if (menu === 'main') {
       /* MainPage */
@@ -339,7 +348,7 @@ function Header() {
         </div>
       ) : null}
       <div id='logoBar'>
-        <Link to='/main' onClick={() => resetHandler('logo')}>
+        <div onClick={() => resetHandler('logo')}>
           {/* 로고 호출 */}
 
           <img
@@ -349,7 +358,7 @@ function Header() {
             alt='logoImg'
             src={logo}
           />
-        </Link>
+        </div>
       </div>
       {/* 스크롤위치에 따라 헤더 포지션 변경 */}
       <div id={scrollCount < 48 ? 'absoluteBar' : 'fixedBar'}>
