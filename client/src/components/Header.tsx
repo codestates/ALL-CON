@@ -25,6 +25,7 @@ import {
   setArticleRendered,
   setPostingOrder,
   setArticleOrder,
+  setIsLoadingArticle,
 } from '../store/ConChinSlice';
 import {
   setIsClosed,
@@ -144,6 +145,7 @@ function Header() {
   /* 전체 게시물 받아오기 */
   const getAllArticles = async () => {
     try {
+      dispatch(setIsLoadingArticle(false));
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=view`,
         { withCredentials: true },
@@ -152,6 +154,7 @@ function Header() {
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
+        dispatch(setIsLoadingArticle(true));
       } else {
       }
     } catch (err) {
@@ -255,6 +258,7 @@ function Header() {
       dispatch(setArticleRendered(false));
       dispatch(setArticleCurPage(1));
       navigate('/conchin');
+
       dispatch(setPostingOrder('view'));
       dispatch(setArticleOrder('view'));
       getAllConcerts();
