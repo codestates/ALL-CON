@@ -66,7 +66,7 @@ function MainConcertInfo() {
   const [mainTotalCommentsMain, setMainTotalCommentsMain] = useState<number>(0);
   const [detailMain, setDetailMain] = useState<mainDetail>({});
 
-  /* 타겟 변경시 지역상태 detailMain 변경  */
+  /* detail 변경시 지역상태 detailMain 변경  */
   useEffect(() => {
     setDetailMain(detail);
   }, [detail]);
