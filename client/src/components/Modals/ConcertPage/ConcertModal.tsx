@@ -89,7 +89,6 @@ function ConcertModal() {
         setTimeout(() => {
           dispatch(setTarget(concerts[concertIdx]));
         }, 100);
-        console.log(target);
         setTimeout(() => {
           getPageComments(concerts[concertIdx].id);
         }, 200);
