@@ -82,12 +82,13 @@ function PosterSlide() {
     //타겟 인덱스가 변할때마다 타겟 바꿔주기
     setTimeout(() => {
       dispatch(setTarget(allConcerts[targetIdx]));
-    }, 100);
+    }, 150);
     setTimeout(() => {
-      if (posterLoading === true) getDetailInfo(allConcerts[targetIdx].id);
-    }, 100);
+      if (posterLoading === true && isRendering === true)
+        getDetailInfo(allConcerts[targetIdx].id);
+    }, 200);
     //targetIdx가 바뀌면 targetIdx로 중앙 이동.(한번만)
-    if (isMoved === false) {
+    if (isMoved === false && isRendering === true) {
       setTimeout(() => {
         sliderRef.current.slickGoTo(targetIdx, true);
       }, 100);
@@ -101,7 +102,7 @@ function PosterSlide() {
   }, [posterLoading]);
 
   useEffect(() => {
-    if (isMoved === true) {
+    if (isMoved === true && isRendering === true) {
       setTimeout(() => {
         sliderRef.current.slickGoTo(0, true);
       }, 300);
@@ -179,7 +180,8 @@ function PosterSlide() {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     beforeChange: (current: any, next: any) => {
-      dispatch(setTargetIdx(next));
+      if (posterLoadingMain === true && isRendering === true)
+        dispatch(setTargetIdx(next));
     },
   };
 

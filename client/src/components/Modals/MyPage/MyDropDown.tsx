@@ -64,7 +64,7 @@ function MyDropDown() {
     /* 메인페이지 상태 초기화 */
     dispatch(setIsRendering(false));
     dispatch(setOrder('view'));
-    getAllConcerts('view');
+    // getAllConcerts('view');
 
     dispatch(setAlarm({}));
     dispatch(setEmailClick(false));

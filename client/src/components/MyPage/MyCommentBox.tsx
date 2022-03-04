@@ -161,7 +161,6 @@ function MyCommentBox() {
           getPageComments(responseConcert.data.data.concertInfo.id);
         }, 500);
         /* 마이페이지로 가기위한 상태 설정 */
-        dispatch(setIsRendering(false));
         setTimeout(() => {
           navigate('/main');
           dispatch(setMainLoading(true));
