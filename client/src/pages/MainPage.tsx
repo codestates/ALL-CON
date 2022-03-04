@@ -12,10 +12,13 @@ import { RootState } from '../index';
 import { loginCheck } from '../store/AuthSlice';
 import {
   setTarget,
+  setTargetIdx,
   setAllConcerts,
   setDetail,
   setIsRendering,
   setMainTotalComments,
+  setPosterLoading,
+  setIsOrderClicked,
 } from '../store/MainSlice';
 import {
   setAlarm,
@@ -52,7 +55,7 @@ function MainPage() {
 
   /* 전체 콘서트 렌더링 */
   useEffect(() => {
-    getAllConcerts(); // 전체 콘서트 목록
+    if (isRendering === false) getAllConcerts(); // 전체 콘서트 목록
   }, [isLogin]);
   // isRendering]);
 
@@ -90,8 +93,53 @@ function MainPage() {
         /* 서버 응답값이 있다면 & target 상태 변경 */
         dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setTarget(response.data.data.concertInfo[0]));
+        getDetailInfo(response.data.data.concertInfo[0].id);
+        dispatch(setIsOrderClicked(false));
         /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
         dispatch(setIsRendering(true));
+        dispatch(setPosterLoading(true));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  /* 상세 콘서트 받아오기 */
+  const getDetailInfo = async (id: number) => {
+    try {
+      //console.log('getDeatilInfo함수 실행됌');
+      //order가 바뀔 때 5번 실행되고, 타겟 바꿀 때마다 2번씩 실행됌
+
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/${id}`,
+        { withCredentials: true },
+      );
+      if (response.data.data) {
+        /* 서버 응답값이 있다면 detail(상세정보) 갱신 */
+        dispatch(setDetail(response.data.data.concertInfo));
+        //console.log('디스패치 실행중');
+        getAllComments(id);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 모든 댓글 가져오기 함수 */
+  const getAllComments = async (id: number) => {
+    try {
+      if (target) {
+        /* response 변수에 서버 응답결과를 담는다 */
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/concert/${id}/comment?pageNum=${pageNum}`,
+          { withCredentials: true },
+        );
+        /* 서버의 응답결과에 유효한 값이 담겨있다면 댓글 조회 성공*/
+        if (response.data) {
+          /* 모든 페이지수 & 모든 댓글목록을 전역 상태에 담는다 */
+          dispatch(setTotalNum(response.data.data.totalPage));
+          dispatch(setPageAllComments(response.data.data.concertCommentInfo));
+          dispatch(setMainTotalComments(response.data.data.totalComment));
+        }
       }
     } catch (err) {
       console.log(err);
@@ -157,21 +205,18 @@ function MainPage() {
         <div id='mainJumboWrapper'>
           <Jumbotron />
         </div>
-        {isRenderingMain && (
-          <div id='mainConcertInfoWrapper'>
-            <MainConcertInfo />
-          </div>
-        )}
-        {isRenderingMain && (
-          <div id='mainCommentWrapper'>
-            <MainComment />
-          </div>
-        )}
-        {isRenderingMain && (
-          <div id='mainPaginationWrapper'>
-            <MainPagination />
-          </div>
-        )}
+        <div id='mainConcertInfoWrapper'>
+          <MainConcertInfo />
+        </div>
+
+        <div id='mainCommentWrapper'>
+          <MainComment />
+        </div>
+
+        <div id='mainPaginationWrapper'>
+          <MainPagination />
+        </div>
+
         <div id='mainFindConchinWrapper'>
           <MainFindConchin />
         </div>
