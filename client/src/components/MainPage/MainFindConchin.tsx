@@ -26,7 +26,6 @@ function MainFindConchin() {
   /* 타겟 게시물 리셋 & 콘친페이지 이동 핸들러 */
   const goConChinWithNoTargetArticle = () => {
     getAllConcerts();
-    getTargetArticles();
     dispatch(setPostingOrder('view'));
     dispatch(setArticleOrder('view'));
     navigate('/conchin');
@@ -42,6 +41,7 @@ function MainFindConchin() {
       if (response.data) {
         /* 서버 응답값이 있다면 & allConcerts 상태 변경 */
         dispatch(setAllConcerts(response.data.data.concertInfo));
+        getTargetArticles();
       }
     } catch (err) {
       console.log(err);

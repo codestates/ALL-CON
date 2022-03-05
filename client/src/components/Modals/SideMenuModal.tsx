@@ -19,6 +19,9 @@ import {
   setArticleCurPage,
   setTargetArticle,
   setArticleRendered,
+  setPostingOrder,
+  setArticleOrder,
+  setIsLoadingArticle,
 } from '../../store/ConChinSlice';
 import {
   setIsClosed,
@@ -34,7 +37,10 @@ import {
   setTargetIdx,
   setIsRendering,
   setMainLoading,
+  setAllConcerts,
+  setIsOrderClicked,
 } from '../../store/MainSlice';
+import { setIsLoading } from '../../store/ConcertSlice';
 /* Library import */
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -45,7 +51,9 @@ function SideMenuModal() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { scrollCount } = useSelector((state: RootState) => state.header);
-  const { target } = useSelector((state: RootState) => state.main);
+  const { isMainVisited, target } = useSelector(
+    (state: RootState) => state.main,
+  );
 
   /* 메뉴별 이동시 상태 초기화 핸들러 */
   const resetHandler = (menu: string) => {
@@ -56,28 +64,100 @@ function SideMenuModal() {
     } else if (menu === 'main') {
       /* MainPage */
       dispatch(setMainLoading(false));
-      dispatch(setTarget({}));
-      dispatch(setTargetIdx(0));
-      dispatch(setOrder('view'));
-      dispatch(setPageNum(1));
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
+      if (isMainVisited === true) getMainAllConcerts();
       setTimeout(() => {
-        navigate('/main');
         dispatch(setMainLoading(true));
+        navigate('/main');
       }, 500);
     } else if (menu === 'concert') {
       /* ConcertPage */
+      getAllConcerts();
       dispatch(setTarget({}));
       dispatch(setOrder('view'));
       navigate('/concert');
     } else if (menu === 'conchin') {
+      /* ConChinPage */
       /* ConChinPage */
       dispatch(setTarget({}));
       dispatch(setTargetArticle({}));
       dispatch(setArticleRendered(false));
       dispatch(setArticleCurPage(1));
       navigate('/conchin');
+      dispatch(setPostingOrder('view'));
+      dispatch(setArticleOrder('view'));
+      getAllConcerts();
+      getAllArticles();
+    }
+  };
+
+  /*전체 콘서트 받아오기 */
+  const getMainAllConcerts = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert?order=view`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        /* 서버 응답값이 있다면 & target 상태 변경 */
+        setTimeout(() => {
+          dispatch(setAllConcerts(response.data.data.concertInfo));
+        }, 50);
+        if (response.data.data.concertInfo[0].id !== target.id)
+          dispatch(setTarget({}));
+        dispatch(setOrder('view'));
+        dispatch(setIsOrderClicked(false));
+        setTimeout(() => {
+          dispatch(setTargetIdx(0));
+        }, 100);
+        setTimeout(() => {
+          dispatch(setTarget(response.data.data.concertInfo[0]));
+        }, 150);
+        dispatch(setPageNum(1));
+        /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
+        dispatch(setIsRendering(true));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 콘서트 페이지 전체 콘서트 받아오기(정렬순:view) */
+  const getAllConcerts = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert?order=view`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        /* 서버 응답값이 있다면 & allConcerts 상태 변경 */
+        dispatch(setAllConcerts(response.data.data.concertInfo));
+        dispatch(setIsLoading(true));
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /* 전체 게시물 받아오기 */
+  const getAllArticles = async () => {
+    try {
+      /* 로딩 상태 세팅 article */
+      dispatch(setIsLoadingArticle(false));
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/concert/article?order=view`,
+        { withCredentials: true },
+      );
+      if (response.data) {
+        dispatch(setIsLoadingArticle(true));
+        dispatch(setAllArticles(response.data.data.articleInfo));
+        dispatch(setArticleTotalPage(response.data.data.totalPage));
+        dispatch(setArticleCurPage(1));
+      } else {
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 
