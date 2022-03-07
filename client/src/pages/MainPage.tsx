@@ -19,6 +19,7 @@ import {
   setMainTotalComments,
   setPosterLoading,
   setIsOrderClicked,
+  setisMainVisited,
 } from '../store/MainSlice';
 import {
   setAlarm,
@@ -56,6 +57,7 @@ function MainPage() {
   /* 전체 콘서트 렌더링 */
   useEffect(() => {
     if (isRendering === false) getAllConcerts(); // 전체 콘서트 목록
+    dispatch(setisMainVisited(true));
   }, [isLogin]);
   // isRendering]);
 
