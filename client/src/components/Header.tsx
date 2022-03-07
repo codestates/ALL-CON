@@ -25,6 +25,7 @@ import {
   setArticleRendered,
   setPostingOrder,
   setArticleOrder,
+  setIsLoadingArticle,
 } from '../store/ConChinSlice';
 import {
   setIsClosed,
@@ -64,13 +65,11 @@ function Header() {
     conChinWritingModal,
     mainKakaoModal,
   } = useSelector((state: RootState) => state.modal);
-  const { target, isOrderClicked } = useSelector(
+  const { target, isMainVisited } = useSelector(
     (state: RootState) => state.main,
   );
-  const { isClosed, scrollCount, timerMessage, headerAllConcerts, isPaused } =
-    useSelector((state: RootState) => state.header);
-  const { articleOrder, allArticles } = useSelector(
-    (state: RootState) => state.conChin,
+  const { isClosed, scrollCount, timerMessage, isPaused } = useSelector(
+    (state: RootState) => state.header,
   );
 
   /* search 버튼 클릭 상태 */
@@ -144,11 +143,14 @@ function Header() {
   /* 전체 게시물 받아오기 */
   const getAllArticles = async () => {
     try {
+      /* 로딩 상태 세팅 article */
+      dispatch(setIsLoadingArticle(false));
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/concert/article?order=view`,
         { withCredentials: true },
       );
       if (response.data) {
+        dispatch(setIsLoadingArticle(true));
         dispatch(setAllArticles(response.data.data.articleInfo));
         dispatch(setArticleTotalPage(response.data.data.totalPage));
         dispatch(setArticleCurPage(1));
@@ -168,17 +170,20 @@ function Header() {
       );
       if (response.data) {
         /* 서버 응답값이 있다면 & target 상태 변경 */
+        setTimeout(() => {
+          dispatch(setAllConcerts(response.data.data.concertInfo));
+        }, 50);
         if (response.data.data.concertInfo[0].id !== target.id)
           dispatch(setTarget({}));
-        dispatch(setAllConcerts(response.data.data.concertInfo));
         dispatch(setOrder('view'));
-        dispatch(setIsOrderClicked(!isOrderClicked));
+        dispatch(setIsOrderClicked(false));
         setTimeout(() => {
           dispatch(setTargetIdx(0));
-        }, 50);
+        }, 100);
         setTimeout(() => {
           dispatch(setTarget(response.data.data.concertInfo[0]));
-        }, 100);
+        }, 150);
+        dispatch(setPageNum(1));
         /* 상세 콘서트 받아오기 & 렌더링 상태 변경 */
         dispatch(setIsRendering(true));
       }
@@ -234,10 +239,9 @@ function Header() {
       dispatch(setMainLoading(false));
       dispatch(setIsRendering(false));
       dispatch(setPassToConcert(false));
-      getMainAllConcerts();
+      if (isMainVisited === true) getMainAllConcerts();
       setTimeout(() => {
         dispatch(setMainLoading(true));
-        dispatch(setPageNum(1));
         navigate('/main');
       }, 500);
       setSearchClicked(false);
