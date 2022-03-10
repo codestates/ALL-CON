@@ -80,8 +80,6 @@ function App() {
       {mainKakaoModal && <MainKakaoModal />}
       {myProfileImageModal && <MyProfileImageModal />}
       {myProfileResignMembershipModal && <MyProfileResignMembershipModal />}
-      {/* <MyEditPage /> */}
-      {/* <ConChinCertificationPage /> */}
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/main/*' element={<MainPage />} />
